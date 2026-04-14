@@ -1,0 +1,201 @@
+<div class="timesheet-container">
+  <header class="header">
+    <div class="header-content">
+      <h1>Timesheet Management</h1>
+      <div class="header-actions">
+        <button class="btn btn-secondary" (click)="goToDashboard()">Dashboard</button>
+        <button class="btn btn-secondary" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    @if (errorMessage()) {
+      <div class="alert alert-error">
+        {{ errorMessage() }}
+        <button class="alert-close" (click)="clearMessages()">×</button>
+      </div>
+    }
+
+    @if (successMessage()) {
+      <div class="alert alert-success">
+        {{ successMessage() }}
+        <button class="alert-close" (click)="clearMessages()">×</button>
+      </div>
+    }
+
+    <div class="actions-bar">
+      <button class="btn btn-primary" (click)="openCreateForm()">
+        + Create Timesheet
+      </button>
+      <div class="info">
+        Total: {{ totalCount() }} timesheets
+      </div>
+    </div>
+
+    @if (isLoading()) {
+      <div class="loading">Loading timesheets...</div>
+    } @else {
+      @if (timesheets().length === 0) {
+        <div class="empty-state">
+          <p>No timesheets found.</p>
+          <button class="btn btn-primary" (click)="openCreateForm()">Create Your First Timesheet</button>
+        </div>
+      } @else {
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Work Order</th>
+                <th>Hours</th>
+                <th>Pay Type</th>
+                <th>Status</th>
+                <th>Notes</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (timesheet of timesheets(); track timesheet.id) {
+                <tr>
+                  <td>{{ timesheet.date | date: 'MM/dd/yyyy' }}</td>
+                  <td>
+                    @if (timesheet.workOrderNumber) {
+                      <div class="work-order">
+                        <strong>{{ timesheet.workOrderNumber }}</strong>
+                        <small>{{ timesheet.workOrderDescription }}</small>
+                      </div>
+                    } @else {
+                      <span class="text-muted">N/A</span>
+                    }
+                  </td>
+                  <td>{{ timesheet.hours }}</td>
+                  <td>{{ timesheet.payTypeName }}</td>
+                  <td>
+                    <span [class]="'status-badge ' + getStatusClass(timesheet.status)">
+                      {{ getStatusText(timesheet.status) }}
+                    </span>
+                  </td>
+                  <td>
+                    @if (timesheet.notes) {
+                      <span class="notes">{{ timesheet.notes }}</span>
+                    } @else {
+                      <span class="text-muted">-</span>
+                    }
+                  </td>
+                  <td>
+                    <div class="action-buttons">
+                      @if (canEdit(timesheet)) {
+                        <button class="btn-icon" (click)="openEditForm(timesheet)" title="Edit">✏️</button>
+                      }
+                      @if (canSubmit(timesheet)) {
+                        <button class="btn-icon" (click)="submitTimesheet(timesheet)" title="Submit">📤</button>
+                      }
+                      @if (canApprove(timesheet)) {
+                        <button class="btn-icon success" (click)="approveTimesheet(timesheet)" title="Approve">✅</button>
+                      }
+                      @if (canReject(timesheet)) {
+                        <button class="btn-icon danger" (click)="rejectTimesheet(timesheet)" title="Reject">❌</button>
+                      }
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        @if (totalPages() > 1) {
+          <div class="pagination">
+            <button class="btn btn-secondary" (click)="previousPage()" [disabled]="currentPage() === 1">
+              Previous
+            </button>
+            <span class="page-info">Page {{ currentPage() }} of {{ totalPages() }}</span>
+            <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage() === totalPages()">
+              Next
+            </button>
+          </div>
+        }
+      }
+    }
+  </div>
+
+  @if (showForm()) {
+    <div class="modal-overlay" (click)="closeForm()">
+      <div class="modal" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2>{{ editingTimesheet() ? 'Edit Timesheet' : 'Create Timesheet' }}</h2>
+          <button class="modal-close" (click)="closeForm()">×</button>
+        </div>
+
+        <form [formGroup]="timesheetForm" (ngSubmit)="saveTimesheet()" class="modal-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Date *</label>
+              <input
+                id="date"
+                type="date"
+                formControlName="date"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="hours">Hours *</label>
+              <input
+                id="hours"
+                type="number"
+                formControlName="hours"
+                class="form-control"
+                min="0"
+                max="24"
+                step="0.5"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="payTypeId">Pay Type *</label>
+              <select id="payTypeId" formControlName="payTypeId" class="form-control" required>
+                <option value="1">Regular</option>
+                <option value="2">Overtime</option>
+                <option value="3">Double Time</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="workOrderId">Work Order</label>
+              <select id="workOrderId" formControlName="workOrderId" class="form-control">
+                <option [value]="null">None</option>
+                @for (wo of workOrders(); track wo.id) {
+                  <option [value]="wo.id">{{ wo.workOrderNumber }} - {{ wo.description }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea
+              id="notes"
+              formControlName="notes"
+              class="form-control"
+              rows="3"
+              placeholder="Add any notes about this timesheet entry..."
+            ></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeForm()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!timesheetForm.valid">
+              {{ editingTimesheet() ? 'Update' : 'Create' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+</div>
