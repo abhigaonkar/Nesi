@@ -70,12 +70,13 @@ These guidelines ensure consistency, maintainability, and quality across the ent
 - **Testing:** xUnit, Moq, FluentAssertions
 
 ### Frontend
-- **Framework:** Angular 18 (standalone components)
+- **Framework:** Angular 19.2.20+ (standalone components)
 - **Language:** TypeScript 5.4+
-- **UI Library:** Angular Material 18
+- **UI Library:** Angular Material 19+
 - **State Management:** NgRx or Angular Signals
 - **Forms:** Reactive Forms
 - **Testing:** Jest, Playwright
+- **Security Note:** Angular 18.x has unpatched XSS/XSRF vulnerabilities. Angular 19.2.20+ is required.
 
 ### Development
 - **Version Control:** Git with conventional commits

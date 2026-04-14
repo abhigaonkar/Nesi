@@ -25,13 +25,14 @@ This is a comprehensive demo application showcasing the NESI system rebuilt with
 - **Testing:** xUnit, Moq, FluentAssertions
 
 ### Frontend
-- **Framework:** Angular 18 (standalone components)
+- **Framework:** Angular 19.2.20+ (standalone components)
 - **Language:** TypeScript 5.4+
-- **UI Library:** Angular Material 18
+- **UI Library:** Angular Material 19+
 - **State Management:** NgRx or Angular Signals
 - **Forms:** Reactive Forms
 - **HTTP:** HttpClient with interceptors
 - **Testing:** Jest, Angular Testing Library, Playwright
+- **Security:** Using patched version (Angular 18.x has unpatched XSS/XSRF vulnerabilities)
 
 ### Development Tools
 - **Code Quality:** ESLint, Prettier (FE) | StyleCop, EditorConfig (BE)

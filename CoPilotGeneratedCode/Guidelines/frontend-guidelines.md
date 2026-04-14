@@ -1,4 +1,7 @@
-# Frontend Coding Guidelines (Angular 18)
+# Frontend Coding Guidelines (Angular 19.2.20+)
+
+> **Security Note**: Angular 18.x contains multiple unpatched XSS and XSRF vulnerabilities. 
+> Angular 19.2.20+ is the minimum required version with security patches.
 
 ## Architecture Principles
 
