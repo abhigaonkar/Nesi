@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESI Application - Technologies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .tech-category {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 5px;
+            color: white;
+        }
+        .badge-primary { background: #667eea; }
+        .badge-secondary { background: #764ba2; }
+        .badge-success { background: #28a745; }
+        .badge-warning { background: #ffc107; color: #333; }
+        .badge-danger { background: #dc3545; }
+        .badge-info { background: #17a2b8; }
+        .version-status {
+            font-weight: bold;
+        }
+        .outdated { color: #dc3545; }
+        .current { color: #28a745; }
+        .deprecated { color: #ffc107; }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #764ba2;
+        }
+        .tech-stack-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .tech-layer {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+        }
+        .layer-frontend { background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); }
+        .layer-api { background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%); }
+        .layer-business { background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); }
+        .layer-data { background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%); }
+        .layer-database { background: linear-gradient(90deg, #fa709a 0%, #fee140 100%); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚙️ NESI Application - Technology Stack</h1>
+        
+        <div class="tech-stack-visual">
+            <div class="tech-layer layer-frontend">Frontend: Angular 6 + TypeScript + PrimeNG/DevExtreme</div>
+            <div class="tech-layer layer-api">API Layer: ASP.NET Web API 2 + OAuth 2.0 + SignalR</div>
+            <div class="tech-layer layer-business">Business Logic: C# + AutoMapper + FluentValidation</div>
+            <div class="tech-layer layer-data">Data Access: Entity Framework 6 + Repository Pattern</div>
+            <div class="tech-layer layer-database">Database: MySQL 6.9.9</div>
+        </div>
+
+        <h2>🖥️ Frontend Technologies</h2>
+        
+        <div class="tech-category">
+            <h3>Core Frontend Framework</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Angular</strong></td>
+                        <td>6.0.3</td>
+                        <td>Primary SPA framework</td>
+                        <td><span class="version-status outdated">⚠️ Outdated (2018)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>TypeScript</strong></td>
+                        <td>2.7.2</td>
+                        <td>Type-safe JavaScript</td>
+                        <td><span class="version-status outdated">⚠️ Outdated</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RxJS</strong></td>
+                        <td>6.2.0 + compat</td>
+                        <td>Reactive programming</td>
+                        <td><span class="version-status outdated">⚠️ Outdated</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Angular CLI</strong></td>
+                        <td>6.0.8</td>
+                        <td>Build tooling</td>
+                        <td><span class="version-status outdated">⚠️ Outdated</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zone.js</strong></td>
+                        <td>0.8.26</td>
+                        <td>Change detection</td>
+                        <td><span class="version-status outdated">⚠️ Outdated</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tech-category">
+            <h3>UI Component Libraries</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library</th>
+                        <th>Version</th>
+                        <th>Components Used</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PrimeNG</strong></td>
+                        <td>5.2.7</td>
+                        <td>Grids, Dialogs, Menus, Forms, Buttons, Panels</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DevExtreme Angular</strong></td>
+                        <td>19.1.6</td>
+                        <td>Advanced data grids, charts, reports</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FullCalendar</strong></td>
+                        <td>3.9.0</td>
+                        <td>Calendar scheduling components</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chart.js</strong></td>
+                        <td>2.7.2</td>
+                        <td>Data visualization charts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quill</strong></td>
+                        <td>1.3.6</td>
+                        <td>Rich text editor</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tech-category">
+            <h3>Frontend Libraries & Utilities</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>@ngrx/store</strong></td>
+                        <td>5.2.0</td>
+                        <td>State management (Redux pattern)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>@ngrx/effects</strong></td>
+                        <td>5.2.0</td>
+                        <td>Side effect management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SignalR Client</strong></td>
+                        <td>2.2.3</td>
+                        <td>Real-time communication</td>
+                    </tr>
+                    <tr>
+                        <td><strong>jQuery</strong></td>
+                        <td>3.3.1</td>
+                        <td>DOM manipulation (legacy)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Moment.js</strong></td>
+                        <td>2.22.1</td>
+                        <td>Date/time manipulation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ngx-toastr</strong></td>
+                        <td>8.7.3</td>
+                        <td>Toast notifications</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ng2-cookies</strong></td>
+                        <td>1.0.12</td>
+                        <td>Cookie management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ng2-pdf-viewer</strong></td>
+                        <td>5.3.4</td>
+                        <td>PDF document viewing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>file-saver</strong></td>
+                        <td>1.3.8</td>
+                        <td>File download functionality</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JSZip</strong></td>
+                        <td>3.1.5</td>
+                        <td>Zip file handling</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>🔧 Backend Technologies</h2>
+        
+        <div class="tech-category">
+            <h3>.NET Framework & Runtime</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Usage</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>.NET Framework</strong></td>
+                        <td>4.5.2 / 4.6.1</td>
+                        <td>Runtime environment</td>
+                        <td><span class="version-status outdated">⚠️ Legacy (2014)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>.NET Standard</strong></td>
+                        <td>2.0</td>
+                        <td>Mobile project (Xamarin)</td>
+                        <td><span class="version-status current">✅ Still relevant</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>C# Language</strong></td>
+                        <td>6.0</td>
+                        <td>Primary programming language</td>
+                        <td><span class="version-status outdated">⚠️ Outdated</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Visual Studio</strong></td>
+                        <td>2019 (16.x)</td>
+                        <td>IDE & build tools</td>
+                        <td><span class="version-status current">✅ Supported</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tech-category">
+            <h3>Web Framework & API</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ASP.NET Web API</strong></td>
+                        <td>2.0</td>
+                        <td>RESTful API framework</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OWIN</strong></td>
+                        <td>3.0+</td>
+                        <td>Open Web Interface for .NET</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Microsoft.Owin</strong></td>
+                        <td>Latest</td>
+                        <td>OWIN middleware</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SignalR</strong></td>
+                        <td>2.2.2</td>
+                        <td>Real-time WebSocket communication</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ASP.NET Web Forms</strong></td>
+                        <td>4.5.2</td>
+                        <td>Legacy web application (Nesi.Web)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tech-category">
+            <h3>Data Access & ORM</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Entity Framework</strong></td>
+                        <td>6.2.0</td>
+                        <td>Primary ORM for data access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MySql.Data</strong></td>
+                        <td>6.9.9</td>
+                        <td>MySQL database provider</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MySql.Data.Entity</strong></td>
+                        <td>6.9.9</td>
+                        <td>Entity Framework MySQL provider</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DevExpress XPO</strong></td>
+                        <td>19.2</td>
+                        <td>Alternative ORM (eXpress Persistent Objects)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tech-category">
+            <h3>Dependency Injection & IoC</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ninject</strong></td>
+                        <td>3.3.4</td>
+                        <td>Dependency injection container</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ninject.Web.WebApi</strong></td>
+                        <td>3.3.0</td>
+                        <td>Web API integration</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WebActivatorEx</strong></td>
+                        <td>2.2.0</td>
+                        <td>Application startup bootstrapping</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tech-category">
+            <h3>Authentication & Security</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>OAuth 2.0</strong></td>
+                        <td>OWIN OAuth</td>
+                        <td>Token-based authentication</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Microsoft.Owin.Security.OAuth</strong></td>
+                        <td>Latest</td>
+                        <td>OAuth authorization server</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Forms Authentication</strong></td>
+                        <td>ASP.NET 4.5.2</td>
+                        <td>Legacy web forms auth</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CORS</strong></td>
+                        <td>OWIN CORS</td>
+                        <td>Cross-origin resource sharing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tech-category">
+            <h3>Business Logic & Utilities</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>AutoMapper</strong></td>
+                        <td>6.1.1</td>
+                        <td>Object-to-object mapping</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FluentValidation</strong></td>
+                        <td>7.1.1</td>
+                        <td>Fluent validation rules</td>
+                    </tr>
+                    <tr>
+                        <td><strong>log4net</strong></td>
+                        <td>2.0.8</td>
+                        <td>Logging framework</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Newtonsoft.Json</strong></td>
+                        <td>11.0.2</td>
+                        <td>JSON serialization</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CsvHelper</strong></td>
+                        <td>15.0.1</td>
+                        <td>CSV file processing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AjaxMin</strong></td>
+                        <td>5.14</td>
+                        <td>JavaScript/CSS minification</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tech-category">
+            <h3>UI Components (Server-Side)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library</th>
+                        <th>Version</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>DevExpress Web Controls</strong></td>
+                        <td>19.2.5</td>
+                        <td>ASP.NET Web Forms grids, charts, reports</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DevExpress Reports</strong></td>
+                        <td>19.2.5</td>
+                        <td>Report generation and rendering</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DevExpress Data Access</strong></td>
+                        <td>19.2.5</td>
+                        <td>Data binding and access</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tech-category">
+            <h3>Testing Frameworks</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Framework</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Moq</strong></td>
+                        <td>4.9.0</td>
+                        <td>Mocking framework for unit tests</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FluentAssertions</strong></td>
+                        <td>5.4.1</td>
+                        <td>Fluent test assertions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jasmine</strong></td>
+                        <td>3.1.0</td>
+                        <td>Frontend unit testing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Karma</strong></td>
+                        <td>2.0.2</td>
+                        <td>Test runner</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Protractor</strong></td>
+                        <td>5.3.2</td>
+                        <td>E2E testing (deprecated)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>💾 Database Technologies</h2>
+        
+        <div class="tech-category">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>MySQL</strong></td>
+                        <td>6.9.9</td>
+                        <td>Primary relational database</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Entity Framework Migrations</strong></td>
+                        <td>6.2.0</td>
+                        <td>Database schema versioning</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>📱 Mobile Technologies</h2>
+        
+        <div class="tech-category">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Xamarin.Forms</strong></td>
+                        <td>.NET Standard 2.0</td>
+                        <td>Cross-platform mobile framework</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Xamarin.iOS</strong></td>
+                        <td>Latest</td>
+                        <td>iOS native compilation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Xamarin.Android</strong></td>
+                        <td>v8.1 Target</td>
+                        <td>Android native compilation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>🔨 Build & Development Tools</h2>
+        
+        <div class="tech-category">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Version</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Node.js / NPM</strong></td>
+                        <td>Required for Angular</td>
+                        <td>Frontend package management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NuGet</strong></td>
+                        <td>Latest</td>
+                        <td>Backend package management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MSBuild</strong></td>
+                        <td>15.0</td>
+                        <td>C# project compilation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Webpack</strong></td>
+                        <td>Angular CLI embedded</td>
+                        <td>Frontend bundling</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SASS</strong></td>
+                        <td>node-sass 4.12.0</td>
+                        <td>CSS preprocessing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TypeScript Compiler</strong></td>
+                        <td>2.7.2</td>
+                        <td>TypeScript to JavaScript compilation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Swashbuckle</strong></td>
+                        <td>Latest</td>
+                        <td>API documentation (Swagger)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>☁️ Integration & External Services</h2>
+        
+        <div class="tech-category">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NetSuite Integration</strong></td>
+                        <td>ERP/Financial system synchronization</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LDAP/Active Directory</strong></td>
+                        <td>Enterprise authentication (optional)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Application Insights</strong></td>
+                        <td>Application monitoring and telemetry</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SMTP</strong></td>
+                        <td>Email notifications</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>⚠️ Technology Modernization Considerations</h2>
+        
+        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; margin: 20px 0; border-radius: 5px;">
+            <h3 style="color: #856404; margin-bottom: 10px;">Legacy Technology Risks</h3>
+            <ul style="color: #856404; margin-left: 20px;">
+                <li><strong>.NET Framework 4.5.2:</strong> No longer receiving security updates (EOL)</li>
+                <li><strong>Angular 6:</strong> 8 years old, multiple security vulnerabilities, no community support</li>
+                <li><strong>SignalR 2.x:</strong> Legacy version, superseded by SignalR Core</li>
+                <li><strong>Entity Framework 6:</strong> Legacy, EF Core offers better performance</li>
+                <li><strong>Protractor:</strong> Officially deprecated, no longer maintained</li>
+                <li><strong>Xamarin:</strong> Replaced by .NET MAUI</li>
+            </ul>
+        </div>
+
+        <div style="background: #d1ecf1; border-left: 4px solid #17a2b8; padding: 20px; margin: 20px 0; border-radius: 5px;">
+            <h3 style="color: #0c5460; margin-bottom: 10px;">Modernization Recommendations</h3>
+            <ul style="color: #0c5460; margin-left: 20px;">
+                <li>Migrate to <strong>.NET 8+</strong> for long-term support and performance</li>
+                <li>Upgrade Angular to <strong>Angular 17+</strong> for modern features and security</li>
+                <li>Adopt <strong>Entity Framework Core</strong> for improved performance</li>
+                <li>Update to <strong>SignalR Core</strong> for better scalability</li>
+                <li>Replace Protractor with <strong>Playwright or Cypress</strong></li>
+                <li>Consider migrating Xamarin apps to <strong>.NET MAUI</strong></li>
+                <li>Update DevExpress to latest version for continued support</li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Documentation Index</a>
+    </div>
+</body>
+</html>
