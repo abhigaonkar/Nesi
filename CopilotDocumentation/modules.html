@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESI Application - Modules</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        h1 { color: #667eea; margin-bottom: 30px; font-size: 2.5em; border-bottom: 3px solid #667eea; padding-bottom: 15px; }
+        h2 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #555; margin-top: 20px; margin-bottom: 10px; font-size: 1.3em; }
+        .module-card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .module-card h3 { margin-top: 0; color: #667eea; }
+        .feature-list { margin-left: 20px; }
+        .feature-list li { margin-bottom: 8px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover { background: #f8f9fa; }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover { background: #764ba2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 NESI Application - Functional Modules</h1>
+
+        <h2>🎯 Core Operational Modules</h2>
+
+        <div class="module-card">
+            <h3>1. Customer Management Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/customers/</code></p>
+            <p><strong>Backend:</strong> <code>CustomerControllers</code></p>
+            <p><strong>Description:</strong> Complete customer lifecycle management including CRM capabilities</p>
+            <ul class="feature-list">
+                <li><strong>Customer List & Search:</strong> Searchable customer database with advanced filtering</li>
+                <li><strong>Customer Profile:</strong> Comprehensive customer information management</li>
+                <li><strong>Contact Management:</strong> Multiple contacts per customer with roles</li>
+                <li><strong>Sales History:</strong> View all quotes and work orders for customer</li>
+                <li><strong>Accounting Integration:</strong> AR notes, invoices, payment tracking</li>
+                <li><strong>Business Unit Assignment:</strong> Multi-BU customer relationships</li>
+                <li><strong>Customer Rates:</strong> Custom pricing agreements</li>
+                <li><strong>Address Management:</strong> Multiple addresses (billing, shipping, service)</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>2. Quote Management Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/quotes/</code></p>
+            <p><strong>Backend:</strong> <code>QuoteControllers</code></p>
+            <p><strong>Description:</strong> Complete quotation lifecycle from creation to conversion</p>
+            <ul class="feature-list">
+                <li><strong>Quote Creation:</strong> Create detailed quotes with multiple line items</li>
+                <li><strong>Quote Editing:</strong> Edit quotes with revision history</li>
+                <li><strong>Quote Worksheet:</strong> Detailed cost estimation and pricing</li>
+                <li><strong>Quote Strategy:</strong> Win/loss tracking and analysis</li>
+                <li><strong>Quote Approval Workflow:</strong> Multi-stage approval process</li>
+                <li><strong>Quote to WO Conversion:</strong> Convert approved quotes to work orders</li>
+                <li><strong>Quote History:</strong> Complete audit trail of changes</li>
+                <li><strong>Post-Mortem Analysis:</strong> Win/loss reasons and competitive analysis</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>3. Work Order Management Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/workOrder/</code></p>
+            <p><strong>Backend:</strong> <code>WorkOrderControllers</code></p>
+            <p><strong>Description:</strong> End-to-end work order execution and tracking</p>
+            <ul class="feature-list">
+                <li><strong>Work Order Creation:</strong> New WO from scratch or from quote</li>
+                <li><strong>WO Summary Dashboard:</strong> Real-time project status overview</li>
+                <li><strong>Task Management (Buckets):</strong> Organize work into tasks/phases</li>
+                <li><strong>Line Item Tracking:</strong> Detailed deliverables and materials</li>
+                <li><strong>History & Notes:</strong> Complete activity log and comments</li>
+                <li><strong>PO Management:</strong> Associated purchase orders</li>
+                <li><strong>Project Team Assignment:</strong> Assign PM and team members</li>
+                <li><strong>Progress Tracking:</strong> Completion percentage and milestones</li>
+                <li><strong>Scanned Documents:</strong> Attach files and photos</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>4. Timesheet & Labor Tracking Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/timesheet/</code></p>
+            <p><strong>Backend:</strong> <code>TimesheetControllers</code></p>
+            <p><strong>Description:</strong> Comprehensive time and expense tracking for payroll and job costing</p>
+            <ul class="feature-list">
+                <li><strong>Time Entry:</strong> Daily/weekly time entry against WO/Quote/Shop</li>
+                <li><strong>Multiple Pay Types:</strong> Regular, overtime, double-time tracking</li>
+                <li><strong>Project Time Allocation:</strong> Time tracked per work order/quote</li>
+                <li><strong>Vacation Management:</strong> PTO requests and tracking</li>
+                <li><strong>Expense Tracking:</strong> Employee expense submission and approval</li>
+                <li><strong>Break Time Tracking:</strong> Compliance with labor laws</li>
+                <li><strong>Per Diem:</strong> Travel allowance tracking</li>
+                <li><strong>Bank Pay:</strong> Comp time and flex time management</li>
+                <li><strong>Timesheet Transfer:</strong> Move time between projects</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>5. Purchase Order Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/purchaseOrder/</code></p>
+            <p><strong>Backend:</strong> <code>PurchaseOrderControllers</code></p>
+            <p><strong>Description:</strong> Procurement and vendor purchasing management</p>
+            <ul class="feature-list">
+                <li><strong>PO Creation:</strong> Create purchase orders for materials and services</li>
+                <li><strong>PO Detail Management:</strong> Line items with quantities and costs</li>
+                <li><strong>Vendor Selection:</strong> Choose from approved vendor list</li>
+                <li><strong>Business Unit Allocation:</strong> Distribute costs across BUs</li>
+                <li><strong>PO Approval Workflow:</strong> Management approval for large POs</li>
+                <li><strong>Receipt Tracking:</strong> Track goods/services received</li>
+                <li><strong>Credit Card Purchases:</strong> Track employee credit card expenses</li>
+                <li><strong>PO Notes & Comments:</strong> Communication with vendors</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>6. Vendor Management Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/vendors/</code></p>
+            <p><strong>Backend:</strong> <code>VendorControllers</code></p>
+            <p><strong>Description:</strong> Supplier and vendor relationship management</p>
+            <ul class="feature-list">
+                <li><strong>Vendor List & Search:</strong> Searchable vendor database</li>
+                <li><strong>Vendor Profile:</strong> Company information and details</li>
+                <li><strong>Vendor Specialties:</strong> Categorize vendors by capabilities</li>
+                <li><strong>Accounting Information:</strong> Payment terms, tax ID, banking</li>
+                <li><strong>Address Management:</strong> Multiple vendor locations</li>
+                <li><strong>Contact Management:</strong> Vendor contact persons</li>
+                <li><strong>Phone Call Log:</strong> Track communications with vendors</li>
+                <li><strong>Purchase History:</strong> All POs for vendor</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>7. Employee Management Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/employees/</code></p>
+            <p><strong>Backend:</strong> <code>EmployeeControllers</code></p>
+            <p><strong>Description:</strong> Human resources and employee lifecycle management</p>
+            <ul class="feature-list">
+                <li><strong>Employee List:</strong> Complete employee directory</li>
+                <li><strong>Employee Profile:</strong> Personal and employment information</li>
+                <li><strong>Privilege Management:</strong> Assign system permissions</li>
+                <li><strong>Wage Management:</strong> Salary and hourly rate tracking</li>
+                <li><strong>Employment History:</strong> Job roles and promotions</li>
+                <li><strong>Reviews & Performance:</strong> Employee evaluation tracking</li>
+                <li><strong>Disciplinary Actions:</strong> HR incident management</li>
+                <li><strong>Termination Management:</strong> Exit processing</li>
+                <li><strong>Offer Management:</strong> Job offer tracking</li>
+                <li><strong>Days Off Management:</strong> PTO balances and requests</li>
+                <li><strong>Contact Information:</strong> Emergency contacts</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>8. Applicant Tracking Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/applicant/</code></p>
+            <p><strong>Backend:</strong> <code>ApplicantControllers</code></p>
+            <p><strong>Description:</strong> Job application and recruitment management</p>
+            <ul class="feature-list">
+                <li><strong>Applicant List:</strong> Track all job applicants</li>
+                <li><strong>Application Management:</strong> Store resumes and application details</li>
+                <li><strong>Interview Tracking:</strong> Schedule and track interviews</li>
+                <li><strong>Hiring Pipeline:</strong> Move applicants through stages</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>9. Reporting & Analytics Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/reports/</code></p>
+            <p><strong>Backend:</strong> <code>ReportControllers</code></p>
+            <p><strong>Description:</strong> Business intelligence and reporting</p>
+            <ul class="feature-list">
+                <li><strong>Master Quote Grid:</strong> All quotes with filtering and analysis</li>
+                <li><strong>Master Work Order Grid:</strong> All WOs with status and financials</li>
+                <li><strong>Master Purchases Grid:</strong> All POs and expenses</li>
+                <li><strong>Job Cost Report:</strong> Project profitability analysis</li>
+                <li><strong>Income Statement:</strong> P&L reporting</li>
+                <li><strong>Balance Sheet:</strong> Financial position report</li>
+                <li><strong>Inventory Usage:</strong> Material consumption analysis</li>
+                <li><strong>Customer Rates Grid:</strong> Pricing analysis by customer</li>
+                <li><strong>FVR Grid:</strong> Field verification reports</li>
+                <li><strong>Timesheet Reports:</strong> Labor analysis and reporting</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>10. Business Unit Management Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/business_unit/</code></p>
+            <p><strong>Backend:</strong> <code>BusinessUnitControllers</code></p>
+            <p><strong>Description:</strong> Organizational unit configuration and management</p>
+            <ul class="feature-list">
+                <li><strong>BU Configuration:</strong> Create and manage business units</li>
+                <li><strong>Visibility Controls:</strong> Define user access to BUs</li>
+                <li><strong>Cost Allocation:</strong> Distribute expenses across BUs</li>
+                <li><strong>BU Reporting:</strong> Financial reports by business unit</li>
+            </ul>
+        </div>
+
+        <h2>🛠️ Supporting Modules</h2>
+
+        <div class="module-card">
+            <h3>11. Admin Tools Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/admintools/</code></p>
+            <p><strong>Backend:</strong> <code>AdminToolsControllers</code></p>
+            <p><strong>Description:</strong> System administration and configuration</p>
+            <ul class="feature-list">
+                <li><strong>System Configuration:</strong> Application settings management</li>
+                <li><strong>Integration Management:</strong> External system configurations</li>
+                <li><strong>Error Monitoring:</strong> View and manage application errors</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>12. Messaging Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/messagesPage/</code></p>
+            <p><strong>Backend:</strong> <code>MessagesPageController</code></p>
+            <p><strong>Description:</strong> Internal communication and notifications</p>
+            <ul class="feature-list">
+                <li><strong>Message Center:</strong> Send and receive internal messages</li>
+                <li><strong>Real-time Notifications:</strong> SignalR-powered alerts</li>
+                <li><strong>Task Assignments:</strong> Assign tasks to team members</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>13. Profile Management Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/profiles/</code></p>
+            <p><strong>Backend:</strong> <code>ProfileController</code></p>
+            <p><strong>Description:</strong> User profile and preferences</p>
+            <ul class="feature-list">
+                <li><strong>User Preferences:</strong> Customize interface settings</li>
+                <li><strong>Layout Profiles:</strong> Save custom page layouts</li>
+                <li><strong>Default Pages:</strong> Set landing page preferences</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>14. FVR (Field Verification Report) Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/fvr/</code></p>
+            <p><strong>Backend:</strong> <code>FvrController</code></p>
+            <p><strong>Description:</strong> Field verification and quality control</p>
+            <ul class="feature-list">
+                <li><strong>FVR Management:</strong> Create and track field verification reports</li>
+                <li><strong>Quality Checks:</strong> Document field inspections</li>
+                <li><strong>Photo Documentation:</strong> Attach field photos</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>15. Release Management Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/releaseSystem/</code></p>
+            <p><strong>Backend:</strong> <code>ReleaseController</code></p>
+            <p><strong>Description:</strong> System release and deployment tracking</p>
+            <ul class="feature-list">
+                <li><strong>Release Notes:</strong> Track application releases</li>
+                <li><strong>Feature Announcements:</strong> Communicate new features</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <h3>16. Customer Request Admin Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/customerrequestadmin/</code></p>
+            <p><strong>Backend:</strong> <code>CustomerRequestControllers</code></p>
+            <p><strong>Description:</strong> Customer service request processing</p>
+            <ul class="feature-list">
+                <li><strong>Request Management:</strong> Process customer requests</li>
+                <li><strong>Request Tracking:</strong> Monitor request status</li>
+            </ul>
+        </div>
+
+        <h2>🏠 Dashboard & Navigation</h2>
+
+        <div class="module-card">
+            <h3>17. Homepage/Dashboard Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/home/</code> and <code>/app/pages/homepage/</code></p>
+            <p><strong>Backend:</strong> <code>HomePageController</code></p>
+            <p><strong>Description:</strong> Main dashboard and landing page</p>
+            <ul class="feature-list">
+                <li><strong>Dashboard Widgets:</strong> Key metrics and KPIs</li>
+                <li><strong>Quick Actions:</strong> Fast access to common tasks</li>
+                <li><strong>Recent Activity:</strong> User's recent actions</li>
+                <li><strong>To-Do List:</strong> Pending tasks and assignments</li>
+                <li><strong>Notifications:</strong> System alerts and messages</li>
+            </ul>
+        </div>
+
+        <h2>🔐 Authentication & User Management</h2>
+
+        <div class="module-card">
+            <h3>18. Sign In Module</h3>
+            <p><strong>Frontend:</strong> <code>/app/pages/signin/</code></p>
+            <p><strong>Backend:</strong> <code>SignInController, PasswordController</code></p>
+            <p><strong>Description:</strong> User authentication and session management</p>
+            <ul class="feature-list">
+                <li><strong>User Login:</strong> Username/password authentication</li>
+                <li><strong>OAuth Token Generation:</strong> Secure API token issuance</li>
+                <li><strong>Forgot Password:</strong> Password reset workflow</li>
+                <li><strong>Change Password:</strong> User-initiated password changes</li>
+                <li><strong>Session Management:</strong> Track user sessions</li>
+            </ul>
+        </div>
+
+        <h2>📊 Module Integration Matrix</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Related Modules</th>
+                    <th>Primary Entities</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Customers</strong></td>
+                    <td>Quotes, Work Orders, Invoices</td>
+                    <td>customer, contact, address</td>
+                </tr>
+                <tr>
+                    <td><strong>Quotes</strong></td>
+                    <td>Customers, Work Orders</td>
+                    <td>quote, quote_details, quote_status</td>
+                </tr>
+                <tr>
+                    <td><strong>Work Orders</strong></td>
+                    <td>Quotes, Customers, Timesheet, Purchase Orders</td>
+                    <td>work_order, wo_detail, wo_comment</td>
+                </tr>
+                <tr>
+                    <td><strong>Timesheet</strong></td>
+                    <td>Work Orders, Quotes, Employees, Payroll</td>
+                    <td>membertime, vacation, expense</td>
+                </tr>
+                <tr>
+                    <td><strong>Purchase Orders</strong></td>
+                    <td>Vendors, Work Orders, Business Units</td>
+                    <td>purchase_order, po_details</td>
+                </tr>
+                <tr>
+                    <td><strong>Vendors</strong></td>
+                    <td>Purchase Orders</td>
+                    <td>vendor, contact, address</td>
+                </tr>
+                <tr>
+                    <td><strong>Employees</strong></td>
+                    <td>Timesheet, Work Orders (assignments)</td>
+                    <td>member, memberwage, memberpage</td>
+                </tr>
+                <tr>
+                    <td><strong>Reports</strong></td>
+                    <td>All modules (data source)</td>
+                    <td>Multiple views and entities</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="index.html" class="back-link">← Back to Documentation Index</a>
+    </div>
+</body>
+</html>
