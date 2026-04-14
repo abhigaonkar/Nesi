@@ -9,7 +9,26 @@ This folder contains database initialization scripts and documentation for the N
 
 ## Quick Start
 
-### Option 1: Automatic Setup (Recommended for Development)
+### Automated Setup (Easiest)
+
+Use the provided helper scripts:
+
+**Linux/Mac:**
+```bash
+./setup-database.sh auto
+```
+
+**Windows:**
+```batch
+setup-database.bat auto
+```
+
+This will:
+1. Create the NesiDb database
+2. Run all EF Core migrations
+3. Display instructions for running the app to seed data
+
+### Option 1: Automatic Setup via Application
 
 The application will automatically create and seed the database on first run:
 
@@ -44,6 +63,32 @@ If you prefer to create the database manually:
    dotnet run
    ```
 
+## Helper Scripts
+
+The `database/` folder includes helper scripts for database management:
+
+### setup-database.sh (Linux/Mac) / setup-database.bat (Windows)
+
+Usage: `./setup-database.sh [option]`
+
+**Options:**
+- `auto` (default) - Create database and run migrations automatically
+- `manual` - Create database only, migrations must be run separately
+- `migrate` - Run migrations only (database must exist)
+- `reset` - **⚠️ WARNING**: Drop and recreate database (deletes all data!)
+
+**Examples:**
+```bash
+# Automatic setup
+./setup-database.sh auto
+
+# Reset database (careful!)
+./setup-database.sh reset
+
+# Run migrations only
+./setup-database.sh migrate
+```
+
 ## Database Schema
 
 The database includes the following tables:
@@ -54,6 +99,15 @@ The database includes the following tables:
 - **Timesheets** - Employee time entries
 - **PayTypes** - Pay rate types (Regular, Overtime, Double Time)
 - **JobTypes** - Job categories (Development, QA, Design, PM)
+
+### Schema Files
+
+- **`initial-schema.sql`** - Complete SQL schema generated from migrations
+  - Can be used to create tables manually if needed
+  - Generated via: `dotnet ef migrations script`
+- **`create-database.sql`** - Creates the database (not tables)
+  - Simple script to create the NesiDb database
+  - Run before migrations if setting up manually
 
 ## Demo Users
 
