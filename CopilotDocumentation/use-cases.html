@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESI Application - Use Cases</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .use-case {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        .use-case-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: -30px -30px 20px -30px;
+        }
+        .actor-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px;
+        }
+        .scenario-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .exception-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 NESI Application - Use Cases</h1>
+        
+        <div class="highlight-box">
+            <h2>Use Case Overview</h2>
+            <p>
+                This document describes the key use cases in the NESI application from the perspective of different 
+                actors (users). Each use case details the primary flow, actors involved, preconditions, postconditions, 
+                and alternative flows. These use cases represent the core functionality that delivers business value.
+            </p>
+        </div>
+
+        <h2>🎭 Primary Actors</h2>
+        <div class="highlight-box">
+            <span class="actor-badge">👨‍💼 Sales Representative</span>
+            <span class="actor-badge">📊 Project Manager</span>
+            <span class="actor-badge">👷 Field Technician</span>
+            <span class="actor-badge">🛒 Purchasing Agent</span>
+            <span class="actor-badge">💼 Manager/Supervisor</span>
+            <span class="actor-badge">💰 Accounting Staff</span>
+            <span class="actor-badge">👤 Customer Portal User</span>
+            <span class="actor-badge">🔧 System Administrator</span>
+        </div>
+
+        <div class="use-case">
+            <div class="use-case-header">
+                📝 Use Case 1: Create and Manage Customer Quote
+            </div>
+
+            <table>
+                <tr>
+                    <th width="200">Use Case ID</th>
+                    <td>UC-001</td>
+                </tr>
+                <tr>
+                    <th>Primary Actor</th>
+                    <td>Sales Representative</td>
+                </tr>
+                <tr>
+                    <th>Secondary Actors</th>
+                    <td>Manager (for approval), Customer (for acceptance)</td>
+                </tr>
+                <tr>
+                    <th>Goal</th>
+                    <td>Create an accurate quote for customer services/products and track through approval to conversion</td>
+                </tr>
+                <tr>
+                    <th>Complexity</th>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <th>Frequency</th>
+                    <td>Daily (10-50 quotes per day)</td>
+                </tr>
+            </table>
+
+            <h3>Preconditions</h3>
+            <ul>
+                <li>Sales Representative is authenticated and has Quote page authorization</li>
+                <li>Customer record exists in system (or can be created)</li>
+                <li>Pricing data is available (labor rates, material costs)</li>
+                <li>Business unit is active and accessible</li>
+            </ul>
+
+            <h3>Main Success Scenario</h3>
+            <ol>
+                <li>Sales Rep navigates to Customer record and clicks "Create Quote"</li>
+                <li>System displays quote creation form with customer data pre-populated</li>
+                <li>Sales Rep enters quote header information:
+                    <ul>
+                        <li>Quote type (Time & Material, Fixed Price, Cost Plus)</li>
+                        <li>Project description and scope</li>
+                        <li>Estimated start and completion dates</li>
+                        <li>Responsible project manager</li>
+                        <li>Terms and conditions</li>
+                    </ul>
+                </li>
+                <li>Sales Rep adds line items:
+                    <ul>
+                        <li>Labor: Job type, estimated hours, hourly rate</li>
+                        <li>Materials: Part number/description, quantity, unit price</li>
+                        <li>Equipment: Asset type, rental period, rate</li>
+                        <li>Miscellaneous: Permits, travel, other costs</li>
+                    </ul>
+                </li>
+                <li>System automatically calculates:
+                    <ul>
+                        <li>Line item totals (quantity × unit price)</li>
+                        <li>Subtotal (sum of all line items)</li>
+                        <li>Tax amount (subtotal × tax rate)</li>
+                        <li>Grand total</li>
+                    </ul>
+                </li>
+                <li>Sales Rep applies discounts or markups if authorized</li>
+                <li>Sales Rep reviews profit margins and compares to customer rate history</li>
+                <li>Sales Rep saves quote as Draft</li>
+                <li>Sales Rep submits quote for internal approval</li>
+                <li>System routes to Manager based on dollar threshold</li>
+                <li>Manager reviews and approves quote</li>
+                <li>Sales Rep generates PDF and emails to customer</li>
+                <li>Customer reviews and accepts quote</li>
+                <li>Sales Rep updates status to "Customer Approved"</li>
+            </ol>
+
+            <div class="success-box">
+                <h4>✅ Postconditions (Success)</h4>
+                <ul>
+                    <li>Quote is saved in database with Approved status</li>
+                    <li>PDF quote document generated and archived</li>
+                    <li>Customer notified via email</li>
+                    <li>Quote ready for conversion to Work Order</li>
+                    <li>Quote appears in reports and dashboards</li>
+                </ul>
+            </div>
+
+            <h3>Alternative Flows</h3>
+            
+            <div class="scenario-box">
+                <h4>3a. Customer Does Not Exist</h4>
+                <ol>
+                    <li>Sales Rep clicks "Create New Customer"</li>
+                    <li>System displays customer creation form</li>
+                    <li>Sales Rep enters customer details</li>
+                    <li>System validates and saves customer</li>
+                    <li>Resume at step 2 of main flow</li>
+                </ol>
+            </div>
+
+            <div class="scenario-box">
+                <h4>4a. Copy Line Items from Previous Quote</h4>
+                <ol>
+                    <li>Sales Rep clicks "Copy from Template" or "Copy from Quote"</li>
+                    <li>System displays searchable list of templates/quotes</li>
+                    <li>Sales Rep selects source</li>
+                    <li>System copies line items</li>
+                    <li>Sales Rep adjusts quantities/prices as needed</li>
+                    <li>Resume at step 5 of main flow</li>
+                </ol>
+            </div>
+
+            <div class="exception-box">
+                <h4>⚠️ Exception Flows</h4>
+                
+                <h5>E1. Manager Rejects Quote</h5>
+                <ol>
+                    <li>Manager reviews quote and finds pricing issues</li>
+                    <li>Manager clicks "Reject" and enters rejection reason</li>
+                    <li>Sales Rep is notified</li>
+                    <li>Sales Rep reviews comments and revises quote</li>
+                    <li>Resume at step 8 of main flow</li>
+                </ol>
+
+                <h5>E2. Customer Requests Changes</h5>
+                <ol>
+                    <li>Customer reviews quote and requests modifications</li>
+                    <li>Sales Rep creates revised version</li>
+                    <li>System maintains revision history</li>
+                    <li>Resume at step 3 of main flow</li>
+                </ol>
+
+                <h5>E3. Validation Errors</h5>
+                <ul>
+                    <li>Missing required fields → Error message displayed, cannot save</li>
+                    <li>Negative quantities/prices → Error message, must correct</li>
+                    <li>Invalid dates (end before start) → Error message</li>
+                </ul>
+            </div>
+
+            <h3>Business Rules</h3>
+            <ul>
+                <li><strong>BR-001:</strong> Quotes over $50,000 require manager approval</li>
+                <li><strong>BR-002:</strong> Discount percentages over 15% require approval</li>
+                <li><strong>BR-003:</strong> Labor rates must be within defined range for business unit</li>
+                <li><strong>BR-004:</strong> Quote must have at least one line item</li>
+                <li><strong>BR-005:</strong> Estimated dates must be in the future</li>
+                <li><strong>BR-006:</strong> Tax rate is determined by customer location</li>
+            </ul>
+        </div>
+
+        <div class="use-case">
+            <div class="use-case-header">
+                🔧 Use Case 2: Execute Work Order
+            </div>
+
+            <table>
+                <tr>
+                    <th width="200">Use Case ID</th>
+                    <td>UC-002</td>
+                </tr>
+                <tr>
+                    <th>Primary Actor</th>
+                    <td>Project Manager</td>
+                </tr>
+                <tr>
+                    <th>Secondary Actors</th>
+                    <td>Field Technician, Customer, Accounting</td>
+                </tr>
+                <tr>
+                    <th>Goal</th>
+                    <td>Manage work order from creation through completion and invoicing</td>
+                </tr>
+            </table>
+
+            <h3>Main Success Scenario</h3>
+            <ol>
+                <li>Work Order is created (from approved quote or directly)</li>
+                <li>Project Manager assigns team members to work order</li>
+                <li>Project Manager sets schedule and milestones</li>
+                <li>System notifies assigned technicians via SignalR</li>
+                <li>Technicians view work order details and task assignments</li>
+                <li>Technicians log time against work order as work is performed</li>
+                <li>Materials are purchased via PO and linked to work order</li>
+                <li>Project Manager tracks progress and updates status</li>
+                <li>Technicians upload completion photos/documents</li>
+                <li>Project Manager marks work order as Complete</li>
+                <li>Accounting generates invoice based on actual time and materials</li>
+                <li>Invoice sent to customer</li>
+                <li>Work Order closed upon payment receipt</li>
+            </ol>
+
+            <div class="success-box">
+                <h4>✅ Postconditions (Success)</h4>
+                <ul>
+                    <li>Work order completed and closed</li>
+                    <li>All labor hours and materials tracked</li>
+                    <li>Invoice generated and sent to customer</li>
+                    <li>Job cost data available for reporting</li>
+                    <li>Customer satisfaction recorded</li>
+                </ul>
+            </div>
+
+            <h3>Alternative Flows</h3>
+
+            <div class="scenario-box">
+                <h4>7a. Additional Materials Needed</h4>
+                <ol>
+                    <li>Technician identifies need for additional materials</li>
+                    <li>Requests materials via work order notes</li>
+                    <li>Purchasing Agent creates PO</li>
+                    <li>Materials received and logged to work order</li>
+                    <li>Resume at step 8</li>
+                </ol>
+            </div>
+
+            <div class="exception-box">
+                <h4>⚠️ Exception: Customer Cancels Work Order</h4>
+                <ol>
+                    <li>Customer requests cancellation</li>
+                    <li>Project Manager assesses work completed</li>
+                    <li>Partial invoice generated for work done</li>
+                    <li>Work Order marked as Cancelled</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="use-case">
+            <div class="use-case-header">
+                ⏱️ Use Case 3: Track Employee Time
+            </div>
+
+            <table>
+                <tr>
+                    <th width="200">Use Case ID</th>
+                    <td>UC-003</td>
+                </tr>
+                <tr>
+                    <th>Primary Actor</th>
+                    <td>Field Technician / Employee</td>
+                </tr>
+                <tr>
+                    <th>Secondary Actors</th>
+                    <td>Supervisor (for approval), Payroll (for processing)</td>
+                </tr>
+                <tr>
+                    <th>Goal</th>
+                    <td>Accurately record work hours for payroll and job costing</td>
+                </tr>
+            </table>
+
+            <h3>Main Success Scenario</h3>
+            <ol>
+                <li>Employee logs into NESI</li>
+                <li>Navigates to Timesheet module</li>
+                <li>Selects date for time entry (defaults to today)</li>
+                <li>Clicks "Add Time Entry"</li>
+                <li>Selects work order or project from dropdown</li>
+                <li>Selects pay type (Regular, Overtime, Double Time, PTO)</li>
+                <li>Enters hours worked (with decimal precision)</li>
+                <li>Selects job type/activity (Installation, Troubleshooting, Travel, etc.)</li>
+                <li>Optionally adds notes about work performed</li>
+                <li>Allocates hours to business unit if multi-unit employee</li>
+                <li>Clicks "Save" to record entry</li>
+                <li>System validates entry (hours > 0, not exceeding daily limits)</li>
+                <li>Entry appears in timesheet grid</li>
+                <li>Employee reviews weekly timesheet</li>
+                <li>Employee submits timesheet for approval</li>
+                <li>Supervisor reviews and approves timesheet</li>
+                <li>Approved hours exported to payroll system</li>
+            </ol>
+
+            <div class="success-box">
+                <h4>✅ Postconditions (Success)</h4>
+                <ul>
+                    <li>Time entries saved and approved</li>
+                    <li>Hours allocated to work orders for job costing</li>
+                    <li>Hours available for payroll processing</li>
+                    <li>Timesheet data available in reports</li>
+                </ul>
+            </div>
+
+            <h3>Alternative Flows</h3>
+
+            <div class="scenario-box">
+                <h4>6a. Enter Vacation/PTO</h4>
+                <ol>
+                    <li>Employee selects pay type "Vacation" or "PTO"</li>
+                    <li>System checks available vacation balance</li>
+                    <li>If sufficient balance, allows entry</li>
+                    <li>System deducts from vacation balance</li>
+                </ol>
+            </div>
+
+            <div class="scenario-box">
+                <h4>6b. Enter Expense/Per Diem</h4>
+                <ol>
+                    <li>Employee clicks "Add Expense"</li>
+                    <li>Selects expense type (Mileage, Meals, Hotel, etc.)</li>
+                    <li>Enters amount and uploads receipt</li>
+                    <li>Links to work order for reimbursement</li>
+                </ol>
+            </div>
+
+            <h3>Business Rules</h3>
+            <ul>
+                <li><strong>BR-010:</strong> Daily hours cannot exceed 24</li>
+                <li><strong>BR-011:</strong> Overtime automatically applied after 40 hours/week</li>
+                <li><strong>BR-012:</strong> Timesheets must be submitted by end of week</li>
+                <li><strong>BR-013:</strong> Vacation requests require advance approval</li>
+            </ul>
+        </div>
+
+        <div class="use-case">
+            <div class="use-case-header">
+                🛒 Use Case 4: Process Purchase Order
+            </div>
+
+            <table>
+                <tr>
+                    <th width="200">Use Case ID</th>
+                    <td>UC-004</td>
+                </tr>
+                <tr>
+                    <th>Primary Actor</th>
+                    <td>Purchasing Agent</td>
+                </tr>
+                <tr>
+                    <th>Secondary Actors</th>
+                    <td>Vendor, Warehouse Staff, Accounting</td>
+                </tr>
+                <tr>
+                    <th>Goal</th>
+                    <td>Procure materials/services efficiently while maintaining cost control</td>
+                </tr>
+            </table>
+
+            <h3>Main Success Scenario</h3>
+            <ol>
+                <li>Purchasing Agent receives material request</li>
+                <li>Checks inventory for availability</li>
+                <li>Searches vendor database by specialty/product</li>
+                <li>Selects preferred vendor based on price and lead time</li>
+                <li>Creates new Purchase Order</li>
+                <li>Links PO to work order for cost tracking</li>
+                <li>Adds line items (part numbers, quantities, prices)</li>
+                <li>Allocates costs to business unit(s)</li>
+                <li>Reviews total and checks budget availability</li>
+                <li>Submits for approval if over threshold</li>
+                <li>Manager approves PO</li>
+                <li>System generates PO document</li>
+                <li>PO emailed to vendor</li>
+                <li>Vendor acknowledges and provides ship date</li>
+                <li>Materials arrive at warehouse</li>
+                <li>Warehouse staff receives against PO</li>
+                <li>System updates inventory quantities</li>
+                <li>Vendor invoice received and matched to PO</li>
+                <li>3-way match completed (PO, receipt, invoice)</li>
+                <li>Invoice approved for payment</li>
+                <li>Payment processed according to terms</li>
+            </ol>
+
+            <div class="success-box">
+                <h4>✅ Postconditions (Success)</h4>
+                <ul>
+                    <li>Materials received and in inventory</li>
+                    <li>Costs allocated to work order</li>
+                    <li>Vendor paid according to terms</li>
+                    <li>Purchasing metrics updated</li>
+                </ul>
+            </div>
+
+            <h3>Exception Flows</h3>
+
+            <div class="exception-box">
+                <h4>⚠️ E1. Receiving Discrepancy</h4>
+                <ol>
+                    <li>Received quantity differs from PO</li>
+                    <li>Warehouse staff notes discrepancy</li>
+                    <li>Purchasing Agent contacted</li>
+                    <li>Vendor contacted to resolve</li>
+                    <li>Partial receipt recorded or return initiated</li>
+                </ol>
+            </div>
+
+            <div class="exception-box">
+                <h4>⚠️ E2. Invoice Mismatch</h4>
+                <ol>
+                    <li>Invoice amount doesn't match PO</li>
+                    <li>Accounting places on hold</li>
+                    <li>Purchasing Agent investigates</li>
+                    <li>Corrected invoice requested from vendor</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="use-case">
+            <div class="use-case-header">
+                📊 Use Case 5: Generate Financial Reports
+            </div>
+
+            <table>
+                <tr>
+                    <th width="200">Use Case ID</th>
+                    <td>UC-005</td>
+                </tr>
+                <tr>
+                    <th>Primary Actor</th>
+                    <td>Manager / Accounting Staff</td>
+                </tr>
+                <tr>
+                    <th>Goal</th>
+                    <td>Obtain accurate financial data for decision-making and compliance</td>
+                </tr>
+            </table>
+
+            <h3>Available Reports</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Report Name</th>
+                        <th>Purpose</th>
+                        <th>Frequency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Job Cost Report</strong></td>
+                        <td>Analyze profitability per work order</td>
+                        <td>Weekly/Monthly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Income Statement</strong></td>
+                        <td>Revenue and expenses by period</td>
+                        <td>Monthly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Balance Sheet</strong></td>
+                        <td>Financial position snapshot</td>
+                        <td>Monthly/Quarterly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Customer Rate Analysis</strong></td>
+                        <td>Compare pricing across customers</td>
+                        <td>As needed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inventory Usage</strong></td>
+                        <td>Track material consumption</td>
+                        <td>Monthly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Outstanding Invoices</strong></td>
+                        <td>Accounts receivable aging</td>
+                        <td>Weekly</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Main Success Scenario (Job Cost Report)</h3>
+            <ol>
+                <li>Manager navigates to Reports module</li>
+                <li>Selects "Job Cost Report"</li>
+                <li>Specifies parameters:
+                    <ul>
+                        <li>Date range</li>
+                        <li>Business unit(s)</li>
+                        <li>Customer(s) (optional filter)</li>
+                        <li>Work order status (Open, Complete, All)</li>
+                    </ul>
+                </li>
+                <li>Clicks "Generate Report"</li>
+                <li>System queries database (stored procedure)</li>
+                <li>Calculates metrics:
+                    <ul>
+                        <li>Actual labor cost (hours × rates)</li>
+                        <li>Actual material cost</li>
+                        <li>Total actual cost</li>
+                        <li>Revenue (quoted or invoiced amount)</li>
+                        <li>Profit (revenue - cost)</li>
+                        <li>Profit margin %</li>
+                    </ul>
+                </li>
+                <li>Report displayed in grid format</li>
+                <li>Manager can sort/filter results</li>
+                <li>Manager exports to Excel or PDF</li>
+                <li>Report saved for audit trail</li>
+            </ol>
+
+            <div class="success-box">
+                <h4>✅ Postconditions (Success)</h4>
+                <ul>
+                    <li>Report generated with current data</li>
+                    <li>Insights available for decision-making</li>
+                    <li>Export available for sharing/archiving</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📈 Use Case Priority Matrix</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Use Case</th>
+                    <th>Business Value</th>
+                    <th>Frequency</th>
+                    <th>Complexity</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Create Customer Quote</td>
+                    <td>High</td>
+                    <td>Daily</td>
+                    <td>High</td>
+                    <td>🔴 Critical</td>
+                </tr>
+                <tr>
+                    <td>Execute Work Order</td>
+                    <td>High</td>
+                    <td>Daily</td>
+                    <td>High</td>
+                    <td>🔴 Critical</td>
+                </tr>
+                <tr>
+                    <td>Track Employee Time</td>
+                    <td>High</td>
+                    <td>Daily</td>
+                    <td>Medium</td>
+                    <td>🔴 Critical</td>
+                </tr>
+                <tr>
+                    <td>Process Purchase Order</td>
+                    <td>High</td>
+                    <td>Daily</td>
+                    <td>Medium</td>
+                    <td>🟡 Important</td>
+                </tr>
+                <tr>
+                    <td>Generate Financial Reports</td>
+                    <td>High</td>
+                    <td>Weekly/Monthly</td>
+                    <td>Medium</td>
+                    <td>🟡 Important</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="index.html" class="back-link">← Back to Documentation Index</a>
+    </div>
+</body>
+</html>
