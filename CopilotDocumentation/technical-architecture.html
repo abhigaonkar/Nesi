@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESI Application - Technical Architecture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .architecture-diagram {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .layer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            margin: 10px auto;
+            border-radius: 8px;
+            max-width: 80%;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .layer-description {
+            color: #666;
+            font-size: 0.9em;
+            font-weight: normal;
+            margin-top: 8px;
+        }
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 5px 0;
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .feature-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #764ba2;
+        }
+        .pattern-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏗️ NESI Technical Architecture</h1>
+        
+        <div class="highlight-box">
+            <h2>Architecture Overview</h2>
+            <p>
+                NESI is built on a modern <strong>N-Tier Architecture</strong> that separates concerns across multiple 
+                layers, ensuring maintainability, scalability, and testability. The application follows industry best 
+                practices with clear separation between presentation, business logic, data access, and database layers.
+            </p>
+        </div>
+
+        <h2>📊 N-Tier Architecture Diagram</h2>
+        
+        <div class="architecture-diagram">
+            <h3 style="color: #667eea; margin-bottom: 20px;">NESI Application Architecture</h3>
+            
+            <div class="layer">
+                <div>🖥️ PRESENTATION LAYER</div>
+                <div class="layer-description">Angular SPA + ASP.NET Web Forms (Legacy)</div>
+            </div>
+            <div class="arrow">↓ HTTP/HTTPS ↓</div>
+            
+            <div class="layer">
+                <div>🔌 API LAYER</div>
+                <div class="layer-description">ASP.NET Web API 2 + SignalR</div>
+            </div>
+            <div class="arrow">↓ Method Calls ↓</div>
+            
+            <div class="layer">
+                <div>💼 BUSINESS LOGIC LAYER (BLL)</div>
+                <div class="layer-description">C# Business Rules & Validation</div>
+            </div>
+            <div class="arrow">↓ Repository Pattern ↓</div>
+            
+            <div class="layer">
+                <div>💾 DATA ACCESS LAYER (DAL)</div>
+                <div class="layer-description">Entity Framework 6 + Stored Procedures</div>
+            </div>
+            <div class="arrow">↓ SQL Queries ↓</div>
+            
+            <div class="layer">
+                <div>🗄️ DATABASE LAYER</div>
+                <div class="layer-description">Microsoft SQL Server</div>
+            </div>
+        </div>
+
+        <h2>🎨 Layer Descriptions</h2>
+
+        <h3>1. Frontend / Presentation Layer</h3>
+        <div class="highlight-box">
+            <p><strong>Technology Stack:</strong> Angular (Modern SPA) + ASP.NET Web Forms (Legacy)</p>
+            
+            <h4>Angular Single Page Application (Primary)</h4>
+            <ul>
+                <li><strong>Framework:</strong> Angular (TypeScript-based)</li>
+                <li><strong>State Management:</strong> @ngrx/store for application state</li>
+                <li><strong>Routing:</strong> Angular Router for client-side navigation</li>
+                <li><strong>UI Components:</strong> Custom components + third-party libraries</li>
+                <li><strong>HTTP Client:</strong> Angular HttpClient for API communication</li>
+                <li><strong>Real-time:</strong> SignalR client for real-time notifications</li>
+            </ul>
+
+            <h4>ASP.NET Web Forms (Legacy)</h4>
+            <ul>
+                <li><strong>Purpose:</strong> Legacy pages being migrated to Angular</li>
+                <li><strong>Usage:</strong> Some administrative and reporting pages</li>
+                <li><strong>Integration:</strong> Can embed Angular components in Web Forms</li>
+            </ul>
+
+            <h4>Responsibilities</h4>
+            <ul>
+                <li>User interface rendering and interaction</li>
+                <li>Client-side validation</li>
+                <li>State management for UI components</li>
+                <li>OAuth token management</li>
+                <li>API consumption via HTTP requests</li>
+                <li>Real-time update handling via SignalR</li>
+            </ul>
+        </div>
+
+        <h3>2. API Layer</h3>
+        <div class="highlight-box">
+            <p><strong>Technology Stack:</strong> ASP.NET Web API 2 + SignalR + OWIN</p>
+            
+            <h4>ASP.NET Web API 2</h4>
+            <ul>
+                <li><strong>RESTful Design:</strong> HTTP verbs (GET, POST, PUT, DELETE)</li>
+                <li><strong>JSON Serialization:</strong> Newtonsoft.Json</li>
+                <li><strong>Authentication:</strong> OAuth 2.0 Bearer Tokens via OWIN</li>
+                <li><strong>Authorization:</strong> Custom filter attributes (Page/Privilege)</li>
+                <li><strong>Dependency Injection:</strong> Ninject for IoC container</li>
+                <li><strong>CORS Support:</strong> Cross-origin requests enabled</li>
+            </ul>
+
+            <h4>SignalR Hub</h4>
+            <ul>
+                <li><strong>Real-time Communication:</strong> WebSocket-based push notifications</li>
+                <li><strong>Use Cases:</strong> Task assignments, status updates, alerts</li>
+                <li><strong>Hub Structure:</strong> Separate SignalR project (NESI.SignalR)</li>
+            </ul>
+
+            <h4>Responsibilities</h4>
+            <ul>
+                <li>HTTP request/response handling</li>
+                <li>Authentication and authorization enforcement</li>
+                <li>Input validation and model binding</li>
+                <li>Error handling and exception management</li>
+                <li>Response formatting (JSON)</li>
+                <li>Real-time message broadcasting</li>
+            </ul>
+        </div>
+
+        <h3>3. Business Logic Layer (BLL)</h3>
+        <div class="highlight-box">
+            <p><strong>Technology Stack:</strong> C# Class Libraries</p>
+            
+            <h4>Key Components</h4>
+            <ul>
+                <li><strong>Business Rules:</strong> Complex validation and business logic</li>
+                <li><strong>Workflow Orchestration:</strong> Multi-step process coordination</li>
+                <li><strong>Data Transformation:</strong> Entity to DTO mapping</li>
+                <li><strong>Calculations:</strong> Financial, time, and quantity calculations</li>
+                <li><strong>Integration Logic:</strong> External system communication</li>
+                <li><strong>Caching Management:</strong> In-memory caching for performance</li>
+            </ul>
+
+            <h4>BLL Projects</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NESI.BLL</strong></td>
+                        <td>Core business logic for all modules</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NESI.BLL.Common</strong></td>
+                        <td>Shared utilities and helpers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NESI.BLL.Repository</strong></td>
+                        <td>Repository pattern implementations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NESI.Common</strong></td>
+                        <td>Cross-cutting concerns (security, exceptions)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Responsibilities</h4>
+            <ul>
+                <li>Enforce business rules and validation</li>
+                <li>Coordinate complex workflows</li>
+                <li>Transform data between layers</li>
+                <li>Implement business calculations</li>
+                <li>Manage transactions</li>
+                <li>Cache frequently accessed data</li>
+            </ul>
+        </div>
+
+        <h3>4. Data Access Layer (DAL)</h3>
+        <div class="highlight-box">
+            <p><strong>Technology Stack:</strong> Entity Framework 6 + ADO.NET</p>
+            
+            <h4>Entity Framework 6</h4>
+            <ul>
+                <li><strong>Approach:</strong> Database-First (EDMX model)</li>
+                <li><strong>Context:</strong> NESIEntities DbContext</li>
+                <li><strong>Lazy Loading:</strong> Enabled for related entities</li>
+                <li><strong>Query Optimization:</strong> Include() for eager loading</li>
+                <li><strong>Change Tracking:</strong> Automatic for CRUD operations</li>
+            </ul>
+
+            <h4>Stored Procedures & Views</h4>
+            <ul>
+                <li><strong>Complex Queries:</strong> Performance-critical operations</li>
+                <li><strong>Reporting:</strong> Aggregated data for reports</li>
+                <li><strong>Bulk Operations:</strong> Mass updates and inserts</li>
+                <li><strong>Legacy Integration:</strong> Existing stored procedure usage</li>
+            </ul>
+
+            <h4>DAL Projects</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NESI.Data</strong></td>
+                        <td>Entity Framework models and context</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NESI.Data.Common</strong></td>
+                        <td>Data access utilities and extensions</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Responsibilities</h4>
+            <ul>
+                <li>Database connection management</li>
+                <li>CRUD operations via Entity Framework</li>
+                <li>Execute stored procedures</li>
+                <li>Query optimization</li>
+                <li>Connection string management</li>
+                <li>Database transaction handling</li>
+            </ul>
+        </div>
+
+        <h3>5. Database Layer</h3>
+        <div class="highlight-box">
+            <p><strong>Technology Stack:</strong> Microsoft SQL Server</p>
+            
+            <h4>Database Components</h4>
+            <ul>
+                <li><strong>Tables:</strong> 200+ normalized tables</li>
+                <li><strong>Views:</strong> Predefined queries for reporting</li>
+                <li><strong>Stored Procedures:</strong> Complex business logic</li>
+                <li><strong>Functions:</strong> Reusable calculations</li>
+                <li><strong>Triggers:</strong> Audit logging and data validation</li>
+                <li><strong>Indexes:</strong> Performance optimization</li>
+            </ul>
+
+            <h4>Key Database Features</h4>
+            <ul>
+                <li><strong>Referential Integrity:</strong> Foreign key constraints</li>
+                <li><strong>Default Values:</strong> Timestamp and status defaults</li>
+                <li><strong>Computed Columns:</strong> Derived values</li>
+                <li><strong>Full-Text Search:</strong> Advanced search capabilities</li>
+                <li><strong>Backup Strategy:</strong> Regular automated backups</li>
+            </ul>
+
+            <h4>Responsibilities</h4>
+            <ul>
+                <li>Data persistence and storage</li>
+                <li>Data integrity enforcement</li>
+                <li>Query execution and optimization</li>
+                <li>Transaction management</li>
+                <li>Backup and recovery</li>
+            </ul>
+        </div>
+
+        <h2>🔧 Key Architectural Patterns</h2>
+
+        <h3>1. Repository Pattern</h3>
+        <div class="pattern-box">
+            <p>
+                The <strong>Repository Pattern</strong> abstracts data access logic, providing a collection-like interface 
+                for accessing domain entities. This promotes testability and separation of concerns.
+            </p>
+            <div class="code-block">
+// Example Repository Pattern Usage
+public class AuthRepository : IDisposable
+{
+    private NESIEntities _context;
+    
+    public AuthRepository()
+    {
+        _context = new NESIEntities();
+    }
+    
+    public User FindUser(string username, string password, string ipAddress)
+    {
+        // Data access logic encapsulated in repository
+        var user = _context.Users
+            .FirstOrDefault(u => u.Username == username && u.IsActive);
+        
+        if (user != null && VerifyPassword(password, user.PasswordHash))
+        {
+            LogLoginAttempt(user, ipAddress, true);
+            return user;
+        }
+        
+        LogLoginAttempt(username, ipAddress, false);
+        return null;
+    }
+    
+    public void Dispose()
+    {
+        _context.Dispose();
+    }
+}
+            </div>
+            <p><strong>Benefits:</strong> Testability, maintainability, abstraction of data source</p>
+        </div>
+
+        <h3>2. Dependency Injection with Ninject</h3>
+        <div class="pattern-box">
+            <p>
+                <strong>Ninject</strong> provides IoC (Inversion of Control) for dependency injection, enabling loose 
+                coupling between components and facilitating unit testing.
+            </p>
+            <div class="code-block">
+// Ninject Binding Configuration
+public class NinjectWebCommon
+{
+    private static void RegisterServices(IKernel kernel)
+    {
+        kernel.Bind<IAuthRepository>().To<AuthRepository>();
+        kernel.Bind<ICustomerService>().To<CustomerService>();
+        kernel.Bind<IQuoteService>().To<QuoteService>();
+        kernel.Bind<IWorkOrderService>().To<WorkOrderService>();
+        // ... additional bindings
+    }
+}
+
+// Controller with Dependency Injection
+public class CustomerController : ApiController
+{
+    private readonly ICustomerService _customerService;
+    
+    public CustomerController(ICustomerService customerService)
+    {
+        _customerService = customerService;
+    }
+}
+            </div>
+            <p><strong>Benefits:</strong> Loose coupling, testability, flexible configuration</p>
+        </div>
+
+        <h3>3. State Management with @ngrx/store</h3>
+        <div class="pattern-box">
+            <p>
+                Angular frontend uses <strong>@ngrx/store</strong> for Redux-style state management, providing a 
+                predictable state container with unidirectional data flow.
+            </p>
+            <div class="code-block">
+// State Management Example
+// Actions
+export const loadCustomers = createAction('[Customer] Load Customers');
+export const loadCustomersSuccess = createAction(
+    '[Customer] Load Customers Success',
+    props<{ customers: Customer[] }>()
+);
+
+// Reducer
+export const customerReducer = createReducer(
+    initialState,
+    on(loadCustomersSuccess, (state, { customers }) => ({
+        ...state,
+        customers: customers,
+        loading: false
+    }))
+);
+
+// Effects
+@Effect()
+loadCustomers$ = this.actions$.pipe(
+    ofType(loadCustomers),
+    switchMap(() => this.customerService.getCustomers()
+        .pipe(
+            map(customers => loadCustomersSuccess({ customers })),
+            catchError(error => of(loadCustomersFailure({ error })))
+        )
+    )
+);
+            </div>
+            <p><strong>Benefits:</strong> Predictable state, time-travel debugging, improved testability</p>
+        </div>
+
+        <h3>4. SignalR for Real-Time Communication</h3>
+        <div class="pattern-box">
+            <p>
+                <strong>SignalR</strong> enables bi-directional real-time communication between server and clients 
+                using WebSockets (with fallback to other transports).
+            </p>
+            <div class="code-block">
+// Server-Side Hub
+public class NotificationHub : Hub
+{
+    public async Task SendTaskAssignment(int userId, Task task)
+    {
+        await Clients.User(userId.ToString())
+            .SendAsync("ReceiveTaskAssignment", task);
+    }
+    
+    public async Task BroadcastWorkOrderUpdate(int workOrderId, string status)
+    {
+        await Clients.Group($"WorkOrder_{workOrderId}")
+            .SendAsync("WorkOrderStatusChanged", status);
+    }
+}
+
+// Client-Side Connection (Angular)
+this.hubConnection = new HubConnectionBuilder()
+    .withUrl('/notificationHub', {
+        accessTokenFactory: () => this.authService.getToken()
+    })
+    .build();
+
+this.hubConnection.on('ReceiveTaskAssignment', (task) => {
+    this.store.dispatch(new AddTask(task));
+});
+            </div>
+            <p><strong>Benefits:</strong> Real-time updates, reduced polling, better UX</p>
+        </div>
+
+        <h2>🌐 API Structure and Routing</h2>
+
+        <h3>API Organization</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Route Pattern</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>/api/page/{module}</strong></td>
+                    <td>Page-specific controllers</td>
+                    <td>/api/page/customers/search</td>
+                </tr>
+                <tr>
+                    <td><strong>/api/core/{resource}</strong></td>
+                    <td>Core system resources</td>
+                    <td>/api/core/filemanager/upload</td>
+                </tr>
+                <tr>
+                    <td><strong>/api/currentuser</strong></td>
+                    <td>Current user operations</td>
+                    <td>/api/currentuser/signin</td>
+                </tr>
+                <tr>
+                    <td><strong>/api/cache/{entity}</strong></td>
+                    <td>Cached reference data</td>
+                    <td>/api/cache/businessunit</td>
+                </tr>
+                <tr>
+                    <td><strong>/token</strong></td>
+                    <td>OAuth token endpoint</td>
+                    <td>/token (POST)</td>
+                </tr>
+                <tr>
+                    <td><strong>/signalr</strong></td>
+                    <td>SignalR hub endpoint</td>
+                    <td>/signalr/notification</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Controller Base Classes</h3>
+        <div class="highlight-box">
+            <p>Controllers inherit from base classes that provide common functionality:</p>
+            <ul>
+                <li><strong>EmployeeController:</strong> Base for employee-authenticated endpoints</li>
+                <li><strong>EmployeeNoCheckController:</strong> Employee endpoints without additional checks</li>
+                <li><strong>ControllerBase:</strong> Common utilities for all controllers</li>
+            </ul>
+        </div>
+
+        <h2>⚙️ Configuration Management</h2>
+
+        <h3>Configuration Sources</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Configuration Type</th>
+                    <th>Storage Location</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Web.config</strong></td>
+                    <td>API project root</td>
+                    <td>Connection strings, app settings, system.web config</td>
+                </tr>
+                <tr>
+                    <td><strong>Database Configuration</strong></td>
+                    <td>Config table in SQL</td>
+                    <td>Runtime settings, feature flags, business rules</td>
+                </tr>
+                <tr>
+                    <td><strong>Environment Variables</strong></td>
+                    <td>Server environment</td>
+                    <td>Deployment-specific settings</td>
+                </tr>
+                <tr>
+                    <td><strong>Angular Environment</strong></td>
+                    <td>environment.ts files</td>
+                    <td>API URLs, feature flags for frontend</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Key Configuration Settings</h3>
+        <div class="highlight-box">
+            <ul>
+                <li><strong>TokenExpiredTime:</strong> OAuth token lifespan (minutes)</li>
+                <li><strong>SessionTimeout:</strong> User session duration (1440 minutes)</li>
+                <li><strong>ConnectionString:</strong> SQL Server connection</li>
+                <li><strong>CORS Origins:</strong> Allowed API consumers</li>
+                <li><strong>LogLevel:</strong> Log4net verbosity level</li>
+                <li><strong>CacheExpiration:</strong> In-memory cache duration</li>
+                <li><strong>FileUploadPath:</strong> Document storage location</li>
+                <li><strong>EmailSettings:</strong> SMTP configuration</li>
+            </ul>
+        </div>
+
+        <h2>📦 Project Structure Summary</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>🎨 Frontend Projects</h4>
+                <ul>
+                    <li>NESI.Angular (SPA)</li>
+                    <li>Nesi.Web (Legacy Web Forms)</li>
+                    <li>Nesi.Mobile (Mobile App)</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>🔌 API Projects</h4>
+                <ul>
+                    <li>NESI.WebAPI</li>
+                    <li>NESI.SignalR</li>
+                    <li>NESI.WebAPI.Tests</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>💼 Business Logic</h4>
+                <ul>
+                    <li>NESI.BLL</li>
+                    <li>NESI.BLL.Common</li>
+                    <li>NESI.BLL.Repository</li>
+                    <li>NESI.Common</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>💾 Data Access</h4>
+                <ul>
+                    <li>NESI.Data</li>
+                    <li>NESI.Data.Common</li>
+                    <li>NESI.EntityModel</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🔄 Request Flow Example</h2>
+
+        <div class="highlight-box">
+            <h3>User Creates a Quote - End-to-End Flow</h3>
+            <ol>
+                <li><strong>User Action:</strong> User clicks "Create Quote" button in Angular UI</li>
+                <li><strong>Angular Component:</strong> Dispatches @ngrx action: createQuote(quoteData)</li>
+                <li><strong>@ngrx Effect:</strong> Intercepts action, calls QuoteService.createQuote()</li>
+                <li><strong>Angular Service:</strong> Makes HTTP POST to /api/page/quotes with Bearer token</li>
+                <li><strong>OWIN Middleware:</strong> Validates OAuth token, extracts user identity</li>
+                <li><strong>Authorization Filter:</strong> Checks PageAuthorization and PrivilegeAuthorization</li>
+                <li><strong>API Controller:</strong> QuoteController.Post() receives request, validates model</li>
+                <li><strong>BLL Service:</strong> QuoteService.CreateQuote() applies business rules</li>
+                <li><strong>Repository:</strong> QuoteRepository.Add() prepares entity for persistence</li>
+                <li><strong>Entity Framework:</strong> Generates INSERT SQL and executes against database</li>
+                <li><strong>Database:</strong> Saves quote record, triggers fire for audit logging</li>
+                <li><strong>Response:</strong> Success response bubbles back up through layers</li>
+                <li><strong>@ngrx Store:</strong> Updates state with new quote</li>
+                <li><strong>UI Update:</strong> Angular component re-renders with new quote</li>
+                <li><strong>SignalR:</strong> Broadcasts quote creation event to relevant users</li>
+            </ol>
+        </div>
+
+        <h2>⚡ Performance Optimizations</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>🚀 Caching Strategy</h4>
+                <p>In-memory caching for reference data (business units, tax entities, dropdown lists) reduces database load.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>📊 Query Optimization</h4>
+                <p>Eager loading with Include(), stored procedures for complex queries, and indexed columns.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>🔄 Async Operations</h4>
+                <p>Async/await pattern throughout API layer prevents thread blocking on I/O operations.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>📦 Bundling & Minification</h4>
+                <p>Angular production builds use AOT compilation and tree-shaking for minimal bundle size.</p>
+            </div>
+        </div>
+
+        <h2>🔐 Cross-Cutting Concerns</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Concern</th>
+                    <th>Implementation</th>
+                    <th>Layer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Authentication</strong></td>
+                    <td>OAuth 2.0 Bearer Tokens</td>
+                    <td>API Layer (OWIN)</td>
+                </tr>
+                <tr>
+                    <td><strong>Authorization</strong></td>
+                    <td>Custom filter attributes</td>
+                    <td>API Layer</td>
+                </tr>
+                <tr>
+                    <td><strong>Logging</strong></td>
+                    <td>log4net</td>
+                    <td>All Layers</td>
+                </tr>
+                <tr>
+                    <td><strong>Error Handling</strong></td>
+                    <td>Global exception filters</td>
+                    <td>API Layer</td>
+                </tr>
+                <tr>
+                    <td><strong>Validation</strong></td>
+                    <td>Data Annotations + Custom</td>
+                    <td>API & BLL Layers</td>
+                </tr>
+                <tr>
+                    <td><strong>Transaction Management</strong></td>
+                    <td>Entity Framework + TransactionScope</td>
+                    <td>BLL & DAL Layers</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="index.html" class="back-link">← Back to Documentation Index</a>
+    </div>
+</body>
+</html>

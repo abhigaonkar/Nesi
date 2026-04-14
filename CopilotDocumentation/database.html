@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESI Application - Database Architecture</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .entity-category {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #764ba2;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .db-diagram {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💾 NESI Application - Database Architecture</h1>
+        
+        <h2>🗄️ Database Overview</h2>
+        <div class="entity-category">
+            <table>
+                <tr>
+                    <th>Database System</th>
+                    <td><strong>MySQL 6.9.9</strong></td>
+                </tr>
+                <tr>
+                    <th>ORM Framework</th>
+                    <td><strong>Entity Framework 6.2.0</strong> (Code-First approach)</td>
+                </tr>
+                <tr>
+                    <th>Connection Provider</th>
+                    <td><strong>MySql.Data.MySqlClient</strong></td>
+                </tr>
+                <tr>
+                    <th>Database Name</th>
+                    <td><code>neintranet</code></td>
+                </tr>
+                <tr>
+                    <th>Estimated Table Count</th>
+                    <td><strong>200+</strong> tables</td>
+                </tr>
+                <tr>
+                    <th>Schema Management</th>
+                    <td>Entity Framework Migrations + SQL Scripts</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>📊 Entity Categories</h2>
+
+        <div class="entity-category">
+            <h3>1. Core Business Entities</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>customer</code></td>
+                        <td>Customer/client companies</td>
+                        <td>customer_id, customer_name, customer_status, customer_type</td>
+                    </tr>
+                    <tr>
+                        <td><code>vendor</code></td>
+                        <td>Supplier/vendor companies</td>
+                        <td>vendor_id, vendor_name, vendor_status, vendor_type</td>
+                    </tr>
+                    <tr>
+                        <td><code>contact</code></td>
+                        <td>Contact persons (customers/vendors)</td>
+                        <td>contact_id, contact_name, contact_email, contact_phone</td>
+                    </tr>
+                    <tr>
+                        <td><code>member</code></td>
+                        <td>Internal employees/users</td>
+                        <td>Member_ID, Member_User, member_pass, Member_FirstName, Member_Status</td>
+                    </tr>
+                    <tr>
+                        <td><code>membertype</code></td>
+                        <td>Employee classification</td>
+                        <td>membertype_id, membertype_name</td>
+                    </tr>
+                    <tr>
+                        <td><code>address</code></td>
+                        <td>Physical addresses</td>
+                        <td>address_id, address_line1, address_city, address_state, address_zip</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>2. Sales & Quote Management</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>quote</code></td>
+                        <td>Price quotations</td>
+                        <td>quote_id, quote_n, customer_id, status_id, quoted_price, quote_date</td>
+                    </tr>
+                    <tr>
+                        <td><code>quote_details</code></td>
+                        <td>Quote line items</td>
+                        <td>quote_detail_id, quote_id, item_description, quantity, unit_price</td>
+                    </tr>
+                    <tr>
+                        <td><code>quote_status</code></td>
+                        <td>Quote status tracking</td>
+                        <td>status_id, status_name, status_order</td>
+                    </tr>
+                    <tr>
+                        <td><code>quote_history</code></td>
+                        <td>Quote revision history</td>
+                        <td>history_id, quote_id, revision_date, changed_by</td>
+                    </tr>
+                    <tr>
+                        <td><code>quote_post_mortem</code></td>
+                        <td>Win/loss analysis</td>
+                        <td>quote_id, outcome, reason, notes</td>
+                    </tr>
+                    <tr>
+                        <td><code>quote_pricetype</code></td>
+                        <td>Pricing models</td>
+                        <td>pricetype_id, pricetype_name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>3. Work Order Management</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>work_order</code></td>
+                        <td>Work orders/projects</td>
+                        <td>woprog_id, woprog_bvwo, woprog_customername, woprog_pm_memberid, woprog_status</td>
+                    </tr>
+                    <tr>
+                        <td><code>wo_detail</code></td>
+                        <td>Work order line items</td>
+                        <td>wo_detail_id, woprog_id, item_description, quantity, status</td>
+                    </tr>
+                    <tr>
+                        <td><code>wo_comment</code><br><code>wocomment</code></td>
+                        <td>Work order notes/comments</td>
+                        <td>comment_id, woprog_id, comment_text, created_by, created_date</td>
+                    </tr>
+                    <tr>
+                        <td><code>wo_checklist</code></td>
+                        <td>Work order checklists</td>
+                        <td>checklist_id, woprog_id, task_name, completed</td>
+                    </tr>
+                    <tr>
+                        <td><code>woprog_quoteid</code></td>
+                        <td>Quote to WO relationship</td>
+                        <td>woprog_id, quote_id</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>4. Purchase Order & Procurement</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>purchase_order</code></td>
+                        <td>Purchase orders</td>
+                        <td>poprog_id, poprog_bvpo, poprog_vendor_id, poprog_status, poprog_total</td>
+                    </tr>
+                    <tr>
+                        <td><code>po_details</code></td>
+                        <td>PO line items</td>
+                        <td>po_detail_id, poprog_id, item_description, quantity, unit_cost</td>
+                    </tr>
+                    <tr>
+                        <td><code>credit_card_purchase</code></td>
+                        <td>Credit card expenses</td>
+                        <td>purchase_id, member_id, amount, date, business_unit_id</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>5. Time & Labor Tracking</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>membertime</code></td>
+                        <td>Time entry records</td>
+                        <td>membertime_id, Member_ID, hours, date, woprog_id, quote_id</td>
+                    </tr>
+                    <tr>
+                        <td><code>membertime_type</code></td>
+                        <td>Hour types (regular, OT)</td>
+                        <td>type_id, type_name, multiplier</td>
+                    </tr>
+                    <tr>
+                        <td><code>vacation</code><br><code>timesheet</code></td>
+                        <td>Time off tracking</td>
+                        <td>vacation_id, Member_ID, start_date, end_date, hours, type</td>
+                    </tr>
+                    <tr>
+                        <td><code>breaktime</code></td>
+                        <td>Break period tracking</td>
+                        <td>break_id, Member_ID, start_time, end_time, duration</td>
+                    </tr>
+                    <tr>
+                        <td><code>vacation_amounts</code></td>
+                        <td>Vacation accrual balances</td>
+                        <td>Member_ID, accrued_hours, used_hours, balance</td>
+                    </tr>
+                    <tr>
+                        <td><code>vacation_payment_method</code></td>
+                        <td>Vacation payout methods</td>
+                        <td>payment_id, method_name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>6. Payroll & HR</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>payroll</code></td>
+                        <td>Payroll records</td>
+                        <td>payroll_id, Member_ID, pay_period, gross_pay, net_pay</td>
+                    </tr>
+                    <tr>
+                        <td><code>memberwage</code></td>
+                        <td>Employee wage information</td>
+                        <td>Member_ID, hourly_rate, salary, effective_date</td>
+                    </tr>
+                    <tr>
+                        <td><code>benefit_details</code></td>
+                        <td>Employee benefits</td>
+                        <td>benefit_id, Member_ID, benefit_type, amount</td>
+                    </tr>
+                    <tr>
+                        <td><code>holidays</code></td>
+                        <td>Holiday calendar</td>
+                        <td>holiday_id, holiday_date, holiday_name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>7. Financial & Accounting</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>gl_chart_of_accounts</code></td>
+                        <td>General ledger accounts</td>
+                        <td>account_id, account_number, account_name, account_type</td>
+                    </tr>
+                    <tr>
+                        <td><code>gltrans</code></td>
+                        <td>GL transactions</td>
+                        <td>trans_id, account_id, debit, credit, date, description</td>
+                    </tr>
+                    <tr>
+                        <td><code>invoice_*</code></td>
+                        <td>Invoicing entities</td>
+                        <td>invoice_id, customer_id, amount, date, status</td>
+                    </tr>
+                    <tr>
+                        <td><code>expense_*</code></td>
+                        <td>Expense tracking</td>
+                        <td>expense_id, Member_ID, amount, category, date</td>
+                    </tr>
+                    <tr>
+                        <td><code>progress_billings</code></td>
+                        <td>Progress billing tracking</td>
+                        <td>billing_id, woprog_id, percentage, amount, date</td>
+                    </tr>
+                    <tr>
+                        <td><code>revenue_line</code></td>
+                        <td>Revenue tracking</td>
+                        <td>revenue_id, woprog_id, amount, date, type</td>
+                    </tr>
+                    <tr>
+                        <td><code>currency</code><br><code>currency_history</code></td>
+                        <td>Currency management</td>
+                        <td>currency_code, exchange_rate, effective_date</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>8. Inventory & Assets</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>inventory</code></td>
+                        <td>Inventory items</td>
+                        <td>inventory_id, item_name, quantity, unit_price</td>
+                    </tr>
+                    <tr>
+                        <td><code>inventory_group_dtl</code></td>
+                        <td>Inventory grouping</td>
+                        <td>group_id, inventory_id</td>
+                    </tr>
+                    <tr>
+                        <td><code>inventory_kit_dtl</code></td>
+                        <td>Inventory kits/bundles</td>
+                        <td>kit_id, inventory_id, quantity</td>
+                    </tr>
+                    <tr>
+                        <td><code>inventory_sellprice_history</code></td>
+                        <td>Price history</td>
+                        <td>inventory_id, price, effective_date</td>
+                    </tr>
+                    <tr>
+                        <td><code>asset</code><br><code>assets</code></td>
+                        <td>Equipment/assets</td>
+                        <td>asset_id, asset_name, asset_type, purchase_date, value</td>
+                    </tr>
+                    <tr>
+                        <td><code>asset_customer_rate</code></td>
+                        <td>Asset billing rates</td>
+                        <td>asset_id, customer_id, hourly_rate, daily_rate</td>
+                    </tr>
+                    <tr>
+                        <td><code>vw_inventory_reorder</code></td>
+                        <td>Reorder level view</td>
+                        <td>inventory_id, reorder_point, quantity_on_hand</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>9. Security & Access Control</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>member</code></td>
+                        <td>User credentials</td>
+                        <td>Member_ID, Member_User, member_pass, Member_Status</td>
+                    </tr>
+                    <tr>
+                        <td><code>page</code></td>
+                        <td>Page/feature definitions</td>
+                        <td>page_id, page_name, page_enabled, page_custenabled, page_vendorenabled</td>
+                    </tr>
+                    <tr>
+                        <td><code>privilege</code></td>
+                        <td>Privilege definitions</td>
+                        <td>Privilege_ID, Privilege_Name, Privilege_Page_ID, Privilege_CustEnabled</td>
+                    </tr>
+                    <tr>
+                        <td><code>memberpage</code></td>
+                        <td>User-page access matrix</td>
+                        <td>Member_ID, page_id, active</td>
+                    </tr>
+                    <tr>
+                        <td><code>memberpageprivilege</code></td>
+                        <td>User-page-privilege mapping</td>
+                        <td>Member_ID, page_id, Privilege_ID</td>
+                    </tr>
+                    <tr>
+                        <td><code>pageprivilege_template</code></td>
+                        <td>Permission templates</td>
+                        <td>template_id, template_name, privileges</td>
+                    </tr>
+                    <tr>
+                        <td><code>session</code></td>
+                        <td>User session tracking</td>
+                        <td>session_id, Member_ID, start_time, last_activity, ip_address</td>
+                    </tr>
+                    <tr>
+                        <td><code>failed_login</code></td>
+                        <td>Failed login attempts</td>
+                        <td>attempt_id, username, ip_address, timestamp</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>10. Business Unit Management</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>business_unit</code></td>
+                        <td>Organizational units</td>
+                        <td>business_unit_id, business_unit_name, business_unit_code, active</td>
+                    </tr>
+                    <tr>
+                        <td><code>business_unit_comp_div</code></td>
+                        <td>BU divisions/departments</td>
+                        <td>division_id, business_unit_id, division_name</td>
+                    </tr>
+                    <tr>
+                        <td><code>business_unit_po_dist</code></td>
+                        <td>PO cost distribution</td>
+                        <td>distribution_id, poprog_id, business_unit_id, amount</td>
+                    </tr>
+                    <tr>
+                        <td><code>visible_business_units</code></td>
+                        <td>User BU visibility</td>
+                        <td>Member_ID, business_unit_id</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>11. Integration & External Systems</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>netsuite_*</code></td>
+                        <td>NetSuite integration records</td>
+                        <td>sync_id, entity_id, netsuite_id, last_sync, status</td>
+                    </tr>
+                    <tr>
+                        <td><code>emaillog</code></td>
+                        <td>Email tracking</td>
+                        <td>email_id, to_address, subject, sent_date, status</td>
+                    </tr>
+                    <tr>
+                        <td><code>distribution_group</code></td>
+                        <td>Email distribution lists</td>
+                        <td>group_id, group_name, members</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>12. Logging & Auditing</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>error_log</code></td>
+                        <td>Application errors</td>
+                        <td>error_id, error_message, stack_trace, timestamp, Member_ID</td>
+                    </tr>
+                    <tr>
+                        <td><code>log</code></td>
+                        <td>General activity logs</td>
+                        <td>log_id, log_type, message, timestamp, Member_ID</td>
+                    </tr>
+                    <tr>
+                        <td><code>audit_*</code></td>
+                        <td>Audit trail tables</td>
+                        <td>audit_id, entity_type, entity_id, action, changed_by, timestamp</td>
+                    </tr>
+                    <tr>
+                        <td><code>audithistory_*</code></td>
+                        <td>Historical audit records</td>
+                        <td>history_id, old_value, new_value, changed_date</td>
+                    </tr>
+                    <tr>
+                        <td><code>asset_history_action</code></td>
+                        <td>Asset change history</td>
+                        <td>action_id, asset_id, action_type, timestamp</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>13. CRM & Communication</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>crm_phonelog_incoming</code></td>
+                        <td>Incoming call logs</td>
+                        <td>log_id, caller_id, recipient_id, duration, timestamp, notes</td>
+                    </tr>
+                    <tr>
+                        <td><code>note_templates</code></td>
+                        <td>Canned note templates</td>
+                        <td>template_id, template_name, template_text</td>
+                    </tr>
+                    <tr>
+                        <td><code>video_watch_history</code></td>
+                        <td>Training video tracking</td>
+                        <td>history_id, Member_ID, video_id, watch_date, completed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>14. Configuration & System</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>gridviewlayouts</code></td>
+                        <td>User grid preferences</td>
+                        <td>layout_id, Member_ID, page_id, column_config</td>
+                    </tr>
+                    <tr>
+                        <td><code>territory_mapping</code></td>
+                        <td>Territory definitions</td>
+                        <td>territory_id, territory_name, region</td>
+                    </tr>
+                    <tr>
+                        <td><code>tickettype</code></td>
+                        <td>Support ticket types</td>
+                        <td>type_id, type_name</td>
+                    </tr>
+                    <tr>
+                        <td><code>oncall_schedule</code></td>
+                        <td>On-call rotation</td>
+                        <td>schedule_id, Member_ID, start_date, end_date</td>
+                    </tr>
+                    <tr>
+                        <td><code>n2_profile_property</code></td>
+                        <td>User profile properties</td>
+                        <td>property_id, Member_ID, property_name, property_value</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="entity-category">
+            <h3>15. Views & Reporting Entities</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>vw_memberpage</code></td>
+                        <td>User page access view</td>
+                    </tr>
+                    <tr>
+                        <td><code>vw_inventory_reorder</code></td>
+                        <td>Inventory reorder analysis</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>🔗 Key Relationships</h2>
+        
+        <div class="db-diagram">
+<pre>
+CUSTOMER (1) ----< (many) QUOTE
+    |                       |
+    |                       |
+    +-----------------< WORK_ORDER >----------< WO_DETAIL
+    |                       |                      |
+    |                       |                      |
+    +---< CONTACT           +---< WO_COMMENT       +---< MEMBERTIME
+                                 |
+                                 +---< PURCHASE_ORDER >---< PO_DETAILS
+                                                                |
+VENDOR (1) -------------------------------------------------< -+
+
+
+MEMBER (1) ----< (many) MEMBERTIME
+    |                       |
+    |                       +---< (assigned to) WORK_ORDER
+    |                       |
+    |                       +---< (assigned to) QUOTE
+    |
+    +---< MEMBERPAGEPRIVILEGE >---< PAGE
+    |                               |
+    |                               +---< PRIVILEGE
+    |
+    +---< VISIBLE_BUSINESS_UNITS >---< BUSINESS_UNIT
+    |
+    +---< MEMBERW AGE
+    |
+    +---< VACATION / TIMESHEET
+
+
+BUSINESS_UNIT (1) ----< BUSINESS_UNIT_PO_DIST >---< PURCHASE_ORDER
+                  |
+                  +---< MEMBERTIME (cost allocation)
+                  |
+                  +---< WORK_ORDER (project assignment)
+</pre>
+        </div>
+
+        <h2>🔐 Database Security</h2>
+        <div class="entity-category">
+            <ul>
+                <li><strong>Database User:</strong> <code>nesiappuser</code> with restricted permissions</li>
+                <li><strong>Connection Security:</strong> Password-protected, internal network only</li>
+                <li><strong>Application-Level Security:</strong> All data access through Entity Framework with parameterized queries</li>
+                <li><strong>Row-Level Security:</strong> Implemented via business_unit visibility filtering</li>
+                <li><strong>Audit Logging:</strong> Comprehensive audit tables track all data changes</li>
+            </ul>
+        </div>
+
+        <h2>📈 Database Performance Considerations</h2>
+        <div class="entity-category">
+            <ul>
+                <li><strong>Indexing:</strong> Primary keys and foreign keys indexed for query performance</li>
+                <li><strong>Views:</strong> Pre-aggregated views (vw_*) for complex reporting queries</li>
+                <li><strong>Lazy Loading:</strong> Entity Framework configured for lazy loading relationships</li>
+                <li><strong>Connection Pooling:</strong> Enabled for efficient connection management</li>
+                <li><strong>Caching:</strong> Frequently accessed data cached at application layer</li>
+            </ul>
+        </div>
+
+        <h2>🔄 Data Migration & Versioning</h2>
+        <div class="entity-category">
+            <ul>
+                <li><strong>Entity Framework Migrations:</strong> Schema changes tracked in code</li>
+                <li><strong>SQL Scripts:</strong> Located in <code>/SQL-scripts/</code> directory</li>
+                <li><strong>Deployment Process:</strong> Automated deployment scripts for schema updates</li>
+                <li><strong>Backup Strategy:</strong> Regular database backups for disaster recovery</li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Documentation Index</a>
+    </div>
+</body>
+</html>

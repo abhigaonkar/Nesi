@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESI Application - Architecture Layers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .layer-section {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        .layer-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .component-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .component-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #764ba2;
+        }
+        .tech-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏗️ NESI Architecture Layers - Deep Dive</h1>
+        
+        <div class="highlight-box">
+            <h2>Layer Architecture Overview</h2>
+            <p>
+                This document provides an in-depth examination of each architectural layer in the NESI application, 
+                detailing components, technologies, responsibilities, and interactions. Understanding these layers is 
+                crucial for development, maintenance, and troubleshooting.
+            </p>
+        </div>
+
+        <div class="layer-section">
+            <div class="layer-header">
+                🎨 Layer 1: Angular Frontend (Presentation Layer)
+            </div>
+
+            <h3>Technology Stack</h3>
+            <div class="highlight-box">
+                <span class="tech-badge">Angular 10+</span>
+                <span class="tech-badge">TypeScript</span>
+                <span class="tech-badge">@ngrx/store</span>
+                <span class="tech-badge">RxJS</span>
+                <span class="tech-badge">Angular Material</span>
+                <span class="tech-badge">SignalR Client</span>
+                <span class="tech-badge">Sass/SCSS</span>
+            </div>
+
+            <h3>Project Structure</h3>
+            <div class="code-block">
+src/
+├── app/
+│   ├── core/                    # Core singleton services
+│   │   ├── auth/               # Authentication service
+│   │   ├── http/               # HTTP interceptors
+│   │   └── services/           # Global services
+│   ├── shared/                  # Shared components and utilities
+│   │   ├── components/         # Reusable UI components
+│   │   ├── directives/         # Custom directives
+│   │   ├── pipes/              # Custom pipes
+│   │   └── models/             # TypeScript interfaces/types
+│   ├── modules/                 # Feature modules
+│   │   ├── customers/          # Customer management module
+│   │   ├── quotes/             # Quote management module
+│   │   ├── work-orders/        # Work order management module
+│   │   ├── timesheet/          # Timesheet module
+│   │   ├── purchase-orders/    # Purchase order module
+│   │   └── employees/          # Employee management module
+│   ├── store/                   # @ngrx state management
+│   │   ├── actions/            # Redux actions
+│   │   ├── reducers/           # Redux reducers
+│   │   ├── effects/            # Side effects
+│   │   └── selectors/          # State selectors
+│   └── app.module.ts           # Root module
+├── assets/                      # Static assets (images, fonts)
+├── environments/                # Environment configurations
+└── styles/                      # Global styles
+            </div>
+
+            <h3>Key Components</h3>
+
+            <div class="component-card">
+                <h4>🔐 Authentication Service</h4>
+                <p><strong>Responsibility:</strong> Manage OAuth tokens, login/logout, token refresh</p>
+                <div class="code-block">
+export class AuthService {
+    private tokenKey = 'auth_token';
+    
+    login(username: string, password: string): Observable<AuthResponse> {
+        const body = `grant_type=password&username=${username}&password=${password}`;
+        return this.http.post<AuthResponse>('/token', body, {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).pipe(
+            tap(response => this.storeToken(response.access_token)),
+            catchError(this.handleAuthError)
+        );
+    }
+    
+    getToken(): string {
+        return localStorage.getItem(this.tokenKey);
+    }
+    
+    isAuthenticated(): boolean {
+        return !!this.getToken() && !this.isTokenExpired();
+    }
+}
+                </div>
+            </div>
+
+            <div class="component-card">
+                <h4>🔌 HTTP Interceptor</h4>
+                <p><strong>Responsibility:</strong> Automatically attach Bearer token to API requests</p>
+                <div class="code-block">
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+    constructor(private authService: AuthService) {}
+    
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const token = this.authService.getToken();
+        
+        if (token) {
+            req = req.clone({
+                setHeaders: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+        }
+        
+        return next.handle(req).pipe(
+            catchError((error: HttpErrorResponse) => {
+                if (error.status === 401) {
+                    this.authService.logout();
+                    this.router.navigate(['/login']);
+                }
+                return throwError(error);
+            })
+        );
+    }
+}
+                </div>
+            </div>
+
+            <div class="component-card">
+                <h4>📊 State Management (@ngrx/store)</h4>
+                <p><strong>Responsibility:</strong> Centralized application state with Redux pattern</p>
+                <div class="code-block">
+// Customer State Interface
+export interface CustomerState {
+    customers: Customer[];
+    selectedCustomer: Customer | null;
+    loading: boolean;
+    error: string | null;
+}
+
+// Customer Actions
+export const loadCustomers = createAction('[Customer] Load Customers');
+export const loadCustomersSuccess = createAction(
+    '[Customer] Load Customers Success',
+    props<{ customers: Customer[] }>()
+);
+
+// Customer Reducer
+export const customerReducer = createReducer(
+    initialState,
+    on(loadCustomers, state => ({ ...state, loading: true })),
+    on(loadCustomersSuccess, (state, { customers }) => ({
+        ...state,
+        customers,
+        loading: false
+    }))
+);
+
+// Customer Effects
+@Injectable()
+export class CustomerEffects {
+    loadCustomers$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(loadCustomers),
+            switchMap(() =>
+                this.customerService.getCustomers().pipe(
+                    map(customers => loadCustomersSuccess({ customers })),
+                    catchError(error => of(loadCustomersFailure({ error })))
+                )
+            )
+        )
+    );
+}
+                </div>
+            </div>
+
+            <div class="component-card">
+                <h4>🔔 SignalR Integration</h4>
+                <p><strong>Responsibility:</strong> Real-time notifications and updates</p>
+                <div class="code-block">
+export class SignalRService {
+    private hubConnection: HubConnection;
+    
+    startConnection(): void {
+        this.hubConnection = new HubConnectionBuilder()
+            .withUrl('/signalr/notification', {
+                accessTokenFactory: () => this.authService.getToken()
+            })
+            .withAutomaticReconnect()
+            .build();
+        
+        this.hubConnection.start()
+            .then(() => console.log('SignalR Connected'))
+            .catch(err => console.error('SignalR Connection Error', err));
+        
+        this.registerHandlers();
+    }
+    
+    private registerHandlers(): void {
+        this.hubConnection.on('TaskAssigned', (task: Task) => {
+            this.store.dispatch(new AddTask(task));
+            this.notificationService.show('New task assigned');
+        });
+        
+        this.hubConnection.on('WorkOrderStatusChanged', (woId, status) => {
+            this.store.dispatch(new UpdateWorkOrderStatus({ woId, status }));
+        });
+    }
+}
+                </div>
+            </div>
+
+            <h3>Routing & Navigation</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Route</th>
+                        <th>Component</th>
+                        <th>Auth Guard</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/login</td>
+                        <td>LoginComponent</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td>/dashboard</td>
+                        <td>DashboardComponent</td>
+                        <td>AuthGuard</td>
+                    </tr>
+                    <tr>
+                        <td>/customers</td>
+                        <td>CustomerListComponent</td>
+                        <td>AuthGuard, PageAuthGuard</td>
+                    </tr>
+                    <tr>
+                        <td>/customers/:id</td>
+                        <td>CustomerDetailComponent</td>
+                        <td>AuthGuard, PageAuthGuard</td>
+                    </tr>
+                    <tr>
+                        <td>/quotes</td>
+                        <td>QuoteListComponent</td>
+                        <td>AuthGuard, PageAuthGuard</td>
+                    </tr>
+                    <tr>
+                        <td>/work-orders</td>
+                        <td>WorkOrderListComponent</td>
+                        <td>AuthGuard, PageAuthGuard</td>
+                    </tr>
+                    <tr>
+                        <td>/timesheet</td>
+                        <td>TimesheetComponent</td>
+                        <td>AuthGuard, PageAuthGuard</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="layer-section">
+            <div class="layer-header">
+                🔌 Layer 2: ASP.NET Web API (API Layer)
+            </div>
+
+            <h3>Technology Stack</h3>
+            <div class="highlight-box">
+                <span class="tech-badge">ASP.NET Web API 2</span>
+                <span class="tech-badge">OWIN</span>
+                <span class="tech-badge">OAuth 2.0</span>
+                <span class="tech-badge">Ninject</span>
+                <span class="tech-badge">Newtonsoft.Json</span>
+                <span class="tech-badge">Swashbuckle (Swagger)</span>
+            </div>
+
+            <h3>Controller Organization</h3>
+            <div class="code-block">
+NESI.WebAPI/
+├── Controllers/
+│   ├── Base/                          # Base controller classes
+│   │   ├── EmployeeController.cs     # Base for employee endpoints
+│   │   └── ControllerBase.cs         # Common controller utilities
+│   ├── API/
+│   │   ├── Page/                     # Page-specific controllers
+│   │   │   ├── Customers/           # Customer module controllers
+│   │   │   ├── Quotes/              # Quote module controllers
+│   │   │   ├── WorkOrder/           # Work order controllers
+│   │   │   ├── Timesheet/           # Timesheet controllers
+│   │   │   ├── PurchaseOrder/       # PO controllers
+│   │   │   └── Employees/           # Employee controllers
+│   │   ├── Core/                     # Core functionality
+│   │   │   ├── FileManagerController.cs
+│   │   │   └── ProfileController.cs
+│   │   ├── CurrentUser/              # Current user operations
+│   │   │   ├── SignIn/
+│   │   │   └── Layout/
+│   │   └── Cache/                    # Cached data endpoints
+│   └── ConfigurationController.cs    # Configuration endpoint
+├── Infrastructures/
+│   ├── Authentication/               # OAuth providers
+│   └── Filters/                      # Authorization filters
+└── App_Start/                         # Startup configuration
+            </div>
+
+            <h3>Controller Example</h3>
+            <div class="code-block">
+namespace NESI.WebAPI.Controllers.API.Page.Customers
+{
+    [RoutePrefix("api/page/customers")]
+    [PageAuthorizationFilter(PageId = 15)] // Page-level auth
+    public class CustomerController : EmployeeController
+    {
+        private readonly ICustomerService _customerService;
+        
+        public CustomerController(ICustomerService customerService)
+        {
+            _customerService = customerService;
+        }
+        
+        [HttpGet]
+        [Route("search")]
+        public IHttpActionResult Search(string query)
+        {
+            try
+            {
+                var customers = _customerService.Search(
+                    query, 
+                    CurrentUser.BusinessUnitIds // Auto-filtered by BU
+                );
+                return Ok(customers);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Customer search failed", ex);
+                return InternalServerError(ex);
+            }
+        }
+        
+        [HttpPost]
+        [Route("")]
+        [PrivilegeAuthorizationFilter(PrivilegeId = 101)] // Create privilege
+        public IHttpActionResult Create(CustomerDto customer)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            
+            try
+            {
+                var result = _customerService.Create(customer, CurrentUser.Id);
+                return Ok(result);
+            }
+            catch (BusinessException bex)
+            {
+                return BadRequest(bex.Message);
+            }
+        }
+    }
+}
+            </div>
+
+            <h3>Custom Authorization Filters</h3>
+            <div class="component-card">
+                <h4>PageAuthorizationFilterAttribute</h4>
+                <div class="code-block">
+public class PageAuthorizationFilterAttribute : NesiFilterAttributeBase
+{
+    protected int PageId { get; set; }
+    
+    public PageAuthorizationFilterAttribute(int pageId)
+    {
+        PageId = pageId;
+    }
+    
+    protected override bool IsAuthorized(HttpActionContext actionContext)
+    {
+        var user = base.GetCurrentUser(actionContext);
+        return user != null && user.AuthorizePage(PageId);
+    }
+}
+                </div>
+            </div>
+
+            <div class="component-card">
+                <h4>PrivilegeAuthorizationFilterAttribute</h4>
+                <div class="code-block">
+public class PrivilegeAuthorizationFilterAttribute : NesiFilterAttributeBase
+{
+    protected int PrivilegeId { get; set; }
+    
+    public PrivilegeAuthorizationFilterAttribute(int privilegeId)
+    {
+        PrivilegeId = privilegeId;
+    }
+    
+    protected override bool IsAuthorized(HttpActionContext actionContext)
+    {
+        var user = base.GetCurrentUser(actionContext);
+        return user != null && user.AuthorizePrivilege(PrivilegeId);
+    }
+}
+                </div>
+            </div>
+
+            <h3>Dependency Injection with Ninject</h3>
+            <div class="code-block">
+public static class NinjectWebCommon
+{
+    private static void RegisterServices(IKernel kernel)
+    {
+        // Services
+        kernel.Bind<ICustomerService>().To<CustomerService>();
+        kernel.Bind<IQuoteService>().To<QuoteService>();
+        kernel.Bind<IWorkOrderService>().To<WorkOrderService>();
+        kernel.Bind<ITimesheetService>().To<TimesheetService>();
+        
+        // Repositories
+        kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
+        kernel.Bind<IQuoteRepository>().To<QuoteRepository>();
+        
+        // Data Context
+        kernel.Bind<NESIEntities>().ToSelf().InRequestScope();
+    }
+}
+            </div>
+        </div>
+
+        <div class="layer-section">
+            <div class="layer-header">
+                💼 Layer 3: Business Logic Layer (BLL)
+            </div>
+
+            <h3>Technology Stack</h3>
+            <div class="highlight-box">
+                <span class="tech-badge">C# .NET Framework</span>
+                <span class="tech-badge">AutoMapper</span>
+                <span class="tech-badge">FluentValidation</span>
+                <span class="tech-badge">MemoryCache</span>
+            </div>
+
+            <h3>BLL Project Structure</h3>
+            <div class="code-block">
+NESI.BLL/
+├── Pages/                    # Page-specific business logic
+│   ├── Customers/
+│   │   ├── CustomerEdit.cs
+│   │   ├── CustomerSearch.cs
+│   │   └── CustomerValidation.cs
+│   ├── Quotes/
+│   │   ├── QuoteEdit.cs
+│   │   ├── QuoteCalculation.cs
+│   │   └── QuoteConversion.cs
+│   ├── WorkOrder/
+│   └── Timesheet/
+├── Common/                   # Common utilities
+│   ├── Cache/               # Caching logic
+│   ├── Shared/              # Shared helpers
+│   └── Configuration.cs     # App configuration
+├── Core/                     # Core business logic
+│   ├── User/                # User management
+│   └── Security/            # Security logic
+└── Repository/               # Repository implementations
+    └── AuthRepository.cs
+            </div>
+
+            <h3>Service Layer Example</h3>
+            <div class="code-block">
+public class QuoteService : IQuoteService
+{
+    private readonly NESIEntities _context;
+    private readonly IMapper _mapper;
+    
+    public QuoteService(NESIEntities context, IMapper mapper)
+    {
+        _context = context;
+        _mapper = mapper;
+    }
+    
+    public QuoteDto CreateQuote(QuoteDto quoteDto, int userId)
+    {
+        // Business validation
+        ValidateQuoteData(quoteDto);
+        
+        // Business logic
+        var quote = _mapper.Map<Quote>(quoteDto);
+        quote.CreatedBy = userId;
+        quote.CreatedDate = DateTime.Now;
+        quote.Status = QuoteStatus.Draft;
+        
+        // Calculate totals
+        CalculateQuoteTotals(quote);
+        
+        // Save to database
+        _context.Quotes.Add(quote);
+        _context.SaveChanges();
+        
+        // Return result
+        return _mapper.Map<QuoteDto>(quote);
+    }
+    
+    private void CalculateQuoteTotals(Quote quote)
+    {
+        quote.SubTotal = quote.QuoteLines.Sum(l => l.Quantity * l.UnitPrice);
+        quote.TaxAmount = quote.SubTotal * quote.TaxRate;
+        quote.Total = quote.SubTotal + quote.TaxAmount;
+    }
+    
+    public WorkOrderDto ConvertToWorkOrder(int quoteId, int userId)
+    {
+        var quote = _context.Quotes
+            .Include(q => q.QuoteLines)
+            .Include(q => q.Customer)
+            .FirstOrDefault(q => q.Id == quoteId);
+        
+        if (quote == null)
+            throw new BusinessException("Quote not found");
+        
+        if (quote.Status != QuoteStatus.Approved)
+            throw new BusinessException("Only approved quotes can be converted");
+        
+        // Create work order from quote
+        var workOrder = new WorkOrder
+        {
+            QuoteId = quote.Id,
+            CustomerId = quote.CustomerId,
+            Description = quote.Description,
+            EstimatedStartDate = quote.EstimatedStartDate,
+            EstimatedEndDate = quote.EstimatedEndDate,
+            Status = WorkOrderStatus.Open,
+            CreatedBy = userId,
+            CreatedDate = DateTime.Now
+        };
+        
+        // Copy line items
+        foreach (var quoteLine in quote.QuoteLines)
+        {
+            workOrder.WorkOrderLines.Add(new WorkOrderLine
+            {
+                Description = quoteLine.Description,
+                Quantity = quoteLine.Quantity,
+                UnitPrice = quoteLine.UnitPrice,
+                Total = quoteLine.Total
+            });
+        }
+        
+        _context.WorkOrders.Add(workOrder);
+        quote.Status = QuoteStatus.Converted;
+        _context.SaveChanges();
+        
+        return _mapper.Map<WorkOrderDto>(workOrder);
+    }
+}
+            </div>
+
+            <h3>Caching Strategy</h3>
+            <div class="code-block">
+public class CacheManager
+{
+    private static MemoryCache _cache = MemoryCache.Default;
+    
+    public static T Get<T>(string key, Func<T> valueFactory, 
+        TimeSpan? expiration = null)
+    {
+        if (_cache.Contains(key))
+            return (T)_cache.Get(key);
+        
+        var value = valueFactory();
+        var policy = new CacheItemPolicy
+        {
+            AbsoluteExpiration = DateTimeOffset.Now.Add(
+                expiration ?? TimeSpan.FromHours(1)
+            )
+        };
+        
+        _cache.Set(key, value, policy);
+        return value;
+    }
+    
+    public static void Remove(string key)
+    {
+        _cache.Remove(key);
+    }
+}
+
+// Usage
+var businessUnits = CacheManager.Get(
+    "BusinessUnits",
+    () => _context.BusinessUnits.ToList(),
+    TimeSpan.FromHours(24)
+);
+            </div>
+        </div>
+
+        <div class="layer-section">
+            <div class="layer-header">
+                💾 Layer 4: Data Access Layer (DAL)
+            </div>
+
+            <h3>Technology Stack</h3>
+            <div class="highlight-box">
+                <span class="tech-badge">Entity Framework 6</span>
+                <span class="tech-badge">LINQ</span>
+                <span class="tech-badge">ADO.NET</span>
+                <span class="tech-badge">SQL Server</span>
+            </div>
+
+            <h3>Entity Framework Context</h3>
+            <div class="code-block">
+public partial class NESIEntities : DbContext
+{
+    public NESIEntities() : base("name=NESIEntities")
+    {
+        this.Configuration.LazyLoadingEnabled = true;
+        this.Configuration.ProxyCreationEnabled = true;
+    }
+    
+    // DbSets
+    public virtual DbSet<Customer> Customers { get; set; }
+    public virtual DbSet<Quote> Quotes { get; set; }
+    public virtual DbSet<WorkOrder> WorkOrders { get; set; }
+    public virtual DbSet<Employee> Employees { get; set; }
+    public virtual DbSet<Timesheet> Timesheets { get; set; }
+    public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+    public virtual DbSet<Vendor> Vendors { get; set; }
+    public virtual DbSet<BusinessUnit> BusinessUnits { get; set; }
+    // ... 200+ entity sets
+    
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        // Fluent API configuration
+        modelBuilder.Entity<Customer>()
+            .HasMany(c => c.Quotes)
+            .WithRequired(q => q.Customer)
+            .HasForeignKey(q => q.CustomerId);
+        
+        modelBuilder.Entity<Quote>()
+            .Property(q => q.Total)
+            .HasPrecision(18, 2);
+    }
+}
+            </div>
+
+            <h3>Query Examples</h3>
+            <div class="code-block">
+// Simple query with filtering
+var customers = _context.Customers
+    .Where(c => c.IsActive && c.BusinessUnitId == userBusinessUnitId)
+    .OrderBy(c => c.Name)
+    .ToList();
+
+// Query with eager loading
+var quote = _context.Quotes
+    .Include(q => q.Customer)
+    .Include(q => q.QuoteLines)
+    .Include(q => q.CreatedByUser)
+    .FirstOrDefault(q => q.Id == quoteId);
+
+// Complex query with joins
+var workOrderSummary = (from wo in _context.WorkOrders
+                        join c in _context.Customers on wo.CustomerId equals c.Id
+                        join e in _context.Employees on wo.AssignedTo equals e.Id
+                        where wo.Status == "Open"
+                        select new WorkOrderSummaryDto
+                        {
+                            WorkOrderId = wo.Id,
+                            CustomerName = c.Name,
+                            AssignedToName = e.FullName,
+                            EstimatedCompletion = wo.EstimatedEndDate
+                        }).ToList();
+
+// Stored procedure execution
+var results = _context.Database.SqlQuery<ReportDto>(
+    "EXEC sp_JobCostReport @StartDate, @EndDate",
+    new SqlParameter("@StartDate", startDate),
+    new SqlParameter("@EndDate", endDate)
+).ToList();
+            </div>
+
+            <h3>Transaction Management</h3>
+            <div class="code-block">
+using (var transaction = _context.Database.BeginTransaction())
+{
+    try
+    {
+        // Multiple operations in single transaction
+        var quote = _context.Quotes.Find(quoteId);
+        quote.Status = QuoteStatus.Converted;
+        
+        var workOrder = new WorkOrder { /* ... */ };
+        _context.WorkOrders.Add(workOrder);
+        
+        _context.SaveChanges();
+        transaction.Commit();
+    }
+    catch (Exception ex)
+    {
+        transaction.Rollback();
+        throw;
+    }
+}
+            </div>
+        </div>
+
+        <div class="layer-section">
+            <div class="layer-header">
+                🗄️ Layer 5: Database Layer
+            </div>
+
+            <h3>Database Objects</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Object Type</th>
+                        <th>Count</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tables</strong></td>
+                        <td>200+</td>
+                        <td>Core data storage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Views</strong></td>
+                        <td>50+</td>
+                        <td>Reporting and complex queries</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stored Procedures</strong></td>
+                        <td>100+</td>
+                        <td>Complex business logic and reports</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Functions</strong></td>
+                        <td>30+</td>
+                        <td>Reusable calculations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Triggers</strong></td>
+                        <td>20+</td>
+                        <td>Audit logging and validation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Indexes</strong></td>
+                        <td>300+</td>
+                        <td>Query performance optimization</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Key Table Categories</h3>
+            <div class="highlight-box">
+                <ul>
+                    <li><strong>Core Entities:</strong> Customer, Quote, WorkOrder, Employee, Vendor</li>
+                    <li><strong>Transactions:</strong> Timesheet, PurchaseOrder, Invoice, Payment</li>
+                    <li><strong>Reference Data:</strong> BusinessUnit, PayType, JobType, Status lookups</li>
+                    <li><strong>Security:</strong> User, UserPageAuth, UserPrivAuth, Role</li>
+                    <li><strong>Audit:</strong> LoginHistory, AuditLog, ActivityLog</li>
+                    <li><strong>Configuration:</strong> AppConfig, SystemSettings</li>
+                </ul>
+            </div>
+
+            <h3>Performance Optimizations</h3>
+            <div class="code-block">
+-- Clustered index on primary key
+CREATE CLUSTERED INDEX PK_Customer ON Customer(Id);
+
+-- Non-clustered indexes for frequent queries
+CREATE INDEX IX_Customer_Name ON Customer(Name);
+CREATE INDEX IX_Customer_BusinessUnit ON Customer(BusinessUnitId);
+CREATE INDEX IX_Quote_Customer ON Quote(CustomerId);
+CREATE INDEX IX_WorkOrder_Status ON WorkOrder(Status);
+
+-- Filtered index for active records only
+CREATE INDEX IX_Customer_Active 
+ON Customer(Name) WHERE IsActive = 1;
+
+-- Composite index for common query patterns
+CREATE INDEX IX_Timesheet_Employee_Date 
+ON Timesheet(EmployeeId, EntryDate);
+            </div>
+        </div>
+
+        <h2>🔗 Layer Interactions Summary</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>From Layer</th>
+                    <th>To Layer</th>
+                    <th>Interaction Method</th>
+                    <th>Data Format</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Angular Frontend</td>
+                    <td>Web API</td>
+                    <td>HTTP/HTTPS (REST)</td>
+                    <td>JSON</td>
+                </tr>
+                <tr>
+                    <td>Web API</td>
+                    <td>Business Logic</td>
+                    <td>Method Calls</td>
+                    <td>DTOs (C# Objects)</td>
+                </tr>
+                <tr>
+                    <td>Business Logic</td>
+                    <td>Data Access</td>
+                    <td>Repository Pattern</td>
+                    <td>Entities (EF Objects)</td>
+                </tr>
+                <tr>
+                    <td>Data Access</td>
+                    <td>Database</td>
+                    <td>SQL Queries (EF/ADO.NET)</td>
+                    <td>SQL</td>
+                </tr>
+                <tr>
+                    <td>SignalR Hub</td>
+                    <td>Angular Frontend</td>
+                    <td>WebSocket/SSE</td>
+                    <td>JSON</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="index.html" class="back-link">← Back to Documentation Index</a>
+    </div>
+</body>
+</html>

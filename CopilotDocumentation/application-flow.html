@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESI Application - Application Flow Diagrams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .flow-diagram {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        .flow-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: -30px -30px 25px -30px;
+            text-align: center;
+        }
+        .flow-step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            position: relative;
+        }
+        .flow-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .flow-step h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+            margin-left: 25px;
+        }
+        .flow-step p {
+            margin: 5px 0 5px 25px;
+            text-align: left;
+        }
+        .flow-step ul {
+            margin-left: 50px;
+        }
+        .arrow-down {
+            text-align: center;
+            font-size: 2em;
+            color: #667eea;
+            margin: 5px 0;
+        }
+        .layer-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .actor-label {
+            background: #764ba2;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .system-label {
+            background: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .decision-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .decision-box h5 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 NESI Application Flow Diagrams</h1>
+        
+        <div class="highlight-box">
+            <h2>Data Flow Overview</h2>
+            <p>
+                This document visualizes the data flow through the NESI application for key business processes. 
+                Each diagram shows the sequence of steps, actors involved, system components, and data transformations 
+                as information moves through the application layers.
+            </p>
+        </div>
+
+        <div class="flow-diagram">
+            <div class="flow-header">
+                📝 Quote to Work Order Flow
+            </div>
+
+            <h3>Overview</h3>
+            <p>This flow shows how a customer quote progresses through the system from creation to work order conversion, tracking approvals, customer acceptance, and final handoff to operations.</p>
+
+            <div class="flow-step" data-step="1">
+                <h4>Customer Request</h4>
+                <p><span class="actor-label">Customer</span> → <span class="system-label">Sales Rep</span></p>
+                <p><strong>Input:</strong> Project requirements, specifications, timeline</p>
+                <p><strong>Output:</strong> Opportunity created in CRM</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="2">
+                <h4>Quote Creation</h4>
+                <p><span class="actor-label">Sales Representative</span> → <span class="system-label">Quote Module</span></p>
+                <ul>
+                    <li><strong>UI:</strong> Angular Quote Component</li>
+                    <li><strong>API:</strong> POST /api/page/quotes</li>
+                    <li><strong>BLL:</strong> QuoteService.CreateQuote()</li>
+                    <li><strong>DAL:</strong> Entity Framework saves Quote entity</li>
+                    <li><strong>DB:</strong> INSERT into Quote, QuoteLine tables</li>
+                </ul>
+                <p><strong>Data Created:</strong> Quote header, line items, pricing, terms</p>
+                <p><strong>Status:</strong> Draft</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="3">
+                <h4>Quote Calculation</h4>
+                <p><span class="system-label">System Automatic</span></p>
+                <ul>
+                    <li>Sum line item totals (qty × unit price)</li>
+                    <li>Calculate subtotal</li>
+                    <li>Apply tax rate based on customer location</li>
+                    <li>Calculate grand total</li>
+                    <li>Calculate profit margin</li>
+                </ul>
+                <p><strong>Business Logic:</strong> QuoteCalculation.cs</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="decision-box">
+                <h5>💡 Decision: Requires Approval?</h5>
+                <p><strong>Condition:</strong> Total Amount > $50,000 OR Discount > 15%</p>
+                <ul>
+                    <li><strong>YES</strong> → Proceed to Step 4</li>
+                    <li><strong>NO</strong> → Skip to Step 6</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="4">
+                <h4>Internal Approval Request</h4>
+                <p><span class="actor-label">Sales Rep</span> → <span class="system-label">Approval Workflow</span></p>
+                <ul>
+                    <li>Sales Rep clicks "Submit for Approval"</li>
+                    <li>System routes to Manager based on business rules</li>
+                    <li>Manager notified via SignalR + Email</li>
+                    <li>Notification appears on Manager dashboard</li>
+                </ul>
+                <p><strong>Status:</strong> Pending Approval</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="5">
+                <h4>Manager Review & Approval</h4>
+                <p><span class="actor-label">Manager</span> → <span class="system-label">Approval Module</span></p>
+                <ul>
+                    <li>Manager reviews quote details</li>
+                    <li>Checks profit margins and customer history</li>
+                    <li>Approves or rejects with comments</li>
+                    <li>API: PUT /api/page/quotes/{id}/approve</li>
+                </ul>
+                <p><strong>Status:</strong> Approved (or Rejected)</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="6">
+                <h4>Quote Generation & Delivery</h4>
+                <p><span class="actor-label">Sales Rep</span> → <span class="system-label">Document Generation</span></p>
+                <ul>
+                    <li>Generate PDF quote document</li>
+                    <li>Email to customer contacts</li>
+                    <li>Upload to customer portal (if enabled)</li>
+                    <li>Log customer access/downloads</li>
+                </ul>
+                <p><strong>Status:</strong> Sent to Customer</p>
+                <p><strong>Data Flow:</strong> Quote data → PDF template → Email service → Customer</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="7">
+                <h4>Customer Review</h4>
+                <p><span class="actor-label">Customer</span> → <span class="system-label">Customer Portal / Email</span></p>
+                <ul>
+                    <li>Customer receives and reviews quote</li>
+                    <li>May request revisions (loop back to Step 2)</li>
+                    <li>Accepts quote via email or portal</li>
+                </ul>
+                <p><strong>Status:</strong> Customer Approved</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="8">
+                <h4>Convert to Work Order</h4>
+                <p><span class="actor-label">Sales Rep</span> → <span class="system-label">Work Order Module</span></p>
+                <ul>
+                    <li>Sales Rep clicks "Convert to Work Order"</li>
+                    <li><strong>API:</strong> POST /api/page/quotes/{id}/convert</li>
+                    <li><strong>BLL:</strong> QuoteService.ConvertToWorkOrder()</li>
+                    <li>System creates work order from quote template</li>
+                    <li>Copies customer, line items, dates, assignments</li>
+                    <li>Links quote reference to work order</li>
+                    <li><strong>DB:</strong> INSERT into WorkOrder, WorkOrderLine tables</li>
+                </ul>
+                <p><strong>Quote Status:</strong> Converted</p>
+                <p><strong>Work Order Status:</strong> Open</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="9">
+                <h4>Work Order Assignment</h4>
+                <p><span class="actor-label">Project Manager</span> → <span class="system-label">Work Order Module</span></p>
+                <ul>
+                    <li>PM assigns team members to work order</li>
+                    <li>Sets schedule and milestones</li>
+                    <li>Assigns tasks to technicians</li>
+                    <li>SignalR notifies assigned users</li>
+                    <li>Work order appears on technician dashboards</li>
+                </ul>
+                <p><strong>Status:</strong> Assigned / In Progress</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="10">
+                <h4>Work Execution</h4>
+                <p><span class="actor-label">Field Technicians</span> → <span class="system-label">Multiple Modules</span></p>
+                <ul>
+                    <li>Log time via Timesheet module</li>
+                    <li>Update work order status and notes</li>
+                    <li>Upload photos and documents</li>
+                    <li>Request materials (triggers PO flow)</li>
+                </ul>
+                <p><strong>Data Captured:</strong> Labor hours, materials used, completion %</p>
+            </div>
+        </div>
+
+        <div class="flow-diagram">
+            <div class="flow-header">
+                ⏱️ Time Entry to Payroll Flow
+            </div>
+
+            <div class="flow-step" data-step="1">
+                <h4>Time Entry</h4>
+                <p><span class="actor-label">Employee</span> → <span class="system-label">Timesheet Module</span></p>
+                <ul>
+                    <li><strong>UI:</strong> Timesheet component</li>
+                    <li>Employee selects work order or project</li>
+                    <li>Enters date, hours, pay type, job type</li>
+                    <li>Adds notes about work performed</li>
+                    <li><strong>API:</strong> POST /api/page/timesheet</li>
+                    <li><strong>BLL:</strong> TimesheetService.SaveEntry()</li>
+                    <li><strong>Validation:</strong> Hours > 0, <= 24, required fields</li>
+                </ul>
+                <p><strong>Data Storage:</strong> Timesheet table</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="2">
+                <h4>Business Logic Processing</h4>
+                <p><span class="system-label">System Automatic</span></p>
+                <ul>
+                    <li>Calculate overtime (if > 40 hours/week)</li>
+                    <li>Allocate to business unit</li>
+                    <li>Link to work order for job costing</li>
+                    <li>Calculate cost (hours × employee rate)</li>
+                    <li>Update work order hours summary</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="3">
+                <h4>Timesheet Submission</h4>
+                <p><span class="actor-label">Employee</span> → <span class="system-label">Approval Workflow</span></p>
+                <ul>
+                    <li>Employee reviews weekly timesheet</li>
+                    <li>Clicks "Submit for Approval"</li>
+                    <li>System validates completeness</li>
+                    <li>Routes to supervisor</li>
+                    <li>Supervisor notified</li>
+                </ul>
+                <p><strong>Status:</strong> Pending Approval</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="4">
+                <h4>Supervisor Review</h4>
+                <p><span class="actor-label">Supervisor</span> → <span class="system-label">Approval Module</span></p>
+                <ul>
+                    <li>Reviews employee timesheets</li>
+                    <li>Verifies hours against work orders</li>
+                    <li>Checks for anomalies (excessive hours, wrong codes)</li>
+                    <li>Approves or rejects with comments</li>
+                </ul>
+                <p><strong>Status:</strong> Approved (or Rejected)</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="5">
+                <h4>Payroll Export</h4>
+                <p><span class="system-label">System Batch Process</span> → <span class="actor-label">Payroll System</span></p>
+                <ul>
+                    <li>Scheduled batch job runs (weekly/bi-weekly)</li>
+                    <li>Queries approved timesheets for pay period</li>
+                    <li>Aggregates hours by employee and pay type</li>
+                    <li>Calculates totals (regular, overtime, PTO)</li>
+                    <li>Generates export file (CSV/XML)</li>
+                    <li>Transfers to payroll system (FTP/API)</li>
+                </ul>
+                <p><strong>Data Format:</strong> Employee ID, Pay Type, Hours, Rate, Total</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="6">
+                <h4>Job Costing Update</h4>
+                <p><span class="system-label">System Automatic</span></p>
+                <ul>
+                    <li>Approved hours allocated to work orders</li>
+                    <li>Labor costs calculated and summed</li>
+                    <li>Work order budget tracking updated</li>
+                    <li>Available in job cost reports</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flow-diagram">
+            <div class="flow-header">
+                🛒 Purchase Order Flow
+            </div>
+
+            <div class="flow-step" data-step="1">
+                <h4>Material Need Identification</h4>
+                <p><span class="actor-label">Project Manager / Technician</span></p>
+                <ul>
+                    <li>Work order requires materials</li>
+                    <li>Check inventory availability</li>
+                    <li>If not available, create purchase request</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="2">
+                <h4>Vendor Selection</h4>
+                <p><span class="actor-label">Purchasing Agent</span> → <span class="system-label">Vendor Module</span></p>
+                <ul>
+                    <li>Search vendors by specialty</li>
+                    <li>Review vendor ratings and history</li>
+                    <li>Compare pricing and lead times</li>
+                    <li>Select preferred vendor</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="3">
+                <h4>PO Creation</h4>
+                <p><span class="actor-label">Purchasing Agent</span> → <span class="system-label">PO Module</span></p>
+                <ul>
+                    <li><strong>API:</strong> POST /api/page/purchaseorder</li>
+                    <li>Enter PO header (vendor, ship to, terms)</li>
+                    <li>Link to work order</li>
+                    <li>Add line items (part #, qty, price)</li>
+                    <li>Allocate to business unit</li>
+                    <li>System calculates totals with tax</li>
+                </ul>
+                <p><strong>Status:</strong> Draft</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="decision-box">
+                <h5>💡 Decision: Requires Approval?</h5>
+                <p><strong>Condition:</strong> Total Amount > Approval Threshold</p>
+                <ul>
+                    <li><strong>YES</strong> → Proceed to Step 4</li>
+                    <li><strong>NO</strong> → Skip to Step 5</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="4">
+                <h4>Manager Approval</h4>
+                <p><span class="actor-label">Manager</span> → <span class="system-label">Approval Module</span></p>
+                <ul>
+                    <li>Review PO details and budget impact</li>
+                    <li>Verify business necessity</li>
+                    <li>Approve or reject</li>
+                </ul>
+                <p><strong>Status:</strong> Approved</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="5">
+                <h4>PO Transmission</h4>
+                <p><span class="system-label">System</span> → <span class="actor-label">Vendor</span></p>
+                <ul>
+                    <li>Generate PO PDF document</li>
+                    <li>Email to vendor contacts</li>
+                    <li>Vendor portal notification (if enabled)</li>
+                    <li>Log transmission</li>
+                </ul>
+                <p><strong>Status:</strong> Sent to Vendor</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="6">
+                <h4>Vendor Processing</h4>
+                <p><span class="actor-label">Vendor</span></p>
+                <ul>
+                    <li>Receives PO</li>
+                    <li>Acknowledges receipt</li>
+                    <li>Provides estimated ship date</li>
+                    <li>Prepares order</li>
+                    <li>Ships materials</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="7">
+                <h4>Receiving</h4>
+                <p><span class="actor-label">Warehouse Staff</span> → <span class="system-label">Receiving Module</span></p>
+                <ul>
+                    <li>Materials arrive at dock</li>
+                    <li>Scan or search for PO</li>
+                    <li><strong>API:</strong> POST /api/page/purchaseorder/{id}/receive</li>
+                    <li>Enter received quantities per line</li>
+                    <li>Note any discrepancies</li>
+                    <li>System updates inventory quantities</li>
+                    <li>Materials available for work orders</li>
+                </ul>
+                <p><strong>Status:</strong> Received (Full or Partial)</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="8">
+                <h4>Invoice Matching (3-Way Match)</h4>
+                <p><span class="actor-label">Accounting</span> → <span class="system-label">AP Module</span></p>
+                <ul>
+                    <li>Vendor invoice received</li>
+                    <li>Match invoice to PO</li>
+                    <li>Match to receiving records</li>
+                    <li>Validate quantities and prices</li>
+                    <li>Resolve discrepancies</li>
+                    <li>Approve for payment</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="9">
+                <h4>Payment Processing</h4>
+                <p><span class="system-label">Accounting System</span> → <span class="actor-label">Vendor</span></p>
+                <ul>
+                    <li>Payment scheduled based on terms</li>
+                    <li>Check or ACH generated</li>
+                    <li>Payment sent to vendor</li>
+                    <li>PO marked as paid</li>
+                </ul>
+                <p><strong>Status:</strong> Closed</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="10">
+                <h4>Cost Allocation</h4>
+                <p><span class="system-label">System Automatic</span></p>
+                <ul>
+                    <li>PO costs allocated to work order</li>
+                    <li>Material costs added to job costing</li>
+                    <li>Budget tracking updated</li>
+                    <li>Available in financial reports</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flow-diagram">
+            <div class="flow-header">
+                🔐 Authentication Flow
+            </div>
+
+            <div class="flow-step" data-step="1">
+                <h4>User Login Request</h4>
+                <p><span class="actor-label">User</span> → <span class="system-label">Angular Login Component</span></p>
+                <ul>
+                    <li>User enters username and password</li>
+                    <li>Clicks "Sign In" button</li>
+                    <li>Angular form validation</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="2">
+                <h4>Token Request</h4>
+                <p><span class="system-label">Angular</span> → <span class="system-label">OAuth Endpoint</span></p>
+                <ul>
+                    <li><strong>Endpoint:</strong> POST /token</li>
+                    <li><strong>Headers:</strong> Content-Type: application/x-www-form-urlencoded</li>
+                    <li><strong>Body:</strong> grant_type=password&username=...&password=...</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="3">
+                <h4>OWIN Authentication Pipeline</h4>
+                <p><span class="system-label">OWIN Middleware</span></p>
+                <ul>
+                    <li>Request intercepted by OAuth middleware</li>
+                    <li>NesiAuthorizationServerProvider.GrantResourceOwnerCredentials()</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="4">
+                <h4>Credential Validation</h4>
+                <p><span class="system-label">AuthRepository</span> → <span class="system-label">Database</span></p>
+                <ul>
+                    <li>Query User table by username</li>
+                    <li>Verify user is active</li>
+                    <li>Hash submitted password</li>
+                    <li>Compare to stored password hash</li>
+                    <li>Log login attempt (success/failure)</li>
+                    <li>Record IP address and timestamp</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="decision-box">
+                <h5>💡 Decision: Valid Credentials?</h5>
+                <ul>
+                    <li><strong>YES</strong> → Proceed to Step 5</li>
+                    <li><strong>NO</strong> → Return 401 Unauthorized, error message</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="5">
+                <h4>User Data Loading</h4>
+                <p><span class="system-label">AuthRepository</span></p>
+                <ul>
+                    <li>Load user permissions (pages, privileges)</li>
+                    <li>Load business unit assignments</li>
+                    <li>Load role information</li>
+                    <li>Create User object with full profile</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="6">
+                <h4>Token Generation</h4>
+                <p><span class="system-label">OAuth Server</span></p>
+                <ul>
+                    <li>Generate unique GUID for user session</li>
+                    <li>Store user in Global.OnlineUser cache</li>
+                    <li>Create ClaimsIdentity with user data</li>
+                    <li>Generate access token (JWT-like)</li>
+                    <li>Generate refresh token</li>
+                    <li>Set expiration times</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="7">
+                <h4>Token Response</h4>
+                <p><span class="system-label">OAuth Server</span> → <span class="system-label">Angular</span></p>
+                <ul>
+                    <li><strong>Response (200 OK):</strong></li>
+                    <li>access_token: "Bearer token string"</li>
+                    <li>token_type: "bearer"</li>
+                    <li>expires_in: seconds</li>
+                    <li>refresh_token: "refresh token string"</li>
+                    <li>userName: "username"</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="8">
+                <h4>Client Token Storage</h4>
+                <p><span class="system-label">Angular AuthService</span></p>
+                <ul>
+                    <li>Store access_token in LocalStorage</li>
+                    <li>Store refresh_token in LocalStorage</li>
+                    <li>Store user profile data in @ngrx store</li>
+                    <li>Set authentication state to true</li>
+                    <li>Navigate to dashboard</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="9">
+                <h4>Subsequent API Requests</h4>
+                <p><span class="system-label">Angular</span> → <span class="system-label">Web API</span></p>
+                <ul>
+                    <li>HTTP Interceptor adds Bearer token to headers</li>
+                    <li><strong>Header:</strong> Authorization: Bearer {token}</li>
+                    <li>OWIN middleware validates token</li>
+                    <li>Extracts user identity from token</li>
+                    <li>Sets HttpContext.User</li>
+                    <li>Controller accesses CurrentUser</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="flow-step" data-step="10">
+                <h4>Session Maintenance</h4>
+                <p><span class="system-label">System</span></p>
+                <ul>
+                    <li>Token expires after configured time</li>
+                    <li>Client uses refresh token to get new access token</li>
+                    <li>Automatic token refresh before expiration</li>
+                    <li>User remains logged in seamlessly</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📊 Flow Summary Table</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Flow</th>
+                    <th>Actors</th>
+                    <th>Key Systems</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Quote to Work Order</strong></td>
+                    <td>Sales Rep, Manager, Customer, Project Manager</td>
+                    <td>Quote Module, Approval Module, Work Order Module</td>
+                    <td>Days to weeks</td>
+                </tr>
+                <tr>
+                    <td><strong>Time Entry to Payroll</strong></td>
+                    <td>Employee, Supervisor, Payroll System</td>
+                    <td>Timesheet Module, Approval Module, Export</td>
+                    <td>Weekly/bi-weekly</td>
+                </tr>
+                <tr>
+                    <td><strong>Purchase Order</strong></td>
+                    <td>Purchasing Agent, Manager, Vendor, Warehouse, Accounting</td>
+                    <td>PO Module, Receiving Module, AP Module</td>
+                    <td>Days to weeks</td>
+                </tr>
+                <tr>
+                    <td><strong>Authentication</strong></td>
+                    <td>User</td>
+                    <td>OAuth Server, AuthRepository, Database</td>
+                    <td>Seconds</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <h3>🔑 Key Takeaways</h3>
+            <ul>
+                <li><strong>Multi-Layer Architecture:</strong> All flows traverse Frontend → API → BLL → DAL → Database</li>
+                <li><strong>Approval Workflows:</strong> Business logic determines routing based on dollar amounts and business rules</li>
+                <li><strong>Real-time Notifications:</strong> SignalR pushes updates to relevant users at key stages</li>
+                <li><strong>Data Linkage:</strong> Entities are connected (Quote → Work Order, PO → Work Order, Time → Work Order)</li>
+                <li><strong>Audit Trail:</strong> Every step logged for compliance and troubleshooting</li>
+                <li><strong>Security:</strong> OAuth tokens validated on every API request, authorization filters check permissions</li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Documentation Index</a>
+    </div>
+</body>
+</html>

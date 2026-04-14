@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESI Application - Security & Authentication</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .security-level {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 5px;
+            color: white;
+        }
+        .level-high { background: #dc3545; }
+        .level-medium { background: #ffc107; color: #333; }
+        .level-low { background: #28a745; }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .feature-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #764ba2;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 NESI Security & Authentication</h1>
+        
+        <div class="highlight-box">
+            <h2>Security Overview</h2>
+            <p>
+                NESI implements a comprehensive multi-layered security architecture that protects sensitive business data 
+                through OAuth 2.0 authentication, role-based authorization, and granular access controls. The system supports 
+                three distinct user types (Employee, Customer, Vendor) with customizable permission structures at page, 
+                privilege, and role levels.
+            </p>
+        </div>
+
+        <h2>🔑 OAuth 2.0 Bearer Token Authentication</h2>
+        
+        <h3>Authentication Flow</h3>
+        <p>
+            NESI uses <strong>OAuth 2.0 Bearer Token</strong> authentication implemented via Microsoft OWIN middleware. 
+            The authentication process follows these steps:
+        </p>
+        
+        <div class="highlight-box">
+            <ol>
+                <li><strong>Client Request:</strong> User submits credentials (username/password) to <code>/token</code> endpoint</li>
+                <li><strong>Credential Validation:</strong> NesiAuthorizationServerProvider validates credentials against the database</li>
+                <li><strong>Token Generation:</strong> Upon successful authentication, OAuth server generates access token and refresh token</li>
+                <li><strong>Token Response:</strong> Tokens returned to client with expiration time</li>
+                <li><strong>API Access:</strong> Client includes Bearer token in Authorization header for subsequent API requests</li>
+                <li><strong>Token Validation:</strong> Each API request validates the Bearer token before processing</li>
+                <li><strong>Token Refresh:</strong> Client can use refresh token to obtain new access token without re-authentication</li>
+            </ol>
+        </div>
+
+        <h3>Token Configuration</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Token Endpoint</strong></td>
+                    <td>/token</td>
+                    <td>OAuth token generation endpoint</td>
+                </tr>
+                <tr>
+                    <td><strong>Access Token Expiration</strong></td>
+                    <td>Configurable (default from config)</td>
+                    <td>Time before access token expires</td>
+                </tr>
+                <tr>
+                    <td><strong>Refresh Token Expiration</strong></td>
+                    <td>360x Access Token Time</td>
+                    <td>Extended time for refresh tokens</td>
+                </tr>
+                <tr>
+                    <td><strong>Bearer Token Format</strong></td>
+                    <td>JWT-like structure</td>
+                    <td>Contains user claims and identity</td>
+                </tr>
+                <tr>
+                    <td><strong>Allow Insecure HTTP</strong></td>
+                    <td>True (config dependent)</td>
+                    <td>For development environments</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Authentication Provider Implementation</h3>
+        <div class="code-block">
+// NesiAuthorizationServerProvider.cs
+public override async Task GrantResourceOwnerCredentials(
+    OAuthGrantResourceOwnerCredentialsContext context)
+{
+    using (var repo = new AuthRepository())
+    {
+        var user = repo.FindUser(
+            context.UserName, 
+            context.Password, 
+            context.Request.RemoteIpAddress
+        );
+        
+        if (user == null)
+        {
+            context.Rejected();
+            context.SetError("invalid_grant", "Invalid username/password");
+        }
+        else
+        {
+            var ticket = CreateTicket(user, context.Options.AuthenticationType);
+            context.Validated(ticket);
+        }
+    }
+}
+        </div>
+
+        <h2>👥 User Types & Access Levels</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>🏢 Employee Users</h4>
+                <p><strong>Access Level:</strong> Full System</p>
+                <p>Internal employees with role-based permissions to all business functions including CRM, quotes, work orders, purchasing, time tracking, and administrative tools.</p>
+                <ul>
+                    <li>Page-level authorization</li>
+                    <li>Privilege-based controls</li>
+                    <li>Business unit filtering</li>
+                    <li>Role assignments</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>👤 Customer Users</h4>
+                <p><strong>Access Level:</strong> Customer Portal</p>
+                <p>External customer contacts with limited access to view their organization's data including quotes, work orders, and account information.</p>
+                <ul>
+                    <li>Read-only access to own data</li>
+                    <li>Quote viewing</li>
+                    <li>Work order tracking</li>
+                    <li>Document downloads</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>🏭 Vendor Users</h4>
+                <p><strong>Access Level:</strong> Vendor Portal</p>
+                <p>Vendor contacts with access to purchase orders, vendor information updates, and communication with purchasing teams.</p>
+                <ul>
+                    <li>PO viewing and updates</li>
+                    <li>Vendor profile management</li>
+                    <li>Invoice submission</li>
+                    <li>Communication tools</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🛡️ Multi-Level Authorization</h2>
+        
+        <h3>1. Page-Level Authorization</h3>
+        <div class="highlight-box">
+            <p>
+                <strong>PageAuthorizationFilterAttribute</strong> enforces access control at the controller/page level. 
+                Each controller is decorated with a specific page ID, and the filter validates that the current user 
+                has authorization to access that page.
+            </p>
+            <div class="code-block">
+[PageAuthorizationFilter(PageId = 123)]
+public class CustomerController : ApiController
+{
+    // Page authorization checked before any action executes
+}
+            </div>
+            <p><strong>Implementation:</strong> Checks user.AuthorizePage(PageId) against UserPageAuth table</p>
+        </div>
+
+        <h3>2. Privilege-Level Authorization</h3>
+        <div class="highlight-box">
+            <p>
+                <strong>PrivilegeAuthorizationFilterAttribute</strong> provides fine-grained control over specific 
+                actions within a page. Even if a user has page access, they may need additional privileges for 
+                sensitive operations (create, edit, delete, approve, etc.).
+            </p>
+            <div class="code-block">
+[PrivilegeAuthorizationFilter(PrivilegeId = 456)]
+public IHttpActionResult DeleteCustomer(int id)
+{
+    // Privilege authorization for delete operations
+}
+            </div>
+            <p><strong>Implementation:</strong> Checks user.AuthorizePrivilege(PrivilegeId) against UserPrivAuth table</p>
+        </div>
+
+        <h3>3. Role-Based Authorization</h3>
+        <div class="highlight-box">
+            <p>
+                Users are assigned to one or more roles (Administrator, Manager, Sales, Technician, etc.). Roles 
+                define collections of pages and privileges that can be assigned to users as a group.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Typical Permissions</th>
+                        <th>Common Users</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Administrator</strong></td>
+                        <td>Full system access, user management, configuration</td>
+                        <td>IT Staff, System Admins</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manager</strong></td>
+                        <td>Approve quotes, manage work orders, view reports</td>
+                        <td>Department Managers, Supervisors</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sales</strong></td>
+                        <td>Customer management, quote creation, sales reports</td>
+                        <td>Sales Representatives</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Project Manager</strong></td>
+                        <td>Work order management, resource allocation, scheduling</td>
+                        <td>Project Managers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Technician</strong></td>
+                        <td>Timesheet entry, work order viewing, expense tracking</td>
+                        <td>Field Technicians, Engineers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accounting</strong></td>
+                        <td>Financial reports, invoicing, AR/AP management</td>
+                        <td>Accounting Staff</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>4. Business Unit Filtering</h3>
+        <div class="highlight-box">
+            <p>
+                Beyond page and privilege authorization, NESI implements <strong>data-level security</strong> through 
+                business unit filtering. Users are assigned to specific business units and can only access data 
+                associated with their authorized units.
+            </p>
+            <ul>
+                <li><strong>FilterBusinessUnit:</strong> Automatically filters queries by user's business unit assignments</li>
+                <li><strong>Multi-Unit Access:</strong> Users can be assigned to multiple business units</li>
+                <li><strong>Data Segregation:</strong> Ensures users cannot access data outside their authorized scope</li>
+                <li><strong>API-Level Filtering:</strong> Applied at data access layer, not just UI</li>
+            </ul>
+        </div>
+
+        <h2>🔒 Password Policies</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Policy</th>
+                    <th>Requirement</th>
+                    <th>Enforcement</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Password Complexity</strong></td>
+                    <td>Configurable requirements for length, character types</td>
+                    <td>Server-side validation</td>
+                </tr>
+                <tr>
+                    <td><strong>Password Expiration</strong></td>
+                    <td>Periodic password changes (configurable interval)</td>
+                    <td>Database flag check</td>
+                </tr>
+                <tr>
+                    <td><strong>Password History</strong></td>
+                    <td>Cannot reuse previous passwords</td>
+                    <td>Historical password hashing</td>
+                </tr>
+                <tr>
+                    <td><strong>Account Lockout</strong></td>
+                    <td>Temporary lockout after failed attempts</td>
+                    <td>AuthRepository validation</td>
+                </tr>
+                <tr>
+                    <td><strong>Password Reset</strong></td>
+                    <td>Secure password reset workflow</td>
+                    <td>Token-based verification</td>
+                </tr>
+                <tr>
+                    <td><strong>First Login</strong></td>
+                    <td>Force password change on first login</td>
+                    <td>Database flag enforcement</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Password Storage</h3>
+        <div class="highlight-box">
+            <p>
+                Passwords are stored using <strong>cryptographic hashing</strong> algorithms (BCrypt or similar). 
+                Plain-text passwords are never stored in the database. Password verification compares hashes 
+                rather than plain-text values.
+            </p>
+        </div>
+
+        <h2>⏱️ Session Management</h2>
+        
+        <h3>Session Configuration</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Setting</th>
+                    <th>Value</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Session Timeout</strong></td>
+                    <td>1440 minutes (24 hours)</td>
+                    <td>Extended timeout for long-running operations</td>
+                </tr>
+                <tr>
+                    <td><strong>Token Storage</strong></td>
+                    <td>Client-side (LocalStorage/SessionStorage)</td>
+                    <td>Bearer token cached for API requests</td>
+                </tr>
+                <tr>
+                    <td><strong>Session State</strong></td>
+                    <td>Stateless (token-based)</td>
+                    <td>No server-side session storage required</td>
+                </tr>
+                <tr>
+                    <td><strong>Concurrent Sessions</strong></td>
+                    <td>Allowed</td>
+                    <td>Users can be logged in from multiple devices</td>
+                </tr>
+                <tr>
+                    <td><strong>Session Tracking</strong></td>
+                    <td>Global.OnlineUser cache</td>
+                    <td>Track active users for real-time features</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>User Session Lifecycle</h3>
+        <div class="highlight-box">
+            <ol>
+                <li><strong>Login:</strong> User authenticates and receives Bearer token</li>
+                <li><strong>Token Caching:</strong> Token stored in client (LocalStorage or SessionStorage)</li>
+                <li><strong>Active Session:</strong> User tracked in Global.OnlineUser dictionary with unique GUID</li>
+                <li><strong>API Requests:</strong> Each request includes Bearer token in Authorization header</li>
+                <li><strong>Token Validation:</strong> OWIN middleware validates token on each request</li>
+                <li><strong>Token Refresh:</strong> Client can refresh expired tokens using refresh token</li>
+                <li><strong>Logout:</strong> Client discards tokens, server removes from OnlineUser cache</li>
+            </ol>
+        </div>
+
+        <h3>Passport-Based Authentication</h3>
+        <div class="highlight-box">
+            <p>
+                NESI supports a <strong>passport-based authentication</strong> mechanism for user switching and 
+                special authentication scenarios. Administrators can generate secure passports to log in as 
+                another user for support or testing purposes.
+            </p>
+            <div class="code-block">
+// Grant type: "passport"
+// Parameters: passport_hash (encrypted passport ID)
+public override async Task GrantCustomExtension(OAuthGrantCustomExtensionContext context)
+{
+    var passportId = context.Parameters["passport_hash"];
+    var passport = new passport(passportId);
+    
+    if (passport.check())
+    {
+        var user = repo.FindUser(passport.to_member_id);
+        context.Validated(CreateTicket(user, context.Options.AuthenticationType));
+    }
+}
+            </div>
+        </div>
+
+        <h2>📝 Audit Logging</h2>
+        
+        <h3>Logged Security Events</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Event Type</th>
+                    <th>Data Captured</th>
+                    <th>Storage Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>User Login</strong></td>
+                    <td>Username, timestamp, IP address, success/failure</td>
+                    <td>LoginHistory table</td>
+                </tr>
+                <tr>
+                    <td><strong>Failed Login Attempts</strong></td>
+                    <td>Username, IP address, timestamp, reason</td>
+                    <td>LoginHistory table</td>
+                </tr>
+                <tr>
+                    <td><strong>Password Changes</strong></td>
+                    <td>User ID, change timestamp, initiated by</td>
+                    <td>PasswordHistory table</td>
+                </tr>
+                <tr>
+                    <td><strong>User Switches</strong></td>
+                    <td>Original user, target user, timestamp, reason</td>
+                    <td>AuditLog table</td>
+                </tr>
+                <tr>
+                    <td><strong>Permission Changes</strong></td>
+                    <td>User ID, permission changes, modified by, timestamp</td>
+                    <td>UserPageAuth/UserPrivAuth tables</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Access</strong></td>
+                    <td>User ID, accessed resource, timestamp, action type</td>
+                    <td>ActivityLog table</td>
+                </tr>
+                <tr>
+                    <td><strong>Administrative Actions</strong></td>
+                    <td>Admin user, action type, target entity, timestamp</td>
+                    <td>AuditLog table</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Audit Trail Features</h3>
+        <div class="highlight-box">
+            <ul>
+                <li><strong>IP Address Logging:</strong> All authentication attempts log client IP address</li>
+                <li><strong>User Agent Tracking:</strong> Browser and device information captured</li>
+                <li><strong>Action Logging:</strong> CRUD operations on sensitive data are logged</li>
+                <li><strong>Change History:</strong> Before/after values for critical data changes</li>
+                <li><strong>Retention Policy:</strong> Audit logs retained per compliance requirements</li>
+                <li><strong>Tamper-Proof:</strong> Audit logs are insert-only with no update/delete permissions</li>
+                <li><strong>Reporting:</strong> Audit reports available for security review and compliance</li>
+            </ul>
+        </div>
+
+        <h2>🚨 Security Best Practices Implemented</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>🔐 HTTPS Enforcement</h4>
+                <p>Production deployment requires HTTPS for all communications. OAuth tokens transmitted only over encrypted connections.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>🛡️ CORS Configuration</h4>
+                <p>Cross-Origin Resource Sharing (CORS) configured to allow specific origins for API access.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>🔒 SQL Injection Prevention</h4>
+                <p>Entity Framework with parameterized queries prevents SQL injection attacks.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>🚫 XSS Protection</h4>
+                <p>Input validation and output encoding prevent cross-site scripting attacks.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>⚡ Rate Limiting</h4>
+                <p>API rate limiting prevents brute force attacks and denial of service.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>📊 Error Handling</h4>
+                <p>Secure error messages prevent information disclosure while logging detailed errors server-side.</p>
+            </div>
+        </div>
+
+        <h2>🔍 Security Monitoring & Alerting</h2>
+        
+        <div class="highlight-box">
+            <h3>Active Monitoring</h3>
+            <ul>
+                <li><strong>Failed Login Monitoring:</strong> Alerts on excessive failed login attempts</li>
+                <li><strong>Unusual Access Patterns:</strong> Detection of abnormal user behavior</li>
+                <li><strong>Privilege Escalation:</strong> Monitoring for unauthorized privilege changes</li>
+                <li><strong>After-Hours Access:</strong> Alerts for access outside normal business hours</li>
+                <li><strong>Data Export Monitoring:</strong> Tracking of large data exports or unusual queries</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠️ Security Considerations</h3>
+            <ul>
+                <li>Regularly review and update user permissions</li>
+                <li>Enforce strong password policies organization-wide</li>
+                <li>Monitor audit logs for suspicious activity</li>
+                <li>Keep OAuth token expiration times appropriate for your security requirements</li>
+                <li>Implement network-level security (VPN, firewall rules) for external access</li>
+                <li>Regular security assessments and penetration testing recommended</li>
+            </ul>
+        </div>
+
+        <h2>🔑 Key Security Components Summary</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Technology</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>OAuth Server</strong></td>
+                    <td>Microsoft.Owin.Security.OAuth</td>
+                    <td>Token generation and validation</td>
+                </tr>
+                <tr>
+                    <td><strong>Auth Provider</strong></td>
+                    <td>NesiAuthorizationServerProvider</td>
+                    <td>Credential validation and token issuance</td>
+                </tr>
+                <tr>
+                    <td><strong>Page Authorization</strong></td>
+                    <td>PageAuthorizationFilterAttribute</td>
+                    <td>Controller-level access control</td>
+                </tr>
+                <tr>
+                    <td><strong>Privilege Authorization</strong></td>
+                    <td>PrivilegeAuthorizationFilterAttribute</td>
+                    <td>Action-level access control</td>
+                </tr>
+                <tr>
+                    <td><strong>Session Management</strong></td>
+                    <td>Global.OnlineUser cache</td>
+                    <td>Active user tracking</td>
+                </tr>
+                <tr>
+                    <td><strong>Audit Logging</strong></td>
+                    <td>log4net + Database tables</td>
+                    <td>Security event tracking</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="index.html" class="back-link">← Back to Documentation Index</a>
+    </div>
+</body>
+</html>

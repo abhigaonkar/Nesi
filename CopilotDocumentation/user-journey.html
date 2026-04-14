@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESI Application - User Journey & Workflows</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .journey-step {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .journey-step::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .journey-step h4 {
+            color: #667eea;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .persona-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .persona-card h3 {
+            color: white;
+            margin-top: 0;
+        }
+        .workflow-diagram {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+        }
+        .arrow-down {
+            text-align: center;
+            font-size: 2em;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #764ba2;
+        }
+        .tip-box {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👤 NESI User Journey & Workflows</h1>
+        
+        <div class="highlight-box">
+            <h2>User Journey Overview</h2>
+            <p>
+                This document maps out typical user journeys through the NESI application, illustrating how different 
+                user personas interact with the system to accomplish their daily tasks. Each journey represents a 
+                real-world workflow from start to completion.
+            </p>
+        </div>
+
+        <h2>👥 User Personas</h2>
+
+        <div class="persona-card">
+            <h3>🏢 Sarah - Field Technician</h3>
+            <p><strong>Role:</strong> Field Engineer</p>
+            <p><strong>Primary Tasks:</strong> Time tracking, work order updates, expense entry</p>
+            <p><strong>Goals:</strong> Log hours accurately, update work status, submit expenses quickly</p>
+            <p><strong>Pain Points:</strong> Mobile access, complex timesheet entry, unclear work order details</p>
+        </div>
+
+        <div class="persona-card">
+            <h3>💼 Mike - Sales Representative</h3>
+            <p><strong>Role:</strong> Sales Team Member</p>
+            <p><strong>Primary Tasks:</strong> Customer management, quote creation, opportunity tracking</p>
+            <p><strong>Goals:</strong> Close deals, generate accurate quotes, maintain customer relationships</p>
+            <p><strong>Pain Points:</strong> Quote complexity, approval delays, customer data accuracy</p>
+        </div>
+
+        <div class="persona-card">
+            <h3>📊 Jennifer - Project Manager</h3>
+            <p><strong>Role:</strong> Project Management</p>
+            <p><strong>Primary Tasks:</strong> Work order management, resource allocation, project tracking</p>
+            <p><strong>Goals:</strong> Complete projects on time and budget, optimize resource utilization</p>
+            <p><strong>Pain Points:</strong> Resource conflicts, status visibility, budget overruns</p>
+        </div>
+
+        <div class="persona-card">
+            <h3>🛒 David - Purchasing Agent</h3>
+            <p><strong>Role:</strong> Procurement Team</p>
+            <p><strong>Primary Tasks:</strong> Purchase order creation, vendor management, receiving</p>
+            <p><strong>Goals:</strong> Procure materials efficiently, manage vendor relationships, control costs</p>
+            <p><strong>Pain Points:</strong> Vendor response times, budget tracking, receiving discrepancies</p>
+        </div>
+
+        <h2>🎯 Journey 1: Employee Login to Timesheet Entry</h2>
+        <p><strong>Persona:</strong> Sarah (Field Technician)</p>
+        <p><strong>Scenario:</strong> End of day, Sarah needs to log her hours for multiple work orders</p>
+
+        <div class="journey-step" data-step="Step 1">
+            <h4>🔐 Authentication</h4>
+            <p><strong>Action:</strong> Sarah opens NESI in her browser and navigates to the login page</p>
+            <ul>
+                <li>Enters username and password</li>
+                <li>Clicks "Sign In" button</li>
+                <li>System validates credentials via OAuth</li>
+                <li>Bearer token generated and stored</li>
+            </ul>
+            <p><strong>UI Elements:</strong> Login form, company logo, "Forgot Password" link</p>
+            <p><strong>Duration:</strong> 10-15 seconds</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 2">
+            <h4>🏠 Dashboard / Home Page</h4>
+            <p><strong>Action:</strong> Sarah lands on her personalized dashboard</p>
+            <ul>
+                <li>Views assigned tasks and work orders</li>
+                <li>Sees pending timesheet entries</li>
+                <li>Checks notifications (SignalR real-time updates)</li>
+                <li>Reviews upcoming vacation requests</li>
+            </ul>
+            <p><strong>UI Elements:</strong> Dashboard widgets, navigation menu, notification bell, search bar</p>
+            <p><strong>Duration:</strong> 30-60 seconds (review)</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 3">
+            <h4>⏱️ Navigate to Timesheet</h4>
+            <p><strong>Action:</strong> Sarah clicks on "Timesheet" from the main navigation</p>
+            <ul>
+                <li>System checks PageAuthorization for Timesheet page</li>
+                <li>Loads timesheet module (Angular component)</li>
+                <li>Fetches current week's timesheet data via API</li>
+                <li>Displays calendar view with existing entries</li>
+            </ul>
+            <p><strong>API Call:</strong> GET /api/page/timesheet</p>
+            <p><strong>Duration:</strong> 2-3 seconds</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 4">
+            <h4>📝 Select Work Order</h4>
+            <p><strong>Action:</strong> Sarah chooses the work order she worked on today</p>
+            <ul>
+                <li>Clicks "Add Time Entry" button</li>
+                <li>Opens work order picker dialog</li>
+                <li>Searches for work order by number or customer</li>
+                <li>System filters by business unit authorization</li>
+                <li>Selects work order from dropdown list</li>
+            </ul>
+            <p><strong>UI Elements:</strong> Dropdown, search filter, work order details preview</p>
+            <p><strong>Duration:</strong> 10-20 seconds</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 5">
+            <h4>🕐 Enter Time Details</h4>
+            <p><strong>Action:</strong> Sarah fills in time entry details</p>
+            <ul>
+                <li>Selects date (defaults to today)</li>
+                <li>Chooses pay type (Regular, Overtime, Double Time)</li>
+                <li>Enters hours worked (8.0)</li>
+                <li>Selects job type (Field Work, Installation, Troubleshooting)</li>
+                <li>Adds optional notes/comments</li>
+                <li>Allocates hours to business unit if multi-unit</li>
+            </ul>
+            <p><strong>Validation:</strong> Hours must be > 0, must not exceed 24, pay type required</p>
+            <p><strong>Duration:</strong> 30-45 seconds</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 6">
+            <h4>💾 Save Time Entry</h4>
+            <p><strong>Action:</strong> Sarah clicks "Save" to submit time entry</p>
+            <ul>
+                <li>Client-side validation checks all required fields</li>
+                <li>Angular dispatches saveTimeEntry action</li>
+                <li>@ngrx effect calls TimeSheetService.saveEntry()</li>
+                <li>POST request to /api/page/timesheet with Bearer token</li>
+                <li>API validates authorization and business rules</li>
+                <li>BLL calculates totals and applies pay rules</li>
+                <li>Entity Framework saves to database</li>
+                <li>Success response returns to client</li>
+            </ul>
+            <p><strong>API Call:</strong> POST /api/page/timesheet</p>
+            <p><strong>Duration:</strong> 1-2 seconds</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 7">
+            <h4>✅ Confirmation & Next Action</h4>
+            <p><strong>Action:</strong> System confirms save and updates UI</p>
+            <ul>
+                <li>Success toast notification displayed</li>
+                <li>Timesheet grid refreshes with new entry</li>
+                <li>Daily/weekly totals recalculated</li>
+                <li>Sarah can add more entries or submit timesheet for approval</li>
+            </ul>
+            <p><strong>Next Steps:</strong> Add more time entries, add expenses, or submit for approval</p>
+        </div>
+
+        <h2>💰 Journey 2: Sales Quote Creation to Work Order Conversion</h2>
+        <p><strong>Persona:</strong> Mike (Sales Representative)</p>
+        <p><strong>Scenario:</strong> Mike creates a quote for a new customer project and converts to work order</p>
+
+        <div class="workflow-diagram">
+            <h3 style="color: #667eea;">Quote-to-Work Order Workflow</h3>
+            
+            <div class="journey-step" data-step="Step 1">
+                <h4>🔍 Customer Search/Creation</h4>
+                <ul>
+                    <li>Navigate to Customers module</li>
+                    <li>Search for existing customer or create new</li>
+                    <li>Enter/verify customer details (name, address, contacts)</li>
+                    <li>Assign customer to business unit</li>
+                </ul>
+                <p><strong>Duration:</strong> 2-5 minutes (new customer), 30 seconds (existing)</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="journey-step" data-step="Step 2">
+                <h4>📋 Create New Quote</h4>
+                <ul>
+                    <li>Click "Create Quote" from customer page</li>
+                    <li>Select quote type (Time & Material, Fixed Price)</li>
+                    <li>Enter project description and scope</li>
+                    <li>Set estimated start and completion dates</li>
+                    <li>Assign project manager/responsible employee</li>
+                </ul>
+                <p><strong>API Call:</strong> POST /api/page/quotes/new</p>
+                <p><strong>Duration:</strong> 2-3 minutes</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="journey-step" data-step="Step 3">
+                <h4>📝 Add Quote Line Items</h4>
+                <ul>
+                    <li>Add labor line items (job types, hours, rates)</li>
+                    <li>Add material line items (inventory or custom)</li>
+                    <li>Add equipment/asset charges</li>
+                    <li>Apply markups and discounts</li>
+                    <li>System calculates totals automatically</li>
+                </ul>
+                <p><strong>Features:</strong> Template-based entry, copy from previous quote, bulk import</p>
+                <p><strong>Duration:</strong> 10-20 minutes</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="journey-step" data-step="Step 4">
+                <h4>📊 Review and Adjust Pricing</h4>
+                <ul>
+                    <li>Review total quote amount</li>
+                    <li>Check profit margins</li>
+                    <li>Compare to customer rate history</li>
+                    <li>Adjust pricing if needed</li>
+                    <li>Add terms and conditions</li>
+                </ul>
+                <p><strong>Reports:</strong> Quote summary, profit analysis, rate comparison</p>
+                <p><strong>Duration:</strong> 5-10 minutes</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="journey-step" data-step="Step 5">
+                <h4>✅ Submit for Approval (if required)</h4>
+                <ul>
+                    <li>Click "Submit for Approval" button</li>
+                    <li>System checks approval thresholds (dollar amount)</li>
+                    <li>Quote routed to manager for approval</li>
+                    <li>Manager receives notification (SignalR + Email)</li>
+                    <li>Manager reviews and approves/rejects</li>
+                </ul>
+                <p><strong>Status:</strong> Pending Approval → Approved or Rejected</p>
+                <p><strong>Duration:</strong> Minutes to hours (depends on manager availability)</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="journey-step" data-step="Step 6">
+                <h4>📧 Send Quote to Customer</h4>
+                <ul>
+                    <li>Generate PDF quote document</li>
+                    <li>Email quote to customer contacts</li>
+                    <li>Customer views quote in portal (optional)</li>
+                    <li>Track customer quote views and downloads</li>
+                </ul>
+                <p><strong>Status:</strong> Sent to Customer</p>
+                <p><strong>Duration:</strong> 2-3 minutes</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="journey-step" data-step="Step 7">
+                <h4>✔️ Customer Approval</h4>
+                <ul>
+                    <li>Customer reviews quote</li>
+                    <li>May request revisions (iterate steps 3-6)</li>
+                    <li>Customer approves via email or portal</li>
+                    <li>Mike updates quote status to "Customer Approved"</li>
+                </ul>
+                <p><strong>Status:</strong> Customer Approved</p>
+                <p><strong>Duration:</strong> Days to weeks (customer-dependent)</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="journey-step" data-step="Step 8">
+                <h4>🔧 Convert to Work Order</h4>
+                <ul>
+                    <li>Mike clicks "Convert to Work Order" button</li>
+                    <li>System validates quote status (must be approved)</li>
+                    <li>Creates work order from quote template</li>
+                    <li>Copies line items, customer, dates, assignments</li>
+                    <li>Sets work order status to "Open"</li>
+                    <li>Links quote to work order (reference)</li>
+                </ul>
+                <p><strong>API Call:</strong> POST /api/page/quotes/{id}/convert</p>
+                <p><strong>Status:</strong> Quote Converted → Work Order Created</p>
+                <p><strong>Duration:</strong> 5-10 seconds</p>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <div class="journey-step" data-step="Step 9">
+                <h4>🎯 Work Order Assignment</h4>
+                <ul>
+                    <li>Project manager assigns team members</li>
+                    <li>Schedules start date and milestones</li>
+                    <li>Assigns tasks to technicians</li>
+                    <li>Technicians receive notifications (SignalR)</li>
+                    <li>Work order appears on technician dashboards</li>
+                </ul>
+                <p><strong>Handoff:</strong> From Sales to Operations</p>
+            </div>
+        </div>
+
+        <h2>🛒 Journey 3: Purchase Order Workflow</h2>
+        <p><strong>Persona:</strong> David (Purchasing Agent)</p>
+        <p><strong>Scenario:</strong> Create PO for materials needed for work order, receive goods, and process</p>
+
+        <div class="journey-step" data-step="Step 1">
+            <h4>📦 Identify Material Need</h4>
+            <p><strong>Trigger:</strong> Work order requires materials not in inventory</p>
+            <ul>
+                <li>Project manager flags material requirement</li>
+                <li>David reviews work order materials list</li>
+                <li>Checks inventory availability</li>
+                <li>Determines need for purchase</li>
+            </ul>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 2">
+            <h4>🏭 Select Vendor</h4>
+            <ul>
+                <li>Navigate to Vendors module</li>
+                <li>Search vendors by specialty/capability</li>
+                <li>Review vendor history and ratings</li>
+                <li>Compare pricing (if multiple vendors)</li>
+                <li>Select preferred vendor</li>
+            </ul>
+            <p><strong>Considerations:</strong> Price, delivery time, vendor reliability, terms</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 3">
+            <h4>📝 Create Purchase Order</h4>
+            <ul>
+                <li>Click "Create PO" button</li>
+                <li>Select vendor from dropdown</li>
+                <li>Link to work order (for cost tracking)</li>
+                <li>Enter PO header details (ship to, terms, required date)</li>
+                <li>Add line items (part number, description, quantity, unit price)</li>
+                <li>Allocate costs to business unit</li>
+                <li>System calculates totals with tax</li>
+            </ul>
+            <p><strong>API Call:</strong> POST /api/page/purchaseorder</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 4">
+            <h4>✅ PO Approval (if required)</h4>
+            <ul>
+                <li>Submit PO for approval based on dollar threshold</li>
+                <li>Manager reviews PO details and budget impact</li>
+                <li>Approves or rejects with comments</li>
+                <li>David notified of approval status</li>
+            </ul>
+            <p><strong>Approval Rules:</strong> Dollar thresholds, budget availability, business unit authorization</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 5">
+            <h4>📧 Send PO to Vendor</h4>
+            <ul>
+                <li>Generate PO PDF document</li>
+                <li>Email PO to vendor contacts</li>
+                <li>Vendor accesses PO via vendor portal (optional)</li>
+                <li>Set PO status to "Sent to Vendor"</li>
+            </ul>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 6">
+            <h4>📦 Receive Goods</h4>
+            <ul>
+                <li>Goods arrive at receiving dock</li>
+                <li>Warehouse staff navigates to PO receiving module</li>
+                <li>Scans or searches for PO number</li>
+                <li>Enters received quantities per line item</li>
+                <li>Notes any discrepancies (quantity or quality issues)</li>
+                <li>Saves receipt record with timestamp</li>
+            </ul>
+            <p><strong>API Call:</strong> POST /api/page/purchaseorder/{id}/receive</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 7">
+            <h4>💰 Invoice Processing</h4>
+            <ul>
+                <li>Vendor invoice received (email or mail)</li>
+                <li>Accounting matches invoice to PO and receipt</li>
+                <li>Three-way match: PO, Receipt, Invoice</li>
+                <li>Resolve any discrepancies</li>
+                <li>Approve invoice for payment</li>
+                <li>Schedule payment based on terms</li>
+            </ul>
+        </div>
+
+        <h2>👤 Journey 4: Customer Portal Access</h2>
+        <p><strong>Persona:</strong> External Customer Contact</p>
+        <p><strong>Scenario:</strong> Customer logs in to view work order progress and documents</p>
+
+        <div class="journey-step" data-step="Step 1">
+            <h4>🔐 Customer Portal Login</h4>
+            <ul>
+                <li>Customer navigates to NESI portal URL</li>
+                <li>Enters customer portal credentials</li>
+                <li>OAuth validates customer user type</li>
+                <li>Lands on customer-specific dashboard</li>
+            </ul>
+            <p><strong>Security:</strong> Limited access, data filtered by customer organization</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 2">
+            <h4>📊 View Work Orders</h4>
+            <ul>
+                <li>Customer sees list of their active work orders</li>
+                <li>Filters by status (Open, In Progress, Complete)</li>
+                <li>Clicks on work order to view details</li>
+                <li>Views project description, timeline, assigned team</li>
+                <li>Reviews work order line items and costs</li>
+            </ul>
+            <p><strong>Read-Only Access:</strong> Customers cannot modify work orders</p>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 3">
+            <h4>📁 Download Documents</h4>
+            <ul>
+                <li>Accesses documents tab</li>
+                <li>Views uploaded documents (quotes, invoices, certifications)</li>
+                <li>Downloads PDF documents</li>
+                <li>All downloads logged for audit</li>
+            </ul>
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="journey-step" data-step="Step 4">
+            <h4>📧 Submit Request</h4>
+            <ul>
+                <li>Customer can submit new service requests</li>
+                <li>Fills out request form with details</li>
+                <li>Uploads attachments if needed</li>
+                <li>Submits request</li>
+                <li>Request routed to appropriate sales/service team</li>
+                <li>Customer receives confirmation email</li>
+            </ul>
+        </div>
+
+        <h2>💡 User Journey Best Practices</h2>
+
+        <div class="tip-box">
+            <h3>🎯 Optimization Tips</h3>
+            <ul>
+                <li><strong>Minimize Clicks:</strong> Common actions should be accessible in 2-3 clicks</li>
+                <li><strong>Smart Defaults:</strong> Pre-populate fields based on user context and history</li>
+                <li><strong>Bulk Actions:</strong> Allow batch processing for repetitive tasks</li>
+                <li><strong>Keyboard Shortcuts:</strong> Power users benefit from keyboard navigation</li>
+                <li><strong>Mobile Optimization:</strong> Field users need mobile-friendly interfaces</li>
+                <li><strong>Real-time Feedback:</strong> SignalR notifications keep users informed</li>
+                <li><strong>Contextual Help:</strong> Inline help and tooltips reduce support needs</li>
+            </ul>
+        </div>
+
+        <h2>📊 Journey Metrics & KPIs</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Journey</th>
+                    <th>Average Duration</th>
+                    <th>Success Rate</th>
+                    <th>Common Issues</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Timesheet Entry</strong></td>
+                    <td>3-5 minutes</td>
+                    <td>98%</td>
+                    <td>Forgetting to submit, incorrect work order selection</td>
+                </tr>
+                <tr>
+                    <td><strong>Quote Creation</strong></td>
+                    <td>20-40 minutes</td>
+                    <td>95%</td>
+                    <td>Pricing errors, missing line items, approval delays</td>
+                </tr>
+                <tr>
+                    <td><strong>PO Processing</strong></td>
+                    <td>10-15 minutes</td>
+                    <td>97%</td>
+                    <td>Vendor selection, receiving discrepancies</td>
+                </tr>
+                <tr>
+                    <td><strong>Customer Portal</strong></td>
+                    <td>5-10 minutes</td>
+                    <td>92%</td>
+                    <td>Login issues, document not found</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="index.html" class="back-link">← Back to Documentation Index</a>
+    </div>
+</body>
+</html>
