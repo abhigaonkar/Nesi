@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Nesi.Api/Nesi.Api.csproj" />
+    <Project Path="src/Nesi.Application/Nesi.Application.csproj" />
+    <Project Path="src/Nesi.Domain/Nesi.Domain.csproj" />
+    <Project Path="src/Nesi.Infrastructure/Nesi.Infrastructure.csproj" />
+  </Folder>
+</Solution>
