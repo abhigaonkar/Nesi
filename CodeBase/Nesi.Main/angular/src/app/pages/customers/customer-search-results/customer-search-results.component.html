@@ -1,0 +1,38 @@
+<div class="ui-g-12 cusomter_search">
+  <div class="ui-g-12">
+    <p-dataTable [value]="items" [lazy]="true" [rows]="20" [pageLinks]="10" [paginator]="true" [responsive]="true" sortMode="single"
+      [loading]="loading" loadingIcon="fa-spinner" rowHover="true" resizableColumns="false" [totalRecords]="totalRecorders"
+      (onRowClick)="openCustomer($event)"
+      (onLazyLoad)="loadLazy($event)" [sortField]="sortField" [sortOrder]="sortOrder" [rowStyleClass]="applyRowStyle">
+      <p-header>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <div class="ui-g-12">
+            <div class="ui-g-12 ui-md-6 ui-lg-4">
+              <input pInputText [(ngModel)]="text" />
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-lg-2">
+              <button pButton label="Find" icon="fa-search" (click)="doSearch()"></button>
+            </div>
+          </div>
+        </div>
+      </p-header>
+      <p-column field="customer_id" [style]="{'width':'4%'}" header="No" [sortable]="true"></p-column>
+      <p-column field="customer_name" header="Name"  [style]="{'width':'8%'}" [sortable]="true"></p-column>
+      <p-column field="address_" header="Address"  [style]="{'width':'26%'}" [sortable]="true"></p-column>
+      <p-column field="phone" header="Phone"  [style]="{'width':'6%'}" [sortable]="true"></p-column>
+      <p-column field="membername"  [style]="{'width':'6%'}" header="Account Manager" [sortable]="true"></p-column>
+      <p-column field="hold"  [style]="{'width':'2%'}" header="On Hold" [sortable]="true"></p-column>
+      <p-column field="dateadded"  [style]="{'width':'6%'}" header="Date Added" [sortable]="true">
+      
+      </p-column>
+      <p-column field="statuss"  [style]="{'width':'4%'}" header="Address Status" [sortable]="true"></p-column>
+      <p-column field="cust_status"  [style]="{'width':'6%'}" header="Customer Status" [sortable]="true"></p-column>
+      <p-column field="address_table"  [style]="{'width':'4%'}" header="Location Type" [sortable]="true"></p-column>
+    </p-dataTable>
+  </div>
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-nopad last_month">This Customer was added in the last month</div>
+    <div class="ui-g-12 ui-nopad not_QC1">Customer has not been QC1'd yet</div>
+    <div class="ui-g-12 ui-nopad on_hold">Customer is On Hold</div>
+  </div>
+</div>

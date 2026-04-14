@@ -1,0 +1,11 @@
+<p-dialog header="Session timeout warning" [(visible)]="display" [modal]="true" [responsive]="true" (onHide)="stop()">
+  <div class="ui-g-12 center">
+    <article>Your session will expire automatically in
+      <b>{{ countdown | timerFormat}}</b>.
+      Click "Continue session" to extend your session.
+    </article>
+  </div>
+  <p-footer>
+    <button pButton type="button" (click)="display=false" label="Continue Session" icon="fa-thumbs-up"></button>
+  </p-footer>
+</p-dialog>

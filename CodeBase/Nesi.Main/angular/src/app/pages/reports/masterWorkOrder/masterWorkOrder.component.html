@@ -1,0 +1,31 @@
+<!-- <p-checkbox binary="true" label="Include Progress Billings"  [(ngModel)]="checked"></p-checkbox> -->
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Master Work Order Grid'}]"></nesi-breadcurmb>
+  </div>
+  <div class="ui-g-12">
+    <nesi-datatable [id]='77' gridName="MasterWorkOrder" gridTitle="" 
+    [fixed_header_scroll]="260"
+    [visible_business_type]="'S'"
+    [dropdownOptions]="{acting_ram: optionList}"
+      (onEdit)="openEdit($event)" (onDropDownChange)="activeRamUpdate($event)" (onRefresh)="loadDetail()">
+      <div class="bill-pro" style="display:block">
+        <div class="check-color">
+          <div class="service_call check-y">
+            <p>Service Call</p>
+          </div>
+          <div class="on_hold check-p">
+            <p>On Hold</p>
+          </div>
+        </div>
+      </div>
+    </nesi-datatable>
+  </div>
+</div>
+<p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Editing {{entity && entity.woprog_id}}" [draggable]="true"
+  [(visible)]="displayEdit" [positionTop]="50" (onHide)="exitFromEditor()">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <masterWorkOrder-editor [masterWorkOrder]="entity" (onExit)="exitFromEditor()" [optionList]="optionList" [editLink]="link" [showExpectedStartDate]="true">
+    </masterWorkOrder-editor>
+  </div>
+</p-dialog>

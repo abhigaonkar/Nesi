@@ -1,0 +1,39 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <nesi-breadcurmb [items]="[{label: 'Release System'}]"></nesi-breadcurmb>
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <!-- <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        Send Notification to:
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        <nesi-ReactiveDropDown [options]="sites" formControlName="hostName"></nesi-ReactiveDropDown>
+      </div>
+    </div> -->
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-nopad label_for_right">
+        Update Time in:
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        <nesi-ReactiveDropDown [options]="timeOptions" formControlName="minutes"></nesi-ReactiveDropDown>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-nopad label_for_right">
+        Shut Down Time in:
+        <b>{{this.seconds
+          < 0 ? this.seconds: ''}}</b>
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        <nesi-ReactiveDropDown [options]="timeOptions" formControlName="shutDownTime"></nesi-ReactiveDropDown>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        &nbsp;
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        <button pButton type="submit" label="Send Notification & Update Web Site" icon="fa fa-comment"></button>
+      </div>
+    </div>
+  </form>
+</div>

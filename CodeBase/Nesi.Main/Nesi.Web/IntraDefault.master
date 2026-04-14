@@ -1,0 +1,117 @@
+<%@ Master Language="C#" AutoEventWireup="true" Inherits="IntraDefault" EnableTheming="True" Codebehind="IntraDefault.master.cs" %>
+
+<%@ Register Assembly="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<script type="text/javascript">
+		var ts_start = new Date().getTime();
+	</script>
+	<title>Spark Ops</title>
+    <link id="ico" rel="shortcut icon" runat="server"  />
+    <link href="App_Themes/BlueStyle/common.css?id=FD32K412LL54" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.7.1.custom.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.tip.js"></script>
+	<asp:PlaceHolder runat="server" id="js_functions_block" EnableViewState="False">
+	</asp:PlaceHolder>
+	<script type="text/javascript" src="/js/jquery.spellcheck.js"></script>
+	<script type="text/javascript" src="/js/jquery.autocomplete.js"></script>
+	<script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+	<asp:placeholder id="mobile_header_tags" runat="server" visible="false">
+	<meta content="True" name="HandheldFriendly" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, minimum-scale=1 user-scalable=1" />
+	<meta name="theme-color" content="#4682B4">
+	</asp:placeholder>
+	<script type="text/javascript" src="/js/jquery.inventory_new.js"></script>
+	<script type="text/javascript">
+	    
+
+
+		window.alert = function (msg, duration, run_script) {
+			page_obj.global_message.alert(msg, duration, run_script);
+		}
+
+		$("document").ready(function ()
+			{
+		   
+			page_obj.plcapture();
+			page_obj.bindtips();
+			page_obj.bind_vid();
+			//page_obj.scrollCheck.bind();
+			});
+		$(window).resize(function() {
+			page_obj.bind_vid();
+		});
+
+		function open_message_div()
+		{
+		    var x = document.getElementById("div_pop_message");
+	//	    x.style.visibility = 'visible';
+		}
+		function close_message_div()
+		{
+		    var x = document.getElementById("div_pop_message");
+		    x.style.visibility = 'hidden';
+		}
+		function send_message_div() {
+		    var x = document.getElementById("div_pop_message");
+		    x.style.visibility = 'hidden';
+		    default_cb.PerformCallback('send_message');
+		}
+	</script>
+	<link type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" rel="Stylesheet" />
+    <asp:ContentPlaceHolder ID="header_placeholder" runat="server" />
+</head>
+<body id="IntraDefaultMasterPageBodyTag" runat="server">
+	<form id="form1" runat="server">
+		<table cellpadding="0" cellspacing="0" id="maincontent" class="body">
+			<tr>
+				<td valign="top" align="left" class="td_content">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr class="page_heading" id="page_heading" runat="server">
+							<td valign="middle" style="height:30px; padding-left: 20px; margin-left:0px;">
+								<div style="margin-left:0px;"><asp:Label ID="lblHeading" runat="server" Font-Bold="True" Font-Names="Calibri" Font-Size="12pt" /></div>
+								<div >
+							<dx:ASPxCallbackPanel ID="cb_defaultpage" runat="server" ClientInstanceName="cb_defaultpage" HideContentOnCallback="True" OnCallback="cb_defaultpage_Callback"  >
+								<ClientSideEvents BeginCallback="function(s, e) {
+	please_wait('start', 'Setting this as your default page');
+}" EndCallback="function(s, e) {
+	please_wait('stop');
+	alert('This page has been set as your default page');
+	
+}" />
+								<PanelCollection>
+									<dx:PanelContent ID="PanelContent1" runat="server" SupportsDisabledAttribute="True">
+										<dx:ASPxHyperLink ID="hl_default" CssClass="default_page" runat="server" Text="(Make this my default page)">
+											<ClientSideEvents Click="function(s, e) {cb_defaultpage.PerformCallback();}" />
+										</dx:ASPxHyperLink>
+									</dx:PanelContent>
+								</PanelCollection>
+							</dx:ASPxCallbackPanel>
+							</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="page_content" valign="top" colspan="2">
+								<asp:ContentPlaceHolder ID="cphMasterBody" runat="server" />
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+		<asp:ContentPlaceHolder ID="cphMasterMenu" runat="server" Visible="false" />
+		<asp:ContentPlaceHolder ID="cphMasterLeft" runat="server" Visible="false" />
+		<asp:ContentPlaceHolder ID="cphMasterSubMenu" runat="server" Visible="false" />
+	</form>
+
+
+</body>
+</html>
+

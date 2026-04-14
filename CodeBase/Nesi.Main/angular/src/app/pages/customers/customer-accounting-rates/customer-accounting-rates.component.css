@@ -1,0 +1,11 @@
+::ng-deep  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  ::ng-deep  td, th {
+    border: 2px solid #dddddd;
+    text-align: left;
+    padding: 2px;
+  }

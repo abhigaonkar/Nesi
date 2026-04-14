@@ -1,0 +1,17 @@
+<div class="ui-g-12 ui-g-nopad workorder_bucket_header">
+  {{title}} ({{list.length}})
+</div>
+<div class="ui-g-12 ui-g-nopad">
+  <p-scrollPanel [style]="{'width': '100%', 'height': height + 'px', 'background-color': 'white'}" title="">
+    <ng-container *ngFor="let item of list; let i=index">
+      <nesi-workorder-bucket-open-item [business_unit_id]="business_unit_id" [item]="item"></nesi-workorder-bucket-open-item>
+    </ng-container>
+  <br>
+  <br>
+  <br>
+  </p-scrollPanel>
+
+</div>
+<div class="ui-g-12 ui-g-nopad bold center">
+  {{ total | currency:'CAD':'symbol-narrow':'1.2-2' }}
+</div>

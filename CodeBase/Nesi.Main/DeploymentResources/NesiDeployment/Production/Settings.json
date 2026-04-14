@@ -1,0 +1,39 @@
+{
+    "Deployment": {
+        "Name": "NESI Production",
+        "Confirm": true,
+        "Projects": [
+            {
+                "Type": "dotnet",
+                "Name": "Nesi.All",
+                "Solution": "C:\\Builds\\nesi\\Nesi.Main\\Nesi.All.sln",
+                "Configuration": "Production",
+                "Username": "na-prodweb01\\deployuser",
+                "Password": "EMHjy5em",
+                "Clean": true,
+                "RestorePackages": true,
+                "Deploy": true,
+                "UseExternalWindow": false,
+                "AutoCloseExternalWindow": true
+            },
+            {
+                "Type": "angular",
+                "Name": "Nesi.Angular",
+				"Build" : true,
+                "Deploy": true,
+                "ProjectFolder":"C:\\Builds\\nesi\\Nesi.Main\\angular",
+                "BuildOutputFolder":".\\dist",
+                "BuildCommand":".\\build.bat",
+                "ServerAddress": "na-prodweb01.newelectric.local",
+                "SiteName": "nesi.ca_live_angular",
+                "Port":8172,
+                "PreDeployScript":null,
+                "PostDeployScript":".\\CopyAngular.bat",
+                "Username": "na-prodweb01\\deployuser",
+                "Password": "EMHjy5em",
+                "UseExternalWindow": false,
+                "AutoCloseExternalWindow": true
+            }
+        ]
+    }
+}

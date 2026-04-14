@@ -1,0 +1,220 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-2">
+
+    </div>
+    <div class="ui-g-12 ui-md-10" [ngStyle]="{ 'display': !customerWoFilterable? 'none':'block'}">
+      If you cannot find a certain work order below, please make sure that its customer is not on hold and has also been QC'ed
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="customerWoEditable">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Netsuite Hours Type:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [required]="false" [options]="tsLiteTypes" [filter]="(tsLiteTypes && tsLiteTypes.length >5)"
+        [disabled]="disabled" [(ngModel)]="selectedTsLiteType" (onChange)="onNetsuiteHrSelect($event)"></p-dropdown>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="customerWoEditable">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Customer Name:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input pInputText [(ngModel)]="selectedCustomer">
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad ui-g-nopad" [ngStyle]="{ 'display': !customerWoFilterable? 'none':'block'}">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Customer Name:
+    </div>
+    <div class="ui-g-12 ui-md-8">
+      <nesi-timesheetWorkOrderCustomer [editable]="!selectedRow && customerWoEditable" [filter]="customerWoFilterable" [disabled]="disabled"
+        [URL]="APIURLCustomerList" [(ngModel)]="selectedCustomer" (OnAfterLoadUrl)="afterCustomerLoad()" (onChange)="OnChangeCustomer($event)">
+      </nesi-timesheetWorkOrderCustomer>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" *ngIf="customerWoEditable">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Job #:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input pInputText pKeyFilter="pint" [(ngModel)]="selectedWorkOrder">
+    </div>
+
+  </div>
+  <div class="ui-g-12 ui-g-nopad" [ngStyle]="{ 'display': !customerWoFilterable? 'none':'block'}">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Work Order Number:
+    </div>
+    <div class="ui-g-12 ui-md-8">
+      <nesi-timesheetWorkOrderWo [disabled]="disabled" [editable]="!selectedRow && customerWoEditable" [filter]="customerWoFilterable"
+        (OnAfterLoadUrl)="afterWosLoad()" [URL]="APIURLWorkOrderWosList" [(ngModel)]="selectedWorkOrder" (onChange)="OnChangeWOs($event)"></nesi-timesheetWorkOrderWo>
+    </div>
+    <div class="ui-g-12 ui-md-8" *ngIf="cs.isSm" >
+      {{selectedWorkOrderLabel}}
+    </div>    
+    <div class="ui-g-12 ui-md-2" *ngIf="selectedWorkOrder">
+      <button pButton  type="button" label="Final Signoff"  icon="fa-file-alt" iconPos="left" (click)="signOff()"></button>
+    </div>
+  </div>
+
+  <div class="ui-g-12 ui-g-nopad ui-g-nopad" [ngStyle]="{ 'display': !customerWoFilterable? 'none':'block'}">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Province/State:
+    </div>
+    <div class="ui-g-12 ui-md-8">
+      <dx-select-box [dataSource]="provinces" displayExpr="label" valueExpr="value" [grouped]="true"
+      height="30" #provinceControl>
+    </dx-select-box>
+    </div>
+  </div>
+
+  <div class="ui-g-12 ui-g-nopad" [ngStyle]="{ 'display': !customerWoFilterable? 'none':'block'}">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Scope/Task:
+    </div>
+    <div class="ui-g-12 ui-md-8">
+   <dx-select-box [items]="taskList" displayExpr="name" valueExpr="id" [showClearButton]="true"
+  height="30" #scopes>
+</dx-select-box>
+
+    
+    </div>  
+  </div>
+
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-CompletePercent [(ngModel)]="percentComplete"></nesi-CompletePercent>
+  </div>
+
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      How was your day?
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <p-rating [(ngModel)]="rating" [cancel]="false"></p-rating>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="showJobType" [style.display]="hide_hourjobtype">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Job Type:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <dx-select-box [items]="jobTypeInfo.jobTypes" displayExpr="membertype_name" valueExpr="membertype_id" [value]="jobTypeInfo.defaultValue.membertype_id" 
+          height="30" #jobtypecontrol (onSelectionChanged)="jobTypeSelected($event)">
+      </dx-select-box>
+      <!-- <p>Selected Job Type: {{jobtypecontrol.text}} -- {{jobtypecontrol.value}}</p> -->
+    </div>
+  </div> 
+  <div class="ui-g-12 ui-g-nopad" [style.display]="entryType_radio_boxes">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Entry Type:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <p-radioButton name="group2" value="single"   label=" Single  " [(ngModel)]="entryType"  inputId="entryTypeopt1" (onClick)="entyType_Single_Click()" [disabled]="noshowSingle"></p-radioButton>
+      <p-radioButton name="group2" [disabled]="noshowMultiple || (showJobType && (!isJobTypeSelected()))" value="multiple" label=" Multiple" [(ngModel)]="entryType"  inputId="entryTypeopt2" (onClick)="entyType_Multiple_Click()"></p-radioButton>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" [style.display]="prevailingWageVisible? 'block': 'none'">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Is Prevailing Wage
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <p-checkbox binary="true" [ngModel]="isPrevailingWage" type="checkbox" (onChange)="onIsPrevailingWageChecked($event)"></p-checkbox>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="(showJobType && showMileage && !customerWoEditable) || showMileagelOnEdit">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Mileage:
+    </div>
+    <div class="ui-g-12 ui-md-10">      
+      <p-checkbox binary="false" [(ngModel)]="mileageChk" type="checkbox" [disabled]="disableMileage" (onChange)="onMileageChecked($event)" #mileage></p-checkbox> 
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" [style.display]="entryType_SinglePart_Showingup" *ngIf="!IsHour" >
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Unit Types:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+           <p-inputSwitch [(ngModel)]="checked" onLabel="Kilometers" offLabel="Miles" (onChange)="handleChange($event)"></p-inputSwitch>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" [style.display]="entryType_SinglePart_Showingup" *ngIf="!IsHour" >
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Distance({{Unit}}):
+    </div>
+    <div class="ui-g-12 ui-md-10">
+        <input type="number" step="0.01" pInputText [(ngModel)]="distance" class="inputDistance"  [min]="0" [max]="99999.99"
+         (change)="onDistanceChange($event)" (blur)="constrainToHave2DecimalsInMax($event)" />
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="(showJobType && showTravel && !customerWoEditable) || showTravelOnEdit">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Travel:
+    </div>
+    <div class="ui-g-12 ui-md-10">      
+      <p-checkbox binary="false" type="checkbox" [(ngModel)]="travelChk" [disabled]="disableTravel" (onChange)="onTravelChecked($event)" #travel></p-checkbox> 
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" [style.display]="entryType_SinglePart_Showingup" *ngIf="IsHour" >
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Hrs:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input type="number"  step="0.01" pInputText [(ngModel)]="hours" class="inputHrs"  [min]="minvalue" [max]="maxvalue"  (change)="onChange($event)"/>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad ui-g-nopad" [style.display]="entryType_SinglePart_Showingup">
+    <div class="ui-g-12 ui-md-2 label_for_right" [style.display]="hide_hourjobtype">
+      Hour Type:
+    </div>
+    <div class="ui-g-12 ui-md-10" [style.display]="hide_hourjobtype">
+      <nesi-timesheetWorkOrderHourType [disabled]="disabled" labelField="description" valueField="payTypeHours_ID" [URL]="paytypeHourAPIURL"
+        [(ngModel)]="selectedHourType" [filter]="hourTypeFilter" [required]="true"  (onChange)="HourTypeChange($event)"></nesi-timesheetWorkOrderHourType>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" [style.display]="entryType_MultiplePart_Showingup">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+    </div>
+    <div class="ui-g-12 ui-md-10 entryBackground">
+      <div class="ui-g-12">
+        <dx-select-box [items]="hourTypesList" displayExpr="label" valueExpr="value" [value]="defaultHourType" height="30"
+          #hourTypesListControl class="row_HourType">
+        </dx-select-box>
+        <input type="number" step="0.5" pInputText [(ngModel)]="hourRow" [min]="minvalue"
+        [max]="maxvalue" class="row_Hour WarningOnHour"  [class.WarningOnHour]="isWarningOnHour"/>
+        <button pButton label="Add" icon="ui-button-icon-left ui-clickable fa fa-fw fa-pencil" (click)="AddToList()" class="row_Button"></button>
+      </div>
+      <div class="ui-g-12">
+        <div class="AddedHourType">
+          <div *ngFor="let record of timesheetHourTypeList" class="dataRow">
+            <div class="dataColumnType"><span class="spanHour">{{record.hourType}}</span></div>
+            <div class="dataColumnHour"><span class="spanHour">{{record.hours}} Hour(s)</span></div>
+            <div class="dataColumnButton">
+                <button pButton label="Remove" icon="ui-button-icon-left ui-clickable fas fa-trash" (click)="RemoveFromList(record)" class="removebutton"></button>
+            </div> 
+            <hr class="dataColumn">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" [ngStyle]="{ 'display': customerWoEditable? 'none':'block'}">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Existing Work Comment:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <nesi-timesheetWorkOrderComment [disabled]="disabled" [(ngModel)]="selectedWorkOrderComment" (onChange)="OnChangeComments($event)"></nesi-timesheetWorkOrderComment>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Comment:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <textarea [disabled]="WorkOrderCommentsDisabled"  pInputTextarea [(ngModel)]="comment" [rows]="8" autoResize="autoResize"></textarea>
+    </div>
+  </div>
+</div>

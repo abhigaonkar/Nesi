@@ -1,0 +1,55 @@
+﻿body {
+	padding:		10px;
+}
+.login				{
+					width:					250px;
+					border:					solid 1px #ccf;
+					padding:				10px;
+					}
+					
+.review				{
+					width:					100%;
+					
+					min-height:				250px;
+					}
+					
+.menu				{
+					width:					100%;
+					margin-bottom:			2px;
+					text-align:				left;
+					}
+.menu .i_logo		{
+					margin-bottom:			10px;
+					}
+.menu .lb			{
+				
+					font-size:				18px;
+					font-family:			Arial;
+					color:					#000;
+					margin-left:			15px;
+					margin-bottom:			2px;
+					}
+.gv_review .tb		{
+					text-align:				center;
+					}
+.menu .lb_h			{
+				
+					color:					#777;
+					vertical-align:			middle;
+					}
+.menu .lb_h b		{
+					margin-top:				15px;
+					color:					#000;
+					display:				block;
+					}
+.menu .buttons		{
+					
+					text-align:				right;
+					}
+.gv_review			{width:100%;
+
+					}
+.gv_review .title	{
+					background-color:		#fff;
+					text-align:				left;
+					}

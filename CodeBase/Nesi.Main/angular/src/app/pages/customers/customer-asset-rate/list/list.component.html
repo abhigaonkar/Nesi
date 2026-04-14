@@ -1,0 +1,81 @@
+<div class="dx-fieldset">
+  <div class="dx-field">
+    <div class="dx-field-label bold">Business Unit:</div>
+    <div class="dx-field-value">
+      <dx-select-box [items]="business_unit_list" displayExpr="name" valueExpr="id" [searchEnabled]="true"
+        [value]="default_business_unit" #businessUnit (onValueChanged)="onValueChanged($event)">
+      </dx-select-box>
+    </div>
+    <dx-button class="button-info keepright" text="Refresh the grid" (onClick)="Refresh()">
+    </dx-button>
+  </div>
+
+  <div class="dx-field">
+    <div class="dx-field-label bold">Search:</div>
+    <div class="dx-field-value">
+      <dx-text-box placeholder="Type to start searching ..." [inputAttr]="{ id: 'inputSearchID' }"
+        (onFocusIn)="onFocusIn($event)"></dx-text-box>
+    </div>
+  </div>
+
+  <dx-data-grid id="customerAssetGrid" [dataSource]="dataSource" [showBorders]="true" [allowColumnReordering]="false"
+    [showColumnLines]="true" [showRowLines]="true" [hoverStateEnabled]="true" [focusedRowEnabled]="true"
+    [rowAlternationEnabled]="true" (onRowRemoving)="rowRemoving($event)">
+    <dxo-sorting mode="none"></dxo-sorting>
+    <dxo-remote-operations [sorting]="true" [paging]="true" [filtering]="true">
+    </dxo-remote-operations>
+
+    <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="canDelete" [useIcons]="true">
+      <dxo-texts confirmDeleteMessage="">
+      </dxo-texts>
+    </dxo-editing>
+
+    <dxo-paging [pageSize]="20">
+    </dxo-paging>
+    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[20]" [showInfo]="true">
+    </dxo-pager>
+
+    <dxi-column dataField="keyId" caption="Key" [visible]="false">
+    </dxi-column>
+    <dxi-column dataField="asset_des" caption="Asset Description" [width]="300" [allowEditing]="false">
+    </dxi-column>
+    <dxi-column dataField="start" caption="From Date" dataType="date">
+    </dxi-column>
+    <dxi-column dataField="end" caption="To Date" dataType="date">
+    </dxi-column>
+    <dxi-column dataField="daily" caption="Daily" format="currency">
+      <dxi-validation-rule type="required" message="The daily field is required."></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="weekly" caption="Weekly" format="currency">
+      <dxi-validation-rule type="required" message="The weekly field is required."></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="monthly" caption="Monthly" format="currency">
+      <dxi-validation-rule type="required" message="The monthly field is required."></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="lastupdate" caption="Last Update" dataType="datetime" [allowEditing]="false">
+    </dxi-column>
+    <dxi-column dataField="id" caption="Real Id" [visible]="false">
+    </dxi-column>
+    <dxi-column dataField="can_delete" caption="Can be deleted" [visible]="false">
+    </dxi-column>
+    <dxi-column type="buttons" [width]="110" caption="Actions">
+      <dxi-button name="edit"></dxi-button>
+      <dxi-button name="delete"></dxi-button>
+    </dxi-column>
+  </dx-data-grid>
+</div>
+
+<dx-popup title="Confirmation" [width]="700" [height]="250" shadingColor="rgba(0, 0, 0, 0.0)"
+  [(visible)]="isPopupVisible" [closeOnBackButton]="false" [closeOnOutsideClick]="false" [showCloseButton]="false"
+  (onHiding)="popup_hiding($event)">
+
+  <div id="buttonGroup">
+    <p>{{confirmationInfo}}</p>
+
+    <dx-button class="button-info" text="Yes" (onClick)="ConfirmYes()">
+    </dx-button>
+
+    <dx-button class="button-info" text="No" (onClick)="ConfirmNo()">
+    </dx-button>
+  </div>
+</dx-popup>

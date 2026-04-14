@@ -1,0 +1,4 @@
+<bar-hoverIcon icon="fa fw fa-tasks fa-2x" [badge]="todoList.length" [badgeColor]="badgeColor">
+  <bar-todoTable *ngIf="todoList && todoList.length >0" [todoList]="todoList" (click)="onClick($event)"></bar-todoTable>
+  <div *ngIf="todoList && todoList.length==0">Nothing in To Do List</div>
+</bar-hoverIcon>

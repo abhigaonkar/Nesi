@@ -1,0 +1,5 @@
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dxe:ASPxValidationSummary runat="server" CssFilePath="{0}/styles.css" CssPostfix="NETheme01">
+</dxe:ASPxValidationSummary>
+

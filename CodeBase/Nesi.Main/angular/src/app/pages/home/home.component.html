@@ -1,0 +1,30 @@
+<angular-loader>
+</angular-loader>
+<div class="layout-wrapper" [ngClass]="{'layout-menu-slim': slimMenu,
+                'layout-menu-overlay': overlayMenu,
+                'layout-menu-static': staticMenu,
+                'layout-menu-static-inactive': staticMenuInactive,
+                'layout-menu-overlay-active': overlayMenuActive,
+                'layout-menu-active': mobileMenuActive,
+                 'hidden': !ts.isAuthentication}">
+
+  <app-banner [showAll]="layoutLoaded"></app-banner>
+
+  <div class="layout-main">
+    <app-mainmenu id="menu" [showAll]="layoutLoaded"></app-mainmenu>
+
+    <div class="layout-content">
+      <div *ngIf="!ts.isContact && false" class="root_flyout" title="Quick Ticket" (click)="flyOut()"></div>
+
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+
+  <div class="layout-mask" *ngIf="mobileMenuActive && showFlyOut"></div>
+  <p-dialog  [minWidth]="cs.isLg?'1024':'0'" [responsive]="true" header="Tickets - New Ticket" [draggable]="true"
+    *ngIf="showFlyOut" [(visible)]="showFlyOut">
+    <nesi-flyout (close)="showFlyOut=false" [visible]="showFlyOut"></nesi-flyout>
+  </p-dialog>
+
+</div>

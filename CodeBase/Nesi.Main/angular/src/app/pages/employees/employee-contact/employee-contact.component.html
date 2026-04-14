@@ -1,0 +1,82 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid smaller">
+
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-4 right ">
+          First Name:
+        </div>
+        <div class="ui-g-12 ui-lg-8 left">
+          {{profile.entity.firstName}}
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-4 right ">
+          Last Name:
+        </div>
+        <div class="ui-g-12 ui-lg-8 left">
+          {{profile.entity.lastName}}
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-4 right ">
+          Business Unit:
+        </div>
+        <div class="ui-g-12 ui-lg-8 left">
+          {{profile.entity.business_unit_name}}
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-4 right ">
+          Title:
+        </div>
+        <div class="ui-g-12 ui-lg-8 left">
+          {{profile.entity.membertype_name}}
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad" *ngIf="profile.entity.neCellPhoneNumber && profile.entity.neCellPhoneNumber!=='() -'">
+        <div class="ui-g-12 ui-lg-4 right ">
+          Company Cell Phone:
+        </div>
+        <div class="ui-g-12 ui-lg-8 left">
+          {{profile.entity.neCellPhoneNumber}}
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad" *ngIf="profile.entity.neEmail">
+        <div class="ui-g-12 ui-lg-4 right ">
+          Company Email:
+        </div>
+        <div class="ui-g-12 ui-lg-8 left">
+          {{profile.entity.neEmail}}
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad"  *ngIf="profile.entity.phoneExtension">
+        <div class="ui-g-12 ui-lg-4 right " >
+          Company Phone Extension:
+        </div>
+        <div class="ui-g-12 ui-lg-8 left">
+          {{profile.entity.phoneExtension}}
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-4 right ">
+          Country:
+        </div>
+        <div class="ui-g-12 ui-lg-8 left">
+          {{profile.entity.country}}
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-lg-4 ui-lg-offset-8">
+          <button type="button" pButton label="Close" icon="fa-times" (click)="close.emit()"></button>
+        </div>
+      </div>
+    </div>
+
+  </blockable-div>
+</div>

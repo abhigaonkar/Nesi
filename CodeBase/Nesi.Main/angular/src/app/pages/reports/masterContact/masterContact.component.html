@@ -1,0 +1,17 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Master Contacts Grid'}]"></nesi-breadcurmb>
+  </div>
+  <div class="ui-g-12">
+    <nesi-datatable [id]='120' gridName="MasterContact" refreshCache="true" gridTitle="" (onRefresh)="loadDetail()">
+      <div class="legent-login">
+        <div class="login">
+          <p>legend</p>
+        </div>
+        <div class="legent">
+          <p>Spark Ops Login Enabled</p>
+        </div>
+      </div>
+    </nesi-datatable>
+  </div>
+</div>

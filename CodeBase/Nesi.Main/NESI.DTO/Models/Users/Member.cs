@@ -1,0 +1,145 @@
+﻿using System;
+using AutoMapper.Attributes;
+// ReSharper disable InconsistentNaming
+
+namespace NESI.DTO.Models.Users
+{
+	[MapsTo(typeof(NESI.Data.Entities.member))]
+	[MapsFrom(typeof(NESI.Data.Entities.member))]
+	public class Member
+	{
+        public int Member_ID { get; set; }
+        public int? member_title { get; set; }
+        public int member_membertype_id { get; set; }
+        public int? member_div { get; set; }
+        public string Member_Inv_BVNumber { get; set; }
+        public long? member_company_id { get; set; }
+        public string Member_Payroll_ID { get; set; }
+        public string Member_User { get; set; }
+        public string member_pass { get; set; }
+        public string Member_Status { get; set; }
+        public string Member_FirstName { get; set; }
+        public string Member_LastName { get; set; }
+        public string member_neemail { get; set; }
+        public string Member_AreaCode { get; set; }
+        public string Member_PhoneFirst { get; set; }
+        public string Member_PhoneLast { get; set; }
+        public string Member_PhoneExtension { get; set; }
+        public int payroll_handler { get; set; }
+        public string Member_Add { get; set; }
+        public string Member_City { get; set; }
+        public string Member_Prov { get; set; }
+        public string member_country { get; set; }
+        public string Member_Postal { get; set; }
+        public string Member_Email { get; set; }
+        public string Member_EmergFirstName1 { get; set; }
+        public string Member_EmergLastName1 { get; set; }
+        public string Member_EmergPhoneArea1 { get; set; }
+        public string Member_EmergPhoneFirst1 { get; set; }
+        public string Member_EmergPhoneLast1 { get; set; }
+        public string Member_EmergFirstName2 { get; set; }
+        public string Member_EmergLastName2 { get; set; }
+        public string Member_EmergPhoneArea2 { get; set; }
+        public string Member_EmergPhoneFirst2 { get; set; }
+        public string Member_EmergPhoneLast2 { get; set; }
+        public string Member_NECellEmail { get; set; }
+        public string Member_NECellAreaCode { get; set; }
+        public string Member_NECellPhoneFirst { get; set; }
+        public string Member_NECellPhoneLast { get; set; }
+        public string Member_Truck { get; set; }
+        public DateTime? Member_BirthDate { get; set; }
+        public DateTime? member_startdate { get; set; }
+        public DateTime? Member_TermDate { get; set; }
+        public int paytype_id { get; set; }
+        public int? receive_stat_pay { get; set; }
+        public string member_paytype { get; set; }
+        public DateTime? Member_LastRaise { get; set; }
+        public DateTime? Member_NextRaise { get; set; }
+        public double? Member_Holiday { get; set; }
+        public double? Member_HolidayTaken { get; set; }
+        public int? vacation_interval_1 { get; set; }
+        public int? vacation_interval_2 { get; set; }
+        public int? vacation_interval_3 { get; set; }
+        public double? vacation_amount_1 { get; set; }
+        public double? vacation_amount_2 { get; set; }
+        public double? vacation_amount_3 { get; set; }
+        public int? last_anniversary { get; set; }
+        public double? Member_Unpaid { get; set; }
+        public double? Member_SickDays { get; set; }
+        public double? Member_LateOccur { get; set; }
+        public string Member_DriversLicence { get; set; }
+        public string member_sin { get; set; }
+        public string Member_ElecLicence { get; set; }
+        public int? Member_Member_ID { get; set; }
+        public DateTime? member_lastdatetime { get; set; }
+        public DateTime? member_dateadded { get; set; }
+        public sbyte? Member_ER_Flag { get; set; }
+        public bool? Member_Level { get; set; }
+        public bool? can_quote { get; set; }
+        public int? last_quote_id { get; set; }
+        public string Member_Alternate_Cell { get; set; }
+        public string EmployeeID { get; set; }
+        public string EmpLogon { get; set; }
+        public string Member_EmployeeNotes { get; set; }
+        public bool Member_TS_Watch { get; set; }
+        public int? member_time_to_stat { get; set; }
+        public int? Member_Apprentice_Level { get; set; }
+        public bool? show_quote_help { get; set; }
+        public int? Member_Contact_ID { get; set; }
+        public DateTime? PasswordDateChange { get; set; }
+        public int? member_default_location { get; set; }
+        public int? member_default_page { get; set; }
+        public string member_nickname { get; set; }
+        public string member_middleinitial { get; set; }
+        public string member_hasdependants { get; set; }
+        public int? member_hrstatus_id { get; set; }
+        public string member_pecell_area { get; set; }
+        public string member_pecell_pref { get; set; }
+        public string member_pecell_suff { get; set; }
+        public string member_ldap_user { get; set; }
+        public sbyte? gets_vehicle { get; set; }
+        public sbyte? gets_phone { get; set; }
+        public sbyte? gets_laptop { get; set; }
+        public int? reports_to { get; set; }
+        public sbyte? has_comp { get; set; }
+        public string comp_details { get; set; }
+        public string offer_notes { get; set; }
+        public string member_fullname { get; set; }
+        public string member_windows_password { get; set; }
+        public int? cellphone_id { get; set; }
+        public int? cellphone_number_id { get; set; }
+        public int? is_US_boardmember { get; set; }
+        public int? is_CAN_boardmember { get; set; }
+        public bool? force_beta { get; set; }
+        public string bonus_notes { get; set; }
+        public int scheduled_by { get; set; }
+        public System.DateTime ts { get; set; }
+        public string apprentice_contract { get; set; }
+        public bool? gets_barcodescanner { get; set; }
+        public bool? gets_businesscards { get; set; }
+        public bool? gets_directdeposit { get; set; }
+        public bool? gets_neemail { get; set; }
+        public bool? gets_phoneext { get; set; }
+        public bool? disable_ldap_sync { get; set; }
+        public string benefits_id { get; set; }
+        public string life_insurance_id { get; set; }
+        public DateTime? benefits_startdate { get; set; }
+        public bool? part_time { get; set; }
+        public int? vendor_id { get; set; }
+        public string color { get; set; }
+        public sbyte include_in_mobile_contactlist { get; set; }
+        public DateTime? last_mobile_login { get; set; }
+        public double? member_wage { get; set; }
+        public sbyte? member_probation_email_sent { get; set; }
+        public int? active_offer_id { get; set; }
+        public int? seg1_id { get; set; }
+        public int? seg2_id { get; set; }
+        public int? seg3_id { get; set; }
+        public int business_unit_id { get; set; }
+        public int? active_ticket_id { get; set; }
+        public bool? sent_welcome_email { get; set; }
+        public bool? request_password_reset_flag { get; set; }
+        public bool auto_vacation_payout { get; set; }
+
+    }
+}

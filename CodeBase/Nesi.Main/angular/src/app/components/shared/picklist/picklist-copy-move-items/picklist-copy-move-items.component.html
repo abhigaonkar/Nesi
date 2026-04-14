@@ -1,0 +1,17 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-10">
+    <p>{{selectedItems.length}} items will be {{type==='Copy'? 'copied':'moved'}}.</p>
+  </div>
+  <div class="ui-g-2">
+    <button pButton [label]="type" [disabled]="!destinationSection" [icon]="icon" (click)="done()"></button>
+  </div>
+  <div class="ui-g-12">
+    <p-listbox [options]="sections" [(ngModel)]="destinationSection" [multiple]="type==='Copy'" [checkbox]="type==='Copy'"
+     filter="true" optionLabel="label">
+      <p-header>
+        <i class="fa fa-tag"></i>
+        Select a Destination Section
+      </p-header>
+    </p-listbox>
+  </div>
+</div>

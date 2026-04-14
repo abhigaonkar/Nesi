@@ -1,0 +1,90 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw" style="position:absolute;top:25%;left:50%"></i>
+</p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div style="height: 400px">
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Business Unit:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterPurchase && _masterPurchase.business_unit }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Status:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterPurchase && _masterPurchase.status }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Date Cut:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterPurchase && _masterPurchase.date_cut | date:'yyyy-MM-dd' }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            PO #:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterPurchase && _masterPurchase.poprog_bvpo}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            WO #:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterPurchase && _masterPurchase.woprog_bvwo}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Vendor:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterPurchase && _masterPurchase.name_vendor}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Total Cost:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterPurchase && _masterPurchase.total_cost | currency}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            AP Status:
+          </div>
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad">
+            <p-dropdown [filter]="true" maxlength="50" [style]="{'width':'100%'}" [options]="apStatusList" formControlName="poprog_apstatus">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-pad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+              AP Notes:
+          </div>
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad">
+            <textarea pInputTextarea formControlName="poprog_hasproblem_notes"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+        <button pButton type="Button" label="Cancel" icon="fa-close" (click)="exit()"></button>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+        <button pButton type="submit" label="Save" icon="fa-save"></button>
+      </div>
+    </form>
+  </div>
+</blockable-div>

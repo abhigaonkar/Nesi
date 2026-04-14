@@ -1,0 +1,21 @@
+.sig-container {
+    border-style: dashed;
+    border-width: 1px;
+  }
+  
+  .sig-container { 
+    width:100%;
+    height:300;
+  }
+
+  .lbldifferentsignee {
+     text-align: center;
+  }
+  .checkbox{
+    text-align:center;
+    vertical-align:middle;
+  }
+
+  .addheight{
+    height:40px;
+  }

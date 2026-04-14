@@ -1,0 +1,71 @@
+<form [formGroup]="addEditForm" (ngSubmit)="saveRecord(rowData);">
+  <div class="ui-grid ui-grid-responsive">
+    <div [ngClass]="{ 'ui-grid-col-4' : fileManagerToBeLoaded(),'ui-grid-col-12' :!fileManagerToBeLoaded() }">
+      <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="rowData">
+        <div class="ui-grid-row" *ngFor="let itemKey of editableFields; let i = index">
+          <div class="ui-grid-col-4 left">
+            <label class="title" [for]="itemKey.field">{{itemKey.label}}</label>
+            <i *ngIf="itemKey.validations" class="fa fa-asterisk dt-required" aria-hidden="true"></i>
+          </div>
+          <div class="ui-grid-col-8 right">
+            <!-- string OR email Or phone -->
+            <input [ngStyle]="{'border-color': isFieldInvalidAndDirty(itemKey.field) ? 'red' : '' }" *ngIf="!itemKey.lookup  && (getFieldType(itemKey.type) == 'string' || getFieldType(itemKey.type) == 'email' || getFieldType(itemKey.type) == 'phone')"
+              class="ui-corner-all ui-inputtext ui-widget" [id]="itemKey.field" [(ngModel)]="rowData[itemKey.field]" [formControlName]="itemKey.field"
+            />
+
+            <!-- Number OR Percent OR Currency-->
+            <input [ngStyle]="{'border-color': isFieldInvalidAndDirty(itemKey.field) ? 'red' : '' }" *ngIf="!itemKey.lookup && (getFieldType(itemKey.type) == 'number' || getFieldType(itemKey.type) == 'percent' || getFieldType(itemKey.type) == 'currency')"
+              class="ui-corner-all ui-inputtext ui-widget" [id]="itemKey.field" [(ngModel)]="rowData[itemKey.field]" [formControlName]="itemKey.field"
+              type="number" />
+
+            <p-autoComplete [formControlName]="itemKey.field" minLength="2" *ngIf="itemKey.lookup && itemKey.lookup.inputs == null && getFieldType(itemKey.type) != 'boolean'"
+              [(ngModel)]="selectedAutocompleteOption[i]" [suggestions]="(lookupOptions[itemKey.field] ? lookupOptions[itemKey.field].options : [])"
+              field="label" (onSelect)="onSelect($event, itemKey)" (completeMethod)="loadOptions($event, itemKey)" [forceSelection]="true"
+              placeholder="Input more than 1 character to search" emptyMessage="No result found." styleClass="input_autocomplete">
+            </p-autoComplete>
+
+            <p-dropdown styleClass="input_area" *ngIf="itemKey.lookup && itemKey.lookup.inputs !== null && getFieldType(itemKey.type) != 'boolean'"
+              [formControlName]="itemKey.field" [options]="(lookupOptions[itemKey.field] ? lookupOptions[itemKey.field].options : [])"
+              [(ngModel)]="selectedAutocompleteOption[i] ? selectedAutocompleteOption[i]['label'] : selectedAutocompleteOption[i]"
+              (onChange)="setDropdown($event,itemKey)" filter="(lookupOptions[itemKey.field] ? lookupOptions[itemKey.field].options : []).length>10"
+              (onFocus)="createOptionsForDropdown($event, itemKey)">
+            </p-dropdown>
+            <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw" *ngIf="distinctLoader" style="position:absolute;top:30%;left:30%;color:black"></i>
+
+            <!-- Boolean -->
+            <input *ngIf="getFieldType(itemKey.type) == 'boolean'" type="checkbox" [ngModel]="convertStringToLowerCase(rowData[itemKey.field]) === 'true'"
+              [formControlName]="itemKey.field" (change)="changeValue(convertStringToLowerCase(rowData[itemKey.field]) === 'true', itemKey.field)">
+
+            <!-- Date  -->
+            <p-calendar *ngIf="getFieldType(itemKey.type) =='date'" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"
+              showIcon="true" appendTo="body" dateFormat="yy-mm-dd" [formControlName]="itemKey.field" [(ngModel)]="rowData[itemKey.field]">
+            </p-calendar>
+
+            <!-- Notes -->
+            <textarea pInputTextarea *ngIf="getFieldType(itemKey.type) =='notes'" [formControlName]="itemKey.field" [(ngModel)]="rowData[itemKey.field]"
+              [rows]="5" [cols]="30" autoResize="autoResize"></textarea>
+            <span *ngIf="addEditForm.get(itemKey.field).hasError('required') && addEditForm.get(itemKey.field).dirty">Please enter a value.</span>
+            <span *ngIf="addEditForm.get(itemKey.field).hasError('validatespace') && !addEditForm.get(itemKey.field).hasError('required') && addEditForm.get(itemKey.field).dirty">Please do not enter just spaces.</span>
+            <span *ngIf="addEditForm.get(itemKey.field).hasError('maxlength')">Please enter maximum {{ addEditForm.get(itemKey.field).errors['maxlength']['requiredLength']}} characters.</span>
+            <span *ngIf="addEditForm.get(itemKey.field).hasError('minlength')">Please enter minimum {{ addEditForm.get(itemKey.field).errors['minlength']['requiredLength']}} characters.</span>
+            <span *ngIf="addEditForm.get(itemKey.field).hasError('validatecharacters') && addEditForm.get(itemKey.field).dirty">These special characters are not allowed: ' " ;</span>
+          </div>
+        </div>
+      </div>
+      <div class="ui-dialog-footer footer_btn">
+        <p-footer>
+          <div class="ui-dialog-buttonpane ui-helper-clearfix dailog_btn">
+            <button type="submit" pButton icon="fa-save" label="Save" [disabled]="isProcessing || !addEditForm.valid"></button>
+            <button type="button" pButton icon="fa-times-circle" label="Cancel" (click)="cancel()"></button>
+          </div>
+        </p-footer>
+    </div>
+  </div>
+  <div class="ui-grid-col-8" *ngIf="fileManagerToBeLoaded()">
+    <div class="file-manager">
+      <!-- <nesi-fileManager></nesi-fileManager> -->
+      <nesi-fileManager [Dir]="projectFileDirectory"></nesi-fileManager>
+    </div>
+  </div>
+  </div>
+</form>

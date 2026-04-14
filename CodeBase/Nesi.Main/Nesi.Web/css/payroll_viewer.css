@@ -1,0 +1,366 @@
+﻿#payroll_viewer
+	{
+	width:auto;
+	}
+
+#payroll_viewer#framework
+	{
+	width:auto;
+	}
+
+#payroll_viewer .framework
+	{
+	width:100%;
+	}
+
+#payroll_viewer .status
+	{
+	width:250px;
+	padding:5px;
+	}
+
+#payroll_viewer #room
+	{
+	width:250px;
+	}
+
+#payroll_viewer #room #header
+	{
+	font-size:1em;
+	background-color:#4C6FB7;
+	color:#fff;
+	padding:5px;
+	text-align:center;
+	}
+
+#payroll_viewer #room #header:hover
+	{
+	background-color:#5F7FBF;
+	cursor:pointer;
+	}
+
+#payroll_viewer #room .company
+	{
+	border:solid 1px #ccc;
+	height: 15px;
+	margin: 1px;
+	padding: 2px;
+	}
+#payroll_viewer #room .company.active
+	{
+	background-color:#fff;
+	color: #000;
+	}
+#payroll_viewer #room .company.inactive
+	{
+	background-color:#ddd;
+	color: #000;
+	}
+
+#payroll_viewer #room .company.active:hover
+	{
+	background-color:#cfc;
+	}
+
+#payroll_viewer #room .company .toggle
+	{
+	float:left;
+	width: 12%;
+	height: 15px;
+	}
+#payroll_viewer #room .company .toggle input
+	{
+	cursor:pointer;
+	}
+#payroll_viewer #room .company .name
+	{
+	text-align:left;
+	font-size:11px;
+	font-weight:bold;
+	float:left;
+	width: 72%;
+	height: 15px;
+	cursor:pointer;
+	}
+
+#payroll_viewer #room .company .icon 
+	{
+	text-align:center;
+	width: 13%;
+	height: 13px;
+	float:left;
+	border: solid 1px #fff;
+	border-radius: 3px;
+	}
+
+#payroll_viewer #room .company .icon.sent
+	{
+	background-color:#62ac7b;
+	}
+#payroll_viewer #room .company .icon.notstarted
+	{
+	background-color:#ccc;
+	}
+#payroll_viewer #room .company .icon.inprogress
+	{
+	background-color:#8d3510;
+	}
+#payroll_viewer #room .company .icon.alert
+	{
+	background-color:#f00;
+	}
+
+#payroll_viewer #room #export
+	{
+	text-align:center;
+	}
+
+#payroll_viewer #room #export #x
+	{
+	border:solid 1px #4C6FB7;
+	font-weight:bold;
+	font-size:10px;
+	background-color:#cfc;
+	cursor:pointer;
+	text-transform:uppercase;
+	text-align:left;
+	width:100%;
+	padding:3px;
+	}
+
+#payroll_viewer #room #export_business
+	{
+	text-align:center;
+	}
+
+
+#payroll_viewer .status #room .legend_head
+	{
+	margin-top:35px;
+	font-size:12px;
+	font-weight:bold;
+	text-align:center;
+	color:#777;
+	}
+
+#payroll_viewer .status #room #legend
+	{
+	border:solid 1px #777;
+	background-color:#ddd;
+	}
+
+#payroll_viewer .status #room #legend .entry
+	{
+	font-size:11px;
+	padding:5px;
+	font-weight:bold;
+	}
+
+#payroll_viewer .detail
+	{
+	width:95%;
+	background-color:#cfc;
+	border:solid 1px #4C6FB7;
+	}
+
+#payroll_viewer .detail td
+	{
+	padding-top:7px;
+	padding-bottom:7px;
+	}
+
+#payroll_viewer .detail #header
+	{
+	width:100%;
+	background-color:#4C6FB7;
+	padding:3px;
+	}
+
+#payroll_viewer .detail .companyname
+	{
+	font-size:2em;
+	font-weight:bold;
+	text-align:left;
+	background-color:#4C6FB7;
+	color:#fff;
+	padding:5px;
+	}
+#payroll_viewer .detail .finalapproval
+	{
+	font-size:1em;
+	text-align:left;
+	background-color:#4C6FB7;
+	color:#fff;
+	padding: 0 0 5px 8px;
+	}
+
+#payroll_viewer .detail .payperiod_of
+	{
+	font-size:11px;
+	border-top:solid 1px #cfc;
+	border-bottom:solid 1px #4C6FB7;
+	text-align:left;
+	background-color:#5a5;
+	color:#fff;
+	padding:5px;
+	padding-left:20px;
+	}
+
+#payroll_viewer .detail #past_payperiods
+	{
+	width:250px;
+	height:250px;
+	font-family:consolas;
+	font-size:13px;
+	font-weight:bold;
+	border:solid 1px #000;
+	margin:10px;
+	cursor:pointer;
+	}
+
+#payroll_viewer .detail #info
+	{
+	width:100%;
+	}
+
+#payroll_viewer .detail #info thead th
+	{
+	background-color:#000;
+	font-weight:bold;
+	color:#fff;
+	padding:5px;
+	border:solid 1px #000;
+	font-size:11px;
+	cursor:pointer;
+	vertical-align:top;
+	}
+
+#payroll_viewer .detail #info thead th i
+	{
+	display:block;
+	font-size:10px;
+	}
+
+#payroll_viewer .detail #info thead th:hover
+	{
+	background-color:#4C6FB7;
+	}
+
+#payroll_viewer .detail #info .member:hover
+	{
+	background-color:#fc0;
+	}
+
+#payroll_viewer .detail #info .name
+	{
+	text-align:center;
+	font-weight:bold;
+	width:auto;
+	font-size:11px;
+	border-right:solid 1px #999;
+	border-top:dotted 1px #aaa;
+	}
+
+#payroll_viewer .detail #info .paytype
+	{
+	width:auto;
+	text-align:center;
+	font-size:11px;
+	border-right:solid 1px #999;
+	border-top:dotted 1px #aaa;
+	}
+
+#payroll_viewer .detail #info .approvedby
+	{
+	text-align:left;
+	font-size:11px;
+	font-weight:bold;
+	border-top:dotted 1px #aaa;
+	vertical-align:middle;
+	}
+
+#payroll_viewer .detail #info .approvedby img
+	{
+	padding-right:5px;
+	}
+
+#payroll_viewer .detail #info .approvaldate
+	{
+	font-size:10px;
+	font-weight:normal;
+	color:#888;
+	}
+
+#payroll_viewer .detail #info .hours
+	{
+	font-size:10px;
+	border-right:solid 1px #999;
+	border-top:dotted 1px #aaa;
+	font-weight:bold;
+	width:4%;
+	text-align:center;
+	}
+
+#payroll_viewer .detail #info .hours .null
+	{
+	color:#999;
+	}
+
+#payroll_viewer .detail #info .extras
+	{
+	font-size:10px;
+	border-right:solid 1px #999;
+	border-top:dotted 1px #aaa;
+	text-align:center;
+	font-weight:bold;
+	}
+
+#payroll_viewer .detail #info .extras .null
+	{
+	color:#999;
+	}
+
+#payroll_viewer .detail #info #totals
+	{
+	background-color:#354D7E;
+	}
+
+#payroll_viewer .detail #info .totals .total_text
+	{
+	border-top:dotted 1px #4C6FB7;
+	text-align:right;
+	font-size:11px;
+	color:#ccc;
+	font-weight:bold;
+	font-size:11px;
+	padding:5px;
+	}
+
+#payroll_viewer .detail #info .totals .total_hours
+	{
+	font-size:10px;
+	border-top:dotted 1px #4C6FB7;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	padding:5px;
+	}
+
+#payroll_viewer .detail #info .grand_total
+	{
+	font-weight:bold;
+	font-size:25px;
+	color:#090;
+	text-align:center;
+	}
+
+#payroll_viewer .detail #info .grand_total .equation
+	{
+	font-size:11px;
+	color:#cfc;
+	}
+
+
+
+
+

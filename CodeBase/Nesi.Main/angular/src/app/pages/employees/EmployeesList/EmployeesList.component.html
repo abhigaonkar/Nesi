@@ -1,0 +1,52 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    <nesi-breadcurmb [items]="[{label: 'HR'},{label: 'Employees'}]"></nesi-breadcurmb>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad" *ngIf="member_access_visible">
+    <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+      <button pButton label="Member Access" icon="fa-users" (click)="open_member_access()"></button>
+    </div>
+    <div class="ui-g-12 ui-lg-8 ui-g-lesspad">
+      <div class="ui-g-12 ui-lg-4 label_for_right bold">Employee Search:</div>
+      <div class="ui-g-12 ui-lg-4 label_for_left_less">
+        <p-autoComplete (onSelect)="open_contact($event)" [suggestions]="suggestion_list" (completeMethod)="filterEmployee($event)"
+          [size]="30" [minLength]="2" field="name" >
+          <ng-template let-data pTemplate="item">
+            <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+              <i class="fa fa-circle green" *ngIf="data.status==='Active'"></i>
+              <i class="fa fa-circle red" *ngIf="data.status!=='Active'"></i>
+              - <span [innerHTML]="replaceSearchString(data.matches)"></span> 
+              - <span [innerHTML]="replaceSearchString(data.name)"></span> 
+              - <span [innerHTML]="replaceSearchString(data.number)"></span> 
+            </div>
+          </ng-template>
+        </p-autoComplete>
+
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <nesi-datatable [id]='127' [selectionMode]="null" [visible_business_type]="'S'" (oncellclick)="open_contact($event)" gridName="EmployeesHomeGrid"
+      gridTitle="" (onEdit)="openEdit($event)" (onRefresh)="loadGrid()">
+
+    </nesi-datatable>
+  </div>
+</div>
+<!-- <p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Editing {{entity && entity._name}}" [draggable]="true"
+  [(visible)]="displayEdit" [positionTop]="50"> -->
+
+<!-- <p-sidebar [modal]="true" [(visible)]="displayEdit" styleClass="ui-sidebar-lg" [blockScroll]="true"  position="right"> -->
+<nesi-sidebar [(visible)]="displayEdit" header="Editing {{entity && entity._name}}" [larger]="true" open_url="/#/opens/127/employees/{{entity?.memberid}}">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <nesi-employee-edit [tabIndex]="open_edit_tab" (close)="displayEdit=false" [employee]="entity"></nesi-employee-edit>
+  </div>
+</nesi-sidebar>
+<!-- </p-sidebar> -->
+<!-- </p-dialog> -->
+<p-dialog [width]="500" [responsive]="true" [modal]="false" header="Contact Information" [draggable]="true" [(visible)]="displayContact"
+  [positionTop]="10" [positionLeft]="40">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <nesi-employee-contact (close)="displayContact=false" [contact_member_id]="contact_member_id" *ngIf="displayContact"></nesi-employee-contact>
+  </div>
+
+</p-dialog>

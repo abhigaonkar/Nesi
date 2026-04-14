@@ -1,0 +1,32 @@
+﻿
+		.expense
+			{
+			margin:				0px auto;
+			width:				95%;
+		    font-family:			calibri;
+			}
+		.expense .row
+			{
+			width:				100%;
+			min-height:			25px;
+			margin-bottom:		5px;
+			clear:				both;
+		    font-family:			calibri;
+			}
+		.expense .row .title
+			{
+			float:				left;
+		
+			width:				30%;
+			font-size:			14px;
+			height:				100%;
+		    font-family:			calibri;
+			}
+
+		.expense .row .control
+			{
+			float:				right;
+			width:				70%;
+			height:				100%;
+		    font-family:			calibri;
+			}

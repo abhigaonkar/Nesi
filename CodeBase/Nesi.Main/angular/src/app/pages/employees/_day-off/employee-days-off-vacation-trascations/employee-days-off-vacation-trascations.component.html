@@ -1,0 +1,60 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g-12">
+          <p-panel [toggleable]="true">
+            <p-header>
+              <i class="fa fa-fw fa-pencil"></i> Override
+            </p-header>
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+              <div class="ui-g-12">
+                <div class="ui-g-12 ui-lg-2 label_for_right">Current Holiday:</div>
+                <div class="ui-g-12 ui-lg-6 label_for_left_less">
+                  <div class="ui-g-8 ui-g-nopad">
+                    <input pInputText maxlength="10" formControlName="amount">
+                  </div>
+                  <div class="ui-g-4 ui-g-nopad left">
+                    Dollars
+                  </div>
+                  <div class="ui-g-12 ui-g-nopad">
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('amount','required')" [errorMsg]="'Amount is required'"></nesi-fieldErrorDisplay>
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('amount','min')" [errorMsg]="'Amount must be greater than 0'"></nesi-fieldErrorDisplay>
+                  </div>
+                </div>
+
+              </div>
+              <div class="ui-g-12">
+                <div class="ui-g-12 ui-lg-2 label_for_right">Override Reason?:</div>
+                <div class="ui-g-12 ui-lg-6 label_for_left_less">
+                  <textarea pInputTextarea rows="5" cols="25" formControlName="memo"></textarea>
+                  <nesi-fieldErrorDisplay [displayError]="isFieldInValid('memo','required')" [errorMsg]="'Override Reason is required'"></nesi-fieldErrorDisplay>
+                </div>
+              </div>
+              <div class="ui-g-12">
+                  <div class="ui-g-12 ui-lg-4 ui-lg-offset-2">
+              <p-checkbox binary="true" formControlName="auto_vac_payout" label="Receives Auto Vacation Payout"></p-checkbox>
+   </div></div>
+              <div class="ui-g-12">
+                <div class="ui-g-12 ui-lg-4 ui-lg-offset-2">
+                  <button pButton type="submit" label="Override Holiday" icon="fa-save"></button>
+                </div>
+              </div>
+            </div>
+          </p-panel>
+        </div>
+      </form>
+    </div>
+  </blockable-div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <nesi-datatable #daysoffvacationdt
+[fixed_header_scroll]="0"
+[need_query_param]="true"
+  [id]='127' [selectionMode]="null"
+   gridName="EmployeeDaysOffVacationTransactionGrid" gridTitle=""
+    (onRefresh)="loadDetail(true)"></nesi-datatable>
+</div>

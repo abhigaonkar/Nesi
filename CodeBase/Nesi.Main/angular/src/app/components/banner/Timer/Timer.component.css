@@ -1,0 +1,18 @@
+.reboot_timer {
+  border: solid 1px #faebcc;
+  position: absolute;
+  color: #094;
+  left: 50%;
+  top: 50%;
+  font-size: 1.1em;
+  background-color: #fcf8e3;
+  z-index: 100;
+  padding-left: 15px;
+  padding-right: 5px;
+  padding-top: 20px;
+  height: 40px;
+  margin-top: -30px;
+  width: 500px;
+  margin-left: -250px;
+  box-shadow: 5px 5px 5px #888888;
+}

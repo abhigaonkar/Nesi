@@ -1,0 +1,27 @@
+.weekend {
+  background-color: RGB(225, 225, 225);
+  color: SteelBlue;
+  border-radius: 50%;
+}
+
+.workday {
+  border-color: red;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+}
+
+.periodday {
+  background-color: #cfc;
+  border-radius: 50%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media screen and (max-width: 640px) {
+:host ::ng-deep .ui-datepicker{
+  left:-79px !important;
+}
+}

@@ -1,0 +1,14 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxTabControl runat="server" TabSpacing="3px" CssPostfix="NETheme01" CssFilePath="{0}/styles.css">
+<ActiveTabStyle BackColor="#EAEAEA">
+<HoverStyle BackColor="#EAEAEA"></HoverStyle>
+</ActiveTabStyle>
+
+<TabStyle Height="30px" BackColor="WhiteSmoke">
+<HoverStyle BackColor="#B4CCE0"></HoverStyle>
+
+<Paddings Padding="15px"></Paddings>
+</TabStyle>
+</dx:ASPxTabControl>

@@ -1,0 +1,16 @@
+.header {
+    text-align: center;
+    padding: 5px;
+    background-color: #bcd;
+    font-size: 1.25em;
+}
+
+.holiday {
+    background-color: #f00;
+    color: #fff;
+    font-size: 1.25em;
+}
+
+.holidayborder {
+    border: 1px solid red;
+}

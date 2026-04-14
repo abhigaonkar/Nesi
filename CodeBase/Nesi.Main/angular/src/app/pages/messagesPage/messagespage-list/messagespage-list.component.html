@@ -1,0 +1,29 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <nesi-breadcurmb [items]="[{label: 'Messages'},{label: tabName}]"></nesi-breadcurmb>
+  <div class="ui-g-12 ui-md-2">
+    <button pButton label="New Message" icon="fa-envelope" (click)="newMessage()"></button>
+  </div>
+  <div class="ui-g-12">
+    <p-tabView #t  (onChange)="tabChanged($event)">
+      <p-tabPanel header="Inbox" leftIcon="fa-inbox-in">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <nesi-messagespage-inbox (reply)="reply($event)" (replyAll)="replyAll($event)" [type]="1" (deleted)="onDeleted()" ></nesi-messagespage-inbox>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="Sent" leftIcon="fa-inbox-out">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <nesi-messagespage-inbox [type]="2"  (deleted)="onDeleted()" ></nesi-messagespage-inbox>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="Deleted" leftIcon="fa-times">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <nesi-messagespage-inbox [type]="3"></nesi-messagespage-inbox>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>
+<p-dialog [minWidth]="cs.isLg?'800':'0'" [positionTop]="150" [responsive]="true" header="{{type==1?'New Message': 'Reply Message'}}"
+  [draggable]="true" [(visible)]="displayNew">
+  <nesi-messagespage-new (cancel)="displayNew=false" (onChange)="afterNewMessage()"></nesi-messagespage-new>
+</p-dialog>

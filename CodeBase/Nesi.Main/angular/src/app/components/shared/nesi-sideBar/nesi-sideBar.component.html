@@ -1,0 +1,16 @@
+<p-sidebar [modal]="true" (onShow)="visible=true;visibleChange.emit(visible);onShow.emit($event)" (onHide)="on_hide($event)"
+  [blockScroll]="true" [(visible)]="visible" [fullScreen]="fullScreen" [styleClass]="styleClass" [position]="fullScreen?'left':'right'">
+  <div class="sidebar-header">
+    <i *ngIf="submitting" class="fa fa-spinner fa-spin"></i>
+    <ng-container *ngIf="!submitting">
+      {{header}}
+    </ng-container>
+  </div>
+  <div class="siderbar-buttons">
+    <i *ngIf="!fullScreen" title="Swtich to full screen mode" class="fal fa-window-maximize cursor-point" (click)="fullScreen=true"></i>
+    <i *ngIf="fullScreen" title="Swtich to split mode" class="fal fa-columns cursor-point" (click)="fullScreen=false"></i>
+    <i *ngIf="open_url" title="Open new window" class="fal fa-window-restore cursor-point" style="padding-left: 8px" (click)="open_window()"></i>
+  </div>
+  <hr/>
+  <ng-content></ng-content>
+</p-sidebar>

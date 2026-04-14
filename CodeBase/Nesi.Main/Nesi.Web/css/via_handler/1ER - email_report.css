@@ -1,0 +1,70 @@
+﻿			body 
+				{
+				font-size: 12px; 
+				font-family: arial;
+				}
+			a	{
+				color: #000;
+				}
+			a:hover	{
+				color: #f30;
+				}
+			.summary
+				{
+				width: 100%;
+				max-width: 750px;
+				}
+			.summary .title
+				{
+				color:#777;
+				}
+			.summary .r
+				{
+				}
+			.summary .number
+				{
+				width: 50px;
+				}
+			.summary .subject
+				{
+				}
+			.group_title
+				{
+				font-size:	1.25em;
+				margin-top: 15px;
+				margin-bottom: 2px;
+				}
+			.ticket
+				{
+				width: 100%;
+				max-width: 750px;
+				margin-top: 7px;
+				}
+			.ticket .r
+				{
+				height: 15px;
+				}
+			.ticket .title
+				{
+				text-align: left;
+				}
+			.ticket .field
+				{
+				padding-left:5px;
+				width: 60px;
+				}
+			.ticket .forcewhite
+				{
+				color: #fff !important;
+				}
+			.ticket .val
+				{
+				}
+			.report_header
+				{
+				font-size: 1.75em;
+				}
+			.report_time
+				{
+				color: #999;
+				}

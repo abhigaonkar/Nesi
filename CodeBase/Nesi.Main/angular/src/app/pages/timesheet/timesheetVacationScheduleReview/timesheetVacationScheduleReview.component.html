@@ -1,0 +1,97 @@
+<div class="header"> Please review the following information that is about to be sent for approval.
+</div>
+<div class="ui-g-12">
+  <div class="ui-g-4 label_for_right">
+    Type of Withdrawal:
+  </div>
+  <div class="ui-g-8 label_for_left">
+    Scheduled Vacation
+  </div>
+</div>
+<div class="ui-g-12">
+  <div class="ui-g-4 label_for_right">
+    Vacation Start Date:
+  </div>
+  <div class="ui-g-8 label_for_left">
+    {{value && value.date_start}}
+  </div>
+</div>
+<div class="ui-g-12">
+  <div class="ui-g-4 label_for_right">
+    Vacation End Date:
+  </div>
+  <div class="ui-g-8 label_for_left">
+    {{value && value.date_end}}
+  </div>
+</div>
+<div class="ui-g-12">
+  <div class="ui-g-4 label_for_right">
+    You Will Be Returning:
+  </div>
+  <div class="ui-g-8 label_for_left">
+    {{value && value.date_return}}
+  </div>
+</div>
+<div class="ui-g-12">
+  <div class="ui-g-4 label_for_right">
+    Type Of Payment:
+  </div>
+  <div class="ui-g-8 label_for_left">
+    {{value && value.type_of_payment}}
+  </div>
+</div>
+<div class="ui-g-12">
+  <div class="ui-g-4 label_for_right">
+    Affected Payrolls:
+  </div>
+  <div class="ui-g-8 label_for_left">
+    <ng-container *ngIf="value && value.affected_payrolls">
+      <div *ngFor="let item of value.affected_payrolls">
+        {{item}}
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div class="ui-g-12 holidayborder  ui-g-nopad" *ngIf="value && value.holidays && value.holidays.length>0">
+  <div class="ui-g-12 holiday ui-g-nopad">
+    <div class="ui-g-4 label_for_right">
+      Holidays during the requested dates:
+    </div>
+    <div class="ui-g-8 label_for_left">
+      <ng-container *ngIf="value && value.holidays">
+        <div *ngFor="let item of value.holidays">
+          {{item}}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="ui-g-12">
+    You
+    <i>may</i> receive these holiday(s) paid - If so, you don't need to request vacation pay during these holiday(s). Please
+    talk with your supervisor, first.
+  </div>
+</div>
+<div class="ui-g-12 ">
+  <div class="ui-g-4 label_for_right">
+    Hours Requested:
+  </div>
+  <div class="ui-g-8 label_for_left">
+    {{value && value.hours | number: '1.2-2'}}
+  </div>
+</div>
+<div class="ui-g-12 ">
+  <div class="ui-g-4 label_for_right">
+    Total Requested Amount:
+  </div>
+  <div class="ui-g-8 label_for_left">
+    {{value && value.dollars | currency:'CAD':'symbol-narrow':'1.2-2'}}
+  </div>
+</div>
+<div class="ui-g-12">
+  <div class="ui-g-3 ui-g-offset-6">
+    <button pButton type="button" label="Confirm" (click)="confirm.emit()" icon="fa-check"></button>
+  </div>
+  <div class="ui-g-3">
+    <button pButton (click)="cancel.emit()" type="button" label="Cancel" icon="fa-times-circle"></button>
+  </div>
+</div>

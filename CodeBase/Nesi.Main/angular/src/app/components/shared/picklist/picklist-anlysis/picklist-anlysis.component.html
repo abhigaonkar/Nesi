@@ -1,0 +1,137 @@
+<div class="worksheet_anlysis">
+  <div class="ui-g-12 ui-g-lesspad ">
+    <div class="ui-g-6 ui-lg-3 ui-lg-offset-8 ui-g-lesspad right bold">
+      Quote Price ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right bold">
+      <p-inplace [disabled]="edit_disabled" [active]="priceEditable" (onActivate)="setFocus(inputlabel)">
+        <span class="bold" pInplaceDisplay title="Click to edit" tooltipPosition="bottom">
+          {{model && model.quote_price | number: '1.2-2'}}
+        </span>
+        <span pInplaceContent>
+          <input #inputlabel style="width:70px;height:20px" autofocus="true" (change)="field_Changed('quoted_price')" (blur)="closeInplace()"
+            type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" step="0.01" [(ngModel)]="model.quote_price"
+            pInputText>
+        </span>
+      </p-inplace>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Material Cost ($):
+    </div>
+    <div class="ui-g-6  ui-lg-1 ui-g-lesspad right">
+      {{model.totalMaterialCost | number: '1.2-2'}}
+    </div>
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Labour Cost ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{model.totalLaborCost | number: '1.2-2'}}
+    </div>
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Total Cost ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{model.totalCost | number: '1.2-2'}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Material Sell ($):
+    </div>
+    <div class="ui-g-6  ui-lg-1 ui-g-lesspad right">
+      {{model.totalMaterial | number: '1.2-2'}}
+    </div>
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Labour Sell ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{model.totalLabor | number: '1.2-2'}}
+    </div>
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Margin (%):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{expetedMarginPercent*100 | number: '1.2-2'}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Material ~Margin ($):
+    </div>
+    <div class="ui-g-6  ui-lg-1 ui-g-lesspad right">
+      {{model.totalMaterial - model.totalMaterialCost | number: '1.2-2'}}
+    </div>
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Labour ~Margin ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{model.totalLabor - model.totalLaborCost | number: '1.2-2'}}
+    </div>
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Margin ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{model.quote_price - model.totalCost | number: '1.2-2'}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Material ~Margin (%):
+    </div>
+    <div class="ui-g-6  ui-lg-1 ui-g-lesspad right">
+      {{materialMarginPercent*100 | number: '1.2-2'}}
+    </div>
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Labour ~Margin (%):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{laborMarginPercent*100 | number: '1.2-2'}}
+    </div>
+
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Total ~Ext'd ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{model.totalQuote | number: '1.2-2'}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-6 ui-lg-4  ui-g-lesspad right bold">
+      <p-checkbox *ngIf="model && model.member_can_discount" [disabled]="model.discountAmount==0" binary="true" [(ngModel)]="model.quoteDiscount" (onChange)="apply_Discount()"
+        label="Apply Customer Discount ({{model.discountAmount/100 | percent: '1.0-0'}})"></p-checkbox>
+    </div>
+    <div class="ui-g-6 ui-lg-3  ui-g-lesspad right">
+      Total Hours (hrs):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{model.totalHours}}
+    </div>
+    <div class="ui-g-6 ui-lg-3 ui-g-lesspad right">
+      Total Ext'd ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{model.totalTM | number: '1.2-2'}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-6 ui-lg-3  ui-lg-offset-8 ui-g-lesspad right">
+      Total ~Ext'd - Ext'd ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{(model.totalQuote - model.totalTM) | number: '1.2-2'}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-6 ui-lg-3 ui-lg-offset-8 ui-g-lesspad right">
+      Total Not Include ($):
+    </div>
+    <div class="ui-g-6 ui-lg-1 ui-g-lesspad  right">
+      {{model.totalNotInclude | number: '1.2-2'}}
+    </div>
+  </div>
+</div>
+<!-- <div class="print_worksheet">
+  <button pButton label="Print" icon="fa-print" (click)="print.emit()"></button>
+</div> -->

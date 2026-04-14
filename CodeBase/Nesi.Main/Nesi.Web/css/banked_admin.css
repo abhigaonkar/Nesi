@@ -1,0 +1,346 @@
+﻿#banked_admin																		{
+																					
+																					}
+
+#banked_admin .framework .detail .company_picker									{
+																					background-image:				url("/images/bankedpay/bg/bg[question].png");
+																					border:							solid 1px #777;
+																					width:							740px;
+																					padding:						5px;
+																					text-align:						left;
+																					}
+
+#banked_admin .framework .detail .company_picker .companies							{
+																					font-weight:					bold;
+																					}
+
+#banked_admin .framework .detail .users												{
+																					width:							750px;
+																					}
+
+#banked_admin .framework .detail .users tr											{
+																					background-color:				#fff;
+																					}
+#banked_admin .framework .detail .users tr:hover									{
+																					background-color:				#fc0;
+																					}
+
+#banked_admin .framework .detail .users .header										{
+																					background-color:				#000;
+																					color:							#fff;
+																					font-weight:					bold;	
+																					}
+
+#banked_admin .framework .detail .users .name										{
+																					font-weight:					bold;	
+																					text-align:						left;
+																					border-left:					solid 1px #999;
+																					border-right:					solid 1px #999;
+																					border-bottom:					solid 1px #999;
+																					}
+
+#banked_admin .framework .detail .users .balance									{
+																					text-align:						center;
+																					width:							85px;
+																					font-weight:					bold;
+																					color:							#040;
+																					border-right:					solid 1px #999;
+																					border-bottom:					solid 1px #999;
+																					}
+
+#banked_admin .framework .detail .users .hours										{
+																					text-align:						center;
+																					width:							85px;
+																					font-weight:					bold;
+																					color:							#040;
+																					border-right:					solid 1px #999;
+																					border-bottom:					solid 1px #999;
+																					}
+
+#banked_admin .framework .detail .users .action										{
+																					width:							65px;
+																					border-right:					solid 1px #999;
+																					border-bottom:					solid 1px #999;
+																					}
+
+#banked_admin .framework .detail .users .action button								{
+																					width:							50px;
+																					cursor:							pointer;
+																					}
+/* =====================================================================================================================================================
+Pop Up
+===================================================================================================================================================== */
+
+#banked_admin_popup																	{
+																					padding:				10px;
+																					}
+
+/*
+// Add
+*/
+#banked_admin_popup .add															{
+																					height:					280px;
+																					}
+
+#banked_admin_popup .add #howmany													{
+																					color:					#090;
+																					font-weight:			bold;
+																					padding:				5px;
+																					text-align:				center;
+																					}
+
+#banked_admin_popup .add .cell														{
+																					border:					solid 1px #070;
+																					padding:				5px;
+																					background-color:		#fff;
+																					}
+
+#banked_admin_popup .add .title														{
+																					text-align:				center;
+																					padding:				5px;
+																					font-size:				12px;
+																					font-weight:			bold;
+																					background-color:		#070;
+																					color:					#fff;
+																					}
+
+#banked_admin_popup .add .payperiods												{
+																					font-family:			Courier;
+																					}
+
+#banked_admin_popup .add .note														{
+																					font-size:				12px;
+																					padding:				3px;
+																					background-color:		#eee;
+																					}
+
+#banked_admin_popup .add .submit													{
+																					font-size:				12px;
+																					width:					100%;
+																					border:					solid 1px #070;
+																					margin:					2px;
+																					font-weight:			bold;
+																					cursor:					pointer;
+																					background-color:		#cfc;
+																					}
+
+#banked_admin_popup .add #total														{
+																					font-weight:			bold;
+																					color:					#090;
+																					font-size:				20px;
+																					}
+
+/*
+// Deduct
+*/
+#banked_admin_popup .deduct															{
+																					height:					280px;
+																					}
+
+#banked_admin_popup .deduct #howmany												{
+																					color:					#900;
+																					font-weight:			bold;
+																					padding:				5px;
+																					text-align:				center;
+																					}
+
+#banked_admin_popup .deduct .cell													{
+																					border:					solid 1px #700;
+																					padding:				5px;
+																					background-color:		#fff;
+																					}
+
+#banked_admin_popup .deduct .title													{
+																					text-align:				center;
+																					padding:				5px;
+																					font-size:				12px;
+																					font-weight:			bold;
+																					background-color:		#700;
+																					color:					#fff;
+																					}
+
+#banked_admin_popup .deduct .payperiods												{
+																					font-family:			Courier;
+																					}
+
+#banked_admin_popup .deduct .note													{
+																					font-size:				12px;
+																					padding:				3px;
+																					background-color:		#eee;
+																					}
+
+#banked_admin_popup .deduct .submit													{
+																					font-size:				12px;
+																					width:					100%;
+																					border:					solid 1px #700;
+																					margin:					2px;
+																					font-weight:			bold;
+																					cursor:					pointer;
+																					background-color:		#fcc;
+																					}
+
+#banked_admin_popup .deduct #total													{
+																					font-weight:			bold;
+																					color:					#900;
+																					font-size:				20px;
+																					}
+
+/*
+// Payout
+*/
+#banked_admin_popup .payout															{
+																					height:					280px;
+																					}
+
+#banked_admin_popup .payout #howmany												{
+																					color:					#999;
+																					font-weight:			bold;
+																					padding:				5px;
+																					text-align:				center;
+																					}
+
+#banked_admin_popup .payout .cell													{
+																					border:					solid 1px #777;
+																					padding:				5px;
+																					background-color:		#fff;
+																					}
+
+#banked_admin_popup .payout .title													{
+																					text-align:				center;
+																					padding:				5px;
+																					font-size:				12px;
+																					font-weight:			bold;
+																					background-color:		#777;
+																					color:					#fff;
+																					}
+
+#banked_admin_popup .payout .payperiods												{
+																					font-family:			Courier;
+																					}
+
+#banked_admin_popup .payout .note													{
+																					font-size:				12px;
+																					padding:				3px;
+																					background-color:		#eee;
+																					}
+
+#banked_admin_popup .payout .submit													{
+																					font-size:				12px;
+																					width:					100%;
+																					border:					solid 1px #777;
+																					margin:					2px;
+																					font-weight:			bold;
+																					cursor:					pointer;
+																					background-color:		#ccc;
+																					}
+
+#banked_admin_popup .payout #total													{
+																					font-weight:			bold;
+																					color:					#999;
+																					font-size:				20px;
+																					}
+/*
+// Ledger
+*/
+#banked_admin_popup .ledger															{
+																					font-size:				11px;
+																					width:					750px;
+																					}
+
+#banked_admin_popup .ledger .head													{
+																					background-color:		#777;
+																					color:					#fff;
+																					padding:				3px;
+																					text-align:				center;
+																					font-weight:			bold;
+																					}
+
+#banked_admin_popup .ledger .deducted												{
+																					background-color:		#ff0;
+																					}
+
+#banked_admin_popup .ledger .paidout												{
+																					background-color:		#999;
+																					}
+
+#banked_admin_popup .ledger .retracted												{
+																					background-color:		#f66;
+																					}
+
+#banked_admin_popup .ledger .deposit												{
+																					background-color:		#9f9;
+																					}
+
+#banked_admin_popup .ledger .withdrawal												{
+																					background-color:		#fd0;
+																					}
+
+#banked_admin_popup .ledger .null 													{
+																					width:					750px;
+																					padding:				100px;
+																					text-align:				center;
+																					}
+
+#banked_admin_popup .ledger .action													{
+																					border-top:				solid 3px #fff;
+																					width:					35px;
+																					text-align:				center;
+																					}
+
+#banked_admin_popup .ledger .action button											{
+																					cursor:					pointer;
+																					}
+
+#banked_admin_popup .ledger .date 													{
+																					border-top:				solid 3px #fff;
+																					width:					250px;
+																					font-weight:			bold;
+																					text-align:				center;
+																					}
+
+#banked_admin_popup .ledger .payperiod												{
+																					border-top:				solid 3px #fff;
+																					width:					100px;
+																					font-weight:			bold;
+																					text-align:				center;
+																					}
+
+
+#banked_admin_popup .ledger .type													{
+																					border-top:				solid 3px #fff;
+																					width:					100px;
+																					font-weight:			bold;
+																					text-align:				center;
+																					}
+
+#banked_admin_popup .ledger .hours													{
+																					border-top:				solid 3px #fff;
+																					width:					50px;
+																					font-weight:			bold;
+																					text-align:				center;
+																					}
+
+#banked_admin_popup .ledger .payrate												{
+																					border-top:				solid 3px #fff;
+																					width:					150px;
+																					text-align:				center;
+																					font-weight:			bold;
+																					}
+#banked_admin_popup .ledger .total													{
+																					border-top:				solid 3px #fff;
+																					text-align:				center;
+																					font-weight:			bold;
+																					}
+
+#banked_admin_popup .ledger .note													{
+																					padding:				5px;
+																					background-color:		#fff;
+																					}
+
+#banked_admin_popup .action_button													{
+																					cursor:					pointer;
+																					margin:					5px;
+																					border:					solid 1px #000;
+																					font-size:				11px;
+																					font-weight:			bold;
+																					}

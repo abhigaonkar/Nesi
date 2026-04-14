@@ -1,0 +1,200 @@
+<p-blockUI [blocked]="submitting">
+  <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+</p-blockUI>
+
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-g-nopad" style="margin-bottom:0.5em">
+      <button pButton type="button" title='Click me to edit this information' (click)="openEditCustomer()" label="Edit Contact / Customer Info"
+        icon="fa-pencil" [disabled]="edit_disabled"></button>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="q && q.address_options" (onChange)="onAdderssChanged($event)"
+        [filter]="q && q.address_options && q.address_options.length > 6" [required]="true" formControlName="address_id">
+      </p-dropdown>
+      <nesi-fieldErrorDisplay [displayError]="q && q.address_id===0" [errorMsg]="'You must select a valid Address.'"></nesi-fieldErrorDisplay>
+    </div>
+    <div class="ui-g-12 ui-g-nopad quote_customer">
+      <p-accordion [multiple]="true">
+        <p-accordionTab header="Customer" [disabled]="true" [selected]="true">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-4 ui-g-lesspad">
+              <i class="fa fa-fw fa-address-card"></i>
+              Address:
+            </div>
+            <div class="ui-g-8 ui-g-lesspad">
+              <div>{{q&&q.address_addr1}}</div>
+              <div>{{q&&q.address_addr2}}</div>
+              <div>{{q&&q.address_addr3}}</div>
+              <div>{{q&&q.address_addr4}}</div>
+              <div>{{q&&q.address_city}}{{q&&q.address_prov != '' ? ', ': ' '}}{{q&&q.address_prov}}{{q&&q.address_postal != '' ? ', ': ' '}}{{q&&q.address_postal}}</div>
+              <div>{{q&&q.address_country}}</div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-4 ui-g-lesspad">
+                <i class="fa fa-fw fa-phone"></i>
+                Phone:
+              </div>
+              <div class="ui-g-8 ui-g-lesspad">
+                <div>
+                  {{q&&q.address_phoneNumber || '&nbsp;'}} {{q&&q.contact_extension? ' x ' + q&&q.contact_extension : ''}}</div>
+              </div>
+            </div>
+            <div class="ui-g-4 ui-g-lesspad">
+              <i class="fa fa-fw fa-fax"></i>
+              Fax:
+            </div>
+            <div class="ui-g-8 ui-g-lesspad">
+              <div>{{q&&q.address_faxNumber || '&nbsp;'}}</div>
+            </div>
+            <div class="ui-g-4 ui-g-lesspad">
+              <i class="fa fa-fw fa-mobile"></i>
+              Mobile:
+            </div>
+            <div class="ui-g-8 ui-g-lesspad">
+              <div>{{q&&q.contact_cellPhone || '&nbsp;'}}</div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-4 ui-g-lesspad">
+                <i class="fa fa-fw fa-envelope"></i>
+                Email:
+              </div>
+              <div class="ui-g-8 ui-g-lesspad">
+                <div>{{q&&q.contact_email || '&nbsp;'}}</div>
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="Date" [disabled]="true" [selected]="true">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-2 ui-g-nopad">
+                <button type="button" title="update date" (click)="update_checkValidation('last_print_date')" [disabled]="!(q)" pButton icon="fa fa-redo-alt"></button>
+              </div>
+              <div class="ui-g-4 ui-g-nopad">
+                Last Print Date:
+              </div>
+              <div class="ui-g-6 ui-g-nopad">
+                {{q&&q.last_print_date || '&nbsp;'}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-2 ui-g-nopad">
+                <button type="button" title="update date" (click)="update_checkValidation('last_fax_date')" [disabled]="!(q && q.status_id==2)" pButton
+                  icon="fa fa-redo-alt"></button>
+              </div>
+              <div class="ui-g-4 ui-g-nopad ">
+                Last Sent Date:
+              </div>
+              <div class="ui-g-6 ui-g-nopad ">
+                {{q&&q.last_fax_date || '&nbsp;'}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-2 ui-g-nopad">
+                <button type="button" title="update date" (click)="update_checkValidation('verified_date')" [disabled]="!(q && q.status_id==3)" pButton
+                  icon="fa fa-redo-alt"></button>
+              </div>
+              <div class="ui-g-4 ui-g-nopad ">
+                Verified Date: 
+              </div>
+              <div class="ui-g-6 ui-g-nopad ">
+                {{q&&q.verified_date || '&nbsp;'}}
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="Summary" [disabled]="true" [selected]="true">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-6">
+                Total Quoted(~Ext`d): 
+              </div>
+              <div class="ui-g-6">
+                {{q&&q.worksheet_total |currency:'CAD':'symbol-narrow':'1.2-2'}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-6">
+                Total Benchmark Sell(Ext`d): 
+              </div>
+              <div class="ui-g-6">
+                {{q&&q.tm_pricing_total | currency:'CAD':'symbol-narrow':'1.2-2'}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-6">
+                Attached to WO #: 
+              </div>
+              <div class="ui-g-6">
+                <div *ngIf="q&&q.wo_link" class="allow_click" (click)="openwo(q&&q.wo_link)">{{q&&q.wo}}</div>
+               <div *ngIf="!q&&q.wo_link">{{q&&q.wo  || 'N/A'}}</div>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-6">
+                Attached to PO #: 
+              </div>
+              <div class="ui-g-6" [innerHTML]="q&&q.po || 'N/A'">
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="Options" [disabled]="true" [selected]="true">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g">
+              <div class="ui-g-1">
+                <i class="fa fa-fw fa-wrench"></i>
+              </div>
+              <div class="ui-g-11">
+                <p-checkbox name="printout" binary="true" label="Include contact title on printout" value="1" formControlName="include_title"></p-checkbox>
+              </div>
+              <div class="ui-g-12 ui-lg-4">
+                <button class="doubleline_button" [disabled]="!((q && q.quoted_price>0 && q.pricetype_id!=6) || (q && q.quoted_price>0 && q.price_to>0 && q.quoted_price<=q.price_to && q.pricetype_id==6))" type="button" pButton label="Print With Price" icon="fa-print" (click)="print_quote('w')"></button>
+              </div>
+              <div class="ui-g-12 ui-lg-4">
+                <button class="doubleline_button" [disabled]="!((q && q.quoted_price>0 && q.pricetype_id!=6) || (q && q.quoted_price>0 && q.price_to>0 && q.quoted_price<=q.price_to && q.pricetype_id==6))"  type="button" pButton label="Print Without Price" icon="fa-print" (click)="print_quote('wo')"></button>
+              </div>
+              <div class="ui-g-12 ui-lg-4">
+                <button class="doubleline_button" *ngIf="q&&q.print_draft_show" type="button" pButton label="Print Draft" icon="fa-print"
+                  (click)="print_quote('draft')"></button>
+              </div>
+            </div>
+            <div class="ui-g">
+              <div class="ui-g-12 ui-lg-4">
+                <button class="doubleline_button" *ngIf="q && (q.status_id!=6)" type="button" pButton label="Kill Quote" (click)="killQuoteDisplay=true"
+                  icon="fa-times"></button>
+                <button class="doubleline_button" *ngIf="q && (q.status_id==6)" type="button" pButton label="Revive Quote" (click)="reviveQuote()"
+                  icon="fa-undo"></button>
+              </div>
+              <div class="ui-g-12 ui-lg-4">
+                <button class="doubleline_button" type="button" [disabled]="(q && q.received_button_disabled) || (q && !q.is_Qced)" pButton label="Work Order" icon="fa-file-check"
+                  (click)="workOrder_click()"  [title]="tooltip"></button>
+                </div>
+
+              <div class="ui-g-12 ui-lg-4">
+                <button class="doubleline_button" *ngIf="q&&!q.service_report_hider" [disabled]="q&&q.service_report_disabled" type="button"
+                  pButton label="Service Report" (click)="print_quote('service_report')" icon="fa-print"></button>
+              </div>
+            </div>
+            <div class="ui-g">
+              <div class="ui-g-12 ui-lg-4">
+              </div>
+              <div class="ui-g-12 ui-lg-4">
+                <button class="doubleline_button"  type="button" pButton label="Duplicate" icon="fa-copy" (click)="duplicate()"></button>
+              </div>
+              <div class="ui-g-12 ui-lg-4">
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+  </div>
+</form>
+<p-dialog header="Kill Quote Questionnaire" [modal]="true" [responsive]="true" [(visible)]="killQuoteDisplay">
+  <nesi-quote-edit-kill [q]="q" (afterSubmit)="killQuote()" (cancel)="killQuoteDisplay=false"></nesi-quote-edit-kill>
+</p-dialog>
+<p-dialog header="PRINT PANE" [width]="cs.dialogWidth" [modal]="true" [responsive]="true" [(visible)]="printPaneDisplay" (onHide)="refresh()">
+  <iframe #printIframe width='100%' height='740' [attr.src]="trustedUrl ? trustedUrl : null"></iframe>
+</p-dialog>

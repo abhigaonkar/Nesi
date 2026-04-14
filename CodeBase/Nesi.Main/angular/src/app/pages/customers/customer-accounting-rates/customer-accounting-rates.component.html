@@ -1,0 +1,226 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-lg-1 ui-g-lesspad">
+        Business Unit:
+      </div>
+      <div class="ui-g-12 ui-lg-3 ui-g-lesspad">
+        <p-dropdown [style]="{'width':'100%'}" [disabled]="!is_allowed_to_switch_chargeout_bu" [options]="business_unit_list" [(ngModel)]="selected_business_unit_id" [filter]="business_unit_list && business_unit_list.length>10"
+          (onChange)="bussiness_unitChanged($event)"></p-dropdown>
+      </div>
+    </div>
+
+
+    <div class="ui-g-12 ui-g-lesspad" *ngIf="showTravelMileageUI && GenericLaborRateRecord_forTravel">
+      <h3>Customer Travel/Mileage Rates {{totalRecordsInfo}}</h3>
+      <p-panel class="tmRoot" #pnl [showHeader]="false">
+        <table>
+          <tr>
+            <th bgcolor="#094" style="height:30px">Pay Hour Type</th>
+            <th bgcolor="#094" style="height:30px">From Date</th>
+            <th bgcolor="#094" style="height:30px">To Date</th>
+            <th bgcolor="#094" style="height:30px"> Rate</th>
+            <th bgcolor="#094" style="height:30px">Actions</th>
+          </tr>
+          <tr *ngIf="GenericLaborRateRecord_forTravel.valid">
+            <td><strong>{{GenericLaborRateRecord_forTravel.paytype}}</strong></td>
+            <td>
+              <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true"
+                [(ngModel)]="GenericLaborRateRecord_forTravel.from" placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+            </td>
+            <td>
+              <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true"
+                [(ngModel)]="GenericLaborRateRecord_forTravel.to" placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+            </td>
+            <td>
+              <input type="number"  step="0.01" pInputText [(ngModel)]="GenericLaborRateRecord_forTravel.chargeout"/>
+            </td>
+            <td>
+              <button pButton icon="fa-save" (click)="saveTrvalOrMileageRateEventEnter(GenericLaborRateRecord_forTravel)" *ngIf="GenericLaborRateRecord_forTravel.visible"></button>
+              <button pButton icon="fa-times" class="ui-button-warning"
+                (click)="deleteTrvalOrMileageRateEvent(GenericLaborRateRecord_forTravel)" *ngIf="GenericLaborRateRecord_forTravel.visible"></button>
+            </td>
+          </tr>
+          <tr  *ngIf="GenericLaborRateRecord_forMileage.valid">
+            <td><strong>{{GenericLaborRateRecord_forMileage.paytype}}</strong></td>
+            <td>
+              <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true"
+                [(ngModel)]="GenericLaborRateRecord_forMileage.from" placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+            </td>
+            <td>
+              <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true"
+                [(ngModel)]="GenericLaborRateRecord_forMileage.to" placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+            </td>
+            <td>
+              <input pInputText [(ngModel)]="GenericLaborRateRecord_forMileage.chargeout" type="number"  step="0.01">
+            </td>
+            <td>
+              <button pButton icon="fa-save" (click)="saveTrvalOrMileageRateEventEnter(GenericLaborRateRecord_forMileage)" *ngIf="GenericLaborRateRecord_forMileage.visible"></button>
+              <button pButton icon="fa-times" class="ui-button-warning" (click)="deleteTrvalOrMileageRateEvent(GenericLaborRateRecord_forMileage)" *ngIf="GenericLaborRateRecord_forMileage.visible"></button>
+            </td>
+          </tr>
+          <tr *ngIf="showErrorInfo">
+            <td colspan="5">
+              <p-message severity="error" [text]="errorInfo"></p-message>
+            </td>
+          </tr>
+        </table>
+      </p-panel>
+
+      <p-blockUI [target]="pnl" [blocked]="blockedui">
+      </p-blockUI>
+
+      <dx-popup title="Confirmation" [width]="400" [height]="200" shadingColor="rgba(0, 0, 0, 0.0)"
+        [(visible)]="isPopupVisible" [closeOnBackButton]="false" [closeOnOutsideClick]="false" [showCloseButton]="false">
+        <div>
+          <p>{{confirmationInfo}}</p>
+      
+          <dx-button class="button-info" text="Yes" (onClick)="ConfirmYes()">
+          </dx-button>
+      
+          <dx-button class="button-info" text="No" (onClick)="ConfirmNo()">
+          </dx-button>
+        </div>
+      </dx-popup>
+
+    </div>
+
+    <div class="ui-g-12 ui-g-lesspad">
+      <h3>Customer WIDE Chargeout Rates</h3>
+      <p-dataTable [value]="table_data" [responsive]="true" [globalFilter]="gb" rowHover="true" [loading]="submitting" #d>
+        <p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+                <input #gb type="text" style="height:25px" pInputText size="50" placeholder="Global Filter">
+              </div>
+            </div>
+          </div>
+        </p-header>
+        <p-column [style]="{'width':'15%'}" field="name" header="Member Type" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'7%'}" field="from_date" header="From Date" [sortable]="true" item-width="200px">
+          <ng-template let-col let-item="rowData" pTemplate="body">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" [(ngModel)]="item.from_date" placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'7%'}" field="to_date" header="To Date" [sortable]="true">
+          <ng-template let-col let-item="rowData" pTemplate="body">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" [(ngModel)]="item.to_date"  placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'3%'}" field="norm" header="Normal" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'3%'}" field="reg" header="Reg" [sortable]="true">
+          <ng-template let-col let-item="rowData" pTemplate="body">
+            <input pInputText (change)="regChanged(item)" (keyup)="regChanged(item)" [(ngModel)]="item.reg" step="0.01" type="number">
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'3%'}" field="ot" header="OT" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'3%'}" field="dt" header="DT" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'3%'}" field="regsp" header="SP" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'3%'}" field="otsp" header="OT SP" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'3%'}" field="dtsp" header="DT SP" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'7%'}" field="last_updated" header="Last Updated" [sortable]="true">
+          
+        </p-column>
+        <p-column [style]="{'width':'5%'}" field="" header="Save/Delete" [sortable]="false">
+          <ng-template let-col let-item="rowData" pTemplate="body">
+            <button pButton [disabled]="!item.from_date || !item.to_date || !item.reg || item.has_error || !allow_rate_modifications" icon="fa-archive" 
+            (click)="saveNewRate(item)"></button>
+            <button pButton [disabled]="!item.from_date || !item.to_date || !item.reg || item.has_error" icon="fa-save"
+              (click)="saveRate(item)"></button>
+              <button pButton [disabled]="!item.from_date || !item.to_date || !item.reg || item.has_error" icon="fa-times" class="ui-button-warning"
+              (click)="deleteRate(item)"></button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+  
+      <dx-popup title="Customer WIDE Chargeout Rates - Customer ID #{{customer_id}}" [width]="700" [height]="520" shadingColor="rgba(0, 0, 0, 0.2)"
+        [(visible)]="isPopupVisible4Rates" [closeOnBackButton]="false" [closeOnOutsideClick]="false"
+        [showCloseButton]="false">
+      
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" *ngIf="selectedRateRecord">
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Member Type:
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              {{selectedRateRecord.name}}
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Reg:
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              <input pInputText [(ngModel)]="selectedRateRecord.reg" step="5" type="number">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              OT:
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              <input pInputText [(ngModel)]="selectedRateRecord.ot" step="5" type="number">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              DT:
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              <input pInputText [(ngModel)]="selectedRateRecord.dt" step="5" type="number">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              SP:
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              <input pInputText [(ngModel)]="selectedRateRecord.regsp" step="5" type="number">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              OT SP:
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              <input pInputText [(ngModel)]="selectedRateRecord.otsp" step="5" type="number">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              DT SP:
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              <input pInputText [(ngModel)]="selectedRateRecord.dtsp" step="5" type="number">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+              <div class="ui-g-12 ui-md-3 label_for_right">
+              </div>
+              <div class="ui-g-12 ui-md-7 label_for_left">
+                  <div *ngIf="chargeOutError">
+                      <p-message severity="error" [text]="chargeOutErrorInfo"></p-message>
+                    </div>
+              </div>
+            </div>
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              <dx-button class="button-info" text="Save" (onClick)="ConfirmYes4Rates()">
+              </dx-button>
+              <dx-button class="button-info" text="Cancel" (onClick)="ConfirmNo4Rates()">
+              </dx-button>
+            </div>
+          </div>
+      
+        </div>
+      </dx-popup>
+
+    </div>
+  </div>

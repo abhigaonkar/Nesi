@@ -1,0 +1,10 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-tabView>
+    <p-tabPanel header="NESI Contacts" leftIcon="fa-user">
+      <nesi-vendor-contacts-nesi [vendor_id]="vendor_id"></nesi-vendor-contacts-nesi>
+    </p-tabPanel>
+    <p-tabPanel header="BV Contacts" leftIcon="fa-user-circle">
+      <nesi-vendor-contacts-bv [vendor_id]="vendor_id"></nesi-vendor-contacts-bv>
+    </p-tabPanel>
+  </p-tabView>
+</div>

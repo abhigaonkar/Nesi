@@ -1,0 +1,20 @@
+<p-dataTable [value]="list" [responsive]="true" rowHover="true" #d>
+  <p-column [style]="{'width':'60%'}" field="milestone" header="Milestone"></p-column>
+  <p-column [style]="{'width':'10%'}" field="due" header="Due">
+    <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+      {{data.due | date: 'yyyy-MM-dd'}}
+    </ng-template>
+  </p-column>
+  <p-column [style]="{'width':'10%'}" field="reviewedby" header="Notes">
+    <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+      <textarea [disabled]="locked" class="back_yellow" pInputTextarea [(ngModel)]="data.notes" (change)="submit(data)"></textarea>
+    </ng-template>
+  </p-column>
+  <p-column [style]="{'width':'10%'}" field="ticketid" header="Ticket">
+  </p-column>
+  <p-column [style]="{'width':'10%'}" field="completed" header="Completed">
+    <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+      <p-checkbox binary="true" [disabled]="locked"  [(ngModel)]="data.completed" (onChange)="submit(data)"></p-checkbox>
+    </ng-template>
+  </p-column>
+</p-dataTable>

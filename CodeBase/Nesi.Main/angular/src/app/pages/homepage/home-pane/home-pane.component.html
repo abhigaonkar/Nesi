@@ -1,0 +1,67 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">&nbsp;</div>
+  <div class="ui-g-12 pane_title">
+    <div class="ui-g-12 title">&nbsp;{{title}}</div>
+    <div class="ui-g-12 level">
+      <div class="ui-g-6 ui-g-nopad ui-md-1 ui-md-offset-1 ui-lg-1 level_1">
+        &nbsp;
+      </div>
+      <div class="ui-g-6 ui-g-nopad ui-md-2 ui-lg-2">
+        &nbsp;More than {{level_1}}
+      </div>
+      <div class="ui-g-6 ui-g-nopad ui-md-1 ui-md-offset-1 ui-lg-1  ui-lg-offset-1 level_2">
+        &nbsp;
+      </div>
+      <div class="ui-g-6 ui-g-nopad ui-md-2 ui-lg-2">
+        &nbsp;More than {{level_2}}
+      </div>
+      <div class="ui-g-6 ui-g-nopad ui-md-1 ui-md-offset-1 ui-lg-1 ui-lg-offset-1 level_3">
+        &nbsp;
+      </div>
+      <div class="ui-g-6 ui-g-nopad ui-md-2 ui-lg-2">
+        &nbsp;Less than {{level_2}}
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12 pane_body">
+    <div class="ui-g-12">
+      <div class="ui-g-4 th" (click)="sort('status')">
+        {{status_name}}
+        <i class="fa" [ngClass]="{'bold': sortField=='status',
+        'fa-sort-up': sortField=='status' && ! desc, 
+        'fa-sort-down': sortField=='status' && desc,
+        'fa-sort': sortField!='status'}"></i>
+      </div>
+      <div class="ui-g-5  th" (click)="sort('count')">
+        Qty
+        <i class="fa" [ngClass]="{'bold': sortField=='count',
+        'fa-sort-up': sortField=='count' && ! desc, 
+        'fa-sort-down': sortField=='count' && desc,
+        'fa-sort': sortField!='count'}"></i>
+      </div>
+      <div class="ui-g-3 th" (click)="sort('age')">
+        Age(days)
+        <i class="fa" [ngClass]="{'bold': sortField=='age',
+        'fa-sort-up': sortField=='age' && ! desc, 
+        'fa-sort-down': sortField=='age' && desc,
+        'fa-sort': sortField!='age'}"></i>
+      </div>
+    </div>
+    <ng-container *ngIf="items">
+      <div class="ui-g-12 ui-g-lesspad" *ngFor="let item of (items | orderBy: sortField : desc )">
+        <div class="ui-g-4 ui-g-lesspad">
+          {{item.status}}
+        </div>
+        <div class="ui-g-5 ui-g-lesspad">
+          <nesi-home-page-qtyBar [value]="item.count" [level_1]="level_1" [level_2]="level_2"></nesi-home-page-qtyBar>
+        </div>
+        <div class="ui-g-3 ui-g-lesspad" [ngClass]="{'red': item.age>redAge, 'bold': item.age>redAge}">
+          {{item.age}}
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!items">
+      <nesi-loading-spinner></nesi-loading-spinner>
+    </ng-container>
+  </div>
+</div>

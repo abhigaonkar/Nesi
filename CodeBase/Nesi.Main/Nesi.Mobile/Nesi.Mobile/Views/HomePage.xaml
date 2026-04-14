@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local1="clr-namespace:Nesi.Mobile.ViewModels"
+			 x:Class="Nesi.Mobile.Views.HomePage"
+			 x:Name="this">
+
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Logout" Command="{Binding LogoutCommand}" />
+	</ContentPage.ToolbarItems>
+
+	<ContentPage.Content>
+		<StackLayout>
+			<Label Text="Welcome"
+                 Font="Bold"
+				   TextColor="Black"
+                HorizontalOptions="CenterAndExpand"
+				   x:Name="welcome"/>
+			<ActivityIndicator IsRunning="{Binding Syncing}"/>
+			<Label Text="{Binding SyncText}"
+				   VerticalOptions="Center"
+				   HorizontalOptions="Center"/>
+			<Switch IsToggled="{Binding SyncContactsSwitch}" HorizontalOptions="Center" IsEnabled="{Binding SwitchEnabled}" x:Name="syncswitch"></Switch>
+			<Label Text="Sync Contacts"
+                HorizontalOptions="CenterAndExpand"/>
+			<Button Text="Cancel Sync" Command="{Binding CancelSync}" IsVisible="{Binding ShowCancel}"></Button>
+			<Button Text="Check for updated contacts" Command="{Binding UpdateContacts}" IsVisible="{Binding UpdateVisible}"></Button>
+		</StackLayout>
+
+
+	</ContentPage.Content>
+</ContentPage>

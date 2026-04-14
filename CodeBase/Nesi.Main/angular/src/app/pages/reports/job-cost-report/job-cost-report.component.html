@@ -1,0 +1,16 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+      <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Job Cost Report'}]"></nesi-breadcurmb>
+  </div>
+  <div class="ui-g-12">
+    <nesi-datatable
+    [visible_business_type]="'S'"
+    [id]='59' gridName="JobCostReport" gridTitle="" refreshCache="true" (onRefresh)="loadDetail()" [callback]="jobCostReportCallback">
+        <div style="width: 512px;border:solid 1px #999;margin:10px;display:block;">
+            <div style="color:red;padding:2px;margin:2px;">Red text indicates being over the quoted amount</div>
+            <div style="color:orange;padding:2px;margin:2px;">Orange text indicates getting close to quoted amount</div>
+            <div style="color:white;padding:2px;margin:2px;background-color:red;">Red background indicates that figures are in the negative</div>
+        </div>
+    </nesi-datatable>
+  </div>
+</div>

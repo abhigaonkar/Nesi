@@ -1,0 +1,39 @@
+{
+    "Deployment": {
+        "Name": "NESI Development /Staging",
+        "Confirm": true,
+        "Projects": [
+            {
+                "Type": "dotnet",
+                "Name": "Nesi.All",
+                "Solution": "C:\\Builds\\nesi\\Nesi.Main\\Nesi.All.sln",
+                "Configuration": "Development",
+                "Username": "nesi-dev001\\extuser1",
+                "Password": "Eforu09815",
+                "Clean": true,
+                "RestorePackages": true,
+                "Deploy": true,
+                "UseExternalWindow": false,
+                "AutoCloseExternalWindow": true
+            },
+            {
+                "Type": "angular",
+                "Name": "Nesi.Angular",
+				"Build" : true,
+                "Deploy": true,
+                "ProjectFolder":"C:\\Builds\\nesi\\Nesi.Main\\angular",
+                "BuildOutputFolder":".\\dist",
+                "BuildCommand":".\\build.bat",
+                "ServerAddress": "nesi-dev001.newelectric.local",
+                "SiteName": "nesi.ca_angular_stage",
+                "Port":8172,
+                "PreDeployScript":null,
+                "PostDeployScript":".\\CopyAngular.bat",
+                "Username": "nesi-dev001\\extuser1",
+                "Password": "Eforu09815",
+                "UseExternalWindow": false,
+                "AutoCloseExternalWindow": true
+            }
+        ]
+    }
+}

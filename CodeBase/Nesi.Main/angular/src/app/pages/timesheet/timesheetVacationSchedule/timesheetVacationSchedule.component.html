@@ -1,0 +1,114 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12">
+      This will only allow you to schedule whole days off Paid out in 8 hour increments per day.
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        *Start Date:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <p-calendar formControlName="date_start"  placeholder="yyyy-mm-dd" 
+        dateFormat="yy-mm-dd"
+        showIcon="true" [disabledDays]="[0,6]" [minDate]="minDate"></p-calendar>
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="isFieldInValid('date_start')">
+          <div *ngIf="userform.get('date_start').hasError('required')">
+            <i class="fa fa-exclamation-circle"></i>Start Date is required</div>
+          <div *ngIf="userform.get('date_start').hasError('checkDateGreatThanToday')">
+            <i class="fa fa-exclamation-circle"></i>The start date has to be greater than, or equal to today.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        *End Date:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <p-calendar formControlName="date_end"  placeholder="yyyy-mm-dd" showIcon="true"
+        dateFormat="yy-mm-dd"
+        [disabledDays]="[0,6]" [minDate]="userform.get('date_start').value"></p-calendar>
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="isFieldInValid('date_end') || formHasError('EndDateGreatThanStartDate',['date_end','date_start'])">
+          <div *ngIf="userform.get('date_end').hasError('required')">
+            <i class="fa fa-exclamation-circle"></i>The end date is required</div>
+          <div *ngIf="userform.get('date_end').hasError('checkDateGreatThanToday')">
+            <i class="fa fa-exclamation-circle"></i>The end date has to be greater than, or equal to today.</div>
+          <div *ngIf="userform.hasError('EndDateGreatThanStartDate')">
+            <i class="fa fa-exclamation-circle"></i>The end date has to be greater than, or equal to the start date.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        *Return Date:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <p-calendar formControlName="date_return"  placeholder="yyyy-mm-dd" showIcon="true" 
+        dateFormat="yy-mm-dd"
+        [disabledDays]="[0,6]" [minDate]="userform.get('date_start').value"></p-calendar>
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="isFieldInValid('date_return')  || formHasError('ReturnDateGreatThanStartDate',['date_return','date_start'])">
+          <div *ngIf="userform.get('date_return').hasError('required')">
+            <i class="fa fa-exclamation-circle"></i>The return Date is required</div>
+          <div *ngIf="userform.get('date_return').hasError('checkDateGreatThanToday')">
+            <i class="fa fa-exclamation-circle"></i>The return date has to be greater than, or equal to today.</div>
+          <div *ngIf="userform.hasError('ReturnDateGreatThanStartDate')">
+            <i class="fa fa-exclamation-circle"></i>The return date has to be greater than, or equal to the end date.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        *Payment Method:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <div class="ui-g-12 ui-md-4">
+          <p-radioButton name="paymentmethod" formControlName="payment" value="1" label="Vacation Pay"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <p-radioButton name="paymentmethod" formControlName="payment" value="2" label="All Outstanding"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <p-radioButton name="paymentmethod" formControlName="payment" value="3" label="Unpaid Timeoff"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-message ui-messages-error ui-corner-all" *ngIf="isFieldInValid('payment')">
+          <i class="fa fa-exclamation-circle"></i>Please select a payment method.</div>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        Current Available Hours/Dollars:
+      </div>
+      <div class="ui-g-12 ui-md-8 label_for_left">
+        <ng-container *ngIf="!loading_hours">
+          {{currentAvaliable && currentAvaliable.hours | number: '1.2-2'}}/{{
+            currentAvaliable && currentAvaliable.dollars | currency:'CAD':'symbol-narrow':'1.2-2'
+          }}
+        </ng-container>
+        <ng-container *ngIf="loading_hours">
+          <i class="fa fa-spinner fa-spin"></i>
+        </ng-container>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        Add Note - Optional:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <textarea pInputTextarea [rows]="4" autoResize="autoResize" formControlName="note"></textarea>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4">
+
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <button pButton type="submit" label="Review Submission" icon="fa-save"></button>
+      </div>
+    </div>
+  </form>
+
+  <p-dialog [modal]="true" [minWidth]="cs.isLg?'1024':'0'" (onHide)="reviewHide.emit()" [responsive]="true" header="Review Schedule Vacation"
+    [draggable]="true" [(visible)]="confirmDisplay">
+    <nesi-timesheetVacationScheduleReview [value]="reviewValue" (cancel)="confirmDisplay=false" (confirm)="confirm()"></nesi-timesheetVacationScheduleReview>
+  </p-dialog>
+</div>

@@ -1,0 +1,69 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid smaller" style="min-height: 600px">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <p-dataTable [value]="list" [responsive]="true" [globalFilter]="gb" rowHover="true" expandableRows="true" rowExpandMode="single"
+        [globalFilter]="gb" #d>
+        <p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-lg-2">
+              <button pButton type="button" label="Add New" icon="fa-plus" (click)="add_new()"></button>
+            </div>
+            <div class="ui-g-12 ui-lg-6">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+                <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+              </div>
+            </div>
+          </div>
+        </p-header>
+        <p-column [style]="{'width':'90px'}" styleClass="col-button">
+          <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+            <button type="button" pButton (click)="edit(data)" icon="fa-pencil"></button>
+            <button type="button" pButton (click)="delete(data)" class="ui-button-danger" icon="fa-times" [disabled]="!(data.status==='In Development' || data.status==='Closed')"></button>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'8%'}" field="date" header="Date" [sortable]="true">
+          <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+            {{data[col.field] | date: 'yyyy-MM-dd'}}
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'8%'}" field="author" header="Author" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'8%'}" field="startdate" header="Start Date" [sortable]="true">
+          <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+            {{data[col.field] | date: 'yyyy-MM-dd'}}
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'8%'}" field="enddate" header="End Date" [sortable]="true">
+          <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+            {{data[col.field] | date: 'yyyy-MM-dd'}}
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'20%'}" field="membertype_name" header="Title" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'12%'}" field="reports_to" header="Reports To" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'7%'}" field="has_comp" header="Comp?" [sortable]="true">
+          <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+            <p-checkbox binary="true" [(ngModel)]="data[col.field]" [disabled]="true"></p-checkbox>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'10%'}" field="notes" header="Notes" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'7%'}" field="is_signed" header="Signed" [sortable]="true">
+          <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+            <p-checkbox binary="true" [(ngModel)]="data[col.field]" [disabled]="true"></p-checkbox>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'10%'}" field="status" header="Status" [sortable]="true"></p-column>
+      </p-dataTable>
+    </div>
+  </blockable-div>
+</div>
+<p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Offer Details" appendTo="body" [draggable]="true"
+  [(visible)]="displayOffer" [positionTop]="50">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <nesi-employee-offer (close)="displayOffer=false"  (onChange)="getList()" [offer]="selected_offer" *ngIf="displayOffer"></nesi-employee-offer>
+  </div>
+</p-dialog>

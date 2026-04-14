@@ -1,0 +1,229 @@
+<div id="beta" *ngIf="force_beta"></div>
+<div class="topbar" #topbar id="topbar">
+  <bar-timer (TimeEnd)="rebootEnd()"></bar-timer>
+  <ng-container *ngIf="!isContact && showHelpWiki">
+    <div  class="wiki_help" (click)="showWikiHelp()">
+      <img src="assets/images/icon/icon[help].gif" alt="Help for this page" width="20" height="20" title="Help available for this page">
+    </div>
+  </ng-container>
+
+  <a class="topbar-logo">
+    <img alt="logo" src="assets/images/Logos/{{logo}}" style="border: 0 none" />
+  </a>
+
+  <!-- <p-splitButton label="M" icon="fa-bars" [model]="models"></p-splitButton> -->
+
+  <a id="menu-button" (click)="app.onMenuButtonClick($event)">
+    <i class="fa fa-bars"></i>
+  </a>
+
+  <a id="user-display" class="banner-display">
+    <ng-container *ngIf="!isContact">
+      <bar-swtichUser [preShow]="switchUserLoaded"  [userName]="userName" [switchUserList]="switchUserList"
+        (change)="switchUser($event)" (cancel)="cancelSwitchUser($event)" [swtiched]="ts.swtiched" [businessUnitName]="ts && ts.currentUser && ts.currentUser.businessUnitName">
+      </bar-swtichUser>
+      <i class="fa fa-user-circle fa-3x" (click)="userClick($event)"></i>
+      <i class="fa fa-angle-down" (click)="userClick($event)"></i>
+    </ng-container>
+    <ng-container *ngIf="isContact">
+      <i *showItBootstrap="['xl','lg','md','sm']" (click)="userClick($event)"> {{ ts.currentUser.fullName }} | {{ts.currentUser.companyName}}</i>
+      <i class="fa fa-user-circle fa-3x" (click)="userClick($event)"></i>
+    </ng-container>
+  </a>
+
+  <ng-container *ngIf="!isContact">
+    <span [ngStyle]="{display: !widthIsMobile?'':'none'}">
+      <nesi-globalSearch></nesi-globalSearch>
+    </span>
+ <div *ngIf="false">
+    <div *ngIf="toggleTicketIcon" class="banner-display banner-icon">
+      <bar-icongetSupport [tickets]="ticketList" (click)="showTicketsList()"></bar-icongetSupport>
+    </div>
+  </div>
+    <div *ngIf="toggleOnlineUserIcon && fvrs.length == 0" class="banner-display banner-icon" (mouseover)="onOnlineUserMouseOver()">
+      <bar-icononlineUser [allOnlineUsers]="allOnlineUsers" (click)="showActiveUsers()" ></bar-icononlineUser>
+    </div>
+
+    <div *ngIf="toggleTasksIcon && todoList && todoList.length > 0" class="banner-display banner-icon" (mouseover)="onTasksIconMouseOver()">
+      <bar-icontodo [todoList]="todoList" (click)="showToDo()"></bar-icontodo>
+    </div>
+
+    <div *ngIf="displayMessageIcon && (toggleMessageIcon || (messageList && messageList.length > 0))" class="banner-display banner-icon">
+      <bar-iconmessages [messageList]="messageList" (click)="showMessage()"></bar-iconmessages>
+    </div>
+
+    <div *ngIf="fvrs && fvrs.length > 0" class="banner-display banner-icon">
+      <bar-iconfvr [fvrs]="fvrs" (click)="displayFvrs=true"></bar-iconfvr>
+    </div>
+  </ng-container>
+
+  <ul id="topbar-menu" class="fadeInDown" [ngClass]="{'topbar-menu-visible': app.topbarMenuActive}" (click)="app.onTopbarMenuClick($event)">
+
+    <ng-container *ngIf="! isContact">
+
+      <li style="padding-top: 10px" [ngStyle]="{display: widthIsMobile?'':'none'}">
+        <nesi-globalSearch></nesi-globalSearch>
+      </li>
+
+      <li #setting role="menuitem" [ngClass]="{'menuitem-active':app.activeTopbarItem === setting}" (click)="app.onTopbarItemClick($event, null)">
+        <a href="#" [routerLink]="'/home/1/1/profile/default'" (click)="app.hideTopbarMenu()">
+          <i class="fa fa-fw fa-user"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+
+      <li *ngIf=" (!toggleOnlineUserIcon && fvrs.length == 0)" #activeusers [ngClass]="{'menuitem-active':app.activeTopbarItem === activeusers}"
+        (click)="app.onTopbarItemClick($event, null)">
+        <a href="#" (click)="showActiveUsers()">
+          <i class="fa fa-fw fa-user"></i>
+          <span class="topbar-item-name">Active Users</span>
+          <span class="topbar-badge animated rubberBand">{{ onlineUserCount }}</span>
+        </a>
+      </li>
+
+      <li #invoice [ngClass]="{'menuitem-active':app.activeTopbarItem === invoice}" (click)="app.onTopbarItemClick($event, invoice)" >
+        <a href="#">
+          <i class="topbar-icon fa fa-fw fa-tachometer"></i>
+          <span class="topbar-item-name">Average Days to Invoice</span>
+          <span class="topbar-badge">{{averageDaysToInvoice && averageDaysToInvoice.thisBusinessUnit + averageDaysToInvoice.allBusinessUnit}}</span>
+        </a>
+        <ul>
+          <li role="menuitem">
+            <a href="#">
+              <i class="fa fa-fw fa-paint-brush"></i>
+              <span>This Business Unit</span>
+              <span class="topbar-badge animated rubberBand">{{averageDaysToInvoice && averageDaysToInvoice.thisBusinessUnit}}</span>
+            </a>
+          </li>
+          <li role="menuitem">
+            <a href="#">
+              <i class="fa fa-fw fa-lock"></i>
+              <span>All Business Units</span>
+              <span class="topbar-badge animated rubberBand">{{averageDaysToInvoice && averageDaysToInvoice.allBusinessUnit}}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li #whoDoIAsk [ngClass]="{'menuitem-active':app.activeTopbarItem === whoDoIAsk}" (click)="app.onTopbarItemClick($event, whoDoIAsk); displayWhoDoIAsk = true;">
+        <a href="#" (click)="displayWhoDoIAsk=true">
+          <i class="fa fa-fw fa-question-circle"></i>
+          <span class="topbar-item-name">Who Do I Ask About</span>
+        </a>
+      </li>
+
+      <li #vacations [ngClass]="{'menuitem-active':app.activeTopbarItem === vacations}" (click)="app.onTopbarItemClick($event, vacations); displayUpcomingVacations = true;">
+        <a href="#" (click)="displayVacations=true">
+          <i class="fa fa-fw fa-thermometer-three-quarters"></i>
+          <span class="topbar-item-name">Upcoming Vacations</span>
+        </a>
+      </li>
+      <li #extensions [ngClass]="{'menuitem-active':app.activeTopbarItem === extensions}" (click)="app.onTopbarItemClick($event, extensions); displayQuickExtensions = true; showQuickExtensions();">
+        <a href="#">
+          <i class="topbar-icon animated swing fa fa-fw fa-envelope"></i>
+          <span class="topbar-item-name">Quick Extensions</span>
+        </a>
+
+      </li>
+      <!-- <li #tickets [ngClass]="{'menuitem-active':app.activeTopbarItem === tickets}" (click)="app.onTopbarItemClick($event, tickets);showTickets()">
+        <a href="#">
+          <i class="topbar-icon fa fa-fw fa-bell"></i>
+          <span class="topbar-item-name">Tickets</span>
+          <span *ngIf="ticketList && ticketList.length > 0" class="topbar-badge animated rubberBand">{{ticketList.length}}</span>
+        </a>
+
+      </li> -->
+      <!-- <li #setDefaultPage [ngClass]="{'menuitem-active':app.activeTopbarItem === setDefaultPage}" (click)="app.onTopbarItemClick($event, setDefaultPage);showsetDefaultPage()">
+        <a href="#">
+          <i class="topbar-icon fa fa-fw fa-bookmark"></i>
+          <span class="topbar-item-name">Set as Default Page</span>
+        </a>
+
+      </li> -->
+      <li #ChangePassword [ngClass]="{'menuitem-active':app.activeTopbarItem === ChangePassword}"  (click)="app.onTopbarItemClick($event, null)"
+      >
+        <a href="#" (click)="changePassword()">
+					    <i class="fa fa-fw fa-key"></i>
+					    <span>Change Password</span>
+					  </a>
+      </li>
+      <li #SignOut [ngClass]="{'menuitem-active':app.activeTopbarItem === SignOut}" (click)="signOut()">
+        <a href="#">
+          <i class="fa fa-fw fa-sign-out"></i>
+          <span>SignOut</span>
+        </a>
+      </li>
+    </ng-container>
+
+  </ul>
+
+
+</div>
+<ng-container *ngIf="! isContact">
+
+  <p-dialog header="Quick Extensions" [visible]="displayQuickExtensions" (onHide)="displayQuickExtensions=false" modal="modal"
+    showEffect="fade">
+    <div class="content">
+      <bar-quickExtensionTable [quickExtensions]="quickExtensionsList" [showAll]="true"></bar-quickExtensionTable>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+        <button type="button" pButton icon="fa-times-circle" (click)="displayQuickExtensions=false" label="Close"></button>
+        <button type="button" pButton icon="fa-pencil" (click)="showEditQuickExtensions()" label="Edit"></button>
+      </div>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog header="Who Do I Ask" [visible]="displayWhoDoIAsk" (onHide)="displayWhoDoIAsk=false" modal="modal" showEffect="fade">
+    <div class="content">
+      <bar-whoDoIAskTable [whoDoIAsk]="whoDoIAskList" [showAll]="true"></bar-whoDoIAskTable>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+        <button type="button" pButton icon="fa-times-circle" (click)="displayWhoDoIAsk=false" label="Close"></button>
+      </div>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog header="Upcoming Vacations" [visible]="displayUpcomingVacations" (onHide)="displayUpcomingVacations=false" modal="modal"
+    showEffect="fade">
+    <div class="content">
+      <bar-upcomingVacationsTable [upcomingVacations]="upcomingVacationsList" [showAll]="true"></bar-upcomingVacationsTable>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+        <button type="button" pButton icon="fa-times-circle" (click)="displayUpcomingVacations=false" label="Close"></button>
+      </div>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog header="All Active Users" [visible]="displayActiveUsers" (onHide)="displayActiveUsers=false" modal="modal" showEffect="fade">
+    <div class="content">
+      <bar-acitveUserTable [allOnlineUsers]="allOnlineUsers" [showAll]="true"></bar-acitveUserTable>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+        <button type="button" pButton icon="fa-times-circle"  (click)="displayActiveUsers=false" label="Close"></button>
+      </div>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog header="Change Password" [width]="cs.isLg? '640':'0'"  [visible]="displayChangePassword" (onHide)="displayChangePassword=false" modal="modal"
+    showEffect="fade">
+    <div class="content">
+      <app-change-password-banner (cancel)="displayChangePassword=false" ></app-change-password-banner>
+    </div>
+  </p-dialog>
+
+  <p-dialog header="FVRs" [visible]="displayFvrs" modal="modal" (onHide)="displayFvrs=false" showEffect="fade">
+    <div class="content">
+      <nesi-fvrTable [fvrs]="fvrs"></nesi-fvrTable>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+        <button type="button" pButton icon="fa-times-circle"  (click)="displayFvrs=false" label="Close"></button>
+      </div>
+    </p-footer>
+  </p-dialog>
+
+</ng-container>

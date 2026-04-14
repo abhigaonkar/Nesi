@@ -1,0 +1,73 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+  <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Shop Time Type:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <!-- <p-dropdown [style]="{'width':'100%'}" [options]="hourtypes" [(ngModel)]="selectedHourType" required="true" autoWidth="true">
+        </p-dropdown> -->
+      <nesi-BindDropDown [disabled]="disabled" [URL]="APIURLshopTimeType" (OnAfterLoadUrl)="AfterLoadUrl()" [(ngModel)]="selectedShopTimeType"
+        (onChange)="OnShopTypeChange($event)" [required]="true"></nesi-BindDropDown>
+
+    </div>
+    <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="projectsVisible">
+      <div class="ui-g-12 ui-md-2 label_for_right">
+        Projects:
+      </div>
+      <div class="ui-g-10 ui-md-9">
+     
+          <div class="ui-g-10 ui-md-3 ui-g-nopad" >
+          <div class="dx-field" data-ng-model="bindValue.value">
+            <dx-select-box  #projectItem  [searchEnabled]="true" [value]="bindValue.value"
+             [items]="TSprojects" displayExpr="label" valueExpr="value"     
+            placeholder="Select Project" (onChange)="OnProjectsChanged($event)" (onSelectionChanged)="selectionChanged($event)"
+            >
+            <dxi-validation-rule type="required" message="Please select a project"></dxi-validation-rule>
+           </dx-select-box>
+           </div></div>
+           <div class="ui-g-2 ui-md-2 ui-g-nopad" >
+              <button type="button"  pButton [label]="'Projects'" (click)="onProjectsClicked($event)"
+              icon="fa fa-plus"></button>
+          </div>
+  </div></div>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      How was your day?
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <p-rating [(ngModel)]="rating" [cancel]="false"></p-rating>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Hrs:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input type="number"  step="0.5" pInputText [(ngModel)]="hours" class="inputHrs"  [min]="minvalue" [max]="maxvalue" (change)="onChange($event)"/>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Existing Work Comment:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <nesi-timesheetWorkOrderComment [disabled]="disabled" [(ngModel)]="selectedComment" (onChange)="OnChangeComments($event)"></nesi-timesheetWorkOrderComment>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Comment:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <textarea pInputTextarea [(ngModel)]="comment" [rows]="8" autoResize="autoResize"></textarea>
+    </div>
+  </div>
+  <p-dialog header="Projects Admin" [modal]="true" [responsive]="true" (onHide)="loadProjects()" [(visible)]="popupVisible">
+    <nesi-timesheet-shop-Projects (edited)="OnProjectsChanged($event)"></nesi-timesheet-shop-Projects>
+</p-dialog>
+</div>

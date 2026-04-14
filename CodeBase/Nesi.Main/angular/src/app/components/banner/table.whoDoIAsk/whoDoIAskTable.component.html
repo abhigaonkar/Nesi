@@ -1,0 +1,10 @@
+<div class="ui-g-12">
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-8 ui-g-nopad"><b>Question</b></div>
+    <div class="ui-g-4 ui-g-nopad"><b>Talk To</b></div>
+  </div>
+  <div class="header ui-g-12 ui-g-8 ui-g-lesspad" *ngFor="let item of WhoDoIAskList; let i = index" >
+    <div class="ui-g-8 ui-g-nopad"><b>{{item.question}}</b></div>
+    <div class="ui-g-4 ui-g-nopad">{{item.talkTo}}</div>
+  </div>
+</div>

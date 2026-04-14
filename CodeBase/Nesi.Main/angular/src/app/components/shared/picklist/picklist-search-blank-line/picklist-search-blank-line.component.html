@@ -1,0 +1,46 @@
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-md-4 ui-g-nopad">
+      <div class="ui-g-12">
+        <span class="ui-float-label">
+          <input class="back_yellow" id="description" pInputText formControlName="description">
+          <label for="description">Description</label>
+        </span>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad ui-md-8">
+      <div class="ui-g-3 ui-md-2">
+        <span class="ui-float-label">
+          <input id="qty" type="number" (change)="fillCost()" step="1" pInputText formControlName="qty">
+          <label for="qty">Qty</label>
+        </span>
+      </div>
+      <div class="ui-g-3 ui-md-2">
+        <span class="ui-float-label">
+          <input class="back_yellow" id="cost" (change)="fillCost()" type="number" step="0.01" pInputText formControlName="cost">
+          <label for="cost">Cost</label>
+        </span>
+      </div>
+      <div class="ui-g-3 ui-md-2">
+        <span class="ui-float-label">
+          <input readonly="true" id="extd" type="number" step="0.01" pInputText formControlName="extd">
+          <label for="extd">Extd</label>
+        </span>
+      </div>
+      <div class="ui-g-3 ui-md-2">
+        <span class="ui-float-label">
+          <input id="extd2" type="number"  step="0.01" pInputText formControlName="extd2">
+          <label for="extd2">~Ext'd</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <div class="ui-g-9 ui-g-nopad">
+          <button type="button" (click)="submit_delay(500)"  pButton icon="fa-add" label="Add Part"></button>
+        </div>
+        <div class="ui-g-3 ui-g-nopad right">
+          <button pButton icon="fa-times" class="ui-button-danger" (click)="close.emit()"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

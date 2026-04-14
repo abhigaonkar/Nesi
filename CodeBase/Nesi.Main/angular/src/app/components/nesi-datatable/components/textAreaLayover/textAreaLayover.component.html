@@ -1,0 +1,19 @@
+<div class="col-edit">
+  <input pInputText type="text" [(ngModel)]="noteValue" readonly (click)="op.show($event)" />
+</div>
+<p-overlayPanel #op [dismissable]="false" [showCloseIcon]="false">
+  <p-header>
+    <h4>Note:</h4>
+  </p-header>
+  <div class="edit-content">
+      <textarea pInputTextarea [(ngModel)]="noteValue" [rows]="7" [cols]="30" autoResize="autoResize"></textarea>
+  </div>
+      <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+          <button pButton type="submit" icon="fa-save" (click)="saveEdited($event, op)" label="Save">
+          </button>
+          <button pButton type="button" icon="fa-times-circle" label="Cancel" (click)="cancelEditing($event, op);op.hide()">
+          </button>
+        </div>
+      </p-footer>
+  </p-overlayPanel>

@@ -1,0 +1,163 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+    </p-blockUI>
+    <blockable-div #pblockableDiv>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+            <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+                <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Selling Price Level:
+                    </div>
+                    <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_left_less">
+                        <p-dropdown [filter]="true" [style]="{'width':'100%'}" [options]="profile && profile.sell_levelList" formControlName="sell_level"></p-dropdown>
+                        <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('sell_level')" [errorMsg]="'Selling Price Level is required.'"></nesi-fieldErrorDisplay>
+                    </div>
+                </div>
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Prompt For Tax:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <p-checkbox binary="true" formControlName="tax_prompt"></p-checkbox>
+                    </div>
+                </div> -->
+                <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Terms:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <p-dropdown [filter]="true" [style]="{'width':'100%'}" [options]="profile && profile.terms_List" formControlName="customer_term_id" disabled= "true"></p-dropdown>
+                        <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('customer_term_id')" [errorMsg]="'Term is required.'"></nesi-fieldErrorDisplay>
+                    </div>
+                </div>
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Credit Type:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <p-dropdown [filter]="true" [style]="{'width':'100%'}" [options]="profile && profile.credit_typeList" formControlName="credit_type"></p-dropdown>
+                        <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('credit_type')" [errorMsg]="'Credit Type is required.'"></nesi-fieldErrorDisplay>
+                    </div>
+                </div> -->
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Credit Limit:
+                    </div>
+                    <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_left_less">
+                        <input type="number" pInputText formControlName="credit_limit">
+                    </div>
+                </div> -->
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Days Credit:
+                    </div>
+                    <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_left_less">
+                        <input type="number" step="5" pInputText formControlName="customer_creditdays">
+                    </div>
+                </div> -->
+                <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Overall Margin:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <input class="no_border back_transparent" readonly="true" pInputText formControlName="overallmargin">
+                    </div>
+                </div>
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Statements:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <p-dropdown [filter]="true" [style]="{'width':'100%'}" [options]="profile && profile.statementList" formControlName="statement_type"></p-dropdown>
+                        <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('statement_type')" [errorMsg]="'Statements is required.'"></nesi-fieldErrorDisplay>
+                    </div>
+                </div> -->
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Invoices:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <p-dropdown [filter]="true" [style]="{'width':'100%'}" [options]="profile && profile.statementList" formControlName="invoice_type"></p-dropdown>
+                        <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('invoice_type')" [errorMsg]="'Invoices is required.'"></nesi-fieldErrorDisplay>
+                    </div>
+                </div> -->
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Apply Finance Charges:
+                    </div>
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_left_less">
+                        <p-checkbox binary="true" formControlName="apply_finance_charges"></p-checkbox>
+                    </div>
+                </div> -->
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Auto Account Statement:
+                    </div>
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_left_less">
+                        <p-checkbox binary="true" formControlName="customer_autostatements"></p-checkbox>
+                    </div>
+                </div> -->
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Customer requires copy of WO w/ Invoice:
+                    </div>
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_left_less">
+                        <p-checkbox binary="true" formControlName="requires_wo_copy"></p-checkbox>
+                    </div>
+                </div> -->
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Statement Email Address:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <input type="email" pInputText formControlName="customer_autostatement_address">
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Statement Email CC Address:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <input type="email" pInputText formControlName="customer_autostatement_ccaddress">
+                    </div>
+                </div> -->
+                <!-- <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Invoice Email Address:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <input type="email" pInputText formControlName="customer_invoice_address">
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Invoice Email CC Address:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <input type="email" pInputText formControlName="customer_invoice_ccaddress">
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Default Invoice Type:
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+                        <p-dropdown [filter]="true" [style]="{'width':'100%'}" [options]="profile && profile.default_invocie_typeList" formControlName="default_invoicetype"></p-dropdown>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+                        Auto Invoicing (WO's Under $2,000):
+                    </div>
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_left_less">
+                        <p-checkbox binary="true" formControlName="customer_auto_invoice"></p-checkbox>
+                    </div>
+                </div> -->
+                <div class="ui-g-12  ui-g-lesspad">
+                    <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+                        <button type="submit" pButton label="Save" icon="fa-save" [disabled]="disabled"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </blockable-div>

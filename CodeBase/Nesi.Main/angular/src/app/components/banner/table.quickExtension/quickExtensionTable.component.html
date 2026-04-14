@@ -1,0 +1,17 @@
+<table cellpadding="3" class='icon-table'>
+  <tbody>
+    <tr *ngIf="!showAll" class='header'>
+      <td colspan='3' class='top'> QuickExtensionTableComponent </td>
+    </tr>
+    <tr class='header'>
+      <td>Name</td>
+      <td>Cell Phone</td>
+      <td>Ext</td>
+    </tr>
+    <tr *ngFor="let item of QuickExtensionsList; let i = index" class="bodyrow">
+      <td><b>{{item.name}}</b></td>
+      <td>{{item.phone}}</td>
+      <td>{{item.extension}}</td>
+    </tr>
+  </tbody>
+</table>

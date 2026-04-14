@@ -1,0 +1,20 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <nesi-breadcurmb [items]="[{label: 'Expense Reimbursement'},{label: tabName}]"></nesi-breadcurmb>
+  <nesi-timesheetBarMenu [Profile]="Profile"></nesi-timesheetBarMenu>
+  <div class="ui-g-12">
+    <p-tabView #main (onChange)="tabChanged($event)">
+      <p-tabPanel header="Expense" [leftIcon]="'fa-plus-circle'">
+        <nesi-timesheetExpense (beforeSubmit)="submitting=true" (afterSubmit)="submitting=false" (onChange)="reloadHistory()"></nesi-timesheetExpense>
+      </p-tabPanel>
+      <p-tabPanel header="Per Diem" [leftIcon]="'fa-money-bill'">
+        <nesi-timesheetExpensePerDiem (beforeSubmit)="submitting=true" (afterSubmit)="submitting=false" (onChange)="reloadHistory()"></nesi-timesheetExpensePerDiem>
+      </p-tabPanel>
+      <p-tabPanel header="History" [leftIcon]="'fa-history'">
+        <nesi-timesheetExpenseHitory></nesi-timesheetExpenseHitory>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>
+<p-blockUI [target]="main" [blocked]="submitting">
+  <i class="fa fa-spinner  fa-spin fa-2x middlecenter"></i>
+</p-blockUI>

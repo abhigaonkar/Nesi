@@ -1,0 +1,133 @@
+<div [ngClass]="{'redBack':item.background_color=='red','meetingBack':item.isStageMeeting}">
+  <p-accordionTab [selected]="!item.is_checked">
+    <p-header>
+      <i *ngIf="item.is_checked" class="fa fa-check"></i>
+      <i *ngIf="!item.is_checked" class="fa fa-clock"></i>
+      {{item.milestone}}
+    </p-header>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-2 ui-g-nopad">
+          <i class="fa fa-check fa-2x green" *ngIf="item.is_checked" title="This step has already been processed."></i>
+          <i class="fa fa-clock fa-2x" *ngIf="!item.is_checked" title="Waiting for processing"></i>
+        </div>
+        <div class="ui-g-10 ui-g-nopad">
+          <div class="ui-g-4 ui-md-2">
+            Date:
+          </div>
+          <div class="ui-g-8 ui-md-4">
+            <input pInputText type="datetime-local" [disabled]="!item.date_enabled || item.is_checked" [(ngModel)]="item.date" class="fixhw"
+              (change)="valueChange(item,'date')">
+          </div>
+
+          <div class="ui-g-4 ui-md-2">
+            Assign To:
+          </div>
+          <div class="ui-g-8 ui-md-4" *ngIf="!item.isStageMeeting">
+            <select name="item.name" [disabled]="!item.date_enabled || item.is_checked" [(ngModel)]="item.assign_to" class="fixhw" (change)="valueChange(item,'assign_to')">
+              <option *ngFor="let x of item.options" [value]="x.value">{{x.label}}</option>
+            </select>
+          </div>
+          <div class="ui-g-8 ui-md-4" *ngIf="item.isStageMeeting">
+            <div class="ui-g-12 ui-g-nopad" *ngFor="let obj of item.check_list;let j=index">
+              <span class="ui-g-6  ui-g-nopad">
+                <p-checkbox *ngIf="item.check_visible[j]" binary="true" [(ngModel)]="item.check_value[j]" [disabled]="!(!item.is_checked && item.button_enabled && item.check_enabled[j])"
+                  [label]="item.check_list[j].label" (onChange)="valueChange(item,'check_value',j)"></p-checkbox>
+              </span>
+              <span class="ui-g-6  ui-g-nopad">
+                {{item.check_text[j] || '&nbsp;'}}
+              </span>
+            </div>
+          </div>
+          <div class="ui-g-4 ui-md-2">
+            Note:
+          </div>
+          <div class="ui-g-8 ui-md-4">
+            <input pInputText [disabled]="!item.date_enabled || item.is_checked" [(ngModel)]="item.notes" class="fixhw" (change)="valueChange(item,'notes')">
+          </div>
+
+          <div class="ui-g-4 ui-md-2" *ngIf="item.button_label">
+            Complete:
+          </div>
+          <div class="ui-g-8 ui-md-4" *ngIf="item.button_label">
+            <div class="ui-g-12 ui-g-nopad" *ngIf="item.completed_type!=='two_buttons'">
+              <button type="button" [disabled]="buttonDisabled(item)" pButton [label]="item.button_label" [icon]="item.button_icon" (click)="valueChange(item,'button_label')"></button>
+            </div>
+            <div class="ui-g-12 ui-g-nopad" *ngIf="item.completed_type==='two_buttons'">
+              <div class="ui-g-6">
+                <button type="button" [disabled]="buttonDisabled(item)" pButton [label]="item.button_label" [icon]="item.button_icon" (click)="valueChange(item,'button_label')"></button>
+              </div>
+              <div class="ui-g-6">
+                <button type="button" class="ui-button-warning" [disabled]="buttonDisabled(item)" pButton [label]="'Kill'" [icon]="'fa-times'"
+                  (click)="showStage1Kill=true"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-accordionTab>
+</div>
+
+<p-dialog [positionTop]="50" [minWidth]="cs.isLg?'1024':'0'" [header]="item.button_label" [modal]="true" [responsive]="true"
+  [(visible)]="dialogDisplay">
+  <nesi-quote-detail-edit-strategy-question *ngIf="item.completed_type=='dialog'" [type]="item.dialog_type" [quote_id]="quote_id"
+    (onChange)="quoestion_Done($event)" (clear)="quoestion_Done($event)"></nesi-quote-detail-edit-strategy-question>
+  <nesi-quote-detail-edit-strategy-review *ngIf="item.completed_type=='review'" [name]="item.name" [value]="item.html" [quote_id]="quote_id"
+    [enabled]="item.button_enabled && !item.is_checked" (done)="quoestion_Done($event)"></nesi-quote-detail-edit-strategy-review>
+
+</p-dialog>
+
+<p-dialog [positionTop]="150" [(visible)]="showStage1Kill" header="Kill this quote!" [modal]="true" [responsive]="true">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <div class="ui-g-12 bold">
+        Why are you closing this quote?
+      </div>
+      <div class="ui-g-12">
+        <textarea pInputTextarea rows="5" cols="25" [(ngModel)]="reason" #text></textarea>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-6">
+          <button class="ui-button-danger" [disabled]="!reason" pButton type="button" label="Kill Quote" (click)="killQuote()" icon="fa-minus-circle"></button>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+          <button  pButton type="button" (click)="showStage1Kill=false" label="Cancel" icon="fa-times-circle"></button>
+        </div>
+      </div>
+    </div>
+  </p-dialog>
+
+<!-- <div *ngIf="item" class="ui-g-12">
+    <div class="ui-g-2 ">
+      <div class="ui-g-10 ui-g-nopad">
+        <ng-container *ngIf="item.completed_type && item.completed_type=='button'">
+          <button type="submit" pButton [label]="item.button_label" [icon]="item.button_icon"></button>
+        </ng-container>
+        <ng-container *ngIf="!item.completed_type || item.completed_type!='button'">
+          &nbsp;
+        </ng-container>
+      </div>
+      <div class="ui-g-2  ui-g-nopad right">
+        <ng-container *ngIf="item.is_checked">
+          <i class="fa fa-check"></i>
+        </ng-container>
+        <ng-container *ngIf="!item.is_checked">
+          <i class="fa fa-check grey"></i>
+        </ng-container>
+      </div>
+    </div>
+    <div class="ui-g-3  background-grey">
+      {{item.milestone}}
+    </div>
+    <div class="ui-g-2">
+      <input pInputText type="datetime-local" [(ngModel)]="item.date">
+    </div>
+    <div class="ui-g-2 ">
+      <select name="item.name" [(ngModel)]="item.assign_to" style="width: 100%">
+        <option *ngFor="let x of item.options" [value]="x.value">{{x.label}}</option>
+      </select>
+    </div>
+    <div class="ui-g-3">
+      <input pInputText [(ngModel)]="item.notes">
+    </div>
+</div> -->

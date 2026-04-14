@@ -1,0 +1,18 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-6">
+    Line Card (Manufacturers they sell):
+    <ul>
+      <li *ngFor="let item of linecardList">
+        {{item}}
+      </li>
+    </ul>
+  </div>
+  <div class="ui-g-6">
+    Competitors from this Vendor (linked to your Business Unit):
+    <ul>
+      <li *ngFor="let item of competitorList">
+        <a href="/#/opens/vendors/{{item.value}}" target="_blank">{{item.label}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

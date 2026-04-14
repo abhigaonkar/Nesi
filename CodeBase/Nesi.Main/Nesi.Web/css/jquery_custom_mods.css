@@ -1,0 +1,59 @@
+﻿
+
+#spellcheckresults { position: absolute;z-index:93939; background: #fff; margin: 0; border: 1px solid #000; padding: 5px; }
+#spellcheckresults dl { margin: 0; padding: 0; }
+#spellcheckresults dl dt { float: left; clear: left; margin: 3px 0; padding: 0; font-weight: bold; }
+#spellcheckresults dl dd { float: left; margin: 3px 10px; padding: 0; cursor: pointer; color: green; }
+#spellcheckresults dl dd.ignore { color: red; font-style: italic; }
+ 
+a.checkspelling { }
+a.checkspelling img { margin: 0 5px; border: 0; }
+/* tables */
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	border-left: 1px solid #9F9F9F;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #8f8;
+	border-right: 1px solid #9F9F9F;
+	border-bottom: 1px solid #9F9F9F;
+	border-top: 1px solid #9F9F9F;
+	text-align:center;
+}
+.tablesorter th i	{
+					font-size:			9px;
+					}
+table.tablesorter thead tr .header {
+	background-image: url("/images/bg.gif");
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #000;
+	border-right:		solid 1px #CFCFCF;
+	border-bottom: 1px solid #CFCFCF;
+	white-space:nowrap;
+}
+table.tablesorter tbody tr {
+	background-color: #fff;
+}
+table.tablesorter tbody tr:hover {
+	background-color: #ddd;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#fcc;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url("/images/asc.gif");
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url("/images/desc.gif");
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8f8;
+}

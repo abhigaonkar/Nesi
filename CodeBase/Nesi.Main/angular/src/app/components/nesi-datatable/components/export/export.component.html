@@ -1,0 +1,8 @@
+  <div [ngClass]="{
+    'pdf' : type === 'pdf',
+    'excel' : type != 'pdf',
+    'export' : true
+  }">
+  <a (click)="exportExcel()">
+        <i [ngClass]="getClass(type)"></i>{{name}}</a>
+  </div>

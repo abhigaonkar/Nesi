@@ -1,0 +1,8 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxListBox runat="server"  SpriteCssFilePath="{0}/sprite.css" CssPostfix="NETheme01" CssFilePath="{0}/styles.css" BackColor="#FFFFFF">
+<SettingsLoadingPanel Text=""></SettingsLoadingPanel>
+
+<LoadingPanelImage Url="Editors/loading_panel.gif"></LoadingPanelImage>
+</dx:ASPxListBox>

@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="mobile_modules_invoice_preview" Codebehind="invoice_preview.ascx.cs" %>
+<iframe id="approval_frame" runat="server" frameborder="0" style="width:100%;height:100vh;"></iframe>

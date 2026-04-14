@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="this_picklist_price_index" Theme="" Codebehind="index.aspx.cs" %>

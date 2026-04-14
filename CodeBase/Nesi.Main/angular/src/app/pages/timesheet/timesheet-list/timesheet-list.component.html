@@ -1,0 +1,204 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <nesi-breadcurmb [items]="[{label: 'Time Sheet'},{label: tabName}]"></nesi-breadcurmb>
+  <nesi-timesheetBarMenu [Profile]="Profile"></nesi-timesheetBarMenu>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-6 ui-g-nopad">
+      <div class="ui-g-4  label_for_right">
+        Business Unit:
+      </div>
+      <div class="ui-g-8">
+        <nesi-timeSheetvisibleBusinessUnitDropDown [disabled]="timesheetRowSelected" [(ngModel)]="selectBusinessUnitId"
+          (onChange)="businessUnitChanged($event)">
+        </nesi-timeSheetvisibleBusinessUnitDropDown>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-6  ui-g-nopad" *ngIf="Profile && Profile.canSwitchBusinessUnits">
+      <div class="ui-g-4  label_for_right">
+        Member:
+      </div>
+      <div class="ui-g-8">
+        <nesi-timesheetUserDropDown [disabled]="timesheetRowSelected" [(ngModel)]="selectedUserid"
+          [Options]="UserOptions" (onChange)="userChanged($event)">
+        </nesi-timesheetUserDropDown>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-6  ui-g-nopad">
+      <div class="ui-g-4  label_for_right">
+        Date:
+      </div>
+      <div class="ui-g-4">
+        <p-calendar [disabled]="timesheetRowSelected" [(ngModel)]="selectedDate" dateFormat="yy-mm-dd"
+          readonlyInput="true" showIcon="true" (onSelect)="dateChanged($event)" [minDate]="minDate" [maxDate]="maxDate">
+          <ng-template pTemplate="date" let-date>
+            <span [ngClass]="getDateStyleClass(date)">{{date.day}}</span>
+          </ng-template>
+        </p-calendar>
+        <nesi-fieldErrorDisplay [displayError]="!editPermission"
+          errorMsg="Payroll has already been approved for this date, time can't be edited or deleted.">
+        </nesi-fieldErrorDisplay>
+      </div>
+      <div class="ui-g-4" *ngIf="branchRequireBreakTimeRecord && showExistingBreakTimeRecord">
+        <button pButton type="button" label="Breaktime Record Review" icon="fa-file" iconPos="left"
+          [disabled]="timesheetRowSelected" (click)="showBreakTimeDialog()"></button>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" *ngIf="branchRequireBreakTimeRecord && showBreakTimeOverlaySection">
+    <app-breaktime-record (insertBreaktimeRecord)="addBreaktimeRecord($event)" [branchSetting]="branchSetting"
+      [selectedDate]="selectedDate" [selectedUser]="selectedUserid" [selectedBranch]="selectBusinessUnitId"
+      [signInUser]="ts.currentUser.id"></app-breaktime-record>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" [hidden]="branchRequireBreakTimeRecord && showBreakTimeOverlaySection">
+    <div class="ui-g-12">
+      <p-dataTable [value]="items" [responsive]="true" rowHover="true" [emptyMessage]="'No timesheet entry found.'" #d>
+        <p-column field="custName" header="Customer Name"></p-column>
+        <p-column header="Work Order No">
+          <ng-template pTemplate="body" let-item="rowData">
+            <span>{{getWorkOrderData(item)}}</span>
+          </ng-template>
+        </p-column>
+        <!-- <p-column field="hourType" header="Hour Type"></p-column> -->
+        <p-column field="hours" header="Hours/Distance">
+          <ng-template pTemplate="body" let-item="rowData">
+
+            <div *ngIf="item && item.payTypeId!=8">{{item.hours}} {{item.hourType}} Hour(s) <b
+                *ngIf="JobTypeInfo.showJobType && (item.woTypeId == 0)"> as {{item.membertype_name}}</b>
+            </div>
+            <div *ngIf="item && item.payTypeId==8"> {{item.mileage_value}} {{item.mileage_unit}}</div>
+
+          </ng-template>
+
+        </p-column>
+        <p-column field="comments" header="Comments">
+          <ng-template pTemplate="body" let-item="rowData">
+            <div [ngClass]="{'ui-g-offset-4': cs.isSm,'top_move_up_10': cs.isSm}" class="ui-g-offset-4 pre-line">
+              {{item.comments}}</div>
+          </ng-template>
+        </p-column>
+        <p-column styleClass="col-button" [style]="{'width':'160px'}">
+          <ng-template pTemplate="header">
+            Edit/Delete/Transfer
+          </ng-template>
+          <ng-template pTemplate="body" let-item="rowData">
+            <button type="button"
+              [disabled]="timesheetRowSelected && timesheetSelectedRow && timesheetSelectedRow.id==item.id" pButton
+              *ngIf="item.buttonVisible && item.can_edit_transfered_item" (click)="selectTimeSheet(item)"
+              icon="fa-pencil"></button>
+            <button type="button" *ngIf="!(item.buttonVisible && item.can_edit_transfered_item)"
+              [disabled]="!(item.buttonVisible && item.can_edit_transfered_item)" pButton icon="fa-pencil"></button>
+            <button type="button"
+              [disabled]="timesheetRowSelected && timesheetSelectedRow && timesheetSelectedRow.id==item.id" pButton
+              *ngIf="item.buttonVisible && item.can_delete_transfered_item" (click)="deleteTimeSheet(item)"
+              class="ui-button-warning" icon="fa-times"></button>
+            <button type="button" *ngIf="!(item.buttonVisible && item.can_delete_transfered_item)"
+              [disabled]="!(item.buttonVisible && item.can_delete_transfered_item)" pButton icon="fa-times"></button>
+            <button type="button"
+              [disabled]="timesheetRowSelected && timesheetSelectedRow && timesheetSelectedRow.id==item.id" pButton
+              *ngIf="item.can_be_transferred" (click)="pickupTimeSheetRecord(item)" icon="fa-exchange"></button>
+          </ng-template>
+        </p-column>
+        <p-footer>
+          <div class="ui-g ui-g-nopad">
+            <div class="ui-g-12 ui-md-3  ui-g-nopad"
+              *ngIf="totalHoursRT >0 || totalHoursOT >0 || totalHoursDT>0 ||  totalHoursRTsp>0 ||totalHoursOTsp>0 || totalHoursDTsp > 0">
+              Selected Date Hours :
+              <nesi-showhours
+                [hours]="[totalHoursRT,totalHoursOT, totalHoursDT, totalHoursRTsp,totalHoursOTsp, totalHoursDTsp]"
+                [labels]="hourLabels"></nesi-showhours>
+            </div>
+            <div class="ui-g-12 ui-md-3  ui-g-nopad" *ngIf="showTotalHours1">Week 1 Hours:
+              <nesi-showhours
+                [hours]="[hours.total1,hours.ototal1, hours.dt_total1, hours.rtsp_total1, hours.otsp_total1, hours.dtsp_total1]"
+                [labels]="hourLabels"></nesi-showhours>
+            </div>
+            <div class="ui-g-12 ui-md-3  ui-g-nopad" *ngIf="!showTotalHours1 && showTotalHours2">Week 1 Hours:
+              <ng-container>0</ng-container>
+            </div>
+            <div class="ui-g-12 ui-md-3  ui-g-nopad" *ngIf="showTotalHours2">Week 2 Hours:
+              <nesi-showhours
+                [hours]="[hours.total2,hours.ototal2, hours.dt_total2, hours.rtsp_total2, hours.otsp_total2, hours.dtsp_total2]"
+                [labels]="hourLabels"></nesi-showhours>
+            </div>
+
+            <div class="ui-g-12 ui-md-3  ui-g-nopad" *ngIf="!showTotalHours2 && showTotalHours1">Week 2 Hours:
+              <ng-container>0</ng-container>
+            </div>
+            <div class="ui-g-12 ui-md-3  ui-g-nopad" *ngIf="showTotalHours">Total Pay Period Hours:
+              <nesi-showhours
+                [hours]="[hours.total,hours.ototal, hours.dt_total, hours.rtsp_total, hours.otsp_total, hours.dtsp_total]"
+                [labels]="hourLabels"></nesi-showhours>
+            </div>
+          </div>
+        </p-footer>
+      </p-dataTable>
+      <br />
+      <p-blockUI [target]="d" [blocked]="loadingTable">
+        <i class="fa fa-spinner fa-spin fa-2x nesi-block-30"></i>
+      </p-blockUI>
+      <p-blockUI [target]="t" [blocked]="saving">
+        <i class="fa fa-spinner  fa-spin fa-2x middlecenter"></i>
+      </p-blockUI>
+      <p-tabView [activeIndex]="activeTableView" (onChange)="tabviewOnChange($event)" #t>
+        <p-tabPanel [header]="allow_unlinked_timesheet? 'JOB' : 'Work Order'" leftIcon="fa-file-alt"
+          [disabled]="timesheetRowSelected || !children">
+          <nesi-timesheetWorkOrder [disabled]="timesheetRowSelected"
+            [ngStyle]="{ 'display': showProjectFilesTab? 'none':'block'}"
+            (OnWorkOrderSelectedChange)="onWorkOrderSelectedChange($event)"
+            [customerWoEditable]="allow_unlinked_timesheet" [jobTypeInfo]="JobTypeInfo"
+            [showJobType]="JobTypeInfo.showJobType" [jobTypeInfoBackup]="JobTypeInfo"></nesi-timesheetWorkOrder>
+          <nesi-fileManager [ngStyle]="{ 'display': !showProjectFilesTab? 'none':'block'}" [Dir]="ProjectFileDirectory">
+          </nesi-fileManager>
+        </p-tabPanel>
+        <p-tabPanel [headerStyle]="{ 'display': allow_unlinked_timesheet? 'none':'block'}" header="Estimating"
+          leftIcon="fa-briefcase" [disabled]="timesheetRowSelected  || !children">
+          <nesi-timesheetQuote [disabled]="timesheetRowSelected"></nesi-timesheetQuote>
+        </p-tabPanel>
+        <p-tabPanel [headerStyle]="{ 'display': allow_unlinked_timesheet? 'none':'block'}" header="Business Development"
+          leftIcon="fa-phone" [disabled]="timesheetRowSelected  || !children">
+          <nesi-timesheetTelem [disabled]="timesheetRowSelected"></nesi-timesheetTelem>
+        </p-tabPanel>
+        <p-tabPanel [headerStyle]="{ 'display': allow_unlinked_timesheet? 'none':'block'}" header="Shop Time"
+          leftIcon="fa-clock" [disabled]="timesheetRowSelected  || !children">
+          <nesi-timesheetShop [disabled]="timesheetRowSelected"></nesi-timesheetShop>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad" 
+    [hidden]="branchRequireBreakTimeRecord && showBreakTimeOverlaySection">
+    <div class="ui-g-12 ui-md-3" *ngIf="editPermission && !(branchRequireBreakTimeRecord && showBreakTimeOverlaySection)">
+      <button pButton #save type="button"
+        [disabled]="!editPermission || saving || loadingTable || disabledSaveButton || showProjectFilesTab"
+        (click)="onSaveClick()" label="Save" icon="fa-save" iconPos="left"></button>
+    </div>
+    <div class="ui-g-12 ui-md-3">
+      <button pButton #cancel type="button" *ngIf="editPermission" [disabled]="saving || loadingTable || disabledCancelButton" label="Cancel"
+        (click)="onCancelClick()" icon="fa-times-circle" iconPos="left"></button>
+    </div>
+    <div class="ui-g-12 ui-md-3" *ngIf="activeTableView==0 && show_daily_approval">
+      <button pButton #signoff type="button" label="Daily Time Signoff"
+        [disabled]="selectedWorkOrderId==0" (click)="onTimesheetsignoffClick()"
+        icon="fa-file-alt" iconPos="left"></button>
+    </div>
+    <div class="ui-g-12 ui-md-3" *ngIf="activeTableView==0">
+      <button pButton #projectfiles type="button"
+        [disabled]=" saving || loadingTable || disabledProjectButton || timesheetRowSelected"
+        (click)="onProjectFileClick()" [label]="!showProjectFilesTab? 'Project Files': 'Close Project Files'"
+        icon="fa-file" iconPos="left"></button>
+    </div>
+  </div>
+</div>
+<app-breaktime-popup [display]="showup" (updateBreaktimeRecord)="updateBreaktimeRecord($event)"></app-breaktime-popup>
+<p-dialog header="Time Signoff" [modal]="true" [positionTop]="150" resizable="true" height="auto" [draggable]="true"
+  *ngIf="timesheetsignoffDisplay" [(visible)]="timesheetsignoffDisplay">
+  <nesi-timesheet-signoff [SelectedDate]="selectedDate" [WoId]="selectedWorkOrderId" [visible]="timesheetsignoffDisplay"
+    (onChange)="SignoffSubmit($event)" (close)="SignoffCancel()"></nesi-timesheet-signoff>
+</p-dialog>
+<div *ngIf="transferUIShowup.v">
+  <app-timesheet-transfer [records]="toBeTransferedRecords" [timesheetValue]="timesheetValue"
+    [jobTypeInfo]="JobTypeInfo" [showJobType]="JobTypeInfo.showJobType"
+    (transferTimesheetEvent)="transferTimesheetEvent($event)"
+    (transferTimesheetCloseEvent)="transferTimesheetExit($event)"></app-timesheet-transfer>
+</div>

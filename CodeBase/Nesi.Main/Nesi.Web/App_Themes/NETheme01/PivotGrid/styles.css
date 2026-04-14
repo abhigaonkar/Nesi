@@ -1,0 +1,518 @@
+.dxpgControl_NETheme01, .dxpgCustForm_NETheme01
+{
+	color: #333333;
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	border: solid 1px #c0c0c0;
+	background-color: white;
+}
+.dxpgContainerCell_NETheme01
+{
+	vertical-align: top;
+}
+.dxpgMainTable_NETheme01
+{
+	border: 0px;
+	border-collapse: separate;
+	width: 100%;
+	text-align: left;
+}
+div.dxpgMainTable_NETheme01
+{
+	-ms-touch-action: pinch-zoom;
+}
+.dxpgMainTable_NETheme01 caption 
+{
+	background: #ACACAC;
+	color: white;
+	border-bottom: Solid 1px #9F9F9F;
+    font-size: 15px;
+	font-weight: normal;
+	padding: 3px 3px 5px;
+	text-align: center;
+}
+.dxpgHeader_NETheme01
+{
+	border-width: 0px;
+	cursor: pointer;
+	white-space: nowrap;
+    	text-align: left;
+}
+.dxpgHeaderTable_NETheme01
+{
+	border-width: 1px;
+	width: 100%;
+}
+.dxpgMSDraggable_NETheme01 .dxpgHeaderTable_NETheme01,
+.dxpgCustFieldsDiv_NETheme01 .dxpgHeaderTable_NETheme01
+{
+	-ms-touch-action: pinch-zoom;
+}
+
+.dxpgHeaderGroupButton_NETheme01
+{
+	padding-left: 4px;
+	vertical-align: middle;
+}
+.dxpgHeaderText_NETheme01
+{
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	padding-bottom: 4px;
+}
+.dxpgHeaderSort_NETheme01
+{
+	padding-left: 0px;
+	padding-right: 4px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	vertical-align: middle;
+}
+.dxpgHeaderFilter_NETheme01
+{
+	padding-left: 0px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	vertical-align: middle;	
+}
+.dxpgHeaderHover_NETheme01
+{
+	background-color: #f1f1f1;
+}
+.dxpgArea_NETheme01, .dxpgArea_NETheme01 table
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+.dxpgArea_NETheme01
+{
+	border: solid 1px #c0c0c0;
+	border-left-style: none;
+	border-top-style: none;
+	border-bottom-style: none;
+	border-right-style: none;
+}
+.dxpgColumnArea_NETheme01
+{
+	border-bottom-style: solid;
+}
+.dxpgRowArea_NETheme01
+{
+}
+.dxpgDataArea_NETheme01
+{
+}
+.dxpgFilterArea_NETheme01
+{
+	border-bottom-style: solid;
+}
+.dxpgEmptyArea_NETheme01
+{
+	cursor: default;
+	padding-top: 6px;
+	padding-left: 6px;
+	padding-bottom: 7px;
+	padding-right: 6px;
+}
+.dxpgColumnFieldValue_NETheme01
+{
+	border: solid 1px #c0c0c0;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-top-style: none;
+	padding: 4px 6px;
+	font-weight: normal;
+	text-align: left;	
+}
+.dxpgColumnTotalFieldValue_NETheme01
+{
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-top-style: none;
+}
+.dxpgColumnGrandTotalFieldValue_NETheme01
+{
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-top-style: none;
+}
+.dxpgRowFieldValue_NETheme01
+{
+	border: solid 1px #c0c0c0;
+	border-left-style: none;
+	border-bottom-style: none;
+	border-right-style: solid;
+	border-top-style: solid;
+	padding: 3px 6px 4px 6px;
+	font-weight: normal;
+	text-align: left;
+}
+.dxpgRowTotalFieldValue_NETheme01
+{
+	border-left-style: none;
+	border-bottom-style: none;
+	border-right-style: solid;
+	border-top-style: solid;
+}
+.dxpgRowTreeFieldValue_NETheme01
+{	
+	padding: 0px;
+	font: 0px;
+}
+.dxpgRowGrandTotalFieldValue_NETheme01
+{
+	border-left-style: none;
+	border-bottom-style: none;
+	border-right-style: solid;
+	border-top-style: solid;
+	padding-top: 5px;
+	padding-bottom: 6px;	
+}
+.dxpgCollapsedButton_NETheme01
+{
+	vertical-align: -1px;
+	border: 0px;
+	margin-right: 5px;
+}
+.dxpgSortByColumnImage_NETheme01
+{
+	vertical-align: -1px;
+	border: 0px;
+	margin-left: 5px;
+}
+.dxpgCell_NETheme01
+{
+	text-align: right;
+	background-color: White;	
+	border-color: #cecece;
+	border-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-bottom-style: none;
+	border-right-style: none;
+	padding: 4px;
+	padding-top:3px;
+	white-space: nowrap;
+}
+.dxpgKPICell_NETheme01
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.dxpgTotalCell_NETheme01
+{
+}
+.dxpgGrandTotalCell_NETheme01
+{
+}
+.dxpgFilterItem_NETheme01
+{
+font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+    	white-space: nowrap;
+}
+.dxpgFilterButton_NETheme01
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	padding: 2px 6px;
+}
+.dxpgLoadingDiv_NETheme01
+{
+	background-color: White;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+.dxpgTopPager_NETheme01
+{
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: solid 1px #c0c0c0;
+	padding: 4px 0;
+}
+.dxpgBottomPager_NETheme01
+{
+	border-top: solid 1px #c0c0c0;
+	border-bottom: none;
+	border-right: none;
+	border-left: none;
+	padding: 7px 0;
+}
+.dxpgCustomizationFieldsHeader_NETheme01
+{
+	color: White;
+	font: 11px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	background-image: none!important;
+}
+.dxpgCustomizationFieldsContent_NETheme01
+{
+	padding: 0px !important;
+	min-width: 300px;
+}
+.dxpgLoadingPanel_NETheme01
+{
+	border: 1px solid #C3C3C3;
+	background-color: white;
+	font: 14px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #333333;
+}
+.dxpgLoadingPanel_NETheme01 td.dx
+{
+	padding: 10px 14px;
+}
+.dxpgMenuItem_NETheme01 
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;	
+}
+.dxpgDataHeadersImage_NETheme01
+{
+	margin-right: 5px;
+	vertical-align: -2px;
+}
+.dxpgPrefilterPanelContainer_NETheme01
+{
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: none;
+}
+.dxpgPrefilterPanel_NETheme01
+{
+	border: none;
+}
+.dxpgPrefilterPanelLink_NETheme01
+{
+	color: #ff8800;
+	text-decoration: underline;
+}
+.dxpgPrefilterPanelCheckBoxCell_NETheme01
+{
+	padding: 0 7px;
+}
+.dxpgPrefilterPanelImageCell_NETheme01
+{
+	padding: 0 3px;
+	padding-right: 1px;
+	cursor: pointer;
+}
+.dxpgPrefilterPanelExpressionCell_NETheme01
+{
+	font-size: 12px;
+	padding: 5px 5px 8px 0;	
+	white-space: nowrap;
+}
+.dxpgPrefilterPanelClearButtonCell_NETheme01
+{
+	font-size: 12px;
+	padding: 5px 6px 8px;
+}
+.dxpgFilterBuilderMainArea_NETheme01
+{
+	background: white;
+	padding: 6px 2px;
+} 
+.dxpgFilterBuilderButtonArea_NETheme01
+{
+	border-top: solid 1px #c0c0c0;
+	padding: 6px;
+	white-space: nowrap;
+}
+.dxpgGroupSeparator_NETheme01 
+{
+	vertical-align: middle;
+}
+.dxpgCustFieldsFilterAreaHeaders_NETheme01,
+.dxpgCustFieldsRowAreaHeaders_NETheme01,
+.dxpgCustFieldsColumnAreaHeaders_NETheme01,
+.dxpgCustFieldsDataAreaHeaders_NETheme01,
+.BottomPanelOnly1by4 .dxpgFLFRDiv_NETheme01,
+.BottomPanelOnly1by4 .dxpgFLCDDiv_NETheme01
+{
+width:100%;
+height:50%;
+}
+.StackedDefault .dxpgCustFieldsFieldList_NETheme01
+{
+height:34%;
+}
+.StackedDefault .dxpgFLFRDiv_NETheme01
+{
+width:50%;
+height:66%;
+float:left;
+}
+.StackedDefault .dxpgFLCDDiv_NETheme01
+{
+width:50%;
+height:66%;
+float:right;
+}
+.StackedDefault .dxpgCustFieldsFilterAreaHeaders_NETheme01 .dxpgFLTextDiv_NETheme01,
+.StackedDefault .dxpgCustFieldsColumnAreaHeaders_NETheme01 .dxpgFLTextDiv_NETheme01
+{
+height:47px;
+}
+.TopPanelOnly .dxpgCustFieldsFieldList_NETheme01
+{
+width:100%;
+height:100%;
+}
+.TopPanelOnly .dxpgFLDefereDiv_NETheme01 .dxeBase_NETheme01,
+.TopPanelOnly .dxpgFLDefereDiv_NETheme01 .dxpgFLDefereDB_NETheme01,
+.TopPanelOnly .dxpgFLFRDiv_NETheme01,
+.TopPanelOnly .dxpgFLCDDiv_NETheme01,
+.BottomPanelOnly1by4 .dxpgCustFieldsFieldList_NETheme01,
+.BottomPanelOnly2by2 .dxpgCustFieldsFieldList_NETheme01,
+.TopPanelOnly .dxpgFLTextDiv_NETheme01 div
+{
+display:none;
+}
+.TopPanelOnly .dxpgFLTextDiv_NETheme01
+{
+ height:19px;   
+}
+.TopPanelOnly .dxpgFLDefereDiv_NETheme01
+{
+ height:16px;   
+}
+.BottomPanelOnly2by2 .dxpgFLFRDiv_NETheme01,
+.StackedSideBySide .dxpgCustFieldsFieldList_NETheme01
+{
+width:50%;
+height:100%;
+float:left;
+}
+.BottomPanelOnly2by2 .dxpgFLCDDiv_NETheme01
+{
+width:50%;
+height:100%;
+float:right;
+}
+.StackedSideBySide .dxpgFLFRDiv_NETheme01,
+.StackedSideBySide .dxpgFLCDDiv_NETheme01
+{
+width:50%;
+height:50%;
+float:right;
+}
+.dxpgCustFields_NETheme01
+{
+    	display:block;
+position:relative;
+}
+.dxpgFLListDiv_NETheme01 > div
+{
+    border:1px solid #c0c0c0;
+    position:relative;
+    display:block;
+    height:100%;
+    padding:1px;
+    background:#FFFFFF;
+    overflow:hidden;
+}
+.dxpgFLListDiv_NETheme01 > div > div
+{
+    position:relative;
+    display:block;
+    background:#FFFFFF;
+    height:100%;
+    padding:0px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+.DragOver .dxpgFLListDiv_NETheme01 > div
+{
+    background:#FFD324;
+}
+.dxpgFLListDiv_NETheme01 
+{
+    padding:0px 3px 0px 3px;
+}
+.dxpgFLButtonDiv_NETheme01 .dxbButton_NETheme01 div.dxb
+{
+    padding:2px 8px 1px;
+}
+.dxpgFLButtonDiv_NETheme01 .dxbButton_NETheme01 div.dxbf
+{
+	border: dotted 1px black;	
+	padding:1px 7px 0px;
+}
+.dxpgFLTextDiv_NETheme01
+{
+ height:28px;
+}
+.dxpgFLTextDiv_NETheme01 div
+{
+   display:block;
+   float:left;
+   margin:-17px 0px 3px 0px;
+   left:6px;
+   top:100%;
+   position:relative;
+}
+div.dxpgFLTextImgDiv_NETheme01
+{
+    display:block;
+    height:16px;
+    width:16px;
+    margin:-18px 0px 3px 0px;
+    left:3px;
+}
+.dxpgFLButtonDiv_NETheme01
+{
+    float:right;
+    height:28px;
+    position:relative;
+    z-index:1;
+}
+.dxpgFLDefereDiv_NETheme01
+{
+    height:50px;
+}
+.dxpgCustFieldsDiv_NETheme01
+{
+ clear:both;   
+ padding:0px 9px;
+}
+.dxpgFLButton_NETheme01 
+{
+ margin:12px 12px 0px 0px;
+ width:40px;
+ height:23px;
+}
+.dxpgFLDefereDiv_NETheme01 .dxeBase_NETheme01
+{
+ float:left;
+ display:block;
+ border-collapse:separate;
+ padding:17px 0px 0px 0px; 
+ margin-left:8px;  
+}
+.dxpgFLDefereDB_NETheme01
+{
+float:right;
+display:block;
+padding:0px 12px 0px 0px;
+margin-top:16px;
+}
+.dxpgFLDefereDiv_NETheme01 .dxbButton_NETheme01 div.dxb
+{
+    padding:2px 14px 2px 14px;
+}
+.dxpgFLDefereDiv_NETheme01 .dxbButton_NETheme01 div.dxbf
+{
+    padding:1px 13px 1px 13px;
+    border: dotted 1px black;	
+}
+.dxpgFLListDiv_NETheme01 table 
+{
+ width:100%;
+ table-layout:fixed;  
+ overflow:visible;
+}
+.dxpgFLListDiv_NETheme01 table table td
+{
+     overflow:hidden; 
+}
+

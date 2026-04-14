@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="this_currency_handler" masterpagefile="~/IntraDefault.master" Codebehind="index.aspx.cs" %>

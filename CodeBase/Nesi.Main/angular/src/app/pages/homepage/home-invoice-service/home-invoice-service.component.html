@@ -1,0 +1,13 @@
+<div class="ui-g-12 home_autoBingo">
+  <p-dataTable [emptyMessage]="'No record found.'" [paginator]="false" [value]="items" sortMode="multiple" resizableColumns="false"
+     [loading]="loading" [loadingIcon]="'fa-spinner'" [responsive]="true">
+    <p-header>
+      Invoice Service Run Times
+    </p-header>
+    <p-column field="last_Start" [style]="{'width':'20%'}"  header="Last_Start"></p-column>
+    <p-column field="last_Finished" [style]="{'width':'20%'}"  header="Last_Finished"></p-column>
+    <p-column field="last_Ran"  [style]="{'width':'20%'}" header="Last_Ran"></p-column>
+    <p-column field="ran_for" [style]="{'width':'20%'}" header="Ran_For"></p-column>
+    <p-column field="isBroken" [style]="{'width':'15%'}" header="Is Broken"></p-column>
+  </p-dataTable>
+</div>

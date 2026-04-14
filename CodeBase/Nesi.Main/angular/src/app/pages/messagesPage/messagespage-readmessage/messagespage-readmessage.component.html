@@ -1,0 +1,26 @@
+<div class="ui-g-12">
+  <div class="ui-g-12 ui-md-2">
+    <div class="ui-g-12">Messages:</div>
+    <div class="ui-g-12" *ngIf="typeId==1">
+      <button pButton label="Reply" icon="fa-reply" (click)="reply.emit(body)"></button>
+    </div>
+    <div class="ui-g-12" *ngIf="typeId==1 && ids && ids.length>1">
+      <button pButton label="Reply All" icon="fa-reply-all" (click)="replyAll.emit({body:body,ids:ids})"></button>
+    </div>
+    <div class="ui-g-12" *ngIf="filename">
+      <div class="allow_click" (click)="downloadFile(filename,file_extension)">Download Attachment</div>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-md-8">
+    <!-- <textarea pInputTextarea rows="10" [autoResize]="true" readonly="true" [(ngModel)]="body"></textarea> -->
+    <p-editor [(ngModel)]="body" [readonly]="true" [style]="{'height':'320px'}">
+      <p-header>
+        <span class="ql-format-group" style="border-bottom: 1px;">
+
+        </span>
+      </p-header>
+
+    </p-editor>
+
+  </div>
+</div>

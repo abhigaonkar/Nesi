@@ -1,0 +1,66 @@
+﻿.new_ticket
+	{
+	width:				95%;
+	}
+.ticket_created .title,
+.new_ticket .title
+	{
+	font-weight:		bold;
+	margin-bottom:		5px;
+	color:				#999;
+	}
+.new_ticket .button,
+.new_ticket .selector,
+.ticket_created .button
+	{
+	width:				100%;
+	margin-bottom:		10px;
+	}
+.ticket_created .lg,
+.new_ticket .lg
+	{
+	font-size:			1.5em;
+	}
+.new_ticket .textbox
+	{
+	width:				100%;
+	margin-bottom:		10px;
+	}
+.new_ticket .fields
+	{
+
+	}
+.new_ticket .fields .ticket_body
+	{
+	width:				100%;
+	height:				250px;
+	}
+.gv_row td
+	{
+	border-top:	solid 2px #fff !important;
+	}
+.gv_row td.issue
+	{
+	font-size:		1.25em;
+	}
+.text_row
+	{
+	margin-top:		15px;
+	margin-bottom:	5px;
+	}
+
+	.ticket_button
+		{
+		font-family:	'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+		padding:		15px 2px 15px 2px;
+		width:			50px;
+		text-align:		center;
+		border-radius:	2px;
+		font-size:		1.25em;
+		}
+.ticket_created	
+	{
+	width:			95%;
+	font-family:	'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	font-size:		1.25em;
+	}

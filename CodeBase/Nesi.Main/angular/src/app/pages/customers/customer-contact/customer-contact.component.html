@@ -1,0 +1,164 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            First Name:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="name_first">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Last Name:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="name_last">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Full Name:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input (change)="check_duplicate_name()" pInputText maxlength="50" formControlName="contact_name">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('contact_name')" [errorMsg]="'Full name is required.'"></nesi-fieldErrorDisplay>
+            <nesi-fieldErrorDisplay [displayError]="duplicate_name" [errorMsg]="'Sorry a contact with this name already exists for this customer.'"></nesi-fieldErrorDisplay>
+          </div>
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_left">
+            <button type="button" [disabled]="disable" class="small_button" (click)="setDefaultName()" pButton label="Default Name" icon="fa-user"></button>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Title:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="200" formControlName="contact_title">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Email Address:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input (change)="check_duplicate_email()" type="email" pInputText maxlength="150" formControlName="contact_email">
+            <nesi-fieldErrorDisplay [displayError]="duplicate_email" [errorMsg]="'Sorry a contact with this email already exists for this customer.'"></nesi-fieldErrorDisplay>
+            <nesi-fieldErrorDisplay [displayError]="email_required" [errorMsg]="'If Spark Ops login is Active, the email can\'t be BLANK.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Cell #:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input (change)="check_duplicate_cellphone()" pInputText maxlength="20" formControlName="contact_cellphone">
+            <nesi-fieldErrorDisplay [displayError]="duplicate_cellphone" [errorMsg]="'Sorry a contact with this cell phone already exists for this customer.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Direct #:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input (change)="check_duplicate_directline()" pInputText maxlength="20" formControlName="contact_directline">
+            <nesi-fieldErrorDisplay [displayError]="duplicate_directline" [errorMsg]="'Sorry a contact with this direct line already exists for this customer.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Extension:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="20" formControlName="contact_extension">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Password:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="contact_password">
+            <nesi-fieldErrorDisplay [displayError]="contact_password_required" [errorMsg]="'If Spark Ops login is Active, the password can\'t be BLANK.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Facebook:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="200" formControlName="facebook">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Twitter:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="200" formControlName="twitter">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Linkedin:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="200" formControlName="linkedin">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Status:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <p-dropdown [filter]="false" [style]="{'width':'100%'}" [options]="lists && lists.statusList" formControlName="contact_status_id"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Login Enabled?:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <p-checkbox binary="true" (onChange)="fillPassword()" formControlName="login_enabled"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Active:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <p-dropdown [filter]="false" [style]="{'width':'100%'}" [options]="lists && lists.activeList" formControlName="contact_status"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Location:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <p-dropdown [filter]="lists && lists.locationList.length>10" [style]="{'width':'100%'}" [options]="lists && lists.locationList"
+              formControlName="address_id"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-1 ui-g-nopad label_for_right">
+            Stop Surveys:
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_left_less">
+            <p-checkbox binary="true" formControlName="stopsurveys" [disabled]="disable"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-1 ui-lg-offset-1">
+            <button type="submit" [disabled]="disable" pButton label="Save" icon="fa-save"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-1">
+            <button type="button" [disabled]="disable"  pButton label="Cancel" (click)="cancel.emit()" icon="fa-times"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </blockable-div>

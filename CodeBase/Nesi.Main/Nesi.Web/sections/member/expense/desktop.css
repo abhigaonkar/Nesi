@@ -1,0 +1,28 @@
+﻿
+		.expense
+			{
+			margin:				0px auto;
+			width:				95%;
+			}
+		.expense .row
+			{
+			width:				100%;
+			min-height:			25px;
+			margin-bottom:		5px;
+			clear:				both;
+			}
+		.expense .row .title
+			{
+			float:				left;
+			font-weight:		bold;
+			width:				30%;
+			font-size:			12px;
+			height:				100%;
+			}
+
+		.expense .row .control
+			{
+			float:				right;
+			width:				70%;
+			height:				100%;
+			}

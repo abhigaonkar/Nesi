@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let item of list">
+    <div class="allow_click" (click)="openVendor.emit(item.value)" [innerHTML]="get_text(item)"></div>
+  </li>
+</ul>

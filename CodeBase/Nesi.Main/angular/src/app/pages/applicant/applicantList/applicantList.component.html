@@ -1,0 +1,35 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    <nesi-breadcurmb [items]="[{label: 'HR'},{label: 'Applicant Admin'}]"></nesi-breadcurmb>
+  </div>
+  <div class="ui-g-12">
+    <p-checkbox binary="true" [(ngModel)]="show_all" label=" Show All Applicants " (onChange)="loadGrid()"></p-checkbox>
+  </div>
+  <div class="ui-g-12">
+    <nesi-datatable [id]='138' [dropdownOptions]="{status: statusList}" (onDropDownChange)="update($event)" (onTextBoxChange)="update($event)"
+      [selectionMode]="null" (onSave)="loadGrid()" gridName="ApplicantHomeGrid" gridTitle="" (onCreate)="openCreate($event)"
+      [visible_business_type]="'S'" [need_query_param]="false" (onEdit)="openEdit($event)" (onRefresh)="loadGrid(true)"></nesi-datatable>
+  </div>
+</div>
+
+<nesi-sidebar [(visible)]="displayEdit" header="Editing {{entity && entity.name}}" [larger]="true" open_url="/#/opens/138/applicants/{{entity?.id}}">
+  <!-- <p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Editing {{entity && entity.name}}" [draggable]="true"
+  [(visible)]="displayEdit" [positionTop]="50"> -->
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <nesi-applicant-edit-pane [applicant]="entity" (close)="displayEdit=false" (refreshGrid)="refreshGrid($event)"></nesi-applicant-edit-pane>
+    </div>
+  </div>
+  <!-- </p-dialog> -->
+</nesi-sidebar>
+<nesi-sidebar [(visible)]="displayNew" header="New Applicant" [larger]="true" >
+  <!-- <p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="New Applicant" [draggable]="true" [(visible)]="displayNew"
+  [positionTop]="50"> -->
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <nesi-applicant-start-new (loaded)="submitting=false" (loading)="submitting=true" [employee]="entity" (close)="displayNew=false"
+        (openEdit)="openEdit($event)" *ngIf="displayNew"></nesi-applicant-start-new>
+    </div>
+  </div>
+  <!-- </p-dialog> -->
+</nesi-sidebar>

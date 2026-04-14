@@ -1,0 +1,19 @@
+<table cellpadding="3" class='icon-table'>
+  <tbody>
+    <tr *ngIf="!showAll" class='header'>
+      <td colspan='4' class='top'> Recent {{ MessageList.length }} Message </td>
+    </tr>
+    <tr class='header'>
+      <td>#</td>
+      <td>Date</td>
+      <td>From</td>
+      <td>Subject</td>
+    </tr>
+    <tr *ngFor="let item of MessageList;let i = index" class="bodyrow">
+      <td><b>{{ i+1 }}</b></td>
+      <td>{{ item.date | date: 'yyyy-MM-dd' }} </td>
+      <td>{{ item.fromName }}</td>
+      <td>{{ item.subject }}</td>
+    </tr>
+  </tbody>
+</table>

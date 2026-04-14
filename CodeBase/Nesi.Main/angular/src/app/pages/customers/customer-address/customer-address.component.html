@@ -1,0 +1,23 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <div class="ui-g-12 ui-lg-4">
+            <p-panel header="Detail">
+                <nesi-customer-address-detail [disabled]="disabled" [customer_base_profile]="customer_base_profile" (onChange)="addressChanged($event)" [customer_id]="customer_id"
+                    [address_id]="address_id"></nesi-customer-address-detail>
+            </p-panel>
+        </div>
+        <!-- <div class="ui-g-12 ui-lg-8" *ngIf="address_id>0">
+            <p-panel header="Accounting">
+                <nesi-customer-address-accounting [customer_base_profile]="customer_base_profile" [customer_id]="customer_id" [address_id]="address_id"></nesi-customer-address-accounting>
+            </p-panel>
+        </div> -->
+        <div class="ui-g-12 ui-lg-8" *ngIf="address_id>0">
+            <p-panel header="Files">
+                <nesi-customer-address-files [disabled]="disabled" [customer_base_profile]="customer_base_profile" [customer_id]="customer_id" [address_id]="address_id"></nesi-customer-address-files>
+            </p-panel>
+        </div>
+        <div class="ui-g-12" *ngIf="address_id>0 && isdev">
+            <p-panel header="Rates" toggleable="true" collapsed="true">
+                <nesi-customer-accounting-rates [disabled]="disabled" [customer_id]="customer_id" [address_id]="address_id" [showTravelMileageUI]="false"></nesi-customer-accounting-rates>
+            </p-panel>
+        </div>
+    </div>

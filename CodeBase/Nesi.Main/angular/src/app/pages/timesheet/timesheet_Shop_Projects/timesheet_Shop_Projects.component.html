@@ -1,0 +1,38 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-7">
+        <div class="ui-g-nopad">
+            <dx-list #list [items]="listproject"                                   
+                            selectionMode="single"  
+                            [height]="350"                                      
+                            (onSelectionChanged)="itemClick($event)"
+                            itemTemplate = "data">           
+            
+            <div *dxTemplate="let item of 'data'">
+                <div>{{item.label}}</div>
+            </div>
+          </dx-list>
+        </div>
+    </div>
+    <div class="ui-g-5">
+        <div class="ui-g-5 ui-md-4 ui-g-nopad">
+            Name:
+        </div>
+        <div class="ui-g-5 ui-md-8 ui-g-nopad">
+            <dx-text-box [(value)]="projectName"                        
+                          placeholder="Enter Project Name"
+                          formControlName="name"
+                          valueChangeEvent="keyup"
+                          ></dx-text-box>
+        </div>
+    </div>
+    <div class="ui-g-5">
+        <div class="ui-g-2">
+            <button pButton type="button" label="Reset" icon="fa-new" (click)="onNewClicked($event)" [disabled]="!userform.dirty"></button>
+        </div>
+        <div class="ui-g-2">
+            <button type="submit" pButton  label="Save" icon="fa-save"  [disabled]="!userform.dirty"></button>
+        </div>     
+    </div>
+  </form>
+  </div>

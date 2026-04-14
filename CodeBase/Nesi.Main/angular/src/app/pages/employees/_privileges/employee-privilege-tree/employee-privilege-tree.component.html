@@ -1,0 +1,104 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="min-height: 600px">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <p-tabView [activeIndex]="activeTab" (onChange)="tabChanged($event)">
+      <p-tabPanel header="Member Page Privileges" leftIcon="fa-user">
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-2">
+            <button pButton [disabled]="onlyMemberType" type="button" label="Save" icon='fa-save' (click)="savePage()"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-4">
+            <button pButton [disabled]="!onlyMemberType" type="button" label="Reset Privileges by Member Type" icon='fa-redo' (click)="savePage()"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <button pButton type="button" class="ui-button-secondary" label="Expand All" icon='fa-expand-alt' (click)="expandAll(profile.page)"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <button pButton type="button" class="ui-button-secondary" label="Collapse All" icon='fa-compress-alt' (click)="collapseAll(profile.page)"></button>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-6 ui-g-lesspad">
+            Only apply mouseover popups for this company ->
+            <p-dropdown [filter]="true" [style]="{'width':'100%'}" [options]="profile.business_unit_list" (onChange)="loadData()" [(ngModel)]="profile.selected_business_unit_id"></p-dropdown>
+          </div>
+          <div class="ui-g-12 ui-lg-6 ui-g-lesspad">
+            <br />
+            <p-checkbox label="View MemberType Privileges only." binary="true" (onChange)="loadData()" [(ngModel)]="onlyMemberType"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12">
+          <fieldset>
+            <Legend>Color Legend</Legend>
+            <div class="page">Page Privilege</div>
+            <div class="priv">Permission Privilege</div>
+            <span class="type_priv">Denotes a page/privilege that is different than their membertype's default page/privilege template.</span>
+          </fieldset>
+        </div>
+        <div class="hover_tip">
+          <p-tree [value]="profile.page">
+            <ng-template let-node pTemplate="default">
+              <div [ngClass]="{'type_priv': node.is_type_priv!==node.is_checked}" style="margin-right:10px" (mouseenter)="show_tip()" (mouseout)="showtip=false">
+                <p-checkbox [disabled]="onlyMemberType" [ngClass]=" 
+            {
+              'page': node.is_page,
+              'priv': !node.is_page
+            }
+           " (onChange)="check_children(node,false)" binary="true" [(ngModel)]="node.is_checked" [label]="node.label" (mousemove)="moveTip($event, node)"></p-checkbox>
+                <i class="privilege_desc cursor-point">{{node.description}}</i>
+              </div>
+            </ng-template>
+          </p-tree>
+          <span class="tipspan" [style.left]="tooltipX" [style.top]="tooltipY" *ngIf="showtip">
+            <div class="header">
+              <b>{{currentNode.business_unit}}</b>
+            </div>
+            <div class="content">
+              <ng-container *ngFor="let m of currentNode.members">
+                <div class="ui-g-6 ui-g-lesspad">{{m.name}}</div>
+                <div class="ui-g-6 ui-g-lesspad">{{m.membertype_name}}</div>
+              </ng-container>
+            </div>
+          </span>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="Global Privileges" leftIcon="fa-globe">
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-2">
+            <button pButton type="button" label="Save" icon='fa-save' (click)="saveGlobal()"></button>
+          </div>
+        </div>
+        <p-tree [value]="profile.global">
+          <ng-template let-node pTemplate="default">
+            <p-checkbox class="bold" binary="true" [(ngModel)]="node.is_checked" [label]="node.label"></p-checkbox>
+            <i class="privilege_desc">{{node.description}}</i>
+          </ng-template>
+        </p-tree>
+      </p-tabPanel>
+      <p-tabPanel header="Report Engine Privileges" leftIcon="fa-newspaper">
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-2">
+            <button pButton type="button" label="Save" icon='fa-save' (click)="saveReport()"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <button pButton type="button" class="ui-button-secondary" label="Expand All" icon='fa-expand-alt' (click)="expandAll(profile.report)"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <button pButton type="button" class="ui-button-secondary" label="Collapse All" icon='fa-compress-alt' (click)="collapseAll(profile.report)"></button>
+          </div>
+        </div>
+        <p-tree [value]="profile.report">
+          <ng-template let-node pTemplate="default">
+            <p-checkbox [ngClass]="node.children?'bold':''" (onChange)="check_children(node);checkParent(node);" binary="true" [(ngModel)]="node.is_checked"
+              [label]="node.label"></p-checkbox>
+          </ng-template>
+        </p-tree>
+      </p-tabPanel>
+      <p-tabPanel header="Switch User" leftIcon="fa-exchange">
+        <nesi-employee-privilege-user-switching [employee]="employee"></nesi-employee-privilege-user-switching>
+      </p-tabPanel>
+    </p-tabView>
+  </blockable-div>
+</div>

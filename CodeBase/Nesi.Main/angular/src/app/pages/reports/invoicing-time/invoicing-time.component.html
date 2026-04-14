@@ -1,0 +1,10 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+        <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Invoicing Time'}]"></nesi-breadcurmb>
+    </div>
+    <div class="ui-g-12">
+        <nesi-datatable 
+    [visible_business_type]="'S'"
+    [id]='192' gridName="InvoicingTime" gridTitle="" refreshCache="true" (onRefresh)="loadDetail()"></nesi-datatable>
+    </div>
+</div>

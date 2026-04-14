@@ -1,0 +1,23 @@
+﻿
+		.expense
+			{
+			margin:				0px auto;
+			width:				100%;
+			padding:			10px;
+			}
+		.expense .row
+			{
+			width:				100%;
+			min-height:			25px;
+			margin-bottom:		5px;
+			clear:				both;
+			}
+		.expense .row .title
+			{
+			font-weight:		bold;
+			font-size:			12px;
+			}
+
+		.expense .row .control
+			{
+			}

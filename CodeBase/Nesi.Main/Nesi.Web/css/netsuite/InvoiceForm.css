@@ -1,0 +1,110 @@
+﻿table {
+	font-family: sans-serif;
+	font-size: 9pt;
+	margin-top: 10px;
+	/* table-layout: fixed;*/
+	width: 100%;
+}
+
+th {
+	font-weight: bold;
+	font-size: 8pt;
+	vertical-align: middle;
+	padding-right: 6px;
+	padding-left: 6px;
+	padding-bottom: 3px;
+	padding-top: 5px;
+	background-color: #e3e3e3;
+	color: #333333;
+}
+
+td {
+	padding-right: 6px;
+	padding-left: 6px;
+	padding-bottom: 4px;
+	padding-top: 4px;
+}
+
+b {
+	font-weight: bold;
+	color: #333333;
+}
+
+table.header td {
+	padding: 0px;
+	font-size: 10pt;
+}
+
+	table.header td.header_right {
+		width: 211px;
+		text-align: right !important;
+	}
+
+table.footer td {
+	padding: 0px;
+	font-size: 8pt;
+}
+
+table.itemtable th {
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+table.body td {
+	padding-top: 2px;
+}
+
+table.total {
+	page-break-inside: avoid;
+}
+
+tr.totalrow {
+	background-color: #e3e3e3;
+	line-height: 200%;
+}
+
+td.totalboxtop {
+	font-size: 12pt;
+	background-color: #e3e3e3;
+}
+
+td.addressheader {
+	font-size: 8pt;
+	padding-top: 6px;
+	padding-bottom: 2px;
+}
+
+td.address {
+	padding-top: 0px;
+}
+
+td.totalboxmid {
+	font-size: 28pt;
+	padding-top: 20px;
+	background-color: #e3e3e3;
+}
+
+td.totalboxbot {
+	background-color: #e3e3e3;
+	font-weight: bold;
+}
+
+span.title {
+	font-size: 28pt;
+}
+
+span.number {
+	font-size: 16pt;
+}
+
+span.itemname {
+	font-weight: bold;
+	line-height: 150%;
+}
+
+hr {
+	width: 100%;
+	color: #d3d3d3;
+	background-color: #d3d3d3;
+	height: 1px;
+}

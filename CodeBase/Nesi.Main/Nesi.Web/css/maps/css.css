@@ -1,0 +1,60 @@
+﻿
+#container {margin:0px;}
+
+#header
+{
+    width: 100%;
+    background-color: #ddd;
+    margin-bottom: 3px;
+}
+#sidebar
+	{
+ width:200px; 
+	}
+.side_items 
+	{
+	text-align:left;
+	background-color:#ddd;
+	padding-bottom:			10px;
+	border-radius:			5px;
+	}
+#mainbody
+{
+    height: 600px;
+}
+#map_canvas
+	{
+    border: solid 1px #ccc;
+	}
+.error_list
+	{
+	background-color:		#a00;
+	color:					#fff;
+	padding:				5px;
+	margin:					3px;
+	padding-top:			60px;
+	background-image:		url('/images/warning.png');
+	background-repeat:		no-repeat;
+	background-position:	center 5px;
+	border-radius:			10px;
+	text-align:				center;
+	font-size:				11px;
+	font-weight:			bold;
+	}
+.good_item:hover
+	{
+	background-color:		#fff;
+	}
+.good_item
+	{
+	
+	}
+.branch_item
+	{
+	background-color:		#27427A;
+	color:					#fff;
+	font-weight:			bold;
+	padding:				3px;
+	border-radius:			3px;
+	margin-top:				10px;
+	}

@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="sections_customer_modules_files" Codebehind="files.ascx.cs" %>
+<iframe id="files_frame" runat="server" height="950" scrolling="no" width="100%" frameborder="0"></iframe>

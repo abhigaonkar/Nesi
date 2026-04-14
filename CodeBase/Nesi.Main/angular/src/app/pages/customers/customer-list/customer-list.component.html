@@ -1,0 +1,35 @@
+<nesi-breadcurmb [items]="[{label: 'Customers'}, {label: tabName}]"></nesi-breadcurmb>
+<div class="col-md-6">
+<button type="button" pButton label="New Customer Request" icon="fa-plus" (click)="new_customer_request()"></button>
+</div>
+<p-tabView [activeIndex]="activeTab" (onChange)="tabChanged($event)">
+   
+       <p-tabPanel [header]="tabLabels[0]" leftIcon="fa-search">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <nesi-datatable [id]='10' gridName="CustomerHomeSearch" gridTitle="" 
+      (onrowclick)="open_customer($event)" (onRefresh)="loadDetail(true)">
+      </nesi-datatable>
+    </div>
+  </p-tabPanel>
+
+
+  <!-- <p-tabPanel [header]="tabLabels[1]" *ngIf="profile && profile.is_new_allowed" leftIcon="fa-plus">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <nesi-customer-new (openDetail)="open_customer($event)"></nesi-customer-new>
+    </div>
+  </p-tabPanel> -->
+
+  
+     <p-tabPanel [header]="tabLabels[1]" leftIcon="fa-list-alt" *ngIf="customer_id">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <nesi-customer-edit-general [customer_id]="customer_id"></nesi-customer-edit-general>
+    </div>
+  </p-tabPanel>
+
+  <!-- <p-tabPanel [header]="tabLabels[3]"  *ngIf="profile && profile.is_new_allowed" leftIcon="fa-envelope">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <nesi-postcode-search></nesi-postcode-search>
+    </div>
+  </p-tabPanel> -->
+</p-tabView>
+

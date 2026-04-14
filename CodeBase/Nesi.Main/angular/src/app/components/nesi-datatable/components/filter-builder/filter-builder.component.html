@@ -1,0 +1,83 @@
+<div>
+        <a (click)="stickyPosition(opFilter1, $event, 10, false); opFilter1.toggle($event); setCurrentRoot(filterRoot)" class="show-hide" style="cursor:pointer;color:red">
+                {{filterRoot.filterOperator}}
+        </a>
+        &nbsp;
+        <a style="cursor:pointer" (click)="addNewRow(filterRoot.filterRows)">
+                +
+        </a>
+        <ul>
+                <li *ngFor="let childFilter of filterRoot.children" style="padding: 25px">
+                        <filter-builder [filters]="childFilter" [columns]="columnArray" [matchModeString]="filterMatchModeString" [matchModeNumber]="filterMatchModeNumber"
+                                [matchModeDate]="filterMatchModeDate"></filter-builder>
+                </li>
+                <li *ngFor="let operation of filterRoot.filterRows; let i = index" style="padding:10px;">
+
+                        <a style="cursor:pointer;color:blue" (click)="stickyPosition(opFilter2, $event, 0, true); opFilter2.toggle($event); onCurrentFilterOperationRowClick(i);setCurrentRoot(filterRoot)">[{{operation.column}}]</a>
+
+                        <a style="cursor:pointer;color:green" (click)="showOperateMenu(opFilter3,$event,i,operation)">{{operation.operand.label}}</a>
+                        <span *ngIf="!operation.useAliasing">
+                                <a *ngIf="operation.showPlaceholder && !operation.showInputControl && (!operation.value && (operation.value==='' || operation.value.length ==0)) && operation.operand.label != 'Is blank' && operation.operand.label != 'Is not blank' "
+                                        (click)="operation.showInputControl=true;" style="cursor:pointer">{{operation.placeholder}}</a>
+                                        
+                                <a style="cursor:pointer" *ngIf="!operation.showInputControl" (click)="operation.showInputControl=true;">{{operation.value}}</a>
+
+                                <input autofocus #valueTextInput [(ngModel)]="operation.value" *ngIf="operation.showInputControl && (operation.type === 'string' || operation.type === 'notes' || operation.type === 'phone')"
+                                        style="width:60%" type="text" value="" [disabled]="operation.value.includes('\'')" (keyup)="validateInput($event, operation);"
+                                        (blur)="operation.showInputControl=false;">
+                                <input autofocus #valueNumberInput [(ngModel)]="operation.value" *ngIf="operation.showInputControl && (operation.type === 'number' ||operation.type === 'currency' ||operation.type === 'percent')"
+                                        style="width:60%" type="number" placeholder="Number only." value="" (blur)="operation.showInputControl=false;">
+
+                                <input autofocus type="checkbox" #valueBoolInput [(ngModel)]="operation.value" *ngIf="operation.showInputControl && operation.type === 'boolean'"
+                                        (blur)="operation.showInputControl=false;">
+
+                                <input autofocus type="date" style="width:45%" #valueDateInput [(ngModel)]="operation.value" *ngIf="operation.showInputControl && (operation.type === 'date' || operation.type === 'calendar')"
+                                        (blur)="operation.showInputControl=false;">
+                                <select *ngIf="operation.showInputControl && operation.type === 'dropdownDateTime'" style="width:60%" [(ngModel)]="operation.value"
+                                        (blur)="operation.showInputControl=false;">
+                                        <option *ngFor="let condition of complexDateConditions" value={ {condition.value}}>{{condition.label}}</option>
+
+                                </select>
+
+                                
+                        </span>
+                        
+
+                        <i class="fa fa-times-circle"  (click)="removeFilterItem(filterRoot.filterRows,i)"></i>
+                </li>
+
+        </ul>
+</div>
+
+<p-overlayPanel #opFilter1 styleClass="layout-box overlaypanel-wrapper" [dismissable]="true" appendTo="body">
+        <div style="padding:10px;">
+                <div *ngFor="let op of filterOperators; let i = index">
+                        <a style="cursor:pointer;" (click)="changeFilterOperator(op)"> {{op['imgSrc']}}</a>
+                        <a style="cursor:pointer; padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px;" (click)="changeFilterOperator(op);">
+                        {{op['label']}}</a>
+                        <hr *ngIf=" i != (filterOperators.length-1) ">
+                </div>
+        </div>
+
+</p-overlayPanel>
+
+<p-overlayPanel #opFilter2 styleClass="layout-box overlaypanel-wrapper" [dismissable]="true" appendTo="body">
+        <div style="padding:10px;overflow-y:auto; max-height: 600px;">
+                <div *ngFor="let op of getVisibleColumns(); let i = index">
+                        <a style="cursor:pointer; padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px;" (click)="changeFilterColumn(op)">
+                        {{op.label}}</a>
+                        <hr *ngIf=" i != (getVisibleColumns().length-1)">
+                </div>
+        </div>
+
+</p-overlayPanel>
+<p-overlayPanel #opFilter3 styleClass="layout-box overlaypanel-wrapper" [dismissable]="true" appendTo="body">
+        <div style="padding:10px">
+                <div *ngFor="let op of filterOperands; let i = index">
+                        <a style="cursor:pointer; padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px;" (click)="changeFilterColumnOperand(op)">
+                        {{op.label}}</a>
+                        <hr *ngIf=" i != (filterOperands.length-1)">
+                </div>
+        </div>
+
+</p-overlayPanel>

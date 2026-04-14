@@ -1,0 +1,522 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid smaller">
+
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <p-panel [toggleable]="true">
+          <p-header>
+            <i class="fa fa-fw fa-info"></i> Employee
+          </p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g">
+              <div class="ui-g-12 ui-lg-2 ui-g-nopad">
+                <img src="{{photoUrl}}">
+              </div>
+              <div class="ui-g-12 ui-lg-8 ui-g-nopad">
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-2 label_for_right ">
+                    First Name (Given Name):
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                    <input pInputText maxlength="50" formControlName="firstName">
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('firstName')" [errorMsg]="' First Name is required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-2 label_for_right ">
+                    Last Name (Surname):
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                    <input pInputText maxlength="50" formControlName="lastName">
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('lastName')" [errorMsg]="' Last Name is required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-2 label_for_right ">
+                    Middle Initial:
+                  </div>
+                  <div class="ui-g-12 ui-lg-1 label_for_left_less">
+                    <input pInputText maxlength="50" formControlName="middleInitial">
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-2 label_for_right ">
+                    Pref. Name (Nickname):
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                    <input pInputText maxlength="50" formControlName="nickname">
+                  </div>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-lg-2 ui-g-nopad">
+                <button *ngIf="profile.entity.status=='Active'" type="button" pButton icon="fa-print" label="Print Barcode" (click)="print_barcode()"></button>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <p-panel [toggleable]="true">
+          <p-header>
+            <i class="fa  fa-fw fa-phone"></i> Address / Phone
+          </p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-lg-6 ui-g-nopad">
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Street Address:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <input pInputText maxlength="50" formControlName="address">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  City:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <input pInputText maxlength="50" formControlName="city">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Country:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <p-dropdown [filter]="true" maxlength="50" placeholder="Select Country" [style]="{'width':'100%'}" [options]="profile.countryList"
+                    formControlName="country"></p-dropdown>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Personal Email Address:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <input type="email" pInputText maxlength="150" formControlName="email">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Personal Cell #:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <span>
+                    (
+                    <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="pecell_area">)
+                  </span>
+                  <span>
+                    <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="pecell_pref">
+                  </span>
+                  <span>
+                    -
+                    <input class="phone_number_2" minlength="4" maxlength="4" pInputText formControlName="pecell_suff">
+                  </span>
+                  <nesi-fieldErrorDisplay [displayError]="isFieldInValid('pecell_area') || isFieldInValid('pecell_pref') || isFieldInValid('pecell_suff')"
+                    [errorMsg]="'Valid Phone number is required.'"></nesi-fieldErrorDisplay>
+                </div>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-lg-6 ui-g-nopad">
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  &nbsp;
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  &nbsp;
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Province/State:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <p-dropdown [filter]="false" maxlength="50" placeholder="Select Province/State" [style]="{'width':'100%'}" [options]="profile.provList"
+                    formControlName="prov"></p-dropdown>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Postal (ZIP) Code:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <input pInputText maxlength="10" formControlName="postalCode">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Home Phone #:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <span>
+                    (
+                    <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="phoneAreaCode">)
+                  </span>
+                  <span>
+                    <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="phoneFirst">
+                  </span>
+                  <span>
+                    -
+                    <input class="phone_number_2" minlength="4" maxlength="4" pInputText formControlName="phoneLast">
+                  </span>
+                  <nesi-fieldErrorDisplay [displayError]="isFieldInValid('phoneAreaCode') || isFieldInValid('phoneFirst') || isFieldInValid('phoneLast')"
+                    [errorMsg]="'Valid Phone number is required.'"></nesi-fieldErrorDisplay>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <p-panel [toggleable]="true">
+          <p-header>
+            <i class="fa  fa-fw fa-level-up"></i> Reporting Info
+          </p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-lg-6 ui-g-nopad">
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Job Title:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <p-dropdown [filter]="true" maxlength="50" placeholder="Select Job Title" [style]="{'width':'100%'}" [options]="profile.memberTypeList"
+                    (onChange)="getChargeOut()" formControlName="memberTypeID"></p-dropdown>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Reports To:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <p-dropdown [filter]="true" maxlength="50" placeholder="Select Reports To" [style]="{'width':'100%'}" [options]="profile.reportsToList"
+                    formControlName="reports_to"></p-dropdown>
+                  <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('reports_to','data')" [errorMsg]="'Reporting Lines are Circular.  Somewhere between this person and the CEO, the reporting lines become circular.'">
+                  </nesi-fieldErrorDisplay>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Is a Canadian Board Member:
+                </div>
+                <div class="ui-g-12 ui-lg-8 text_for_left">
+                  <p-checkbox binary="true" formControlName="is_CAN_boardmember"></p-checkbox>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Is an American Board Member:
+                </div>
+                <div class="ui-g-12 ui-lg-8 text_for_left">
+                  <p-checkbox binary="true" formControlName="is_US_boardmember"></p-checkbox>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Payroll Handler:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <p-dropdown [filter]="true" maxlength="50" placeholder="Select Payroll Handler" [style]="{'width':'100%'}" [options]="profile.payrollHandlerList"
+                    formControlName="payroll_handler"></p-dropdown>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Timesheet Watch:
+                </div>
+                <div class="ui-g-12 ui-lg-8 text_for_left">
+                  <p-checkbox binary="true" formControlName="tswatch"></p-checkbox>
+                </div>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-lg-6 ui-g-nopad">
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Type of Employment:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <p-dropdown [filter]="true" maxlength="50" placeholder="Select Type of Employment" [style]="{'width':'100%'}" [options]="profile.payTypelist"
+                    formControlName="paytype_id"></p-dropdown>
+                  <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('paytype_id')" [errorMsg]="' Type of Employment is required.'"></nesi-fieldErrorDisplay>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad text_for_left">
+                {{userform.get('reporting_text').value}}
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Part Time?:
+                </div>
+                <div class="ui-g-12 ui-lg-8 text_for_left">
+                  <p-checkbox binary="true" formControlName="part_time"></p-checkbox>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right ">
+                  Charge-out Rate:
+                </div>
+                <div class="ui-g-12 ui-lg-8 text_for_left">
+                  <ng-container *ngIf="userform.get('memberwage').value">{{userform.get('memberwage').value | currency}}</ng-container>
+                  <ng-container *ngIf="!userform.get('memberwage').value">Not Set</ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <p-panel [toggleable]="true">
+          <p-header>
+            <i class="fa  fa-fw fa-building"></i> Business Unit Info
+          </p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Member ID:
+                </div>
+                <div class="ui-g-12 ui-lg-10 text_for_left">
+                  {{userform.get('id').value}}
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Business Unit:
+                </div>
+                <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                  <p-dropdown [filter]="true" maxlength="50" placeholder="Select Business Unit" [style]="{'width':'100%'}" [options]="profile.businessUnitList"
+                    (onChange)="getChargeOut()" formControlName="business_unit_id"></p-dropdown>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Status:
+                </div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <p-dropdown [filter]="true" maxlength="50" placeholder="Select Status" [style]="{'width':'100%'}" [options]="profile.statusList"
+                    formControlName="status"></p-dropdown>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  HR Status:
+                </div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <p-dropdown [filter]="true" maxlength="50" placeholder="Select HR Status" [style]="{'width':'100%'}" [options]="profile.hrStatusList"
+                    formControlName="hrstatus_id"></p-dropdown>
+                  <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('hrstatus_id')" [errorMsg]="'HR Status is required.'"></nesi-fieldErrorDisplay>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Working Email Address:
+                </div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <input type="email" pInputText maxlength="150" formControlName="neEmail">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Start Date:
+                </div>
+                <div class="ui-g-12 ui-lg-2 label_for_left_less">
+                  <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="start_Date" placeholder="yyyy-mm-dd"
+                    showIcon="true"></p-calendar>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Term Date:
+                </div>
+                <div class="ui-g-12 ui-lg-2 label_for_left_less">
+                  <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="terminateDate" placeholder="yyyy-mm-dd"
+                    showIcon="true"></p-calendar>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Vehicle #:
+                </div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <input pInputText maxlength="150" formControlName="neTruck">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Default Inventory Location:
+                </div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <p-dropdown [filter]="true" maxlength="50" placeholder="Select Default Inventory Location" [style]="{'width':'100%'}" [options]="profile.locationList"
+                    formControlName="member_default_location"></p-dropdown>
+                  <!-- <nesi-fieldErrorDisplay [displayError]="formHasError('member_default_location',['member_default_location'])" [errorMsg]="'Default Inventory Location is required.'"></nesi-fieldErrorDisplay> -->
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Work Cell #:
+                </div>
+                <div class="ui-g-12 ui-lg-10 text_for_left">
+                  {{working_cell}}
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Extension #:
+                </div>
+                <div class="ui-g-12 ui-lg-10 text_for_left">
+                  {{userform.get('phoneExtension').value}}
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Notes:
+                </div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <textarea pInputTextarea rows="5" cols="25" formControlName="empnotes"></textarea>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Electrical License #:
+                </div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <input pInputText maxlength="150" formControlName="electricalLicence">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Apprentice Contract:
+                </div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <input pInputText maxlength="150" formControlName="apprentice_contract">
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <p-panel [toggleable]="true" *ngIf="profile.personal_detail_visible">
+          <p-header>
+            <i class="fa  fa-fw fa-fw fa-male"></i> Personal Info
+          </p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Date of Birth:
+              </div>
+              <div class="ui-g-12 ui-lg-2 label_for_left_less">
+                <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="birthDate" placeholder="yyyy-mm-dd"
+                  showIcon="true"></p-calendar>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Driver's License #:
+              </div>
+              <div class="ui-g-12 ui-lg-10 text_for_left">
+                <input pInputText maxlength="50" formControlName="driversLicence">
+              </div>
+            </div>
+            <div class="ui-g-12 ui-lg-2 label_for_right ">
+              Has Dependants:
+            </div>
+            <div class="ui-g-12 ui-lg-10 label_for_left_less">
+              <p-dropdown [filter]="true" maxlength="50" placeholder="Select Default Inventory Location" [style]="{'width':'100%'}" [options]="profile.hasdepentantsList"
+                formControlName="hasDependants"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Benefits ID:
+              </div>
+              <div class="ui-g-12 ui-lg-2 label_for_left_less">
+                <input pInputText maxlength="150" formControlName="benefits_id">
+                <nesi-fieldErrorDisplay [displayError]="formHasError('benefits_id',['benefits_id']) && profile.personal_detail_visible" [errorMsg]="' Benefits ID is required.'"></nesi-fieldErrorDisplay>
+              </div>
+              <div class="ui-g-12 ui-lg-8 text_for_left" *ngIf="userform.get('paytype_id').value<=3">
+                Benefits Start Date:{{profile.entity.benefits_startdate | date: 'yyyy-MM-dd' }}
+              </div>
+            </div> 
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Life Insurance ID:
+              </div>
+              <div class="ui-g-12 ui-lg-2 label_for_left_less">
+                <input pInputText maxlength="150" formControlName="life_insurance_id">
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Payroll ID:
+              </div>
+              <div class="ui-g-12 ui-lg-2 label_for_left_less">
+                <input pInputText maxlength="150" formControlName="payrollNo">
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('payrollNo')" [errorMsg]="'Payroll ID is required.'"></nesi-fieldErrorDisplay>
+              </div>
+              <div class="ui-g-12 ui-lg-2 label_for_left_less">
+                <button pButton [disabled]="!profile.payroll_verified_enabled" type="button" label="Data Verified" icon="fa-check" (click)="rest_to_do('payroll')"></button>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <p-panel [toggleable]="true">
+          <p-header>
+            <i class="fa  fa-fw fa-hospital"></i> Emergency Contact
+          </p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                First Name:
+              </div>
+              <div class="ui-g-12 ui-lg-2 label_for_left_less">
+                <input pInputText maxlength="50" formControlName="emergencyFirstName1">
+                <nesi-fieldErrorDisplay [displayError]="formHasError('emerg_first_name',['emergencyFirstName1'])" [errorMsg]="'First Name is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Last Name:
+              </div>
+              <div class="ui-g-12 ui-lg-2 label_for_left_less">
+                <input pInputText maxlength="50" formControlName="emergencyLastName1">
+                <nesi-fieldErrorDisplay [displayError]="formHasError('emerg_last_name',['emergencyLastName1'])" [errorMsg]="'Last Name is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Phone #:
+              </div>
+              <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                <span>
+                  (
+                  <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="emergencyPhoneArea1">)
+                </span>
+                <span>
+                  <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="emergencyPhoneFirst1">
+                </span>
+                <span>
+                  -
+                  <input class="phone_number_2" minlength="4" maxlength="4" pInputText formControlName="emergencyPhoneLast1">
+                </span>
+                <nesi-fieldErrorDisplay [displayError]="formHasError('emerg_phone',['emergencyPhoneArea1','emergencyPhoneFirst1','emergencyPhoneLast1'])"
+                  [errorMsg]="'Valid Phone number is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+            <button *ngIf="profile.can_edit_user" pButton [disabled]="disabled_save" type="submit" label="Save" icon="fa-save"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <button pButton type="button" [disabled]="disabled_save" label="New Hire Sheet" icon="fa-list" (click)="print_off()" *ngIf="profile.newHire_visible"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <button pButton type="button" *ngIf="profile.terminate_visible" label="Terminate User" icon="fa-ban" (click)="terminate()"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </blockable-div>
+
+  <p-dialog [width]="cs.isLg?'600':'0'" [responsive]="true" [modal]="true" header="Terminate User" appendTo="body" [draggable]="true"
+    [(visible)]="termianteDisplay" [positionTop]="50">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <nesi-employee-termination-start (loading)="submitting=true" (loaded)="submitting=false" [employee]="employee" *ngIf="termianteDisplay"
+        (onChange)="go_terminate()"></nesi-employee-termination-start>
+    </div>
+  </p-dialog>
+</div>

@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78279208-2B7D-4DBB-B76C-63C2B4903DB7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NESI.DTO</RootNamespace>
+    <AssemblyName>NESI.DTO</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MattLocal|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\MattLocal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MattLocal|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\MattLocal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Attributes, Version=6.0.0.0, Culture=neutral, PublicKeyToken=bbc347385eae1a0e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.Attributes.6.0.0\lib\net45\AutoMapper.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.1.1\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.WebApi, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.WebApi.7.1.1\lib\net45\FluentValidation.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Mapper\DataTableMapper.cs" />
+    <Compile Include="Mapper\MapperConfig.cs" />
+    <Compile Include="Models\Core\BusinessUnit.cs" />
+    <Compile Include="Models\Core\Customer.cs" />
+    <Compile Include="Models\Core\ErrorLog.cs" />
+    <Compile Include="Models\Core\LogPage.cs" />
+    <Compile Include="Models\Core\PhoneLog.cs" />
+    <Compile Include="Models\Core\Quote.cs" />
+    <Compile Include="Models\Core\Quote_Master.cs" />
+    <Compile Include="Models\Core\WoDetailHistory.cs" />
+    <Compile Include="Models\Core\WoDetailCurrent.cs" />
+    <Compile Include="Models\Core\WoProg.cs" />
+    <Compile Include="Models\TimeSheet\ExpenseReimbursement.cs" />
+    <Compile Include="Models\TimeSheet\ShopInternalProjects.cs" />
+    <Compile Include="Models\TimeSheet\ShopType.cs" />
+    <Compile Include="Models\Users\Contact.cs" />
+    <Compile Include="Models\Core\Passport.cs" />
+    <Compile Include="Models\Users\Customer.cs" />
+    <Compile Include="Models\Users\Member.cs" />
+    <Compile Include="Validation\DateFormatConverter.cs" />
+    <Compile Include="Validation\SQLInjectionAttribute.cs" />
+    <Compile Include="ViewModels\Core\BusinessUnitDropDownList.cs" />
+    <Compile Include="ViewModels\Core\DataBool.cs" />
+    <Compile Include="ViewModels\Core\DataFiles.cs" />
+    <Compile Include="ViewModels\Core\DataIdBool.cs" />
+    <Compile Include="ViewModels\Core\DataIdDouble.cs" />
+    <Compile Include="ViewModels\Core\DataIdInt.cs" />
+    <Compile Include="ViewModels\Core\DataIdString.cs" />
+    <Compile Include="ViewModels\Core\DataIntArray.cs" />
+    <Compile Include="ViewModels\Core\DataString.cs" />
+    <Compile Include="ViewModels\Core\DataDouble.cs" />
+    <Compile Include="ViewModels\Core\DataInt.cs" />
+    <Compile Include="ViewModels\Core\DataStringType.cs" />
+    <Compile Include="ViewModels\Core\Enums\CreditCardCurrency.cs" />
+    <Compile Include="ViewModels\Core\Enums\Currency.cs" />
+    <Compile Include="ViewModels\Core\Enums\Page.cs" />
+    <Compile Include="ViewModels\Core\Enums\Privilege.cs" />
+    <Compile Include="ViewModels\Core\FileManager\Directory.cs" />
+    <Compile Include="ViewModels\Core\FileManager\File.cs" />
+    <Compile Include="ViewModels\Core\FileManager\FileStore.cs" />
+    <Compile Include="ViewModels\Core\FileManager\MoveOrCopyFile.cs" />
+    <Compile Include="ViewModels\Core\LabelValueDouble.cs" />
+    <Compile Include="ViewModels\Core\TreeNode.cs" />
+    <Compile Include="ViewModels\Core\FileManager\URL.cs" />
+    <Compile Include="ViewModels\Core\LabelValueIntLink.cs" />
+    <Compile Include="ViewModels\Core\LabelValueString.cs" />
+    <Compile Include="ViewModels\Core\LabelValueInt.cs" />
+    <Compile Include="Models\Core\MemberType.cs" />
+    <Compile Include="ViewModels\Core\DataExtra.cs" />
+    <Compile Include="ViewModels\Core\NameFieldValueId.cs" />
+    <Compile Include="ViewModels\Core\NameFieldValue.cs" />
+    <Compile Include="ViewModels\Core\OnlineUser.cs" />
+    <Compile Include="Models\Core\Page.cs" />
+    <Compile Include="Models\Core\Privilege.cs" />
+    <Compile Include="Models\Quote\QuoteSchedule.cs" />
+    <Compile Include="Models\Users\Vendor.cs" />
+    <Compile Include="ViewModels\Core\PayPeriod.cs" />
+    <Compile Include="Models\Core\PayTypeHour.cs" />
+    <Compile Include="ViewModels\Core\UpdatePhoneLog.cs" />
+    <Compile Include="ViewModels\CurrentUser\ChangePasswordRequestModel.cs" />
+    <Compile Include="ViewModels\CurrentUser\EmailAddress.cs" />
+    <Compile Include="ViewModels\CurrentUser\ForgotPasswordModel.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\ChangePassword.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\DashMessage.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\IdSearch.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\Message.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\QuickExtension.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\Tickets.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\UpcomingVacations.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\AverageDaysToInvoice.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\WhoDoIAsk.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\ToDo.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\FVR.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\Profile.cs" />
+    <Compile Include="Models\Core\TaxEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CurrentUser\ResetPassword.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerBusinessUnitGrid.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerRequestAdmin.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeContact.cs" />
+    <Compile Include="ViewModels\Page\PurchaseOrder\AddCreditCard.cs" />
+    <Compile Include="ViewModels\Page\Reports\CustStatusHistory.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterCustomersGrid.cs" />
+    <Compile Include="ViewModels\Page\Applicant\ApplicantEdit.cs" />
+    <Compile Include="ViewModels\Page\Applicant\ApplicantHomeGrid.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerAccounting.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerAccountingARNotes.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerAccountingSetting.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerAddress.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerInvoicingInstructionsGrid.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerBase.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerContact.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerEdit.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerEditProfile.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerArEmailsGrid.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerHistory.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerHomeSearch.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerNew.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerEmailsGrid.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerPhoneNumber.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerRate.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerSalesProperties.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerQuotesGrid.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerPhoneCallsGrid.cs" />
+    <Compile Include="ViewModels\Page\Customers\CustomerWorkOrdersGrid.cs" />
+    <Compile Include="ViewModels\Page\Customers\SearchCriteriaPagination.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeDaysOffGrid.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeDaysOffVacationOverride.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeDaysOffVacationTransactionGrid.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeDaysOffVacationRequestGrid.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeDiscplinaryGrid.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeFootPrintListItem.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeFootPrintsReassign.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeIT.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeMileStone.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeOfferBase.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeOfferDetail.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeOfferExtra.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeOfferNotes.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeOfferResponsibilitiesOperation.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeOfferResposibility.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeOfferWage.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeOfferWageNotes.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeReviewBase.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeReviewItem.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeReviewListItem.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeReviewMileStone.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeReviewProfile.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeesHomeGrid.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeStartTerminate.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeTerminationCheckListItem.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeTerminationProfile.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeUserInfo.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeWage.cs" />
+    <Compile Include="ViewModels\Page\Employees\EmployeeWageVacation.cs" />
+    <Compile Include="ViewModels\Page\Employees\PrivilegeTreeNode.cs" />
+    <Compile Include="ViewModels\Page\MessagesPage\SendMessage.cs" />
+    <Compile Include="ViewModels\Page\PurchaseOrder\BusinessUnitSummary.cs" />
+    <Compile Include="ViewModels\Page\PurchaseOrder\PurchaseOrderBusinessUnitDetail.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteEditUpdateAll.cs" />
+    <Compile Include="ViewModels\Core\ReOrderItem.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteStrategyQuestion.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteStrategyStage1.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteStrategyStageMeetingItem.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteStrategyCheckItem.cs" />
+    <Compile Include="ViewModels\Page\ReleaseSystem\RebootTime.cs" />
+    <Compile Include="ViewModels\Page\Demo\CheckUserNamePassword.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteDetail.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteEditCustomerInfo.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteEditFieldUpdate.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteEditInit.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteFollowUp.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteListItem.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteNew.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteSearch.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteStatusUpdate.cs" />
+    <Compile Include="ViewModels\Page\Quotes\QuoteSummary.cs" />
+    <Compile Include="ViewModels\Core\DatatableResult.cs" />
+    <Compile Include="ViewModels\Page\Reports\Address.cs" />
+    <Compile Include="ViewModels\Page\Reports\AdvancePayReportGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\Customer.cs" />
+    <Compile Include="ViewModels\Page\Reports\CustomerAsset.cs" />
+    <Compile Include="ViewModels\Page\Reports\CustomerLoginHistoryGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\CustomerRatesGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\CustomerSurveysGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\FVRGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\GridViewLayout.cs" />
+    <Compile Include="ViewModels\Page\Reports\InventoryCountsGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\InventoryUsage.cs" />
+    <Compile Include="ViewModels\Page\Reports\InvoicingTime.cs" />
+    <Compile Include="ViewModels\Page\Reports\JobCostReport.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterContact.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterOutstandingInvoicesGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterPhoneCallGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterPurchasesGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterQuoteGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterResponsibilitesGrid.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterVendor.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterWorkOrder.cs" />
+    <Compile Include="ViewModels\Page\Reports\MasterWorkOrderV2.cs" />
+    <Compile Include="ViewModels\Page\Reports\Member.cs" />
+    <Compile Include="ViewModels\Page\Reports\MemberWithUnit.cs" />
+    <Compile Include="ViewModels\Page\Reports\PartnerSpecialties.cs" />
+    <Compile Include="ViewModels\Page\Reports\WOLineGrid.cs" />
+    <Compile Include="ViewModels\Page\Shared\NewCustomerContact.cs" />
+    <Compile Include="ViewModels\Page\TicketFlyOut\AddTicket.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\Expense\AddExpensePerDeim.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\Expense\AddExpense.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\Expense\ExpenseHistory.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\Expense\ExpensePerDiemProfile.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\Expense\Profile.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\Expense\WorkOrder.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\DefaultFromScheduler.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\GetListByUserDate.cs" />
+    <Compile Include="Models\TimeSheet\MemberTime.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\InsertSignature.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\InsertTimeSheetProject.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\PEL\AddPEL.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\PEL\PELProfile.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\PEL\PELSummary.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\TelemRecord.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\TransferData.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\UpdateTimeSheetBase.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\InsertTimeSheetBase.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\InsertTimeSheetQuote.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\InsertTimeSheetShop.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\InsertTimeSheetTelem.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\InsertTimeSheetWorkOrder.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\QuoteCustomer.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\TimeSheetDay.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\UpdateTimesheetProject.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\UpdateTimeSheetTelem.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\UpdateTimeSheetQuote.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\UpdateTimeSheetShop.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\UpdateTimeSheetWorkOrder.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\User.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\TimesheetList.cs" />
+    <Compile Include="ViewModels\Page\BusinessUnit\BusinessUnit.cs" />
+    <Compile Include="ViewModels\CurrentUser\Layout\SwtichUser.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\Vacation\ReviewVacation.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\WorkOrderComment.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\WorkOrderCustomer.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\WorkOrderWo.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\WoTypeEnum.cs" />
+    <Compile Include="ViewModels\Page\TimeSheet\Vacation\AddVacation.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorPhoneNumber.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorPhoneCallsGrid.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorEmailsGrid.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorAccounting.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorAddress.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorBvContact.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorEdit.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorHomeSearch.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorBase.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorNESIContactsGrid.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorPoGrid.cs" />
+    <Compile Include="ViewModels\Page\Vendors\VendorStartNew.cs" />
+    <Compile Include="ViewModels\Page\WorkOrder\WorkOrderBase.cs" />
+    <Compile Include="ViewModels\Page\WorkOrder\WorkOrderBucket.cs" />
+    <Compile Include="ViewModels\Page\WorkOrder\WorkOrderBusinessUnitDetail.cs" />
+    <Compile Include="ViewModels\Page\WorkOrder\BusinessUnitSummary.cs" />
+    <Compile Include="ViewModels\Page\Shared\OrderCompanySummary.cs" />
+    <Compile Include="ViewModels\Page\Shared\OrderHomeLayout.cs" />
+    <Compile Include="ViewModels\Page\WorkOrder\WorkOrderMainHeader.cs" />
+    <Compile Include="ViewModels\Page\WorkOrder\WorkOrderWoComment.cs" />
+    <Compile Include="ViewModels\Page\WorkOrder\WorOrderBucketScanned.cs" />
+    <Compile Include="ViewModels\Shared\PickList\Inventory\InventoryPartDetail.cs" />
+    <Compile Include="ViewModels\Shared\PickList\PicklistGroupItem.cs" />
+    <Compile Include="ViewModels\Shared\PickList\PickListItem.cs" />
+    <Compile Include="ViewModels\Shared\PickList\PickListMemberTypeLaborHour.cs" />
+    <Compile Include="Models\Quote\QuoteWorksheet.cs" />
+    <Compile Include="ViewModels\Shared\PickList\PickListNote.cs" />
+    <Compile Include="ViewModels\Shared\PickList\Quote\PickListQuoteAddLine.cs" />
+    <Compile Include="ViewModels\Shared\PickList\Quote\PickListQuoteCopyMoveLine.cs" />
+    <Compile Include="ViewModels\Shared\PickList\Quote\PickListQuoteCostHandler.cs" />
+    <Compile Include="ViewModels\Shared\PickList\Quote\PickListQuotePartDetailEdit.cs" />
+    <Compile Include="ViewModels\Shared\PickList\Quote\PickListQuotePartDetail.cs" />
+    <Compile Include="ViewModels\Shared\PickList\Quote\PickListQuotePartDetailInsert.cs" />
+    <Compile Include="ViewModels\Shared\PickList\Quote\PickListQuoteWorksheetBase.cs" />
+    <Compile Include="ViewModels\Shared\PickList\Quote\PickListQuoteWorksheetLabor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NESI.Common\NESI.Common.csproj">
+      <Project>{4bbc7f80-e983-491d-83e6-4ebb727591d3}</Project>
+      <Name>NESI.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NESI.Core\NESI.Core.csproj">
+      <Project>{cc6b2814-61ea-4de8-8710-d7fde78e3e45}</Project>
+      <Name>NESI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NESI.Data\NESI.Data.csproj">
+      <Project>{6c889c08-156a-40a7-aaf5-26670ed5f26c}</Project>
+      <Name>NESI.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

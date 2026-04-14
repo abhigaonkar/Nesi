@@ -1,0 +1,33 @@
+export class PickListItem {
+  master_id: number;
+  quote_id: number;
+  revision: number;
+  section_id: number;
+  section_name: string;
+  id: number;
+  part_no: number;
+  label: string;
+  qty: number;
+  cost: number;
+  color: string;
+  onhand: number;
+  extd: number;
+  extd2: number;
+  cost_level: number;
+  notes: string;
+  is_checked: boolean;
+  is_selected: boolean;
+  line_number: number;
+  index: number;
+  margin: number;
+  margin_o: number;
+  is_exclude: boolean;
+  discount: number;
+  discount_string: string;
+  display_cost: number;
+  display_sell: number;
+  is_commodity: boolean;
+  avg_cost: number;
+  recommended_cost: number;
+  date_updated: Date;
+}

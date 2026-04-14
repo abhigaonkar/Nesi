@@ -1,0 +1,54 @@
+﻿<p-dataTable sortMode="multiple" (onRowClick)="onLayoutSelection($event.data)" [value]="memberLayoutData" [loading]="loading"
+    [rowHover]="true" loadingIcon="fa-spinner" [rows]="20" [emptyMessage]="layoutErrorMessage" [paginator]="true" [pageLinks]="2"
+    selectionMode="single" [(selection)]="selectedLayout">
+    <p-column header="Default?" [styleClass]="'center'">
+        <ng-template let-col let-layout="rowData" pTemplate="body">
+            <p-radioButton *ngIf="layout.memberId==0 || (currentMemberid === layout.memberId && !layout.isMemberDefault)" name="group1"
+                [value]="1" label="" [(ngModel)]="layout['isDefault']" (onClick)="onSetDefaultLayout(layout)">
+            </p-radioButton>
+            {{col.isDefault}} {{refreshLayouts()}}
+        </ng-template>
+    </p-column>
+    <p-column field="fullName" header="Owner" [sortable]="true" [styleClass]="'left'" [style]="{'min-width':'90px'}">
+        <ng-template let-layout="rowData" pTemplate="body">
+            <span *ngIf="layout['name']==='Global Layout' && !layout['ddlName']" 
+            title="{{layout['fullName']}}">{{layout['fullName']}} </span>
+            <span *ngIf="layout['name']!=='Global Layout' && !layout['ddlName']" title="{{layout['fullName']}}">{{layout['fullName']}} ({{ business_unit_name }}) </span>
+            <span *ngIf="layout['name']!=='Global Layout' && layout['ddlName']" title="{{layout['fullName']}}">{{layout['fullName']}} ({{ layout['ddlName']}}) </span>
+        </ng-template>
+        <ng-template let-col let-layout="rowData" pTemplate="header">
+            <span>Owner</span>
+            <span class="fa fa-caret-square-down" (click)="op5.toggle($event)"></span>
+            <p-overlayPanel #op5 appendTo="body" [style]="{'width':'290px'}" styleClass="layout-list overlaypanel-wrapper">
+                <p-listbox [options]="members" [(ngModel)]="selectedMember" class="filterBox" filter="filter" (onChange)="op5.hide();onMemberSelected($event)"></p-listbox>
+            </p-overlayPanel>
+        </ng-template>
+    </p-column>
+    <p-column field="name" header="Layout Name" [styleClass]="'left'" [sortable]="true">
+        <ng-template let-layout="rowData" pTemplate="body">
+            <span title="{{layout['name']}}">{{layout['name']}}</span>
+        </ng-template>
+    </p-column>
+
+    <p-column header="Delete" [styleClass]="'center'">
+
+        <ng-template let-layout="rowData" pTemplate="body">
+            <!-- <div *ngIf="currentMemberid === layout?.memberId && !layout.isMemberDefault" class="fa fa-times allow_click_button"  (click)="openDeleteDialog(layout)"></div> -->
+            <button *ngIf="(layout.memberId==0 && can_delete_global_layout) || (currentMemberid === layout?.memberId && !layout.isMemberDefault)"
+                style="background-color: transparent !important;" (click)="openDeleteDialog(layout)" pButton type="button" icon="fa-times"></button>
+        </ng-template>
+    </p-column>
+</p-dataTable>
+
+
+<p-dialog appendTo="body" header="Are you sure?" [(visible)]="confirmDisplayDialog" [responsive]="true" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid">
+        Are you sure you want to delete the layout?
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-times" label="Cancel" (click)="confirmDisplayDialog=false"></button>
+            <button type="button" class="btn btn-danger" pButton icon="fa-trash" label="Delete" (click)="confirmDisplayDialog=false; onLayoutDelete(deletedLayout);"></button>
+        </div>
+    </p-footer>
+</p-dialog>

@@ -1,0 +1,277 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="min-height: 600px">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-g-nopad">
+          <p-panel [toggleable]="true">
+            <p-header>
+              <i class="fa fa-fw fa-money-bill"></i> Wage
+            </p-header>
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+              <div class="ui-g-12 ui-g-lesspad">
+                <div class="ui-g-12 ui-lg-2 label_for_right">
+                  Type of Employment:
+                </div>
+                <div class="ui-g-12 ui-lg-6 label_left ">
+                  <p-dropdown [filter]="true" placeholder="Select type of employment" [style]="{'width':'100%'}" [options]="profile.paytypeList"
+                    formControlName="paytype_id"></p-dropdown>
+                  <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('paytype_id')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_left">
+                  <p-checkbox binary="true" formControlName="part_time" label="Part Time"></p-checkbox>
+                </div>
+              </div>
+              <ng-container *ngIf="userform.get('paytype_id').value<=3">
+                <div class="ui-g-12 ui-lg-6">
+                  Current pay range for this membertype for this Business Unit:
+                </div>
+                <div class="ui-g-12 ui-lg-4">
+                  {{profile.entity.minwage_1 | currency}} - {{profile.entity.maxwage_1 | currency}}....avg ({{profile.entity.avgwage_1 | currency}})
+                </div>
+                <div class="ui-g-12 ui-lg-6">
+                  Current pay range for this membertype company wide:
+                </div>
+                <div class="ui-g-12 ui-lg-4">
+                  {{profile.entity.minwage_2 | currency}} - {{profile.entity.maxwage_2 | currency}}....avg ({{profile.entity.avgwage_2 | currency}})
+                </div>
+                <div class="ui-g-12 ui-lg-6">
+                  Employment Start Date and Wage:
+                </div>
+                <div class="ui-g-12 ui-lg-4">
+                  {{profile.entity.startdate | date: 'yyyy-MM-dd'}} at {{profile.entity.start_wage | currency}}
+                </div>
+                <div class="ui-g-12 ui-lg-6">
+                  Current Wage:
+                </div>
+                <div class="ui-g-12 ui-lg-4">
+                  {{profile.entity.current_wage | currency}}
+                </div>
+                <div class="ui-g-12 ui-lg-6">
+                  Hourly Wage (Salary /2080 hrs):
+                </div>
+                <div class="ui-g-12 ui-lg-2">
+                  <input pInputText type="number" step="0.01" formControlName="wage">
+                  <div *ngIf="wage && wage.errors && wage.errors.required">
+                      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('wage')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                  <div *ngIf="wage && wage.errors && wage.errors.minWage">
+                      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('wage')" [errorMsg]="'Hourly Wage cannot be zero.'"></nesi-fieldErrorDisplay>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-lg-4 right" *ngIf="profile.entity.wage_notes && profile.entity.wage_notes.salarywage>0">
+                  Salary of {{profile.entity.wage_notes.salarywage | currency}}
+                  <br /> Margin:{{profile.entity.wage_notes.margin | percent}} on of {{profile.entity.wage_notes.chargeout | currency}}
+                  per hour
+                  <ng-container *ngIf="profile.entity.wage_notes.increase>0">
+                    <br /> {{profile.entity.wage_notes.increase | percent}} Increase</ng-container>
+                  <br />
+                </div>
+                <div class="ui-g-12 italic ui-g-lesspad bold">
+                  (Only adjust vacation data upon a New Hire or if the settings seem crazy.. otherwise just leave these as they were from when
+                  you first hired the person)
+                </div>
+                <div class="ui-g-12 ui-lg-6 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-8 label_for_right">
+                    Vacation Level 1 Interval (Months Since Hired):
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <input pInputText type="number" step="1" formControlName="vacation_interval_1">
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('vacation_interval_1')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 label_for_right">
+                    Vacation Level 2 Interval (Months Since Hired):
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <input pInputText type="number" step="1" formControlName="vacation_interval_2">
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('vacation_interval_2')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 label_for_right">
+                    Vacation Level 3 Interval (Months Since Hired):
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <input pInputText type="number" step="1" formControlName="vacation_interval_3">
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('vacation_interval_3')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 label_for_right">
+                    Benefits Start Date:
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="benefits_startdate" placeholder="yyyy-mm-dd"
+                      showIcon="true"></p-calendar>
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('benefits_startdate')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-lg-6 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-8 label_for_right">
+                    Vacation Level 1 Allotment:
+                  </div>
+                  <div class="ui-g-10 ui-lg-3 label_for_left_less">
+                    <input pInputText type="number" step="0.1" formControlName="vacation_amount_1">
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('vacation_amount_1')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                  <div class="ui-g-2 ui-lg-1 label_for_left_less">
+                    {{profile.entity.is_CDN? '%':'Hours'}}
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 label_for_right">
+                    Vacation Level 2 Allotment:
+                  </div>
+                  <div class="ui-g-10 ui-lg-3 label_for_left_less">
+                    <input pInputText type="number" step="0.1" formControlName="vacation_amount_2">
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('vacation_amount_2')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                  <div class="ui-g-2 ui-lg-1 label_for_left_less">
+                    {{profile.entity.is_CDN? '%':'Hours'}}
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 label_for_right">
+                    Vacation Level 3 Allotment:
+                  </div>
+                  <div class="ui-g-10 ui-lg-3 label_for_left_less">
+                    <input pInputText type="number" step="0.1" formControlName="vacation_amount_3">
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('vacation_amount_3')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                  <div class="ui-g-2 ui-lg-1 label_for_left_less">
+                    {{profile.entity.is_CDN? '%':'Hours'}}
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="userform.get('paytype_id').value>3">
+                <div class="ui-g-12 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-2 label_for_right">
+                    Subcontractor (Vendor):
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_left ">
+                    <p-dropdown [filter]="true" placeholder="Select Subcontractor" [style]="{'width':'100%'}" [options]="profile.vendorList"
+                      formControlName="vendor_id"></p-dropdown>
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('vendor_id')" [errorMsg]="'Subcontractor Required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_left ">
+                    (Use `Not Set` if there is no vendor)
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-2 label_for_right">
+                    Agreed Hour Rate:
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_left ">
+                    <input pInputText type="number" step="0.01" formControlName="wage">
+                    <div *ngIf="wage && wage.errors && wage.errors.required">
+                        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('wage')" [errorMsg]="'Required.'"></nesi-fieldErrorDisplay>
+                    </div>
+                    <div *ngIf="wage && wage.errors && wage.errors.minWage">
+                        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('wage')" [errorMsg]="'Hourly Wage cannot be zero.'"></nesi-fieldErrorDisplay>
+                    </div>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-2 label_for_right">
+                    Contract Details:
+                  </div>
+                  <div class="ui-g-12 ui-lg-10 label_left ">
+                    <textarea style="height: 100px" [cols]="8" [rows]="3" formControlName="contract_details" pInputTextarea autoResize="autoResize"></textarea>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </p-panel>
+          <p-panel [toggleable]="true" *ngIf="userform.get('paytype_id').value<=3">
+            <p-header>
+              <i class="fa fa-fw fa-money-bill"></i> Incentive Compensation
+            </p-header>
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+              <div class="ui-g-12 ui-g-lesspad">
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 label_for_right">
+                    Bonus Type:
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <p-dropdown [filter]="true" [style]="{'width':'100%'}" [options]="profile.bonusTypeList" formControlName="bonus_type"></p-dropdown>
+                  </div>
+                  <div class="ui-g-12 ui-lg-4">
+                    &nbsp;
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-4 label_for_right">
+                    Bonus Amount:
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <input pInputText min="{{profile.entity.bonus_amount_minValue}}" max="{{profile.entity.bonus_amount_maxValue}}" type="number"
+                      title="{{profile.entity.bonus_amount_tootip}}" step="0.01" formControlName="bonus_amount">
+                  </div>
+                  <div class="ui-g-12 ui-lg-4">
+                    (% of bonus type that will equal the $ bonus paid)
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-4 label_for_right">
+                    Revenue Threshold (Target):
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <input pInputText type="number" step="1" formControlName="bonus_revenue_threshold">
+                  </div>
+                  <div class="ui-g-12 ui-lg-4">
+                    (Leave 0 if not used)
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-4 label_for_right">
+                    Gross Margin Threshold (Target):
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <input pInputText type="number" step="1" formControlName="bonus_margin_threshold">
+                  </div>
+                  <div class="ui-g-12 ui-lg-4">
+                    (Leave 0 if not used)
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-4 label_for_right">
+                    Net Income Threshold (Target):
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <input pInputText type="number" step="1" formControlName="bonus_netincome_threshold">
+                  </div>
+                  <div class="ui-g-12 ui-lg-4">
+                    (Leave 0 if not used)
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-4 label_for_right">
+                    Net Income Highwater Mark:
+                  </div>
+                  <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <input pInputText type="number" step="1" formControlName="bonus_netincome_highwater">
+                  </div>
+                  <div class="ui-g-12 ui-lg-4">
+                    (Leave 0 if not used)
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-lesspad">
+                  <div class="ui-g-12 ui-lg-4 label_for_right">
+                    Comp Details:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 label_for_left_less">
+                    <textarea style="height: 100px" [cols]="8" [rows]="5" formControlName="comp_details" pInputTextarea autoResize="autoResize"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p-panel>
+        </div>
+        <ng-container *ngIf="userform.get('paytype_id').value<=3">
+          <div class="ui-g-12 ui-lg-4 ui-lg-offset-4">
+            <button [disabled]="!save_enabled" pButton label="Save" icon="fa-save"></button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="userform.get('paytype_id').value>3">
+          <div class="ui-g-12 ui-lg-4 ui-lg-offset-2">
+            <button [disabled]="!save_enabled" pButton label="Save" icon="fa-save"></button>
+          </div>
+        </ng-container>
+      </div>
+    </form>
+  </blockable-div>
+</div>

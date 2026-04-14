@@ -1,0 +1,346 @@
+<p-blockUI [blocked]="submitting">
+  <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+</p-blockUI>
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Customer:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <!-- <input *ngIf="showCustomerNameTextBox" pInputText formControlName="customer_name" (focus)="showCustomerNameTextBox=false"> -->
+      <p-autoComplete formControlName="customer" [suggestions]="customers" (completeMethod)="filterCustomer($event)" [size]="30"
+        (onSelect)="customerSelected($event,'customer_id')" (onClear)="customerSelected($event,'customer_id')" field="label" dataKey="value" placeholder="Input more than 2 characters to search"
+        [minLength]="2" (onFocus)="$event.target.select()"></p-autoComplete>
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('customer')" [errorMsg]="'You must select a valid customer.'"></nesi-fieldErrorDisplay>
+    </div>
+
+    <div class="ui-g-12 ui-lg-2 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-2 ui-g-nopad">
+            <p-button type="button" icon = "fa fa-edit" (click)="handle_customer_request()"></p-button>
+        </div>
+      <img *ngIf="q && q.is_Qced" align="absmiddle" src="../../../../assets/images/quote/decal/decal[isqc].png" title="Customer has been QC'ed."
+        height="16" width="16" id="is_QCed">
+      <img *ngIf="q && !q.is_Qced" align="absmiddle" src="../../../../assets/images/quote/decal/decal[notqc].png" title="Customer has NOT been QC'ed. Limitations will be put in place"
+        height="16" width="16" id="is_QCed">
+      <img *ngIf="q && q.is_actived" align="absmiddle" src="../../../../assets/images/quote/decal/decal[active].png" title="Customer is active."
+        id="is_active" height="16" width="34">
+      <img *ngIf="q && !q.is_actived" align="absmiddle" src="../../../../assets/images/quote/decal/decal[onhold].png" title="Customer is hold."
+        id="is_active" height="16" width="34">
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Contact:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown  [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="customerContacts" [filter]="customerContacts && customerContacts.length>6"
+        [required]="true" formControlName="customer_contact" (onChange)="contact_changed($event)">
+      </p-dropdown>
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('customer_contact')" [errorMsg]="'You must select a valid contact.'"></nesi-fieldErrorDisplay>
+    </div>
+    <div class="ui-g-12 ui-lg-2 ui-g-nopad">
+      <button type="button" [disabled]="(!userform.get('customer').value ||  disabled_control)" (click)="addContact()" pButton icon="fa fa-plus"></button>
+    </div>
+  </div>
+  <!-- 2807 BEGIN -->
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      BDM:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}"
+                  [placeholder]="'Please Select a BDM'"
+                  [options]="q && q.bdm_options"
+                  [filter]="q && q.bdm_options && q.bdm_options.length>6"
+                  [required]="true"
+                  (onChange)="bdmChanged($event)"
+                  formControlName="bdm">
+      </p-dropdown>
+      <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('bdm')"
+                              [errorMsg]="'You must select a value of BDM.'">
+      </nesi-fieldErrorDisplay>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad" >
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Acting BDM:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}"
+                  [placeholder]="'No One'"
+                  [options]="q && q.acting_bdm_options"
+                  [filter]="q && q.acting_bdm_options && q.acting_bdm_options.length>6"
+                  [required]="false"
+                  formControlName="acting_bdm">
+      </p-dropdown>
+    </div>
+  </div>
+  <!-- 2807 END -->
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Open Date:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad label_for_left_less">
+      {{q&&q.open_date}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Date Due:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" [minDate]="minDate"  formControlName="date_due" placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('date_due')" [errorMsg]="'You must select a valid expected due date.'"></nesi-fieldErrorDisplay>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Expected PO Date:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" [minDate]="minDate" formControlName="exp_podate" placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Expected Start Date:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" [minDate]="minDate" formControlName="date_expected_start" placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('date_expected_start')" [errorMsg]="'You must select a valid expected start date.'"></nesi-fieldErrorDisplay>
+    </div>
+  </div>
+
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Expected Complete Date:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" [minDate]="minDate" formControlName="completion_date" placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('completion_date')" [errorMsg]="'You must select a valid expected due date.'"></nesi-fieldErrorDisplay>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      % Chance of Getting Job:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <!-- <p-spinner [maxlength]="2" readonly="true" [min]="30" [max]="90" [step]="30" formControlName="chance_winning"></p-spinner> -->
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="chance_winning_list" [filter]="false" [required]="true"
+        formControlName="chance_winning">
+      </p-dropdown>
+      <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('chance_winning')" [errorMsg]="'You must select a value of chance of winning.'"></nesi-fieldErrorDisplay>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Why:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="q && q.chance_winning_why" [filter]="q && q.chance_winning_why.length > 8"
+        [required]="true" [scrollHeight]="400" formControlName="chance_winning_reason">
+      </p-dropdown>
+    </div>
+    <div *ngIf="userform.get('chance_winning_reason').value=='6'" class="ui-g-12 ui-lg-offset-3 ui-lg-7 ui-g-nopad label_for_quote">
+      <textarea placeholder="Notes" pInputTextarea [rows]="3" autoResize="autoResize" formControlName="chance_winning_note"></textarea>
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('chance_winning_note')" [errorMsg]="'Invalid input.'"></nesi-fieldErrorDisplay>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Job Description:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <textarea placeholder="Job Description" pInputTextarea [rows]="5" autoResize="autoResize" formControlName="job_description"></textarea>
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('job_description')" [errorMsg]="'You must input valid job description (Quote mark is not allowed).'"></nesi-fieldErrorDisplay>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad ">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      PM To Follow-Up:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad label_for_left_less">
+      <p-checkbox name="followup" binary="true" formControlName="follow_up"></p-checkbox>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad ">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Final WO is T&M
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad label_for_left_less">
+      <p-checkbox name="tm" binary="true" formControlName="is_tm"></p-checkbox>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Cust Spec Doc:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <input pInputText formControlName="cust_spec_doc">
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('cust_spec_doc')" [errorMsg]="'Invalid input.'"></nesi-fieldErrorDisplay>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Business Unit:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="businessUnits" [filter]="true" [required]="true"
+        (onChange)="BusinessUnitSelected($event);loadUserList($event, 'quoted_by');" formControlName="quoted_business_unit_id">
+      </p-dropdown>
+      <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('quoted_business_unit_id')" [errorMsg]="'You must select a valid business unit.'"></nesi-fieldErrorDisplay>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Opportunity:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad opportunity-select-clear-fix">
+     <p-dropdown [style]="{'width':'100%'}" formControlName="opportunity_internal_id" [options]="opportunities" [showClear]="true" [filter]="opportunities && opportunities.length>6"
+      (onChange)="opportunitySelected($event)" [placeholder]="opportunities && opportunities.length > 0 ? 'Select opportunity' : 'No opportunities found for the selected customer'" ></p-dropdown >
+     </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad" *ngIf="userform.get('opportunity_internal_id').value">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Parallel bid:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad label_for_left_less">
+      <p-checkbox name="parallelbid" binary="true" formControlName="parallel_bid"></p-checkbox>
+    </div>
+  </div>
+  <!-- <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Revenue Line:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="revenueLines" [filter]="true" [required]="true"
+         formControlName="revenue_line_id">
+      </p-dropdown>
+      <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('revenue_line_id')" [errorMsg]="'You must select a valid revenue Line.'"></nesi-fieldErrorDisplay>
+    </div>
+  </div> -->
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Quoted By:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="users" [filter]="true" [required]="true" formControlName="quoted_by">
+      </p-dropdown>
+      <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('quoted_by')" [errorMsg]="'You must select a valid Quoted user.'"></nesi-fieldErrorDisplay>
+    </div>
+    <div *ngIf="q&&q.privilege61" class="ui-g-12 ui-md-2 ui-g-nopad">
+      <p-checkbox name="quoterlockedbool" (onChange)="lockedChange()" binary="true" formControlName="quoter_locked_bool"></p-checkbox>
+      <img src='../../../../assets/images/icon/icon[lock].gif' width='16' height='16' />
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      US Currency:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad label_for_left_less">
+      <p-checkbox name="uscurrency" binary="true" formControlName="us_currency"></p-checkbox>
+    </div>
+  </div>
+
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Quoted Price:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad ">
+      <div class="ui-g-1 ui-g-nopad ui-lg-1 label_for_quote" *ngIf="showPriceToTextBox">
+        FROM
+      </div>
+      <div class="ui-g-5 ui-g-nopad ui-lg-{{showPriceToTextBox?2:6}}">
+        <input pInputText type="number" formControlName="quoted_price" [(ngModel)]="q.quoted_price">
+      </div>
+      <div class="ui-g-1 ui-g-nopad ui-lg-1 label_for_quote" *ngIf="showPriceToTextBox">
+        TO
+      </div>
+      <div class="ui-g-5 ui-g-nopad ui-lg-2" *ngIf="showPriceToTextBox">
+        <input pInputText type="number" formControlName="price_to"  [(ngModel)]="q.price_to">
+      </div>
+      <div class="ui-g-12 ui-lg-6 ui-g-nopad">
+        {{q && q.pricetype_id !=='5'?'':'Not to Exceed Price'}}
+        <p-dropdown *ngIf="q && q.pricetype_id !=='5'" [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="q && q.pricetype_select"
+          (onChange)="price_type_changed($event)" [filter]="false" [required]="true" formControlName="pricetype_id" scrollHeight="400px" [(ngModel)]="q.pricetype_id">
+        </p-dropdown>
+      </div>
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('quoted_price')" [errorMsg]="'You must enter a quoted price value greater than 0'"></nesi-fieldErrorDisplay>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Expected Value:
+    </div>
+
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad label_for_left_less">
+      <ng-container *ngIf="q&&q.expected_value>0">{{q&&q.expected_value |currency:'CAD':'symbol-narrow':'1.2-2'}}</ng-container>
+      <ng-container *ngIf="q&&q.expected_value===0">
+        <input pInputText placeholder="Please update the expected value of this quote" type="number" step="0.01" formControlName="expected_value">
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('expected_value')" [errorMsg]="'You must enter an expected sales value greater than 0'"></nesi-fieldErrorDisplay>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      US Currency:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad label_for_left_less">
+      <p-checkbox name="uscurrency" binary="true" formControlName="us_currency"></p-checkbox>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Inflation Term:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad label_for_left_less">
+      <p-checkbox name="inflationterm" binary="true" formControlName="inflation_term"></p-checkbox>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Percent Down:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="q && q.build_percent_down" [filter]="true" [required]="true"
+        formControlName="percent_down">
+      </p-dropdown>
+    </div>
+  </div>
+ <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Billing Schedule:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <textarea placeholder="Billing Schedule" pInputTextarea [rows]="1" autoResize="autoResize" formControlName="customer_term"></textarea>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Payment Terms:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="q && q.term_options" [filter]="q && q.term_options.length >8 "
+        [required]="true" [scrollHeight]="400" formControlName="net_due">
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-lesspad">
+    <div class="ui-g-12 ui-lg-3 ui-g-nopad label_for_quote">
+      Period Valid:
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="q && q.period_valid_value" [filter]="true"
+        [required]="true" [scrollHeight]="400" formControlName="period_valid">
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-lg-offset-3 ui-lg-7 ui-g-nopad">
+    <button pButton icon="fa-save" [disabled]="disabled_control && disabled_control3" label="Save"></button>
+  </div>
+</form>
+<p-dialog header="New Contact" [modal]="true" [responsive]="true" [(visible)]="addNewContactDisplay">
+  <nesi-new-customer-contact [addressId]="q && q.address_id" [customerId]="q && q.customer_id" (onChange)="contactSaved($event)"
+    (close)="contactCancel()"></nesi-new-customer-contact>
+</p-dialog>

@@ -1,0 +1,21 @@
+{
+    "Deployment": {
+        "Name": "NESI Production Invoice Services",
+        "Confirm": true,
+        "Projects": [
+            {
+                "Type": "dotnet",
+                "Name": "Nesi.Web",
+                "Solution": "C:\\Builds\\nesi\\Nesi.Main\\Nesi.Web.sln",
+                "Configuration": "Inv_Svc",
+                "Username": "na-prodweb01\\deployuser",
+                "Password": "EMHjy5em",
+                "Clean": true,
+                "RestorePackages": true,
+                "Deploy": true,
+                "UseExternalWindow": false,
+                "AutoCloseExternalWindow": true
+            }
+        ]
+    }
+}

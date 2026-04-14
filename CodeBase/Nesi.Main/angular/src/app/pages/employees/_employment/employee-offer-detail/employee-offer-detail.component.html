@@ -1,0 +1,106 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="min-height: 600px">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-lg-6 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4 right bold">
+              Offer ID:
+            </div>
+            <div class="ui-g-12 ui-lg-8">
+              {{userform.get('id').value || '&nbsp;'}}
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4  right bold">
+              Author:
+            </div>
+            <div class="ui-g-12 ui-lg-8">
+              {{userform.get('author').value || '&nbsp;'}}
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4  right bold">
+              Employee Name:
+            </div>
+            <div class="ui-g-12 ui-lg-8">
+              {{userform.get('fullname').value || '&nbsp;'}}
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4 label_for_right">
+              Offered Title:
+            </div>
+            <div class="ui-g-12 ui-lg-8  label_for_left_less">
+              <p-dropdown [filter]="true" [style]="{'width':'100%'}" placeholder="Please select Offerred Title" [options]="profile.memberTypeList"
+                formControlName="membertypeid"></p-dropdown>
+              <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('membertypeid')" [errorMsg]="'Offered Title is required.'"></nesi-fieldErrorDisplay>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4 label_for_right">
+              Offered Start Date:
+            </div>
+            <div class="ui-g-12 ui-lg-8  label_for_left_less">
+              <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="startdate" placeholder="yyyy-mm-dd"
+                showIcon="true"></p-calendar>
+              <nesi-fieldErrorDisplay [displayError]="isFieldInValid('startdate')" [errorMsg]="'Offered Start Date is required.'"></nesi-fieldErrorDisplay>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad" *ngIf="notes_vislibe">
+            <div class="ui-g-12 ui-lg-4 label_for_right red">
+              Notes for setting a back date:
+            </div>
+            <div class="ui-g-12 ui-lg-8  label_for_left_less">
+              <textarea pInputTextarea style="height: 60px" formControlName="notes"></textarea>
+              <nesi-fieldErrorDisplay [displayError]="notes_vislibe && !isFieldMinLength('notes',10)" [errorMsg]="'Notes is required and at least 10 characters.'"></nesi-fieldErrorDisplay>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4 label_for_right">
+              Business Unit:
+            </div>
+            <div class="ui-g-12 ui-lg-8  label_for_left_less">
+              <p-dropdown [filter]="true" (onChange)="getBMID()" [style]="{'width':'100%'}" placeholder="Please select business unit" [options]="profile.visibleBusinessUnitList"
+                formControlName="business_unit_id"></p-dropdown>
+              <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('business_unit_id')" [errorMsg]="'Business Unit is required.'"></nesi-fieldErrorDisplay>
+            </div>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-lg-6 ui-g-lesspad">
+          <div class="ui-g-12 ">
+            &nbsp;
+          </div>
+          <div class="ui-g-12 ">
+            &nbsp;
+          </div>
+          <div class="ui-g-12 ">
+            &nbsp;
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Reports To:
+          </div>
+          <div class="ui-g-12 ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" [style]="{'width':'100%'}" placeholder="Please select reports to" [options]="profile.reportsToList"
+              formControlName="reports_to"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('reports_to')" [errorMsg]="'Reports To is required.'"></nesi-fieldErrorDisplay>
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Expected End Date:
+          </div>
+          <div class="ui-g-12 ui-lg-8  label_for_left_less">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="enddate" placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('enddate')" [errorMsg]="'Expected End Date is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-lg-4 ui-lg-offset-2">
+          <button [disabled]="!save_enabled" pButton label="Save" icon="fa-save"></button>
+        </div>
+      </div>
+    </form>
+  </blockable-div>
+</div>

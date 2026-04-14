@@ -1,0 +1,31 @@
+<nesi-breadcurmb [items]="[{label: 'Work Orders'},{label: tabName}]"></nesi-breadcurmb>
+<div class="ui-g-12">
+  <p-tabView (onChange)="tabChanged($event)">
+    <p-tabPanel [header]="tabLabels[0]" leftIcon="fa-list">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <nesi-workOrder-summary></nesi-workOrder-summary>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel [header]="tabLabels[1]" leftIcon="fa-table">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-1 label_for_right">
+            Business Unit:
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <nesi-visibleBusinessUnitDropDown  [(ngModel)]="selected_business_unit" (onChange)="loadDetail()"></nesi-visibleBusinessUnitDropDown>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <p-button label="Bucket Page" icon="fa fa-list-alt" iconPos="left" (onClick)="openUrl('businessUnit_name','WorkOrder')" ></p-button>
+          </div>
+        </div>
+        <div class="ui-g-12">
+          <nesi-datatable 
+         [need_query_param]="true"
+         [fixed_header_scroll]="0"
+          [id]='12' [selectionMode]="null"  gridName="WorkOrderBusinessUnitDetail" gridTitle=""  (onRefresh)="loadDetail(true)" ></nesi-datatable>
+        </div>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>

@@ -1,0 +1,66 @@
+<nesi-breadcurmb [items]="[{label: 'Work Orders', routerLink: '/home/12/workorder'},
+ {label: 'Buckets', routerLink: '/home/12/workorder/buckets/' + business_unit_id},
+ {label: wo_title}
+ ]" [no_default]="true">
+</nesi-breadcurmb>
+<div class="ui-g-12 ui-g-nopad">
+  <b>Description:</b> {{entity.description}}
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-lg-9 ui-g-nopad">
+        <nesi-workorder-main-buttons-menu (button_click)="button_click($event)" [buttons]="profile.buttons"></nesi-workorder-main-buttons-menu>
+        <div class="allow_click" *ngIf="entity.comment_visible" (click)="open_wocomments()">Comments</div>
+        <div class="ui-g-12 bold red">
+          {{entity.day_since_scan}}
+        </div>
+      </div>
+      <div class="ui-g-12 ui-lg-3 ui-g-nopad right">
+        <div class="ui-g-12 ui-g-nopad larger bold" style="padding-right: 10px;">
+          <i class="fas fa-backward allow_click_no_underline" title="Previous workorder: {{entity.prev_woprog_id}}" (click)="open_wo(entity.prev_woprog_id)">
+          </i>&nbsp;
+          <span *ngIf="profile.rename_file_enabled" title="click to UNLINK Scan" class="allow_click" (click)="unlink_scan()"> {{entity.orderNumber}} </span>&nbsp;
+          <span *ngIf="!profile.rename_file_enabled"> {{entity.orderNumber}} </span>&nbsp;
+          <i class="fas fa-forward allow_click_no_underline" title="Next workorder: {{entity.next_woprog_id}}" (click)="open_wo(entity.next_woprog_id)">
+          </i>
+        </div>
+        <div class="color_c0 right bold" style="padding-right: 10px;">
+          <div class="ui-g-12 ui-g-nopad ">
+            {{entity.status}}
+          </div>
+          <div class="ui-g-12 ui-g-nopad">
+            Balance to Invoice: {{entity.woprog_StillToBeBilled | currency:'CAD':'symbol-narrow':'1.2-2'}}
+          </div>
+          <div class="ui-g-12 ui-g-nopad ">
+            Taxes: {{entity.taxes | currency:'CAD':'symbol-narrow':'1.2-2'}}
+            <ng-container *ngIf="entity.taxes_adj">
+              ADJ: {{entity.taxes_adj | currency:'CAD':'symbol-narrow':'1.2-2'}}
+            </ng-container>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ">
+            Gross Margin This WO: {{entity.woprog_grossmargin | percent}}
+          </div>
+          <div class="ui-g-12 ui-g-nopad " *ngIf="entity.margin_whole">
+            Gross Margin Total Job: {{entity.margin_whole | percent}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div>
+        <div class="ui-g-12 ui-g-nopad" *ngIf="entity.customerId">
+              <nesi-workorder-main-tabs  [workorder]="workorder" ></nesi-workorder-main-tabs>
+        </div>
+    </div>
+  </blockable-div>
+
+  <!-- <p-sidebar [modal]="true" [blockScroll]="true" [(visible)]="display_wocomment" styleClass="ui-sidebar-lg" position="right"> -->
+  <nesi-sidebar [(visible)]="display_wocomment" header="Work Order Comment" open_url="/#/opens/12/workorder/{{str_wo_id}}/wocomments">
+    <nesi-workorder-wocomments [workorder]="workorder"></nesi-workorder-wocomments>
+  </nesi-sidebar>
+
+  <!-- </p-sidebar> -->

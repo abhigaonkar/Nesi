@@ -1,0 +1,13 @@
+-- Add code to generate preprocessor blocks for each configuration
+	-- Enum based from config
+-- Add code to generate routes dynamically, for configuration/database/health check
+-- Add Angualr deployment feature
+-- Look at CI using Team city on the build machine
+-- Clean up all compile warnings
+-- Remove startup errors and improve speed for web api
+-- Deploy script proper error processing and validation for all input
+-- Separate deploy artifacts from source code
+-- Reorganize all deployment resources to a more hierarchical structure
+-- Include scripts to cut QA and Production branches with branch naming strategy
+-- Have procedure to deploy scripts
+--

@@ -1,0 +1,53 @@
+<dx-data-grid id="netSuiteIncomeStatementGrid" [dataSource]="records" [allowColumnReordering]="false" [showColumnLines]="true"
+  [showRowLines]="true" [showBorders]="true" [repaintChangesOnly]="true" (onCellPrepared)="onCellPrepared($event)">
+  <dxi-column [caption]="topHead">
+    <dxi-column [caption]="bottomHead">
+      <dxi-column dataField="accountNameSecondPart" caption="Account" [width]="500">
+      </dxi-column>
+      <dxi-column dataField="type" caption="Type" [groupIndex]="1" groupCellTemplate="groupCellTemplate" sortOrder="desc">
+      </dxi-column>
+      <dxi-column dataField="pos" caption="Pos" [groupIndex]="0" groupCellTemplate="groupCellTemplate">
+      </dxi-column>
+      <dxi-column dataField="amount" caption="Amount">
+        <dxo-format type="currency" [precision]="2"></dxo-format>
+      </dxi-column>
+      <dxi-column dataField="percentage" caption="% of Income">
+        <dxo-format type="percent" [precision]="2"></dxo-format>
+      </dxi-column>
+      <dxi-column dataField="accountNameFirstPart" caption="First Part" [groupIndex]="2" groupCellTemplate="groupCellTemplate">
+      </dxi-column>
+    </dxi-column>
+  </dxi-column>
+  <div *dxTemplate="let cell of 'groupCellTemplate'">
+    <div style="color: black !important;">{{cell.text}}</div>
+  </div>
+
+  <dxo-summary [calculateCustomSummary]="calculateSelectedRow">
+    <dxi-group-item column="accountNameSecondPart" summaryType="custom" [showInGroupFooter]="true" [alignByColumn]="true"
+      name="SelectedRowsSummary" showInColumn="accountNameSecondPart" displayFormat="Total:">
+    </dxi-group-item>
+
+    <dxi-group-item column="amount" summaryType="sum" [showInGroupFooter]="true" [alignByColumn]="true" displayFormat="{0}"
+      [valueFormat]="{ type: 'currency', precision: 2 }"></dxi-group-item>
+    <dxi-group-item column="percentage" summaryType="sum" [showInGroupFooter]="true" displayFormat="{0}"
+      [alignByColumn]="true" [valueFormat]="{ type: 'percent', precision: 2 }"></dxi-group-item>
+
+    <dxi-total-item column="profile" summaryType="sum" displayFormat="Gross Profit (Income - COGS): {0}" showInColumn="accountNameSecondPart"
+      [valueFormat]="{ type: 'currency', precision: 2 }"></dxi-total-item>
+
+    <dxi-total-item column="amount" summaryType="sum" [valueFormat]="{ type: 'currency', precision: 2 }" displayFormat="Net Income: {0}"></dxi-total-item>
+    <dxi-total-item column="percentage" summaryType="sum" [valueFormat]="{ type: 'percent', precision: 2 }"
+      displayFormat="{0}"></dxi-total-item>
+  </dxo-summary>
+
+  <dxo-selection mode="single"></dxo-selection>
+  <dxo-sorting mode="multiple"></dxo-sorting>
+  <dxo-paging [enabled]="false" caption=""></dxo-paging>
+  <dxo-export [enabled]="true" fileName="incomestatement" [allowExportSelectedData]="false" [customizeExcelCell]="customizeExcelCell"></dxo-export>
+
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+
+  <dxo-load-panel shadingColor="rgba(0,0,0,0.4)" [showIndicator]="true" [showPane]="true" [shading]="true" [enabled]="true">
+  </dxo-load-panel>
+</dx-data-grid>

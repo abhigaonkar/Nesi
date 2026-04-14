@@ -1,0 +1,8 @@
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  <div class="ui-g-12">
+    <textarea  pInputTextArea autoResize="true" rows="15" cols="25" formControlName="note"></textarea>
+  </div>
+  <div class="ui-g-12">
+    <button pButton icon="fa fa-save" label="Save"></button>
+  </div>
+</form>

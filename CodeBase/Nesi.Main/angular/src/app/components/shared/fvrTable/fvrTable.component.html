@@ -1,0 +1,22 @@
+<table cellspacing="0" cellpadding="2" width="100%">
+    <thead>
+      <tr  align="left">
+        <th>
+          <u>FVR #</u>
+        </th>
+        <th>
+          <u>Due By</u>
+        </th>
+      </tr>
+    </thead>
+    <thead>
+    </thead>
+    <tbody>
+      <tr *ngFor="let f of fvrs" align="left">
+        <td ><button type="button" (click)="boing(f.id)">
+                      <img src="assets/images/icon/icon[file].gif" width="16" height="16" align="absmiddle">{{f.id}}</button></td>
+        <td>{{f.dueBy | date: 'yyyy-MM-dd'}}</td>
+      </tr>
+
+    </tbody>
+  </table>

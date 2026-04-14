@@ -1,0 +1,69 @@
+﻿/*------------- Time Sheet Search (timesheet_report.aspx) ----------------*/
+#timesheet_report_search					{
+											font-family:		arial;
+											font-size:			12px;
+											border-bottom:		solid 1px #ccc;
+											margin-bottom:		5px;
+											}
+#timesheet_report_search .c					{
+											font-weight:		bold;
+											width:				150px;
+											border-right:		solid 1px #ccc;
+											}
+#timesheet_report_search .v	input			{
+											font-family:		arial;
+											font-size:			12px;
+											}
+#timesheet_report_search .v	select			{
+											font-family:		arial;
+											font-size:			12px;
+											}
+#timesheet_report_search .checkboxes		{
+											border-left:		solid 1px #ccc;
+											vertical-align:		top;
+											padding:			10px;
+											}
+#timesheet_report_search .checkboxes .title	{
+											text-align:			left;
+											font-weight:		bold;
+											font-size:			14px;
+											border-bottom:		solid 1px #000;
+											width:				100px;
+											}
+#timesheet_report_search .submit			{
+											padding:			10px;
+											text-align:			center;
+											}
+
+/*------------- Time Sheet Report (timesheet_report.aspx) ----------------*/
+#timesheet_report_results					{
+											font-family:		arial;
+											}
+
+#timesheet_report_results .header th a		{
+											color:				#fff;
+											}
+
+#timesheet_report_results .header th		{
+											font-size:			12px;
+											font-weight:		bold;
+											background-color:	#000;
+											color:				#fff;
+											text-decoration:	underline;
+											padding:			3px;
+											}
+
+#timesheet_report_results .row_data td		{
+											font-family:		arial;
+											font-size:			12px;
+											text-align:			center;
+											padding:			3px;
+											}
+
+#timesheet_report_results .row_data_a td	{
+											background-color:	#ccc;
+											font-family:		arial;
+											font-size:			12px;
+											text-align:			center;
+											padding:			3px;
+											}

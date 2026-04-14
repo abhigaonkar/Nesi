@@ -1,0 +1,12 @@
+<a (mouseover)="show($event,op)" (mouseout)="op.hide($event)"  (click)="onClick($event)">
+  <div class="icon-wrapper">
+    <i *ngIf="icon" [class]="icon"></i>
+    <span *ngIf="badge" [class]="badgeClass">{{badge}}</span>
+  </div>
+  <div #actualTarget></div>
+</a>
+
+<p-overlayPanel #op>
+    <ng-content ></ng-content>
+</p-overlayPanel>
+

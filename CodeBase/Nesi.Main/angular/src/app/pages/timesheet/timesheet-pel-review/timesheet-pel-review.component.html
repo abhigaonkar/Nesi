@@ -1,0 +1,61 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid smaller">
+
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <div class="header"> Please review the following information that is about the Personal Emengency Leave (PEL).
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-4 label_for_right">
+          Date From:
+        </div>
+        <div class="ui-g-8 label_for_left">
+          {{value?.date_start}}
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-4 label_for_right">
+          Date To:
+        </div>
+        <div class="ui-g-8 label_for_left">
+          {{value?.date_end}}
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-4 label_for_right">
+          Request Hours:
+        </div>
+        <div class="ui-g-8 label_for_left">
+          {{value?.hours}}
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-4 label_for_right">
+          Reason:
+        </div>
+        <div class="ui-g-8 label_for_left">
+          {{value?.note}}
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-4 label_for_right">
+          Type Of Payment:
+        </div>
+        <div class="ui-g-8 label_for_left">
+          {{value?.type_of_payment}}
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-3 ui-g-offset-6">
+          <button pButton type="button" label="Confirm" (click)="confirm.emit()" icon="fa-check"></button>
+        </div>
+        <div class="ui-g-3">
+          <button pButton (click)="cancel.emit()" type="button" label="Cancel" icon="fa-times-circle"></button>
+        </div>
+      </div>
+    </div>
+  </blockable-div>
+</div>

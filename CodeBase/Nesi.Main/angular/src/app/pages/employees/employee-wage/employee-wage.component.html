@@ -1,0 +1,151 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <p-panel [toggleable]="true">
+          <p-header>
+            <i class="fa fa-fw fa-history"></i> Wages
+          </p-header>
+          <p-dataTable [value]="profile.wageList" [responsive]="true" [globalFilter]="gb" rowHover="true" expandableRows="false" rowExpandMode="single"
+            [globalFilter]="gb" collapsedIcon="fa-pencil" expandedIcon="fa-times" #d>
+            <p-header>
+              <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                <div class="ui-g-12 ui-lg-2">
+                  <button pButton type="button" label="{{!addnewDisplay? 'Add New': 'Close Add New'}}" icon="{{!addnewDisplay? 'fa-plus':'fa-times'}}"
+                    (click)="add_new()"></button>
+                </div>
+                <div class="ui-g-12 ui-lg-6">
+                  <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+                  </div>
+                </div>
+                <!-- <div class="ui-g-12 left" *ngIf="addnewDisplay">
+                  <nesi-employee-wage-wage [employee]="new_employee" [bonusTypeList]="profile.bonusTypeList" (onChange)="wage_updated($event)"></nesi-employee-wage-wage>
+                </div> -->
+              </div>
+            </p-header>
+            <!-- <p-column expander="true" [style]="{'width':'60px'}" header="Edit"> ></p-column> -->
+            <p-column [style]="{'width':'60px'}" field="" header="Edit" [sortable]="false">
+              <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+                <button type="button" pButton icon="fa-pencil" (click)="edit_wage(item)"></button>
+              </ng-template>
+            </p-column>
+            <p-column [style]="{'width':'5%'}" field="id" header="Id" [sortable]="true"></p-column>
+            <p-column [style]="{'width':'12%'}" field="date" header="Effective Date" [sortable]="true">
+              <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+                <span>{{item[col.field] | date: 'yyyy-MM-dd'}}</span>
+              </ng-template>
+            </p-column>
+            <p-column [style]="{'width':'12%'}" field="current_wage" header="Current Wage" [sortable]="true">
+              <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+                <span>{{item[col.field] | currency:'CAD':'symbol-narrow':'1.2-2'}}</span>
+              </ng-template>
+            </p-column>
+            <p-column [style]="{'width':'12%'}" field="date_next_raise" header="Next Raise" [sortable]="true">
+              <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+                <span>{{item[col.field] | date: 'yyyy-MM-dd'}}</span>
+              </ng-template>
+            </p-column>
+            <p-column [style]="{'width':'20%'}" field="comment" header="Comments" [sortable]="true"></p-column>
+            <p-column [style]="{'width':'15%'}" field="audit_username" header="Entered By" [sortable]="true"></p-column>
+            <p-column [style]="{'width':'10%'}" field="bonus_type_name" header="Bonus Type" [sortable]="true"></p-column>
+            <p-column [style]="{'width':'10%'}" field="bonus_amount" header="Bonus Amt" [sortable]="true">
+              <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+                <span>{{item[col.field] | percent: '1.2-2'}}</span>
+              </ng-template>
+            </p-column>
+            <ng-template let-data pTemplate="rowexpansion">
+              <nesi-employee-wage-wage [bonusTypeList]="profile.bonusTypeList" [employee]="data" (onChange)="wage_updated($event)"></nesi-employee-wage-wage>
+            </ng-template>
+          </p-dataTable>
+        </p-panel>
+        <p-panel [toggleable]="true">
+          <p-header>
+            <i class="fa fa-fw fa-plane"></i> Vacation
+          </p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+            <div class="ui-g-12 ui-lg-6 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad">
+                <b>Vacation Amounts</b>
+                <br/> {{profile.entity.is_CDN_country?'Canada - Percentage':' USA - Hours'}}
+                <br />
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-4 ui-g-lesspad">
+                  After
+                  <input pInputText style="width:60px" type="number" step="1" maxlength="3" formControlName="vacation_interval_1"> Months
+                </div>
+                <div class="ui-g-4 ui-g-lesspad">
+                  <input pInputText style="width:60px" type="number" step="0.1" maxlength="6" formControlName="vacation_amount_1"> {{profile.entity.is_CDN_country?'%':'hours'}}
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-4 ui-g-lesspad">
+                  After
+                  <input pInputText style="width:60px" type="number" step="1" maxlength="3" formControlName="vacation_interval_2"> Months
+                </div>
+                <div class="ui-g-4 ui-g-lesspad">
+                  <input pInputText style="width:60px" type="number" step="0.1" maxlength="6" formControlName="vacation_amount_2"> {{profile.entity.is_CDN_country?'%':'hours'}}
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-4 ui-g-lesspad">
+                  After
+                  <input pInputText style="width:60px" type="number" step="1" maxlength="3" formControlName="vacation_interval_3"> Months
+                </div>
+                <div class="ui-g-4 ui-g-lesspad">
+                  <input pInputText style="width:60px" type="number" step="0.1" maxlength="6" formControlName="vacation_amount_3"> {{profile.entity.is_CDN_country?'%':'hours'}}
+                </div>
+              </div>
+              <!-- <div class="ui-g-12  ui-g-lesspad smaller">
+                <span *ngIf="!profile.entity.is_CDN_country">For Hours: Please only use digits, or decimals</span>
+                <br/>
+                <span *ngIf="profile.entity.is_CDN_country">For Percentages: Please only use 0.04, or 0.06</span>
+                <br/> Please nothing but numbers or a decimal point in the boxes.
+                <br/>
+              </div> -->
+            </div>
+            <div class="ui-g-12 ui-lg-6 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right">
+                  Days Till Stat:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText type="number" step="1" maxlength="5" formControlName="timetostat">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-4 label_for_right">
+                  Doesn't Receive Stat Pay:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <p-checkbox binary="true" formControlName="is_receive_stat_pay"></p-checkbox>
+                </div>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-12 ui-lg-2">
+                <button pButton type="submit" label="Save" icon="fa-save"></button>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+      </form>
+    </div>
+  </blockable-div>
+</div>
+
+<p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Offer Details" appendTo="body" [draggable]="true"
+  [(visible)]="displayDialog" [positionTop]="50">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <nesi-employee-wage-wage [bonusTypeList]="profile.bonusTypeList" (close)="displayDialog=false" [employee]="selected_employee"
+      (onChange)="wage_updated($event)"></nesi-employee-wage-wage>
+  </div>
+</p-dialog>

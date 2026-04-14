@@ -1,0 +1,51 @@
+<nesi-breadcurmb [items]="[{label: 'Work Orders', routerLink: '/home/12/workorder'},
+ {label: 'Buckets', routerLink: '/home/12/workorder/buckets/' + business_unit_id},
+ {label: 'Scanned File'}
+ ]" [no_default]="true">
+</nesi-breadcurmb>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <div class="ui-g-12  ui-g-lesspad">
+        <h2>{{profile.business_unit_name}}</h2>
+      </div>
+      <div class="ui-g-12 ui-g-lesspad" *ngIf="woprog_id">
+        Delete Scanned file of {{wo_title}}
+      </div>
+      <div class="ui-g-12 ui-g-lesspad" *ngIf="file_name">
+        Select the Work Order matching the scanned PDF in the right panel
+      </div>
+      <div class="ui-g-12 ui-lg-10 ui-g-lesspad" *ngIf="file_name">
+        <p-dropdown  [filter]="profile.nameList && profile.nameList.length>8" [style]="{'width':'100%'}" [options]="profile.nameList"
+          [(ngModel)]="selected_id" placeholder="Select Work Order"></p-dropdown>
+      </div>
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+          <button style="width:100%" class="ui-button-secondary" pButton label="Back" (click)="back()" icon="fa-backward" type="button"></button>
+        </div>
+        <div class="ui-g-12 ui-lg-2 ui-g-lesspad" *ngIf="file_name">
+          <button style="width:100%" [disabled]="!selected_id" pButton label="Submit" icon="fa-save" (click)="submit()" type="button"></button>
+        </div>
+        <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+          <button style="width:100%" class="ui-button-warning" pButton label="Delete Scan" (click)="confirmDelete()" icon="fa-trash" type="button"></button>
+        </div>
+      </div>
+      <div style="min-height: 560px">
+        &nbsp;
+      </div>
+    </div>
+  </blockable-div>
+</div>
+
+<p-dialog appendTo="body" header="Confirmation" [(visible)]="confirmDisplayDialog" [responsive]="true" [modal]="true" [minHeight]="100">
+  <span>
+      Are you sure you want to delete this file - {{file_name}}.pdf?
+  </span>
+  <p-footer>
+          <button type="button" pButton icon="fa-times" label="No" (click)="confirmDisplayDialog=false"></button>
+          <button type="button" class="btn btn-danger" pButton icon="fa-trash" label="Yes" (click)="confirmDisplayDialog=false;delete();"></button>
+  </p-footer>
+</p-dialog>

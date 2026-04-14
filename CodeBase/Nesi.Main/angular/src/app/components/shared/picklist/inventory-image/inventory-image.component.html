@@ -1,0 +1,8 @@
+<div class="hovernote">
+  <img (mousemove)="moveTip($event)" *ngIf="master_id && master_id < 990000" [src]="image ? image : ''" width="8px" height="10px">
+  <img border="0" *ngIf="!master_id || (master_id>=990000  && master_id<2000000)" width="8px" height="10px">
+  <img (mousemove)="moveTip($event)" *ngIf="master_id>=2000000" width="8px" height="10px" src="/assets/images/icon/icon[list_creation].gif">
+  <span *ngIf="image" [style.left]="tooltipX" [style.top]="tooltipY">
+    <img *ngIf="master_id && master_id < 990000" height="150px" [src]="image ? image : ''">
+  </span>
+</div>

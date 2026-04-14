@@ -1,0 +1,72 @@
+<p-dataTable [value]="profile && profile.phoneList" [responsive]="true" (onRowSelect)="select($event)" rowHover="true" selectionMode="single"
+  [(selection)]="selected" dataKey="phone_numbers_id"  #d>
+  <p-header>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <div class="ui-g-12 left">
+        <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+          <div class="ui-g-12 ui-lg-2">
+            <div class="ui-g-12 ui-g-lesspad">
+              Type:
+            </div>
+            <p-dropdown [style]="{'width':'100%'}" [options]="phoneTypeList" formControlName="comm_type"></p-dropdown>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <div class="ui-g-12 ui-g-lesspad">
+              Phone Number:
+            </div>
+            <input pInputText maxlength="12" formControlName="number">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('number')" [errorMsg]="'Phone Number is required and has to be 10 numbers at least.'"></nesi-fieldErrorDisplay>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <div class="ui-g-12 ui-g-lesspad">
+              Is Default:
+            </div>
+            <p-checkbox binary="true" formControlName="is_default"></p-checkbox>
+          </div>
+          <div class="ui-g-12 ui-lg-2">
+            <div class="ui-g-12 ui-g-lesspad">
+              Is Active:
+            </div>
+            <p-checkbox binary="true" formControlName="is_active" [disabled]="disabled"></p-checkbox>
+          </div>
+          <div class="ui-g-12 ui-lg-1">
+            <div class="ui-g-12 ui-g-lesspad">
+              &nbsp;
+            </div>
+            <button pButton [disabled]="disabled" label="{{selected?'Save':'Add'}}" icon="{{selected?'fa-save':'fa-plus'}}"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-1">
+            <div class="ui-g-12 ui-g-lesspad">
+              &nbsp;
+            </div>
+            <button type="button" [disabled]="disabled" (click)="selected=null;submitReset()" pButton label="Cancel" icon="fa-times"></button>
+          </div>
+        </form>
+      </div>
+      <div class="ui-g-12 left bold">
+          Click to Edit Row
+        </div>
+    </div>
+  </p-header>
+  <p-column [style]="{'width':'80px', 'text-align': 'center'}" header="Delete">
+    <ng-template let-col let-item="rowData" pTemplate="body">
+      <button (click)="delete(item)" [disabled]="disabled" pButton icon="fa-times" type="button" class="ui-button-warning"></button>
+    </ng-template>
+  </p-column>
+  <p-column [style]="{'width':'20%'}" field="comm_type" header="Type" [sortable]="true">
+
+  </p-column>
+  <p-column [style]="{'width':'30%'}" field="number" header="Number" [sortable]="true">
+
+  </p-column>
+  <p-column [style]="{'width':'10%'}" field="is_default" header="Default" [sortable]="true">
+    <ng-template let-col let-item="rowData" pTemplate="body">
+      <p-checkbox binary="true" [disabled]="true" [(ngModel)]="item.is_default"></p-checkbox>
+    </ng-template>
+  </p-column>
+  <p-column [style]="{'width':'10%'}" field="is_active" header="Active" [sortable]="true">
+    <ng-template let-col let-item="rowData" pTemplate="body">
+      <p-checkbox binary="true" [disabled]="true" [(ngModel)]="item.is_active"></p-checkbox>
+    </ng-template>
+  </p-column>
+</p-dataTable>

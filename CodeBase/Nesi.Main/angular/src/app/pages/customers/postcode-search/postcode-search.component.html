@@ -1,0 +1,26 @@
+<div class="ui-g-12">
+  <p-dataTable [value]="items" [lazy]="false" [rows]="20" [pageLinks]="5" [paginator]="true" [responsive]="true" sortMode="single"
+    [loading]="loading" loadingIcon="fa-spinner" rowHover="true" resizableColumns="false" [sortField]="sortField" [globalFilter]="gb"
+    [sortOrder]="sortOrder" #dt>
+    <p-header>
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="fa fa-search"></i>
+            </span>
+            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+          </div>
+        </div>
+      </div>
+    </p-header>
+    <p-column field="postal_definer" [filter]="true" filterMatchMode="contains" filterPlaceholder="Search" [style]="{'width':'30%'}"
+      header="Postal Prefix" [sortable]="true"></p-column>
+    <p-column field="name" header="Business Unit" [filter]="true" filterMatchMode="in" [style]="{'width':'60%'}" [sortable]="true">
+        <ng-template pTemplate="filter" let-col>
+            <p-multiSelect appendTo="body" [style]="{'width':'100%'}" [options]="getFieldList(col.field)" defaultLabel="All Business Units" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+        </ng-template>
+    </p-column>
+
+  </p-dataTable>
+</div>

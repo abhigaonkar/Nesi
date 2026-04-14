@@ -1,0 +1,4 @@
+<bar-hoverIcon icon="fa fw fa-comments fa-2x" [badge]="messageList.length">
+  <bar-messagesTable *ngIf="messageList && messageList.length>0" [messageList]="messageList" (click)="onClick($event)"></bar-messagesTable>
+  <div *ngIf="messageList && messageList.length==0">Click to Open Messages</div>
+</bar-hoverIcon>

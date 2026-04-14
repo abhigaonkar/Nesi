@@ -1,0 +1,18 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    <div class="ui-g-12">
+      <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Inventory Usage'}]"></nesi-breadcurmb>
+    </div>
+    <!-- <div class="ui-g-12 ui-lg-1 label_for_right">
+      Business Unit:
+    </div>
+    <div class="ui-g-12 ui-lg-2">
+      <nesi-visibleBusinessUnitDropDown [(ngModel)]="selected_business_unit" (onChange)="reLoadDetail()"></nesi-visibleBusinessUnitDropDown>
+    </div> -->
+  </div>
+  <div class="ui-g-12">
+    <nesi-datatable 
+    [visible_business_type]="'S'"
+    [id]='97' gridName="InventoryUsage" gridTitle="" refreshCache="true" (onRefresh)="loadDetail()"> </nesi-datatable>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="flash_photo_index" Codebehind="index.aspx.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title> 
+</head>
+<body>  
+	<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
+
+	<script type="text/javascript">
+		function set_id(id)
+			{
+			$("#file_id").val(id);
+			}
+	</script>
+    <form id="form1" runat="server">    
+    <object width="480" height="640">
+		<param name="movie" value="/flash/photo.swf">
+		<embed src="/flash/photo.swf" width="480" height="640"></embed>
+		<input type="hidden" value="" id="file_id" />
+	</object>
+    </form>
+</body>
+</html>

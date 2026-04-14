@@ -1,0 +1,8 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+        <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Customer Login History'}]"></nesi-breadcurmb>
+    </div>
+    <div class="ui-g-12">
+        <nesi-datatable [id]='157' gridName="CustomerLoginHistoryGrid" gridTitle="" refreshCache="true" (onRefresh)="loadDetail(true)"></nesi-datatable>
+    </div>
+</div>

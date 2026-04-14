@@ -1,0 +1,4 @@
+<bar-hoverIcon  icon="fa fw fa-user fa-2x"  (iconmouseover)="onMouseOver($event)"  [badge]="badgeNum" >
+  <bar-acitveUserTable *ngIf="allOnlineUsers.length > 0" [allOnlineUsers]="allOnlineUsers" (click)="onClick($event)" [recentNumber]="15"></bar-acitveUserTable>
+  <div *ngIf="allOnlineUsers && allOnlineUsers.length==0">No Active user</div>
+</bar-hoverIcon>

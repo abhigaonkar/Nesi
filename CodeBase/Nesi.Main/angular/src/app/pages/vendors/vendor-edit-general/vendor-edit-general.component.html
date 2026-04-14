@@ -1,0 +1,139 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+</p-blockUI>
+<div *ngIf="!vendor_id">
+  Vendor Id does not provide.
+</div>
+<blockable-div #pblockableDiv>
+  <div *ngIf="vendor_id" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_edit">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g-12 ui-lg-8 ui-g-nopad">
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad label_for_right">
+            Vendor Name:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-lesspad  label_for_left_less">
+            <input pInputText formControlName="name" readonly="true">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('name')" [errorMsg]="'Vendor Name is required.'"></nesi-fieldErrorDisplay>
+            <button type="button" (click)="handle_vendor_request()"><i class="fa fa-edit"></i></button>
+                           
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad" *ngIf="isShown">
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad label_for_right">
+            Business Unit:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-lesspad  label_for_left_less">
+            <p-dropdown [filter]="true" maxlength="50" placeholder="Select Business Unit" [style]="{'width':'100%'}" [options]="profile.businessUnitList"
+              formControlName="business_unit_id" disabled="true"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('business_unit_id')" [errorMsg]="'Business Unit is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad label_for_right">
+            Is On Hold:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-lesspad  label_for_left_less">
+            <p-checkbox binary="true" formControlName="vendor_hold"  disabled="true" ></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad label_for_right">
+            Is A Partner:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-lesspad  label_for_left_less">
+            <p-checkbox binary="true" formControlName="is_partner"  disabled="true" ></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 ui-lg-offset-2 ui-g-lesspad ">
+            <button pButton label="Save Vendor" icon="fa-save"></button>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-lg-4 ui-g-nopad">
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-lesspad label_for_right">
+            Vendor ID #:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad  text_for_left">
+            {{entity.vendor_id}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-nopad label_for_right">
+            Vendor #:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad  text_for_left">
+            {{entity.number}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-nopad label_for_right">
+            Date Added:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad  text_for_left">
+            {{entity.date_added}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-nopad label_for_right">
+            Added By:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad  text_for_left">
+            {{entity.added_by}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-nopad label_for_right">
+            QC Date:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad text_for_left">
+            {{entity.qc_date | date: 'yyyy-MM-dd' }}
+          </div>
+        </div>
+      </div>
+
+    </form>
+    <div class="ui-g-12">
+      <p-accordion [activeIndex]="activeIndex" (onOpen)="onAccordionOpen($event)" (onClose)="activeIndex=-1">
+        <p-accordionTab header="Address">
+          <nesi-vendor-address [vendor_id]="vendor_id" *ngIf="activeIndex===0"></nesi-vendor-address>
+        </p-accordionTab>
+        <p-accordionTab header="Accounting">
+          <nesi-vendor-accounting [vendor_id]="vendor_id" *ngIf="activeIndex===1"></nesi-vendor-accounting>
+        </p-accordionTab>
+        <p-accordionTab header="Notes">
+          <nesi-vendor-notes [vendor_id]="vendor_id" *ngIf="activeIndex===2"></nesi-vendor-notes>
+        </p-accordionTab>
+        <p-accordionTab header="Contacts">
+          <nesi-vendor-contacts [vendor_id]="vendor_id" *ngIf="activeIndex===3"></nesi-vendor-contacts>
+        </p-accordionTab>
+        <p-accordionTab header="Purchases">
+          <nesi-vendor-purchases [vendor_id]="vendor_id" *ngIf="activeIndex===4"></nesi-vendor-purchases>
+        </p-accordionTab>
+        <p-accordionTab header="Emails">
+          <nesi-vendor-emails [vendor_id]="vendor_id" *ngIf="activeIndex===5"></nesi-vendor-emails>
+        </p-accordionTab>
+        <p-accordionTab header="Phone Calls">
+          <nesi-vendor-phone-calls [vendor_id]="vendor_id" *ngIf="activeIndex===6"></nesi-vendor-phone-calls>
+        </p-accordionTab>
+        <p-accordionTab header="Phone Numbers">
+          <nesi-vendor-phone-numbers [vendor_id]="vendor_id" *ngIf="activeIndex===7"></nesi-vendor-phone-numbers>
+        </p-accordionTab>
+        <p-accordionTab header="Specialties">
+          <nesi-vendor-specialties [vendor_id]="vendor_id" *ngIf="activeIndex===8"></nesi-vendor-specialties>
+        </p-accordionTab>
+        <p-accordionTab header="Files">
+          <nesi-vendor-files [vendor_id]="vendor_id" *ngIf="activeIndex===9"></nesi-vendor-files>
+        </p-accordionTab>
+        <p-accordionTab header="Market">
+            <nesi-vendor-masrket [vendor_id]="vendor_id" *ngIf="activeIndex===10"></nesi-vendor-masrket>
+          </p-accordionTab>
+      </p-accordion>
+    </div>
+
+
+  </div>
+
+</blockable-div>

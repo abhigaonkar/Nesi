@@ -1,0 +1,57 @@
+<div class="ui-g-12 quote_normal">
+    <p-tabView [activeIndex]="activeTableView" (onChange)="tabviewOnChange($event)">
+      <p-tabPanel [header]="tabLabels[0]" leftIcon="fa-list" *ngIf="showTabs && showTabs['General']">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <nesi-workorder-general></nesi-workorder-general>
+          </div>
+      </p-tabPanel> 
+      <p-tabPanel [header]="tabLabels[1]" leftIcon="fa-briefcase" *ngIf="showTabs && showTabs['Customer']">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+             <nesi-workorder-customer [Business_unit_id]="Business_unit_id" [Woprog_id]="Woprog_id" [Customer_id]="Customer_id"></nesi-workorder-customer>
+          </div>
+      </p-tabPanel>
+      <p-tabPanel [header]="tabLabels[2]" leftIcon="fa-briefcase" *ngIf="showTabs && showTabs['Line Items']">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+             <nesi-workorder-lineitems></nesi-workorder-lineitems>
+          </div>
+      </p-tabPanel>
+      <p-tabPanel [header]="tabLabels[3]" leftIcon="fa-truck" *ngIf="showTabs && showTabs['PO\'s']">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+              <nesi-workorder-pos></nesi-workorder-pos>
+          </div>
+      </p-tabPanel>
+      <p-tabPanel [header]="tabLabels[4]" leftIcon="fa-calendar" *ngIf="showTabs && showTabs['Time Entries']">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+             <nesi-workorder-time-entries></nesi-workorder-time-entries>
+          </div>
+      </p-tabPanel>
+      <p-tabPanel [header]="tabLabels[5]" leftIcon="fa-history" *ngIf="showTabs && showTabs['History']">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <nesi-workorder-history></nesi-workorder-history>
+          </div>
+      </p-tabPanel>
+      <p-tabPanel [header]="tabLabels[6]" leftIcon="fa-chart-area" *ngIf="showTabs && showTabs['Analysis']">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+             <nesi-workorder-analysis></nesi-workorder-analysis>
+          </div>
+      </p-tabPanel>
+      <p-tabPanel [header]="tabLabels[7]" leftIcon="fa-sticky-note" *ngIf="showTabs && showTabs['Project Notes']">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+              <nesi-workorder-project-notes></nesi-workorder-project-notes>
+          </div>
+      </p-tabPanel>
+      <p-tabPanel [header]="tabLabels[8]" leftIcon="fa-folder" *ngIf="showTabs && showTabs['Project Folder']">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" >
+               <nesi-workorder-project-folder></nesi-workorder-project-folder>
+         </div>
+      </p-tabPanel>
+      <p-tabPanel [header]="tabLabels[9]" leftIcon="fa-briefcase" *ngIf="showTabs && showTabs['Linked WOs']"> 
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+               <nesi-workorder-linked-wos></nesi-workorder-linked-wos>
+         </div>
+      </p-tabPanel>
+     
+   
+    </p-tabView>
+  </div>
+  

@@ -1,0 +1,6 @@
+<!-- <p-blockUI [blocked]="loading"></p-blockUI> -->
+<div id="sizeCheckDiv" (window:resize)="onResize()"></div>
+<div id="nesi1framediv">
+  <iframe #nesi1iframe *ngIf="url && trustedUrl" id="nesi1iframe" [src]="trustedUrl"
+   frameborder="0" border="0" scrolling="no" cellspacing="0" ALLOWTRANSPARENCY="false" (load)="trustedUrl ? onload($event, nesi1iframe) : null"></iframe>
+</div>

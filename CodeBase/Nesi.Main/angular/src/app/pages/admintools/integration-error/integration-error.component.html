@@ -1,0 +1,40 @@
+<div id="Records">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <dx-data-grid id="gridContainer" [dataSource]="data" [showBorders]="true" [showColumnLines]="true" [rowAlternationEnabled]="true"
+      [showRowLines]="true" [masterDetail]="{ enabled: true, template: 'messagedetail' }" keyExpr="id">
+
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+
+      <dxo-paging [pageSize]="10" [enabled]="true"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]" [showInfo]="true">
+      </dxo-pager>
+      <dxo-load-panel shadingColor="rgba(0,0,0,0.4)" [showIndicator]="true" [showPane]="true" [shading]="true" [enabled]="true">
+      </dxo-load-panel>
+
+      <dxi-column dataField="id" caption="ID"></dxi-column>
+      <dxi-column dataField="batch_id" caption="Batch Id"></dxi-column>
+      <dxi-column dataField="batch_code" caption="Batch Code"></dxi-column>
+      <dxi-column dataField="app_code" caption="App Code"></dxi-column>
+      <dxi-column dataField="entity_id" caption="Entity Id"></dxi-column>
+      <dxi-column dataField="source_system" caption="Source System"></dxi-column>
+      <dxi-column dataField="entity_type" caption="Entity Type"></dxi-column>
+      <dxi-column dataField="current_status" caption="Current Status"></dxi-column>
+      <dxi-column dataField="startdate" dataType="date" caption="Start Date"></dxi-column>
+      <dxi-column dataField="starttime" caption="Start Time"></dxi-column>
+      <dxi-column dataField="completiondate" dataType="date" caption="Completion Date"></dxi-column>
+      <dxi-column dataField="completiontime" caption="Completion Time"></dxi-column>
+      <dxi-column dataField="current_retry_count" caption="Current Retry Count"></dxi-column>
+      <dxi-column dataField="dur" caption="Duration"></dxi-column>
+
+      <div *dxTemplate="let msg of 'messagedetail'" >
+      <!--  <ng-container *ngIf="checkIfExist(data.message_type)">-->
+        <div class="master-detail-caption">{{msg.data.message_type}}</div>
+        <div class="master-detail">{{msg.data.message}}</div>
+     
+      </div>
+
+
+  </dx-data-grid>
+</div>
+</div>

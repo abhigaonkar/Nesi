@@ -1,0 +1,19 @@
+
+  <table cellpadding="3" class='icon-table'>
+    <tbody>
+      <tr class='header'>
+        <td colspan='3' class='top'> Recent {{ TicketsWaitingForMe.length }} Ticket List </td>
+      </tr>
+      <tr class='header'>
+        <td>Ticket #</td>
+        <td>Subject</td>
+        <td>Last Update</td>
+      </tr>
+      <tr *ngFor="let item of TicketsWaitingForMe; let i = index" class="bodyrow">
+        <td>{{item.ticketheader_Id}}</td>
+        <td>{{item.raisedIssue}}</td>
+        <td>{{item.ticketheader_modified_date | date:'yyyy-MM-dd' }}</td>
+      </tr>
+    </tbody>
+  </table>
+

@@ -1,0 +1,34 @@
+<div *ngIf="showAll" class="layout-menu-wrapper" style="z-index: 1;" [class.layout-menu-dark]="app.darkMenu" (click)=app.onMenuClick($event)>
+  <div class="nano">
+    <div class="nano-content sidebar-scroll-content">
+      <div class="layout-menu-container">
+        <div class="mobile-search" *ngIf="isDeviceMobile">
+          <i *ngIf="isMobile" class="fa fa-fw fa-desktop"></i>
+          <a *ngIf="isMobile" (click)="changeToDesktop()">View Destop Version</a>
+          <i *ngIf="!isMobile" class="fa fa-fw fa-mobile"></i>
+          <a *ngIf="!isMobile" (click)="changeToMobile()">View Mobile Version</a>
+
+        </div>
+
+        <!-- <div class="mobile-search" *ngIf="!isMobile && menuMode!='slim'"> -->
+        <div class="mobile-search search-icon-overlay-layout" *ngIf="!isMobile && menuMode!='slim'">
+            <i class="fa fa-fw fa-search topbar-search-icon"></i>
+            <input #menuSearch type="text" class="topbar-search search-box-overlay-layout" placeholder="Search Menu" (keyup)="doSearch(menuSearch.value)"
+            />
+            <i class="fa fa-fw fa-angle-double-down expand" title="Toggle expand all submenus" (click)="toggleExpandAll()"></i>
+            <button *ngIf="menuSearch.value" (click)="menuSearch.value='';doSearch('')" class="close-icon" type="reset"></button>
+        </div>
+        <ul *ngIf="isdev" style="color:red">
+          <i *ngIf="!isMobile" class="fa fa-fw fa-bug"></i>
+          <a *ngIf="!isMobile" (click)="gotoDevPage()">Dev Page</a>
+        </ul>
+        <ul *ngIf="isMobile" app-submenu [menuStyle]="menuStyle" [item]="nesiMobileMenuItems$ | async" root="true" class="layout-menu"
+          visible="true" [reset]="app.resetSlim"></ul>
+        <ul *ngIf="!isMobile" app-submenu [menuStyle]="menuStyle" [item]="nesiMainMenuItems$ | async" root="true" class="layout-menu"
+          visible="true" [reset]="app.resetSlim" [expandAll]="expandAll$ | async"></ul>
+        <nesi-dashMessage *ngIf="!isContact && !isMobile"></nesi-dashMessage>
+      </div>
+
+    </div>
+  </div>
+</div>

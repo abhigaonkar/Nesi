@@ -1,0 +1,31 @@
+<div class="ui-g-12">
+  <nesi-workorder-wocomments-display-comments [list]="profile.comments"></nesi-workorder-wocomments-display-comments>
+</div>
+<div class="ui-g-12">
+  <p-panel header="Add Comment">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <div class="ui-g-12">
+        <textarea pInputTextarea rows="5" cols="25" [(ngModel)]="new_comments"></textarea>
+        <nesi-fieldErrorDisplay [displayError]="try_add_comment && !new_comments" [errorMsg]="'Comment is required'"></nesi-fieldErrorDisplay>
+      </div>
+      <div class="ui-g-12 ui-lg-4">
+        <button pButton label="Add Comment" icon="fa-plus" type="button" (click)="addComment()"></button>
+      </div>
+    </div>
+  </p-panel>
+</div>
+<div class="ui-g-12">
+  <p-panel header="Timesheet Comments">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <div class="ui-g-12">
+        <textarea pInputTextarea rows="10" cols="30" [autoResize]="false" [(ngModel)]="timesheet_comments"></textarea>
+      </div>
+      <div class="ui-g-12">
+        <p-checkbox label="Print Time Sheet Comments on Invoice" binary="true" [(ngModel)]="printComments"></p-checkbox>
+      </div>
+      <div class="ui-g-12 ui-lg-4">
+        <button pButton label="Save Timesheet Comment" icon="fa-plus" type="button" (click)="saveTimesheetComments()"></button>
+      </div>
+    </div>
+  </p-panel>
+</div>

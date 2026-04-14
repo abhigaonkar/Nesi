@@ -1,0 +1,17 @@
+div {
+  margin-top: 5px;
+}
+
+span {
+  top:-8px;
+  position: relative;
+  font-size: 1em;
+ }
+
+ .morespace {
+   margin-top: 20px;
+ }
+
+ .tooltip {
+   width: 200px;
+ }

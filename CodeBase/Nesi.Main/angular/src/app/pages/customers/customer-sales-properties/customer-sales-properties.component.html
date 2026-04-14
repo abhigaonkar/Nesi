@@ -1,0 +1,307 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+    <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+      <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+    </p-blockUI>
+    <blockable-div #pblockableDiv>
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-lg-4">
+            <p-panel header="Properties 1">
+              <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Status:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-dropdown [style]="{'width': '100%'}" [options]="lists && lists.statusList" formControlName="status_id"></p-dropdown>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Call Cycle (Days):
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <input type="number" pInputText formControlName="call_cycle">
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Year End:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-dropdown [style]="{'width': '100%'}" [options]="lists && lists.yearendList" formControlName="year_end"></p-dropdown>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Project Manager:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-dropdown [style]="{'width': '100%'}" [filter]="lists && lists.pmList.length>10" [options]="lists && lists.pmList" formControlName="project_mgr_member_id"></p-dropdown>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Controls Manager:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-dropdown [style]="{'width': '100%'}" [filter]="lists && lists.pmList.length>10" [options]="lists && lists.pmList" formControlName="controls_mgr_member_id"></p-dropdown>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Discount:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <input type="number" pInputText formControlName="discount_pct">
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Decision Maker:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-dropdown [style]="{'width': '100%'}" [filter]="lists && lists.contactList.length>10" [options]="lists && lists.contactList"
+                      formControlName="decision_maker"></p-dropdown>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Account Code:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-dropdown [style]="{'width': '100%'}" [filter]="lists && lists.accountCodeList.length>10" [options]="lists && lists.accountCodeList"
+                      formControlName="account_code"></p-dropdown>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Next Followup Date:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" formControlName="next_followup_date"  placeholder="yyyy-mm-dd"
+                      showIcon="true"></p-calendar>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Next Followup Date:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <textarea [rows]="5" style="height:60px;" formControlName="next_followup_notes" pInputTextarea></textarea>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Job budget Threshold:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <input type="number" pInputText formControlName="job_budget_threshold">
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    PO Required:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-checkbox binary="true" formControlName="po_required"></p-checkbox>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Confirmed PO is/isn't required?:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-checkbox binary="true" formControlName="confirmed_po_required"></p-checkbox>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                    Confirmed Tax Exemption:
+                  </div>
+                  <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                    <p-checkbox binary="true" formControlName="confirmed_tax_exempt"></p-checkbox>
+                  </div>
+                </div>
+              </div>
+            </p-panel>
+          </div>
+          <div class="ui-g-12 ui-lg-4">
+            <p-panel header="Properties 2">
+              <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    Industry:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <p-dropdown [style]="{'width': '100%'}" [options]="lists && lists.industryList" formControlName="industry"></p-dropdown>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    How customer found us:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <p-dropdown [style]="{'width': '100%'}" [filter]="lists && lists.pmList.originList>10" [options]="lists && lists.originList"
+                      formControlName="origin"></p-dropdown>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    Sector:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <input type="text" pInputText formControlName="sector">
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    NAICS Code #:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <input type="text" pInputText formControlName="naics_code">
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    Employee Size:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <p-dropdown [style]="{'width': '100%'}" [filter]="lists && lists.pmList.employeeSizeList>10" [options]="lists && lists.employeeSizeList"
+                      formControlName="employee_size"></p-dropdown>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    What do they do at this location?:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <input type="text" pInputText formControlName="do_at_location">
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    Why did they choose us/buy from us?:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <textarea [rows]="5" style="height:60px;" formControlName="why_choose" pInputTextarea></textarea>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    Affiliated Companies:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <textarea [rows]="5" style="height:60px;" formControlName="affiliated_companies" pInputTextarea></textarea>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    Known Suppliers:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <textarea [rows]="5" style="height:60px;" formControlName="known_suppliers" pInputTextarea></textarea>
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_right">
+                    Known Competitors:
+                  </div>
+                  <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                    <textarea [rows]="5" style="height:60px;" formControlName="known_competitors" pInputTextarea></textarea>
+                  </div>
+                </div>
+              </div>
+            </p-panel>
+          </div>
+          <div class="ui-g-12 ui-lg-4">
+            <div class="ui-g-12 ui-g-nopad">
+              <p-panel header="Protected">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+                  <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                      Account Manager:
+                    </div>
+                    <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                      <p-dropdown [style]="{'width': '100%'}" [filter]="lists && lists.amList.length>10" [options]="lists && lists.amList" formControlName="am_member_id"></p-dropdown>
+                    </div>
+                  </div>
+                </div>
+              </p-panel>
+            </div>
+            <div class="ui-g-12"></div>
+            <div class="ui-g-12 ui-g-nopad">
+              <p-panel header="Stats">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+                  <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                      Days Since Last Invoice:
+                    </div>
+                    <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                      {{_data && _data.last_invoice }}
+                    </div>
+                  </div>
+                  <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                      Total FYTD $:
+                    </div>
+                    <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                      {{_data && _data.current_fiscal}}
+                    </div>
+                  </div>
+                  <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                      Total LFYTD $:
+                    </div>
+                    <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                      {{_data && _data.last_fiscal}}
+                    </div>
+                  </div>
+                  <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                      Company Wide FYTD $:
+                    </div>
+                    <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                      {{_data && _data.ytd}}
+                    </div>
+                  </div>
+                  <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                      Company Wide LFYTD $:
+                    </div>
+                    <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+                      {{_data && _data.lytd}}
+                    </div>
+                  </div>
+                </div>
+              </p-panel>
+            </div>
+            <div class="ui-g-12"></div>
+            <div class="ui-g-12 ui-g-nopad">
+              <p-panel header="Rate Sheets">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+                  <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+                      Select Business Unit:
+                    </div>
+                    <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+                      <p-dropdown [style]="{'width': '100%'}" placeholder="&nbsp;" (onChange)="showRateSheet($event)" [filter]="lists && lists.visibleBusinessUnitList.length>10"
+                        [options]="lists && lists.visibleBusinessUnitList"></p-dropdown>
+                    </div>
+                    <div class="ui-g-12 ui-lg-2 ui-g-nopad">
+                      <button [disabled]="!ratesheet_bu" pButton (click)="showRateSheet()" type="button" style="top: 8px;" class="small_button"
+                        icon="fa-money-bill"></button>
+                    </div>
+                  </div>
+                </div>
+              </p-panel>
+            </div>
+            <div class="ui-g-12"></div>
+            <div class="ui-g-12 ui-lg-2 ui-g-nopad">
+              <button pButton type="submit" icon="fa-save" label="Save"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </blockable-div>
+  </div>

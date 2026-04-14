@@ -1,0 +1,16 @@
+:host ::ng-deep .dx-datagrid-headers tr:nth-child(1) td {
+    background: white !important;
+    color: black !important;
+    font-weight: bold; 
+ }
+  
+  :host ::ng-deep .dx-datagrid-headers tr:nth-child(2) td {
+    background: white !important;
+    color: black !important;
+    font-weight: bold;
+ }
+
+ ::ng-deep #netSuiteIncomeStatementGrid .dx-toolbar-items-container {
+   padding: 0;
+   background-color: rgba(85, 149, 222, 0.6);
+}

@@ -1,0 +1,6 @@
+<bar-hoverIcon icon="fa fw fa-life-ring fa-2x" [badge]="tickets.length" [badgeColor]="badgeColor">
+  <bar-ticketsWaitingForMeTable *ngIf="(tickets && tickets.length > 0)" [tickets]="tickets" (click)="onClick($event)"> </bar-ticketsWaitingForMeTable>
+  <ng-container *ngIf="! (tickets && tickets.length > 0)">
+    Click to Open Ticket System
+  </ng-container>
+</bar-hoverIcon>

@@ -1,0 +1,16 @@
+<div class="ui-g-12 home_autoBingo">
+  <p-dataTable [emptyMessage]="'No auto Bingo found.'" [paginator]="false" [value]="items" sortMode="multiple" resizableColumns="false"
+    [loading]="loading" [loadingIcon]="'fa-spinner'" [responsive]="true">
+    <p-header>
+      Data Integrity Tests
+    </p-header>
+    <p-column field="watch" [style]="{'width':'60%'}" header="Watch"></p-column>
+    <p-column field="count" [style]="{'width':'10%','text-align':'center'}" header="Count" >
+      <ng-template let-data="rowData" pTemplate="body">
+        <span #x> {{ getColor(x, data, true) }} {{ data.count }}</span>
+      </ng-template>
+    </p-column>
+    <p-column field="time" [style]="{'width':'20%','text-align':'center'}" header="Time (ms) Taken">
+    </p-column>
+  </p-dataTable>
+</div>

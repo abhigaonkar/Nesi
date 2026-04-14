@@ -1,0 +1,57 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-1 ui-g-nopad   ">
+        Date:
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-lg-3 ui-g-nopad">
+        <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" formControlName="schedule_date"  placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('schedule_date')" [errorMsg]="'You must select a valid date.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-1 ui-g-nopad  ">
+        Note:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <textarea placeholder="Note" pInputTextarea [rows]="6" [cols]="30" [autoResize]="true" formControlName="follow_up_note"></textarea>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('follow_up_note')" [errorMsg]="'You must input valid note.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-offset-1 ui-md-8 ui-g-nopad">
+        <button type="submit" pButton label="Save" icon="fa-save"></button>
+      </div>
+    </div>
+  </form>
+  <div class="ui-g-12 ui-g-nopad ">
+    <div class="ui-g-12 tableCaption">
+      History
+    </div>
+    <p-dataTable [value]="q&&q.followup_history" (onRowClick)="clickRow(d,$event)" (onRowExpand)="OnRowExpand($event)" [responsive]="true"
+      expandableRows="true" rowHover="true" rowExpandMode="single" #d>
+      <p-column expander="true" [style]="{'width':'40px'}" styleClass="col-icon"></p-column>
+      <p-column field="date" header="Date" [sortable]="true">
+        
+      </p-column>
+      <p-column field="type" header="Action" [sortable]="true">
+        <ng-template let-col let-row="rowData" pTemplate="body">
+          {{getAction(row.type)}}
+        </ng-template>
+      </p-column>
+      <p-column field="name" header="User" [sortable]="true"></p-column>
+      <ng-template let-row pTemplate="rowexpansion">
+        <div class="ui-grid ui-grid-responsive ui-fluid">
+          <div class="ui-g-4" *ngIf="row.type=='f'">
+            <button [disabled]="row.is_done==1" pButton [label]="row.is_done? 'Done':'Mark as Done'" icon="fa-check" (click)="doneFollowUp(row)"></button>
+          </div>
+          <div class="{{row.type=='f'?'ui-g-8': 'ui-g-12'}}" innerHtml="'Notes:'' {{getNote(row)}}" >
+           <!-- // Notes: {{getNote(row)}} -->
+          </div>
+
+        </div>
+      </ng-template>
+    </p-dataTable>
+
+  </div>
+</div>

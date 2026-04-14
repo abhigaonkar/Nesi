@@ -1,0 +1,263 @@
+.dxtlControl_NETheme01
+{
+	cursor: default;
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #333333;
+	border: 1px none #c0c0c0;
+}
+.dxtlControl_NETheme01 caption
+{
+	background: #ACACAC none;
+	border-bottom: 0 solid #c0c0c0;
+	border: 1px solid #c0c0c0;
+	color: White;
+	font-size: 15px;
+	font-weight: normal;
+	padding: 3px 3px 5px;
+	text-align: center;
+}
+
+/* Indent cells */
+.dxtlIndent_NETheme01,
+.dxtlIndentWithButton_NETheme01
+{
+	vertical-align: top;
+	background: white none no-repeat top center;
+}
+.dxtlIndent_NETheme01
+{
+	padding: 0 11px;
+}
+.dxtlIndentWithButton_NETheme01
+{
+	padding: 5px 7px 6px;
+}
+.dxtlSelectionCell_NETheme01
+{
+	border: 1px solid #cfcfcf;
+}
+
+/* Tree-lines cells */
+.dxtlLineRoot_NETheme01
+{
+
+}
+
+.dxtlLineFirst_NETheme01
+{
+
+}
+.dxtlLineMiddle_NETheme01
+{
+
+}
+.dxtlLineLast_NETheme01
+{
+
+}
+
+.dxtlLineFirstRtl_NETheme01
+{
+}
+.dxtlLineMiddleRtl_NETheme01
+{
+
+}
+.dxtlLineLastRtl_NETheme01
+{
+}
+
+/* Headers */
+.dxtlHeader_NETheme01
+{
+	border: 1px solid #c0c0c0;
+	padding: 4px 6px 5px;
+	font-weight: normal;
+}
+.dxtlHeader_NETheme01 table.dxtl
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+.dxtlHeader_NETheme01 td.dxtl
+{
+	padding: 0;
+}
+.dxtlHeader_NETheme01,
+.dxtlHeader_NETheme01 td.dxtl
+{
+	white-space: nowrap;
+	text-align: left;
+	overflow: hidden;
+}
+.dxtlControl_NETheme01 .dxpc-content 
+{
+	padding: 10px!important;
+}
+/* Nodes */
+.dxtlNode_NETheme01
+{
+	background: white none;
+}
+.dxtlAltNode_NETheme01
+{
+	background-color: WhiteSmoke;
+}
+.dxtlSelectedNode_NETheme01
+{
+	background: #e0e0e0 none;
+}
+.dxtlFocusedNode_NETheme01
+{
+	background: #ff8800 none;
+	color: white;
+}
+.dxtlInlineEditNode_NETheme01
+{
+	background: white none;
+}
+.dxtlEditFormDisplayNode_NETheme01
+{
+	background: white none;
+}
+
+.dxtlNode_NETheme01 td.dxtl, 
+.dxtlAltNode_NETheme01  td.dxtl, 
+.dxtlSelectedNode_NETheme01 td.dxtl, 
+.dxtlFocusedNode_NETheme01 td.dxtl,
+.dxtlEditFormDisplayNode_NETheme01 td.dxtl,
+.dxtlCommandCell_NETheme01
+{
+	padding: 3px 6px 4px;
+	border: 1px solid #cfcfcf;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.dxtlInlineEditNode_NETheme01 td.dxtl
+{
+	border: 1px solid #cfcfcf;
+	padding: 1px;
+}
+
+/* Preview */
+.dxtlPreview_NETheme01
+{
+	color: #7f7f7f;
+	padding: 14px;
+	border: 1px solid #cfcfcf;
+	overflow: hidden;
+}
+
+/* Footers */
+.dxtlGroupFooter_NETheme01
+{
+}
+.dxtlFooter_NETheme01
+{
+}
+.dxtlGroupFooter_NETheme01 td.dxtl,
+.dxtlFooter_NETheme01 td.dxtl
+{
+	padding: 5px 6px 6px;
+	white-space: nowrap;
+	border: 1px solid #cfcfcf;
+	overflow: hidden;
+}
+
+/* Pagers */
+.dxtlPagerTopPanel_NETheme01
+{
+	border-bottom: 1px none #c0c0c0;
+	padding: 4px 0;
+}
+.dxtlPagerBottomPanel_NETheme01
+{
+	border-top: 1px none #c0c0c0;
+	padding: 7px 0;
+}
+
+/* Editing */
+.dxtlEditForm_NETheme01
+{
+	border: 1px solid #D3D3D3;
+	padding: 8px 10px 10px;
+}
+.dxtlEditFormCaption_NETheme01,
+.dxtlEditFormEditCell_NETheme01
+{
+	padding: 4px;
+}
+.dxtlEditFormCaption_NETheme01
+{
+	padding-left: 10px;
+	white-space: nowrap;
+}
+.dxtlError_NETheme01
+{
+	background: #FFC8C8 none;
+	color: #FF0000;
+	padding: 6px 10px;
+	border: 1px solid #cfcfcf;
+}
+.dxtlPopupEditForm_NETheme01
+{
+	padding: 0;
+	min-width: 300px;
+}
+
+/* Links */
+.dxtlControl_NETheme01 a
+{
+	color: #ff8800;
+}
+.dxtlControl_NETheme01 a:hover
+{
+}
+.dxtlFocusedNode_NETheme01 a
+{
+	color: White;
+}
+.dxtlSelectedNode_NETheme01 a
+{
+	color: #ff8800;
+}
+.dxtlCommandCell_NETheme01 a
+{
+	margin-right: 3px;
+}
+/* Customization window */
+.dxtlControl_NETheme01 .dxpcLite_NETheme01 .dxpc-content
+{
+	min-width: 220px;
+}
+
+/* Loading panel */
+.dxtlLoadingPanel_NETheme01
+{
+	border: 1px solid #C3C3C3;
+	background-color: white;
+	font: 14px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #333333;
+}
+.dxtlLoadingPanel_NETheme01 td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 10px 14px;
+}
+.dxtlLoadingDiv_NETheme01
+{
+	background: white none;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+/* Disabled */
+.dxtlDisabled_NETheme01,
+.dxtlDisabled_NETheme01 .dxtl
+{
+	color: #b8b8b8;
+	cursor: default;
+}
+
+

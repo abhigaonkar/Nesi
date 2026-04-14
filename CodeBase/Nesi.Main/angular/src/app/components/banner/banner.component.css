@@ -1,0 +1,16 @@
+i {
+  cursor: pointer;
+}
+.wiki_help{
+  bottom: 2em;
+	right: 25px;
+	border: solid 1px #000;
+	background-color: #01447c;
+	position: fixed;
+	padding: 10px;
+	opacity: .25;
+	border-radius: 5px;
+	z-index: 150001;
+	height: 20px;
+	height: 20px;
+}

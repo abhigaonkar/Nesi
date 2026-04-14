@@ -1,0 +1,2376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC6B2814-61EA-4DE8-8710-D7FDE78E3E45}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>core</RootNamespace>
+    <AssemblyName>core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MattLocal|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\MattLocal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>default</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MattLocal|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\MattLocal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Cassia">
+      <HintPath>..\Nesi.Bin\Cassia.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\Nesi.Bin\DevExpress.Data.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxScheduler.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\Nesi.Bin\DevExpress.Web.ASPxScheduler.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\Nesi.Bin\DevExpress.Office.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\Nesi.Bin\DevExpress.RichEdit.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\Nesi.Bin\DevExpress.Web.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\Nesi.Bin\DevExpress.Xpo.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\Nesi.Bin\DevExpress.XtraScheduler.v19.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations">
+      <HintPath>..\Nesi.Bin\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Code\Current_User.cs" />
+    <Compile Include="App_Code\Customer\CustomerSalesProperties.cs" />
+    <Compile Include="App_Code\email_reports.cs" />
+    <Compile Include="App_Code\huddle.cs" />
+    <Compile Include="App_Code\Inventory.cs" />
+    <Compile Include="App_Code\JobType.cs" />
+    <Compile Include="App_Code\MsSqlWithCte.cs" />
+    <Compile Include="App_Code\NEAccounting.cs" />
+    <Compile Include="App_Code\NEAddress.cs" />
+    <Compile Include="App_Code\NeApplicant.cs" />
+    <Compile Include="App_Code\NeAppointment.cs" />
+    <Compile Include="App_Code\NeAssets.cs" />
+    <Compile Include="App_Code\NEAudit.cs" />
+    <Compile Include="App_Code\NeBusinessUnit.cs" />
+    <Compile Include="App_Code\NECapTraining.cs" />
+    <Compile Include="App_Code\NeCellphone.cs" />
+    <Compile Include="App_Code\NEContact.cs" />
+    <Compile Include="App_Code\NEContactHistory.cs" />
+    <Compile Include="App_Code\NeCoreResponsibilities.cs" />
+    <Compile Include="App_Code\NeCountry.cs" />
+    <Compile Include="App_Code\NECredit_card_purchase.cs" />
+    <Compile Include="App_Code\NECustomer.cs" />
+    <Compile Include="App_Code\NeDB.cs" />
+    <Compile Include="App_Code\NeDisciplinary.cs" />
+    <Compile Include="App_Code\NeEMail.cs" />
+    <Compile Include="App_Code\NEerdb.cs" />
+    <Compile Include="App_Code\NeERItem.cs" />
+    <Compile Include="App_Code\NEErrorReport.cs" />
+    <Compile Include="App_Code\NeExWorkOrder.cs" />
+    <Compile Include="App_Code\NeFiles.cs" />
+    <Compile Include="App_Code\NeGL.cs" />
+    <Compile Include="App_Code\NeGLChart_of_accounts.cs" />
+    <Compile Include="App_Code\NeGLGroup.cs" />
+    <Compile Include="App_Code\NEGridLayouts.cs" />
+    <Compile Include="App_Code\NeHolidays.cs" />
+    <Compile Include="App_Code\NELog.cs" />
+    <Compile Include="App_Code\NeMember.cs" />
+    <Compile Include="App_Code\NeMemberDaysOff.cs" />
+    <Compile Include="App_Code\NeMemberTime.cs" />
+    <Compile Include="App_Code\NeMemberType.cs" />
+    <Compile Include="App_Code\NEMemberTypePrivilege.cs" />
+    <Compile Include="App_Code\NeMenu.cs" />
+    <Compile Include="App_Code\NeMessaging.cs" />
+    <Compile Include="App_Code\NeOncallSchedule.cs" />
+    <Compile Include="App_Code\NePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\NePayPeriod.cs" />
+    <Compile Include="App_Code\NePayroll.cs" />
+    <Compile Include="App_Code\NePhoneLog.cs" />
+    <Compile Include="App_Code\NePhoneNumbers.cs" />
+    <Compile Include="App_Code\NePOProg.cs" />
+    <Compile Include="App_Code\NEPO_Details_Current.cs" />
+    <Compile Include="App_Code\NeProvince.cs" />
+    <Compile Include="App_Code\NeQuoteSchedule.cs" />
+    <Compile Include="App_Code\NEquote_cust_notes.cs" />
+    <Compile Include="App_Code\NERandD.cs" />
+    <Compile Include="App_Code\NeSalesOrder.cs" />
+    <Compile Include="App_Code\NESignature.cs" />
+    <Compile Include="App_Code\Nestock_transfer.cs" />
+    <Compile Include="App_Code\NeTask.cs" />
+    <Compile Include="App_Code\NETax.cs" />
+    <Compile Include="App_Code\NeTaxEntity.cs" />
+    <Compile Include="App_Code\NETickets.cs" />
+    <Compile Include="App_Code\NETraining.cs" />
+    <Compile Include="App_Code\NeVacation.cs" />
+    <Compile Include="App_Code\NEVendor.cs" />
+    <Compile Include="App_Code\NeWage.cs" />
+    <Compile Include="App_Code\NeWOComments.cs" />
+    <Compile Include="App_Code\NeWODetailCurrent.cs" />
+    <Compile Include="App_Code\NeWODetailHistory.cs" />
+    <Compile Include="App_Code\NeWOProg.cs" />
+    <Compile Include="App_Code\NeWOProgChanges.cs" />
+    <Compile Include="App_Code\NeWoProgNotes.cs" />
+    <Compile Include="App_Code\NE_report_engine.cs" />
+    <Compile Include="App_Code\NSOpportunity.cs" />
+    <Compile Include="App_Code\quote.cs" />
+    <Compile Include="App_Code\rss_feed.cs" />
+    <Compile Include="App_Code\shared.cs" />
+    <Compile Include="App_Code\todoList.cs" />
+    <Compile Include="App_Code\Toolbox.cs" />
+    <Compile Include="App_Code\UserAppointmentForm.cs" />
+    <Compile Include="App_Code\UserAppointmentSaveCallbackCommand.cs" />
+    <Compile Include="App_Code\Work Order\BillTypeMovement.cs" />
+    <Compile Include="App_Code\XPOHelper.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\accounting_period.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\accounting_period.Designer.cs">
+      <DependentUpon>accounting_period.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\active_memberoffer.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\active_memberoffer.Designer.cs">
+      <DependentUpon>active_memberoffer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\address.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\address.Designer.cs">
+      <DependentUpon>address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\address_netsuite_map.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\address_netsuite_map.Designer.cs">
+      <DependentUpon>address_netsuite_map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\adp_canada_codes.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\adp_canada_codes.Designer.cs">
+      <DependentUpon>adp_canada_codes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\allowed_bu_on_wo.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\allowed_bu_on_wo.Designer.cs">
+      <DependentUpon>allowed_bu_on_wo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\applicants.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\applicants.Designer.cs">
+      <DependentUpon>applicants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\appointments.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\appointments.Designer.cs">
+      <DependentUpon>appointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\appointment_resource_member_hide_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\appointment_resource_member_hide_link.Designer.cs">
+      <DependentUpon>appointment_resource_member_hide_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\appointment_resource_member_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\appointment_resource_member_link.Designer.cs">
+      <DependentUpon>appointment_resource_member_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\appointment_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\appointment_status.Designer.cs">
+      <DependentUpon>appointment_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\apstatus.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\apstatus.Designer.cs">
+      <DependentUpon>apstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\area_codes.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\area_codes.Designer.cs">
+      <DependentUpon>area_codes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ar_notes.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ar_notes.Designer.cs">
+      <DependentUpon>ar_notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\assets.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\assets.Designer.cs">
+      <DependentUpon>assets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\assets_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\assets_history.Designer.cs">
+      <DependentUpon>assets_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\assets_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\assets_type.Designer.cs">
+      <DependentUpon>assets_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\asset_customer_rate.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\asset_customer_rate.Designer.cs">
+      <DependentUpon>asset_customer_rate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\asset_history_action.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\asset_history_action.Designer.cs">
+      <DependentUpon>asset_history_action.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\asset_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\asset_status.Designer.cs">
+      <DependentUpon>asset_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\auditgroup.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\auditgroup.Designer.cs">
+      <DependentUpon>auditgroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audithistory_details.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audithistory_details.Designer.cs">
+      <DependentUpon>audithistory_details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audithistory_header.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audithistory_header.Designer.cs">
+      <DependentUpon>audithistory_header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audititem.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audititem.Designer.cs">
+      <DependentUpon>audititem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audititem_group.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audititem_group.Designer.cs">
+      <DependentUpon>audititem_group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audititem_ratingdesc.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audititem_ratingdesc.Designer.cs">
+      <DependentUpon>audititem_ratingdesc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audititem_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audititem_type.Designer.cs">
+      <DependentUpon>audititem_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audit_group.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audit_group.Designer.cs">
+      <DependentUpon>audit_group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audit_item.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audit_item.Designer.cs">
+      <DependentUpon>audit_item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audit_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audit_type.Designer.cs">
+      <DependentUpon>audit_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audit_typegroup_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\audit_typegroup_link.Designer.cs">
+      <DependentUpon>audit_typegroup_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\auto_reports.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\auto_reports.Designer.cs">
+      <DependentUpon>auto_reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\auto_reports_schedule.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\auto_reports_schedule.Designer.cs">
+      <DependentUpon>auto_reports_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\auto_report_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\auto_report_history.Designer.cs">
+      <DependentUpon>auto_report_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bankedpay_ledger.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bankedpay_ledger.Designer.cs">
+      <DependentUpon>bankedpay_ledger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bankedpay_ledger_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bankedpay_ledger_type.Designer.cs">
+      <DependentUpon>bankedpay_ledger_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\barcode_prefix.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\barcode_prefix.Designer.cs">
+      <DependentUpon>barcode_prefix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\benefit_details.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\benefit_details.Designer.cs">
+      <DependentUpon>benefit_details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bingo_data.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bingo_data.Designer.cs">
+      <DependentUpon>bingo_data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bingo_queries.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bingo_queries.Designer.cs">
+      <DependentUpon>bingo_queries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bonus_membertype_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bonus_membertype_link.Designer.cs">
+      <DependentUpon>bonus_membertype_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bonus_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bonus_type.Designer.cs">
+      <DependentUpon>bonus_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\breaktime.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\breaktime.Designer.cs">
+      <DependentUpon>breaktime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business.Designer.cs">
+      <DependentUpon>business.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business_unit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business_unit.Designer.cs">
+      <DependentUpon>business_unit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business_unit_comp_div.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business_unit_comp_div.Designer.cs">
+      <DependentUpon>business_unit_comp_div.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business_unit_hiearchy.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business_unit_hiearchy.Designer.cs">
+      <DependentUpon>business_unit_hiearchy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business_unit_po_dist.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\business_unit_po_dist.Designer.cs">
+      <DependentUpon>business_unit_po_dist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bu_paytype_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\bu_paytype_link.Designer.cs">
+      <DependentUpon>bu_paytype_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cap_training_schedule.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cap_training_schedule.Designer.cs">
+      <DependentUpon>cap_training_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone.Designer.cs">
+      <DependentUpon>cellphone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_app_device.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_app_device.Designer.cs">
+      <DependentUpon>cellphone_app_device.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_app_imei.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_app_imei.Designer.cs">
+      <DependentUpon>cellphone_app_imei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_app_sim.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_app_sim.Designer.cs">
+      <DependentUpon>cellphone_app_sim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_carrier.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_carrier.Designer.cs">
+      <DependentUpon>cellphone_carrier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_gps.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_gps.Designer.cs">
+      <DependentUpon>cellphone_gps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_history.Designer.cs">
+      <DependentUpon>cellphone_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_number.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_number.Designer.cs">
+      <DependentUpon>cellphone_number.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_number_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_number_history.Designer.cs">
+      <DependentUpon>cellphone_number_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cellphone_status.Designer.cs">
+      <DependentUpon>cellphone_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificates.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificates.Designer.cs">
+      <DependentUpon>certificates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificates_credential_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificates_credential_link.Designer.cs">
+      <DependentUpon>certificates_credential_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificate_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificate_history.Designer.cs">
+      <DependentUpon>certificate_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificate_skill_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificate_skill_link.Designer.cs">
+      <DependentUpon>certificate_skill_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificate_training_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\certificate_training_link.Designer.cs">
+      <DependentUpon>certificate_training_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\chargeout.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\chargeout.Designer.cs">
+      <DependentUpon>chargeout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\collection_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\collection_history.Designer.cs">
+      <DependentUpon>collection_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ConnectionHelper.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contact.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contact.Designer.cs">
+      <DependentUpon>contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contactpage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contactpage.Designer.cs">
+      <DependentUpon>contactpage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contactpageprivilege.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contactpageprivilege.Designer.cs">
+      <DependentUpon>contactpageprivilege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contact_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contact_history.Designer.cs">
+      <DependentUpon>contact_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contact_netsuite_map.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\contact_netsuite_map.Designer.cs">
+      <DependentUpon>contact_netsuite_map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\conversion_map.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\conversion_map.Designer.cs">
+      <DependentUpon>conversion_map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\conversion_unit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\conversion_unit.Designer.cs">
+      <DependentUpon>conversion_unit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\core_responsibilities.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\core_responsibilities.Designer.cs">
+      <DependentUpon>core_responsibilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\core_responsibilities_privilege.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\core_responsibilities_privilege.Designer.cs">
+      <DependentUpon>core_responsibilities_privilege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\country.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\country.Designer.cs">
+      <DependentUpon>country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\credit_cards.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\credit_cards.Designer.cs">
+      <DependentUpon>credit_cards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\credit_card_purchase.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\credit_card_purchase.Designer.cs">
+      <DependentUpon>credit_card_purchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\credit_card_purchase_netsuite_xref.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\credit_card_purchase_netsuite_xref.Designer.cs">
+      <DependentUpon>credit_card_purchase_netsuite_xref.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_certificates.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_certificates.Designer.cs">
+      <DependentUpon>cr_certificates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_group.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_group.Designer.cs">
+      <DependentUpon>cr_group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_qualifications.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_qualifications.Designer.cs">
+      <DependentUpon>cr_qualifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_review.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_review.Designer.cs">
+      <DependentUpon>cr_review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_skills_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_skills_link.Designer.cs">
+      <DependentUpon>cr_skills_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_skills_priority.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cr_skills_priority.Designer.cs">
+      <DependentUpon>cr_skills_priority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\currency.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\currency.Designer.cs">
+      <DependentUpon>currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\currency_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\currency_history.Designer.cs">
+      <DependentUpon>currency_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer.Designer.cs">
+      <DependentUpon>customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_asset.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_asset.Designer.cs">
+      <DependentUpon>customer_asset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_asset_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_asset_history.Designer.cs">
+      <DependentUpon>customer_asset_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_business_unit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_business_unit.Designer.cs">
+      <DependentUpon>customer_business_unit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_collection_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_collection_status.Designer.cs">
+      <DependentUpon>customer_collection_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_company.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_company.Designer.cs">
+      <DependentUpon>customer_company.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_default_invoice_types.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_default_invoice_types.Designer.cs">
+      <DependentUpon>customer_default_invoice_types.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_history.Designer.cs">
+      <DependentUpon>customer_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_internal_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_internal_link.Designer.cs">
+      <DependentUpon>customer_internal_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_netsuite_map.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_netsuite_map.Designer.cs">
+      <DependentUpon>customer_netsuite_map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_origin.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_origin.Designer.cs">
+      <DependentUpon>customer_origin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_or_contact_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_or_contact_status.Designer.cs">
+      <DependentUpon>customer_or_contact_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_rate.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_rate.Designer.cs">
+      <DependentUpon>customer_rate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_sales_properties.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_sales_properties.Designer.cs">
+      <DependentUpon>customer_sales_properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketheader.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketheader.Designer.cs">
+      <DependentUpon>customer_ticketheader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketissues.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketissues.Designer.cs">
+      <DependentUpon>customer_ticketissues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketmanager.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketmanager.Designer.cs">
+      <DependentUpon>customer_ticketmanager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketpage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketpage.Designer.cs">
+      <DependentUpon>customer_ticketpage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketpriority.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketpriority.Designer.cs">
+      <DependentUpon>customer_ticketpriority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketstatus.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_ticketstatus.Designer.cs">
+      <DependentUpon>customer_ticketstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_tickettype.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\customer_tickettype.Designer.cs">
+      <DependentUpon>customer_tickettype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cust_vend_requests.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\cust_vend_requests.Designer.cs">
+      <DependentUpon>cust_vend_requests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\daily_finance.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\daily_finance.Designer.cs">
+      <DependentUpon>daily_finance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard.Designer.cs">
+      <DependentUpon>dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboardtmp.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboardtmp.Designer.cs">
+      <DependentUpon>dashboardtmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard_header.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard_header.Designer.cs">
+      <DependentUpon>dashboard_header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard_snapshot_daily.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard_snapshot_daily.Designer.cs">
+      <DependentUpon>dashboard_snapshot_daily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard_snapshot_hist.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard_snapshot_hist.Designer.cs">
+      <DependentUpon>dashboard_snapshot_hist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard_thresholds.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\dashboard_thresholds.Designer.cs">
+      <DependentUpon>dashboard_thresholds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\days_off_canned_reasons.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\days_off_canned_reasons.Designer.cs">
+      <DependentUpon>days_off_canned_reasons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\digitalsignage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\digitalsignage.Designer.cs">
+      <DependentUpon>digitalsignage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\distribution_group.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\distribution_group.Designer.cs">
+      <DependentUpon>distribution_group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\distribution_group_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\distribution_group_link.Designer.cs">
+      <DependentUpon>distribution_group_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\download.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\download.Designer.cs">
+      <DependentUpon>download.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\downloadcat.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\downloadcat.Designer.cs">
+      <DependentUpon>downloadcat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\edit_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\edit_type.Designer.cs">
+      <DependentUpon>edit_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emaillog.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emaillog.Designer.cs">
+      <DependentUpon>emaillog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_review.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_review.Designer.cs">
+      <DependentUpon>emp_review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_review_group.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_review_group.Designer.cs">
+      <DependentUpon>emp_review_group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_review_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_review_history.Designer.cs">
+      <DependentUpon>emp_review_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_review_items.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_review_items.Designer.cs">
+      <DependentUpon>emp_review_items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_trm.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_trm.Designer.cs">
+      <DependentUpon>emp_trm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_trm_chklist_lnk.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_trm_chklist_lnk.Designer.cs">
+      <DependentUpon>emp_trm_chklist_lnk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_trm_chklist_opt.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\emp_trm_chklist_opt.Designer.cs">
+      <DependentUpon>emp_trm_chklist_opt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\eritem.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\eritem.Designer.cs">
+      <DependentUpon>eritem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\erjob.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\erjob.Designer.cs">
+      <DependentUpon>erjob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\error.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\error.Designer.cs">
+      <DependentUpon>error.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\error_log.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\error_log.Designer.cs">
+      <DependentUpon>error_log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\er_branch_data.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\er_branch_data.Designer.cs">
+      <DependentUpon>er_branch_data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\er_vendor_data.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\er_vendor_data.Designer.cs">
+      <DependentUpon>er_vendor_data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\event_table.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\event_table.Designer.cs">
+      <DependentUpon>event_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_category.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_category.Designer.cs">
+      <DependentUpon>expense_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_category_business_unit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_category_business_unit.Designer.cs">
+      <DependentUpon>expense_category_business_unit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_reimbursement.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_reimbursement.Designer.cs">
+      <DependentUpon>expense_reimbursement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_reimbursement_netsuite_xref.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_reimbursement_netsuite_xref.Designer.cs">
+      <DependentUpon>expense_reimbursement_netsuite_xref.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_seller.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\expense_seller.Designer.cs">
+      <DependentUpon>expense_seller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ext_website_credentials.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ext_website_credentials.Designer.cs">
+      <DependentUpon>ext_website_credentials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\failed_login.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\failed_login.Designer.cs">
+      <DependentUpon>failed_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\faq.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\faq.Designer.cs">
+      <DependentUpon>faq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\faq_section.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\faq_section.Designer.cs">
+      <DependentUpon>faq_section.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\fytarget.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\fytarget.Designer.cs">
+      <DependentUpon>fytarget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\fytarget_employees.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\fytarget_employees.Designer.cs">
+      <DependentUpon>fytarget_employees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gantt_data.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gantt_data.Designer.cs">
+      <DependentUpon>gantt_data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gltrans.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gltrans.Designer.cs">
+      <DependentUpon>gltrans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_chart_of_accounts.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_chart_of_accounts.Designer.cs">
+      <DependentUpon>gl_chart_of_accounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_chart_of_accounts_staging.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_chart_of_accounts_staging.Designer.cs">
+      <DependentUpon>gl_chart_of_accounts_staging.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_control_accounts.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_control_accounts.Designer.cs">
+      <DependentUpon>gl_control_accounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_group_te.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_group_te.Designer.cs">
+      <DependentUpon>gl_group_te.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_note_te.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_note_te.Designer.cs">
+      <DependentUpon>gl_note_te.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_special_accounts.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_special_accounts.Designer.cs">
+      <DependentUpon>gl_special_accounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_special_account_te_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_special_account_te_link.Designer.cs">
+      <DependentUpon>gl_special_account_te_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_subgroup_te.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_subgroup_te.Designer.cs">
+      <DependentUpon>gl_subgroup_te.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_te.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_te.Designer.cs">
+      <DependentUpon>gl_te.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_type_mapping.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gl_type_mapping.Designer.cs">
+      <DependentUpon>gl_type_mapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\graph.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\graph.Designer.cs">
+      <DependentUpon>graph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gridviewlayouts.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\gridviewlayouts.Designer.cs">
+      <DependentUpon>gridviewlayouts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\historycust.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\historycust.Designer.cs">
+      <DependentUpon>historycust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\historypo.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\historypo.Designer.cs">
+      <DependentUpon>historypo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\history_action_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\history_action_type.Designer.cs">
+      <DependentUpon>history_action_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\holidays.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\holidays.Designer.cs">
+      <DependentUpon>holidays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle.Designer.cs">
+      <DependentUpon>huddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle_source.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle_source.Designer.cs">
+      <DependentUpon>huddle_source.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle_task.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle_task.Designer.cs">
+      <DependentUpon>huddle_task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle_task_comments.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle_task_comments.Designer.cs">
+      <DependentUpon>huddle_task_comments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle_user.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\huddle_user.Designer.cs">
+      <DependentUpon>huddle_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\hu_snapshot.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\hu_snapshot.Designer.cs">
+      <DependentUpon>hu_snapshot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inc_stmt_note.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inc_stmt_note.Designer.cs">
+      <DependentUpon>inc_stmt_note.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\internal_companyno.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\internal_companyno.Designer.cs">
+      <DependentUpon>internal_companyno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\internal_project.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\internal_project.Designer.cs">
+      <DependentUpon>internal_project.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\invattribute.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\invattribute.Designer.cs">
+      <DependentUpon>invattribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_alternate.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_alternate.Designer.cs">
+      <DependentUpon>inventory_alternate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_annual_counts.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_annual_counts.Designer.cs">
+      <DependentUpon>inventory_annual_counts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_annual_counts_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_annual_counts_history.Designer.cs">
+      <DependentUpon>inventory_annual_counts_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_annual_count_header.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_annual_count_header.Designer.cs">
+      <DependentUpon>inventory_annual_count_header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_attribute.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_attribute.Designer.cs">
+      <DependentUpon>inventory_attribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_attribute_value.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_attribute_value.Designer.cs">
+      <DependentUpon>inventory_attribute_value.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_audit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_audit.Designer.cs">
+      <DependentUpon>inventory_audit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_barcode.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_barcode.Designer.cs">
+      <DependentUpon>inventory_barcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_branch.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_branch.Designer.cs">
+      <DependentUpon>inventory_branch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_branch_options.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_branch_options.Designer.cs">
+      <DependentUpon>inventory_branch_options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_consignment.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_consignment.Designer.cs">
+      <DependentUpon>inventory_consignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_cost.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_cost.Designer.cs">
+      <DependentUpon>inventory_cost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_description.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_description.Designer.cs">
+      <DependentUpon>inventory_description.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_dollar_balance_daily.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_dollar_balance_daily.Designer.cs">
+      <DependentUpon>inventory_dollar_balance_daily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_expiry_period.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_expiry_period.Designer.cs">
+      <DependentUpon>inventory_expiry_period.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_group_dtl.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_group_dtl.Designer.cs">
+      <DependentUpon>inventory_group_dtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_group_hdr.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_group_hdr.Designer.cs">
+      <DependentUpon>inventory_group_hdr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_history.Designer.cs">
+      <DependentUpon>inventory_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_import_stage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_import_stage.Designer.cs">
+      <DependentUpon>inventory_import_stage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_incorrect_levels.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_incorrect_levels.Designer.cs">
+      <DependentUpon>inventory_incorrect_levels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_item_detail.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_item_detail.Designer.cs">
+      <DependentUpon>inventory_item_detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_item_master.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_item_master.Designer.cs">
+      <DependentUpon>inventory_item_master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_kit_dtl.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_kit_dtl.Designer.cs">
+      <DependentUpon>inventory_kit_dtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_kit_hdr.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_kit_hdr.Designer.cs">
+      <DependentUpon>inventory_kit_hdr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_location.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_location.Designer.cs">
+      <DependentUpon>inventory_location.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_location_master.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_location_master.Designer.cs">
+      <DependentUpon>inventory_location_master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_location_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_location_type.Designer.cs">
+      <DependentUpon>inventory_location_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_note.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_note.Designer.cs">
+      <DependentUpon>inventory_note.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_per_unit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_per_unit.Designer.cs">
+      <DependentUpon>inventory_per_unit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_picture.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_picture.Designer.cs">
+      <DependentUpon>inventory_picture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_price.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_price.Designer.cs">
+      <DependentUpon>inventory_price.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_price_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_price_history.Designer.cs">
+      <DependentUpon>inventory_price_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_reference.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_reference.Designer.cs">
+      <DependentUpon>inventory_reference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_referencetype.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_referencetype.Designer.cs">
+      <DependentUpon>inventory_referencetype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_sellprice.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_sellprice.Designer.cs">
+      <DependentUpon>inventory_sellprice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_sellprice_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_sellprice_history.Designer.cs">
+      <DependentUpon>inventory_sellprice_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_sold_as.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_sold_as.Designer.cs">
+      <DependentUpon>inventory_sold_as.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tag.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tag.Designer.cs">
+      <DependentUpon>inventory_tag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tag_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tag_link.Designer.cs">
+      <DependentUpon>inventory_tag_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tag_preset.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tag_preset.Designer.cs">
+      <DependentUpon>inventory_tag_preset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tag_tradename.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tag_tradename.Designer.cs">
+      <DependentUpon>inventory_tag_tradename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tax.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_tax.Designer.cs">
+      <DependentUpon>inventory_tax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_usage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_usage.Designer.cs">
+      <DependentUpon>inventory_usage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_usage_copy.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\inventory_usage_copy.Designer.cs">
+      <DependentUpon>inventory_usage_copy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\invoice_collection_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\invoice_collection_status.Designer.cs">
+      <DependentUpon>invoice_collection_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\invoice_service_email_report_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\invoice_service_email_report_history.Designer.cs">
+      <DependentUpon>invoice_service_email_report_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\journal_entry.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\journal_entry.Designer.cs">
+      <DependentUpon>journal_entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\journal_entry_line.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\journal_entry_line.Designer.cs">
+      <DependentUpon>journal_entry_line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\leavetype.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\leavetype.Designer.cs">
+      <DependentUpon>leavetype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log.Designer.cs">
+      <DependentUpon>log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\logging_agent_error_log.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\logging_agent_error_log.Designer.cs">
+      <DependentUpon>logging_agent_error_log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log_action.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log_action.Designer.cs">
+      <DependentUpon>log_action.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log_page.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log_page.Designer.cs">
+      <DependentUpon>log_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log_page_asax.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log_page_asax.Designer.cs">
+      <DependentUpon>log_page_asax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log_section.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\log_section.Designer.cs">
+      <DependentUpon>log_section.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\manufacturer.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\manufacturer.Designer.cs">
+      <DependentUpon>manufacturer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\manufacturervendor.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\manufacturervendor.Designer.cs">
+      <DependentUpon>manufacturervendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\markup_formula.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\markup_formula.Designer.cs">
+      <DependentUpon>markup_formula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\master_skills.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\master_skills.Designer.cs">
+      <DependentUpon>master_skills.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\master_skill_review_questions.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\master_skill_review_questions.Designer.cs">
+      <DependentUpon>master_skill_review_questions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\matt.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\matt.Designer.cs">
+      <DependentUpon>matt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member.Designer.cs">
+      <DependentUpon>member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberaddressaudit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberaddressaudit.Designer.cs">
+      <DependentUpon>memberaddressaudit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberdaysoff.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberdaysoff.Designer.cs">
+      <DependentUpon>memberdaysoff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberdaysoffack.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberdaysoffack.Designer.cs">
+      <DependentUpon>memberdaysoffack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberdivision.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberdivision.Designer.cs">
+      <DependentUpon>memberdivision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membergraph.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membergraph.Designer.cs">
+      <DependentUpon>membergraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membernote.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membernote.Designer.cs">
+      <DependentUpon>membernote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberoffer_cr.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberoffer_cr.Designer.cs">
+      <DependentUpon>memberoffer_cr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberoffer_milestones.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberoffer_milestones.Designer.cs">
+      <DependentUpon>memberoffer_milestones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberpage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberpage.Designer.cs">
+      <DependentUpon>memberpage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberpageprivilege.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberpageprivilege.Designer.cs">
+      <DependentUpon>memberpageprivilege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime.Designer.cs">
+      <DependentUpon>membertime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertimeaudit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertimeaudit.Designer.cs">
+      <DependentUpon>membertimeaudit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_netsuite_xref.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_netsuite_xref.Designer.cs">
+      <DependentUpon>membertime_netsuite_xref.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_projecttask.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_projecttask.Designer.cs">
+      <DependentUpon>membertime_projecttask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_projecttask_netsuite_xref.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_projecttask_netsuite_xref.Designer.cs">
+      <DependentUpon>membertime_projecttask_netsuite_xref.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_shop_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_shop_link.Designer.cs">
+      <DependentUpon>membertime_shop_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_shop_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_shop_type.Designer.cs">
+      <DependentUpon>membertime_shop_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_tags.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_tags.Designer.cs">
+      <DependentUpon>membertime_tags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_ts_lite_paytypes.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_ts_lite_paytypes.Designer.cs">
+      <DependentUpon>membertime_ts_lite_paytypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_type.Designer.cs">
+      <DependentUpon>membertime_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_type_gl_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertime_type_gl_link.Designer.cs">
+      <DependentUpon>membertime_type_gl_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype.Designer.cs">
+      <DependentUpon>membertype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertypehours.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertypehours.Designer.cs">
+      <DependentUpon>membertypehours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertypepage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertypepage.Designer.cs">
+      <DependentUpon>membertypepage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertypepageprivilege.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertypepageprivilege.Designer.cs">
+      <DependentUpon>membertypepageprivilege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_auto_reports.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_auto_reports.Designer.cs">
+      <DependentUpon>membertype_auto_reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_chargeout.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_chargeout.Designer.cs">
+      <DependentUpon>membertype_chargeout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_chargeout_back.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_chargeout_back.Designer.cs">
+      <DependentUpon>membertype_chargeout_back.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_chargeout_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_chargeout_history.Designer.cs">
+      <DependentUpon>membertype_chargeout_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_classification.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_classification.Designer.cs">
+      <DependentUpon>membertype_classification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_responsibilities.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\membertype_responsibilities.Designer.cs">
+      <DependentUpon>membertype_responsibilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberwage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberwage.Designer.cs">
+      <DependentUpon>memberwage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberx.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\memberx.Designer.cs">
+      <DependentUpon>memberx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_apprentice_level.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_apprentice_level.Designer.cs">
+      <DependentUpon>member_apprentice_level.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_certificates.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_certificates.Designer.cs">
+      <DependentUpon>member_certificates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_dtl.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_dtl.Designer.cs">
+      <DependentUpon>member_fvr_dtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_hdr.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_hdr.Designer.cs">
+      <DependentUpon>member_fvr_hdr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_history.Designer.cs">
+      <DependentUpon>member_fvr_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_status.Designer.cs">
+      <DependentUpon>member_fvr_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_tab.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_tab.Designer.cs">
+      <DependentUpon>member_fvr_tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_template_detail.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_template_detail.Designer.cs">
+      <DependentUpon>member_fvr_template_detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_template_header.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_fvr_template_header.Designer.cs">
+      <DependentUpon>member_fvr_template_header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_hrstatus.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_hrstatus.Designer.cs">
+      <DependentUpon>member_hrstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_import_stage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_import_stage.Designer.cs">
+      <DependentUpon>member_import_stage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_i_template.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_i_template.Designer.cs">
+      <DependentUpon>member_i_template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_netsuite_xref.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_netsuite_xref.Designer.cs">
+      <DependentUpon>member_netsuite_xref.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_offers.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_offers.Designer.cs">
+      <DependentUpon>member_offers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_offers_prod.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_offers_prod.Designer.cs">
+      <DependentUpon>member_offers_prod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_offers_uat.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_offers_uat.Designer.cs">
+      <DependentUpon>member_offers_uat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_paytype.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_paytype.Designer.cs">
+      <DependentUpon>member_paytype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_skills.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_skills.Designer.cs">
+      <DependentUpon>member_skills.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_task_cc.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_task_cc.Designer.cs">
+      <DependentUpon>member_task_cc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_temp.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_temp.Designer.cs">
+      <DependentUpon>member_temp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_tile.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_tile.Designer.cs">
+      <DependentUpon>member_tile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_tile_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_tile_type.Designer.cs">
+      <DependentUpon>member_tile_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_tile_type_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_tile_type_link.Designer.cs">
+      <DependentUpon>member_tile_type_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_timesheet_accuracy.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_timesheet_accuracy.Designer.cs">
+      <DependentUpon>member_timesheet_accuracy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_todo_list_helper.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\member_todo_list_helper.Designer.cs">
+      <DependentUpon>member_todo_list_helper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\message.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\message.Designer.cs">
+      <DependentUpon>message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\messageboard_chat.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\messageboard_chat.Designer.cs">
+      <DependentUpon>messageboard_chat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\messageto.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\messageto.Designer.cs">
+      <DependentUpon>messageto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\messagetype.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\messagetype.Designer.cs">
+      <DependentUpon>messagetype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\migration_expense_category_for_po.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\migration_expense_category_for_po.Designer.cs">
+      <DependentUpon>migration_expense_category_for_po.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\n2_profile_category.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\n2_profile_category.Designer.cs">
+      <DependentUpon>n2_profile_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\n2_profile_property.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\n2_profile_property.Designer.cs">
+      <DependentUpon>n2_profile_property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\n2_user_profile.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\n2_user_profile.Designer.cs">
+      <DependentUpon>n2_user_profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\nesi_conversion_table.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\nesi_conversion_table.Designer.cs">
+      <DependentUpon>nesi_conversion_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\netsuite_queue.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\netsuite_queue.Designer.cs">
+      <DependentUpon>netsuite_queue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\netsuite_sync_error.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\netsuite_sync_error.Designer.cs">
+      <DependentUpon>netsuite_sync_error.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\new_milestone.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\new_milestone.Designer.cs">
+      <DependentUpon>new_milestone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ne_file_revision.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ne_file_revision.Designer.cs">
+      <DependentUpon>ne_file_revision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ne_session.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ne_session.Designer.cs">
+      <DependentUpon>ne_session.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\note_templates.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\note_templates.Designer.cs">
+      <DependentUpon>note_templates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\oncall_schedule.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\oncall_schedule.Designer.cs">
+      <DependentUpon>oncall_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ownership.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ownership.Designer.cs">
+      <DependentUpon>ownership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\page.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\page.Designer.cs">
+      <DependentUpon>page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\pageprivilege.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\pageprivilege.Designer.cs">
+      <DependentUpon>pageprivilege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\pageprivilege_template.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\pageprivilege_template.Designer.cs">
+      <DependentUpon>pageprivilege_template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\pageprivilege_template_item.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\pageprivilege_template_item.Designer.cs">
+      <DependentUpon>pageprivilege_template_item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\page_related.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\page_related.Designer.cs">
+      <DependentUpon>page_related.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\page_wiki.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\page_wiki.Designer.cs">
+      <DependentUpon>page_wiki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\partner_skills.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\partner_skills.Designer.cs">
+      <DependentUpon>partner_skills.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\part_request.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\part_request.Designer.cs">
+      <DependentUpon>part_request.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\part_request_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\part_request_history.Designer.cs">
+      <DependentUpon>part_request_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\part_request_origin.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\part_request_origin.Designer.cs">
+      <DependentUpon>part_request_origin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\part_request_statuslist.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\part_request_statuslist.Designer.cs">
+      <DependentUpon>part_request_statuslist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\passport.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\passport.Designer.cs">
+      <DependentUpon>passport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payperiods.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payperiods.Designer.cs">
+      <DependentUpon>payperiods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payperiod_tax_entity.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payperiod_tax_entity.Designer.cs">
+      <DependentUpon>payperiod_tax_entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll.Designer.cs">
+      <DependentUpon>payroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll_entry_types.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll_entry_types.Designer.cs">
+      <DependentUpon>payroll_entry_types.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll_extra_payments.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll_extra_payments.Designer.cs">
+      <DependentUpon>payroll_extra_payments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll_hours.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll_hours.Designer.cs">
+      <DependentUpon>payroll_hours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll_progress.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\payroll_progress.Designer.cs">
+      <DependentUpon>payroll_progress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\paytypehours.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\paytypehours.Designer.cs">
+      <DependentUpon>paytypehours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\phone_log.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\phone_log.Designer.cs">
+      <DependentUpon>phone_log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\phone_numbers.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\phone_numbers.Designer.cs">
+      <DependentUpon>phone_numbers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprogcomment.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprogcomment.Designer.cs">
+      <DependentUpon>poprogcomment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprogstatus.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprogstatus.Designer.cs">
+      <DependentUpon>poprogstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_cc.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_cc.Designer.cs">
+      <DependentUpon>poprog_cc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_header.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_header.Designer.cs">
+      <DependentUpon>poprog_header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_notes.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_notes.Designer.cs">
+      <DependentUpon>poprog_notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_part_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_part_history.Designer.cs">
+      <DependentUpon>poprog_part_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_payment_method.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_payment_method.Designer.cs">
+      <DependentUpon>poprog_payment_method.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_scans.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_scans.Designer.cs">
+      <DependentUpon>poprog_scans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_shipping.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_shipping.Designer.cs">
+      <DependentUpon>poprog_shipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\poprog_status.Designer.cs">
+      <DependentUpon>poprog_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\po_details_current.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\po_details_current.Designer.cs">
+      <DependentUpon>po_details_current.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\po_gl_acct.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\po_gl_acct.Designer.cs">
+      <DependentUpon>po_gl_acct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\po_import_stage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\po_import_stage.Designer.cs">
+      <DependentUpon>po_import_stage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\po_line_import_stage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\po_line_import_stage.Designer.cs">
+      <DependentUpon>po_line_import_stage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege.Designer.cs">
+      <DependentUpon>privilege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege_detail.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege_detail.Designer.cs">
+      <DependentUpon>privilege_detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege_global.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege_global.Designer.cs">
+      <DependentUpon>privilege_global.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege_global_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege_global_link.Designer.cs">
+      <DependentUpon>privilege_global_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege_global_link_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\privilege_global_link_type.Designer.cs">
+      <DependentUpon>privilege_global_link_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\progress_billings.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\progress_billings.Designer.cs">
+      <DependentUpon>progress_billings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\properties.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\properties.Designer.cs">
+      <DependentUpon>properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\prov.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\prov.Designer.cs">
+      <DependentUpon>prov.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\qualifications.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\qualifications.Designer.cs">
+      <DependentUpon>qualifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quick_extensions.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quick_extensions.Designer.cs">
+      <DependentUpon>quick_extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_canned_description.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_canned_description.Designer.cs">
+      <DependentUpon>quote_canned_description.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_chance.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_chance.Designer.cs">
+      <DependentUpon>quote_chance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_competitor.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_competitor.Designer.cs">
+      <DependentUpon>quote_competitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_cust_notes.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_cust_notes.Designer.cs">
+      <DependentUpon>quote_cust_notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_extratext.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_extratext.Designer.cs">
+      <DependentUpon>quote_extratext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_field_title.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_field_title.Designer.cs">
+      <DependentUpon>quote_field_title.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_filter.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_filter.Designer.cs">
+      <DependentUpon>quote_filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_filter_questions.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_filter_questions.Designer.cs">
+      <DependentUpon>quote_filter_questions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_follow_up.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_follow_up.Designer.cs">
+      <DependentUpon>quote_follow_up.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_history.Designer.cs">
+      <DependentUpon>quote_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_kill_reason.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_kill_reason.Designer.cs">
+      <DependentUpon>quote_kill_reason.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_kill_reason_map.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_kill_reason_map.Designer.cs">
+      <DependentUpon>quote_kill_reason_map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_kill_tier.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_kill_tier.Designer.cs">
+      <DependentUpon>quote_kill_tier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_master.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_master.Designer.cs">
+      <DependentUpon>quote_master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_post_mortem.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_post_mortem.Designer.cs">
+      <DependentUpon>quote_post_mortem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_post_mortem_questions.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_post_mortem_questions.Designer.cs">
+      <DependentUpon>quote_post_mortem_questions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_pricetype.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_pricetype.Designer.cs">
+      <DependentUpon>quote_pricetype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_process_questions.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_process_questions.Designer.cs">
+      <DependentUpon>quote_process_questions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_process_question_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_process_question_history.Designer.cs">
+      <DependentUpon>quote_process_question_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_received_reason.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_received_reason.Designer.cs">
+      <DependentUpon>quote_received_reason.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_received_reason_map.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_received_reason_map.Designer.cs">
+      <DependentUpon>quote_received_reason_map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_schedule.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_schedule.Designer.cs">
+      <DependentUpon>quote_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_section.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_section.Designer.cs">
+      <DependentUpon>quote_section.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_status.Designer.cs">
+      <DependentUpon>quote_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_term.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_term.Designer.cs">
+      <DependentUpon>quote_term.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_worksheet.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_worksheet.Designer.cs">
+      <DependentUpon>quote_worksheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_worksheet_current_cost.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\quote_worksheet_current_cost.Designer.cs">
+      <DependentUpon>quote_worksheet_current_cost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rd.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rd.Designer.cs">
+      <DependentUpon>rd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\releases.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\releases.Designer.cs">
+      <DependentUpon>releases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rental_equipment.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rental_equipment.Designer.cs">
+      <DependentUpon>rental_equipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rental_equipment_category.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rental_equipment_category.Designer.cs">
+      <DependentUpon>rental_equipment_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\report.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\report.Designer.cs">
+      <DependentUpon>report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\reports_to_helper.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\reports_to_helper.Designer.cs">
+      <DependentUpon>reports_to_helper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\revenue_line.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\revenue_line.Designer.cs">
+      <DependentUpon>revenue_line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\revenue_line_business_unit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\revenue_line_business_unit.Designer.cs">
+      <DependentUpon>revenue_line_business_unit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rfq_header.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rfq_header.Designer.cs">
+      <DependentUpon>rfq_header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rfq_lineitem.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rfq_lineitem.Designer.cs">
+      <DependentUpon>rfq_lineitem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rfq_part_list.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rfq_part_list.Designer.cs">
+      <DependentUpon>rfq_part_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rfq_vendor_list.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rfq_vendor_list.Designer.cs">
+      <DependentUpon>rfq_vendor_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rss_feed.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\rss_feed.Designer.cs">
+      <DependentUpon>rss_feed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\r_engine_category.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\r_engine_category.Designer.cs">
+      <DependentUpon>r_engine_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\r_engine_permission.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\r_engine_permission.Designer.cs">
+      <DependentUpon>r_engine_permission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\r_engine_report.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\r_engine_report.Designer.cs">
+      <DependentUpon>r_engine_report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\salesperson.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\salesperson.Designer.cs">
+      <DependentUpon>salesperson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\section.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\section.Designer.cs">
+      <DependentUpon>section.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\session.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\session.Designer.cs">
+      <DependentUpon>session.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\session_collection.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\session_collection.Designer.cs">
+      <DependentUpon>session_collection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ship.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ship.Designer.cs">
+      <DependentUpon>ship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\shopping_cart.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\shopping_cart.Designer.cs">
+      <DependentUpon>shopping_cart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\shopping_cart_header.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\shopping_cart_header.Designer.cs">
+      <DependentUpon>shopping_cart_header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\signature.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\signature.Designer.cs">
+      <DependentUpon>signature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\specific_notes.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\specific_notes.Designer.cs">
+      <DependentUpon>specific_notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\stbb_bymonth.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\stbb_bymonth.Designer.cs">
+      <DependentUpon>stbb_bymonth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\stock_transfer.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\stock_transfer.Designer.cs">
+      <DependentUpon>stock_transfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\stock_transfer_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\stock_transfer_type.Designer.cs">
+      <DependentUpon>stock_transfer_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\suggestion.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\suggestion.Designer.cs">
+      <DependentUpon>suggestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\target.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\target.Designer.cs">
+      <DependentUpon>target.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\target_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\target_type.Designer.cs">
+      <DependentUpon>target_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\task.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\task.Designer.cs">
+      <DependentUpon>task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\task_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\task_history.Designer.cs">
+      <DependentUpon>task_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\task_member.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\task_member.Designer.cs">
+      <DependentUpon>task_member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\task_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\task_status.Designer.cs">
+      <DependentUpon>task_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax.Designer.cs">
+      <DependentUpon>tax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity.Designer.cs">
+      <DependentUpon>tax_entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity_group.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity_group.Designer.cs">
+      <DependentUpon>tax_entity_group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity_group_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity_group_link.Designer.cs">
+      <DependentUpon>tax_entity_group_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity_hiearchy.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity_hiearchy.Designer.cs">
+      <DependentUpon>tax_entity_hiearchy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity_hierarchy.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tax_entity_hierarchy.Designer.cs">
+      <DependentUpon>tax_entity_hierarchy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\term.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\term.Designer.cs">
+      <DependentUpon>term.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\territory_mapping.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\territory_mapping.Designer.cs">
+      <DependentUpon>territory_mapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketheader.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketheader.Designer.cs">
+      <DependentUpon>ticketheader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketissues.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketissues.Designer.cs">
+      <DependentUpon>ticketissues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketmanager.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketmanager.Designer.cs">
+      <DependentUpon>ticketmanager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketpage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketpage.Designer.cs">
+      <DependentUpon>ticketpage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketpriority.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketpriority.Designer.cs">
+      <DependentUpon>ticketpriority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketstatus.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticketstatus.Designer.cs">
+      <DependentUpon>ticketstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tickettype.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tickettype.Designer.cs">
+      <DependentUpon>tickettype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_files.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_files.Designer.cs">
+      <DependentUpon>ticket_files.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_group.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_group.Designer.cs">
+      <DependentUpon>ticket_group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_group_type_link.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_group_type_link.Designer.cs">
+      <DependentUpon>ticket_group_type_link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_memberview.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_memberview.Designer.cs">
+      <DependentUpon>ticket_memberview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_tasks.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_tasks.Designer.cs">
+      <DependentUpon>ticket_tasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_team.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_team.Designer.cs">
+      <DependentUpon>ticket_team.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_team_memberid.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_team_memberid.Designer.cs">
+      <DependentUpon>ticket_team_memberid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_vote.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\ticket_vote.Designer.cs">
+      <DependentUpon>ticket_vote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\titles.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\titles.Designer.cs">
+      <DependentUpon>titles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tmp_woprog.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\tmp_woprog.Designer.cs">
+      <DependentUpon>tmp_woprog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_curriculum.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_curriculum.Designer.cs">
+      <DependentUpon>training_curriculum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_header.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_header.Designer.cs">
+      <DependentUpon>training_header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_header_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_header_history.Designer.cs">
+      <DependentUpon>training_header_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_history.Designer.cs">
+      <DependentUpon>training_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_module.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_module.Designer.cs">
+      <DependentUpon>training_module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_schedule.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_schedule.Designer.cs">
+      <DependentUpon>training_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\training_type.Designer.cs">
+      <DependentUpon>training_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\truck_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\truck_history.Designer.cs">
+      <DependentUpon>truck_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\user_switch.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\user_switch.Designer.cs">
+      <DependentUpon>user_switch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_log.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_log.Designer.cs">
+      <DependentUpon>vacation_log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_master.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_master.Designer.cs">
+      <DependentUpon>vacation_master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_note.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_note.Designer.cs">
+      <DependentUpon>vacation_note.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_payment_method.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_payment_method.Designer.cs">
+      <DependentUpon>vacation_payment_method.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_status.Designer.cs">
+      <DependentUpon>vacation_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_transactions.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_transactions.Designer.cs">
+      <DependentUpon>vacation_transactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_type.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vacation_type.Designer.cs">
+      <DependentUpon>vacation_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor.Designer.cs">
+      <DependentUpon>vendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor_business_unit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor_business_unit.Designer.cs">
+      <DependentUpon>vendor_business_unit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor_documents.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor_documents.Designer.cs">
+      <DependentUpon>vendor_documents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor_merge_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor_merge_history.Designer.cs">
+      <DependentUpon>vendor_merge_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor_netsuite_map.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\vendor_netsuite_map.Designer.cs">
+      <DependentUpon>vendor_netsuite_map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video.Designer.cs">
+      <DependentUpon>video.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video_category.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video_category.Designer.cs">
+      <DependentUpon>video_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video_page_lnk.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video_page_lnk.Designer.cs">
+      <DependentUpon>video_page_lnk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video_privilege.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video_privilege.Designer.cs">
+      <DependentUpon>video_privilege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video_watch_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\video_watch_history.Designer.cs">
+      <DependentUpon>video_watch_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\visible_business_units.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\visible_business_units.Designer.cs">
+      <DependentUpon>visible_business_units.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\watch.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\watch.Designer.cs">
+      <DependentUpon>watch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\watch_wo_costs_sells_log.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\watch_wo_costs_sells_log.Designer.cs">
+      <DependentUpon>watch_wo_costs_sells_log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\who_to_ask.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\who_to_ask.Designer.cs">
+      <DependentUpon>who_to_ask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wocomment.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wocomment.Designer.cs">
+      <DependentUpon>wocomment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wodetailh_temp.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wodetailh_temp.Designer.cs">
+      <DependentUpon>wodetailh_temp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog.Designer.cs">
+      <DependentUpon>woprog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprogchanges.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprogchanges.Designer.cs">
+      <DependentUpon>woprogchanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprogchanges_snapshot.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprogchanges_snapshot.Designer.cs">
+      <DependentUpon>woprogchanges_snapshot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprogcomment.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprogcomment.Designer.cs">
+      <DependentUpon>woprogcomment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprogstatus.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprogstatus.Designer.cs">
+      <DependentUpon>woprogstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_asset.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_asset.Designer.cs">
+      <DependentUpon>woprog_asset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_invoice_text.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_invoice_text.Designer.cs">
+      <DependentUpon>woprog_invoice_text.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_jobtag.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_jobtag.Designer.cs">
+      <DependentUpon>woprog_jobtag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_project_notes.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_project_notes.Designer.cs">
+      <DependentUpon>woprog_project_notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_scheduler.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_scheduler.Designer.cs">
+      <DependentUpon>woprog_scheduler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_status.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_status.Designer.cs">
+      <DependentUpon>woprog_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_tasks.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\woprog_tasks.Designer.cs">
+      <DependentUpon>woprog_tasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_associated.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_associated.Designer.cs">
+      <DependentUpon>wo_associated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_checklist.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_checklist.Designer.cs">
+      <DependentUpon>wo_checklist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_checklist_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_checklist_history.Designer.cs">
+      <DependentUpon>wo_checklist_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_detail_current.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_detail_current.Designer.cs">
+      <DependentUpon>wo_detail_current.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_detail_current_audit.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_detail_current_audit.Designer.cs">
+      <DependentUpon>wo_detail_current_audit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_detail_history.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_detail_history.Designer.cs">
+      <DependentUpon>wo_detail_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_detail_lineitem_billtype.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_detail_lineitem_billtype.Designer.cs">
+      <DependentUpon>wo_detail_lineitem_billtype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_freeze.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_freeze.Designer.cs">
+      <DependentUpon>wo_freeze.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_import_stage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_import_stage.Designer.cs">
+      <DependentUpon>wo_import_stage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_lag.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_lag.Designer.cs">
+      <DependentUpon>wo_lag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_line_import_stage.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_line_import_stage.Designer.cs">
+      <DependentUpon>wo_line_import_stage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_survey.cs" />
+    <Compile Include="App_Code\XPO\ne_xpo.csCode\wo_survey.Designer.cs">
+      <DependentUpon>wo_survey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoreMarkerType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\dt_emp_offer_cr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dt_emp_offer_cr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\employee_info.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>employee_info.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\emp_offer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>emp_offer.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\emp_offer_cr_details.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>emp_offer_cr_details.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\emp_review.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>emp_review.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="App_Code\XPO\ne_xpo.cs.xpo">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App_Code\XPO\ne_xpo.cs.xpo.diagram">
+      <DependentUpon>ne_xpo.cs.xpo</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\dt_emp_offer_cr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>dt_emp_offer_cr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\employee_info.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>employee_info.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\emp_offer.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>emp_offer.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\emp_offer_cr_details.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>emp_offer_cr_details.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\emp_review.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>emp_review.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ERQuoteDetail.resx" />
+    <EmbeddedResource Include="Properties\general_review_data.resx" />
+    <EmbeddedResource Include="Properties\general_review_final.resx" />
+    <EmbeddedResource Include="Properties\InvoicePreview.resx" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Map.resx" />
+    <EmbeddedResource Include="Properties\membertype_review_data.resx" />
+    <EmbeddedResource Include="Properties\membertype_review_final.resx" />
+    <EmbeddedResource Include="Properties\oncall.resx" />
+    <EmbeddedResource Include="Properties\podetailsdisp.resx" />
+    <EmbeddedResource Include="Properties\popheaderdisp.resx" />
+    <EmbeddedResource Include="Properties\print_membertype.resx" />
+    <EmbeddedResource Include="Properties\print_qualifications.resx" />
+    <EmbeddedResource Include="Properties\quotedetail.resx" />
+    <EmbeddedResource Include="Properties\quotemaster.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\quotenotes.resx" />
+    <EmbeddedResource Include="Properties\rpt_milestones.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\rpt_rates_sheet.resx" />
+    <EmbeddedResource Include="Properties\rpt_WOLaser_Header.resx" />
+    <EmbeddedResource Include="Properties\SafetyForm.resx" />
+    <EmbeddedResource Include="Properties\service_report.resx" />
+    <EmbeddedResource Include="Properties\subcontract_employment.resx" />
+    <EmbeddedResource Include="Properties\WorkSheetDisp.resx" />
+    <EmbeddedResource Include="Properties\woshoppingcart.resx" />
+    <EmbeddedResource Include="Properties\WOSOSheet.resx" />
+    <EmbeddedResource Include="Properties\XtraReport1.resx" />
+    <EmbeddedResource Include="Properties\XtraRptEmployeePhoneList.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NESI.Common\NESI.Common.csproj">
+      <Project>{4bbc7f80-e983-491d-83e6-4ebb727591d3}</Project>
+      <Name>NESI.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\Asset\" />
+    <Folder Include="App_Code\Contact\" />
+    <Folder Include="App_Code\Infrastructure\" />
+    <Folder Include="App_Code\Profile\" />
+    <Folder Include="App_Code\Purchase Order\" />
+    <Folder Include="App_Code\Vendor\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

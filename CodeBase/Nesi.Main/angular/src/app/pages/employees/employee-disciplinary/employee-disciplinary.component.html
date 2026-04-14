@@ -1,0 +1,9 @@
+<nesi-employee-disiplinary-edit [employee]="employee" [id]="selected_id" (onChange)="loadGrid()"></nesi-employee-disiplinary-edit>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <nesi-datatable #dt 
+    [fixed_header_scroll]="0"
+    [need_query_param]="true"
+    [id]='127' [selectionMode]="null" gridName="EmployeeDiscplinaryGrid" gridTitle=""
+    (onEdit)="edit($event)" (onDelete)="delete($event)" (onRefresh)="loadGrid()"
+    ></nesi-datatable>
+</div>

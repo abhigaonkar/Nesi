@@ -1,0 +1,39 @@
+<span class="globalsearch">
+  <i class="fa fa-search searchicon"></i>
+  <p-autoComplete #topbarsearch id='topbaridsearch'  placeholder="ID Search" [(ngModel)]="selectedItem" [forceSelection]="true" [suggestions]="items"
+    title="Input at least 3 digits to search Work order/Purchase Order/Quote" (completeMethod)="filter($event)" (onSelect)="selectItem($event)"
+    [minLength]="3" field="search" autoHighlight="true" emptyMessage="No result found. Only input numbers, please." >
+    <ng-template let-obj pTemplate="item" >
+      <div class="ui-g ui-g-nopad" title="Click to open this {{obj.type=='WO'? 'Work Order' : obj.type=='PO'? 'Purchases Order' : 'Quote'}}">
+        <!-- <div *ngIf="obj.id==0" class="ui-g-12  ui-g-nopad type_name">
+          {{obj.type}}
+        </div> -->
+        <div *ngIf="obj.id>0" class="ui-g-12  ui-g-nopad search_item">
+          <div class="ui-g-6 ui-lg-2  ui-g-nopad">
+            <ng-container *ngIf="obj.type==='WO'">
+              <i class="fa fa-fw fa-file-alt"></i>WO</ng-container>
+            <ng-container *ngIf="obj.type==='PO'">
+              <i class="fa fa-fw fa-truck"></i>PO
+            </ng-container>
+            <ng-container *ngIf="obj.type==='Q'">
+              <i class="fa fa-fw fa-briefcase"></i>Q
+            </ng-container>
+            <ng-container *ngIf="obj.type==='T'">
+              <i class="fa fa-fw fa-ticket-alt"></i>T
+            </ng-container>
+          </div>
+          <div class="ui-g-6 ui-lg-2 ui-g-nopad" [innerHTML]="showId(obj.displayText) | safeHtml">
+
+          </div>
+          <div class="ui-g-6 ui-lg-4 ui-g-nopad">
+            {{obj.businessUnitName}}
+          </div>
+
+          <div class="ui-g-6 ui-lg-4 ui-g-nopad">
+            {{obj.customerVendor}}
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-autoComplete>
+</span>

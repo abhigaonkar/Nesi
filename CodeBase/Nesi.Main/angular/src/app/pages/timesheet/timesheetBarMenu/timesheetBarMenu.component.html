@@ -1,0 +1,23 @@
+<div class="ui-g-12 ui-g-nopad">
+  <div class="ui-g-6 ui-lg-2">
+    <button pButton [icon]="'fa-calendar'" [ngClass]="{'ui-button-active': url==''}" #bank type="button"
+      [routerLink]="['/home/28/timesheet']" label="Time Sheet"></button>
+  </div>
+  <div class="ui-g-6 ui-lg-2" *ngIf="Profile && Profile.bankVisible">
+    <button pButton [ngClass]="{'ui-button-active': url=='bank'}" [icon]="'fa-university'" #bank type="button"
+      [routerLink]="['/home/28/timesheet/bank']" label="Banked Pay"></button>
+  </div>
+  <div class="ui-g-6 ui-lg-2">
+    <button pButton [ngClass]="{'ui-button-active': url=='expense'}" [icon]="'fa-credit-card'" #ExpenseReimbursement
+      type="button" [routerLink]="['/home/28/timesheet/expense']"
+      [label]="cs.isSm?'Expense' : 'Expense Reimbursement'"></button>
+  </div>
+  <div class="ui-g-6 ui-lg-2" *ngIf="Profile && Profile.vacationVisible">
+    <button pButton [ngClass]="{'ui-button-active': url=='vacation'}" [icon]="'fa-plane'" #VacationRequests
+      type="button" [routerLink]="['/home/28/timesheet/vacation']" label="Vacation Requests"></button>
+  </div>
+  <div class="ui-g-6 ui-lg-2" *ngIf="cs.isDev">
+    <button pButton [ngClass]="{'ui-button-active': url=='pel'}" [icon]="'fa-hospital'" #pel type="button"
+      [routerLink]="['/home/28/timesheet/pel']" label="PEL"></button>
+  </div>
+</div>

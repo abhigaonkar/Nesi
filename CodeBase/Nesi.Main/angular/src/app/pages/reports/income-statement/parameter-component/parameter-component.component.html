@@ -1,0 +1,34 @@
+<div class="dx-fieldset">
+  <div class="dx-field">
+    <div class="dx-field-label bold">Tax Entity:</div>
+    <div class="dx-field-value">
+      <dx-select-box [items]="taxEntityRecords" displayExpr="name" valueExpr="id" [searchEnabled]="true" #taxEntity [value]="defaultTaxEntity"
+        (onValueChanged)="onValueChanged($event)"></dx-select-box>
+    </div>
+  </div>
+
+  <div class="dx-field">
+    <div class="dx-field-label bold">Business Units:</div>
+    <div class="dx-field-value">
+      <dx-list [dataSource]="businessRecords" [selectionMode]="selectionModeValue" [selectAllMode]="selectAllModeVlaue" noDataText="You may not have permissions to view other branches."
+        [showSelectionControls]="true" [selectedItemKeys]="defaultSelectedBusinessUnits" displayExpr="text" valueExpr="id" class="longRow" ></dx-list>
+    </div>
+  </div>
+  <div class="dx-field" *ngIf="showup">
+      <div class="dx-field-label"></div>
+      <div class="dx-field-value">
+          (*) Denotes a business unit that is awaiting its year-end rollover
+        </div>
+  </div>
+
+  <div class="dx-field">
+    <div class="dx-field-label bold">Fiscal Period:</div>
+    <div class="dx-field-value">
+      <dx-select-box [items]="fiscalRecords" displayExpr="text" valueExpr="value" [searchEnabled]="true" #fiscal [value]="defaultFiscalPeriod"></dx-select-box>
+    </div>
+  </div>
+  <div class="dx-field">
+    <dx-button text="Go" (onClick)="goReport()" type="default">
+    </dx-button>
+  </div>
+</div>

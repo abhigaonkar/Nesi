@@ -1,0 +1,238 @@
+<div *ngIf="loading">
+  <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+</div>
+<nesi-breadcurmb [items]="[{label: 'Quotes'},{label: 'List'}]"></nesi-breadcurmb>
+<nesi-quoteMenu></nesi-quoteMenu>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12 ui-lg-6 ui-g-lesspad">
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-lg-2 label_for_right">
+        Business Unit:
+      </div>
+      <div class="ui-g-12 ui-lg-4">
+        <p-dropdown [disabled]="loading" [filter]="businessUnit_list && businessUnit_list.length>10" [style]="{'width':'100%'}" [options]="businessUnit_list"
+          (onChange)="getMember_list($event)" [(ngModel)]="selected_businessUnits"></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-lg-2 label_for_right">
+        Quoted By:
+      </div>
+      <div class="ui-g-12 ui-lg-4" *ngIf="member_list && member_list.length>0">
+        <p-multiSelect [disabled]="loading" [filter]="member_list&&member_list.length>10" selectedItemsLabel="{0} members selected"
+          [options]="member_list" [(ngModel)]="selected_members"></p-multiSelect>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-lg-6">
+        <button [disabled]="loading || !selected_members || selected_members.length==0" pButton type="button" [disabled]="!(member_list && member_list.length>0)"
+          (click)="filter()" label="Apply"></button>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12" *ngIf="!loading">
+    <div class="ui-g-12 " *ngIf="use_quote_process">
+      <div class="ui-g-12 tableCaption">
+        Quotes Using Strategy
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <p-dataTable [responsive]="true" [value]="todonowList" [emptyMessage]="'No Quotes Found.'">
+          <p-column field="quote_id" header="Quote ID">
+            <ng-template let-col let-quote="rowData" pTemplate="body">
+              <span class="nesi_link" (click)="openQuote(quote.quote_id, quote.revision)">{{quote.quote_id}}</span>
+            </ng-template>
+          </p-column>
+          <p-column field="is_level_2" header="Quote Level">
+            <ng-template let-col let-quote="rowData" pTemplate="body">
+              <span>{{getQuoteLevel(quote)}} </span>
+            </ng-template>
+          </p-column>
+          <p-column field="row_message" header="Status"></p-column>
+          <p-column field="customer_name" header="Customer"></p-column>
+          <p-column field="this_description" header="Description"></p-column>
+          <p-column field="this_fullname" header="Quoted By"></p-column>
+        </p-dataTable>
+      </div>
+    </div>
+
+    <div class="ui-g-12 ui-g-nopad show-lg">
+
+      <!-- <div class="ui-g-12" *ngIf="use_quote_process">
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-6  ui-g-nopad">
+          <ng-container *ngFor="let line of headerLabels; let myIndex=index">
+            <ng-container *ngIf="myIndex<4">
+              <div class="ui-g-12 ui-lg-3  quote_list_header">
+                {{headerLabels[myIndex]}}
+                <br>({{header && header[myIndex]}})
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div class="ui-g-12 ui-lg-6  ui-g-nopad">
+          <ng-container *ngFor="let line of headerLabels; let myIndex=index">
+            <ng-container *ngIf="myIndex>=4">
+              <div class="ui-g-12 ui-lg-3  ui-g-nopad quote_list_header">
+                {{headerLabels[myIndex]}}
+                <br>({{header && header[myIndex]}})
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-6  ui-g-nopad">
+          <ng-container *ngFor="let line of sum; let myIndex=index">
+            <ng-container *ngIf="myIndex<4">
+              <nesi-quote-list-item [item]="body && body[myIndex]"></nesi-quote-list-item>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div class="ui-g-12 ui-lg-6 ui-g-nopad">
+          <ng-container *ngFor="let line of sum; let myIndex=index">
+            <ng-container *ngIf="myIndex>=4">
+              <nesi-quote-list-item [item]="body && body[myIndex]"></nesi-quote-list-item>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div class="ui-g-12 ">
+        <div class="ui-g-12 ui-lg-6  ui-g-nopad">
+          <ng-container *ngFor="let line of sum; let myIndex=index">
+            <div *ngIf="myIndex<4" class="ui-g-12 ui-lg-3  quote_list_footer">
+              {{line}}
+            </div>
+          </ng-container>
+        </div>
+        <div class="ui-g-12 ui-lg-6  ui-g-nopad">
+          <ng-container *ngFor="let line of sum; let myIndex=index">
+            <div *ngIf="myIndex>=4" class="ui-g-12 ui-lg-3  quote_list_footer">
+              {{line}}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="ui-g-12 ui-g-lesspad" *ngIf="!use_quote_process">
+      <div class="ui-g-12 ui-g-pad">
+
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-3 ui-g-nopad quote_list_header">
+          {{headerLabels[2]}}
+          <br>({{header && header[2]}})
+        </div>
+
+        <ng-container *ngFor="let line of headerLabels; let myIndex=index">
+          <ng-container *ngIf="myIndex>=4">
+            <div class="ui-g-12 {{myIndex>4?'ui-lg-2':'ui-lg-3'}} ui-g-nopad quote_list_header">
+              {{headerLabels[myIndex]}}
+              <br>({{header && header[myIndex]}})
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <div class="ui-g-12 ui-g-nopad">
+        <nesi-quote-list-item [smaller]="false" [item]="body && body[2]"></nesi-quote-list-item>
+        <ng-container *ngFor="let line of sum; let myIndex=index">
+          <ng-container *ngIf="myIndex>=4">
+            <nesi-quote-list-item [smaller]="myIndex>4" [item]="body && body[myIndex]"></nesi-quote-list-item>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-3 ui-g-nopad quote_list_footer">
+          {{sum[2]}}
+        </div>
+        <ng-container *ngFor="let line of sum; let myIndex=index">
+          <div *ngIf="myIndex>=4" class="ui-g-12  {{myIndex>4?'ui-lg-2':'ui-lg-3'}}  ui-g-nopad quote_list_footer">
+            {{line}}
+          </div>
+        </ng-container>
+      </div>
+    </div> -->
+      <ng-container *ngIf="use_quote_process">
+        <div class="ui-g-6 ui-g-nopad">
+          <ng-container *ngFor="let line of sum; let myIndex=index">
+            <div class="ui-g-3" *ngIf="myIndex<4">
+              <div class="ui-g-12 ui-g-nopad quote_list_header">
+                {{headerLabels[myIndex]}}
+                <br>({{header && header[myIndex]}})
+              </div>
+              <nesi-quote-list-item [smaller]="false" [item]="body && body[myIndex]"></nesi-quote-list-item>
+              <div class="ui-g-12 ui-g-nopad quote_list_footer">
+                {{line}}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="ui-g-6 ui-g-nopad">
+          <ng-container *ngFor="let line of sum; let myIndex=index">
+            <div class="ui-g-3" *ngIf="myIndex>=4">
+              <div class="ui-g-12 ui-g-nopad quote_list_header">
+                {{headerLabels[myIndex]}}
+                <br>({{header && header[myIndex]}})
+              </div>
+              <nesi-quote-list-item [smaller]="false" [item]="body && body[myIndex]"></nesi-quote-list-item>
+              <div class="ui-g-12 ui-g-nopad quote_list_footer">
+                {{line}}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!use_quote_process">
+        <ng-container *ngFor="let line of sum; let myIndex=index">
+          <div class="ui-g-3" *ngIf="myIndex==2 || myIndex==4">
+            <div class="ui-g-12 ui-g-nopad quote_list_header">
+              {{headerLabels[myIndex]}}
+              <br>({{header && header[myIndex]}})
+            </div>
+            <nesi-quote-list-item [smaller]="false" [item]="body && body[myIndex]"></nesi-quote-list-item>
+            <div class="ui-g-12 ui-g-nopad quote_list_footer">
+              {{line}}
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngFor="let line of sum; let myIndex=index">
+          <div class="ui-g-2" *ngIf="myIndex>4">
+            <div class="ui-g-12 ui-g-nopad quote_list_header">
+              {{headerLabels[myIndex]}}
+              <br>({{header && header[myIndex]}})
+            </div>
+            <nesi-quote-list-item [smaller]="false" [item]="body && body[myIndex]"></nesi-quote-list-item>
+            <div class="ui-g-12 ui-g-nopad quote_list_footer">
+              {{line}}
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+
+
+
+    </div>
+
+
+
+    <div class="ui-g-12 show-sm">
+      <p-accordion multiple="true">
+        <ng-container *ngFor="let line of sum; let myIndex=index">
+          <ng-container *ngIf="is_use_quote_process(myIndex)">
+            <p-accordionTab header="{{headerLabels[myIndex]}} ({{header && header[myIndex]}}) {{line}}" [selected]="true">
+              <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                <nesi-quote-list-item [item]="body && body[myIndex]"></nesi-quote-list-item>
+              </div>
+            </p-accordionTab>
+          </ng-container>
+        </ng-container>
+      </p-accordion>
+    </div>
+
+  </div>
+</div>
+<div style="height: 200px">&nbsp;</div>

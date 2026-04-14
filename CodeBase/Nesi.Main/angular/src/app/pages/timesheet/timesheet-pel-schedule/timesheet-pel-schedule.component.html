@@ -1,0 +1,72 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12 ui-md-6">
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-4 label_for_right">
+          Date From:
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <p-calendar formControlName="date_start" (onSelect)="startDate_changed($event)" placeholder="yyyy-mm-dd" showIcon="true"
+            [disabledDays]="[0,6]" [minDate]="minDate" dateFormat="yy-mm-dd"></p-calendar>
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="isFieldInValid('date_start')">
+            <div *ngIf="userform.get('date_start').hasError('required')">
+              <i class="fa fa-exclamation-circle"></i>Start Date is required</div>
+            <div *ngIf="userform.get('date_start').hasError('checkDateGreatThanToday')">
+              <i class="fa fa-exclamation-circle"></i>The start date has to be greater than, or equal to today.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-4 label_for_right">
+          Date To:
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <p-calendar formControlName="date_end" dateFormat="yy-mm-dd" placeholder="yyyy-mm-dd" showIcon="true" [disabledDays]="[0,6]"
+            [minDate]="userform.get('date_start').value"></p-calendar>
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="isFieldInValid('date_end') || formHasError('EndDateGreatThanStartDate',['date_end','date_start'])">
+            <div *ngIf="userform.get('date_end').hasError('required')">
+              <i class="fa fa-exclamation-circle"></i>The end date is required</div>
+            <div *ngIf="userform.get('date_end').hasError('checkDateGreatThanToday')">
+              <i class="fa fa-exclamation-circle"></i>The end date has to be greater than, or equal to today.</div>
+            <div *ngIf="userform.hasError('EndDateGreatThanStartDate')">
+              <i class="fa fa-exclamation-circle"></i>The end date has to be greater than, or equal to the start date.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-4 label_for_right">
+          Hours:
+        </div>
+        <div class="ui-g-12 ui-md-1">
+          <input pInputText type="number" pKeyFilter="pint" step="1" formControlName="hours" />
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-4 label_for_right">
+          Reason:
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <p-dropdown [options]="reasonList" formControlName="note"></p-dropdown>
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-4">
+
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <button pButton type="submit" label="Review Submission" icon="fa-save"></button>
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+      <nesi-timesheet-pel-summary [data]="summary"></nesi-timesheet-pel-summary>
+    </div>
+  </form>
+
+  <p-dialog [modal]="true" [minWidth]="cs.isLg?'1024':'0'" (onHide)="reviewHide.emit()" [responsive]="true" header="Review Schedule PEL"
+    [draggable]="true" [(visible)]="confirmDisplay">
+    <nesi-timesheet-pel-review [submitting]="submitting" [value]="reviewValue" (cancel)="confirmDisplay=false" (confirm)="confirm()"></nesi-timesheet-pel-review>
+  </p-dialog>
+</div>

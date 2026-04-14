@@ -1,0 +1,20 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxNewsControl runat="server" SpriteCssFilePath="{0}/sprite.css" CssPostfix="NETheme01" CssFilePath="{0}/styles.css">
+    <ItemSettings DateVerticalPosition="Header" DateHorizontalPosition="Right" TailPosition="NewLine">
+        <TailImage Url="Web/ncTail.png" />
+    </ItemSettings>
+    <BackToTopImage Url="Web/ncGotoBack.png" />
+    <PagerSettings CurrentPageNumberFormat="{0}">
+        <PageSizeItemSettings ShowPopupShadow="False">
+            <DropDownImage>
+                <SpriteProperties HottrackedCssClass="dxWeb_pPopOutHover_NETheme01" PressedCssClass="dxWeb_pPopOutPressed_NETheme01" />
+            </DropDownImage>
+        </PageSizeItemSettings>
+    </PagerSettings>
+    <LoadingPanelImage Url="Web/Loading.gif" />
+    <PagerStyle ItemSpacing="0px" Spacing="0px" />
+</dx:ASPxNewsControl>
+
+

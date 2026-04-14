@@ -1,0 +1,24 @@
+<nesi-breadcurmb [items]="[{label: 'Vendors'}, {label: tabName}]">
+</nesi-breadcurmb>
+
+<p-tabView [activeIndex]="activeTab" (onChange)="tabChanged($event)">
+  <p-tabPanel [header]="tabLabels[0]" leftIcon="fa-search">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <nesi-datatable [id]='11' [visible_business_type]="'N'"  gridName="VendorHomeSearch" [selectionMode]="false" gridTitle="" (oncellclick)="open_vendor($event)"
+        (onRefresh)="loadDetail(true)" >
+      </nesi-datatable>
+    </div>
+  </p-tabPanel>
+  <button type="button" pButton label="New Vendor Request" icon="fa-plus" (click)="new_vendor_request()"></button>
+ 
+  <!-- <p-tabPanel [header]="tabLabels[1]" leftIcon="fa-plus">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <nesi-vendor-new (onChange)="open_vendor($event)" ></nesi-vendor-new>
+    </div>
+  </p-tabPanel> -->
+  <p-tabPanel [header]="tabLabels[1]" leftIcon="fa-list-alt" *ngIf="vendor_id">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <nesi-vendor-edit-general [vendor_id]="vendor_id"></nesi-vendor-edit-general>
+    </div>
+  </p-tabPanel>
+</p-tabView>

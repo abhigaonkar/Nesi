@@ -1,0 +1,14 @@
+@media screen and (min-width: 1024px) {
+.print_worksheet {
+   position: absolute;
+   top: 202px;
+   right: 0px;
+   width: 120px;
+   margin-right: 670px;
+}
+}
+@media screen and (max-width: 1024px) {
+    .print_worksheet {
+       width: 100%;
+    }
+}

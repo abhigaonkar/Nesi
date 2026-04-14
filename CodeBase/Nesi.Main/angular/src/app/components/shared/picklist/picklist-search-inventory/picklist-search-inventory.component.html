@@ -1,0 +1,203 @@
+<p-blockUI [blocked]="submitting">
+  <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+</p-blockUI>
+
+<div class="ui-g ui-fluid">
+  <div class="ui-g-12 ui-g-nopad ui-lg-2">
+    <div class="ui-g-12">
+      <span class="ui-float-label ui-float-label-top">
+        <label>Search From</label>
+      </span>
+      <p-dropdown [disabled]="searching" [style]="{'width':'100%'}" [options]="searchFrom" [(ngModel)]="selectedSearchFrom" (onChange)="sourceChanged($event)"></p-dropdown>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad ui-lg-9">
+    <div class="ui-g-12" *ngIf="selectedSearchFrom==3 || selectedSearchFrom==4">
+      <span class="ui-float-label ui-float-label-top" *ngIf="selectedSearchFrom==3">
+        <label>Select Recent Work Order</label>
+      </span>
+      <span class="ui-float-label ui-float-label-top" *ngIf="selectedSearchFrom==4">
+        <label>Select Recent Quote</label>
+      </span>
+      <p-dropdown [style]="{'width':'100%'}" [options]="allitems" [(ngModel)]="selectItem" (onChange)="select($event)" [placeholder]="selectedSearchFrom==3?'Select Work Order':'Select Quote'"
+        [filter]="(allitems && allitems.length >5)" [required]="true" [disabled]="searching">
+      </p-dropdown>
+    </div>
+    <div class="ui-g-12" *ngIf="selectedSearchFrom!=3 && selectedSearchFrom!=4">
+      <div class="ui-g-12 ui-lg-3 ui-g-nopad">
+        <span class="ui-float-label ui-float-label-top">
+          <label for="inv_searchText">Search Text</label>
+        </span>
+        <span class="ui-inputgroup">
+          <p-autoComplete id="inv_searchText" [style]="{'width': '100%'}" (onFocus)="textFocus($event)" [size]="30" id="float-input"
+            dataKey="value" field="label" [(ngModel)]="text" [suggestions]="allitems" (completeMethod)="search($event)" (onSelect)="select(null)"
+            (onKeyUp)="keyUpSearch($event)" [disabled]="searching"></p-autoComplete>
+          <button pButton icon="fa-search" (click)="searchClick()" [disabled]="searching"></button>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-g-lesspad" style="padding-left:20px;">
+        <p-checkbox binary="true" [(ngModel)]="match_whole_word" label="Match Whole Words" (onChange)="match_whole_word_change()" ></p-checkbox>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-lg-offset-1 ui-g-nopad" style="padding-left: 10px" *ngIf="searching">
+          <button pButton type="button" (click)="cancel_Search()" class="ui-button-warning" label="Cancel Searching" icon="fa-ban"></button>
+      </div>
+      <div class="ui-g-12 ui-lg-9 ui-g-nopad" style="padding-left: 20px;" *ngIf="selectedSearchFrom!=5 && !fromChanged">
+        <nesi-picklist-search-material [searchText]="searching_masterId" (onChange)="searching_masterId='';onChange.emit()" [buId]="buId"
+          [quote_id]="quote_id" [revision]="revision" [section_id]="section_id"></nesi-picklist-search-material>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ui-g-2 ui-g-nopad ui-lg-1 right">
+    <div class="ui-g-12 right">
+      <button pButton icon="fa-times" class="ui-button-danger" (click)="close.emit()"></button>
+    </div>
+  </div>
+</div>
+<div class="smaller">
+  <!-- <p-dialog header="{{sourceName}}" [positionTop]="50" [minWidth]="cs.isLg? '1024': '0'" [modal]="true" [responsive]="true"
+    [(visible)]="dialogDisplay"> -->
+
+  <!-- <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-g-nopad ui-md-6">
+          <span class="ui-inputgroup">
+            <p-autoComplete [style]="{'width': '100%'}" (onFocus)="textFocus($event)" [size]="30" id="float-input" dataKey="value" field="label"
+              [(ngModel)]="text" [suggestions]="allitems" (completeMethod)="search($event)" (onSelect)="select()" autoHighlight="true"
+              [placeholder]="placeholder"></p-autoComplete>
+            <button pButton icon="fa-search" (click)="searchClick()"></button>
+          </span>
+        </div>
+      </div> -->
+  <div class="ui-g-12 ui-lg-2">
+    <ng-container *ngIf="has_result">
+      <div class="ui-g-12" *ngFor="let val of filters">
+        <button [disabled]="searching" pButton [label]="val.header" icon="fa-times" iconPos="right" class="ui-button-info" (click)="resetFilter(val)"></button>
+      </div>
+      <div class="ui-g-12" *ngIf="uniqueSearchResult && filters.length==0">
+        <button [disabled]="searching" pButton label="{{uniqueSearchResult.length}} {{uniqueSearchResult.length>1 ? 'parts': 'part'}} found"
+          class="ui-button-info"></button>
+      </div>
+      <div class="ui-g-12">
+        <p-accordion>
+          <ng-container *ngFor="let att of attributes">
+            <p-accordionTab>
+              <p-header>
+                <span class="smaller" style="padding: 0 !important">{{att.header}}</span>
+              </p-header>
+              <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                <div class="smaller" *ngFor="let val of att.vals">
+                  <p-checkbox [label]="val.header" (onChange)="filterVal(val)" binary="true"></p-checkbox>
+                </div>
+              </div>
+            </p-accordionTab>
+          </ng-container>
+        </p-accordion>
+      </div>
+    </ng-container>
+  </div>
+  <div class="ui-g-12 ui-lg-10" *ngIf="has_result || searching">
+    <p-dataTable [rows]="10" (onPage)="tableValueChange($event)" (onSort)="tableValueChange($event)" (valueChange)="tableValueChange($event)"
+      [paginator]="true" [pageLinks]="10" [value]="uniqueSearchResult" sortMode="single" resizableColumns="false" rowHover="true"
+      [responsive]="true" [loading]="searching" [loadingIcon]="'fa-spinner'" [(selection)]="selectedItems" [headerCheckboxToggleAllPages]="true"
+      [rowStyleClass]="applyRowStyle"   #dt>
+      <p-header>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <div class="ui-g-12">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">
+                <i class="fa fa-search"></i>
+              </span>
+              <input #gb type="text"  (keyup)="getUniqueResult()" pInputText size="50" [(ngModel)]="gbFilter" placeholder="Global Filter">
+            </div>
+          </div>
+        </div>
+      </p-header>
+      <!-- <p-column [style]="{'width':'4%'}" selectionMode="multiple"></p-column> -->
+      <p-column [style]="{'width':'5%'}" header="Qty" field="qty" [sortable]="true">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          <input pInputText title="Input number to add part."
+            tooltipEvent="hover" [(ngModel)]="item[col.field]" type="number" step="1" (change)="qtyChanged(item)" />
+        </ng-template>
+      </p-column>
+      <!-- <p-column [style]="{'width':'3%'}" header="#" field="master_id">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          <nesi-inventory-image [master_id]="item[col.field]" [width]="'8px'" [height]="'10px'" (startLoad)="loadingImage($event)"
+            (endLoad)="loadedImage($event)"></nesi-inventory-image>
+        </ng-template>
+      </p-column> -->
+      <p-column [style]="{'width':'30%'}" header="Description" field="description" [sortable]="true">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+            <span class="text_ellipsis" title="{{item[col.field]}}">{{item[col.field]}}</span>
+        </ng-template>
+      </p-column>
+      <p-column [style]="{'width':'5%'}" header="Part #" field="master_id" [sortable]="true"></p-column>
+      <p-column [style]="{'width':'7%'}" header="Cost" field="cost" [sortable]="getFullDataWhenSearch">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          <ng-container *ngIf="!item.is_exclude">
+            {{item.display_cost | currency:'CAD':'symbol-narrow':'1.3-3'}}
+          </ng-container>
+          <ng-container *ngIf="item.is_exclude">
+            <input pInputText type="number" class="cost_level_30" step="0.001" (change)="fillCost2(item)" [(ngModel)]="item.cost" />
+          </ng-container>
+        </ng-template>
+
+      </p-column>
+      <p-column [style]="{'width':'5%'}" header="Sell" field="sell" [sortable]="getFullDataWhenSearch">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          {{item[col.field] | currency:'CAD':'symbol-narrow':'1.3-3'}}
+        </ng-template>
+      </p-column>
+      <p-column [style]="{'width':'5%'}" header="Ext'd" field="extd" [sortable]="getFullDataWhenSearch">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          {{item[col.field] | currency:'CAD':'symbol-narrow':'1.3-3'}}
+        </ng-template>
+      </p-column>
+      <p-column [style]="{'width':'10%'}" header="~Ext'd" field="extd2" [sortable]="getFullDataWhenSearch">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          <ng-container *ngIf="!item.qty">
+            {{item[col.field] | currency:'CAD':'symbol-narrow':'1.3-3'}}
+          </ng-container>
+          <ng-container *ngIf="item.qty>0">
+            <input pInputText type="number" step="0.001" [(ngModel)]="item[col.field]" />
+          </ng-container>
+        </ng-template>
+      </p-column>
+      <p-column [style]="{'width':'5%'}" header="Margin" field="margin" [sortable]="getFullDataWhenSearch">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          {{item[col.field] | percent: '1.1-1'}}
+        </ng-template>
+      </p-column>
+      <p-column [style]="{'width':'10%'}" header="Last Purchased" field="last_purchased" [sortable]="getFullDataWhenSearch">
+        <ng-template let-col pTemplate="header">
+          Last
+          <br/>Purchased
+        </ng-template>
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          <span>{{item[col.field]=='--' ? '' : item[col.field] | staleDate: 'yyyy-MM-dd'}}</span>
+        </ng-template>
+      </p-column>
+      <p-column [style]="{'width':'10%'}" header="Internal OnHand" field="int_onhand_qty" [sortable]="true">
+        <ng-template let-col pTemplate="header">
+          Internal
+          <br/>OnHand
+        </ng-template>
+      </p-column>
+      <p-column [style]="{'width':'10%'}" header="External OnHand" field="ext_onhand_qty" [sortable]="true">
+        <ng-template let-col pTemplate="header">
+          External
+          <br/>OnHand
+        </ng-template>
+      </p-column>
+      <p-footer>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <div class="ui-g-12 ui-md-3 ui-md-offset-9">
+            <button pButton type="button" [disabled]="!selectedItems || selectedItems.length==0" icon="fa-check" label="Add To Quote"
+              (click)="AddToQuote()"></button>
+          </div>
+        </div>
+      </p-footer>
+    </p-dataTable>
+  </div>
+  <!-- </p-dialog> -->
+</div>

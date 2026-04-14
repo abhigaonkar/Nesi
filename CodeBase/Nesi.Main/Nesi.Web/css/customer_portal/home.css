@@ -1,0 +1,36 @@
+﻿.sq_button
+	{
+	width:					150px;
+	height:					150px;
+	-moz-border-radius:		20px;
+    -webkit-border-radius:	20px;
+    -khtml-border-radius:	20px;
+    border-radius:			20px;
+	display:				table-cell; 
+	text-align:				center;
+	vertical-align:			middle;
+	font-size:				1.5em;
+	font-family:			helvetica;
+	font-weight:			bold;
+	color:					#fff;
+	cursor:					pointer;
+	border:					solid 1px #fff;
+	-moz-box-shadow:		3px 3px 4px #999;
+	-webkit-box-shadow:		3px 3px 4px #999;
+	box-shadow:				3px 3px 4px #999;
+	-ms-filter:				"progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999')";
+	filter:					progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999');
+	-webkit-touch-callout:	none;
+	-webkit-user-select:	none;
+	-khtml-user-select:		none;
+	-moz-user-select:		moz-none;
+	-ms-user-select:		none;
+	user-select:			none;
+	}
+
+.sq_button.wo_button			{background-color:	#93ba47;}
+.sq_button.wo_button:hover		{background-color:	#aacc55;}
+.sq_button.quote_button			{background-color:	#fc8421;}
+.sq_button.quote_button:hover	{background-color:	#ff9933;}
+.sq_button.faq_button			{background-color:	#37a;}
+.sq_button.faq_button:hover		{background-color:	#48b;}

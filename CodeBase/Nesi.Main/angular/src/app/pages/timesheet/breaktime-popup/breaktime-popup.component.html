@@ -1,0 +1,95 @@
+<p-dialog [width]="600" [responsive]="true" [modal]="true" header="Break Time Record Review" appendTo="body"
+  [draggable]="true" [(visible)]="showup" [positionTop]="250">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform">
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-md-4 ui-lg-4 label_for_breaktime">
+          Start Time:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-nopad ui-lg-8">
+          <p-calendar [timeOnly]="true" formControlName="start_time" hourFormat="24" [disabled]="!updatePermission"></p-calendar>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-md-4 ui-lg-4 label_for_breaktime">
+          Morning Break Start:
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-g-nopad ui-lg-8">
+          <p-calendar [timeOnly]="true" formControlName="morning_break_start" [disabled]="!updatePermission"></p-calendar>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-md-4 ui-lg-4 label_for_breaktime">
+          Morning Break Duration:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-nopad ui-lg-8">
+          <p-spinner formControlName="morning_break_duration" [min]="0" [max]="60" size="30" [disabled]="!updatePermission"></p-spinner>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-md-4 ui-lg-4 label_for_breaktime">
+          Lunch Break Start:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-nopad ui-lg-8">
+          <p-calendar [timeOnly]="true" formControlName="lunch_break_start" [disabled]="!updatePermission"></p-calendar>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-md-4 ui-lg-4 label_for_breaktime">
+          Lunch Break Duration:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-nopad ui-lg-8">
+          <p-spinner formControlName="lunch_break_duration" [min]="0" [max]="120" size="30" [disabled]="!updatePermission"></p-spinner>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-md-4 ui-lg-4 label_for_breaktime">
+          Afternoon Break Start:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-nopad ui-lg-8">
+          <p-calendar [timeOnly]="true" formControlName="afternoon_break_start" [disabled]="!updatePermission"></p-calendar>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-md-4 ui-lg-4 label_for_breaktime">
+          Afternoon Break Duration:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-nopad ui-lg-8">
+          <p-spinner formControlName="afternoon_break_duration" [min]="0" [max]="60" size="30" [disabled]="!updatePermission"></p-spinner>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-md-11 ui-lg-11">
+          <p-message severity="info" text="You are not allowed to update this Break Time Record."  *ngIf="!userform.get('updatePermission').value"></p-message>
+        </div>
+        <div class="ui-g-12 ui-md-1 ui-lg-1">
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-md-6 ui-lg-6" *ngIf="userform.get('updatePermission').value">
+          <button type="button" pButton icon="pi pi-check" (click)="onSubmit()" label="Save" 
+          [disabled]="!userform.dirty ||
+                 (start_time.invalid) ||
+                 (morning_break_start.invalid) ||
+                 (morning_break_duration.invalid) ||
+                 (lunch_break_start .invalid) ||
+                 (lunch_break_duration.invalid) ||
+                 (afternoon_break_start.invalid) ||
+                 (afternoon_break_duration.invalid)"></button>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-6">
+          <button type="button" pButton icon="pi pi-close" (click)="close()" label="Exit" class="ui-button-secondary"></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</p-dialog>

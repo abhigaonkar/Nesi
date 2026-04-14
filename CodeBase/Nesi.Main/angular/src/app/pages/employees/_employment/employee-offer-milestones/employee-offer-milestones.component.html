@@ -1,0 +1,54 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <p-dataTable [value]="profile.mileStoneList" [responsive]="true" rowHover="true" expandableRows="true" rowExpandMode="single"
+        #d>
+        <p-header>
+          <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+              <div class="ui-g-12">
+                <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+                  <p-calendar [style]="{'width': '80%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="due"  placeholder="yyyy-mm-dd"
+                    showIcon="true" [disabled]="!save_enabled"  placeholder="Select Due Date"></p-calendar>
+                </div>
+                <div class="ui-g-12 ui-lg-8 ui-g-lesspad">
+                  <textarea style="height:50px;" pInputTextarea rows="3" cols="25" placeholder="Enter the milestone... make your expectations are clear"
+                    formControlName="milestone"></textarea>
+                </div>
+                <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+                  <button pButton [disabled]="userform.invalid || userform.disabled" label="Add" icon="fa-plus"></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </p-header>
+        <p-column [style]="{'width':'3%'}" field="id" header="">
+          <ng-template let-data="rowData" pTemplate="body">
+            <button pButton  [disabled]="!save_enabled" type="button" icon="fa-times" (click)="delete(data)"></button>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'5%'}" field="id" header="Ticket" [sortable]="true">
+          <ng-template let-data="rowData" pTemplate="body">
+            <div class="allow_click" (click)="open_ticket(data)" *ngIf="data.ticketid>0">{{data.ticketid}}</div>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'10%'}" field="due" header="Due Date" [sortable]="true">
+          <ng-template let-data="rowData" pTemplate="body">
+            <p-calendar [style]="{'width': '80%'}" dateFormat="yy-mm-dd"  [(ngModel)]="data.due"  placeholder="yyyy-mm-dd"
+              showIcon="true"  [disabled]="!save_enabled" (onBlur)="save(data)" (onSelect)="saveOnSelect(data)"></p-calendar>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'20%'}" field="milestone" header="Milestone" [sortable]="true">
+          <ng-template let-data="rowData" pTemplate="body">
+            <textarea  [disabled]="!save_enabled" style="height:50px;" (blur)="save(data)" pInputTextarea rows="3" cols="25" [(ngModel)]="data.milestone"></textarea>
+          </ng-template>
+        </p-column>
+        
+
+      </p-dataTable>
+    </div>
+  </blockable-div>
+</div>

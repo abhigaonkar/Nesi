@@ -1,0 +1,39 @@
+<div class="ui-g-12 messagespage">
+  <p-dataTable [emptyMessage]="'No messages found'" [paginator]="true" [value]="items" sortMode="single" resizableColumns="true"
+    [loading]="loading" [loadingIcon]="'fa-spinner'" [responsive]="true" [rows]="10" [paginator]="true"
+    [pageLinks]="10" [(selection)]="selectedItems" dataKey="messageTo_ID" rowHover="true" expandableRows="true" [rowStyleClass]="applyRowStyle"
+    [globalFilter]="gb" (onRowExpand)="readMessage($event)" [sortField]="'date'" [sortOrder]="-1" #dt>
+    <p-header>
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <div class="ui-g-12 ui-md-2" *ngIf="type!==3">
+          <button pButton label="Delete Selections" (click)="deleteMessages()" [disabled]="!selectedItems || selectedItems.length==0"
+            icon="fa-times" class="ui-button-warning"></button>
+        </div>
+        <div class="ui-g-12 ui-md-10">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="fa fa-search"></i>
+            </span>
+            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+          </div>
+        </div>
+      </div>
+    </p-header>
+    <p-column *ngIf="type!==3" [style]="{'width':'5%'}" selectionMode="multiple" header="Select"></p-column>
+    <p-column [style]="{'width':'5%'}" expander="true" styleClass="col-icon" header="View"></p-column>
+    <p-column field="date" [style]="{'width':'15%'}" header="Date" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        {{data.date}}
+      </ng-template>
+    </p-column>
+    <p-column  field="from_name" [style]="{'width':'10%'}" [header]="'From'" [sortable]="true"></p-column>
+    <p-column  field="to_name" [style]="{'width':'10%'}" [header]="'To'" [sortable]="true"></p-column>
+    <p-column field="subject" [style]="{'width':'55%'}" header="Subject" [sortable]="true"></p-column>
+    <p-column *ngIf="type==1" field="status" [style]="{'width':'10%'}" header="Status" [sortable]="true"></p-column>
+    <ng-template let-data pTemplate="rowexpansion">
+      <div class="ui-grid ui-grid-responsive ui-fluid">
+        <nesi-messagespage-readmessage (reply)="onReply($event, data)" (replyAll)="onReplyAll($event,data)" [typeId]="type" [messageId]="data.messageTo_ID"  ></nesi-messagespage-readmessage>
+      </div>
+    </ng-template>
+  </p-dataTable>
+</div>

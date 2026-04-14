@@ -1,0 +1,41 @@
+:host ::ng-deep  .dx-list-item {
+    border: 0px;
+    width: 20% !important;
+    float: left !important;
+}
+
+:host ::ng-deep .dx-field-label {
+    width: 150px !important;
+}
+
+:host ::ng-deep .dx-field-value {
+    float: left !important;
+}
+
+::ng-deep .bold {
+    font-weight: bold;
+}
+
+:host ::ng-deep .dx-header-row {  
+    background-color: #094 !important;
+    color: white;  
+}
+
+
+::ng-deep .dx-overlay-content .dx-popup-normal {
+    height: auto !important;
+    max-height: 300 !important;
+}
+
+
+:host ::ng-deep .keepright {
+    float: left !important;
+}
+
+:host ::ng-deep .dx-datagrid-rowsview .dx-row-focused.dx-data-row > td:not(.dx-focused) {
+    background-color: rgb(190, 223, 236) !important;
+}
+
+::ng-deep #buttonGroup > .button-info {
+    margin: 20px;
+}

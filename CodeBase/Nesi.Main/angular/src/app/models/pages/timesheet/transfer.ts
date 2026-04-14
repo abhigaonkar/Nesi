@@ -1,0 +1,111 @@
+import { TimesheetList } from './timesheet-list';
+import { TimesheetValue } from './timesheetValue';
+
+export class TimesheetTransferList implements TimesheetList  {
+    transfer_type: string;
+    payperiod_id: string;
+    id: number;
+    businessUnitId: number;
+    date: Date;
+    localDate: Date;
+    workorderId: string;
+    workorderDescription: string;
+    custNo: string;
+    custId: number;
+    custName: string;
+    hours: number;
+    childWo: string;
+    miles: number;
+    woCommentId: number;
+    payTypeId: number;
+    createdDate: Date;
+    hourType: string;
+    hourTypeId: number;
+    memberUser: string;
+    memberId: number;
+    memberPremium: string;
+    comments: string;
+    rating: number;
+    buttonVisible: boolean;
+    woTypeId: number;
+    internal_project_id: number;
+    memberTime_ID: number;
+    membertime_memberid: number;
+    memberTime_Cust_No: string;
+    memberTime_Customer_ID: number;
+    membertime_workorder_id: string;
+    numberOfHours: number;
+    memberTime_MemberTypeHours_ID: number;
+    memberTime_PayTypeHours_ID: number;
+    memberTime_WoComment_ID: number;
+    memberTime_Mileage: boolean;
+    memberTime_SRED: boolean;
+    memberTime_Warranty: boolean;
+    member_ID_Create: number;
+    member_ID_Audit: number;
+    created_Date: Date;
+    modified_Date: Date;
+    membertime_customer_name: string;
+    memberTime_Premium: boolean;
+    woType: string;
+    child_shoptime: number;
+    wo_percent_complete: number;
+    productCode: string;
+    sred: boolean;
+    mileage: boolean;
+    mileage_value:number;
+    mileage_unit:string;
+    warrenty: boolean;
+    memo: string;
+    empLogon: string;
+    memberTime_Child_WorkOrder_ID: string;
+    memberTime_Child_Cust_No: string;
+    membertime_child_customer_name: string;
+    memberTime_WoComment_Child_ID: number;
+    memberTime_Tax1: number;
+    memberTime_Tax2: number;
+    memberTime_Tax3: number;
+    memberTime_Tax4: number;
+    memberTime_WOProg_id: number;
+    memberTime_Child_WOProg_id: number;
+    membertime_shop_type_id: number;
+    quote_section_id: number;
+    ts: Date;
+    membertype_id: number;
+    membertype_chargeout_id: number;
+    business_unit_id: number;
+    child_business_unit_id: number;
+    tsLitePaytypeId: number;
+    membertype_name: string;
+    scope_id: number;
+    scope_name: string;
+    prov_id: number;
+    can_be_transferred: boolean;
+    can_delete_transfered_item: boolean;
+    can_edit_transfered_item: boolean;
+}
+
+export class TimesheetTransfer   {
+    originalTimesheetInfo: TimesheetTransferList;
+    targetTimesheetInfo: TimesheetTransferList;
+    timesheetValue: TimesheetValue;
+}
+
+export class ShopTimeTypeRecord {
+    label: string;
+    value: number;
+}
+
+export class TransferTypeRecord {
+    label: string;
+    value: number;
+}
+
+export class TimesheetTransferResult {
+    okay: boolean;
+    summary: string;
+}
+
+export const TransferAPI = {
+    Transfer:'api/Page/Timesheet/WorkOrder/Transfer'
+}

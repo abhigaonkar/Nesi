@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="this_price_search" masterpagefile="~/IntraDefault.master" Codebehind="index.aspx.cs" %>

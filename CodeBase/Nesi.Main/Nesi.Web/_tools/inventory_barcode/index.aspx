@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="this_barcode" masterpagefile="~/nonFrame.master" Codebehind="index.aspx.cs" %>

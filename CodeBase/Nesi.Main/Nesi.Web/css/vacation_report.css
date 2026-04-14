@@ -1,0 +1,48 @@
+﻿.vacation_report select			{
+										width:					250px;
+										font-family:			arial;
+										font-size:				12px;
+										font-weight:			bold;
+										}
+.vacation_report .detail thead td		{
+										font-weight:			bold;
+										background-color:		#000;
+										color:					#fff;
+										}
+.vacation_report .detail tfoot td		{
+										font-weight:			bold;
+										background-color:		#000;
+										color:					#fff;
+										}
+.vacation_report .detail .V				{
+										background-color:		#0f0;
+										}
+.vacation_report .detail .A				{
+										color:					#fff;
+										background-color:		#c00;
+										font-style:				oblique;
+										}
+
+.vacation_report .detail .C				{
+										text-decoration:		line-through;
+										background-color:		#ff0;
+										}
+
+.vacation_report .detail .T				{
+										background-color:		#666;
+										color:					#fff;
+										font-style:				oblique;
+										}
+
+.vacation_report .detail .date			{
+										border-left:			solid 1px #000;
+										font-weight:			bold;
+										text-align:				left;
+										width:					350px;
+										}
+
+.vacation_report .detail .hours			{
+										width:					150px;
+										border-left:			dashed 1px #000;
+										border-right:			solid 1px #000;
+										}

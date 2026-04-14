@@ -1,0 +1,74 @@
+<nesi-breadcurmb [items]="[{label: 'Work Orders', routerLink: '/home/12/workorder'}, {label: 'Buckets'}]" [no_default]="true"></nesi-breadcurmb>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+    </p-blockUI>
+    <blockable-div #pblockableDiv>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g-12 ui-lg-10  ui-g-nopad">
+                        <h2>{{profile.business_unit_name}}</h2>
+                    </div>
+                    <div class="ui-g-12 ui-lg-2  ui-g-nopa">
+                        <div class="ui-g-5  ui-g-nopad">
+                            <button style="width:100%;" pButton type="button" label="Refresh" icon="fa-sync" (click)="loadProfile()"></button>
+                        </div>
+                        <div class="ui-g-2 ui-g-nopad">
+                            &nbsp;
+                        </div>
+                        <div class="ui-g-5  ui-g-nopad">
+                            <button style="width:100%;" pButton type="button" label="Add" icon="fa-plus" (click)="addWorkOrder()"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g-12 ui-lg-2 label_for_right">Only Show Work Orders for:</div>
+                    <div class="ui-g-12 ui-lg-3 label_for_left_less">
+                        <p-dropdown [style]="{'width':'100%'}" [options]="profile.pmList" 
+                        [filter]="profile.pmList.length>5"
+                        [(ngModel)]="pm_id" (onChange)="loadProfile()"></p-dropdown>
+                    </div>
+                    <div class="ui-g-12 ui-lg-1 label_for_right">Sorted By:</div>
+                    <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                        <p-dropdown 
+                        [style]="{'width':'100%'}" [options]="profile.sortByList" [(ngModel)]="order_by" (onChange)="loadProfile()"></p-dropdown>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12  ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2">
+                    <nesi-workorder-bucket-scanned (loading)="submitting=true" (loaded)="submitting=false" [business_unit_id]="business_unit_id" [height]="320" [list]="profile.scanned_list"></nesi-workorder-bucket-scanned>
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="347" title="Open Pos" [list]="getOpenPos()"></nesi-workorder-bucket-open>
+                </div>
+                <div class="ui-g-12 ui-lg-2">
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="744" title="Initial Prep" [list]="getList(['Initial Prep'])"></nesi-workorder-bucket-open>
+                </div>
+                <div class="ui-g-12 ui-lg-2">
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="350" title="Rework" [list]="getList(['Rework'])"></nesi-workorder-bucket-open>
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="200" title="Questions" [list]="getList(['Questions For PM'])"></nesi-workorder-bucket-open>
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="100" title="Waiting Parent BM Approval" [list]="getList(['Waiting Parent BM Approval'],true)"></nesi-workorder-bucket-open>
+                </div>
+                <div class="ui-g-12 ui-lg-2">
+
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="350" title="Waiting PM Approval" [list]="getList(['Waiting Approval','Waiting PM Approval'])"></nesi-workorder-bucket-open>
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="347" title="Waiting BM Approval" [list]="profile.bm_approval_list"></nesi-workorder-bucket-open>
+                </div>
+                <div class="ui-g-12 ui-lg-2">
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="350" title="Waiting to be Invoiced" [list]="getList(['Waiting To Be Invoiced'])"></nesi-workorder-bucket-open>
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="100" title="Invoice Feedback Issues" [list]="getList(['Invoice Feedback Issues'])"></nesi-workorder-bucket-open>
+                    <nesi-workorder-bucket-open [business_unit_id]="business_unit_id" [height]="200" title="Waiting Cust PO" [list]="getList(['Waiting For PO'])"></nesi-workorder-bucket-open>
+                </div>
+
+                <div class="ui-g-12 ui-lg-2">
+                    <div class="center bold">Legend</div>
+                    <div class="workorder_bucket_item_billing center">Progress Billing</div>
+                    <div class="workorder_bucket_item_quote center">Quote</div>
+                    <div class="workorder_bucket_item_onhold center">On Hold</div>
+                    <div class="workorder_bucket_item_creditcard center">Credit Card</div>
+                    <div class="workorder_bucket_item_isachild center">Is a Child WO</div>
+                    <div class="workorder_bucket_item_otherbranch center">Other Branch</div>
+                </div>
+            </div>
+        </div>
+    </blockable-div>

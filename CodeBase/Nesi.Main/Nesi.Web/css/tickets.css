@@ -1,0 +1,503 @@
+﻿		body
+			{
+			padding:			0px !important;
+			margin:				0px !important;
+			height:				100% !important;
+			}
+		.noselect {
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none;   
+  -khtml-user-select: none;    
+  -moz-user-select: none;      
+  -ms-user-select: none;       
+  user-select: none;           
+                               
+}
+		#trackers,
+		#ticket_detail
+			{
+			font-family:		'Segoe UI',Helvetica,'Droid Sans',Tahoma,Geneva,sans-serif;
+			width:				100%;
+			height:				100%;
+			}
+		#ticket_detail .details .body
+			{
+			min-height:			655px;
+			}
+		#ticket_detail .details .br
+			{
+			clear:				both;
+			}
+		#ticket_detail .details .l
+			{
+			padding:			2px;
+			padding-top:		5px;
+			font-size:			12px;
+			float:				left;
+			width:				125px;
+			}
+		.val_top	{vertical-align:	top;}
+		.al_center	{text-align:		center;}
+		#ticket_detail .details .r
+			{
+			padding:			2px;
+			float:				left;
+			width:				200px;	
+			padding-left:		10px;	
+			}
+		#ticket_detail .trackers .title
+			{
+			color:#fff;
+			font-size:16px;
+			padding:5px;
+			}
+		#ticket_detail .trackers .combo_trackers
+			{
+			width:			100% !important;
+			}
+		#ticket_detail .trackers .body
+			{
+			background-color:#fff;
+			padding:2px;
+			}
+		#ticket_detail .trackers .tracker_row
+			{
+			}
+		#ticket_detail .details .update_row
+			{
+			width:				100% !important;
+			}
+		#ticket_detail .chat
+			{
+			height:			auto !important;
+			}
+		#ticket_detail .chat .title
+			{
+			font-size:			13px;
+			}
+		#ticket_detail .chat .message
+			{
+			border:				solid 1px #ccc;
+			margin:				2px;
+			width:				100%;
+			}
+		#ticket_detail .chat .message .m_title
+			{
+			font-size:			13px;
+			}
+		#ticket_detail .chat .message .m_body
+			{
+			font-size:			12px;
+			padding:			3px;
+			}
+		#ticket_detail .chat .attached_image
+			{
+            max-width:300px;
+            border:solid 1px #000;
+            cursor:pointer;
+			}
+		
+		#ticket_detail .chat .attached_image:-webkit-full-screen
+			{
+			max-width: 100% !important;
+			height: auto !important;
+			width: auto !important;
+			}
+		#ticket_detail .chat .attached_image:-moz-full-screen
+			{
+			max-width: 100% !important;
+			height: auto !important;
+			width: auto !important;
+			}
+		#ticket_detail .chat .attached_image:-ms-fullscreen
+			{
+			max-width: 100% !important;
+			height: auto !important;
+			width: auto !important;
+			}
+		#ticket_detail .chat .body
+			{
+			font-size:		12px;
+			height:			605px;
+			overflow-y:		auto;
+			overflow-x:		hidden;
+			}
+		#ticket_detail .col
+			{
+			padding-bottom:		10px;
+			border-radius:		3px;
+			width:				350px;
+			height:				100%;
+			margin:				1px;
+			border-width:		2px;
+			border-style:		solid;
+			}
+		#ticket_detail .col_empty
+			{
+			border-radius:		3px;
+			margin:				1px;
+			}
+		#ticket_detail .col .title
+			{
+			color:#fff;
+			font-size:16px;
+			padding:5px;
+			cursor: pointer;
+			}
+		#ticket_detail .col .body
+			{
+			background-color:#fff;
+			padding:2px;
+			}
+		#ticket_detail .col.trackers
+			{
+			background-color:	#049;
+			border-color:		#049;
+			}
+		#ticket_detail .col.chat
+			{
+			border:				0px;
+			}
+		#ticket_detail .col.details
+			{
+			background-color:	#3a6;
+			border-color:		#3a6;
+			}
+		#ticket_detail .col.tasks
+			{
+			background-color:	#FFAD5B;
+			border-color:		#FFAD5B;
+			}
+		#ticket_detail .col.tasks .body
+			{
+			height:				400px;
+			overflow-y:			auto;
+			}
+		#ticket_detail .col.client_details
+			{
+			background-color:	#33AA66;
+			border-color:		#33AA66;
+			}
+		#ticket_detail .col.client_details .body
+			{
+			min-height:			655px;
+			}
+		.new_chat_wopastebox
+			{
+			height: 400px !important;
+			width: 700px !important;
+			}
+		.new_chat_wpastebox
+			{
+			height: 500px !important;
+			width: 700px !important;
+			}
+		.new_chat_wopastebox .br,
+		.new_chat_wpastebox .br
+			{
+			clear: both;
+			min-height:	35px;
+			}
+		.new_chat_wopastebox .br.shiftdown,
+		.new_chat_wpastebox .br.shiftdown
+			{
+			padding-top: 20px;
+			}
+		.new_chat_wopastebox .br .l,
+		.new_chat_wpastebox .br .l
+			{
+			min-width: 150px;
+			font-size: 12px;
+			float:left;
+			padding-top: 4px;
+			}
+		.new_chat_wopastebox .br .r,
+		.new_chat_wpastebox .br .r
+			{
+			float:left;
+			}
+		.tb_pastebox
+			{
+			height:	120px !important;
+			margin-bottom :20px;
+			}
+		.push_left
+			{
+			float:left;
+			}
+		.push_right
+			{
+			float:left;
+			}
+		@media screen and (max-width: 1090px) and (min-width:722px)
+			{
+			body
+				{
+				padding:			0px !important;
+				margin:				0px !important;
+				}
+			.col{ width: 350px !important; min-width:350px; margin: 0px; margin-bottom: 5px; }
+			.col_empty{ width: 350px !important; min-width:350px;}
+			#ticket_detail .details .l
+				{
+				width:		35%;
+				padding:	2px;
+				font-size:	12px;
+				float:		left;
+				}
+			#ticket_detail .details .r
+				{
+				padding:			2px;
+				float:				left;
+				width:				200px;	
+				padding-left:		10px;	
+				width:				60%;
+				}
+			#ticket_detail .client_details .body
+				{
+				min-height:			225px !important;
+				}
+			#ticket_detail .details .body
+				{
+				min-height:			225px !important;
+				}
+			#ticket_detail .chat .attached_image
+				{
+				max-width:450px;
+				border:solid 1px #000;
+				cursor:pointer;
+				}
+			#ticket_detail .col.tasks 
+				{
+				min-height:			0px;
+				clear:				left;
+				}
+			#ticket_detail .col.tasks .body
+				{
+				min-height:			0px;
+				}
+			#ticket_detail .col.tasks .body
+				{
+				height: auto;
+				}
+			#ticket_detail .chat .body
+				{
+				height: auto;
+				}
+			#ticket_detail .tasks .task .tk_body
+				{
+				width:		80% !important;
+				}
+			.new_chat_wpastebox,
+			.new_chat_wopastebox
+				{
+				width:		95% !important;
+				}
+			.tb_pastebox
+				{
+				width:		95% !important;
+				}
+			.push_left
+				{
+				float:none;
+				}
+			.push_right
+				{
+				position:absolute;
+				right:0;
+				top:0;
+				}
+			}
+		@media screen and (max-width: 1080px) and (min-width:730px)
+			{
+			body
+				{
+				padding:			0px !important;
+				margin:				0px !important;
+				}
+			.col{ width: 97% !important; min-width:350px; margin: 0px; margin-bottom: 5px; }
+			.col_empty{ width: 50% !important; min-width:350px;}
+			#ticket_detail .details .l
+				{
+				width:		35%;
+				padding:	2px;
+				font-size:	12px;
+				float:		left;
+				}
+			#ticket_detail .details .r
+				{
+				padding:			2px;
+				float:				left;
+				width:				200px;	
+				padding-left:		10px;	
+				width:				60%;
+				}
+			#ticket_detail .client_details .body
+				{
+				min-height:			225px !important;
+				}
+			#ticket_detail .details .body
+				{
+				min-height:			225px !important;
+				}
+			#ticket_detail .col.tasks 
+				{
+				min-height:			0px;
+				clear:				left;
+				}
+			#ticket_detail .col.tasks .body
+				{
+				min-height:			0px;
+				}
+			#ticket_detail .col.tasks .body
+				{
+				height: auto;
+				}
+			#ticket_detail .chat .body
+				{
+				height: auto;
+				}
+			#ticket_detail .tasks .task .tk_body
+				{
+				width:		80% !important;
+				}
+			.new_chat_wpastebox,
+			.new_chat_wopastebox
+				{
+				width:		95% !important;
+				}
+			.tb_pastebox
+				{
+				width:		95% !important;
+				}
+			.push_left
+				{
+				float:none;
+				}
+			.push_right
+				{
+				position:absolute;
+				right:0;
+				top:0;
+				}
+			}
+		@media screen and (max-width: 721px)
+			{
+			body
+				{
+				padding:			0px !important;
+				margin:				0px !important;
+				}
+			.col{ width: 99% !important; min-width:350px; margin: 0px; margin-bottom: 5px; }
+			.col_empty{ width: 99% !important; min-width:350px;}
+			#ticket_detail .details .l
+				{
+				width:		35%;
+				padding:	2px;
+				font-size:	12px;
+				float:		left;
+				}
+			#ticket_detail .details .r
+				{
+				padding:			2px;
+				float:				left;
+				width:				200px;	
+				padding-left:		10px;	
+				width:				60%;
+				}
+			#ticket_detail .client_details .body
+				{
+				min-height:			225px !important;
+				}
+			#ticket_detail .details .body
+				{
+				min-height:			225px !important;
+				}
+			#ticket_detail .col.tasks 
+				{
+				min-height:			0px;
+				}
+			#ticket_detail .col.tasks .body
+				{
+				min-height:			0px;
+				}
+			#ticket_detail .col.tasks .body
+				{
+				height: auto;
+				}
+			#ticket_detail .chat .body
+				{
+				height: auto;
+				}
+			#ticket_detail .tasks .task .tk_body
+				{
+				width:		80% !important;
+				}
+			.new_chat_wpastebox,
+			.new_chat_wopastebox
+				{
+				width:		95% !important;
+				}
+			.tb_pastebox
+				{
+				width:		95% !important;
+				}
+			}
+		#ticket_detail .col.tasks .task
+			{
+			padding-top:5px;
+			width:100%;
+			clear:both;
+			height:87px;
+			border-bottom:solid 1px #FFAD5B;
+			background-color: #eee;
+			}
+		#ticket_detail .col.tasks .task .delete
+			{
+			width:30px;
+			float:left;
+			text-align:center;
+			vertical-align:middle;
+			padding-top: 20px;
+			}
+		#ticket_detail .tasks .task .tk_body
+			{
+			width:265px;
+			float:left;
+			text-align:center;
+			}
+		#ticket_detail .tasks .task .tk_body .spacer
+			{
+			height:2px;
+			}
+		#ticket_detail .tasks .task .done
+			{
+			width:30px;
+			float:left;
+			text-align:center;
+			vertical-align:middle;
+			padding-top: 20px;
+			}
+		#ticket_detail .tasks .task .assign
+			{
+			width:265px;
+			}
+
+		#ticket_detail .col.client_details .row
+			{
+			font-size:12px;
+			padding:2px;
+			}
+		#ticket_detail .col.client_details .row .b
+			{
+			display:inline-block;
+			width:95px;
+			}
+		.hideme
+			{
+			display:none;
+			}
+		.dxtc-link
+			{
+			padding: 4px 6px 0px !important;
+			}

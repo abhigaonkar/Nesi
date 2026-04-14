@@ -1,0 +1,59 @@
+<p-blockUI [blocked]="submitting">
+  <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+</p-blockUI>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <nesi-quote-buttonAddResize (addfromQuote)="addedFromQuote($event)" [quote_id]="_q&&_q.quote_id" [revision]="_q&&_q.revision"
+      [type]="type" [edit_disabled]="edit_disabled" (add)="addRow()" (resize)="resizeRows($event)"></nesi-quote-buttonAddResize>
+    <ng-container formArrayName="rows">
+      <ng-container *ngFor="let row of rows.controls; let i=index">
+        <div class="ui-g-12" [formGroupName]="i" dragHandle=".draggable_div" pDraggable="dd" (onDragStart)="dragStart($event,row)"
+          (onDragEnd)="dragEnd($event)" pDroppable="dd" (onDrop)="drop($event,i)"  
+          [ngClass]="{'border_bottom': draggedRow,
+          'disabled_back':!row.get('is_checked').value,
+          'ui-state-highlight': row_highlight(row,i)
+        }">
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad noresize">
+            <div class="ui-g">
+              <div class="ui-g-1 ui-g-nopad center draggable_div" style="width: 5%;" >
+                {{row && row.get('is_checked') && row.get('is_checked').value ? row.get('line_number').value + 1:'&nbsp;'}}
+              </div>
+              <div class="ui-g-1 ui-g-nopad cetner" style="width: 3%;">
+                <div  *ngIf="!edit_disabled"  class="move_arrow" (click)="re_position(i,i-1)">
+                  <i *ngIf="i!==0" class="fa fa-arrow-up" ></i>&nbsp;
+                </div>
+                <div  *ngIf="!edit_disabled" class="move_arrow" (click)="re_position(i,i+2)">
+                  <i *ngIf="i!=rows.controls.length-1" class="fa fa-arrow-down" ></i>&nbsp;
+                </div>
+              </div>
+              <div class="ui-g-10 ui-g-nopad" style="width: 92%;">
+                <textarea [readOnly]="edit_disabled" (drag)="textDragStart($event)" (dragstart)="textDragStart($event)" (change)="updateField('line_text',row.get('line_text').value,row.get('row_id').value,2)"
+                maxlength="10240"  [rows]="getTextLines('linetext' + row.get('row_id').value,row.get('line_text').value)" [cols]="30" id="{{'linetext' + row.get('row_id').value }}"
+                  pInputTextarea formControlName="line_text"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad ">
+            <div class="ui-g-3  ui-g-lesspad ">
+              <p-toggleButton *ngIf="!edit_disabled" (onChange)="updateField('notes_row_is_checked',row.get('is_checked').value?'1':'0',row.get('row_id').value,1)"
+                formControlName="is_checked" formControlName="is_checked" onLabel="Include" offLabel="Include" onIcon="fa-check-square"
+                offIcon="fa-square"></p-toggleButton>
+            </div>
+            <div class="ui-g-3 ui-g-lesspad">
+              <button [disabled]="edit_disabled" type="button" class="ui-button-warning" label="Delete" pButton icon="fa fa-times" (click)="deleteRow(row.value)"></button>
+            </div>
+            <div class="ui-g-6  ui-g-lesspad">
+              <button type="button" *ngIf="row.get('section_id').value" pButton 
+              label="{{'Section Total (~Ext\'d):'}} {{row.get('current_section_total').value | currency:'CAD':'symbol-narrow':'1.2-2'}}"
+                (click)="openWorksheetSection(row.value)" [disabled]="!row.get('line_text').value  || !row.get('is_checked').value"></button>
+              <button type="button" *ngIf="!row.get('section_id').value" pButton label="Create Section" (click)="createSection(row)" [disabled]="edit_disabled || !row.get('line_text').value  || !row.get('is_checked').value"></button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="ui-g-12" pDroppable="dd" (onDrop)="drop($event,rows.controls.length)" [ngClass]="{'border_bottom': draggedRow}">
+        &nbsp;
+      </div>
+    </ng-container>
+  </form>
+</div>

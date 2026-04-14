@@ -1,0 +1,10 @@
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  <div class="ui-g-12">New Note</div>
+  <div class="ui-g-12">
+    <textarea pInputTextArea autoResize="true" rows="5" cols="25" formControlName="note"></textarea>
+    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('note')" [errorMsg]="'You input some notes.'"></nesi-fieldErrorDisplay>
+  </div>
+  <div class="ui-g-12">
+    <button pButton icon="fa fa-plus" label="Add"></button>
+  </div>
+</form>

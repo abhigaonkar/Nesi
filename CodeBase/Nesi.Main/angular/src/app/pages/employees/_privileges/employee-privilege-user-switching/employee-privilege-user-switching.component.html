@@ -1,0 +1,10 @@
+<div class="userswitching">
+  <p-pickList [source]="profile.source" [target]="profile.target" sourceHeader="Available" targetHeader="Selected" [responsive]="true"
+    filterBy="label" dragdrop="true" dragdropScope="data" sourceFilterPlaceholder="Search" targetFilterPlaceholder="Search"
+    (onMoveToTarget)="postdata()" (onMoveToSource)="postdata()" sourceHeader="Available Users" targetHeader="Selected Users"
+    [sourceStyle]="{'height':'200px'}" [targetStyle]="{'height':'200px'}">
+    <ng-template let-data pTemplate="item">
+      <div>{{data.label}}</div>
+    </ng-template>
+  </p-pickList>
+</div>

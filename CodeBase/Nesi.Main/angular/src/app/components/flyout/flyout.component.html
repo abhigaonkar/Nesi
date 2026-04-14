@@ -1,0 +1,114 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-lg-5 ui-g-nopad">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g-12 ui-g">
+          <div class="ui-g-12 ui-md-2 ui-g-nopad">
+            Group:
+          </div>
+          <div class="ui-g-12 ui-md-8 ui-g-nopad">
+            <nesi-ReactiveDropDown [required]="1" formControlName="group" [URL]="groupUrl" (onChange)="groupChanged($event)" (OnAfterLoadUrl)="groupLoaded($event)"></nesi-ReactiveDropDown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('group')" errorMsg="Group to is required"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g">
+          <div class="ui-g-12 ui-md-2 ui-g-nopad">
+            Pertaining To:
+          </div>
+          <div class="ui-g-12 ui-md-8 ui-g-nopad">
+            <nesi-ReactiveDropDown [required]="1" [options]="perts" formControlName="pert" (onChange)="PertainingChanged($event)" ></nesi-ReactiveDropDown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('pert')" errorMsg="Pertaining to is required"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g">
+          <div class="ui-g-12 ui-md-2 ui-g-nopad">
+            Type of Ticket:
+          </div>
+          <div class="ui-g-12 ui-md-8 ui-g-nopad">
+            <nesi-ReactiveDropDown [required]="1" [options]="types" formControlName="type"></nesi-ReactiveDropDown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('type')" errorMsg="Type of ticket is required"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g">
+          <div class="ui-g-12 ui-md-2 ui-g-nopad">
+            Ticket Subject:
+          </div>
+          <div class="ui-g-12 ui-md-8 ui-g-nopad">
+            <input type="text"  #gb pInputText formControlName="subject" placeholder="Ticket subject">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('subject')" errorMsg="Ticket subject is required"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g">
+          <div *showItBootstrap="['xl','lg','md']" class="ui-g-12 ui-md-2">
+
+          </div>
+          <div class="ui-g-12 ui-md-8 ui-g-nopad">
+            <p-checkbox binary="true" formControlName="is_private" label="Mark as Private"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g">
+          <div class="ui-g-12 ui-md-2 ui-g-nopad">
+            Ticket Body:
+          </div>
+          <div class="ui-g-12 ui-md-8 ui-g-nopad">
+            <textarea [rows]="5" formControlName="body" pInputTextarea autoResize="autoResize" placeholder="Ticket Body"></textarea>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('body')" errorMsg="Ticket Body is required"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div *showItBootstrap="['xl','lg','md']" class="ui-g-12 ui-g-nopad pasteimage ui-rtl" dir="rtl" [style.background-image]="backgroundImg"
+          (paste)="handlePaste($event,this)">
+          <img *ngIf="userform.get('file').value" src="../../../assets/images/icon/icon[delete].gif" width="16" height="16" class="pasteimage_close"
+            alt="remove" (click)="deletePasteImage()">
+        </div>
+        <ng-container *ngIf="userform.get('file').value!==''">
+          <div *showItBootstrap="['sm','xs']" class="ui-g-12 ui-g-nopad pasteimage ui-rtl" dir="rtl" [style.background-image]="backgroundImg">
+            <img src="../../../assets/images/icon/icon[delete].gif" width="16" height="16" class="pasteimage_close" alt="remove" (click)="deletePasteImage()">
+          </div>
+        </ng-container>
+        <ng-container *ngIf="userform.get('file').value===''">
+          <div *showItBootstrap="['sm','xs']" class="ui-g-12 ui-g-nopad">
+            <p-fileUpload name="files[]" [url]="uploadURL" (onUpload)="onUploaded($event)" (onBeforeSend)="onBefoeUpload($event)" maxFileSize="5000000">
+
+            </p-fileUpload>
+          </div>
+        </ng-container>
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-md-6">
+            <button pButton type="submit" [label]="ts.isSwitchedUser? 'Masquerading' : 'Submit'" [disabled]="ts.isSwitchedUser"  icon="fa-save"></button>
+          </div>
+          <div class="ui-g-12 ui-md-6">
+            <button pButton type="button" (click)="closeClick($event)"  icon="fa-ban" label="Cancel"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="ui-g-12 ui-lg-7">
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 tableCaption">Existing Tickets for this Page (filter by "Ticket Subject")</div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+          <!-- <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+                <input #gb type="text" pInputText size="50" placeholder="Filter">
+              </div>
+            </div> -->
+        <p-dataTable [rows]="15" [emptyMessage]="'No related tickets found.'" [paginator]="true" [pageLinks]="10" [value]="relatedTickets"
+          sortMode="single" [sortField]="'dt_created'" [sortOrder]="-1" resizableColumns="true" rowHover="true" [loading]="loading" [loadingIcon]="'fa-spinner'" [globalFilter]="gb">
+          <p-column field="id" [style]="{'width': '10%'}" header="" [sortable]="true">
+              <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+                 <a (click)="openTicket(item[col.field])">{{item[col.field]}}</a>
+                </ng-template>
+          </p-column>
+          <p-column field="status" [style]="{'width': '14%'}" header="Stauts" [sortable]="true"></p-column>
+          <p-column field="dt_created" [style]="{'width': '20%'}" header="Date Created" [sortable]="true">
+
+          </p-column>
+          <p-column field="name" header="Title" [sortable]="true"></p-column>
+        </p-dataTable>
+      </div>
+    </div>
+  </div>
+</div>

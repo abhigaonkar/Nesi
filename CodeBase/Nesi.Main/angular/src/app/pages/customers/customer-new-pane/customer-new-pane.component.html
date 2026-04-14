@@ -1,0 +1,246 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-lg-6">
+          <p-fieldset legend="Basic Info (Related to Billing Address)">
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Default Business Unit:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown [filter]="profile && profile.businessUnitList && profile.businessUnitList.length>10 " placeholder="Select Business Unit"
+                  [style]="{'width':'100%'}" [options]="profile && profile.businessUnitList" (onChange)="businessUnit_Changed($event)"
+                  formControlName="business_unit"></p-dropdown>
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('business_unit')" [errorMsg]="'Default Business Unit is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Project Manager:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown [filter]="true" placeholder="Select Project Manager" [style]="{'width':'100%'}" [options]="profile && profile.projectManagerList"
+                  formControlName="project_manager_id"></p-dropdown>
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('project_manager_id')" [errorMsg]="'Project Manager is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Account Manager:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown [filter]="true" placeholder="Select Account Manager" [style]="{'width':'100%'}" [options]="profile && profile.accountManagerList"
+                  formControlName="account_manager_id"></p-dropdown>
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('account_manager_id')" [errorMsg]="'Account Manager is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Origin:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown placeholder="Select Origin" [style]="{'width':'100%'}" [options]="profile && profile.customerOriginList" formControlName="origin_id"></p-dropdown>
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('origin_id')" [errorMsg]="'Origin is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Name:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <input pInputText formControlName="customer_name" (change)="checkCustomerName()">
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('customer_name')" [errorMsg]="'Customer Name is required.'"></nesi-fieldErrorDisplay>
+                <span class="ui-message ui-messages-error ui-corner-all ui-g-nopad" *ngIf="customer_name_exist">
+                  <i class="fa fa-exclamation-circle"></i>
+                  Customer already exists under this name:
+                  <a href="{{customer_exist_id}}">
+                    Click to Visit
+                  </a>
+                </span>
+              </div>
+            </div>
+          </p-fieldset>
+        </div>
+        <div class="ui-g-12 ui-lg-6">
+          <p-fieldset legend="Billing Address">
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Billing Address:
+                <br/>
+                <b>(Line 1 is required)</b>
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <input pInputText maxlength="200" placeholder="Line 1*" formControlName="address_line_1">
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_line_1')" [errorMsg]="'Address Line 1 is required.'"></nesi-fieldErrorDisplay>
+                <input pInputText maxlength="200" placeholder="Line 2" formControlName="address_line_2">
+                <input pInputText maxlength="200" placeholder="Line 3" formControlName="address_line_3">
+                <input pInputText maxlength="200" placeholder="Line 4" formControlName="address_line_4">
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                City:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <input pInputText maxlength="50" formControlName="address_city">
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_city')" [errorMsg]="'City is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Prov/State:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown [filter]="true" placeholder="Select Prov/State" [style]="{'width':'100%'}" [options]="profile && profile.provList"
+                  formControlName="address_prov"></p-dropdown>
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_prov')" [errorMsg]="'Prov/State is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Postal Code:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <input pInputText maxlength="10" formControlName="address_postalcode">
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_postalcode')" [errorMsg]="'Postal Code is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Country:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown [filter]="true" maxlength="50" placeholder="Select Country" [style]="{'width':'100%'}" [options]="profile && profile.countryList"
+                  formControlName="address_country"></p-dropdown>
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_country')" [errorMsg]="'Country is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+          </p-fieldset>
+        </div>
+      </div>
+      <div class="ui-g">
+        <div class="ui-g-12  ui-lg-6">
+          <p-fieldset legend="Billing Info">
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                AP Auto Collection Email:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <input pInputText maxlength="200" type="email" formControlName="ap_email">
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('ap_email')" [errorMsg]="'AP Auto Collection Email is required and valid.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                GL Receivables:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown [filter]="profile && profile.glReceiveList && profile.glReceiveList.length>10 " placeholder="Select Gl Receive" [required]="true"
+                  [style]="{'width':'100%'}" [options]="profile && profile.glReceiveList" formControlName="gl_receivalbes"></p-dropdown>
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('gl_receivalbes')" [errorMsg]="'GL Receivables is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Tax 1:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown  [required]="true" [filter]="true" placeholder="&nbsp;" [style]="{'width':'100%'}" [options]="profile && profile.taxList" formControlName="tax_1"></p-dropdown>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Tax 2:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown  [required]="true" [filter]="true" placeholder="&nbsp;" [style]="{'width':'100%'}" [options]="profile && profile.taxList" formControlName="tax_2"></p-dropdown>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Tax 3:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown  [required]="true" [filter]="true" placeholder="&nbsp;" [style]="{'width':'100%'}" [options]="profile && profile.taxList" formControlName="tax_3"></p-dropdown>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Tax 4:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <p-dropdown   [required]="true" [filter]="true" placeholder="&nbsp;" [style]="{'width':'100%'}" [options]="profile && profile.taxList" formControlName="tax_4"></p-dropdown>
+              </div>
+            </div>
+          </p-fieldset>
+        </div>
+        <div class="ui-g-12  ui-lg-6">
+          <p-fieldset [toggleable]="false" legend="Phone / Fax">
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Phone:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <span>
+                  (
+                  <input class="phone_number_1" minlength="3" maxlength="3" (change)="checkCustomerPhone()" pInputText formControlName="phone_area">)
+                </span>
+                <span>
+                  <input class="phone_number_1" minlength="3" maxlength="3" (change)="checkCustomerPhone()" pInputText formControlName="phone_prefix">
+                </span>
+                <span>
+                  -
+                  <input class="phone_number_2" minlength="4" maxlength="4" (change)="checkCustomerPhone()" pInputText formControlName="phone_suffix">
+                </span>
+                <span>
+                  <b>Ext.</b>
+                  <input class="phone_number_1" pInputText formControlName="phone_ext">
+                </span>
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('phone_area') || isFieldInValid('phone_prefix') || isFieldInValid('phone_suffix')"
+                  [errorMsg]="'Valid Phone number is required.'"></nesi-fieldErrorDisplay>
+                <span class="ui-message ui-messages-error ui-corner-all ui-g-nopad" *ngIf="customer_phone_exist">
+                  <i class="fa fa-exclamation-circle"></i>
+                  Phone exists on
+                  <a href="{{customer_phone_exist_id}}">
+                    {{customer_phone_exist_name}}
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <div class="ui-g-12 ui-g-nopad ui-lg-3 label_for_right">
+                Fax:
+              </div>
+              <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                <span>
+                  (
+                  <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="fax_area">)
+                </span>
+                <span>
+                  <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="fax_prefix">
+                </span>
+                <span>
+                  -
+                  <input class="phone_number_2" minlength="4" maxlength="4" pInputText formControlName="fax_suffix">
+                </span>
+                <nesi-fieldErrorDisplay [displayError]="isFieldInValid('fax_area') || isFieldInValid('fax_prefix') || isFieldInValid('fax_suffix')"
+                  [errorMsg]="'Fax number is not valid.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+
+          </p-fieldset>
+          <div class="ui-g-12">
+            <div class="ui-g-12 ui-lg-3" [ngStyle]="{'margin-top':cs.isLg?'110px': '0px'}">
+              <button type="submit" [disabled]="customer_name_exist || customer_phone_exist" pButton label="Start New Customer" icon="fa-plus"></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</blockable-div>

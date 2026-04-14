@@ -1,0 +1,52 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid smaller" style="min-height: 600px">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-lg-3">
+        <div class="ui-g-12 ui-g-lesspad">
+          Note: Even if it doesn't apply, please check every item to verify that there are no outstanding issues to be resolved prior
+          to setting this employee's status to "Past".
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <p-listbox [options]="profile.checklistTypeList" [(ngModel)]="type" (onChange)="load_checkList($event)"></p-listbox>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-lg-9">
+        <p-dataTable [value]="profile.data">
+          <p-column [style]="{'width':'30px'}" styleClass="col-button">
+            <ng-template pTemplate="header">
+              <p-checkbox [disabled]="!enabled" binary="true" [(ngModel)]="selected_all" (onChange)="selectall_change()"></p-checkbox>
+            </ng-template>
+            <ng-template let-row="rowData" pTemplate="body">
+              <p-checkbox [disabled]="!enabled" binary="true" [(ngModel)]="row.is_checked"></p-checkbox>
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'25%'}" field="field" header="Item"></p-column>
+          <p-column field="resp_req" header="Re Direct">
+            <ng-template let-row="rowData" pTemplate="body">
+              {{row.resp_req?'Y':''}}
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'85px'}" field="is_completed" header="Completed?">
+            <ng-template let-row="rowData" pTemplate="body">
+              <p-checkbox [disabled]="!enabled" binary="true" [(ngModel)]="row.is_completed" (onChange)="save_item(row)"></p-checkbox>
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'35%'}" field="comment" header="Comments">
+            <ng-template let-row="rowData" pTemplate="body">
+              <input [disabled]="!enabled" pInputText [(ngModel)]="row.comment" (change)="save_item(row)">
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'10%'}" field="chkby_name" header="Checked By"></p-column>
+          <p-column [style]="{'width':'10%'}" field="dt" header="Date">
+          </p-column>
+        </p-dataTable>
+        <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+          <button pButton [disabled]="!enabled" type="button" label="Save All" icon="fa-save" (click)="save_all()"></button>
+        </div>
+      </div>
+    </div>
+  </blockable-div>
+</div>

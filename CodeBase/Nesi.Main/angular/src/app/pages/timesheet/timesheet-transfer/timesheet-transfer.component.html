@@ -1,0 +1,231 @@
+<div class="">
+  <p-dialog [width]="1000" [height]="790" [responsive]="true" [modal]="true" header="Timesheet Record Transfer"
+    [style]="{'overflow':'overlay'}" [blockScroll]="true" appendTo="body" [draggable]="true" [visible]="true"
+    [positionTop]="60" [closable]="false">
+    <p-panel header="Original Information" [toggleable]="true" [collapsed]="collapse4Original">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" *ngIf="_record">
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+          <div class="ui-g-12 ui-md-3 label_for_right" *ngIf="showWhichPart">
+            Customer Name:
+          </div>
+          <div class="ui-g-12 ui-md-3 label_for_right" *ngIf="!showWhichPart">
+            Shop Time Type:
+          </div>
+          <div class="ui-g-12 ui-md-7 label_for_left">
+            {{_record.membertime_customer_name}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+          <div class="ui-g-12 ui-md-3 label_for_right">
+            Type:
+          </div>
+          <div class="ui-g-12 ui-md-7 label_for_left">
+            {{_record.woType}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+          <div class="ui-g-12 ui-md-3 label_for_right">
+            Work Order Number:
+          </div>
+          <div class="ui-g-12 ui-md-7 label_for_left">
+            {{_record.bvwo}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="showWhichPart && showJobType">
+          <div class="ui-g-12 ui-md-3 label_for_right">
+            Job Type:
+          </div>
+          <div class="ui-g-12 ui-md-7 label_for_left">
+            {{_record.membertype_name}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+          <div class="ui-g-12 ui-md-3 label_for_right">
+            Hours:
+          </div>
+          <div class="ui-g-12 ui-md-7 label_for_left">
+            {{_record.hours}} {{_record.hourType}} Hour(s)
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+          <div class="ui-g-12 ui-md-3 label_for_right">
+            Member:
+          </div>
+          <div class="ui-g-12 ui-md-7 label_for_left">
+            {{_record.memberUser}} ({{_record.memberId}})
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+          <div class="ui-g-12 ui-md-3 label_for_right">
+            Pay period:
+          </div>
+          <div class="ui-g-12 ui-md-7 label_for_left">
+            {{_record.payperiod_id}}
+          </div>
+        </div>
+      </div>
+    </p-panel>
+
+    <p-panel header="Target Information" #pnl [toggleable]="true" [collapsed]="collapse4Target">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <form [formGroup]="userform">
+
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Transfer Type:
+            </div>
+            <div class="ui-g-12 ui-md-7">
+              <dx-select-box [items]="transferTypes" displayExpr="label" valueExpr="value" height="30"
+                formControlName="transferType" (onValueChanged)="onValueChanged_transferType($event)">
+              </dx-select-box>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="showWhichPart">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Customer Name:
+            </div>
+            <div class="ui-g-12 ui-md-7">
+              <dx-select-box [items]="customers" displayExpr="label" valueExpr="value" height="30"
+                formControlName="customerId" [searchEnabled]="true" placeholder="Type to search" #customerNickname
+                (onValueChanged)="onValueChanged_customer($event)">
+              </dx-select-box>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad" *ngIf="showWhichPart">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Work Order Number:
+            </div>
+            <div class="ui-g-12 ui-md-7">
+              <dx-select-box [items]="workorders" displayExpr="label" valueExpr="value" height="30"
+                noDataText="Make sure a customer is selected first." formControlName="workOrderId" #workorderNickname
+                [searchEnabled]="true" (onValueChanged)="onValueChanged_workorder($event)" placeholder="Type to search">
+              </dx-select-box>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad" *ngIf="showWhichPart && showJobType">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Job Type:
+            </div>
+            <div class="ui-g-12 ui-md-7">
+              <dx-select-box [items]="jobTypeInfo.jobTypes" displayExpr="membertype_name" valueExpr="membertype_id" #jobTypeNickName
+                formControlName="jobTypeId" height="30" [searchEnabled]="true">
+              </dx-select-box>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad" *ngIf="!showWhichPart">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Shop Time Type:
+            </div>
+            <div class="ui-g-12 ui-md-7">
+              <dx-select-box [items]="shoptimeTypes" displayExpr="label" valueExpr="value"
+                (onValueChanged)="onValueChanged_shoptimetype($event)" formControlName="shopTimetypeId" height="30" #shoptimeNickname
+                [searchEnabled]="true">
+              </dx-select-box>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="_record">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Transferred Hours:
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              {{_record.hours}} <b *ngIf="showWhichPart">{{_record.hourType}}</b> <b *ngIf="!showWhichPart">Regular</b>
+              Hour(s)
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad" *ngIf="showWhichPart">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Province:
+            </div>
+            <div class="ui-g-12 ui-md-7">
+              <dx-select-box [dataSource]="provinces" displayExpr="label" valueExpr="value" [grouped]="true" height="30" formControlName="province"
+                #provincesNickname>
+              </dx-select-box>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad ui-g-nopad" *ngIf="_record">
+            <div class="ui-g-12 ui-md-3 label_for_right">
+              Comments:
+            </div>
+            <div class="ui-g-12 ui-md-7 label_for_left">
+              <textarea   rows="4" formControlName="comment"></textarea>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad" *ngIf="showWhichPart">
+            <div *ngIf="customerIdError">
+              <p-message severity="error" [text]="customerErrorInfo"></p-message>
+            </div>
+            <div *ngIf="workorderError">
+              <p-message severity="error" [text]="workorerErrorInfo"></p-message>
+            </div>
+            <div *ngIf="provinceError">
+              <p-message severity="error" [text]="provinceErrorInfo"></p-message>
+            </div>
+            <div *ngIf="jobTypeError">
+              <p-message severity="error" [text]="jobTypeErrorInfo"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad" *ngIf="!showWhichPart">
+            <div *ngIf="shopTimeTypeError">
+              <p-message severity="error" [text]="shopTimeTypeErrorInfo"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad" >
+            <div *ngIf="commentsError">
+              <p-message severity="error" [text]="CommentsErrorInfo"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-lesspad" *ngIf="!disabledForButtons">
+            <div class="ui-g-12 ui-md-6 ui-lg-6">
+              <button type="button" pButton icon="pi pi-check" (click)="onSubmit()" label="Transfer"></button>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-lg-6">
+              <button type="button" pButton icon="pi pi-close" (click)="closeTimesheetTransferPage()" label="Exit"
+                class="ui-button-secondary"></button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </p-panel>
+
+    <p-panel header="Transfer Result Information" [toggleable]="true" [collapsed]="collapse4Result">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" *ngIf="!timesheetTransferResult && show">
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+          <p-progressSpinner [style]="{width: '30px', height: '30px'}" strokeWidth="8" fill="#EEEEEE" animationDuration="1s"></p-progressSpinner>
+          <p-message severity="info" text="The transfer operation is being processed, please wait..."></p-message>
+        </div>
+      </div>
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" *ngIf="timesheetTransferResult && timesheetTransferResult.okay">
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+          <p-message severity="success" [text]="timesheetTransferResult.summary"></p-message>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-md-6 ui-lg-6">
+          </div>
+          <div class="ui-g-12 ui-md-6 ui-lg-6">
+            <button type="button" pButton icon="pi pi-close" (click)="closeTimesheetTransferPageAndRefresh()"
+              label="Exit & Refresh" class="ui-button-secondary"></button>
+          </div>
+        </div>
+      </div>
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" *ngIf="timesheetTransferResult && !timesheetTransferResult.okay">
+        <div class="ui-g-12 ui-g-nopad ui-g-nopad">
+          <p-message severity="error" [text]="timesheetTransferResult.summary"></p-message>
+        </div>
+      </div>
+    </p-panel>
+  </p-dialog>
+
+  <p-blockUI [target]="pnl" [blocked]="blockedPanel">
+  </p-blockUI>
+</div>

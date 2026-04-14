@@ -1,0 +1,78 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g">
+  
+          <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+              Name:
+            </div>
+            <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+              <input pInputText maxlength="10" formControlName="name">
+              <nesi-fieldErrorDisplay [displayError]="isFieldInValid('name')" [errorMsg]="'Name is required.'"></nesi-fieldErrorDisplay>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+              Phone*:
+            </div>
+            <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+              <span>
+                (
+                <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="phone_area">)
+              </span>
+              <span>
+                <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="phone_first">
+              </span>
+              <span>
+                -
+                <input class="phone_number_2" minlength="4" maxlength="4"  pInputText formControlName="phone_last">
+              </span>
+              <span>
+                <b>Ext.</b>
+                <input class="phone_number_1" pInputText formControlName="phone_ext">
+              </span>
+            
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+              Cell:
+            </div>
+            <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+              <span>
+                (
+                <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="fax_area">)
+              </span>
+              <span>
+                <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="fax_first">
+              </span>
+              <span>
+                -
+                <input class="phone_number_2" minlength="4" maxlength="4" pInputText formControlName="fax_last">
+              </span>
+             
+            </div>
+          </div>
+  
+          <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+              Email:
+            </div>
+            <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+              <input pInputText maxlength="200" type="email" formControlName="email">
+            </div>
+          </div>
+  
+          <div class="ui-g-12">
+            <div class="ui-g-12 ui-lg-offset-2 ui-lg-2">
+              <button type="submit" pButton label="Save Contact" icon="fa-save"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </blockable-div>

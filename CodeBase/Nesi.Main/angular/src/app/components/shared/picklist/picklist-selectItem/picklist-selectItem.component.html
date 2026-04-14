@@ -1,0 +1,19 @@
+<div class="ui-g-12 ui-g-nopad">
+  <div class="ui-g-3">
+    <b># {{item.master_id}}</b>
+  </div>
+  <div class="ui-g-3">
+    <b>Cost:</b>
+    <i *ngIf="!loading" class="fa fa-spinner fa-spin fa-fw"></i>
+    <span [ngClass]="'cost_level_' + cost_level" title="{{getCost_ToolTip(cost_level)}}" tooltipPosition="bottom" >
+      {{cost | currency:'CAD':'symbol-narrow':'1.4-4' }}
+    </span>
+  </div>
+  <div class="ui-g-3">
+    <b>OnHand:</b>
+    <i *ngIf="!loading" class="fa fa-spinner fa-spin fa-fw"></i>{{onhand}}
+  </div>
+</div>
+<div class="ui-g-12 ui-g-nopad">
+  {{item.description}}
+</div>

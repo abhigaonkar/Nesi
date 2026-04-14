@@ -1,0 +1,22 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <p-tabView>
+     <!-- <p-tabPanel header="Settings" leftIcon="fa-cogs">
+        <nesi-customer-accounting-set [customer_base_profile]="customer_base_profile" [customer_id]="customer_id" [disabled]="disabled"></nesi-customer-accounting-set>
+      </p-tabPanel>
+       <p-tabPanel header="AR Notes" leftIcon="fa-sticky-note">
+        <nesi-customer-accounting-arnotes [customer_base_profile]="customer_base_profile" [customer_id]="customer_id"></nesi-customer-accounting-arnotes>
+      </p-tabPanel> -->
+      <p-tabPanel header="Labor Rates" leftIcon="fa-money-bill">
+        <nesi-customer-accounting-rates [customer_id]="customer_id" [disabled]="disabled" 
+        [showTravelMileageUI]="true">
+      </nesi-customer-accounting-rates>
+      </p-tabPanel>
+      <p-tabPanel header="Asset Rates" leftIcon="fa-money-bill">
+       <customer-asset-list 
+            [customer_id]="customer_id" 
+            [businessUnitId]="customer_base_profile.businessUnitId"
+            [userId]="customer_base_profile.userId" >
+        </customer-asset-list>
+      </p-tabPanel> 
+    </p-tabView>
+  </div>

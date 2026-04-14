@@ -1,0 +1,62 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12" *ngIf="!selectedSection">
+    <div class="ui-g-12 ui-md-10 ui-g-nopad">
+      <div class="ui-g-2 label_for_right">
+        Section Name:
+      </div>
+      <div class="ui-g-10">
+        <textarea [rows]="5" pInputTextArea [(ngModel)]="sectionName"></textarea>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-2 ui-g-nopad">
+      <div class="ui-g-12">
+        <button pButton label="Add" icon="fa-plus" (click)="addSection()"></button>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12" *ngIf="selectedSection">
+    <div class="ui-g-12 ui-md-8 ui-g-nopad">
+      <div class="ui-g-4 label_for_right">
+        Section Name:
+      </div>
+      <div class="ui-g-8">
+        <textarea [rows]="5" [disabled]="selectedSection.detail_id" pInputTextArea [(ngModel)]="selectedSection.section"></textarea>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-4 ui-g-nopad">
+      <div class="ui-g-6">
+        <button pButton label="Save" [disabled]="selectedSection.detail_id" icon="fa-save" (click)="updateSection(selectedSection.id,selectedSection.section)"></button>
+      </div>
+      <div class="ui-g-6">
+        <button pButton label="Delete" [disabled]="selectedSection.detail_id" class="ui-button-warning" icon="fa-times" (click)="deleteSection(selectedSection.id)"></button>
+      </div>
+      <div class="ui-g-12">
+        <button pButton label="Cancel" icon="fa-times-circle" (click)="selectedSection=null"></button>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-message ui-messages-error ui-corner-all" *ngIf="selectedSection && selectedSection.detail_id">
+    Section which is scope of work or notes/adders can only be edited at related tab.
+  </div>
+  <div class="ui-g-12">
+    <p-dataTable [value]="sectionList" [rows]="15" [emptyMessage]="'No sections found.'" [paginator]="true" [pageLinks]="10"
+      [value]="relatedTickets" sortMode="multiple" resizableColumns="true" rowHover="true" [loading]="loading" [loadingIcon]="'fa-spinner'"
+      [globalFilter]="gb" [selectionMode]="'single'" [(selection)]="selectedSection">
+      <p-header>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">
+                <i class="fa fa-search"></i>
+              </span>
+              <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+            </div>
+          </div>
+        </div>
+      </p-header>
+      <p-column header="Section" [style]="{'width':'75%'}" field="section" sortable="true"></p-column>
+      <p-column header="# of items" field="dependants" sortable="true"></p-column>
+      <!-- <p-column header="Detail Id" field="detail_id" sortable="true"></p-column> -->
+    </p-dataTable>
+  </div>
+</div>

@@ -1,0 +1,231 @@
+﻿body				{
+					padding:			2;
+					margin:				0;
+					}
+.header_bar			{
+					font-family:		Arial;
+					font-size:			.85em;
+					font-weight:		bold;
+					text-align:			right;
+					background-color:	#659DFA;
+					padding:			2px;
+					color:				#fff;
+					}
+					
+.search_bar			{
+					padding:			2px;
+					}
+					
+.customer_name 		{
+					border-bottom:		solid 1px #ddd;
+					}
+.header_info label 	{
+						font-size:			0.65em;
+						color:				#999;
+						}
+.header_info b	{
+						font-size:			0.65em;
+						color:				#090;
+						}
+.detail_customer_name	{
+						font-size:			1.15em;
+						font-family:		Arial;
+						font-weight:		bold;
+						border:				solid 1px #ddd;
+						}
+.address_label			{
+						margin-top:			25px;
+						}
+.main_table
+	{
+	margin-bottom:		100px;
+	}
+.main_table .address_list_title
+	{
+	margin-top:			15px;
+	font-weight:		bold;
+	font-size:			13px;
+	}
+.main_table .address_list
+	{
+	width:				100%;
+	}
+.detail .bc				{
+						
+						font-family:		Segoe UI;
+						font-weight:		bold;
+						height:				15px;
+						width:				150px;
+						background-color:	#BDF;
+						}
+.pop_up .c				{
+						font-size:			.75em;
+						font-family:		Segoe UI;
+						font-weight:		bold;
+						height:				15px;
+						background-color:	#eee;
+						}
+.detail .c				{
+						font-family:		Segoe UI;
+						font-weight:		bold;
+						font-size:			12px;
+						height:				15px;
+						background-color:	#eee;
+						}
+.detail .sub_c			{
+						font-size:			12px;
+						font-family:		Segoe UI;
+						font-weight:		bold;
+						background-color:	#eee;
+						}
+.detail .sub_v			{
+						font-size:			12px;
+						font-family:		Segoe UI;
+						}
+						
+.pop_up .v	,
+.pop_up .v	*,
+.detail .v	,
+.detail .v	*			{
+						font-family:		Segoe UI;
+						font-size:			12px;
+						}
+.bv_contacts			{
+						font-size:			1.15em;
+						}
+.bv_contacts .h			{
+						font-size:			1em;
+						font-weight:		bold;
+						}
+.bv_contacts .c			{
+						font-size:			1em;
+						font-weight:		bold;
+						background-color:	#fff;
+						}
+.detail .v	select,		
+.detail .v	textarea,		
+.detail .v	input		{
+						border:				solid 1px #ccc;
+						}
+*.null				{
+						color:				#ccc;
+						}
+
+.current_locations *
+	{
+	font-size:		12px;
+	}
+.current_locations .c
+	{
+	font-weight:	bold;
+	width:			200px;
+	padding:			5px;
+	background-color:	#C6E4FF;
+	}
+.current_locations .v,
+.current_locations .v input,
+.current_locations .v select
+	{
+	}
+.current_locations .v .tax_input input
+	{
+	float:				left;
+	width:				50px;
+	}
+.current_locations .v .tax_select select
+	{
+	width:				200px;
+	float:				left;
+	margin-right:		4px;
+	}
+.current_locations .pf
+	{
+	float:				left;
+	font-size:			13px !important;
+	line-height:		25px;
+	min-height:			25px;
+	text-align:			center;
+	width:				5px;
+	margin-left:		2px;
+	margin-right:		2px;
+	}
+.current_locations .pf.area,
+.current_locations .pf.area input
+	{
+	width:				35px;
+	text-align:			center;
+	}
+.current_locations .pf.prefix,
+.current_locations .pf.prefix input
+	{
+	width:				35px;
+	text-align:			center;
+	}
+.current_locations .pf.suffix,
+.current_locations .pf.suffix input
+	{
+	width:				50px;
+	}
+.current_locations .pf.ext,
+.current_locations .pf.ext input
+	{
+	width:				35px;
+	text-align:			center;
+	}
+.current_locations .error_report
+	{
+	padding:			5px;
+	
+	}
+.current_locations .error_report .err
+	{
+	font-weight:		bold;
+	color:				red;
+	}
+.current_locations .error_report .title
+	{
+	font-weight:		bold;
+	text-decoration:	underline;
+	}
+.dxgvDetailCell
+	{
+	padding:		2px !important;
+	}
+.dxgvDataRow:hover
+	{
+	background-color:	#C6E4FF;
+	cursor:				pointer;
+	}
+.pc_location
+	{
+	}
+
+.pc_location .dxtcTab.tab
+	{
+	background-color:	#1e90cc;
+	}
+.pc_location .dxtcActiveTab.tab
+	{
+	background-color:	#fff;
+	}
+.pc_location .dxtcTab.tab .dxtc
+	{
+	color:				#fff !important;
+	font-weight:		bold;
+	font-size:			11px;
+	}
+.pc_location .dxtcActiveTab.tab .dxtc
+	{
+	color:				#1e90cc !important;
+	font-weight:		bold;
+	font-size:			11px;
+	}
+
+		.info .memo
+			{
+			width:				100%;
+			}
+.dxpcModalBackLite 
+{
+    background-color: transparent !important;
+}

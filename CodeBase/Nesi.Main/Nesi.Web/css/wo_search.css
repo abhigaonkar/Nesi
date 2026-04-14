@@ -1,0 +1,92 @@
+﻿#work_order_search									{
+													font-family:			Calibri;
+													font-size:				13px;
+													width:					775px;
+													}
+
+#work_order_search .column_header					{
+
+													
+													}
+
+#work_order_search .column_header td				{
+													font-weight:			bold;
+													background-color:						#4682B4;
+							color:									#fff;
+							text-align:								center;
+							height:								30px;
+													}
+
+#work_order_search .result							{
+													background-color:		#fff;
+													}
+
+#work_order_search .result:hover					{
+													background-color:		#fc0;
+													}
+
+#work_order_search .result	td						{
+													}
+
+#work_order_search .result .wo_number				{
+													width:					100px;
+													
+													border-left:			solid 1px #999;
+													border-right:			solid 1px #999;
+													text-align:				center;
+													}
+
+#work_order_search .result .wo_number a				{
+													color:					#000;
+													}
+
+#work_order_search .result .cust_name				{
+													width:					275px;
+													
+													
+													border-right:			solid 1px #999;
+													
+													
+													}
+													
+#work_order_search .result .description					
+{
+	                                                width:                  200px;
+													border-right:			solid 1px #999;
+													
+													text-align:				center;
+													
+													}
+													
+
+#work_order_search .result .status					{
+													border-right:			solid 1px #999;
+												
+													text-align:				center;
+													
+													}
+
+#work_order_search .result .last_modified			{
+													width:					160px;
+												
+													border-right:			solid 1px #999;
+													text-align:				center;
+													}
+
+#work_order_search .result .last_modified_by		{
+													border-right:			solid 1px #999;
+													
+												
+													}
+
+#work_order_search .footer							{
+													background-color:		#000;
+													}
+
+#work_order_search .noresults						{
+													text-align:				center;
+													padding:				150px;
+													font-weight:			bold;
+													font-size:				14px;
+													color:					#f00;
+													}

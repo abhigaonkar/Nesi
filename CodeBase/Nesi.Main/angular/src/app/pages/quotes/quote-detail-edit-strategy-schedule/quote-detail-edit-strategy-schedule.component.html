@@ -1,0 +1,33 @@
+<p-blockUI [blocked]="blocked">
+    <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+  </p-blockUI>
+  
+<div *ngIf="qs" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12 title">Process Schedule</div>
+  <div class="ui-g-12 label">{{qs&&qs.lbl_lvl_text}}</div>
+  <!-- <div class="ui-g-12 title">
+    <div class="ui-g-2 ">
+      <div class="ui-g-10 ui-g-nopad">Completed</div>
+      <div class="ui-g-2  ui-g-nopad right">&nbsp;</div>
+    </div>
+    <div class="ui-g-3 background-grey">Milestone</div>
+    <div class="ui-g-2">Deadline Dates</div>
+    <div class="ui-g-2">Assigned To</div>
+    <div class="ui-g-3">Notes</div>
+  </div> -->
+  <div class="ui-g-12">
+    <p-accordion>
+      <ng-container *ngFor="let item of qs.rows">
+        <nesi-quote-detail-edit-strategy-item [Item]="item" 
+          [quote_id]="quote_id" 
+          [buid]="buId"
+          (assigntoChanged)="assigntoChanged($event)"
+          (onbuttonClick)="itemButtonClick($event)"
+          (quoestionDone)="dialogSubmited($event)">
+        </nesi-quote-detail-edit-strategy-item>
+      </ng-container>
+    </p-accordion>
+    <div class="ui-g-12">
+
+
+    </div>

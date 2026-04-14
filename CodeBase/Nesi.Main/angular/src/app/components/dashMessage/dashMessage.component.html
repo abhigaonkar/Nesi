@@ -1,0 +1,7 @@
+<div class="dashmessageDiv">
+  <nesi-visibleBusinessUnitDropDown (onChange)="change($event)" [(ngModel)]="selectBusinessUnitId" #businessUnitid>
+  </nesi-visibleBusinessUnitDropDown>
+  <textarea pInputTextarea rows="5" cols="25" [(ngModel)]="msg" #text placeholder="Type here to add to the discussion"></textarea>
+  <button type="button" [disabled]="!msg" class="savebutton" pButton label="Save" (click)="save()"></button>
+  <textarea readonly="true" pInputTextarea rows="10" cols="25" [(ngModel)]="msgText" #text></textarea>
+</div>

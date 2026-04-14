@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4BBC7F80-E983-491D-83E6-4EBB727591D3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NESI.Common</RootNamespace>
+    <AssemblyName>NESI.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MattLocal|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\MattLocal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MattLocal|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\MattLocal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers.Crypto, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Helpers.Crypto.3.2.3\lib\net40\System.Web.Helpers.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Http.Common.4.0.20126.16343\lib\net40\System.Web.Http.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exceptions\NesiException.cs" />
+    <Compile Include="Exceptions\NesiValidationException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Models\Employee\OpsStaticEmployees.cs" />
+    <Compile Include="Models\Employee\HRStatus.cs" />
+    <Compile Include="Models\ExpenseReimbursement\Seller.cs" />
+    <Compile Include="Models\Infrastructure\CheckPoint.cs" />
+    <Compile Include="Models\Infrastructure\EmailID.cs" />
+    <Compile Include="Models\Asset\OpsAsset.cs" />
+    <Compile Include="Models\Infrastructure\OpsDates.cs" />
+    <Compile Include="Models\Infrastructure\OpsLog.cs" />
+    <Compile Include="Models\Infrastructure\OpsCountry.cs" />
+    <Compile Include="Models\Payroll\OpsPayroll.cs" />
+    <Compile Include="Models\Profile\OpsMemberPayType.cs" />
+    <Compile Include="Models\Purchase Order\AppConstants.cs" />
+    <Compile Include="Models\Scheduler\OpsSchedulerStatus.cs" />
+    <Compile Include="Models\Purchase Order\OpsPOStatus.cs" />
+    <Compile Include="Models\Infrastructure\NesiOperationResult.cs" />
+    <Compile Include="Models\Infrastructure\OpsBase64Image.cs" />
+    <Compile Include="Models\Inventory\OpsSpecialTag.cs" />
+    <Compile Include="Models\Work Order\OpsSpecialWorkorder.cs" />
+    <Compile Include="Models\Profile\OpsPayType.cs" />
+    <Compile Include="Models\Work Order\OpsStaticTerms.cs" />
+    <Compile Include="Models\Work Order\OpsWOLineOrigin.cs" />
+    <Compile Include="Models\Work Order\OpsWOLineIssue.cs" />
+    <Compile Include="Models\Work Order\OpsWOLineType.cs" />
+    <Compile Include="Models\Infrastructure\OpsGeneralString.cs" />
+    <Compile Include="Models\Work Order\OpsWOStatus.cs" />
+    <Compile Include="Models\Profile\OpsMemberType.cs" />
+    <Compile Include="Models\Profile\OpsPage.cs" />
+    <Compile Include="Models\Profile\OpsPrivilege.cs" />
+    <Compile Include="Models\Work Order\OpsBillType.cs" />
+    <Compile Include="Models\Inventory\OpsSpecialPart.cs" />
+    <Compile Include="Models\Work Order\OriginType.cs" />
+    <Compile Include="Password\Configuration\ConfigurationSettingsExtractor.cs" />
+    <Compile Include="Password\PasswordOptions.cs" />
+    <Compile Include="Password\Configuration\PasswordOptionsConfigurationSection.cs" />
+    <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\StreamExtensions.cs" />
+    <Compile Include="Password\IIdentityProvider.cs" />
+    <Compile Include="Password\PasswordHasher.cs" />
+    <Compile Include="Password\PasswordValidationError.cs" />
+    <Compile Include="Password\PasswordValidationResult.cs" />
+    <Compile Include="Password\PasswordValidator.cs" />
+    <Compile Include="Password\PasswordVerificationResult.cs" />
+    <Compile Include="Password\TokenValidationErrorReason.cs" />
+    <Compile Include="Password\TokenValidationResult.cs" />
+    <Compile Include="Password\UserTokenGenerator.cs" />
+    <Compile Include="Reports\ColumnDefination.cs" />
+    <Compile Include="Reports\columnsCollection.cs" />
+    <Compile Include="Reports\ExpressionBuilder.cs" />
+    <Compile Include="Reports\Filter.cs" />
+    <Compile Include="Reports\GroupHelper.cs" />
+    <Compile Include="Interface\IModelBase.cs" />
+    <Compile Include="Interface\IModelEditor.cs" />
+    <Compile Include="Interface\IModelGenerator.cs" />
+    <Compile Include="Interface\IModelSchemaGenerator.cs" />
+    <Compile Include="Interface\IReport.cs" />
+    <Compile Include="Interface\IReportEditor.cs" />
+    <Compile Include="Interface\IReportFilter.cs" />
+    <Compile Include="Interface\IReportViewer.cs" />
+    <Compile Include="Interface\ISchema.cs" />
+    <Compile Include="Reports\IQueryableExtension.cs" />
+    <Compile Include="Reports\IReportExporter.cs" />
+    <Compile Include="Reports\Lookup.cs" />
+    <Compile Include="Security\NesiClaimTypes.cs" />
+    <Compile Include="Serialization\LookupConverter.cs" />
+    <Compile Include="Reports\ModelBase.cs" />
+    <Compile Include="Reports\ModelDefination.cs" />
+    <Compile Include="Reports\Objecthelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\QueryParam.cs" />
+    <Compile Include="Reports\Report.cs" />
+    <Compile Include="Reports\ReportSection.cs" />
+    <Compile Include="Reports\Response.cs" />
+    <Compile Include="Reports\Schema.cs" />
+    <Compile Include="Reports\SchemaSection.cs" />
+    <Compile Include="Serialization\ReflectionMapIgnoreAttribute.cs" />
+    <Compile Include="Reports\SortingPaging.cs" />
+    <Compile Include="Reports\SortOrder.cs" />
+    <Compile Include="Templates\TemplateParameterFormat.cs" />
+    <Compile Include="Templates\TemplateParser.cs" />
+    <Compile Include="Templates\TemplateParseValidationMode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

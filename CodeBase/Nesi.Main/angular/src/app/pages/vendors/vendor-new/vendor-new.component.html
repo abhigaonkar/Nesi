@@ -1,0 +1,160 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+</p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Name*:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText formControlName="name" (change)="checkVendorName()">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('name')" [errorMsg]="'Vendor Name is required and at least 4 characters.'"></nesi-fieldErrorDisplay>
+            <span class="ui-message ui-messages-warn ui-corner-all ui-g-nopad" *ngIf="vendor_name_exist">
+              <i class="fa fa-exclamation-circle"></i>
+              Vendor already exists under this name:
+              <nesi-vendor-exists (openVendor)="openVendor($event)" [query]="userform.get('name').value" [list]="vendor_exist_list"></nesi-vendor-exists>
+            </span>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Address:
+            <br/>
+            <b>(Line 1 is required)</b>
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText maxlength="200" placeholder="Line 1*" formControlName="addr1">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('addr1')" [errorMsg]="'Address Line 1 is required.'"></nesi-fieldErrorDisplay>
+            <input pInputText maxlength="200" placeholder="Line 2" formControlName="addr2">
+            <input pInputText maxlength="200" placeholder="Line 3" formControlName="addr3">
+            <input pInputText maxlength="200" placeholder="Line 4" formControlName="addr4">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            City*:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText maxlength="50" formControlName="city">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('city')" [errorMsg]="'City is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Prov/State*:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" placeholder="Select Prov/State" [style]="{'width':'100%'}" [options]="profile && profile.provList"
+              formControlName="prov"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('prov')" [errorMsg]="'Prov/State is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Postal Code*:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText maxlength="10" formControlName="postal">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('postal')" [errorMsg]="'Postal Code is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Country*:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" maxlength="50" placeholder="Select Country" [style]="{'width':'100%'}" [options]="profile && profile.countryList"
+              formControlName="country"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('country')" [errorMsg]="'Country is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Phone*:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <span>
+              (
+              <input class="phone_number_1" minlength="3" maxlength="3" (change)="checkVendorPhone()" pInputText formControlName="phonearea">)
+            </span>
+            <span>
+              <input class="phone_number_1" minlength="3" maxlength="3" (change)="checkVendorPhone()" pInputText formControlName="phonefirst">
+            </span>
+            <span>
+              -
+              <input class="phone_number_2" minlength="4" maxlength="4" (change)="checkVendorPhone()" pInputText formControlName="phonelast">
+            </span>
+            <span>
+              <b>Ext.</b>
+              <input class="phone_number_1" pInputText formControlName="phoneext">
+            </span>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('phonearea') || isFieldInValid('phonefirst') || isFieldInValid('phonelast')"
+              [errorMsg]="'Valid Phone number is required.'"></nesi-fieldErrorDisplay>
+            <span class="ui-message ui-messages-warn ui-corner-all ui-g-nopad" *ngIf="vendor_phone_exist">
+              <i class="fa fa-exclamation-circle"></i>
+              Phone exists on
+              <nesi-vendor-exists (openVendor)="openVendor($event)" [list]="vendor_phone_exist_list"></nesi-vendor-exists>
+            </span>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Fax:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <span>
+              (
+              <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="faxarea">)
+            </span>
+            <span>
+              <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="faxfirst">
+            </span>
+            <span>
+              -
+              <input class="phone_number_2" minlength="4" maxlength="4" pInputText formControlName="faxlast">
+            </span>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('faxarea') || isFieldInValid('faxfirst') || isFieldInValid('faxlast')"
+              [errorMsg]="'Fax number is not valid.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Email*:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText maxlength="200" type="email" formControlName="email">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('email')" [errorMsg]="'Email is required and valid.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Website:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText maxlength="200" formControlName="web">
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Terms*:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" placeholder="Select Term" [style]="{'width':'100%'}" [options]="profile && profile.termList"
+              formControlName="term_id"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('term_id')" [errorMsg]="'Terms is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-offset-2 ui-lg-2">
+            <button type="submit" [disabled]="vendor_name_exist || vendor_phone_exist" pButton label="Start New Vendor" icon="fa-plus"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</blockable-div>

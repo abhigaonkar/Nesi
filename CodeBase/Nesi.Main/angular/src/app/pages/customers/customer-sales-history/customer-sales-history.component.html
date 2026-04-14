@@ -1,0 +1,73 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+    <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+      <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+    </p-blockUI>
+    <blockable-div #pblockableDiv>
+  
+      <p-dataTable [value]="histories" [responsive]="true" [globalFilter]="gb" rowHover="true" expandableRows="true" [pageLinks]="3"
+        [paginator]="true" [rows]="10" #d>
+        <p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+              <div class="ui-g-12 left">
+                <div class="ui-g-12 ui-lg-1">
+                  <label>Date of Action</label>
+                  <p-calendar [style]="{'width': '80%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="date"  placeholder="yyyy-mm-dd"
+                    showIcon="true"></p-calendar>
+                    <nesi-fieldErrorDisplay [displayError]="isFieldInValid('date')" [errorMsg]="'Date is required.'"></nesi-fieldErrorDisplay>
+                  </div>
+                <div class="ui-g-12 ui-lg-2">
+                  <label>Action</label>
+                  <p-dropdown [style]="{'width': '100%'}" placeholder="&nbsp;" [filter]="lists && lists.historyActionList.length>10" [options]="lists && lists.historyActionList"
+                    formControlName="action_id"></p-dropdown>
+                    <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('action_id')" [errorMsg]="'Action is required.'"></nesi-fieldErrorDisplay>
+                </div>
+                <div class="ui-g-12 ui-lg-2">
+                  <label>Member</label>
+                  <p-dropdown [style]="{'width': '100%'}" placeholder="&nbsp;" [filter]="lists && lists.historyActionMemberList.length>10"
+                    [options]="lists && lists.historyActionMemberList" formControlName="member_id"></p-dropdown>
+                    <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('member_id')" [errorMsg]="'Member is required.'"></nesi-fieldErrorDisplay>
+                </div>
+                <div class="ui-g-12 ui-lg-2">
+                  <label>Origin</label>
+                  <p-dropdown [style]="{'width': '100%'}" placeholder="&nbsp;" [filter]="lists && lists.originList.length>10" [options]="lists && lists.originList"
+                    formControlName="origin"></p-dropdown>
+                    <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('origin')" [errorMsg]="'Origin is required.'"></nesi-fieldErrorDisplay>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
+                  <label>Notes</label>
+                  <textarea [rows]="5" style="height:60px;" formControlName="notes" pInputTextarea></textarea>
+                  <nesi-fieldErrorDisplay [displayError]="isFieldInValid('notes')" [errorMsg]="'Notes is required.'"></nesi-fieldErrorDisplay>
+                </div>
+                <div class="ui-g-12 ui-lg-1">
+                  <label>&nbsp;</label>
+                  <button pButton type="submit" icon="fa-save" label="Save" [disabled]="disabled" ></button>
+                </div>
+              </div>
+            </form>
+            <div class="ui-g-12 ui-lg-7">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+                <input #gb type="text" style="height:25px" pInputText size="50" placeholder="Global Filter">
+              </div>
+            </div>
+          </div>
+        </p-header>
+        <p-column [style]="{'width':'5%'}" field="date" header="Date" [sortable]="true">
+            <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+                {{data[col.field] | date: 'yyyy-MM-dd'}}
+              </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'10%'}" field="action" header="Action" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'7%'}" field="member" header="Member" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'7%'}" field="origin" header="Origin" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'40%'}" field="notes" header="Notes" [sortable]="true">
+          <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+            <span class="pre-line">{{item[col.field]}}</span>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </blockable-div>
+  </div>

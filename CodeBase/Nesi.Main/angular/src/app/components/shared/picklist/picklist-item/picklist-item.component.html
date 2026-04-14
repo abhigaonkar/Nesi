@@ -1,0 +1,159 @@
+<div class="ui-g-12 ui-g-nopad picklist_item">
+  <div class="ui-g-8 ui-lg-4 draggable_div">
+    <div class="ui-g-2 ui-lg-2 ui-g-nopad">
+      <div class="ui-g-6 hovernote" style="margin-top:-15px">
+        <div class="ui-g-6 ui-g-nopad hovernote" (mousemove)="moveTip($event)">
+          <div class="small_label">Part: </div>
+          <a *ngIf="item.part_no < 990000" (click)="partNoClick(item.part_no)">#{{item.part_no}}</a>
+          <div *ngIf="item.part_no>=990000 && item.part_no<2000000">#{{item.part_no}}</div>
+          <img *ngIf="item.part_no>=2000000" width="20px" height="30px" src="/assets/images/icon/icon[list_creation].gif">
+        </div>
+        <span *ngIf="image" [style.left]="tooltipX" [style.top]="tooltipY">
+          <img *ngIf="item.part_no && item.part_no < 990000" [src]="image ? image : ''">
+        </span>
+        <span *ngIf="item.part_no>=2000000" [style.left]="tooltipX" [style.top]="tooltipY">
+          <table width="{{cs.isLg? '640px': '430px'}}" border="1" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>Part #</td>
+              <td>description</td>
+              <td>Qty</td>
+              <td>Cost</td>
+              <td>OnHand</td>
+            </tr>
+            <tr *ngFor="let row of kittedParts; let i=index">
+              <td>{{row.master_id}}</td>
+              <td>{{row.description}}</td>
+              <td>{{row.qty}}</td>
+              <td>{{row.cost | currency:'CAD':'symbol-narrow':'1.2-2'}}</td>
+              <td>{{row.onhand}}</td>
+            </tr>
+          </table>
+        </span>
+      </div>
+    </div>
+    <div class="ui-g-6 ui-lg-8 ui-g-nopad">
+      <div class="ui-g-12 ui-g-nopad" style="margin-top:-15px;margin-bottom:8px;">
+        <span class="small_label" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Section: </span> {{shortenText(item.section_name,30)}}
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <p-inplace [active]="discriptionEditable" (onActivate)="setFocus(inputlabel)">
+          <span pInplaceDisplay>
+            <span title="{{item.label}} (click to edit)" class="text_ellipsis bold">{{item.label}}</span>
+          </span>
+          <span pInplaceContent>
+            <span>
+              <input #inputlabel autofocus="true" (change)="field_Changed('description')" (blur)="closeInplace()" type="text" [(ngModel)]="item.label"
+                pInputText>
+            </span>
+          </span>
+        </p-inplace>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-2 ui-lg-1">
+    <div class="ui-g-12 ui-g-nopad small_label show-sm">Qty</div>
+    <span class="ui-float-label">
+      <input id="qty" [disabled]="edit_disabled" type="number" step="1" (change)="field_Changed('qty')" pInputText [(ngModel)]="item.qty">
+      <label for="qty">Qty</label>
+    </span>
+  </div>
+  <div class="ui-g-7 ui-lg-2">
+    <div class="ui-g-4 ui-lg-4 ui-g-nopad">
+      <div class="ui-g-12  ui-g-nopad small_label show-sm">Cost</div>
+      <span class="ui-float-label">
+       <input [disabled]="edit_disabled" id="cost" type="number" title="{{getCost_ToolTip(item.cost_level)}}" class="no_border"
+        [ngClass]="getCostClass(item)"
+        [readonly]="false" (change)="fillCost2()"
+        pInputText [(ngModel)]="item.display_cost" step="0.0001">
+      <label for="cost">Cost</label>
+      </span>
+    </div>
+
+    <div class="ui-g-4 ui-lg-4 ui-g-nopad">
+      <div class="ui-g-12  ui-g-nopad small_label show-sm">Avg Cost</div>
+      <span class="ui-float-label">
+        <input [disabled]="edit_disabled" id="avg_cost" type="number" title="{{getCost_ToolTip(item.cost_level)}}" class="no_border back_transparent" 
+            [readonly]="true" 
+            pInputText [(ngModel)]="item.avg_cost" step="0.0001">
+      <label for="avg_cost">Avg Cost</label>
+      </span>
+    </div>
+    <div class="ui-g-4 ui-lg-4 ui-g-nopad">
+      <div class="ui-g-12  ui-g-nopad small_label show-sm">Recmd Cost</div>
+      <span class="ui-float-label">
+        <input [disabled]="edit_disabled" id="recommended_cost" type="number" title="{{getCost_ToolTip(item.cost_level)}}" class="no_border back_transparent"
+        
+            [readonly]="true" 
+            pInputText [(ngModel)]="item.recommended_cost" step="0.0001">
+      <label for="recommended_cost">Recmd Cost</label>
+      </span>
+    </div>
+  </div>
+  <div class="ui-g-7 ui-lg-2">
+    <div class="ui-g-4 ui-lg-4 ui-g-nopad">
+      <div class="ui-g-12  ui-g-nopad small_label show-sm">Date Up'd</div>
+      <span class="ui-float-label">
+        <input [disabled]="edit_disabled" id="date_updated" type="text" title="{{getCost_ToolTip(item.cost_level)}}" class="no_border back_transparent"
+            
+            [readonly]="true" 
+            pInputText [(ngModel)]="item.date_updated">
+      <label for="date_updated">Date Up'd</label>
+      </span>
+    </div>
+    <div class="ui-g-4 ui-lg-4 ui-g-nopad">
+      <div class="ui-g-12 ui-g-nopad small_label show-sm">Ext'd</div>
+      <span class="ui-float-label">
+        <input id="extd" [disabled]="edit_disabled" class="no_border back_transparent" readonly="true" type="number" step="0.01"
+          title="{{item.extd}}" pInputText [(ngModel)]="item.extd" title=''>
+        <label for="extd">Ext'd</label>
+      </span>
+    </div>
+    <div class="ui-g-4 ui-lg-4 ui-g-nopad">
+      <div class="ui-g-12 ui-g-nopad small_label show-sm">Discount</div>
+      <span class="ui-float-label">
+        <input id="discount" [disabled]="edit_disabled" class="no_border back_transparent" readonly="true" type="number" step="0.01"
+          title="discount: {{item.discount/100 | percent: '1.0-0'}}" pInputText [(ngModel)]="item.discount" title=''>
+        <label for="discount">Discount</label>
+      </span>
+    </div>
+  </div>
+  <div class="ui-g-3 ui-lg-1">
+    <div class="ui-g-12 ui-g-nopad small_label show-sm">~Ext'd</div>
+    <span class="ui-float-label">
+      <input id="extd2" [disabled]="edit_disabled" type="number" step="0.01" (change)="field_Changed('extd2')" pInputText [(ngModel)]="item.extd2"
+        [style.color]="item.extd2>item.extd? 'darkgreen': item.extd2<item.extd? 'red' : ''" [style.font-weight]="item.extd2==item.extd? '':'bold'">
+      <label for="extd2">~Ext'd</label>
+    </span>
+  </div>
+  <div class="ui-g-12 ui-lg-2">
+    <div class="ui-g-3 ui-lg-3 ui-g-nopad" [style.color]="margin>=0? 'darkgreen' : 'red'">
+      <div class="ui-g-12 ui-g-nopad small_label show-sm">~Margin</div>
+      <div class="ui-g-12 ui-g-nopad">
+        <span class="ui-float-label ui-float-label-top">
+          <label for="sortby">~Margin</label>
+        </span>
+        <div class="ui-g-12 ui-g-nopad" style="margin-top:3px;color:black">
+          {{ margin | percent: '1.1-1'}} </div>
+      </div>
+    </div>
+    <div class="ui-g-3 ui-lg-2 ui-g-nopad">
+      <div class="ui-g-12 ui-g-nopad small_label show-sm">Select item</div>
+      <div class="ui-g-12 ui-g-nopad">
+        <p-checkbox binary="true" [(ngModel)]="item.is_selected"></p-checkbox>
+      </div>
+    </div>
+    <div class="ui-g-3  ui-lg-2 ui-g-nopad">
+      <div class="ui-g-12 ui-g-nopad small_label show-sm">Edit Note</div>
+      <div class="ui-g-12 ui-g-nopad">
+        <nesi-picklist-note (changed)="onNoteChanged.emit(item.id)" [notes]="item.notes" [partno]="item.part_no" [id]="item.id"></nesi-picklist-note>
+      </div>
+    </div>
+    <div class="ui-g-3  ui-lg-4 ui-g-nopad">
+      <div class="ui-g-12 ui-g-nopad small_label show-sm">&nbsp;</div>
+      <div class="ui-g-12 ui-g-nopad">
+        <p-toggleButton [disabled]="edit_disabled" (onChange)="check_changed()" [style]="{'width':'5rem'}" [(ngModel)]="item.is_checked"
+          onLabel="Include" offLabel="Include" onIcon="fa-check-square" offIcon="fa-square"></p-toggleButton>
+      </div>
+    </div>
+  </div>
+</div>

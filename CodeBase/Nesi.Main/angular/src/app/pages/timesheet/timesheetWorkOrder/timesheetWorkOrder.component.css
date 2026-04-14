@@ -1,0 +1,82 @@
+textarea {
+  width: 100%;
+}
+
+.inputHrs {
+  width: 60px;
+}
+.inputDistance{
+  width:auto;
+}
+
+.row_Hour {
+  float: left !important;
+  width: 60px !important;
+  margin-right: 5px;
+}
+
+.row_HourType {
+  float: left !important;
+  width: 300px !important;
+  margin-right: 5px;
+}
+
+.row_Button {
+  float: left !important;
+  width: 100px !important;
+  margin-right: 5px;
+}
+
+
+.entryBackground {
+  margin-top: 1px;
+}
+
+.dataRow {
+  float: left !important;
+  width:100% !important;
+  margin-bottom: 10px;
+}
+
+
+.dataColumn {
+  float: left !important;
+  margin-right: 10px;
+  width: 100%;
+  border-top: 1px solid #21b310;
+}
+
+.dataColumnType {
+  float: left !important;
+  margin-right: 10px;
+  width: 200px;
+}
+
+.dataColumnHour {
+  float: left !important;
+  margin-right: 10px;
+  width:80px;
+}
+
+.dataColumnButton {
+  float: left !important;
+  margin-right: 10px;
+  width:100px;
+}
+
+.removebutton{
+  width:80px !important;
+}
+
+.spanHour{
+  margin-top: 7px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+.WarningOnHour {
+  background-color: #fff;
+  border-color: #efa2a9;
+  border-left: 5px solid #a94442;
+  outline: none;
+}

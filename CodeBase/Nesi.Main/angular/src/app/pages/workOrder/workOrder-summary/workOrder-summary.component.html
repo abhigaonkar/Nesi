@@ -1,0 +1,144 @@
+<div class="ui-g-6">
+  <div class="ui-g-12 ui-lg-2 label_for_right">
+    Business Units:
+  </div>
+  <div class="ui-g-12 ui-lg-4">
+    <p-multiSelect [style]="{'width':'100%'}" [filter]="(visible_businessUnit_list && visible_businessUnit_list.length >5)"
+      [options]="visible_businessUnit_list" [(ngModel)]="selectedBusinessUnits" selectedItemsLabel="{0} business units selected"
+      (onPanelHide)="selectChange()"
+      ></p-multiSelect>
+  </div>
+  <!-- <div class="ui-g-12 ui-lg-2">
+    <button pButton label="Apply" (click)="selectChange()"></button>
+  </div>
+  <div class="ui-g-12 ui-lg-2">
+    <button pButton label="Save Layout" icon="fa-save" (click)="saveLayout()"></button>
+  </div> -->
+</div>
+
+<!-- header of table -->
+<div class="wopolayout">
+  <div class="ui-g-12 ui-g-nopad  row_header" *ngIf="cs.isLg">
+    <div class="ui-g-2 ui-g-nopad">
+      <div class="ui-g-4 ui-g-nopad" *ngIf="can_cut_WO">
+        &nbsp;
+      </div>
+      <div class="ui-g-3 ui-g-nopad middle_center">
+        Just Scanned
+      </div>
+      <div class="ui-g-5 ui-g-nopad middle_center">
+        Business
+        <br/> Unit
+      </div>
+    </div>
+    <div class="ui-g-10 ui-g-nopad ">
+      <div class="ui-g-1 ui-g-nopad middle_center">
+        Total
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        Open
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        On Hold
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        Processing
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        Init
+        <br/> Prep
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        Open
+        <br/> PO's
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        Rework
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        Questions
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        PM
+        <br/> Approval
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        BM
+        <br/> Approval
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        To Be
+        <br/> Invoiced
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        Waiting
+        <br/> Cust PO
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <p-accordion [multiple]="true" (onOpen)="tabOpen($event)" (onClose)="tabClose($event)">
+        <ng-container *ngFor="let te of selected_tax_entity_list;let i=index">
+          <p-accordionTab [header]="te.name" [selected]="te.open">
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid te_body" *ngIf="te.open">
+              <div class="ui-g-12  ui-g-nopad bu_row" *ngFor="let bu of getBusinessUnitByTaxEntity(te.id)">
+                <nesi-workOrder-Summary-BusinessUnit [can_cut_WO]="can_cut_WO" (loaded)="buLoaded($event)" [businessUnit_name]="bu.label"
+                  [urls]="urls" [summaryList]="summaryList" [businessUnit_id]="bu.value"></nesi-workOrder-Summary-BusinessUnit>
+              </div>
+            </div>
+          </p-accordionTab>
+        </ng-container>
+    </p-accordion>
+  </div>
+  <div class="ui-g-12 ui-g-nopad  row_footer" *ngIf="cs.isLg">
+    <div class="ui-g-2 ui-g-nopad">
+      <div class="ui-g-4 ui-g-nopad" *ngIf="can_cut_WO">
+        &nbsp;
+      </div>
+      <div class="ui-g-3 ui-g-nopad middle_center">
+        {{sum.just_scanned}}
+      </div>
+      <div class="ui-g-5 ui-g-nopad">
+        &nbsp;
+      </div>
+    </div>
+    <div class="ui-g-10 ui-g-nopad ">
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.total"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.open"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.on_hold"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.being_processed"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.init_prep"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.open_pos"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.rework"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.questions"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.pm_approval"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.bm_approval"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.to_be_invoiced"></nesi-workOrder-summary-sumtotal>
+      </div>
+      <div class="ui-g-1 ui-g-nopad">
+        <nesi-workOrder-summary-sumtotal [value]="sum.waiting_cut_po"></nesi-workOrder-summary-sumtotal>
+      </div>
+    </div>
+  </div>
+</div>

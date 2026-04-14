@@ -1,0 +1,399 @@
+﻿body
+	{
+	font-family:						Arial;
+	padding:							0;
+	margin:								0;
+	}
+#picklist
+	{
+	
+	}
+#picklist .header_labels
+	{
+	margin-bottom:						20px;
+	}
+	
+#picklist .header_labels .total_quoted_c
+	{
+	font-weight:						bold;
+	font-size:							14px;
+		font-family:Arial;
+	}
+#picklist .header_labels .total_quoted_v
+	{
+	color:								#800000;
+	font-weight:						bold;
+	font-family:Arial;
+	font-size:							14px;
+	}
+#picklist .header_labels .c
+	{
+	font-weight:						bold;
+	font-size:							12px;
+	font-family:Arial;
+	white-space:nowrap;
+	}
+#picklist .header_labels .v
+	{
+	font-size:							12px;
+	}
+
+#picklist .add_line
+	{
+	width:								100%;
+	border:								solid 0px #00c;
+	}
+#picklist .add_line thead th
+	{
+	text-align:							center;
+	background-color:					#309144;
+	color:								#fff;
+	font-weight:						bold;
+	padding-top:6px;
+	padding-bottom:6px;
+	}
+#picklist .add_line *
+	{
+	font-size:							11px;
+	font-family:						Arial;
+	}
+
+#picklist .add_line th
+	{
+	background-color:					#000;
+	color:								#fff;
+	min-height:20px;
+	}
+	
+#picklist .add_line td
+	{
+	text-align:							center;
+	border:								solid 0px #00c;
+	min-height:20px;
+	}
+#picklist .add_line .td
+	{
+	border-right:						solid 0px #bbb;
+	min-height:20px;
+	}
+
+#picklist .add_line .td .dxic
+{
+	padding:0px;
+	border:								solid 0px #999;
+	min-height:20px;
+}
+
+#picklist .add_line .td .dxeButtonEdit
+{
+border:								solid 0px #999;
+}
+#picklist .add_line .td .ddlMatType
+{
+	border:								solid 0px #999;
+	min-height:20px;
+}
+#picklist .add_line .td .dxic .dxeEditArea 
+{
+	min-height:20px;
+	border:								solid 0px #999;
+}
+
+	
+#picklist .add_line .TextPartNo
+	{
+	border:								solid 0px #999;
+	font-weight:						bold;
+	width:								98%;
+	min-height:20px;
+	}
+#picklist .add_line .buttons
+	{
+	width:								50px;
+	min-height:20px;
+	border:								solid 0px #999;
+	}
+#picklist .add_line .VendPartNo
+	{
+	border:								solid 0px #999;
+	font-weight:						bold;
+	width:								50px;
+	min-height:20px;
+	}
+	
+#picklist .add_line .Description
+	{
+	border:								solid 0px #999;
+	
+	font-weight:						bold;
+	width:								99%;
+	min-height:20px;
+	}
+#picklist .add_line .TextCost,
+#picklist .add_line .QtyPerPart,
+#picklist .add_line .TMQuoteExt,
+#picklist .add_line .TMSellExt,
+#picklist .add_line .TextSell,
+#picklist .add_line .QtyPart,
+#picklist .add_line .TextComQty
+	{
+	border:								solid 0px #999;
+	font-weight:						bold;
+	text-align:							center;
+	width:								95%;
+	max-width:							45px;
+	min-height:20px;
+	}
+#picklist .fb_class
+{
+	border-bottom-style:none;
+}
+
+#picklist .inlineeditcell
+{
+	padding-top:10px;
+	padding-bottom:10px;
+	border:none !important;
+	background-color:#ffe5cc;
+	
+}
+#picklist .add_line .btn_Save
+{
+	height:15px !important;
+	padding-top:0px;
+	padding-bottom:0px;
+	margin-right:7px;
+	background-color:transparent;
+}
+#picklist .add_line .btn_Clear
+{
+	
+	margin-right:7px;
+
+}
+#picklist .add_line tbody
+	{
+	background-color:					#ddd;
+	}
+#picklist .add_line tfoot
+	{
+	background-color:					#555;
+	color:								#fff;
+	font-weight:						bold;
+	}
+#picklist .add_line tfoot span
+	{
+	}
+
+#picklist .master_grid dxgvControl
+{
+	background-color:white;
+}
+
+#picklist .master_grid 
+	{
+	font-size:							11px;
+	border-color:lightgray;
+	 border:none;
+	
+	}
+
+#picklist .master_grid *
+	{
+	font-size:							11px;
+	border-color:lightgray;
+	
+	
+	}
+	#picklist .master_grid tbody .dxgvTitlePanel
+	{
+		background-color:white;
+	}
+
+ #picklist .master_grid	.dxeTextBox
+ {
+	 border:none;
+
+ }
+
+ 
+ 
+	#picklist .master_grid .dxgvFilterRow td {
+		border: none;
+	}
+	.addline_container {
+		text-align: center;
+	}
+	.addline_container .customer_container {
+		float: left;
+		width: 47%;
+	}
+	.addline_container .workorder_container {
+		float:left;
+		width: 47%;
+		margin-left: 5px;
+
+	}
+#picklist .master_grid .h
+	{
+	font-weight:						bold;
+	background-color:					#309144;
+	white-space:						nowrap;
+	overflow-x:							hidden;
+	border-bottom-style:none;
+	}
+	#picklist .master_grid .h div {
+		color: #fff;
+	}
+	#picklist .master_grid .h.blacktext div {
+		color: #000 !important;
+	}
+	#picklist .section_label {
+		font-size: 1em;
+		color: #309144;
+		font-weight: bold;
+		margin-top: 20px;
+		display: block;
+	}
+	#picklist .master_grid tbody .dxgvDataRow:hover,
+	#picklist .master_grid tbody .dxgvDataRowAlt:hover {
+		background-color: #C0FFC0;
+		border-bottom: none;
+		border-top: none;
+	}
+#picklist .master_grid tbody .dxgvDataRowAlt
+	{
+	background-color:					#E0E0E0;
+	border-bottom:none;
+	border-top:none;
+	}
+
+#picklist .master_grid .dxgvDataRow td
+{
+	padding-top:8px;
+	padding-bottom:8px;
+
+}
+
+#picklist .master_grid .qty_req_back
+{
+	background-color: rgba(192,255,192,0.35);
+	border: none;
+}
+#picklist .master_grid .qty_com_back
+{
+	background-color: rgba(255,192,192,0.35);
+	border: none;
+}
+#picklist .master_grid .cost_back
+{
+	background-color: rgba(224,224,224,0.35);
+	border: none;
+}
+#picklist .master_grid .sell_back
+{
+	background-color: rgba(192,255,255,0.35);
+	border: none;
+}
+
+
+
+	#picklist .master_grid td
+	{
+
+	border-bottom:none;
+	border-top:none;
+	
+	}
+	#picklist .master_grid .row_
+	{
+	border-bottom:none;
+	border-top:none;
+	}
+#picklist .master_grid .h div
+	{
+	white-space:						nowrap;
+	overflow-x:							hidden;
+	max-width:							85%;
+	min-width:							10%;
+	}
+#picklist .master_grid .hp
+	{
+	background-color:					#00f;
+	}
+#picklist .master_grid .f
+	{
+	font-weight:						bold;
+	background-color:					#ccc;
+	border:none;
+	
+	}
+	#picklist .master_grid .combo_location
+	{
+	font-size:							11px;
+	padding-bottom: 1px;
+	padding-top: 1px;
+	padding-left:1px;
+	padding-right:1px;
+	}
+#picklist .master_grid .preview_row
+{
+	padding:0px;
+	
+	
+}
+#picklist .alert
+	{
+	width:								450px;
+	border:								solid 1px #ccc;
+	-moz-border-radius:					5px; /* Firefox */
+	-webkit-border-radius:				5px; /* Safari, Chrome */
+	border-radius:						5px; /* CSS3 */
+	behavior:							url(border-radius.htc);
+	margin:								5px;
+	background-image:					url("/images/foundation/bg/bg[main].png");
+	background-position:				left bottom;
+	background-repeat:					repeat-x;
+	padding:							5px;
+	cursor:								pointer;
+	}
+#picklist .alert:hover
+	{
+	background-position:				0% 97%;
+	}
+#picklist .alert img
+	{
+	float:								left;
+	margin-right:						5px;
+	margin-top:							5px;
+	}
+#picklist .alert b
+	{
+	padding:							2px;
+	display:							block;
+	}
+
+#picklist .c_ven_prt
+	{
+	font-weight:						bold;
+	vertical-align:						middle;
+	white-space:						nowrap;
+	text-align:							center;
+	padding-left:						1px;
+	}
+#picklist .c_part_no
+	{
+	vertical-align:						middle;
+	white-space:						nowrap;
+	text-align:							center;
+	width:								50px;
+	min-width:							100px;
+	max-width:							100px;
+	}
+#picklist .c_desc
+	{
+	vertical-align:						middle;
+	white-space:						nowrap;
+	padding-left:						1px;
+	border-right:none;
+	}

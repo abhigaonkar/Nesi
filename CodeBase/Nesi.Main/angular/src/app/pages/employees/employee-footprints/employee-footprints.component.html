@@ -1,0 +1,53 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid smaller" style="min-height: 600px">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <div class="ui-g" *ngIf="tab_count<0">
+        No footprint found
+      </div>
+      <div class="ui-g" *ngIf="tab_count>0">
+        <div class="ui-g-12 ui-lg-10 bold larger">
+          {{employee._name}} is found in our system in the following places.
+        </div>
+        <div class="ui-g-12 ui-lg-2">
+          <button type="button" pButton label="Refresh" icon="fa-sync" (click)="loadProfile()"></button>
+        </div>
+        <div class="ui-g-12 ui-lg-3">
+          <div class="ui-g-12 ui-g-lesspad bold">
+            Footprint Categories:
+          </div>
+          <div class="ui-g-12 ui-g-lesspad">
+            <p-listbox [options]="tabs" [(ngModel)]="selected_tab" (onChange)="load_footprint($event)"></p-listbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-lg-9" *ngIf="options && options.length>0">
+          <div class="ui-g-12 ui-g-lesspad bold">
+            <p-checkbox binary="true" label="Selected All" [(ngModel)]="selected_all" (onChange)="selected_all_click($event)"></p-checkbox>
+          </div>
+          <div class="ui-g-12 ui-g-lesspad">
+            <ng-container *ngFor="let v of options;let index">
+              <div class="ui-g-12 ui-g-lesspad">
+                <p-checkbox binary="true" [(ngModel)]="v.checked"></p-checkbox>
+                <span class="allow_click" (click)="open_link(v)">{{v.label}}</span>
+              </div>
+            </ng-container>
+          </div>
+          <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-lg-8 ui-g-lesspad" *ngIf="reassign_button_label=='Reassign'">
+              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'Select a member'" [options]="assignList" [(ngModel)]="assinged_member_id"
+                [filter]="assignList && assignList.length>10"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+              <button pButton type="button" [disabled]="!selectedOptions || selectedOptions.length==0 || !(assinged_member_id && reassign_button_label=='Reassign')"
+                [label]="reassign_button_label" icon="fa-redo" (click)="reassgin()"></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </blockable-div>
+
+</div>

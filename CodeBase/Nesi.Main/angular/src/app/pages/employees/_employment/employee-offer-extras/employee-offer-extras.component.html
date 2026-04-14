@@ -1,0 +1,90 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="min-height: 600px">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Receives Vehicle:
+          </div>
+          <div class="ui-g-12 ui-lg-2  label_for_left_less">
+            <p-checkbox binary="true" formControlName="gets_vehicle"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Receives Cell Phone:
+          </div>
+          <div class="ui-g-12 ui-lg-2  label_for_left_less">
+            <p-checkbox binary="true" formControlName="gets_phone"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Receives Laptop:
+          </div>
+          <div class="ui-g-12 ui-lg-2  label_for_left_less">
+            <p-checkbox binary="true" formControlName="gets_laptop"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Receives Company Email (office365):
+          </div>
+          <div class="ui-g-12 ui-lg-2  label_for_left_less">
+            <p-checkbox binary="true" formControlName="gets_neemail"></p-checkbox>
+          </div>
+          <div class="ui-g-12 ui-lg-6 label_for_left_less">
+            (This doesn't mean Gmail. Everyone gets a Gmail account)
+          </div>
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4 label_for_right">
+              Receives Phone Extension:
+            </div>
+            <div class="ui-g-12 ui-lg-2  label_for_left_less">
+              <p-checkbox binary="true" formControlName="gets_phoneext"></p-checkbox>
+            </div>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Receives Business Cards:
+          </div>
+          <div class="ui-g-12 ui-lg-2  label_for_left_less">
+            <p-checkbox binary="true" formControlName="gets_businesscards"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Receives Barcode Scanner:
+          </div>
+          <div class="ui-g-12 ui-lg-2  label_for_left_less">
+            <p-checkbox binary="true" formControlName="gets_barcodescanner"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Receives Direct Deposit:
+            <br/> (upload void cheque/check or bank notification)
+          </div>
+          <div class="ui-g-12 ui-lg-2  label_for_left_less">
+            <p-checkbox binary="true" formControlName="gets_directdeposit"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right">
+            Notes (Not appearing on the offer):
+          </div>
+          <div class="ui-g-12 ui-lg-8  label_for_left_less">
+            <textarea class="back_notes" style="height:80px;" formControlName="notes" pInputTextarea rows="5" cols="25"></textarea>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-lg-4 ui-lg-offset-4">
+          <button [disabled]="!save_enabled"  pButton label="Save" icon="fa-save"></button>
+        </div>
+      </form>
+    </div>
+  </blockable-div>
+</div>

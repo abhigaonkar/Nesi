@@ -1,0 +1,92 @@
+<div class="ui-g-6">
+  <div class="ui-g-12 ui-lg-2 label_for_right">
+    Business Units:
+  </div>
+  <div class="ui-g-12 ui-lg-4">
+    <p-multiSelect [style]="{'width':'100%'}" [filter]="(visible_businessUnit_list && visible_businessUnit_list.length >5)"
+      [options]="visible_businessUnit_list" [(ngModel)]="selectedBusinessUnits" selectedItemsLabel="{0} business units selected"
+      (onPanelHide)="selectChange()"
+      ></p-multiSelect>
+  </div>
+  <!-- <div class="ui-g-12 ui-lg-2">
+    <button pButton label="Apply" (click)="selectChange()"></button>
+  </div>
+  <div class="ui-g-12 ui-lg-2">
+    <button pButton label="Save Layout" icon="fa-save" (click)="saveLayout()"></button>
+  </div> -->
+</div>
+<div class="wopolayout">
+  <div class="ui-g-12 ui-g-nopad row_header row_header_po" *ngIf="cs.isLg">
+    <div class="ui-g-4 ui-g-nopad">
+      Business Unit
+    </div>
+    <div class="ui-g-1 ui-g-nopad middle_center">
+      Total
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      Just Cut
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      Waiting for Approval
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      Waiting to be Issued
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      Waiting for Confirmation
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      Issued Waiting For Parts
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      Questions
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      AP Problems
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <p-accordion [multiple]="true" (onOpen)="tabOpen($event)" (onClose)="tabClose($event)">
+      <ng-container *ngFor="let te of selected_tax_entity_list;let i=index">
+        <p-accordionTab [header]="te.name" [selected]="te.open">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid ui-g-nopad te_body" *ngIf="te.open">
+            <div class="ui-g-12  ui-g-nopad bu_row" *ngFor="let bu of getBusinessUnitByTaxEntity(te.id)">
+              <nesi-purchaseOrder-Summary-BusinessUnit (loaded)="buLoaded($event)" [businessUnit_name]="bu.label" [urls]="urls" [summaryList]="summaryList"
+                [businessUnit_id]="bu.value"></nesi-purchaseOrder-Summary-BusinessUnit>
+            </div>
+          </div>
+        </p-accordionTab>
+      </ng-container>
+    </p-accordion>
+  </div>
+
+  <div class="ui-g-12 ui-g-nopad row_footer" *ngIf="cs.isLg">
+    <div class="ui-g-4 ui-g-nopad">
+      &nbsp;
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-purchaseOrder-summary-sumtotal [value]="sum.total"></nesi-purchaseOrder-summary-sumtotal>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-purchaseOrder-summary-sumtotal [value]="sum.just_cut"></nesi-purchaseOrder-summary-sumtotal>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-purchaseOrder-summary-sumtotal [value]="sum.waiting_approval"></nesi-purchaseOrder-summary-sumtotal>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-purchaseOrder-summary-sumtotal [value]="sum.be_issued"></nesi-purchaseOrder-summary-sumtotal>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-purchaseOrder-summary-sumtotal [value]="sum.waiting_confirmation"></nesi-purchaseOrder-summary-sumtotal>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-purchaseOrder-summary-sumtotal [value]="sum.waiting_parts"></nesi-purchaseOrder-summary-sumtotal>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-purchaseOrder-summary-sumtotal [value]="sum.questions"></nesi-purchaseOrder-summary-sumtotal>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-purchaseOrder-summary-sumtotal [value]="sum.ap_problems"></nesi-purchaseOrder-summary-sumtotal>
+    </div>
+  </div>
+</div>

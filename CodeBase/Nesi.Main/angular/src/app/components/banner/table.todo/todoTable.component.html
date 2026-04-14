@@ -1,0 +1,17 @@
+<table cellpadding="3" class='icon-table'>
+  <tbody>
+    <tr *ngIf="!showAll" class='header'>
+      <td colspan='3' class='top'> Recent {{ ToDoList.length }}  ToDo </td>
+    </tr>
+    <tr class='header'>
+      <td>#</td>
+      <td>Due</td>
+      <td>Description</td>
+    </tr>
+    <tr *ngFor="let item of ToDoList;let i = index" class="bodyrow">
+      <td><b>{{ i+1 }}</b></td>
+      <td>{{ item.overdue}} </td>
+      <td>{{ item.descriptionShort }}</td>
+    </tr>
+  </tbody>
+</table>

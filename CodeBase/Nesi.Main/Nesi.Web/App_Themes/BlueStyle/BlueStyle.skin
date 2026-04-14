@@ -1,0 +1,43 @@
+<asp:Button runat=server  
+ForeColor="#000000" 
+Font-Bold=true
+Font-Size=11px
+BorderStyle=Solid
+BorderWidth=0px
+Height=26px
+CssClass="button"
+  />
+
+<asp:Calendar runat="server" BackColor="White" 
+              BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" 
+              DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" 
+              ForeColor="#003399" Height="200px" Width="220px">
+  <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+  <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
+  <WeekendDayStyle BackColor="#CCCCFF" />
+  <OtherMonthDayStyle ForeColor="#999999" />
+  <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
+  <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
+  <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
+  <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" 
+              Font-Bold="True"
+              Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
+</asp:Calendar>
+
+<asp:GridView SkinID="SampleGridView" Runat="server" 
+    CellPadding="3" 
+    GridLines="None"
+    BorderStyle="solid" 
+    BorderWidth="1px" 
+    BorderColor="#465239"
+    >
+    <AlternatingRowStyle/>
+    <RowStyle CssClass="gridview-row-1" />
+    <FooterStyle CssClass="gridview-footer" />
+    <PagerStyle backcolor="#ffffff" horizontalalign="Center" />
+</asp:GridView>
+
+<asp:Image runat=server/>
+<asp:Label skinid="lblNumber" runat=server Font-Bold="True"/>
+<asp:Label runat="server"/>
+

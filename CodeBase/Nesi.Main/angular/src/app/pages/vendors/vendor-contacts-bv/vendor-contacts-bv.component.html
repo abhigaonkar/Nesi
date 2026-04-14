@@ -1,0 +1,8 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12 ui-lg-6">
+    <p-selectButton [options]="bvcontacts" [(ngModel)]="selectedbvContact"></p-selectButton>
+  </div>
+  <div class="ui-g-12">
+    <nesi-vendor-contacts-bv-item [vendor_id]="vendor_id" [index]="selectedbvContact"></nesi-vendor-contacts-bv-item>
+  </div>
+</div>

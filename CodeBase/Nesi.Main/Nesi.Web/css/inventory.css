@@ -1,0 +1,1781 @@
+﻿#inventory																			{
+																					width:						100%;
+																					}
+
+#inventory .framework																{
+																					width:						100%;
+																					}
+
+#inventory .framework .error														{
+																					color:						#F00;
+																					font-weight:				bold;
+																					padding-top:				100px;
+																					}
+
+
+#inventory .framework .pagetitle													{
+																					font-family:				tahoma;
+																					font-size:					20px;
+																					font-weight:				bold;
+																					text-align:				left;
+																					border-top:				solid 1px #888;
+																					border-bottom:				solid 1px #888;
+																					background-color:			#ddd;
+																					padding:					2px;
+																					padding-left:				10px;
+																					}
+
+/*=======================================================================================*/
+#inventory .framework #submenu														{
+																					width:						100%;
+																					}
+
+#inventory .framework #submenu .searchbox											{
+																					font-family:				tahoma;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					width:						750px;
+																					}
+
+#inventory .framework #submenu .searchbox_input										{
+																					font-family:				tahoma;
+																					height:						25px;
+																					width:						150px;
+																					font-size:					11px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework #submenu .searchbox_button									{
+																					font-family:				tahoma;
+																					font-size:					11px;
+																					font-weight:				bold;
+																					width:						50px;
+																					height:						32px;
+																					cursor:						pointer;
+																					}
+
+#inventory .framework #submenu .buttonbox											{
+																					border-top:				solid 1px #888;
+																					border-bottom:				solid 1px #888;
+																					background-color:			#ddd;
+																					padding:					2px;
+																					}
+
+#inventory .framework #submenu .buttonbox button									{
+																					font-family:				tahoma;
+																					font-size:					11px;
+																					font-weight:				bold;
+																					width:						50px;
+																					height:						32px;
+																					cursor:						pointer;
+																					}
+
+/*=======================================================================================*/
+#inventory_branch .framework #error_pane,
+#inventory .framework #error_pane													{
+																					display:					none;
+																					background-color:			#900;
+																					color:						#fff;
+																					height:						60px;
+																					vertical-align:				middle;
+																					position:					absolute;
+																					top:						5px;
+																					width:						450px;
+																					left:						40%;
+																					padding:					5px;
+																					}
+#inventory_branch .framework #error_pane b,
+#inventory .framework #error_pane b													{
+																					display:					block;
+																					color:						#fff;
+																					height:						15px;
+																					text-align:					left;
+																					padding:					3px;
+																					font-size:					11px;
+																					}
+#inventory_branch .framework #error_pane div,
+#inventory .framework #error_pane div												{
+																					}
+#inventory_branch .framework #error_pane img,
+#inventory .framework #error_pane img												{
+																					float:						left;
+																					clear:						both;
+																					}
+/*=======================================================================================*/
+#inventory .framework #new_part_info												{
+																					display:					none;
+																					}
+																					
+#inventory .framework .new_part														{
+																					margin-top:					5px;
+																					width:						100%;
+																					}
+
+
+#inventory_branch .framework .new_part #att_vals,
+#inventory .framework .new_part #att_vals											{
+																					width:						250px;
+																					}
+#inventory_branch .framework .new_part #att_vals .attval, 
+#inventory .framework .new_part #att_vals .attval
+	{
+	position:		relative;
+	margin-bottom:	2px;
+	}
+	
+#inventory_branch .framework .new_part #att_vals .attval .addval_box
+	{
+	position:			absolute;
+	right:				-300px;
+	width:				300px;
+	height:				60px;
+	pointer-events:		none;
+	}
+#inventory_branch .framework .new_part #att_vals .attval .addval_box .addval_button
+	{
+	pointer-events:		auto;
+	}
+	
+	
+	
+#inventory_branch .framework .new_part #att_vals .attval .addval_box .addval
+	{
+	height:				50px;
+	pointer-events:		auto;
+	padding-top:		9px;
+	width:				225px;
+	text-align:			center;
+	font-weight:		bold;
+	font-size:			11px;
+	background-color:	#ccc;
+	color:				#933;
+	float:				left;
+	display:			none;
+	border:				solid 1px #000;
+	}
+#inventory_branch .framework .new_part #att_vals .attval .addval_box .addval input
+	{
+	text-align:			center;
+	font-weight:		bold;
+	font-size:			11px;
+	width:				65%;
+	}
+#inventory_branch .framework .new_part #att_vals .attval .img:hover
+	{
+	background-position: -20px;
+	}
+#inventory_branch .framework .new_part #att_vals .attval img
+	{
+	cursor:				pointer;
+	margin-top:			5px;
+	}
+
+#inventory_branch .framework .new_part #att_vals .att,
+#inventory .framework .new_part #att_vals .att										{
+																					background-color:			#ddd;
+																					padding:					5px;
+																					text-align:					left;
+																					color:						#000;
+																					}
+
+#inventory_branch .framework .new_part #att_vals .val,
+#inventory .framework .new_part #att_vals .val										{
+																					text-align:					left;
+																					padding:					5px;
+																					border-left:				solid 1px #ddd;
+																					border-right:				solid 1px #ddd;
+																					border-bottom:				solid 1px #ddd;
+																					}
+
+#inventory_branch .framework .new_part #att_vals .val select,
+#inventory .framework .new_part #att_vals .val select								{
+																					margin-top:					5px;
+																					margin-bottom:				5px;
+																					width:						100%;
+																					color:						#000;
+																					}
+																					
+#inventory_branch .framework .new_part #att_vals .val button,
+#inventory .framework .new_part #att_vals .val button								{
+																					cursor:						pointer;
+																					margin-left:				2px;
+																					}
+
+#inventory_branch .framework .new_part #att_vals .description,
+#inventory .framework .new_part #att_vals .description								{
+																					width:						325px;
+																					height:						100px;
+																					margin:						5px;
+																					}
+/*=======================================================================================*/
+#inventory .framework .edit_details													{
+																					width:						100%;
+																					border-top:					solid 1px #039;
+																					}
+
+#inventory .framework .tag_space													{
+																					width:						100%;
+																					text-align:					left;
+																					font-family:				verdana;
+																					font-size:					25px;
+																					font-weight:				bold;
+																					color:						#933;
+																					}
+#inventory .framework .tag_space .tag												{
+																					font-family:				verdana;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					width:						100%;
+																					margin-top:					2px;
+																					color:						#009;
+																					}
+
+#inventory .framework .tag_space .subtext											{
+																					font-size:					12px;
+																					color:						#999;
+																					}
+#inventory .framework .tag_space .sub_menu											{
+																					border-top:					solid 1px #ccc;
+																					margin-top:					5px;
+																					padding-top:				3px;
+																					text-align:					right;
+																					width:						100%;
+																					}
+#inventory .framework .tag_space .sub_menu img										{
+																					margin-left:				2px;
+																					}
+#inventory .framework .tag_space .sellprice											{
+																					float:						right;
+																					font-size:					12px;
+																					color:						#060;
+																					padding:					15px;
+																					}
+
+#inventory .framework .edit_details #att_vals										{
+																					width:						250px;
+																					}
+
+#inventory .framework .edit_details #att_vals .att									{
+																					background-color:			#c00;
+																					font-size:					12px;
+																					padding-top:				10px;
+																					padding:					5px;
+																					font-weight:				bold;
+																					text-align:					left;
+																					color:						#fff;
+																					margin-top:				2px;
+																					}
+
+#inventory .framework .edit_details #att_vals .val										{
+																					text-align:					center;
+																					padding-bottom:				10px;
+																					padding-top:				10px;
+																					padding-right:				5px;
+																					padding-left:				5px;
+																					border:						solid 1px #c00;
+																					}
+
+#inventory .framework .edit_details #att_vals .val select								{
+																					font-family:				verdana;
+																					font-size:					10px;
+																					font-weight:				bold;
+																					width:						100%;
+																					color:						#000;
+																					}
+																					
+#inventory .framework .edit_details #att_vals .val button								{
+																					cursor:						pointer;
+																					margin-left:				2px;
+																					}
+
+#inventory .framework .edit_details #att_vals .description								{
+																					width:						325px;
+																					height:						100px;
+																					margin:						5px;
+																					}
+
+
+
+#inventory #loading																	{
+																					display:					none;
+																					position:					absolute;
+																					left:						50%;
+																					top:						50%;
+																					z-index:					99999999999999;
+																					}
+
+#inventory .framework #references													{
+																					padding:					5px;
+																					}
+
+#inventory .framework #this_references												{
+																					width:						99%;
+																					}
+
+#inventory .framework #references .master_header									{
+																					background-color:			#c00;
+																					margin-bottom:				5px;
+																					}
+#inventory .framework #references .master_header .notice							{
+																					padding:					5px;
+																					color:						#fff;
+																					font-size:					10px;
+																					font-weight:				bold;
+																					}
+#inventory .framework #references .header											{
+																					background-color:			#999;
+																					border-bottom:				solid 1px #000;
+																					}
+																					
+#inventory .framework #references .branch_box										{
+																					margin-bottom:				3px;
+																					}
+#inventory .framework #references .prices											{
+																					width:						100%;
+																					font-size:					10px;
+																					}
+#inventory .framework #references .prices thead										{
+																					background-color:			#000;
+																					color:						#fff;
+																					}
+#inventory .framework #references .prices tbody										{
+																					width:						100%;
+																					}
+#inventory .framework #references .prices tbody	td									{
+																					border-right:				solid 1px #999;
+																					border-bottom:				solid 1px #ccc;
+																					}
+																					
+#inventory .framework #references .branch_box .c,
+#inventory .framework #references .master_header .c									{
+																					width:						150px;
+																					color:						#fff;
+																					text-align:					left;
+																					font-weight:				bold;
+																					padding-left:				5px;
+																					}
+#inventory .framework #references .branch_box .v,
+#inventory .framework #references .master_header .v								{
+																					text-align:					left;
+																					}
+
+#inventory .framework #references .branch_box .v input,
+#inventory .framework #references .master_header .v input							{
+																					font-weight:				bold;
+																					width:						150px;
+																					text-align:					center;
+																					font-size:					11px;
+																					}
+
+#inventory .framework #references .branch_box .v button,
+#inventory .framework #references .master_header .v button							{
+																					font-size:					11px;
+																					font-weight:				bold;
+																					margin-left:				2px;
+																					}
+																					
+#inventory .framework #references .branch_box .vendor_pricing						{
+																					border-left:				solid 1px #999;
+																					border-right:				solid 1px #999;
+																					border-bottom:				solid 1px #999;
+																					background-color:			#eee;
+																					display:					none;
+																					min-height:					16px;
+																					}
+
+#inventory .framework #references .branch_box .vendor_pricing .cat								{
+																					font-size:					10px;
+																					font-weight:				bold;
+																					text-align:					left;
+																					float:						left;
+																					width:						100px;
+																					}
+
+#inventory .framework #references .branch_box .vendor_pricing .val								{
+																					font-size:					10px;
+																					float:						right;
+																					margin-left:				45%;
+																					text-align:					left;
+																					}
+
+
+
+/*=======================================================================================*/
+#inventory .framework .edit_pricing													{
+																					width:						100%;
+																					border-top:					solid 1px #039;
+																					display:					none;
+																					}
+/*=======================================================================================*/
+
+#inventory .framework .qc-menu														{
+																					width:						100%;
+																					}
+
+#inventory .framework .qc-menu td													{
+																					width:						25%;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .qc-menu td a													{
+																					color:						#090;
+																					display:					block;
+																					padding:					5px;
+																					text-decoration:			none;
+																					border:						solid 1px #090;
+																					}
+
+#inventory .framework .qc-menu td a:hover											{
+																					background-color:			#cfc;
+																					color:						#090;
+																					}
+
+#inventory .framework .qc-menu td div												{
+																					background-color:			#090;
+																					color:						#fff;
+																					display:					block;
+																					padding:					5px;
+																					text-decoration:			none;
+																					border:						solid 1px #090;
+																					}
+#inventory .framework .total														{
+																					width:						1040px;
+																					background-color:			#ccc;
+																					color:						#000;
+																					padding:					5px;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					margin-bottom:				2px;
+																					}
+/*======== QC Parts ============================================================================*/
+
+#inventory .framework .qc_parts														{
+																					width:						1050px;
+																					background-color:			#fff;
+																					border:						solid 2px #000;
+																					}
+
+#inventory .framework .qc_parts .partspace											{
+																					width:						950px;
+																					text-align:					left;
+																					border-bottom:				solid 1px #ddd;
+																					}
+
+#inventory .framework .qc_parts tr:hover											{
+																					background-color:			#cfc;
+																					cursor:						pointer;
+																					}
+
+#inventory .framework .qc_parts .partnumber											{
+																					font-size:					11px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .qc_parts .tagname											{
+																					font-size:					10px;
+																					}
+
+#inventory .framework .qc_parts .checkbox											{
+																					text-align:					center;
+																					border-bottom:				solid 1px #ddd;
+																					}
+
+/*======== QC Attributes ==========================================================================*/
+
+#inventory .framework .qc_attributes												{
+																					background-color:			#fff;
+																					width:						1050px;
+																					border:						solid 2px #000;
+																					}
+
+#inventory .framework .qc_attributes .attribute_name								{
+																					width:						950px;
+																					text-align:					left;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					border-bottom:				solid 1px #ddd;
+																					}
+
+#inventory .framework .qc_attributes tr:hover										{
+																					background-color:			#cfc;
+																					}
+
+#inventory .framework .qc_attributes .checkbox										{
+																					text-align:					center;
+																					border-bottom:				solid 1px #ddd;
+																					}
+/*======== QC Values ==============================================================================*/
+
+#inventory .framework .qc_values													{
+																					width:						1050px;
+																					background-color:			#fff;
+																					border:						solid 2px #000;
+																					}
+
+#inventory .framework .qc_values .value												{
+																					font-size:					12px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .qc_values .attval											{
+																					width:						950px;
+																					text-align:					left;
+																					border-bottom:				solid 1px #ddd;
+																					}
+
+#inventory .framework .qc_values .attribute											{
+																					font-size:					10px;
+																					}
+
+#inventory .framework .qc_values tr:hover											{
+																					background-color:			#cfc;
+																					}
+
+#inventory .framework .qc_values .checkbox											{
+																					text-align:					center;
+																					border-bottom:				solid 1px #ddd;
+																					}
+/*======== QC Pics ============================================================================*/
+#inventory .framework #unqcedpics													{
+																					}
+#inventory .framework #unqcedpics .photo_slot .c									{
+																					font-weight:				bold;
+																					font-size:					11px;
+																					width:						50px;
+																					}
+#inventory .framework #unqcedpics .photo_slot .img									{
+																					border:						solid 1px #000;
+																					}
+#inventory .framework #unqcedpics .photo_slot div									{
+																					text-align:					left;
+																					background-color:			#000;
+																					width:						198px;
+																					color:						#fff;
+																					padding:					2px;
+																					}
+#inventory .framework #unqcedpics .photo_slot .v									{
+																					font-size:					11px;
+																					color:						#999;
+																					padding-left:				5px;
+																					}
+#inventory .framework #unqcedpics .photo_slot button.approve						{
+																					width:						48%;
+																					border:						solid 1px #0c0;
+																					background-color:			#070;
+																					margin-top:					5px;
+																					}
+#inventory .framework #unqcedpics .photo_slot button.deny							{
+																					width:						48%;
+																					border:						solid 1px #c00;
+																					background-color:			#700;
+																					margin-top:					5px;
+																					}
+																					
+/*============================================================================================*/
+
+div.overlay { 
+     
+    /* growing background image */ 
+    background-image:url(../img/overlay/white.png); 
+     
+    /* dimensions after the growing animation finishes  */ 
+    width:600px; 
+    height:470px;         
+     
+    /* initially overlay is hidden */ 
+    display:none; 
+     
+    /* some padding to layout nested elements nicely  */ 
+    padding:55px; 
+} 
+ 
+/* default close button positioned on upper right corner */ 
+div.overlay div.close { 
+    background-image:url(../img/overlay/close.png); 
+    position:absolute; 
+    right:5px; 
+    top:5px; 
+    cursor:pointer; 
+    height:35px; 
+    width:35px; 
+}
+
+#inventory .framework .browse_part														{
+																					margin-top:					25px;
+																					width:						100%;
+																					}
+
+
+#inventory .framework .browse_part #att_vals											{
+																					border-right:				solid 1px #999;
+																					width:						350px;
+																					border-bottom:				solid 1px #999;
+																					}
+
+#inventory .framework .browse_part #att_vals .att										{
+																					background-color:			#08d;
+																					padding:					5px;
+																					font-weight:				bold;
+																					text-align:					left;
+																					color:						#0ff;
+																					}
+
+#inventory .framework .browse_part #att_vals .val										{
+																					text-align:					left;
+																					padding-top:				5px;
+																					padding-right:				5px;
+																					padding-bottom:				5px;
+																					border-bottom:				dashed 1px #999;
+																					}
+
+#inventory .framework .browse_part #att_vals .val select								{
+																					font-family:				verdana;
+																					font-size:					13px;
+																					font-weight:				bold;
+																					width:						315px;
+																					color:						#009;
+																					}
+
+#inventory .framework .browse_part #att_vals .val .flyout							{
+																					z-index:					10;
+																					}
+
+#inventory .framework .browse_part #att_vals .val .flyout b							{
+																					font-family:				verdana;
+																					font-size:					10px;
+																					color:						#090;
+																					}
+#inventory .framework .browse_part #att_vals .val .flyout input						{
+																					font-family:				verdana;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					}
+
+
+#inventory .framework .browse_part #att_vals .val button								{
+																					cursor:						pointer;
+																					margin-left:				2px;
+																					}
+
+#inventory .framework .browse_part #att_vals .description								{
+																					width:						325px;
+																					height:						100px;
+																					margin:						5px;
+																					}
+
+#inventory .framework .browse_part #results .header									{
+																					background-color:			#999;
+																					color:						#fff;
+																					font-size:					20px;
+																					font-weight:				bold;
+																					border-bottom:				solid 1px #fff;
+																					}
+
+#inventory .framework .browse_part #results											{
+																					display:					none;
+																					}
+
+#inventory .framework .browse_part #results	.c										{
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .browse_part #results	.att_name								{
+																					margin-top:					5px;
+																					font-size:					11px;
+																					background-color:			#000;
+																					color:						#fff;
+																					font-weight:				bold;
+																					text-align:					left;
+																					padding:					5px;
+																					width:						350px;
+																					}
+
+#inventory .framework .browse_part #results	.val									{
+																					font-size:					11px;
+																					font-weight:				bold;
+																					cursor:						pointer;
+																					border:						solid 1px #090;
+																					width:						360px;
+																					margin-bottom:				10px;
+																					}
+
+#inventory .framework .browse_part #parts											{
+																					display:					none;
+																					border:						solid 1px #090;
+																					}
+																					
+#inventory .framework .browse_part #parts .header									{
+																					background-color:			#090;
+																					color:						#fff;
+																					font-size:					20px;
+																					font-weight:				bold;
+																					border-bottom:				solid 1px #090;
+																					}
+
+#inventory .framework .browse_part #parts .scrollbox								{
+																					height:						600px;
+																					overflow-y:				auto;
+																					overflow-x:				hidden;
+																					}
+
+#inventory .framework .browse_part #parts .nothing									{
+																					padding:					5px;
+																					text-align:					center;
+																					font-size:					15px;
+																					font-weight:				bold;
+																					color:						#f90;
+																					}
+
+#inventory .framework .browse_part #parts .part										{
+																					text-align:					left;
+																					}
+
+#inventory .framework .browse_part #parts .part	.numbers a						{
+																					background-color:			#cfc;
+																					color:						#2e426c;
+																					display:					block;
+																					border:						solid 1px #090;
+																					font-family:				verdana;
+																					font-size:					10px;
+																					padding:					5px;
+																					cursor:						pointer;
+																					font-weight:				bold;
+																					width:						97%;
+																					}
+
+#inventory .framework .browse_part #parts .part	.numbers a:hover				{
+																					background-color:			#3c3;
+																					color:						#cfc;
+																					}
+
+#inventory .framework .browse_part #parts .part .buttons							{
+																					width:						64px;
+																					}
+
+#inventory .framework .browse_part #parts .part .buttons button						{
+																					width:						100%;
+																					}
+
+#inventory .framework #part_detail													{
+																					display:					none;
+																					position:					fixed;  
+																					_position:					absolute; /* hack for internet explorer 6*/ 
+																					height:						100%;  
+																					width:						100%;  
+																					top:						0;  
+																					left:						0;  
+																					background:					#000;  
+																					border:						1px solid #cecece;  
+																					z-index:					1;  
+																					}
+
+#inventory .framework #part_info													{
+																					display:					none;  
+																					position:					fixed;  
+																					_position:					absolute; /* hack for internet explorer 6*/  
+																					width:						512px;
+																					background-image:			url("/images/inventory/bg/bg[attvals].jpg");
+																					background-repeat:			no-repeat;
+																					background-color:			#fff;
+																					background-position:		bottom center;
+																					border:						2px solid #cecece;  
+																					z-index:					2;
+																					font-size:					12px;   
+																					}
+
+#inventory .framework #part_info .part_number										{
+																					font-family:				arial black;
+																					font-size:					35px;
+																					font-weight:				bold;
+																					text-align:					left;
+																					border-bottom:				solid 1px #ccc;
+																					padding:					5px;
+																					background-color:			#4A6EB6;
+																					color:						#fff;
+																					}
+
+#inventory .framework #part_attvals	.attvals .attribute								{
+																					font-weight:				bold;
+																					text-align:					left;
+																					width:						150px;
+																					color:						#4A6EB6;
+																					border-bottom:				solid 1px #ccc;
+																					}
+
+#inventory .framework #part_attvals	.attvals .value									{
+																					text-align:					left;
+																					border-bottom:				solid 1px #ccc;
+																					}
+
+#inventory .framework #part_info button												{
+																					margin-top:					25px;
+																					font-weight:				bold;
+																					margin-bottom:					15px;
+																					font-size:					12px;
+																					}
+
+#inventory .framework #search_shade													{ 
+																					display:					none;  
+																					position:					fixed;  
+																					_position:					absolute; /* hack for internet explorer 6*/  
+																					height:						100%;  
+																					width:						100%;  
+																					top:						0;  
+																					left:						0;  
+																					background:					#000;  
+																					border:						1px solid #cecece;  
+																					z-index:					1;  
+																					}
+
+#inventory .framework #search_popup													{
+																					display:					none;  
+																					position:					fixed;  
+																					_position:					absolute; /* hack for internet explorer 6*/  
+																					width:						950px;  
+																					background:					#fff;  
+																					border:						2px solid #cecece;  
+																					z-index:					2;  
+																					padding:					12px;   
+																					}
+
+#inventory .framework #search_popup	table											{
+																					width:						100%;
+																					}
+
+#inventory .framework #search_popup	#BV_RESULTS										{
+																					height:						300px;
+																					overflow:					auto;
+																					border:						solid 1px #ccc;
+																					}
+
+#inventory .framework #search_popup	#BV_RESULTS	.match								{
+																					width:						400px;
+																					}
+
+#inventory .framework #search_popup	#BV_RESULTS	.code								{
+																					font-weight:				bold;
+																					font-size:					12px;
+																					text-align:					left;
+																					float:						left;
+																					width:						35%;
+																					}
+#inventory .framework #search_popup	#BV_RESULTS	.code button						{
+																					font-weight:				bold;
+																					width:						125px;
+																					font-size:					11px;
+																					}
+
+#inventory .framework #search_popup	#BV_RESULTS	.description						{
+																					font-size:					10px;
+																					text-align:					left;	
+																					float:						right;
+																					width:						65%;
+																					margin-left:				65%;
+																					}
+
+#inventory .framework #search_popup	table input										{
+																					font-weight:				bold;
+																					width:						150px;
+																					font-size:					11px;
+																					}
+
+#inventory .framework #search_popup	table .button									{
+																					font-weight:				bold;
+																					width:						50px;
+																					font-size:					11px;
+																					}
+
+#inventory .framework #search_popup #BRANCH_BV										{
+																					font-size:					20px;
+																					font-weight:				bold;
+																					border-bottom:				solid 1px #ccc;
+																					}
+
+																					
+#inventory .framework .new_part .pricing											{
+																					}
+																					
+#inventory .framework .new_part .pricing .add_pricebox								{
+																					width:						100%;
+																					font-weight:				bold;
+																					background-color:			#cfc;
+																					border:						solid 1px #999;
+																					}
+																					
+#inventory .framework .new_part .pricing #price_boxes								{
+																					background-color:			#cfc;
+																					}
+#inventory .framework .new_part .pricing #price_boxes .price_box table				{
+																					width:						100%;
+																					}
+#inventory .framework .new_part .pricing #price_boxes .price_box table td			{
+																					padding-top:				5px;
+																					padding-bottom:				5px;
+																					}
+																					
+																					
+#inventory .framework .new_part .pricing #price_boxes select option .e				{
+																					}
+																					
+#inventory .framework .new_part .pricing #price_boxes select option .o				{
+																					}
+																																						
+#inventory .framework .new_part .pricing #price_boxes .vendor						{
+																					border:						solid 1px #006;
+																					text-align:					center;
+																					width:						65px;
+																					}
+#inventory .framework .new_part .pricing #price_boxes button						{
+																					width:						35px;
+																					color:						#fff;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .price_sheet													{
+																					margin-bottom:				100px;
+																					width:						100%;
+																					}
+#inventory .framework #new_pricing td												{
+																					background-color:			#cfc;
+																					border-right:				solid 1px #090;
+																					border-bottom:				solid 1px #090;
+																					}
+																					
+#inventory .framework .price_sheet tbody td											{
+																					border-right:				solid 1px #ccc;
+																					border-bottom:				solid 1px #ccc;
+																					}
+																					
+#inventory .framework .new_part .pricing #price_boxes .code							{
+																					background:					#fff;
+																					border:						solid 1px #006;
+																					background-image:			url("/images/inventory/bg/bg[code].png");
+																					background-repeat:			no-repeat;
+																					width:						100px;
+																					background-position:		top center;
+																					text-align:					center;
+																					padding-top:				8px;
+																					}
+																					
+#inventory .framework .new_part .pricing #price_boxes .price						{
+																					background:					#fff;
+																					border:						solid 1px #006;
+																					background-image:			url("/images/inventory/bg/bg[price].png");
+																					background-repeat:			no-repeat;
+																					background-position:		top center;
+																					padding-top:				8px;
+																					text-align:					center;
+																					width:						60px;
+																					}
+#inventory .framework .price_sheet .del,
+#inventory .framework #new_pricing .del												{
+																					position:					relative;
+																					left:						25px;
+																					z-index:					10;
+																					float:						right;
+																					width:						22px;
+																					top:						0px;
+																					margin-bottom:				-28px;
+																					cursor:						pointer;
+																					}
+#inventory .framework #new_pricing input,
+#inventory .framework #new_pricing select,
+#inventory .framework .price_sheet tbody select,
+#inventory .framework .price_sheet tbody input										{
+																					font-family:				verdana;
+																					font-weight:				bold;
+																					background-color:			transparent;
+																					font-size:					11px;
+																					}
+
+#inventory .framework .price_sheet .h th											{
+																					background-color:			#06c;
+																					color:						#fff;
+																					font-weight:				bold;
+																					font-size:					10px;
+																					cursor:						pointer;
+																					}
+#inventory .framework #new_pricing .company,
+#inventory .framework .price_sheet .company											{
+																					font-family:				verdana;
+																					font-size:					11px;
+																					color:						#000;
+																					width:						75px;
+																					font-weight:				bold;
+																					text-align:					left;
+																					}
+																					
+#inventory .framework #new_pricing .company select									{
+																					font-family:				verdana;
+																					font-size:					11px;
+																					color:						#000;
+																					width:						100%;
+																					font-weight:				bold;
+																					text-align:					left;
+																					}
+																					
+#inventory .framework #new_pricing input,
+#inventory .framework .price_sheet input											{
+																					text-align:					left;
+																					width:						85%;
+																					border:						0px;
+																					background-color:			transparent;
+																					padding:					2px;
+																					}
+#inventory .framework #new_pricing select,
+#inventory .framework .price_sheet select											{
+																					width:						75px;
+																					padding:					2px;
+																					font-size:					11px;
+																					border:						0px;
+																					}	
+#inventory .framework #new_pricing button,
+#inventory .framework .price_sheet button											{
+																					width:						25px;
+																					padding:					2px;
+																					}	
+																					
+#add_unit																			{
+																					font-weight:				bold;
+																					font-size:					11px;
+																					}
+																					
+#add_unit input																		{
+																					width:						125px;
+																					text-align:					center;
+																					margin:						2px;
+																					font-weight:				bold;
+																					}
+																					
+#add_unit button																	{
+																					width:						125px;
+																					border:						solid 1px #000;
+																					background-color:			#cfc;
+																					font-weight:				bold;
+																					}
+																					
+#add_unit i																			{
+																					display:					block;
+																					color:						#090;
+																					font-size:					10px;
+																					margin:						5px;
+																					font-weight:				normal;
+																					}
+																					
+#add_unit b																			{
+																					display:					none;
+																					color:						#f00;
+																					font-size:					12px;
+																					margin:						5px;
+																					}
+																					
+#inventory .framework #new_pricing .add_pricerow									{
+																					width:						100%;
+																					border:						solid 1px #000;
+																					background-color:			#08d;
+																					font-weight:				bold;
+																					font-size:					11px;
+																					color:						#fff;
+																					border-top:					solid 1px #0ff;
+																					}
+																					
+
+/*=================================================================================================================================*/
+
+/*=======================================================================================*/
+#inventory .framework .tags															{
+																					width:						100%;
+																					}
+
+#inventory .framework .tags .att_row												{
+																					background-color:			#fff;
+																					}
+
+#inventory .framework .tags .att_row:hover												{
+																					color:						#060;
+																					background-color:			#cfc;
+																					}
+
+#inventory .framework .nav_pane														{
+																					background-color:			#263C69;
+																					border:						solid 5px #fff;
+																					width:						100%;
+																					}
+
+#inventory .framework .nav_pane .page_title											{
+																					color:						#fff;
+																					font-weight:				bold;
+																					text-align:					left;
+																					width:						3%;
+																					}
+
+#inventory .framework .page_numbers													{
+																					color:						#f90;
+																					text-align:					left;
+																					font-weight:				bold;
+																					width:						77%;
+																					}
+
+#inventory .framework .page_numbers a												{
+																					width:						30px;
+																					color:						#f90;
+																					font-weight:				bold;
+																					margin-right:				3px;
+																					}
+
+#inventory .framework .page_numbers i												{
+																					font-style:					normal;
+																					color:						#f90;
+																					font-weight:				bold;
+																					padding-left:				3px;
+																					margin-right:				3px;
+																					}
+
+#inventory .framework .nav_pane .search_title										{
+																					color:						#fff;
+																					font-weight:				bold;
+																					text-align:					right;
+																					width:						5%;
+																					}
+
+#inventory .framework .nav_pane .search_box											{
+																					text-align:					left;
+																					width:						15%;
+																					}
+
+#inventory .framework .nav_pane .search_box	input									{
+																					border:						solid 1px #fff;
+																					font-weight:				bold;
+																					width:						120px;
+																					cursor:						pointer;
+																					font-size:					12px;
+																					padding:					4px;
+																					background-image:			url("/images/inventory/bg/bg[search].jpg");
+																					}
+
+#inventory .framework .query														{
+																					padding-top:				5px;
+																					padding-bottom:				15px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .query i														{
+																					color:						#f60;
+																					}
+
+#inventory .framework .tags #new_tag												{
+																					width:						98%;
+																					padding:					5px;
+																					background-color:			#cfc;
+																					border:						solid 1px #666;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .tags	.add													{
+																					font-family:				tahoma;
+																					font-weight:				bold;
+																					font-size:					12px;
+																					text-align:					left;
+																					border:						solid 1px #ccc;
+																					}
+
+
+#inventory .framework .tags	#new_tag:hover											{
+																					background-color:			#dfd;
+																					}
+
+#inventory .framework .tags	.part_scheme											{
+																					width:						46%;
+																					font-weight:				bold;
+																					font-size:					10px;
+																					text-align:					center;
+																					border-left:				solid 1px #ccc;
+																					border-bottom:				solid 1px #ccc;
+																					border-right:				solid 1px #ccc;
+																					}
+
+#inventory .framework .tags	.tag													{
+																					width:						50%;
+																					font-weight:				bold;
+																					text-align:					left;
+																					border-bottom:				solid 1px #ccc;
+																					border-left:				solid 1px #ccc;
+																					border-right:				solid 1px #ccc;
+																					}
+
+#inventory .framework .tags	.tag input												{
+																					width:						100%;
+																					background-color:			transparent;
+																					border:						0;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					font-family:				tahoma;
+																					}
+
+#inventory .framework .tags	.action													{
+																					width:						1%;
+																					text-align:					center;
+																					border-bottom:				solid 1px #ccc;
+																					border-right:				solid 1px #ccc;
+																					}
+	
+#inventory .framework .tags	.approved												{
+																					width:						1%;
+																					text-align:					center;
+																					border-top:					solid 1px #ccc;
+																					border-bottom:				solid 1px #ccc;
+																					border-right:				solid 1px #ccc;
+																					}
+
+#inventory .framework .tags	.action button											{
+																					cursor:						pointer;
+																					}
+/*=======================================================================================*/
+#inventory .framework .wo_part_box													{
+																					width:						100%;
+																					}
+																					
+#inventory .framework .wo_part_box .company_selector								{
+																					}
+																					
+#inventory .framework .wo_part_box .company_selector select							{
+																					width:						100%;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					}
+																					
+#inventory .framework .wo_part_box #wo_parts										{
+																					
+																					}
+																					
+#inventory .framework .wo_part_box #wo_parts table									{
+																					margin-top:					5px;
+																					width:						100%;
+																					}
+																					
+#inventory .framework .wo_part_box #wo_parts .h										{
+																					background-color:			#000;
+																					color:						#fff;
+																					font-weight:				bold;
+																					border-left:				solid 1px #000;
+																					}
+																					
+#inventory .framework .wo_part_box #wo_parts .h	span								{
+																					display:					block;
+																					text-align:					right;
+																					font-style:					oblique;
+																					}
+																					
+#inventory .framework .wo_part_box #wo_parts td										{
+																					width:						50%;
+																					border-left:				solid 1px #000;
+																					}
+																					
+#inventory .framework .wo_part_box #wo_parts div									{
+																					width:						100%;
+																					text-align:					left;
+																					border-bottom:				solid 1px #ccc;
+																					padding:					3px;
+																					}
+																					
+#inventory .framework .wo_part_box #wo_parts div b									{
+																					}
+																					
+#inventory .framework .wo_part_box #wo_parts div i									{
+																					display:					block;
+																					font-size:					10px;
+																					}
+/*=======================================================================================*/
+#inventory .framework .detail														{
+																					width:						100%;
+																					padding:					10px;
+																					border:						solid 1px #ccc;
+																					}
+
+#inventory .framework .detail .attributes											{
+																					width:						250px;
+																					border-right:				solid 1px #777;
+																					padding:					5px;
+																					}
+
+
+#inventory .framework .detail .attributes input										{
+																					font-size:					12px;
+																					width:						250px;
+																					margin-top:					10px;
+																					margin-bottom:				5px;
+																					text-align:					center;
+																					}
+
+#inventory .framework .detail .attributes .list										{
+																					font-weight:				bold;
+																					text-align:					left;
+																					overflow-y:					scroll;
+																					overflow-x:					hidden;
+																					height:						500px;
+																					width:						250px;
+																					border-style:				inset;
+																					border-width:				1px;
+																					}
+
+#inventory .framework .detail .attributes .list	a									{
+																					display:					block;
+																					width:						250px;
+																					padding-top:				2px;
+																					padding-bottom:				2px;
+																					color:						#00f;
+																					font-size:					11px;
+																					text-decoration:			none;
+																					border-top:					solid 1px #ccc;
+																					}
+
+#inventory .framework .detail .attributes .list	a:hover								{
+																					background-color:			#cfc;
+																					}
+
+#inventory .framework .detail .attributes button									{
+																					font-size:					12px;
+																					font-weight:				bold;
+																					width:						150px;
+																					margin-bottom:				20px;
+																					}
+#inventory .framework .detail .attributes select									{
+																					width:						150px;
+																					height:						500px;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .detail .valuesbox											{
+																					}
+
+#inventory .framework .detail .valuesbox #attribute_name							{
+																					font-family:				tahoma;
+																					text-align:					left;
+																					font-weight:				bold;
+																					font-size:					25px;	
+																					border-bottom:				solid 1px #ccc;
+																					cursor:						pointer;
+																					}
+
+#inventory .framework .detail .valuesbox #attribute_name input						{
+																					font-family:				tahoma;
+																					font-weight:				bold;
+																					font-size:					25px;
+																					border:						0px;
+																					width:						350px;
+																					}
+
+#inventory .framework .detail .valuesbox #attribute_name .button					{
+																					width:						35px;
+																					cursor:						pointer;
+																					}
+
+#inventory .framework .detail .valuesbox #attribute_name .buttondisabled			{
+																					width:						35px;
+																					cursor:						pointer;
+																					}
+
+#inventory .framework .detail .valuesbox #attribute_delete							{
+																					font-size:					11px;
+																					text-align:					left;
+																					padding:					5px;
+																					}
+
+#inventory .framework .detail .valuesbox #attribute_delete a						{
+																					color:						#000;
+																					}
+
+#inventory .framework .detail .valuesbox .no_value									{
+																					border:						solid 1px #ccc;
+																					padding:					100px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .detail .valuesbox .to_do										{
+																					width:						100%;
+																					margin-bottom:				5px;
+																					}
+
+
+#inventory .framework .detail .valuesbox .values									{
+																					width:						100%;
+																					}
+
+#inventory .framework .detail .valuesbox .values .add input							{
+																					width:						97%;
+																					padding:					5px;
+																					background-color:			#cfc;
+																					border:						solid 1px #666;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .detail .valuesbox .values .add input:hover					{
+																					background-color:			#dfd;
+																					}
+
+#inventory .framework .detail .valuesbox .values .header							{
+																					padding:					3px;
+																					font-weight:				bold;
+																					background-color:			#000;
+																					color:						#fff;
+																					}
+
+#inventory .framework .detail .valuesbox .values .value								{
+																					padding:					3px;
+																					font-weight:				bold;
+																					border-left:				solid 1px #888;
+																					border-right:				solid 1px #888;
+																					border-bottom:				solid 1px #888;
+																					background-color:			#fff;
+																					}
+
+#inventory .framework .detail .valuesbox .values .value	span						{
+																					text-align:					left;
+																					display:					block;
+																					width:						100%;
+																					}
+
+#inventory .framework .detail .valuesbox .values .value	input						{
+																					font-family:				tahoma;
+																					width:						80%;
+																					font-size:					12px;
+																					font-weight:				bold;
+																					margin-right:				5px;
+																					}
+
+#inventory .framework .detail .valuesbox .values .howmany							{
+																					padding:					3px;
+																					width:						100px;
+																					font-weight:				bold;
+																					border-right:				solid 1px #888;
+																					border-bottom:				solid 1px #888;
+																					background-color:			#cfc;
+																					text-align:					center;
+																					}
+
+#inventory .framework .detail .valuesbox .values .action							{
+																					padding:					3px;
+																					width:						45px;
+																					border-right:				solid 1px #888;
+																					border-bottom:				solid 1px #000;
+																					background-color:			#999;
+																					}
+
+#inventory .framework .detail .valuesbox .values .button							{
+																					width:						40px;
+																					cursor:						pointer;
+																					}
+#inventory .framework .detail .valuesbox .values .buttondisabled					{
+																					width:						40px;
+																					cursor:						pointer;
+																					}
+
+/*=======================================================================================*/
+#inventory .framework .browse														{
+																					margin:						10px;
+																					}
+
+#inventory .framework .browse .header												{
+																					font-weight:				bold;
+																					background-color:			#000;
+																					color:						#fff;
+																					}
+
+#inventory .framework .browse .item_id												{
+																					font-weight:				bold;
+																					width:						100px;
+																					border-left:				solid 1px #ccc;
+																					border-right:				solid 1px #ccc;
+																					border-bottom:				solid 1px #ccc;
+																					}
+
+#inventory .framework .browse .item_id button										{
+																					font-weight:				bold;
+																					font-size:					12px;
+																					cursor:						pointer;
+																					}
+
+#inventory .framework .browse .item_name											{
+																					font-weight:				bold;
+																					width:						450px;
+																					text-align:					left;
+																					border-right:				solid 1px #ccc;
+																					border-bottom:				solid 1px #ccc;
+																					}
+
+#inventory .framework .browse .action												{
+																					cursor:						pointer;
+																					border-right:				solid 1px #ccc;
+																					border-bottom:				solid 1px #ccc;
+																					}
+
+#inventory .framework .browse .action button										{
+																					cursor:						pointer;
+																					}
+/*=======================================================================================*/
+#inventory .framework .newitem														{width: 100%;
+																					}
+
+#inventory .framework .newitem #trade_names										{
+																					display:					none;
+																					}
+																					
+#inventory .framework .newitem #attributes											{
+																					}
+
+#inventory .framework #tag_properties												{
+																					left:						47%;
+																					width:						250px;
+																					position:					absolute;
+																					}
+#inventory .framework #tag_properties .bordered										{
+																					display:					none;
+																					border-left:				solid 1px #c00;
+																					border-right:				solid 1px #c00;
+																					border-bottom:				solid 1px #c00;
+																					}
+#inventory .framework #tag_properties .table .td									{
+																					border-bottom:				solid 1px #ccc;
+																					font-size:					11px;
+																					background-color:			#fff;
+																					font-weight:				bold;
+																					text-align:					center;
+																					}
+#inventory .framework #tag_properties .table .td.fixed_markup						{
+																					padding:					2px;
+																					}
+#inventory .framework #tag_properties .table .td.fixed_markup .markup				{
+																					text-align:					center;
+																					}
+#inventory .framework #tag_properties .table .td b									{
+																					color:						#c00;
+																					display:					block;
+																					padding:					5px;
+																					}
+#inventory .framework #tag_properties select										{
+																					border:						0;
+																					font-size:					11px;
+																					padding:					3px;
+																					width:						100%;
+																					background-color:			#fff;
+																					cursor:						pointer;
+																					font-weight:				bold;
+																					}
+#inventory .framework #tag_properties button.save									{
+																					width:						150px;
+																					font-family:				arial;
+																					font-weight:				bold;
+																					}
+#inventory .framework #tag_properties button.push									{
+																					border:						0;
+																					font-size:					11px;
+																					width:						100%;
+																					font-weight:				bold;
+																					background-color:			#c00;
+																					color:						#fff;
+																					}
+#inventory .framework #tag_properties button b										{
+																					color:						#aaa;
+																					font-size:					10px;
+																					}
+																					
+#inventory .framework .newitem #attributes div table								{
+																					padding:					5px;
+																					}
+
+
+#inventory .framework  .head td														{
+																					font-size:					20px;
+																					font-weight:				bold;
+																					color:						#0c0;
+																					padding-top:				25px;
+																					border-bottom:				solid 1px #ccc;
+																					}
+#inventory .framework  .head td	button												{
+																					font-size:					11px;
+																					font-weight:				bold;
+																					margin-right:				5px;
+																					}
+#inventory .framework  .head td	button.tab											{
+																					font-size:					11px;
+																					font-weight:				bold;
+																					background-color:			#cfc;
+																					border:						solid 1px #060;
+																					border-bottom:				0;
+																					}
+
+#inventory .framework .newitem .cat													{
+																					width:						75px;
+																					text-align:					center;
+																					padding:					5px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .newitem .cat button											{
+																					cursor:						pointer;
+																					width:						70px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .newitem .cat #n_AttributeRows								{
+																					cursor:						pointer;
+																					width:						70px;
+																					font-weight:				bold;
+																					text-align:					center;
+																					font-size:					20px;
+																					border:						0;
+																					}
+
+#inventory .framework .newitem .val													{
+																					text-align:					left;
+																					padding:					5px;
+																					width:						100%;
+																					}
+
+#inventory .framework .newitem .val	.input											{
+																					font-weight:				bold;
+																					font-size:					15px;
+																					font-family:				tahoma;
+																					width:						250px;
+																					}
+
+#inventory .framework .newitem .val	.attribute										{
+																					font-weight:				bold;
+																					font-size:					11px;
+																					font-family:				tahoma;
+																					width:						100%;
+																					margin-bottom:				5px;
+																					margin-right:				5px;
+																					}
+
+#inventory .framework .newitem .val	.itemize_row									{
+																					font-size:					12px;
+																					font-weight:				bold;
+																					float:						left;
+																					clear:						both;
+																					margin-top:					-25px;
+																					}
+
+#inventory .framework .newitem .val	.itemize_row select								{
+																					font-size:					11px;
+																					font-weight:				bold;
+																					}
+
+#inventory .framework .newitem .val	.remove_row										{
+																					float:						right;
+																					clear:						both;
+																					margin-top:					-25px;
+																					}
+
+#inventory .framework .newitem .val	.remove_row	img									{
+																					cursor:						pointer;
+																					}
+
+#inventory .framework .newitem .val	.attribute_row_even								{
+																					background-image:			url("/images/inventory/bg/bg[attrow_even].png");
+																					background-repeat:			repeat-x;
+																					background-position:		bottom left;
+																					border:						solid 1px #000;
+																					margin-top:					35px;
+																					}
+
+#inventory .framework .newitem .val	.attribute_row_odd								{
+																					background-image:			url("/images/inventory/bg/bg[attrow_odd].png");
+																					background-repeat:			repeat-x;
+																					background-position:		bottom left;
+																					border:						solid 1px #000;
+																					margin-top:					35px;
+																					}
+
+#inventory .framework .newitem .val	button											{
+																					margin:						5px;
+																					cursor:						pointer;
+																					}
+
+#inventory .framework .newitem .val	.cat_head										{
+																					text-align:					center;
+																					font-weight:				bold;
+																					font-size:					11px;
+																					font-family:				tahoma;
+																					padding:					5px;
+																					color:						#008;
+																					background-color:			#ccc;
+																					}
+
+#inventory .framework .newitem .val	.row_number										{
+																					float:						left;
+																					font-weight:				bold;
+																					font-size:					18px;
+																					font-family:				tahoma;
+																					}
+
+#inventory .framework .newitem .val	.action											{
+																					width:						75px;
+																					font-weight:				bold;
+																					font-size:					11px;
+																					font-family:				tahoma;
+																					}
+
+#inventory .framework .newitem .val	.preselected									{
+																					width:						400px;
+																					height:						160px;
+																					font-weight:				bold;
+																					font-size:					11px;
+																					font-family:				tahoma;
+																					margin-top:					5px;
+																					}
+#inventory .framework .newitem .val	.predefined_selected							{
+																					width:						400px;
+																					font-weight:				bold;
+																					font-size:					11px;
+																					font-family:				tahoma;
+																					margin-top:					5px;
+																					}
+
+#inventory .framework .newitem .val	.value											{
+																					font-weight:				bold;
+																					font-size:					11px;
+																					font-family:				tahoma;
+																					width:						100%;
+																					margin-bottom:				5px;
+																					}
+
+#inventory .framework .newitem .val .tags											{
+																					padding:					5px;
+																					font-weight:				bold;
+																					font-size:					11px;
+																					font-family:				tahoma;
+																					height:						150px;
+																					width:						250px;
+																					}
+
+#inventory .framework .newitem .val .header											{
+																					width:						100%;
+																					padding:					5px;
+																					font-weight:				bold;
+																					font-size:					11px;
+																					font-family:				tahoma;
+																					background-color:			#000;
+																					color:						#fff;
+																					}
+
+#inventory .framework .newitem .val .header	td										{
+																					width:						50%;
+																					}
+
+#inventory .framework .newitem .submit												{
+																					border-top:					solid 1px #999;
+																					text-align:					right;
+																					padding:					5px;
+																					}
+
+#inventory .framework .newitem .submit button										{
+																					font-size:					12px;
+																					font-weight:				bold;
+																					width:						150px;
+																					text-align:					center;
+																					cursor:						pointer;
+																					}
+/*=======================================================================================*/

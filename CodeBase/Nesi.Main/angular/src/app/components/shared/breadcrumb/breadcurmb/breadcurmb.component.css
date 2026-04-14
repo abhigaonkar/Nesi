@@ -1,0 +1,13 @@
+.set_default_link {
+    font-size: 0.9em;
+    cursor: pointer;
+    position: relative;
+    top:0px;
+    float:left;
+    padding-left:10px;
+    color: #aaaaaa;
+}
+
+.set_default_link:hover {
+    color: #1772af;
+}

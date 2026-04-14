@@ -1,0 +1,19 @@
+<span *ngIf="preShow && (!switchUserList || switchUserList.length === 0)" class="username">{{userName}}</span>
+<ng-container *ngIf="switchUserList && switchUserList.length > 0">
+  <!-- <select class="username" (change)="onchange($event)" (click)="onclick($event)" [title]="businessUnitName">
+  <optgroup *ngFor="let item of switchUserList | groupBy: 'businessUnitName'" [label]="item.key">
+    <option *ngFor="let user of item.value" [value]="user.memberId" [selected]="user.memberId==currentUserId" >
+      {{user.memberName}}
+    </option>
+  </optgroup>
+</select> -->
+  <span class="username swtichUser">
+    <p-dropdown [style]="{'width':'250px','text-align':'left'}" [(ngModel)]="currentUserId" [options]="switchUserList" (onChange)="onchange($event)"
+      filter="switchUserList.length>10">
+      <ng-template let-item pTemplate="item">
+        <span [ngClass]="checkFVR(item.label)">{{item.label}}</span>
+      </ng-template>
+    </p-dropdown>
+  </span>
+  <i *ngIf="swtiched" class="fa fa-ban" (click)="onCancelClick($event)" title="cancel masquerade"></i>
+</ng-container>

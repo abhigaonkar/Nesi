@@ -1,0 +1,26 @@
+﻿.tip													{
+														display:				none;
+														z-index:				900000;
+														width:					auto;
+														clear:					both;
+														padding:				3px;
+														text-align:				left;
+														font-weight:			normal;
+														color:					#fff;
+														font-size:				11px;
+														text-transform:			none;
+														background-image:		url("/images/quote/bg/bg[fade].png");
+														/*background:				#cff;*/
+														position:				absolute;
+														border:					2px solid #000;
+														}
+.tip b													{
+														display:				block;
+														color:					#ccc;
+														font-size:				13px;
+														border-bottom:			solid 1px #ccc;
+														}
+
+.tip div												{
+														padding:				5px;
+														}

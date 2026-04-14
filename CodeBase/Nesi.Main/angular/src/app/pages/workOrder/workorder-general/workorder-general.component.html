@@ -1,0 +1,295 @@
+<p-blockUI [blocked]="submitting">
+    <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+  </p-blockUI>
+  <form [formGroup]="userform">
+
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <div class="ui-g">
+            <div class="ui-g-12">
+              <div class="ui-g-12 ui-lg-10">
+                  <div class="ui-g-12 ui-g-lesspad">
+
+                      <div class="ui-g-5 ui-g-nopad" >
+                         <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                            Service Call:
+                         </div>
+                         <div class="ui-g-10 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                            <p-checkbox name="servicecall" binary="true"  formControlName="service_call"></p-checkbox>
+                         </div>
+                       </div>
+               
+                       <div class="ui-g-5 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                               Credit Card Payment:
+                           </div>
+                           <div class="ui-g-10 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-checkbox name="creditcardpayment" binary="true" formControlName="creditcard_payment"></p-checkbox>
+                           </div>
+                       </div>
+               
+                       <div class="ui-g-5 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                               R & D:
+                           </div>
+                           <div class="ui-g-10 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-checkbox name="RandD" binary="true" formControlName="R_D"></p-checkbox>
+                           </div>
+                       </div>
+               
+                       <div class="ui-g-5 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                             Visible to Customer:
+                           </div>
+                           <div class="ui-g-10 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-checkbox name="VisibletoCustomer" binary="true" formControlName="visible_to_customer"></p-checkbox>
+                           </div>
+                       </div>
+               
+                       <div class="ui-g-5 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                               Discount Applied:
+                           </div>
+                           <div class="ui-g-10 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-checkbox name="DiscountApplied" binary="true" formControlName="discount_applied"></p-checkbox>
+                           </div>
+                       </div>
+               
+                       <div class="ui-g-5 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                                Warranty:
+                           </div>
+                           <div class="ui-g-10 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-checkbox name="Warranty" binary="true" formControlName="warranty"></p-checkbox>
+                           </div>
+                       </div>
+               
+                       <div class="ui-g-5 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                                Labor Only?
+                           </div>
+                           <div class="ui-g-10 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-checkbox name="LaborOnly" binary="true" formControlName="labor_only"></p-checkbox>
+                           </div>
+                       </div>
+               
+                       <div class="ui-g-5 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">     
+                               Material  Only?
+                           </div>
+                           <div class="ui-g-10 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-checkbox name="MaterialOnly" binary="true" formControlName="material_only"></p-checkbox>
+                           </div>
+                       </div>
+               
+                   </div>
+                   <div class="ui-g-6 ui-lg-7 ui-g-lesspad">
+                       <div class="ui-g-6 ui-g-nopad">
+                           <div class="ui-g-12 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">     
+                                Business Unit:
+                           </div>
+                           <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad label_for_left_less">
+                             
+                           </div>
+                       </div>
+                       <div class="ui-g-6 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">     
+                               ER Job ID:
+                           </div>
+                           <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                               <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                  formControlName="erjobid">
+                                </p-dropdown>
+                           </div>
+                       </div>
+               
+                       <div class="ui-g-6 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less ">     
+                               Customer:
+                           </div>
+                           <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                               <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                  formControlName="customer">
+                             </p-dropdown>
+                           </div>
+                       </div>
+               
+                       <div class="ui-g-6 ui-g-nopad">
+                           <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                               Address:
+                           </div>
+                           <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                               <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                  formControlName="address">
+                             </p-dropdown>
+                           </div>
+                       </div>
+                      
+                       <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Contact:
+                          </div>
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="contact">
+                            </p-dropdown>
+                          </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              On Customer Asset:
+                          </div>
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="oncustomerasset">
+                            </p-dropdown>
+                          </div>
+                      </div>
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Project Manager:
+                          </div>
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="projectmanager">
+                            </p-dropdown>
+                          </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Quote:
+                          </div>
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="quote">
+                            </p-dropdown>
+                            If you need to unlink or relink a quote remove the quote by selecting the option Select Quote if Applicable and then save the work order.
+                          </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Days Credit:
+                          </div>
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="dayscredit">
+                            </p-dropdown>
+                          </div>
+                      </div>
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Default Invoice Type:
+                          </div>
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="defaultinvoicetype">
+                            </p-dropdown>
+                          </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Auto Invoice:
+                          </div>
+                        
+                          <div class="ui-g-10 ui-lg-3 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-checkbox name="Autoinvoice" binary="true" formControlName="autoinvoice"></p-checkbox>
+                           </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Currency:
+                          </div>
+                        
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="currency">
+                            </p-dropdown>
+                          </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Requires Inspection?
+                          </div>
+                        
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="requiresinspection">
+                            </p-dropdown>
+                          </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Inspection Link:
+                          </div>
+                        
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="inspectionlink">
+                            </p-dropdown>
+                          </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Sustainability Project?	
+                          </div>
+                        
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-checkbox name="SustainabilityProject" binary="true" formControlName="sustainabilityproject"></p-checkbox>
+                          </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Work Order Tag:
+                          </div>
+                        
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'"  [filter]="true" [required]="true"
+                                 formControlName="workordertag">
+                            </p-dropdown>
+                          </div>
+                      </div>
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Description:
+                          </div>
+                        
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <textarea pInputTextarea></textarea>
+                          </div>
+                      </div>
+
+                      <div class="ui-g-6 ui-g-nopad">
+                          <div class="ui-g-6 ui-lg-3 ui-g-nopad ui-g-lesspad label_for_left_less ">     
+                              Special Instructions: 
+                          </div>
+                        
+                          <div class="ui-g-10 ui-lg-7 ui-g-nopad ui-g-lesspad  label_for_left_less">
+                              <textarea pInputTextarea></textarea>
+                          </div>
+                      </div>
+
+                   </div>
+                     
+                   <div class="ui-g-6 ui-lg-7 ui-g-lesspad">
+                       <button pButton icon="fa-save" label="Save"></button>
+                   </div>
+              </div>
+               <div class="ui-g-12 ui-lg-4">
+                 
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    
+
+  </form>
+  

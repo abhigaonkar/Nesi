@@ -1,0 +1,61 @@
+<div id="FvrModal" class="modal row justify-content-center {{redBackground}}"  >
+
+                <!-- Modal content -->
+                  <div class="row justify-content-center">
+
+                    <div class="modal-logo">
+                        <img src="assets/images/login/bg.jpg">
+                    </div>
+
+                  </div>
+
+                  <div class="modal-content col-10 col-sm-9 col-md-6 col-lg-4">
+                    <div class="row justify-content-center">
+
+                      <form class="col-10 col-sm-10 col-md-8 col-lg-9 modal-container">
+
+                        <div class="justify-content-center">
+                          <div class="modal-header">
+                            <i class="fa fa-exclamation-circle alert fvr-body" aria-hidden="true"></i>
+                            <h1>These FVRs need your attention</h1>
+                          </div>
+                        </div>
+
+
+                        <div class="justify-content-center">
+
+                            <div class="modal-body">
+
+                              <ng-container  *ngIf="ts.isFvrPassed">
+                                  <p>
+                                  You currently have <strong>{{fvrs ? fvrs.length : ''}} FVR(s)</strong> which need to be addressed within the next 30 day(s). A FVR is a FILE VERIFICATION REQUEST that
+                                  is sent by your supervisor or someone from the Spark Ops staff to communicate important notices and policy changes
+                                  to all levels of the organization.<br><br> If these request(s) are not addressed within the alotted timeframe,
+                                  all www.nesi.ca functionality will be disabled, including the ability to enter timesheets.<br><br>
+                                  </p>
+                              </ng-container>
+
+                              <ng-container *ngIf="!ts.isFvrPassed">
+                                  <p>
+                                    You currently have <strong>{{fvrs ? fvrs.length : ''}} FVR(s)</strong> which need to be addressed before you are allowed access to the Company Intranet (nesi.ca). <br><br>
+                                  </p>
+                              </ng-container>
+                              <nesi-fvrTable  [fvrs]="fvrs"></nesi-fvrTable>
+
+                            </div>
+                        </div>
+                      </form>
+
+                    </div>
+
+
+                  <div class="row justify-content-center modal-btn">
+                          <button class="col-6 btn btn-lg btn-primary btn-block btn-request" *ngIf="ts.isFvrPassed" (click)="goHome()" type="button" >Skip for now</button>
+                          <button class="col-6 btn btn-lg btn-primary btn-block needlogin-btn-cancel" (click)="refresh()" type="button">Refresh</button>
+                          <button class="col-6 btn btn-lg btn-primary btn-block btn-request" *ngIf="!ts.isFvrPassed" (click)="goSignOut()" type="request">SignOut</button>
+
+                        </div>
+
+                  </div>
+
+              </div>

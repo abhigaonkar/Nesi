@@ -1,0 +1,77 @@
+<div class="ui-g-12">
+    <div class="ui-g-12 ui-md-4">
+      <p-tree styleClass="fileManagerTree" [value]="dir" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="nodeSelect($event)"
+        [contextMenu]="cm" (onNodeUnselect)="nodeUnselect($event)">
+      </p-tree>
+      <p-contextMenu appendTo="body" #cm [model]="cmItems" [style]="{'width': '120px'}"></p-contextMenu>
+    </div>
+    <div class="ui-g-12 ui-md-8">
+      <div class="ui-g-6 ui-md-3">
+        <button  pButton type="button" [disabled]="! (selectedFiles && selectedFiles.length>0)" label="Download Files"
+          (click)="downLoadFiles($event)" icon="fa-download"></button>
+      </div>
+      <div class="ui-g-6 ui-md-3">
+        <button class="ui-button-warning" pButton type="button" [disabled]="! (selectedFiles && selectedFiles.length>0)" label="Delete Files"
+          (click)="deleteFiles()" icon="fa-times"></button>
+      </div>
+      <div class="ui-g-6 ui-md-3">
+        <button pButton type="button" [disabled]="! (selectedFiles && selectedFiles.length>0)" label="Copy Files"
+          (click)="copyFiles()" icon="fa-clone"></button>
+      </div>
+      <div class="ui-g-6 ui-md-3">
+        <button pButton type="button" [disabled]="! (selectedFiles && selectedFiles.length>0)" label="Move Files"
+          (click)="moveFiles()" icon="fa-arrow-right"></button>
+      </div>
+      <div class="ui-g-12">
+        <p-dataTable styleClass="file-modal" [value]="files" rowHover="true" [(selection)]="selectedFiles" dataKey="fullName" [responsive]="true" [editable]="true"
+          (onEditComplete)="FileEditComplete($event)">
+          <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+          <p-column field="name" header="Name" [editable]="true"></p-column>
+          <p-column field="size" header="Size">
+            <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+              <span>{{item.size | fileSize}}</span>
+            </ng-template>
+          </p-column>
+          <p-column field="lastModified" header="Last modified">
+            <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+              <span>{{item.lastModified | date: 'short'}}</span>
+            </ng-template>
+          </p-column>
+        </p-dataTable>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12">
+    <p-fileUpload [disabled]="disabled" name="files[]" [url]="uploadURL" (onUpload)="onUploaded($event)" (onSelect)="onSelect($event)" (onBeforeSend)="onBefoeUpload($event)"
+      maxFileSize="5000000" [multiple]="true">
+    </p-fileUpload>
+  
+  </div>
+  
+  <p-dialog [(visible)]="InputDisplay" [modal]="true" [responsive]="true" showEffect="fade" appendTo="body">
+    <p-header>
+      Enter a name
+    </p-header>
+    <input pInputText [(ngModel)]="InputValue">
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" [disabled]="!InputValue" pButton icon="fa-check" (click)="InputDialogConfirm()" label="Confirm"></button>
+      <button type="button" pButton icon="fa-times-circle"  (click)="InputDisplay=false" label="Cancel"></button>
+      </div>
+    </p-footer>
+  </p-dialog>
+  <p-dialog [(visible)]="selectDestinationDisplay" [modal]="true" [responsive]="true" showEffect="fade" appendTo="body">
+    <p-header>
+      Select destination:
+    </p-header>
+    <p-tree styleClass="fileManagerTree" [value]="dir" selectionMode="single" [(selection)]="selectedDestinationNode">
+    </p-tree>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" [disabled]="!selectedDestinationNode || selectedDestinationNode.data==selectedNode.data" pButton icon="fa-check"
+        (click)="selectDestinationDialogConfirm()" [label]="filesOperationType"></button>
+      <button type="button" pButton icon="fa-times-circle" (click)="selectDestinationDisplay=false" label="Cancel"></button>
+      </div>
+    </p-footer>
+  </p-dialog>
+  

@@ -1,0 +1,50 @@
+<div class="ui-g-12 ui-g-lesspad quote_list_body">
+  <ng-container *ngIf="item && item.length==0">None</ng-container>
+  <ng-container *ngFor="let line of item">
+    <div class="ui-g-12 quote_list_line" [ngClass]="{'quote_list_line_allow_click': !disabled_click(line),'quote_list_line_not_allow_click': disabled_click(line)}"
+      (mousemove)="moveTip($event)" (click)="myopenQuote(line)">
+      <table border="0" width="100%" cellPadding="0" cellspacing="0" >
+        <tr>
+          <td width="26px">
+            {{line.quote_id}}
+          </td>
+          <td align="right" class="td_ellipsis">
+              {{line.customer_name}}
+          </td>
+        </tr>
+      </table>
+
+      <!--    <div class="ui-g-4 right ui-g-lesspad" *ngIf="smaller">
+        {{cutCustomerName(line.customer_name)}}
+      </div>
+
+      <div class="ui-g-4 right ui-g-lesspad" *ngIf="smaller">
+        {{cutCustomerName(line.quoted_price)}}
+      </div> -->
+
+      <span [style.left]="tooltipX" [style.top]="tooltipY">
+        <div class="header">
+          <b>{{line.customer_name}}</b>
+        </div>
+        <div class="content">
+          <ng-container *ngIf="line.divTitle">{{line.divTitle}}</ng-container>
+          <b>Version:</b> {{line.revision}}
+          <br />
+          <b>Open Date:</b> {{line.open_date}}
+          <br />
+          <b>Price Type:</b> {{line.pricetype}}
+          <br />
+          <b>Quoted Price:</b> {{line.quoted_price}}
+          <br />
+          <ng-container *ngIf="line.quoted_level">
+            <b>Quote Level:</b> {{line.quoted_level}}</ng-container>
+          <b>Quoted By:</b> {{line.member_fullname}}
+          <br />
+          <b>Business Unit:</b> {{line.ddl_name}}
+          <br />
+        </div>
+        <div class="footer">{{line.job_description}}</div>
+      </span>
+    </div>
+  </ng-container>
+</div>

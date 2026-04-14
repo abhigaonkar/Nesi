@@ -1,0 +1,6 @@
+<div class="workorder_bucket_item" [ngClass]="backgroundClass"
+ [style.bold]="item.woprog_creditcard_payment" 
+ [pTooltip]="toolTip" (auxclick)="open_wo($event)" (click)="open_wo($event)"
+ [escape]="false" tooltipPosition="right" >
+  {{item.woprog_bvwo}} - {{item.woprog_customername}}
+</div>

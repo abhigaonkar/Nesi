@@ -1,0 +1,54 @@
+<div class="ui-g-10 ui-g-nopad">
+
+  <nesi-ReactiveDropDown [placeholder]="placeholder" [options]="allitems" [(ngModel)]="selectItem" (onChange)="select($event)"></nesi-ReactiveDropDown>
+</div>
+<div class="ui-g-2 ui-g-nopad">
+  <div class="ui-g-6 ui-g-nopad">
+    <button pButton [disabled]="!selectItem" icon="fa-window" (click)="select({value: selectItem})"></button>
+  </div>
+  <div class="ui-g-6 ui-g-nopad right">
+    <button pButton icon="fa-times" class="ui-button-danger" (click)="close.emit()"></button>
+  </div>
+</div>
+<p-blockUI [blocked]="submitting">
+  <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+</p-blockUI>
+
+<p-dialog header="{{sourceName}}: {{label}}" [minWidth]="cs.isLg? '1024': '0'" [modal]="true" [responsive]="true" [(visible)]="dialogDisplay">
+
+
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <div class="ui-g-1 ui-g-offset-11">
+        <p-checkbox (onChange)="checkAll($event)" [(ngModel)]="checkedAll" binary="true"></p-checkbox>
+      </div>
+    </div>
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <ng-container formArrayName="rows">
+        <div *ngFor="let row of rows.controls; let i=index">
+          <div class="ui-g-12" [formGroupName]="i" [ngClass]="{'greyBack': i % 2==1,'whiteBack': i %2 ==0}">
+            <div class="ui-g-1">
+              {{i+1}}
+            </div>
+            <div class="ui-g-8">
+              <nesi-picklist-selectItem (startLoad)="costStart()" (loaded)="costLoaded($event,i)" [quote_id]="quote_id" [revision]="revision"
+                [item]="row.value"></nesi-picklist-selectItem>
+            </div>
+            <!-- <div class="ui-g-8">
+            <div>Cost: {{row.value.chargeout | currency:'CAD':'symbol-narrow':'1.2-2' }}</div>
+          </div> -->
+            <div class="ui-g-2">
+              <input id="qty" pInputText type="number" step="1" formControlName="qty">
+            </div>
+            <div class="ui-g-1">
+              <p-checkbox id="check_{{i}}" formControlName="is_checked" binary="true"></p-checkbox>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="ui-g-12">
+        <button pButton icon="fa-plus" label="Add" [disabled]="cost_count>0"></button>
+      </div>
+    </form>
+  </div>
+</p-dialog>

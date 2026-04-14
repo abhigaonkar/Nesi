@@ -1,0 +1,117 @@
+<nesi-loading-spinner [show]="!q && !hasError"></nesi-loading-spinner>
+
+<p-messages *ngIf="hasError" [(value)]="msgs" [closable]="false"></p-messages>
+
+<div *ngIf="q && !hasError" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" [ngClass]="{'quote_not_active': q && !q.is_actived}">
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-lg-3 ui-g-lesspad ">
+      <div class="ui-g-12 ui-g-nopad ">
+        <div class="ui-g-4 ui-lg-4 ui-g-lesspad label_for_quote ">
+          Quote #:
+        </div>
+        <div class="ui-g-2  ui-lg-4 ui-g-lesspad label_for_left_less">
+          {{quoteId}}
+        </div>
+        <div class="ui-g-4 ui-lg-2 ui-g-lesspad ">
+          <nesi-ReactiveDropDown [options]="revisions" (onChange)="changeRevision($event)" [(ngModel)]="revision"></nesi-ReactiveDropDown>
+        </div>
+        <div *ngIf="q&&q.why_revised" class="ui-g-1  ui-lg-1 ui-g-lesspad middle_margin_label">
+          <i class="fa fa-2x fa-sticky-note " title="{{q&&q.why_revised}}"></i>
+        </div>
+        <div class="ui-g-1 ui-lg-1 ui-g-lesspad middle_margin_label left">
+          <p-checkbox #activerevision lable="" binary="true" title='Make this version the active version' (onChange)="activeRevision(activerevision,$event)"
+            [(ngModel)]="active_revision" [disabled]="active_revision || false"></p-checkbox>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-4 ui-lg-4 ui-g-lesspad label_for_quote">
+          Status:
+        </div>
+        <div class="ui-g-8 ui-lg-8 ui-g-lesspad label_for_left_less">
+          {{q && q.status}}
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-lg-3 ui-g-lesspad label_for_left_less">
+      <div class="ui-g-5 ui-g-nopad">
+        <button pButton  [disabled]="q && (q.status_id==8 || q.status_id==6) " label="New Version" (click)="newVersionDisplay=true" icon="fa-file"></button>
+      </div>
+      <div class="ui-g-5 ui-g-offset-1 ui-g-nopad">
+        <button pButton label="Search" icon="fa-search" (click)="searchDisplay=true"></button>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-lg-6 ui-g-lesspad right bold">
+      <div class="ui-g-6 ui-lesspad right">
+        T&M price(Ext'd): {{q && q.tm_pricing_total | currency:'CAD':'symbol-narrow':'1.2-2'}} ({{q && q.margin_TM | percent: '1.2-2'}})
+      </div>
+      <div class="ui-g-6 ui-lesspad right">
+        Worksheet Total(~Ext'd): {{q && q.worksheet_total | currency:'CAD':'symbol-narrow':'1.2-2' }} ({{q && q.margin_total | percent: '1.2-2'}})
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g-12 quote_normal">
+    <p-tabView [activeIndex]="activeTableView" (onChange)="tabviewOnChange($event)" #t>
+      <p-tabPanel header="General" leftIcon="fa-list">
+        <nesi-quote-edit-general [quoted_price]="quoted_price" [q]="q" (QuoteChanged)="quoteEditChanged($event)" (CustomerChanged)="OnCustomerChanged($event)"></nesi-quote-edit-general>
+      </p-tabPanel>
+      <p-tabPanel header="Scope of Work" leftIcon="fa-briefcase">
+        <nesi-quote-edit-scorework (reOrder)="reOrderScopeWork($event)" [q]="q" (rowUpdated)="rowUpdated($event)" (openSection)="openSection($event)"></nesi-quote-edit-scorework>
+      </p-tabPanel>
+      <p-tabPanel header="Notes/Adders" leftIcon="fa-sticky-note">
+        <nesi-quote-edit-noteadddress (reOrder)="reOrderScopeWork($event)" (rowUpdated)="rowUpdated($event)" (openSection)="openSection($event)"
+          [q]="q"></nesi-quote-edit-noteadddress>
+      </p-tabPanel>
+      <p-tabPanel header="Worksheet" leftIcon="fa-table">
+        <!-- <ng-template pTemplate="content"> -->
+        <nesi-picklist-main
+        [quote_id]="quoteId"
+        [revision]="revision"
+        [edit_disabled]="edit_disabled" [quoted_price]="quoted_price" (priceUpdated)="priceUpdated()" (priceChange)="priceChange($event)"
+          (sectionsChanged)="sectionsChanged($event)"  (quoted_price_updated)="update_quoted_price($event)"></nesi-picklist-main>
+        <!-- </ng-template> -->
+      </p-tabPanel>
+      <p-tabPanel header="Maintenance" leftIcon="fa-building">
+        <nesi-quote-edit-maintenance [q]="q"></nesi-quote-edit-maintenance>
+      </p-tabPanel>
+      <p-tabPanel header="Storage" leftIcon="fa-archive">
+        <nesi-quote-edit-storage [q]="q"></nesi-quote-edit-storage>
+      </p-tabPanel>
+      <p-tabPanel *ngIf="q&&q.strategy_tab" header="Strategy" leftIcon="fa-road">
+        <ng-template pTemplate="content">
+          <nesi-quote-detail-edit-strategy [quote_id]="quoteId"></nesi-quote-detail-edit-strategy>
+        </ng-template>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+  <p-dialog header="Search" [positionTop]="50" [minWidth]="cs.isLg?'1024':'0'" [modal]="true" [responsive]="true" [(visible)]="searchDisplay">
+    <nesi-quote-search-pane [isDialog]="true"></nesi-quote-search-pane>
+  </p-dialog>
+  <p-dialog header="OPEN QUOTES" [minWidth]="cs.isLg?'1024':'0'" [modal]="true" [responsive]="true" [(visible)]="openQuotesDisplay">
+    <div class="ui-g-12">
+      <div class="ui-g-12 tableCaption">
+        These quotes are currently open for
+        <b>({{q&&q.customer_id}}) {{q&&q.customer_name}} - {{q&&q.is_actived? 'Active' : 'On Hold'}}</b>
+        <br/> Please ensure that they haven't already contacted us for a quote on this job.
+      </div>
+      <p-dataTable [value]="exist_quotes" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="3" (onRowClick)="openRowQuoteSelf($event)"
+        rowHover="true">
+        <p-column field="quoteid" header="Quote #"></p-column>
+        <p-column field="status" header="Status"></p-column>
+        <p-column field="description" header="Description"></p-column>
+        <p-column field="quotedby" header="Quote By"></p-column>
+      </p-dataTable>
+    </div>
+  </p-dialog>
+
+  <p-dialog header="New Version" [positionTop]="50" [modal]="true" [responsive]="true" [(visible)]="newVersionDisplay">
+    <nesi-quote-detail-newrevision (RevisionChanged)="do_revsion($event)" (cancel)="newVersionDisplay=false" [q]="q"></nesi-quote-detail-newrevision>
+  </p-dialog>
+</div>
+
+<ng-container *ngIf="q">
+  <p-dialog [positionTop]="50" [closable]="false" [minWidth]="cs.isLg?'1024':'0'" [(visible)]="showStage1" header="Stage 1 Go No-Go"
+    [modal]="true" [responsive]="true">
+    <nesi-quote-stage1 *ngIf="showStage1" (Killed)="quoteKilled()" (Approved)="quoteApproved()" [quote_id]="quoteId"></nesi-quote-stage1>
+  </p-dialog>
+</ng-container>

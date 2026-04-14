@@ -1,0 +1,1703 @@
+/* -- ValidationSummary -- */
+
+.dxvsValidationSummary_NETheme01
+{
+	font:  13px 'Segoe UI','Calibri' ,Helvetica,'Droid Sans' ,Tahoma,Geneva,sans-serif;
+	color: Red;
+}
+.dxvsValidationSummary_NETheme01 td.dxvsRC_NETheme01
+{
+	vertical-align: top;
+	padding: 2px 5px 4px 6px;
+}
+.dxvsValidationSummary_NETheme01 .dxvsE_NETheme01
+{
+}
+.dxvsValidationSummary_NETheme01 table.dxvsHT_NETheme01
+{
+	width: 100%;
+}
+.dxvsValidationSummary_NETheme01 td.dxvsH_NETheme01
+{
+	padding: 2px 0;
+}
+.dxvsValidationSummary_NETheme01 a.dxvsHL_NETheme01,
+.dxvsValidationSummary_NETheme01 a.dxvsHL_NETheme01:visited
+{
+	color: red;
+}
+.dxvsValidationSummary_NETheme01 a.dxvsHL_NETheme01
+{
+	text-decoration: none;
+	border-bottom: 1px dashed #f70;
+}
+.dxvsValidationSummary_NETheme01 a.dxvsHL_NETheme01:hover
+{
+	color: #f70;
+}
+.dxvsValidationSummary_NETheme01 table.dxvsT_NETheme01
+{
+}
+.dxvsValidationSummary_NETheme01 tr.dxvsE_NETheme01
+{
+}
+.dxvsValidationSummary_NETheme01 td.dxvsETC_NETheme01
+{
+	padding: 2px 0;
+}
+.dxvsValidationSummary_NETheme01 ul.dxvsL_NETheme01
+{
+}
+.dxvsValidationSummary_NETheme01 ol.dxvsL_NETheme01
+{
+}
+.dxvsValidationSummary_NETheme01 li.dxvsE_NETheme01
+{
+	padding: 2px 0;
+}
+
+/* TrackBar */
+.dxeTrackBar_NETheme01
+{
+	user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	visibility: hidden;
+}
+
+.dxeDisabled_NETheme01 .dxeTBHSys a,
+.dxeDisabled_NETheme01 .dxeTBVSys a
+{
+    cursor: default;
+}
+
+.dxeTBBarHighlight_NETheme01
+{
+	font-size: 0;
+}
+
+.dxeTBScale_NETheme01, .dxeTBTrack_NETheme01, dxeTBBarHighlight
+{
+	cursor: pointer;
+}
+
+.dxeTBScale_NETheme01 
+{
+	z-index: 1;
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+.dxeTBSecondaryDH_NETheme01, .dxeTBMainDH_NETheme01
+{
+	z-index: 4;
+}
+
+.dxeTBHSys
+{
+	width: 170px;
+	height: 41px;
+}
+.dxeTBVSys
+{
+	height: 170px;
+	width: 41px;
+}
+.dxeTrackBar_NETheme01.dxeTBBScaleSys.dxeTBVSys
+{
+	width: 59px;
+}
+.dxeTrackBar_NETheme01.dxeTBBScaleSys.dxeTBHSys
+{	
+	height: 59px;
+}
+
+.dxeTBTrack_NETheme01 
+{
+	z-index: 2;
+	position: absolute;
+}
+
+.dxeTBHSys .dxeTBTrack_NETheme01
+{
+	background-image: url('edtTrackBarTrackH.gif');
+}
+.dxeTBVSys .dxeTBTrack_NETheme01
+{
+	background-image:  url('edtTrackBarTrackV.gif');
+}
+
+.dxeTBHSys .dxeTBTrack_NETheme01, .dxeTBHSys .dxeTBBarHighlight_NETheme01
+{
+	height: 10px;
+}
+.dxeTBVSys .dxeTBTrack_NETheme01, .dxeTBVSys .dxeTBBarHighlight_NETheme01
+{
+	width: 10px;
+}
+
+.dxeTBHSys .dxeTBMainDH_NETheme01, .dxeTBHSys .dxeTBSecondaryDH_NETheme01
+{	
+	top: -1px;
+	width:7px;
+	height:12px;
+}
+.dxeTBVSys .dxeTBMainDH_NETheme01, .dxeTBVSys .dxeTBSecondaryDH_NETheme01
+{
+	left: -1px;
+	width: 12px;
+	height: 7px;
+}
+
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBTrack_NETheme01, .dxeTBVSys .dxeTBTrack_NETheme01
+{
+	left: 6px;
+}
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBTrack_NETheme01
+{
+	right: 6px;
+	left: auto;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBTrack_NETheme01
+{
+	bottom: 6px;
+	top: auto;
+}
+.dxeTBHSys .dxeTBRBScaleSys .dxeTBTrack_NETheme01, .dxeTBHSys .dxeTBTrack_NETheme01
+{
+	top: 6px;
+}
+
+.dxeTBBarHighlight_NETheme01
+{
+	left: 0px;
+	top: 0px;
+	position:absolute;
+	z-index: 3;
+}
+
+.dxeTBHSys .dxeTBBarHighlight_NETheme01
+{
+	background-image: url('edtTrackBarBarHighlightH.gif');
+}
+.dxeTBVSys .dxeTBBarHighlight_NETheme01
+{
+	background-image:  url('edtTrackBarBarHighlightV.gif');
+}
+
+.dxeTBRBLabel_NETheme01, .dxeTBLTLabel_NETheme01
+{
+	text-align: center;
+	color: #999999;
+	cursor: default;
+}
+.dxeTBSmallTickSys .dxeTBRBLabel_NETheme01, .dxeTBSmallTickSys .dxeTBLTLabel_NETheme01,
+.dxeTBLargeTickSys .dxeTBRBLabel_NETheme01, .dxeTBLargeTickSys .dxeTBLTLabel_NETheme01 
+{	
+	position: absolute;
+}
+
+.dxeTBHSys .dxeTBRBLabel_NETheme01,.dxeTBHSys .dxeTBLTLabel_NETheme01
+{
+	width: 100%;
+}
+
+.dxeTBIncBtn_NETheme01, .dxeTBDecBtn_NETheme01
+{
+	padding: 2px;
+	width: 17px;
+	height: 17px;
+}
+
+.dxeTBVSys .dxeTBRBLabel_NETheme01, 
+.dxeTBVSys .dxeTBLTLabel_NETheme01
+{
+	padding-top: 2px;
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBRBLabel_NETheme01
+{
+	margin-left: -4px;
+}
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBRBLabel_NETheme01, 
+.dxeTBVSys .dxeTBBScaleSys .dxeTBLTLabel_NETheme01
+{
+	right: 0px;
+}
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBLTLabel_NETheme01, 
+.dxeTBVSys .dxeTBBScaleSys .dxeTBRBLabel_NETheme01
+{
+	left: 0px;
+}
+.dxeTBHSys .dxeTBRBScaleSys .dxeTBRBLabel_NETheme01, 
+.dxeTBHSys .dxeTBBScaleSys .dxeTBLTLabel_NETheme01
+{
+	bottom: 0px;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBLTLabel_NETheme01, 
+.dxeTBHSys .dxeTBBScaleSys .dxeTBRBLabel_NETheme01
+{
+	top: 0px;
+}
+.dxeTBItem_NETheme01
+{
+	color: #8c8c8c;
+}
+
+.dxeTBHSys .dxeTBItem_NETheme01 .dxeTBRBLabel_NETheme01, 
+.dxeTBHSys .dxeTBItem_NETheme01 .dxeTBLTLabel_NETheme01 
+{
+	display: inline-block;
+	margin-left: 0px!important;
+}
+.dxeTBHSys .dxeTBRBScaleSys 
+.dxeTBItem_NETheme01 .dxeTBRBLabel_NETheme01 
+{
+	padding-top: 12px;
+}
+.dxeTBHSys .dxeTBLTScaleSys 
+.dxeTBItem_NETheme01 .dxeTBLTLabel_NETheme01 
+{
+	margin-top: 8px;
+}
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBItem_NETheme01 .dxeTBRBLabel_NETheme01 
+{
+	margin-left: 5px;
+}
+
+.dxeTBSelectedItem_NETheme01 .dxeTBRBLabel_NETheme01,
+.dxeTBSelectedItem_NETheme01 .dxeTBLTLabel_NETheme01,
+.dxeTBSelectedTick_NETheme01 .dxeTBRBLabel_NETheme01, 
+.dxeTBSelectedTick_NETheme01 .dxeTBLTLabel_NETheme01
+{
+	color: #ff8800;
+}
+
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBItem_NETheme01
+{
+	text-align: left;
+}
+
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBItem_NETheme01
+{
+	text-align: right;
+}
+
+.dxeTBVSys .dxeTBBScaleSys .dxeTBItem_NETheme01
+{
+	text-align: center;
+}
+
+.dxeTBHSys .dxeTBItem_NETheme01
+{
+	background-image:  url('edtTrackBarLargeTickH.gif');
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBItem_NETheme01
+{
+	background-image:  url('edtTrackBarDoubleSmallTickH.gif');
+}
+.dxeTBVSys .dxeTBItem_NETheme01 
+{
+	background-image:  url('edtTrackBarLargeTickV.gif');
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBItem_NETheme01
+{
+	background-image:  url('edtTrackBarDoubleSmallTickV.gif');
+}
+
+.dxeTBHSys .dxeTBLargeTick_NETheme01
+{
+	background-image: url('edtTrackBarLargeTickH.gif');
+}
+.dxeTBVSys .dxeTBLargeTick_NETheme01
+{
+	background-image: url('edtTrackBarLargeTickV.gif');
+}
+.dxeTBHSys .dxeTBSmallTick_NETheme01
+{
+	background-image: url('edtTrackBarSmallTickH.gif');
+}
+.dxeTBVSys .dxeTBSmallTick_NETheme01
+{
+	background-image: url('edtTrackBarSmallTickV.gif');
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBLargeTick_NETheme01
+{
+	background-image: url('edtTrackBarDoubleLargeTickH.gif');
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBLargeTick_NETheme01
+{
+	background-image: url('edtTrackBarDoubleLargeTickV.gif');
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBSmallTick_NETheme01
+{
+	background-image: url('edtTrackBarDoubleSmallTickH.gif');
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBSmallTick_NETheme01
+{
+	background-image: url('edtTrackBarDoubleSmallTickV.gif');
+}
+
+.dxeTBVSys .dxeTBIncBtn_NETheme01, .dxeTBVSys .dxeReversedDirectionSys .dxeTBDecBtn_NETheme01
+{
+	bottom: 0px;
+	top: auto;
+}
+.dxeTBVSys .dxeTBDecBtn_NETheme01, .dxeTBVSys .dxeReversedDirectionSys .dxeTBIncBtn_NETheme01
+{
+	top: 0px;
+	bottom: auto;
+}
+.dxeTBHSys .dxeTBDecBtn_NETheme01, .dxeTBHSys .dxeReversedDirectionSys .dxeTBIncBtn_NETheme01
+{
+	left: 0px;
+	right: auto;
+}
+.dxeTBHSys .dxeTBIncBtn_NETheme01, .dxeTBHSys .dxeReversedDirectionSys .dxeTBDecBtn_NETheme01
+{
+	right: 0px;
+	left: auto;
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBDecBtn_NETheme01, 
+.dxeTBVSys .dxeTBBScaleSys .dxeTBIncBtn_NETheme01
+{
+	margin-left: -10px;
+	left: 50%;
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBDecBtn_NETheme01,
+.dxeTBHSys .dxeTBBScaleSys .dxeTBIncBtn_NETheme01
+{
+	margin-top: -10px;
+	top: 50%;
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBTrack_NETheme01
+{ 
+	margin-left: -4px;
+	left: 50%;
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBTrack_NETheme01
+{ 
+	margin-top: -5px;
+	top: 50%;
+}
+
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBDecBtn_NETheme01, 
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBIncBtn_NETheme01
+{
+	right: 0px;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBDecBtn_NETheme01, 
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBIncBtn_NETheme01
+{
+	bottom: 0px;
+}
+
+div.dxeHelpText_NETheme01,
+.dxeTBValueToolTip_NETheme01
+{
+	padding: 3px 8px 4px 8px;
+    display: inline;
+    position:absolute;
+    background: white;
+    z-index: 41998;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #c0c0c0;
+    font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+td.dxeHelpText_NETheme01 {
+    visibility: visible;
+    color: #9F9F9F;
+    font: 11px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+td.dxeHelpText_NETheme01.dxeHHelpTextSys {
+    padding: 0 6px;
+}
+td.dxeHelpText_NETheme01.dxeVHelpTextSys {
+    padding: 2px 0;
+}
+
+/* Loading */
+.dxeLoadingDiv_NETheme01
+{
+	background: White none;
+	opacity: 0.85;
+	filter: alpha(opacity=85);
+}
+.dxeLoadingDivWithContent_NETheme01
+{
+	background: White none;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+.dxeLoadingPanel_NETheme01
+{
+	font: 14px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #333333;
+}
+.dxeLoadingPanelWithContent_NETheme01
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #303030;
+	background: #FFFFFF none;
+	border: 1px solid #D6D6D6;
+}
+
+.dxeLoadingPanel_NETheme01 td.dx, 
+.dxeLoadingPanelWithContent_NETheme01 td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 10px 14px;
+}
+
+.dxeReadOnly_NETheme01
+{
+}
+.dxeBase_NETheme01
+{
+	font:  12px 'Segoe UI',Helvetica,'Droid Sans',Tahoma,Geneva,sans-serif;
+	
+	/*min-height: 25px;*/
+}
+td.dxic
+{
+}
+/* InternalCheckBox */
+.dxeIRBFocused_NETheme01
+{
+	margin: 0px!important;
+	border: 1px dotted SteelBlue;
+}
+.dxeIRadioButton_NETheme01
+{
+	margin: 1px;
+	display: inline-block;
+	vertical-align: middle;
+}
+/* -- ErrorFrame -- */
+.dxeErrorCell_NETheme01,
+.dxeErrorCell_NETheme01 td
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: Red;
+}
+.dxeErrorCell_NETheme01
+{
+	padding-left: 4px;
+	padding-right: 5px;
+}
+.dxeErrorFrameWithoutError_NETheme01
+{
+	border: 1px solid Red;
+}
+.dxeErrorFrameWithoutError_NETheme01 .dxeControlsCell_NETheme01,
+.dxeErrorFrameWithoutError_NETheme01.dxeControlsCell_NETheme01
+{
+	padding: 2px;
+}
+
+.dxeEditArea_NETheme01
+{
+	background-color: white;
+	border: 1px solid #E0E0E0;
+	color: #000000;
+	width: 100%;
+}
+/* -- ValidationSummary -- */
+
+.dxvsValidationSummary_NETheme01
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: Red;
+}
+.dxvsValidationSummary_NETheme01 td.dxvsRC
+{
+	vertical-align: top;
+	padding: 2px 5px 4px 6px;
+}
+.dxvsValidationSummary_NETheme01 .dxvsE
+{
+}
+
+/* ValidationSummary - Header */
+
+.dxvsValidationSummary_NETheme01 table.dxvsHT
+{
+	width: 100%;
+}
+.dxvsValidationSummary_NETheme01 td.dxvsH
+{
+	padding: 2px 0;
+}
+
+/* ValidationSummary - Hyperlink */
+
+.dxvsValidationSummary_NETheme01 a.dxvsHL,
+.dxvsValidationSummary_NETheme01 a.dxvsHL:visited
+{
+	color: red;
+}
+.dxvsValidationSummary_NETheme01 a.dxvsHL
+{
+	text-decoration: none;
+	border-bottom: 1px dashed #f70;
+}
+.dxvsValidationSummary_NETheme01 a.dxvsHL:hover
+{
+	color: #f70;
+}
+
+/* ValidationSummary - Table Layout */
+
+.dxvsValidationSummary_NETheme01 table.dxvsT
+{
+}
+.dxvsValidationSummary_NETheme01 tr.dxvsE
+{
+}
+.dxvsValidationSummary_NETheme01 td.dxvsETC
+{
+	padding: 2px 0;
+}
+
+/* ValidationSummary - List Layout */
+
+.dxvsValidationSummary_NETheme01 ul.dxvsL
+{
+}
+.dxvsValidationSummary_NETheme01 ol.dxvsL
+{
+}
+.dxvsValidationSummary_NETheme01 li.dxvsE
+{
+	padding: 2px 0;
+}
+
+/* -- Buttons -- */
+.dxeButtonEditButton_NETheme01,
+.dxeCalendarButton_NETheme01,
+.dxeSpinIncButton_NETheme01,
+.dxeSpinDecButton_NETheme01,
+.dxeSpinLargeIncButton_NETheme01,
+.dxeSpinLargeDecButton_NETheme01
+{
+	vertical-align: middle;
+	cursor: pointer;
+} 
+.dxeButtonEditButton_NETheme01,
+.dxeCalendarButton_NETheme01,
+.dxeButtonEditButton_NETheme01 td.dx,
+.dxeCalendarButton_NETheme01 td.dx,
+.dxeSpinIncButton_NETheme01,
+.dxeSpinDecButton_NETheme01,
+.dxeSpinLargeIncButton_NETheme01,
+.dxeSpinLargeDecButton_NETheme01,
+.dxeSpinIncButton_NETheme01 td.dx,
+.dxeSpinDecButton_NETheme01 td.dx,
+.dxeSpinLargeIncButton_NETheme01 td.dx,
+.dxeSpinLargeDecButton_NETheme01 td.dx
+{
+	text-align: center;
+	white-space: nowrap;
+	font: normal 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+} 
+.dxeButtonEditButton_NETheme01,
+.dxeSpinIncButton_NETheme01,
+.dxeSpinDecButton_NETheme01,
+.dxeSpinLargeIncButton_NETheme01,
+.dxeSpinLargeDecButton_NETheme01
+{
+	padding: 0px 2px 0px 3px;
+	background-color: white;
+}
+.dxeSpinLargeDecButton_NETheme01
+{
+	padding: 0px 3px 0px 2px;
+}
+.dxeSpinIncButton_NETheme01
+{
+}
+.dxeSpinDecButton_NETheme01
+{
+	padding-top: 1px;
+}
+
+.dxeButtonEditButton_NETheme01 table.dxbebt,
+.dxeSpinIncButton_NETheme01 table.dxbebt,
+.dxeSpinDecButton_NETheme01 table.dxbebt, 
+.dxeSpinLargeIncButton_NETheme01 table.dxbebt,
+.dxeSpinLargeDecButton_NETheme01 table.dxbebt
+{
+	width: 10px;
+}
+.dxeCalendarButton_NETheme01
+{
+	border: 1px solid #c0c0c0;
+	padding: 3px 11px 4px;
+	width: 32px;
+}
+.dxeCalendarButton_NETheme01 td.dx
+{
+	text-align: center;
+	white-space: nowrap;
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+.dxeCalendarButton_NETheme01.dxeButtonDisabled_NETheme01 td.dx
+{
+	color: #bdbdbd;
+}
+
+.dxeCalendarButton_NETheme01 table.dxbebt
+{
+	width: 100%;
+}
+
+/* -- Pressed -- */
+.dxeCalendarButtonPressed_NETheme01,
+.dxeButtonEditButtonPressed_NETheme01,
+.dxeSpinIncButtonPressed_NETheme01,
+.dxeSpinDecButtonPressed_NETheme01,
+.dxeSpinLargeIncButtonPressed_NETheme01, 
+.dxeSpinLargeDecButtonPressed_NETheme01
+{
+	color: white;
+	background-color: SteelBlue;
+}
+/* -- Hover -- */
+.dxeCalendarButtonHover_NETheme01,
+.dxeButtonEditButtonHover_NETheme01,
+.dxeSpinIncButtonHover_NETheme01,
+.dxeSpinDecButtonHover_NETheme01,
+.dxeSpinLargeIncButtonHover_NETheme01,
+.dxeSpinLargeDecButtonHover_NETheme01
+{
+	background-image: url('dropdown.png');
+	color: White;
+}
+.dxeCalendarButtonHover_NETheme01
+{
+	
+}
+
+.dxeButtonEdit_NETheme01
+{
+	background: white;
+	border: 1px solid #E0E0E0;
+	width: 180px;
+font: normal 12px 'Segoe UI',Helvetica,'Droid Sans',Calibri,Geneva,sans-serif;
+border-radius:3px;
+}
+.dxeButtonEdit_NETheme01 .dxeEditArea_NETheme01
+{
+}
+.dxeButtonEdit_NETheme01 .dxeEditArea_NETheme01,
+.dxeButtonEdit_NETheme01 td.dxic
+{
+	width: 100%;
+}
+.dxeButtonEdit_NETheme01 .dxeIIC img
+{
+	padding-left: 3px;
+}
+.dxeTextBox_NETheme01,
+.dxeMemo_NETheme01
+{
+	background: white;
+	border: 1px solid #E0E0E0;
+border-radius:3px;
+}
+.dxeTextBox_NETheme01 td.dxic
+{
+}
+.dxeTextBox_NETheme01 .dxeEditArea_NETheme01
+{
+	background-color: white;
+}
+.dxeRadioButtonList_NETheme01, .dxeCheckBoxList_NETheme01
+{
+	border: 1px Solid #E0E0E0;
+}
+
+.dxeCheckBoxList_NETheme01 .dxe > table,
+.dxeRadioButtonList_NETheme01 .dxe > table 
+{
+    width: 100%;
+}
+
+.dxeRadioButtonList_NETheme01,
+.dxeRadioButtonList_NETheme01 table,
+.dxeCheckBoxList_NETheme01,
+.dxeCheckBoxList_NETheme01 table
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+.dxeRadioButtonList_NETheme01 td.dxe,
+.dxeCheckBoxList_NETheme01 td.dxe
+{
+	padding: 7px 5px 6px 11px;
+}
+.dxeRadioButtonList_NETheme01 label,
+.dxeCheckBoxList_NETheme01 label
+{
+	margin-right: 6px;
+}
+
+.dxeRadioButtonList_NETheme01 img,
+.dxeCheckBoxList_NETheme01 img
+{
+	margin-bottom: -4px;
+    padding-right: 5px;
+}
+
+/* -- Memo -- */
+.dxeMemo_NETheme01
+{
+}
+.dxeMemoEditArea_NETheme01
+{
+	background-color: white;
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	width:100%;
+}
+
+/* -- Hyperlink -- */
+.dxeHyperlink_NETheme01
+{
+	font:  12px 'Segoe UI','Calibri' ,Helvetica,'Droid Sans' ,Tahoma,Geneva,sans-serif;
+	color: #0D4579;
+}
+
+/* -- ListBox -- */
+.dxeListBox_NETheme01
+{
+	background: Transparent;
+	width: 70px;
+	height: 109px;
+	font: 12px 'Segoe UI',Helvetica,'Droid Sans',Tahoma,Geneva,sans-serif;
+	color: #333333;
+	border: 1px solid #E0E0E0;
+}
+.dxeListBox_NETheme01 div.dxlbd
+{
+	padding-top: 1px;
+	padding-bottom: 1px;
+	height: 107px;
+}
+.dxeListBoxItemRow_NETheme01
+{
+	cursor: default;
+}
+.dxeListBoxItem_NETheme01
+{
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	padding: 3px 2px 4px 3px;
+	white-space: nowrap;
+	text-align: left;
+	color: #333333;
+	font: normal 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+.dxeListBoxItem_NETheme01 em
+{
+	background: #CFCFCF none repeat 0 0;
+	color: #333333;
+	font-weight: bold;
+	font-style: normal;
+}
+.dxeListBoxItemRow_NETheme01:last-child > .dxeListBoxItem_NETheme01
+{
+	border-bottom-width: 0;
+}
+
+.dxeListBox_NETheme01 td.dxeI,
+.dxeListBox_NETheme01 td.dxeIM,
+.dxeListBox_NETheme01 .dxeHIC, 
+.dxeListBox_NETheme01 td.dxeFTM,
+.dxeListBox_NETheme01 td.dxeTM,
+.dxeListBox_NETheme01 td.dxeC,
+.dxeListBox_NETheme01 td.dxeCM,
+.dxeListBox_NETheme01 td.dxeHCC,
+.dxeListBox_NETheme01 td.dxeMI,
+.dxeListBox_NETheme01 td.dxeMIM
+{
+	border-right-width: 0!important;
+}
+
+.dxeListBox_NETheme01 td.dxeIR,
+.dxeListBox_NETheme01 td.dxeIMR,
+.dxeListBox_NETheme01 .dxeHICR, 
+.dxeListBox_NETheme01 td.dxeFTMR,
+.dxeListBox_NETheme01 td.dxeTMR,
+.dxeListBox_NETheme01 td.dxeCR,
+.dxeListBox_NETheme01 td.dxeCMR,
+.dxeListBox_NETheme01 td.dxeHCCR,
+.dxeListBox_NETheme01 td.dxeMIR,
+.dxeListBox_NETheme01 td.dxeMIMR
+{
+	border-left-width: 0!important;
+}
+
+.dxeListBox_NETheme01 td.dxeCM,
+.dxeListBox_NETheme01 td.dxeHCC,
+.dxeListBox_NETheme01 td.dxeCMR,
+.dxeListBox_NETheme01 td.dxeHCCR
+{
+	width: 29px;
+    *width: 23px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.dxeListBox_NETheme01 td.dxeIM,
+.dxeListBox_NETheme01 td.dxeIMR
+{
+	width: 0;
+}
+.dxeListBox_NETheme01 td.dxeC > span,
+.dxeListBox_NETheme01 td.dxeCM > span
+{
+    margin: 2px 2px 2px 3px;
+}
+.dxeListBox_NETheme01 td.dxeCR > span,
+.dxeListBox_NETheme01 td.dxeCMR > span
+{
+    margin: 2px 3px 2px 2px;
+}
+.dxeListBox_NETheme01 td.dxeC
+{
+	padding-right: 3px!important;
+}
+.dxeListBox_NETheme01 td.dxeCR
+{
+	padding-left: 3px!important;
+}
+
+.dxeListBox_NETheme01 td.dxeT
+{
+	width: 100%;
+	padding-left: 0!important;
+}
+
+.dxeListBox_NETheme01 td.dxeTR
+{
+	width: 100%;
+	padding-right: 0!important;
+}
+
+
+.dxeListBox_NETheme01 td.dxeT,
+.dxeListBox_NETheme01 td.dxeMI
+{
+	border-left-width: 0!important;
+}
+
+.dxeListBox_NETheme01 td.dxeTR,
+.dxeListBox_NETheme01 td.dxeMIR
+{
+	border-right-width: 0!important;
+}
+
+
+.dxeListBox_NETheme01 td.dxeFTM,
+.dxeListBox_NETheme01 td.dxeTM,
+.dxeListBox_NETheme01 td.dxeLTM, 
+.dxeListBox_NETheme01 .dxeHFC,
+.dxeListBox_NETheme01 .dxeHC,
+.dxeListBox_NETheme01 .dxeHLC,
+.dxeListBox_NETheme01 td.dxeFTMR,
+.dxeListBox_NETheme01 td.dxeTMR,
+.dxeListBox_NETheme01 td.dxeLTMR, 
+.dxeListBox_NETheme01 .dxeHFCR,
+.dxeListBox_NETheme01 .dxeHCR,
+.dxeListBox_NETheme01 .dxeHLCR
+{
+	overflow: hidden;
+}
+
+.dxeListBox_NETheme01 td.dxeFTM,
+.dxeListBox_NETheme01 td.dxeTM, 
+.dxeListBox_NETheme01 .dxeHFC,
+.dxeListBox_NETheme01 .dxeHC
+{
+	padding-right: 6px!important;
+}
+
+.dxeListBox_NETheme01 td.dxeFTMR,
+.dxeListBox_NETheme01 td.dxeTMR, 
+.dxeListBox_NETheme01 .dxeHFCR,
+.dxeListBox_NETheme01 .dxeHCR
+{
+	padding-left: 6px!important;
+}
+
+
+.dxeListBox_NETheme01 td.dxeLTM,
+.dxeListBox_NETheme01 td.dxeTM, 
+.dxeListBox_NETheme01 .dxeHC,
+.dxeListBox_NETheme01 .dxeHLC
+{
+	padding-left: 6px!important;
+}
+
+.dxeListBox_NETheme01 td.dxeLTMR,
+.dxeListBox_NETheme01 td.dxeTMR, 
+.dxeListBox_NETheme01 .dxeHCR,
+.dxeListBox_NETheme01 .dxeHLCR
+{
+	padding-right: 6px!important;
+}
+
+/*Grid lines*/
+
+.dxeListBox_NETheme01 td.dxeLTM,
+.dxeListBox_NETheme01 td.dxeTM,
+.dxeListBox_NETheme01 td.dxeMIM
+{
+	border-left: 1px solid #cfcfcf!important;
+}
+
+.dxeListBox_NETheme01 td.dxeLTMR,
+.dxeListBox_NETheme01 td.dxeTMR,
+.dxeListBox_NETheme01 td.dxeMIMR
+{
+	border-right: 1px solid #cfcfcf!important;
+}
+
+.dxeListBox_NETheme01 td.dxeIM,
+.dxeListBox_NETheme01 td.dxeFTM,
+.dxeListBox_NETheme01 td.dxeTM,
+.dxeListBox_NETheme01 td.dxeLTM,
+.dxeListBox_NETheme01 td.dxeCM,
+.dxeListBox_NETheme01 td.dxeMIM,
+.dxeListBox_NETheme01 td.dxeIMR,
+.dxeListBox_NETheme01 td.dxeFTMR,
+.dxeListBox_NETheme01 td.dxeTMR,
+.dxeListBox_NETheme01 td.dxeLTMR,
+.dxeListBox_NETheme01 td.dxeCMR,
+.dxeListBox_NETheme01 td.dxeMIMR
+{
+	border-bottom: 1px solid #cfcfcf;
+}
+
+.dxeListBoxItemSelected_NETheme01     /* inherits dxeListBoxItem */
+{
+	color: White;
+	background-color: SteelBlue;
+}
+.dxeDisabled_NETheme01.dxeListBox_NETheme01 .dxeListBoxItemSelected_NETheme01 
+{
+	background-color: #f0f0f0;
+}
+.dxeListBoxItemHover_NETheme01        /* inherits dxeListBoxItem */
+{
+	color: #FFFFFF;
+	background-color: rgba(70, 130, 180, .4);
+}
+.dxeListBoxItemHover_NETheme01 em,
+.dxeListBoxItemSelected_NETheme01 em
+{
+	background-image: none;
+}
+
+/*Header*/
+
+.dxeListBox_NETheme01 .dxeHD
+{
+	border-bottom: 1px solid #c0c0c0;
+}
+
+.dxeListBox_NETheme01 .dxeHC,
+.dxeListBox_NETheme01 .dxeHLC,
+.dxeListBox_NETheme01 td.dxeHMIC
+{
+	border-left: 1px solid #c0c0c0;
+}
+
+.dxeListBox_NETheme01 .dxeHCR,
+.dxeListBox_NETheme01 .dxeHLCR,
+.dxeListBox_NETheme01 td.dxeHMICR
+{
+	border-right: 1px solid #A0A0A0;
+	text-align: right;
+}
+
+.dxeListBox_NETheme01 .dxeHCC
+{
+	border-left: 1px solid #c0c0c0;
+}
+
+.dxeListBox_NETheme01 .dxeHICR,
+.dxeListBox_NETheme01 .dxeHFCR,
+.dxeListBox_NETheme01 .dxeHCCR
+{
+	border-right: 1px solid #dcdcdc;
+	text-align: right;
+}
+
+.dxeListBox_NETheme01 .dxeHFC,
+.dxeListBox_NETheme01 .dxeHC,
+.dxeListBox_NETheme01 .dxeHMIC
+{
+	border-right-width: 0;
+}
+
+.dxeListBox_NETheme01 .dxeHFCR,
+.dxeListBox_NETheme01 .dxeHCR,
+.dxeListBox_NETheme01 .dxeHMICR
+{
+	border-left-width: 0;
+	text-align: right;
+}
+
+.dxeListBox_NETheme01 .dxeHLC
+{
+	border-right: 1px solid #dcdcdc;
+}
+
+.dxeListBox_NETheme01 .dxeHLCR
+{
+	border-left: 1px solid #dcdcdc;
+	text-align: right;
+}
+
+/* -- Calendar -- */
+.dxeCalendar_NETheme01
+{
+	background-color: White;
+	color: #333333;
+	font-weight: normal;
+	cursor: default;
+ box-shadow: 10px 10px 5px #888888;
+border-radius:3px;
+}
+.dxeCalendar_NETheme01.dxeFocused_NETheme01
+{
+	border: none;
+}
+.dxeCalendar_NETheme01 td.dxMonthGrid_NETheme01
+{
+	padding: 8px 20px;
+}
+.dxeCalendar_NETheme01 td.dxMonthGridWithWeekNumbers,
+.dxeCalendar_NETheme01 td.dxMonthGridWithWeekNumbersRtl
+{
+	min-width: 244px;
+	padding: 30px 40px 10px;
+}
+.dxeCalendarDayHeader_NETheme01
+{
+	padding: 2px 4px 5px;
+	font-family: 'Calibri', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	text-transform:uppercase;
+}
+.dxeCalendarWeekNumber_NETheme01
+{
+	font: 9px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	text-align: right;
+	padding: 6px 8px 6px 4px;
+	color: #bfbfbf;
+}
+.dxeCalendarDay_NETheme01
+{
+	padding: 4px 6px;
+	text-align: center;
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+.dxeCalendarWeekend_NETheme01        /* inherits dxeCalendarDay */
+{
+	color: SteelBlue;
+}
+.dxeCalendarOtherMonth_NETheme01     /* inherits dxeCalendarDay */
+{
+	opacity: 0.15;
+}
+.dxeCalendarOutOfRange_NETheme01     /* inherits dxeCalendarDay */
+{
+	color: #d0d0d0;
+}
+.dxeCalendarSelected_NETheme01       /* inherits dxeCalendarDay */
+{
+	color: White;
+	background-color: #4682B4;
+}
+.dxeCalendarSelected_NETheme01.dxeDisabled_NETheme01       /* inherits dxeCalendarDay */
+{
+	background-color: #ffd5a6;
+}
+
+.dxeCalendarToday_NETheme01         /* inherits dxeCalendarDay */
+{
+	padding: 3px 3px 2px;
+	border: 1px solid #4682B4;
+}
+.dxeCalendarToday_NETheme01.dxeDisabled_NETheme01         /* inherits dxeCalendarDay */
+{
+	border: 1px solid #ff8800;
+}
+
+.dxeCalendarHeader_NETheme01
+{
+	background: #E0E0E0;
+	padding: 4px 17px;
+	font: 18px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+
+	color: #000000;
+}
+.dxeCalendarHeader_NETheme01 td.dxe
+{
+	text-align: center;
+	cursor: pointer;
+	color: #808080;
+}
+.dxeCalendarHeader_NETheme01 span
+{
+	padding: 0 16px;
+	white-space: nowrap!important;
+}
+.dxeCalendarFooter_NETheme01
+{
+	padding: 8px 0px;
+	border-bottom: 2px solid #c0c0c0;
+}
+.dxeCalendar_NETheme01.dxeFocused_NETheme01 .dxeCalendarFooter_NETheme01
+{
+	border-color: #4682B4;
+}
+.dxeCalendarFastNav_NETheme01
+{
+	color: Black;
+	background: White none;
+	border-top: 1px solid #c0c0c0;
+	border-right: 1px solid #c0c0c0;
+	border-left: 1px solid #c0c0c0;
+	padding: 12px 8px;
+}
+.dxeCalendarFastNav_NETheme01
+{
+}
+.dxeCalendarFastNavMonthArea_NETheme01
+{
+	padding: 0px 9px;
+}
+.dxeCalendarFastNavYearArea_NETheme01
+{
+}
+.dxeCalendarFastNavFooter_NETheme01
+{
+	color: Black;
+	padding: 8px 0px;
+	border-right: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	border-left: 1px solid #c0c0c0;
+	background-color: white;
+}
+.dxeCalendarFastNavMonth_NETheme01,
+.dxeCalendarFastNavYear_NETheme01
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #333333;
+	padding: 3px 5px;
+	text-align: center;
+	cursor: pointer;
+}
+.dxeCalendarFastNavMonth_NETheme01
+{
+	padding: 6px;
+}
+.dxeCalendarFastNavMonthSelected_NETheme01,
+.dxeCalendarFastNavYearSelected_NETheme01
+{
+	color: White;
+	background-color: #ff8800;
+}
+.dxeCalendarFastNavMonthHover_NETheme01,
+.dxeCalendarFastNavYearHover_NETheme01
+{
+	color: Black;
+	background: #e5e5e5 none;
+	padding: 2px 4px;
+	border: 1px solid #d6d6d6;
+}
+.dxeCalendarFastNavMonthHover_NETheme01
+{
+	padding: 5px;
+}
+.dxeDateEditTimeEditCell_NETheme01
+{
+    padding: 13px 41px 15px ;
+}
+.dxeDateEditClockCell_NETheme01
+{
+    padding: 37px 31px 0;
+}
+.dxeCalendarFooter_NETheme01.dxeDETSF
+{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.dxeCalendarHeader_NETheme01.dxeDETSH
+{
+    display: none;
+}
+/* Disabled */
+.dxeDisabled_NETheme01,
+.dxeDisabled_NETheme01 td.dxe
+{
+	color: #c0c0c0;
+	cursor: default;
+}
+a.dxeDisabled_NETheme01:hover
+{
+	color: #acacac;
+}
+.dxeButtonDisabled_NETheme01,
+.dxeButtonDisabled_NETheme01 td.dxe
+{
+	border-color: #e9e9e9;
+	color: #808080;
+	cursor: default;
+}
+/* -- Button -- */
+.dxbButton_NETheme01
+{
+	color: #333333;
+	vertical-align: middle;
+	border: 1px solid #E0E0E0;
+	background-color: white;
+	padding: 1px;
+	cursor: pointer;
+		font: normal 12px 'Segoe UI',Helvetica,'Droid Sans',Tahoma,Geneva,sans-serif;
+	text-align: center;
+border-radius:3px;
+}
+.dxbButton_NETheme01.dxbDisabled_NETheme01
+{
+	border-color: #e9e9e9;
+	color: #b8b8b8;
+	cursor: default;
+}
+.dxbButtonHover_NETheme01
+{
+	color: white;
+	background-color: #B4CCE0;
+	border: 1px solid #B4CCE0;
+}
+.dxbButtonChecked_NETheme01
+{
+	color: #333333;
+	background-color: #C0C0C0;
+}
+.dxbButtonPressed_NETheme01
+{
+	color: white;
+	background-color: SteelBlue;
+}
+.dxbButton_NETheme01 div.dxb
+{
+	padding: 3px 8px 4px;
+	border-width: 0px;
+width: 25px !important;
+
+}
+.dxbButton_NETheme01 div.dxbf
+{
+	padding: 2px 7px 3px;
+	border: 1px dotted #333333;
+}
+.dxbButton_NETheme01 div.dxb td.dxb
+{
+	background: transparent url('')!important;
+	border-width: 0px!important;
+	padding: 0px!important;
+	text-align: center;
+}
+/* Disabled */
+.dxbDisabled_NETheme01
+{
+	border-color: #c3c3c3;
+	color: #808080;
+	cursor: default;
+}
+.dxbDisabled_NETheme01 td.dxb
+{
+	color: #808080;
+}
+/* -- FilterControl -- */
+.dxfcTable_NETheme01
+{
+	border-collapse: separate!important;
+	font:  13px 'Segoe UI','Calibri' ,Helvetica,'Droid Sans' ,Tahoma,Geneva,sans-serif;
+}
+.dxfcTable_NETheme01 td.dxfc
+{
+	padding: 0px 0px 0px 3px;
+	vertical-align: middle;
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: Black;
+}
+a.dxfcPropertyName_NETheme01
+{
+	white-space: nowrap!important;
+	color: #1086d4!important;
+}
+a.dxfcGroupType_NETheme01
+{
+	white-space: nowrap!important;
+	padding: 0px 3px!important;
+	color: #db3412!important;
+}
+a.dxfcOperation_NETheme01
+{
+	white-space: nowrap!important;
+	color: #6fb111!important;
+}
+a.dxfcValue_NETheme01
+{
+	white-space: nowrap!important;
+	color: Gray!important;
+}
+
+.dxfcLoadingDiv_NETheme01
+{
+	background: white none;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+.dxfcLoadingPanel_NETheme01
+{
+	border: 1px solid #C3C3C3;
+	background-color: white;
+	font: 14px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #333333;
+}
+.dxfcLoadingPanel_NETheme01 td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 10px 14px;
+}
+
+.dxeMaskHint_NETheme01
+{
+	background: #ffffe1 none;
+	border: 1px solid black;
+	padding: 2px 5px 3px;
+	color: Black;
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+
+/* -- ProgressBar -- */
+.dxeProgressBar_NETheme01
+{
+	background-color: #e0e0e0;
+}
+.dxeProgressBar_NETheme01,
+.dxeProgressBar_NETheme01 td.dxe
+{
+	color: #333333;
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+.dxeProgressBar_NETheme01 .dxePBMainCell_NETheme01,
+.dxeProgressBar_NETheme01 td.dxe
+{
+	padding: 0;
+}
+.dxeProgressBarIndicator_NETheme01
+{
+	background-color: #ff8800;
+}
+
+/* -- DropDownWindow -- */
+.dxeDropDownWindow_NETheme01
+{
+	font: 13px 'Segoe UI','Calibri' ,Helvetica,'Droid Sans' ,Tahoma,Geneva,sans-serif;
+	background: #E0E0E0;
+	border: 1px solid #E0E0E0;
+	padding: 0px 0px 0px 5px;
+}
+
+/*----------------- ColorTable -----------------*/
+.dxeColorIndicator_NETheme01
+{
+	width: 13px;
+	height: 13px;
+	cursor: pointer;
+	margin-left: 3px;
+}
+.dxeColorTable_NETheme01,
+.dxeItemPicker_NETheme01
+{
+	background-color: #ffffff;
+	border: 1px solid #c0c0c0;
+}
+.dxeColorTable_NETheme01 td.dx,
+.dxeItemPicker_NETheme01 td.dx
+{
+	padding: 4px;
+}
+.dxeColorTableCell_NETheme01,
+.dxeItemPickerCell_NETheme01
+{
+	padding: 3px;
+	cursor: pointer;
+}
+.dxeColorTableCellDiv_NETheme01
+{
+	border: 1px solid #c0c0c0;
+	width: 12px;
+	height: 12px;
+	font-size: 0px;
+}
+.dxeColorTableCellSelected_NETheme01
+{
+	padding: 0px!important;
+	background-color: #CBCBCB;
+	border: 3px solid #FF8800;
+}
+.dxeColorTableCellSelected_NETheme01 .dxeColorTableCellDiv_NETheme01
+{
+	border: 1px solid white;
+}
+.dxeColorTableCellHover_NETheme01,
+.dxeItemPickerCellHover_NETheme01
+{
+	padding: 0px!important;
+	background-color: #F2F2F2;
+	border: 3px solid #E0E0E0;
+}
+
+/* -- Invalid Style -- */
+.dxeInvalid_NETheme01
+{
+}
+.dxeInvalid_NETheme01 .dxeEditArea_NETheme01,
+.dxeInvalid_NETheme01 .dxeMemoEditArea_NETheme01
+{
+}
+
+/* -- Focused Style -- */
+.dxeFocused_NETheme01
+{
+	border: 1px solid SteelBlue;
+}
+.dxeFocused_NETheme01.dxeTrackBar_NETheme01
+{
+	border: 0px;
+}
+
+/* -- Null Text Style -- */
+.dxeNullText_NETheme01 .dxeEditArea_NETheme01,
+.dxeNullText_NETheme01 .dxeMemoEditArea_NETheme01
+{
+	color: #818181;
+}
+
+/* -- Captcha -- */
+.dxcaControl_NETheme01 
+{
+}
+
+.dxcaRefreshButton_NETheme01
+{
+	font: 13px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	text-decoration: none;
+	color: #1e3695;
+}
+
+.dxcaDisabledRefreshButton_NETheme01
+{
+	color: #acacac;
+}
+
+.dxcaRefreshButtonCell_NETheme01
+{
+	padding-left: 4px;
+	border-bottom: 2px solid #e0e0e0;
+}
+
+.dxcaRefreshButtonText_NETheme01
+{
+}
+
+.dxcaDisabledRefreshButtonText_NETheme01
+{
+}
+
+.dxcaTextBoxCell_NETheme01
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+
+.dxcaTextBoxCell_NETheme01,
+.dxcaTextBoxCellNoIndent_NETheme01
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+
+.dxcaTextBoxCell_NETheme01 .dxeErrorCell_NETheme01
+{
+}
+
+.dxcaTextBoxCellNoIndent_NETheme01 .dxeErrorCell_NETheme01
+{
+	padding-left: 0px;
+	padding-top: 4px;
+	color: Red;
+}
+
+.dxcaTextBoxLabel_NETheme01
+{
+	padding-bottom: 4px;
+	display: block;
+}
+
+.dxcaLoadingPanel_NETheme01
+{
+	background-color: white;
+	font: 14px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #333333;
+}
+
+.dxcaLoadingPanel_NETheme01 td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 2px;
+}
+
+.dxpcControl_NETheme01 .dxHFBPS,
+.dxpcLite_NETheme01 .dxHFBPS
+{
+    width: 6px;
+}
+
+.dxeTextBox_NETheme01,
+.dxeButtonEdit_NETheme01,
+.dxeIRadioButton_NETheme01,
+.dxeRadioButtonList_NETheme01,
+.dxeCheckBoxList_NETheme01
+{
+    cursor: default;
+}
+
+:root .dxeTextBox_NETheme01 td.dxic, 
+:root .dxeButtonEdit_NETheme01 td.dxic {
+    
+}
+.dxeTextBox_NETheme01 td.dxic,
+.dxeButtonEdit_NETheme01 td.dxic {
+   }
+.dxeButtonEdit_NETheme01 td.dxic {
+    *padding-bottom: 1px;
+}
+:root .dxeTextBox_NETheme01 td.dxic .dxeEditArea_NETheme01,
+:root .dxeButtonEdit_NETheme01 td.dxic .dxeEditArea_NETheme01 {
+    height: 16px;
+}
+.dxeTextBox_NETheme01 td.dxic .dxeEditArea_NETheme01,
+.dxeButtonEdit_NETheme01 td.dxic .dxeEditArea_NETheme01 {
+    height: 15px;
+}
+
+.dxeButtonEdit_NETheme01 td.dxic 
+{
+    *padding-left: 2px;
+}
+*[dir="rtl"].dxeTextBox_NETheme01 td.dxic
+{
+    }
+
+/* Removes flicking in iOS Safari*/
+.dxeTrackBar_NETheme01, 
+.dxeIRadioButton_NETheme01, 
+.dxeButtonEdit_NETheme01, 
+.dxeTextBox_NETheme01, 
+.dxeRadioButtonList_NETheme01, 
+.dxeCheckBoxList_NETheme01, 
+.dxeMemo_NETheme01, 
+.dxeListBox_NETheme01, 
+.dxeCalendar_NETheme01, 
+.dxeColorTable_NETheme01
+{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* Layout Control */
+.dxeLayoutConrtol_NETheme01 
+{
+    display: table;
+}
+.dxeLyGroupCell_NETheme01 
+{
+    padding: 5px;
+}
+.dxeLyItem_NETheme01 
+{
+}
+.dxeLyCaptionCell_NETheme01
+{
+    padding:6px;
+}
+.dxeLyEditorCell_NETheme01 
+{   
+    padding:5px;
+}
+
+.dxeLyCaptionCell_NETheme01 
+{
+    color: #004184;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.dxeLyEditorCell_NETheme01 
+{
+    width: 0;
+}
+.dxeLyGroupBox_NETheme01 
+{
+    border: 1px Solid #9F9F9F;
+    border-radius: 4px;
+    padding: 10px;
+}
+.dxeLyGroupBoxCaption_NETheme01 > span 
+{
+    background-color: White;
+    padding-left: 5px;
+    padding-right: 5px;   
+}
+.dxeLyGroupBoxCaption_NETheme01 
+{
+    position:relative;
+    margin-top: -21px;
+}
+.dxeLyGroup_NETheme01 
+{
+    width: 100%;
+}
+
+.dxeLyVATSys > label 
+{
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.dxeLyEditorCell_NETheme01 > .dxeMemoSys 
+{
+    margin-top: 3px;
+}
+
+.dxeLyEditorCell_NETheme01 > label.dxeBase_NETheme01 
+{
+    display: block;
+    white-space: nowrap;
+}
+
+.dxeLyEditorCell_NETheme01 > .dxeTextBoxSys,
+.dxeLyEditorCell_NETheme01 > .dxeButtonEdit_NETheme01
+{
+}
+
+

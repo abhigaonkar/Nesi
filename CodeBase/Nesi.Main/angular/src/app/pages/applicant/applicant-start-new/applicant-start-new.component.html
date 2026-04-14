@@ -1,0 +1,47 @@
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-lg-2 label_for_right ">
+      First Name:
+    </div>
+    <div class="ui-g-12 ui-lg-3 label_for_left_less">
+      <input pInputText maxlength="50" formControlName="label">
+    </div>
+    <div class="ui-g-12 ui-lg-2 label_for_right ">
+      Last Name:
+    </div>
+    <div class="ui-g-12 ui-lg-3 label_for_left_less">
+      <input pInputText maxlength="50" formControlName="value">
+    </div>
+    <div class="ui-g-12 ui-lg-2 label_for_left_less">
+      <button pButton label="Check ->"></button>
+    </div>
+  </div>
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-lg-2 ui-lg-offset-10" *ngIf="has_checked">
+      <button [disabled]="show_start_new" type="button" pButton label="Proceed to Add ->" (click)="start_new()"></button>
+    </div>
+  </div>
+</form>
+<div class="ui-g-12" *ngIf="list && list.length>0">
+  <p-dataTable [value]="list" [responsive]="true" rowHover="false" [rows]="10" [paginator]="true" sortMode="single" resizableColumns="false"
+    [loading]="submitting" [loadingIcon]="'fa-spinner'" [responsive]="true" #d>
+    <p-column [style]="{'width':'30%'}" field="col_1" header="Name" sortable="true">
+      <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+        <span class="allow_click pre-line" (click)="click_item(item)">{{item[col.field]}}</span>
+      </ng-template>
+    </p-column>
+    <p-column [style]="{'width':'20%'}" field="col_2" header="Business Unit" sortable="true">
+      <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+        <span class="pre-line">{{item[col.field]}}</span>
+      </ng-template>
+    </p-column>
+    <p-column [style]="{'width':'15%'}" field="membertype_name" header="Title" sortable="true"></p-column>
+    <p-column [style]="{'width':'8%'}" field="app_status" header="App Status" sortable="true"></p-column>
+    <p-column [style]="{'width':'8%'}" field="hr_status" header="HR Status" sortable="true"></p-column>
+    <p-column [style]="{'width':'10%'}" field="roe" header="ROE Note" sortable="true">
+      <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+        <span class="pre-line">{{item[col.field]}}</span>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</div>

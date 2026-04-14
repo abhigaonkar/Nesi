@@ -1,0 +1,79 @@
+<div class="ui-g-12">
+  <div class="ui-g-12 ui-md-2 label_for_right">
+    Business Unit:
+  </div>
+  <div class="ui-g-12 ui-md-4">
+    <nesi-visibleBusinessUnitDropDown [(ngModel)]="selected_business_unit" (onChange)="loadDetail()"></nesi-visibleBusinessUnitDropDown>
+  </div>
+</div>
+<div class="ui-g-12">
+  <p-dataTable [emptyMessage]="'No work order found'" [paginator]="true" [value]="items" sortMode="single" resizableColumns="true"
+    [loading]="loading" [loadingIcon]="'fa-spinner'" [responsive]="true" [rows]="20" [paginator]="true" [pageLinks]="10" dataKey="woprog_bvwo"
+    rowHover="true" [globalFilter]="gb" [sortField]="'PO'" [sortOrder]="-1" reorderableColumns="true" #dt>
+    <p-header>
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <div class="ui-g-12 ui-md-3">
+          <p-multiSelect [options]="columnOptions" [(ngModel)]="cols" selectedItemsLabel="{0} columns selected"></p-multiSelect>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="fa fa-search"></i>
+            </span>
+            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+          </div>
+        </div>
+      </div>
+    </p-header>
+    <p-column *ngIf="showCol('PO')" field="PO" [style]="{'width':'4%'}" header="PO" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        <a class="a_link" href="{{host}}/redir.aspx?url=%2fsections%2fpurchaseorder%2fpo_prog_add.aspx%3faction%3dshow%26poprogid%3d{{data.poprog_id}}"
+          target="_blank">
+          {{data.po}}
+        </a>
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('Vendor')" field="vendor" [style]="{'width':'10%'}" header="Vendor" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        <a class="a_link" href="{{host}}/redir.aspx?url=%2fsections%2fvendor%2fframe.aspx%3fvendor_id%3d{{data.vendor_id}}%26first_tab%3dtrue"
+          target="_blank">
+          {{data.vendor}}
+        </a>
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('Cut')" field="cut" [style]="{'width':'5%'}" header="Cut" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        {{data.cut | date:'yyyy-MM-dd'}}
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('Issued')" field="issued" [style]="{'width':'5%'}" header="Issued" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        {{data.issued | date:'yyyy-MM-dd'}}
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('Required')" field="required" [style]="{'width':'5%'}" header="Required" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        {{data.required | date:'yyyy-MM-dd'}}
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('Description')" field="description" [style]="{'width':'16%'}" header="Description" [sortable]="true">
+    </p-column>
+    <p-column *ngIf="showCol('Status')" field="status" [style]="{'width':'5%'}" header="Status" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Shipping')" field="shipping" [style]="{'width':'5%'}" header="Shipping" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Cost')" field="cost" [style]="{'width':'4%'}" header="Cost" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Rec Cost')" field="rec Cost" [style]="{'width':'4%'}" header="Rec Cost" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Purchaser')" field="purchaser" [style]="{'width':'5%'}" header="Purchaser" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('AP Status')" field="poprog_apstatus" [style]="{'width':'6%'}" header="AP Status" [sortable]="true">
+      <ng-template let-col let-data="rowData" pTemplate="body">
+        <p-dropdown (onChange)="updateAPStatus(data)" appendTo="body" [style]="{'width':'100%'}" [autoWidth]="false" [options]="apStatus" [(ngModel)]="data.poprog_apstatus"></p-dropdown>
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('AP Notes')" field="apnotes" [style]="{'width':'6%'}" header="AP Notes" [sortable]="true">
+      <ng-template let-col let-data="rowData" pTemplate="body">
+        <div class="ui-g-12 ui-g-nopad">
+          <textarea pInputTextArea [ngClass]="{'back_yellow': data.has_notes}" [(ngModel)]="data.apnotes" (change)="updateAPNotes(data)" rows="1"></textarea>
+        </div>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</div>

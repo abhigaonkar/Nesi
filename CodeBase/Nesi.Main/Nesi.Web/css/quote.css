@@ -1,0 +1,1105 @@
+﻿.tip													{
+														display:				none;
+														z-index:				999;
+														width:					100px;
+														clear:					both;
+														padding:				3px;
+														text-align:				left;
+														font-weight:			normal;
+														color:					#fff;
+														font-size:				11px;
+														text-transform:			none;
+														background-image:		url("/images/quote/bg/bg[fade].png");
+														/*background:				#cff;*/
+														position:				absolute;
+														border:					2px solid #000;
+														}
+.tip b													{
+														display:				block;
+														color:					#ccc;
+														font-size:				13px;
+														border-bottom:			solid 1px #ccc;
+														}
+
+.tip div												{
+														padding:				5px;
+														}
+														
+														
+html												{
+													font-family:			arial;
+													font-size:				11px;
+													overflow-x:				hidden;
+													
+													height:					100%;
+													}
+body												{
+													padding:				5px;
+													margin:					0px;
+													overflow:				hidden;
+													}
+img													{ border: 0}
+#saved_message
+	{
+	font-size:			13px;
+	background-color:	#080;
+	color:				#0e0;
+	padding:			3px;
+	width:				150px;
+	text-align:			center;
+	font-weight:		bold;
+	border-radius:		5px;
+	border:				solid 1px #060;
+	position:			absolute;
+	top:				5px;
+	left:				450px;
+	display:			none;
+	}
+#quote_list											{
+													width:					100%; 
+													}
+#quoting											{
+													}
+#new												{
+													width:					100%;
+													}
+
+#new td												{
+													}
+													
+#new td	button										{
+													border:					solid 1px #0ff;
+													background-color:		#08f;
+													width:					100px;
+													color:					#0ff;
+													font-size:				11px;
+													cursor:					pointer;
+													font-weight:			bold;
+													}
+#quote_help											{
+													position:				absolute;
+													top:					12px;
+													color:					#6cc;
+													cursor:					pointer;
+													left:					42%;
+													}
+#quote_connection									{
+													border:none;
+													border-radius:0px 0px 5px 5px;
+													background-color:whitesmoke;
+													
+													
+													position:				absolute;
+													text-align:				center;
+													vertical-align:middle;
+													white-space:nowrap;
+													right:					10px;
+													top:0px;
+													font-size:9px;
+													font-family:Arial;
+													padding:7px;
+													}
+#quote_connection img								{
+													
+													top:					12px;
+													}
+													
+#quote_list 										{
+													margin-top:				35px;
+													}
+#quote_list .h										{
+													background-color:		#4682B4;
+													
+													color:					#FFF;
+													text-transform:			uppercase;
+													font-size:				12px;
+													font-weight:			bold;
+													text-align:				center;
+													width:					10%;
+													padding:				5px;
+													}
+													
+#quote_list .quotes									{
+													width:					200px;
+													
+													background-color:		whitesmoke;
+													white-space: nowrap;
+													padding-left:10px;
+													padding-right:10px;
+													padding-top:5px;
+												border-right-color:lightgray;
+												border-left-color:lightgray;
+												border-width:1px;
+												border-style:solid;
+												border-top-style:none;
+												border-bottom-style:none;
+
+													}
+													
+#quote_list .none									{
+													text-align:				center;
+													color:					#ccc;
+													font-weight:			bold;
+													font-size:				12px;
+													padding:				25px;
+													display:				block;
+													}
+
+#quote_list .quote									{
+													margin:					1px;
+													padding:				2px;
+													height:					15px;
+												
+													color:					#000;
+													cursor:					pointer;
+													white-space: nowrap;
+													}
+    #quote_list .quote.disabled {
+        cursor: not-allowed !important;
+    }
+
+#quote_list .quote:hover							{
+													background-color:		 #fc0;
+													border:					none;
+													}
+													
+#quote_list tfoot td								{
+													padding:				5px;
+													text-align:				center;
+													background-color:		#999999;
+													font-weight:			bold;
+													}
+													
+#quote_list tfoot td i								{
+													color:					#444;
+													text-align:				center;
+													font:					helvetica;
+													}
+													
+#quote_list tfoot td b								{
+													color:					#fff;
+													font-size:				12px;
+													font:					helvetica;
+													}
+													
+
+#quote_list .quote .quote_id						{
+													font-size:				11px;
+													text-align:				center;
+													font-weight:			bold;
+													white-space: nowrap;
+													}
+#quote_list .quote .quote_number					{
+													font-size:				11px;
+												
+													float:					left;
+														white-space: nowrap;
+														
+													}
+													
+#quote_list .quote .quote_name						{
+													font-size:				11px;
+												
+													float:					right;
+													white-space: nowrap;
+													white-space:nowrap;
+													}
+													
+#quote_list .quote .quote_desc						{
+													font-size:				11px;
+													font-style:				oblique;
+													clear:					both;
+													}
+/*=================================================================================================*/
+#now_list 											{
+													margin-top:				35px;
+													
+													
+													
+													}
+#now_list .h										
+{
+	background-color:#e00;
+													border: none;
+												
+													color:					#fff;
+													text-transform:			uppercase;
+													font-size:				12px;
+													font-weight:			bold;
+													text-align:				center;
+													white-space: nowrap;
+													
+													padding:				5px;
+													}
+													
+#now_list .quotes									{
+													border-style:none;
+													color:Black;
+													background-color:		#ddd;
+													white-space: nowrap;
+												
+													}
+
+
+/*=================================================================================================*/
+
+#quote_information									{
+													width:					100%;
+													}
+#quoting #button_saveclose							{
+													position:				absolute;
+													top:					0px;
+													right:					235px;
+													cursor:					pointer;
+													z-index:				2;
+													}
+#quoting #button_save								{
+													position:				absolute;
+													top:					0px;
+													right:					315px;
+													cursor:					pointer;
+													z-index:				2;
+													}
+#quoting #button_new								{
+													background-color:#3bc13c;
+													border-radius:3px;
+													position:				absolute;
+													top:					0px;
+													left:					10px;
+													cursor:					pointer;
+													z-index:				2;
+													color:#fff;
+													border:none;
+													height:30px;
+													}
+#quoting #button_new:hover {
+	background-color:		#fff;
+													color: #3bc13c;
+													cursor:pointer;
+													
+}
+#quoting #button_search								{
+													position:				absolute;
+													top:					0px;
+													height:30px;
+													right:					155px;
+													color:#FFF;
+													cursor:					pointer;
+													z-index:				2;
+													border:none;
+													background-color:#3bc13c;
+													border-radius:0px 0px 5px 5px;
+													}
+#quoting #button_search:hover {
+	background-color:		#fff;
+													color: #3bc13c;
+													
+}
+#quoting #button_search_onbucket								{
+													position:				absolute;
+													top:					0px;
+													height:30px;
+													left:					100px;
+													cursor:					pointer;
+													z-index:				2;
+													border:none;
+													background-color:#3bc13c;
+													color:#fff;
+													border-radius:3px;
+													}
+#quoting #button_search_onbucket:hover {
+	background-color:		#fff;
+													color: #3bc13c;
+}
+
+#quoting #quickpick {
+	top:0px; 
+	position:absolute; 
+	left: 200px; 
+	color:darkgray;
+	background-color:whitesmoke;
+	height:25px;
+	width:150px;
+	padding-left:5px;
+	padding-right:5px;
+	border-radius:3px;
+	border-style:none;
+	padding-top:5px;
+	
+}
+													
+#quoting #back_button								{
+													position:				absolute;
+													top:					0px;
+													right:					393px;
+													cursor:					pointer;
+													z-index:				1;
+													}
+													
+#quote_information #quote_tabs						{
+													z-index:				-1;
+													}
+													
+#quote_information #quote_tabs .h					{
+													padding-left:			3px;
+													width:					106px;
+													text-align:				left;
+													}
+													
+#quote_information #quote_tabs .h button.normal		{
+													width:					105px;
+													font-family:			'Arial', 'Arial Bold', Gadget, sans-serif;
+													font-size:				12px;
+												
+													color:					#fff;
+													border:none;
+													
+													cursor:					pointer;
+													background-color:		#4682B4;
+													height:					25px;
+													}
+#quote_information #quote_tabs .h button.normal:hover		{
+												
+													color:					#4682B4;
+													border:none;
+													
+													cursor:					pointer;
+													background-color:		#fff;
+													
+													}
+#quote_information #quote_tabs .h button.active		{
+													width:					105px;
+													font-family:			'Arial', 'Arial Bold', Gadget, sans-serif;
+													font-size:				12px;
+													
+													color:					#333;
+													border:none;
+													
+													cursor:					pointer;
+													background-color:		#F2F5FF;
+													height:					25px;
+													}
+#quote_information .buttonbar img					{
+													cursor:					pointer;
+													}
+/*=================================================================================================*/
+#quote_information #quote_id						{
+													width:					400px;
+													height:					33px;
+													border:					none;
+													
+													border-radius:			5px;
+													font-weight:			bold;
+													font-size:				12px;
+													text-align:				center;
+													padding-top:			7px;
+													margin-bottom:			10px;
+													margin-left:			2px;
+													
+													}
+#quote_information #quote_id input					{
+													width:					75px;
+													text-align:				center;
+													font-weight:			bold;
+													font-size:				12px;
+													
+													height:20px;
+													border:none;
+													vertical-align:middle;
+													}
+#quote_information #quote_id select					{
+													width:					75px;
+													text-align:				center;
+													vertical-align:middle;
+													font-weight:			bold;
+													margin-left:			2px;
+													font-size:				12px;
+													height:20px;
+													}
+#quote_information #quote_id button					{
+													text-align:				center;
+													font-weight:			bold;
+													margin-left:			5px;
+													font-size:				12px;
+													border:none;
+													height:25px;
+													background-color:#3bc13c;
+													border-radius:3px;
+													color:#FFF;
+													}
+#quote_information #quote_id button:hover {
+	background-color:		#fff;
+													color: #3bc13c;
+													cursor:pointer;
+													
+}
+
+/*=================================================================================================*/
+
+#quote_maintenance									{
+													z-index:				7;
+													width:					100%;
+													display:				none;
+													}
+#quote_maintenance .pane							{
+													width:					100%;
+													}
+#quote_maintenance .pane .control img				{
+													cursor:					pointer;
+													}
+#quote_maintenance .pane .body						{
+													background-color:		#fff;
+													border:					solid 1px #fff;
+													font-size:				12px;
+													}
+#quote_maintenance .pane .body input,					
+#quote_maintenance .pane .body button				{
+													cursor:					pointer;
+													font-weight:			bold;
+													font-family:			arial;
+													font-size:				12px;
+													}
+#quote_maintenance .pane .body textarea				{
+													font-family:			arial;
+													font-size:				12px;
+													width:					425px;
+													height:					100px;
+													}
+#quote_maintenance .pane .body .head				{
+													background-color:		#4B6F8E;
+													font-size:				14px;
+													font-weight:			bold;
+													padding:				2px;
+													text-align:				left;
+													color:					#fff;
+													}
+#quote_maintenance .pane .body .history				{
+													background-color:		#ccc;
+													width:					auto;
+													height:					348px;
+													margin:					5px;
+													overflow-y:				scroll;
+													}
+#quote_maintenance .pane .body .history table		{
+													width:					100%;
+													}
+#quote_maintenance .pane .body .history table	th	{
+													background-color:		#000;
+													color:					#fff;
+													}
+#quote_maintenance .pane .body .history table	.t	{
+													font-weight:			bold;
+													}
+#quote_maintenance .pane .body .history table	.x	{
+													font-weight:			bold;
+													padding:				10px;
+													}
+#quote_maintenance .pane .body .history table	.n	{
+													font-weight:			bold;
+													border:					solid 1px #000;
+													background-color:		#fff;
+													display:				none;
+													padding:				10px;
+													margin:					5px;
+													}
+
+#quote_follow_up .pane .body .history table	.tr		{
+													background-color:		#fff;
+													}
+
+#quote_follow_up .pane .body .history table	.tr:hover{
+													background-color:		#0d0;
+													cursor:					pointer;
+													}
+
+/*=================================================================================================*/
+
+#quote_folder										{
+													width:					100%;
+													height:					655px;
+													z-index:				8;
+													display:				none;
+													}
+#quote_strategy										{
+													width:					100%;
+													height:					800px;
+													z-index:				9;
+													display:				none;
+													}
+#quote_folder iframe,
+#quote_strategy iframe										{
+													width:					100%;
+													border:					0;
+													height:					800px;
+													background-color:		#eee;
+													background-image:		url("/images/loading_panel.gif");
+													background-position:	center center;
+													background-repeat:		no-repeat;
+													}
+#quote_folder iframe								{
+													height:					655px;
+													}
+													
+/*=================================================================================================*/
+
+#quote_general										{
+													width:					auto;
+													z-index:				3;
+													border:none;
+												
+													}
+.is_processing
+	{
+	background-image:		url("/images/indicator.gif");
+	background-repeat:		no-repeat;
+	background-position:	right top;
+	}
+.is_error
+	{
+	border-color:			#f00;
+	border-width:			2px;
+	}
+#quote_general table								{
+	
+													}
+													
+#quote_general .c									{
+													padding:				3px;
+													padding-left:7px;
+													background-color:		#F2F5FF;
+													color:					#000;
+													width:					165px;
+													border:none;
+													
+													text-transform:			large case;
+													}
+													
+#quote_general .v									{
+													font-weight:			bold;
+													background-color:		whitesmoke;
+													border:none;
+													
+													padding:3px;
+													padding-left:			2px;
+													}
+													
+#quote_general .r									{
+													background-color:	#4682B4;	
+													padding-left:5px;
+													padding-right:5px;
+													}
+													
+													
+#quote_general .address_info						{
+													width:					450px;
+													text-align:				left;
+													margin:					2px;
+													}
+#quote_general .customer_info						{
+													width:					450px;
+													border:					none;
+													text-align:				left;
+													margin:					2px;
+													margin-top:				10px;
+													}
+#quote_general .contact_info						{
+													width:					450px;
+													border:					none;
+													text-align:				left;
+													margin:					2px;
+													margin-top:				10px;
+													}
+#quote_general .customer_info .pane,
+#quote_general .contact_info .pane					{
+													background-color:		#fff;
+													}
+#quote_general .customer_info .pane ._head_cu		{
+													padding:				2px;
+													background-color:		#72BDD8;
+													font-weight:			bold;
+													font-size:				12px;
+													color:					#006;
+													}
+#quote_general .contact_info .pane ._head_co		{
+													padding:				2px;
+													background-color:		#1E4F70;
+													font-weight:			bold;
+													font-size:				12px;
+													color:					#FFF;
+													}
+#quote_general .customer_info .pane #_address		{
+													display:				block;
+													font-family:			verdana;
+													padding:				3px;
+													padding-left:			10px;
+													}
+#quote_general .customer_info .pane ._phone,			
+#quote_general .contact_info .pane ._phone			{
+													font-family:			verdana;
+													padding:				3px;
+													padding-left:			10px;
+													}
+#quote_general .customer_info .pane ._email,			
+#quote_general .contact_info .pane ._email			{
+													padding:				3px;
+													padding-left:			10px;
+													}
+#quote_general .customer_info .pane ._email a,		
+#quote_general .contact_info .pane ._email a		{
+													font-weight:			bold;
+													font-family:			verdana;
+													color:					#000;
+													}
+#quote_general .contact_info .pane .address_email	{
+													font-size:				12px;
+													color:					#000;
+													}
+#quote_general .contact_info .header				{
+													background-color:		#046;
+													color:					#fff;
+													font-size:				14px;
+													font-weight:			bold;
+													padding:				2px;
+													}
+#quote_general .address_info .header button:hover	
+	{
+	background-color:		#fff;
+													color: #3bc13c;
+													
+	}
+#quote_general .address_info .header button			{
+													width:					200px;
+													text-align:				center;
+													font-weight:			bold;
+													cursor:					pointer;
+													margin:					5px 0px 7px 0px;
+													color:					#FFF;
+													font-size:				11px;
+													background-color:		#3bc13c;
+													border:					none;
+													border-radius:			2px;
+													height:					25px;
+													}
+#quote_general .address_info .address_selector			{
+													text-align:				center;
+													}
+#quote_general .address_info .address_selector select	{
+													width:					100%;
+													font-family:			arial;
+													font-size:				11px;
+													border:none;
+													height:20px;
+													}
+#quote_general .address .header img			{
+													border:					0px;
+													cursor:					pointer;
+													}
+#quote_general .contact_info .header button:hover	{
+													background-color:		#fff;
+													color: #3bc13c;
+													
+													}
+													
+#quote_general .contact_info .address				{
+													border:					none;
+													padding:				5px;
+													text-align:				left;
+													vertical-align:			top;
+													}
+													
+													
+#quote_general .v input								{
+													font-family:			arial;
+													font-size:				12px;
+													border:none;
+													
+													}
+													
+#quote_general .v select							{
+													font-family:			arial;
+													font-size:				12px;
+													font-weight:			bold;
+													width:					100%;
+													z-index:				inherit;
+													border:none;
+													height:18px;
+													}
+
+#quote_general .v .customer							{
+													width:					100%;
+													font-weight:			bold;
+													text-transform:		uppercase;
+													border:none;
+													height:18px;
+													}
+													
+#quote_general .v .contact					{
+													width:					100%;
+													font-weight:			bold;
+													border:none;
+													height:18px;
+													}
+													
+#quote_general .v .date						{
+													width:					100%;
+													display:				inline-block;
+													font-weight:			bold;
+													font-size:				11px;
+													
+													border:none;
+													height:18px;
+													}
+													
+#quote_general .v .quotedby					{
+													width:					100%;
+													font-weight:			bold;
+													border:none;
+													height:18px;
+													}
+													
+#quote_general .v textarea					{	
+													width:					100%;
+													height:					50px;
+													font-weight:			bold;
+													font-family:			arial;
+													font-size:				11px;
+													border:none;
+													}
+													
+#quote_general .v .now						{
+													width:					55px;
+													font-weight:			bold;
+													border:					none;
+													background-color:		#3bc13c;
+													color:					#FFF;
+													cursor:					pointer;
+													font-size:				10px;
+													height:18px;
+													border-radius:3px;
+													}
+#quote_general .v .now:hover				{
+													background-color:		#fff;
+													color: #3bc13c;
+													
+													}													
+
+#quote_general .v .netdue					{
+													width:					100%;
+													text-transform:			uppercase;
+													font-weight:			bold;
+													}
+													
+#quote_general .v .percentdown				{
+													width:					100px;
+													font-weight:			bold;
+													height:20px;
+													}
+																										
+#quote_general .v .custspecdoc				{
+													width:					100%;
+													font-weight:			bold;
+													height:20px;
+													}
+																										
+#quote_general .v .price					{
+													width:					65px;
+													font-weight:			bold;
+													height:20px;
+													}
+													
+#quote_general .v .pricetype				{
+													width:					150px;
+													font-weight:			bold;
+													text-transform:			uppercase;
+													height:20px;
+													}
+													
+#quote_general .options								{
+													background-color:		whitesmoke;
+													border:					none;
+													background-size:		100% 100%;
+													margin:					2px;
+													margin-top:				20px;
+													width:					450px;
+													border-radius:			0px 0px 5px 5px;
+													}
+#quote_general .options .header						{
+													font-size:				14px;
+													text-align:				left;
+													font-weight:			bold;
+													background-color:		#1E4F70;
+													color:					#fff;
+													}
+													
+#quote_general .options button						{
+													width:					135px;
+													text-align:				center;
+													font-weight:			bold;
+													cursor:					pointer;
+													text-transform:			uppercase;
+													margin:					2px;
+													font-size:				11px;
+													background:				#3bc13c;
+													border:					none;
+													color:#fff;
+													border-radius:			2px;
+													}
+#quote_general .options button:hover				{
+													background-color:		#fff;
+													color: #3bc13c;
+													
+													}
+	#quote_general .spinner {
+		border:none;
+		width: 50px;
+
+	}												
+													
+/*=================================================================================================*/
+
+#quote_detail										{
+													width:					auto;
+													z-index:				4;
+													background-color:		#F2F5FF;
+													display:				none;
+													
+													padding:				5px;
+													}
+
+	#quote_detail .detail_add_new, 
+	#quote_detail .detail_resize, 
+	#quote_notes .detail_add_new,
+	#quote_notes .detail_resize {
+		background-color: #3bc13c;
+		border-radius: 3px;
+		cursor: pointer;
+		z-index: 2;
+		border: none;
+		height: 25px;
+		color:#fff;
+	}
+
+	#quote_detail .detail_add_new:hover, 
+	#quote_detail .detail_resize:hover, 
+	#quote_notes .detail_add_new:hover,
+	#quote_notes .detail_resize:hover
+	{
+	background-color:		#fff;
+													color: #3bc13c;
+													cursor:pointer;
+													
+}
+
+
+
+
+#quote_notes .entry,
+#quote_detail .entry								{
+													text-align:				center;
+													}
+													
+#quote_notes .entry textarea,
+#quote_detail .entry textarea						{
+													width:					auto;
+													height:					20px;
+													font-family:			arial;
+													font-size:				12px;
+													}
+													
+#quote_notes .buttonbar,
+#quote_detail .buttonbar							{
+													text-align:				left;
+													padding:				5px;
+													}
+													
+#quote_notes .buttonbar img,
+#quote_detail .buttonbar img						{
+													}
+													
+#quote_notes .entries,
+#quote_detail .entries								{background-color:		#F2F5FF;
+													}
+													
+#quote_notes .entries ul,
+#quote_detail .entries ul							{
+													list-style-type:		none; 
+													cursor:					pointer;
+													margin:					0; 
+													padding:				0;
+													}
+.sortableactive										{
+													border:					solid 5px #fff;
+													}
+
+ .sortablehelper									{
+													border:					dashed 5px #f00;
+													width:					auto;
+													}
+													
+#quote_notes .entries div,
+#quote_detail .entries div							{
+													border:					none;
+													padding:				5px;
+													margin:					2px;
+													background-color:		#F2F5FF;
+													}
+													
+#quote_notes .entries div table,
+#quote_detail .entries div table					{
+													width:					auto;
+													}
+													
+#quote_notes .entries div table .c,
+#quote_detail .entries div table .c					{
+													padding:5px;
+													font-size:12px;
+													}
+													
+#quote_notes .entries div table .c #row_n,
+#quote_detail .entries div table .c	#row_n			{
+													font-size:				12px;
+													width:					50px;
+													font-weight:			bold;
+													}
+												
+#quote_notes .entries div table .n,
+#quote_detail .entries div table .n					{
+													font-size:				12px;
+													width:					15px;
+													
+													}
+													
+#quote_notes .entries div table .t div,
+#quote_detail .entries div table .t div			{
+													width:					95%;
+													
+													padding:				2px;
+													border:					none;
+													}
+#quote_notes .entries div table .t textarea,
+#quote_detail .entries div table .t textarea		{
+													width:					750px;
+													
+													font-family:			arial;
+													background-color:		#FFF;
+													padding:				2px;
+													border:					none;
+													}
+													
+#quote_notes .entries div table .v,
+#quote_detail .entries div table .v 				{
+													width:					75px;
+													}
+													
+#quote_notes .entries div table .action,
+#quote_detail .entries div table .action 				{
+	white-space:nowrap;
+													text-align:				center;
+													}
+#quote_notes .entries div table .action button,
+#quote_detail .entries div table .action button		{
+													font-size:				11px;
+													
+													cursor:					pointer;
+													background-color:whitesmoke;
+													margin:5px;
+													border:solid;
+													border-color:lightgray;
+													border-width:2px;
+													}
+/*=================================================================================================*/
+
+#quote_notes										{
+													width:					auto;
+													z-index:				5;
+													background-color:		#F2F5FF;
+													display:				none;
+													
+													padding:				5px;
+													}
+#search_pane										{
+	
+													}
+													
+#search_pane button									{
+													cursor:					pointer;
+													}
+
+#search_pane .criteria								{
+													}
+#search_pane .center								{
+													text-align:				center;
+													display:				block;
+													padding:				10px;
+													}
+
+#search_pane .center *								{
+													font-size:				11px;
+													text-transform:			uppercase;
+													font-weight:			bold;
+													}
+#search_pane .criteria .c							{
+													font-size:				11px;
+													text-transform:			capitalize;
+													font-weight:			bold;
+													width:					175px;
+													}
+
+#search_pane .criteria .v *							{
+													font-size:				11px;
+													}
+#search_pane #quote_search_results					{
+													border-style:			solid;
+													border-width:			1px;
+													overflow-y:				scroll;
+													overflow-x:				hidden;
+													height:					365px;
+													}
+#search_pane #quote_search_results .results			{
+													width:					1152px;
+													font-size:				10px;
+													}
+#search_pane #quote_search_results .results	tr:hover{
+													background-color:		#fc0;
+													cursor:					pointer;
+													}
+#search_pane #quote_search_results .results	th		{
+													background-color:		#000;
+													color:					#fff;
+													cursor:					pointer;
+													}
+#search_pane #quote_search_results .results td		{
+													border-right:			solid 1px #999;
+													}
+/*=================================================================================================*/
+.progress_bar			{
+						position:			absolute;
+						left:				0px;
+						top:				0px;
+						background-color:	#000;
+						height:				150%;
+						width:				100%;
+						filter:				alpha(opacity=0);
+						-moz-opacity:		0.0;
+						-khtml-opacity:		0.0;
+						opacity:			0.0;
+						}
+.progress_barimg		{
+						border:				solid 1px #000;
+						position:			absolute;
+						left:				49%;
+						top:				49%;
+						font-family:		arial;
+						font-size:			12px;
+						background-color:	#fff;
+						padding:			5px;
+						border-radius:		5px;
+						-moz-box-shadow:	3px 3px 4px #999;
+						-webkit-box-shadow: 3px 3px 4px #999;
+						box-shadow:			3px 3px 4px #999;
+						background-image:	url("/images/foundation/bg/bg[main].png");
+						background-repeat:	repeat-x;
+						background-position:	left bottom;
+						-ms-filter:			"progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999')";
+						filter:				progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999');
+						}

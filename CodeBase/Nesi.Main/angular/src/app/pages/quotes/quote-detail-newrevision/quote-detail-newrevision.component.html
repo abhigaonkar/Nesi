@@ -1,0 +1,19 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <form [formGroup]="userform">
+    <div class="ui-g-12">
+      Please add a reason why you are revising this quote:
+    </div>
+    <div class="ui-g-12">
+      <textarea pInputTextarea  formControlName="note"  [rows]="8"></textarea>
+      <nesi-fieldErrorDisplay [displayError]="isFieldInValid('note')" [errorMsg]="'You must enter some note.'"></nesi-fieldErrorDisplay>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-6">
+        <button pButton label="Cancel"   (click)="cancel.emit()" type="button" icon="fa-times-circle"></button>
+      </div>
+      <div class="ui-g-6">
+        <button pButton label="Go!" (click)="newVersionGo()" type="button" icon="fa-check"></button>
+      </div>
+    </div>
+  </form>
+</div>

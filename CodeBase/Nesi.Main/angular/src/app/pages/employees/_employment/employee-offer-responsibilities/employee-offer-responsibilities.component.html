@@ -1,0 +1,93 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <p-dataTable [value]="profile.list" [responsive]="true" rowHover="true" expandableRows="true" rowExpandMode="single" #d>
+        <p-header>
+
+        </p-header>
+        <p-column [style]="{'width':'6%'}" field="name" header="Group" [sortable]="true">
+        </p-column>
+        <p-column [style]="{'width':'10%'}" field="core_responsibility" header="Responsibility" [sortable]="true">
+        </p-column>
+        <p-column [style]="{'width':'30%'}" field="description" header="Description" [sortable]="true">
+          <ng-template let-data="rowData" pTemplate="body">
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 ui-g-lesspad  bold">
+                Description:
+              </div>
+              <div class="ui-g-12 ui-lg-10 ui-g-lesspad">
+                {{data.description}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 ui-g-lesspad  bold">
+                Daily:
+              </div>
+              <div class="ui-g-12 ui-lg-10 ui-g-lesspad">
+                {{data.daily}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 ui-g-lesspad  bold">
+                Weekly:
+              </div>
+              <div class="ui-g-12 ui-lg-10 ui-g-lesspad">
+                {{data.weekly}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 ui-g-lesspad  bold">
+                Monthly:
+              </div>
+              <div class="ui-g-12 ui-lg-10 ui-g-lesspad">
+                {{data.monthly}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 ui-g-lesspad  bold">
+                Quarterly:
+              </div>
+              <div class="ui-g-12 ui-lg-10 ui-g-lesspad">
+                {{data.quarterly}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 ui-g-lesspad  bold">
+                Annually:
+              </div>
+              <div class="ui-g-12 ui-lg-10 ui-g-lesspad">
+                {{data.annually}}
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 ui-g-lesspad  bold">
+                As Needed:
+              </div>
+              <div class="ui-g-12 ui-lg-10 ui-g-lesspad">
+                {{data.asneeded}}
+              </div>
+            </div>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'15%','text-align':'left'}" field="is_checked">
+          <ng-template pTemplate="header">
+            <div>
+              <p-checkbox binary="true"  [disabled]="!save_enabled"  [(ngModel)]="select_all" label="Select/Deselect All" (onChange)="chk_select_all($event)"></p-checkbox>
+            </div>
+            <div>
+              <p-checkbox binary="true"  [disabled]="!save_enabled"   [(ngModel)]="copy_from" label="From Previous Offer" (onChange)="copy_from_previous($event)"></p-checkbox>
+            </div>
+          </ng-template>
+          <ng-template let-data="rowData" pTemplate="body">
+            <p-checkbox binary="true"  [disabled]="!save_enabled"  [(ngModel)]="data.is_checked" (onChange)="chk_select_one($event,data)" ></p-checkbox>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'6%'}" field="mt_cr_priority" header="Priority" [sortable]="true">
+        </p-column>
+      </p-dataTable>
+    </div>
+  </blockable-div>
+</div>

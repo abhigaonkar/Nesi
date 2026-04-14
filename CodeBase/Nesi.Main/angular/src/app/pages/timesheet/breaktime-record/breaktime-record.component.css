@@ -1,0 +1,13 @@
+.label_for_breaktime {
+    text-align: right;
+    padding-top: 7px;
+    font-weight: bold;
+    padding-right:  0.5em;
+  }
+
+  .label_for_breaktime_left {
+    text-align: left;
+    padding-top: 7px;
+    font-weight: bold;
+    padding-right:  0.5em;
+  }

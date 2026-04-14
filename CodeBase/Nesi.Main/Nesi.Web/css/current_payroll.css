@@ -1,0 +1,129 @@
+﻿.current_payroll											{
+															font-family:						arial;
+															}
+
+.current_payroll #name										{
+															font-family:						verdana;
+															font-size:							20px;
+															font-weight:						bold;
+															text-transform:						uppercase;
+															}
+
+.current_payroll #pay_period								{
+															color:								#777;
+															font-size:							11px;
+															padding-left:						5px;
+															padding-bottom:						20px;
+															font-weight:						bold;
+															}
+
+.current_payroll #pay_period b								{
+															color:								#000;
+															}
+
+.current_payroll #current_detail							{
+															width:								100%;	
+															}
+/*-- HEADERS ----------------------------------------------------*/
+.current_payroll #current_detail .head_date					{
+															background-color:					#000;
+															color:								#fff;
+															width:								100px;
+															font-weight:						bold;
+															text-align:							center;
+															}
+
+.current_payroll #current_detail .head_customer				{
+															background-color:					#000;
+															color:								#fff;
+															font-weight:						bold;
+															text-align:							center;
+															}
+
+.current_payroll #current_detail .head_hour					{	
+															background-color:					#000;
+															color:								#fff;
+															font-weight:						bold;
+															text-align:							center;
+															width:								35px;
+															}
+
+.current_payroll #current_detail .head_description			{	
+															background-color:					#000;
+															color:								#fff;
+															font-weight:						bold;
+															text-align:							center;
+															}
+/*-- ROW DEFINERS -------------------------------------------------*/
+
+
+.current_payroll #current_detail .hour_row:hover			{
+															background-color:					#fc0;
+															}
+
+.current_payroll #current_detail .date						{
+															font-size:							11px;
+															font-weight:						bold;
+															text-align:							center;
+															border-right:						solid 1px #777;
+															}
+
+.current_payroll #current_detail .name_w1					{
+															background-color:					#eee;
+															font-size:							11px;
+															padding-left:						10px;
+															border-right:						solid 1px #777;
+															border-bottom:						solid 1px #ccc;
+															font-weight:						bold;
+															}
+
+.current_payroll #current_detail .name_w2					{
+															background-color:					#9f9;
+															font-size:							11px;
+															font-weight:						bold;
+															padding-left:						10px;
+															border-right:						solid 1px #777;
+															border-bottom:						solid 1px #999;
+															}
+
+.current_payroll #current_detail .hours						{
+															font-size:							11px;
+															font-weight:						bold;
+															text-align:							center;
+															border-right:						solid 1px #777;
+															}
+
+.current_payroll #current_detail .footer-text_w				{
+															background-color:					#666;
+															font-size:							11px;
+															font-weight:						bold;
+															color:								#fff;
+															border-bottom:						solid 1px #fff;
+															}
+
+.current_payroll #current_detail .footer-hours_w			{
+															background-color:					#666;
+															font-size:							11px;
+															font-weight:						bold;
+															text-align:							center;
+															color:								#fff;
+															border-bottom:						solid 1px #fff;
+															}
+
+.current_payroll #current_detail .footer-text_t				{
+															font-size:							11px;
+															font-weight:						bold;
+															background-color:					#000;
+															color:								#fff;
+															}
+
+.current_payroll #current_detail .footer-hours_t			{
+															font-size:							11px;
+															font-weight:						bold;
+															text-align:							center;
+															background-color:					#000;
+															color:								#fff;
+															}
+
+
+

@@ -1,0 +1,256 @@
+﻿#bank																				{
+																					font-size:				11px;
+																					}
+
+#bank .header																		{
+																					height:					50px;
+																					}
+
+#bank .menu																			{
+																					text-align:				right;
+																					}
+
+#bank .menu																			{
+																					width:					25%;
+																					padding:				3px;
+																					}
+
+#bank .menu	button																	{
+																					cursor:					hand;
+																					font-family:			verdana;
+																					font-size:				11px;
+																					font-weight:			bold;
+																					width:					100%;
+																					padding:				2px;
+																					border:					solid 1px #888;
+																					}
+
+#bank .body .title																	{
+																					background-color:		#000;
+																					color:					#fff;
+																					font-size:				12px;
+																					padding:				3px;
+																					font-weight:			bold;
+																					text-align:				left;
+																					}
+
+#bank .body .subbody																{
+																					border:					solid 1px #fff;
+																					text-align:				center;
+																					}
+/*
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// home
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+#bank .body .subbody .home															{
+																					font-weight:			bold;
+																					padding-top:			75px;
+																					padding-bottom:			75px;
+																					width:					100%;
+																					}
+
+#bank .body .subbody .home .balance 												{
+																					
+																					}
+
+#bank .body .subbody .home .balance b												{
+																					text-transform:			uppercase;
+																					}
+
+#bank .body .subbody .home .balance	i												{
+																					font-style:				normal;
+																					font-size:				50px;
+																					color:					#090;
+																					}
+
+#bank .body .subbody .home .hours													{
+																					padding-top:			25px;
+																					}
+
+#bank .body .subbody .home .hours b													{
+																					text-transform:			uppercase;
+																					}
+
+#bank .body .subbody .home .hours i													{
+																					font-size:				50px;
+																					font-style:				normal;
+																					color:					#090;
+																					}
+
+/*
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// ledger
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+#bank .body .subbody .ledger														{
+																					font-size:				11px;
+																					width:					100%;
+																					}
+
+#bank .body .subbody .ledger .head													{
+																					background-color:		#777;
+																					color:					#fff;
+																					padding:				3px;
+																					text-align:				center;
+																					font-weight:			bold;
+																					}
+
+#bank .body .subbody .ledger .deducted												{
+																					background-color:		#ff0;
+																					}
+
+
+#bank .body .subbody .ledger .retracted												{
+																					background-color:		#f66;
+																					}
+
+#bank .body .subbody .ledger .deposit												{
+																					background-color:		#9f9;
+																					}
+
+#bank .body .subbody .ledger .paidout												{
+																					background-color:		#999;
+																					}
+
+#bank .body .subbody .ledger .withdrawal											{
+																					background-color:		#fd0;
+																					}
+
+#bank .body .subbody .ledger .null 													{
+																					width:					100%;
+																					padding:				100px;
+																					text-align:				center;
+																					}
+
+#bank .body .subbody .ledger .action												{
+																					border-top:				solid 3px #fff;
+																					width:					35px;
+																					text-align:				center;
+																					}
+
+#bank .body .subbody .ledger .action button											{
+																					cursor:					pointer;
+																					}
+
+#bank .body .subbody .ledger .date 													{
+																					border-top:				solid 3px #fff;
+																					width:					250px;
+																					font-weight:			bold;
+																					text-align:				center;
+																					}
+
+
+#bank .body .subbody .ledger .type													{
+																					border-top:				solid 3px #fff;
+																					width:					100px;
+																					font-weight:			bold;
+																					text-align:				center;
+																					}
+
+#bank .body .subbody .ledger .hours													{
+																					border-top:				solid 3px #fff;
+																					width:					50px;
+																					font-weight:			bold;
+																					text-align:				center;
+																					}
+
+#bank .body .subbody .ledger .payrate												{
+																					border-top:				solid 3px #fff;
+																					width:					150px;
+																					text-align:				center;
+																					font-weight:			bold;
+																					}
+#bank .body .subbody .ledger .total													{
+																					border-top:				solid 3px #fff;
+																					text-align:				center;
+																					font-weight:			bold;
+																					}
+
+#bank .body .subbody .ledger .note													{
+																					padding:				5px;
+																					background-color:		#fff;
+																					text-align:				left;
+																					}
+/*
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// history
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+#bank .body .subbody .history														{
+																					width:					100%;
+																					text-align:				left;
+																					}
+
+#bank .body .subbody .history .title												{
+																					background-color:		#000;
+																					color:					#fff;
+																					font-size:				12px;
+																					padding:				3px;
+																					text-align:				left;
+																					}
+
+#bank .body .subbody .history .null,
+#bank .body .subbody .history .entries												{
+																					font-size:				12px;
+																					font-weight:			bold;
+																					text-align:				left;
+																					margin:					5px;
+																					}
+
+#bank .body .subbody .history .null a,
+#bank .body .subbody .history .entry a												{
+																					color:					#777;
+																					}
+
+
+/*
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// deposit
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+
+#bank .body .subbody .withdraw,														
+#bank .body .subbody .deposit														{
+																					padding-top:			75px;
+																					padding-bottom:			100px;
+																					}
+
+#bank .body .subbody .withdraw .available,
+#bank .body .subbody .deposit .available 											{	
+																					width:					350px;
+																					padding:				5px;
+																					}
+
+#bank .body .subbody .withdraw .bankable,
+#bank .body .subbody .deposit .bankable 											{
+																					color:					#fff;
+																					width:					350px;
+																					padding:				30px;
+																					border:					solid 1px #aaa;
+																					background-image:		url("/images/bankedpay/bg/bg[question].png");
+																					}
+
+#bank .body .subbody .withdraw .bankable input,
+#bank .body .subbody .deposit .bankable input										{
+																					font-size:				12px;
+																					font-weight:			bold;
+																					width:					30px;
+																					text-align:				center;
+																					margin:					5px;
+																					cursor:					pointer;
+																					}
+
+#bank .body .subbody .withdraw .bankable button,
+#bank .body .subbody .deposit .bankable button										{
+																					font-size:				12px;
+																					font-weight:			bold;
+																					width:					100px;
+																					border:					solid 1px #777;
+																					margin:					5px;
+																					cursor:					pointer;
+																					}

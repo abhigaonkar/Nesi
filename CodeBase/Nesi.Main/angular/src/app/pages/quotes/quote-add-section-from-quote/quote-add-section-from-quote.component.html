@@ -1,0 +1,66 @@
+<p-blockUI [blocked]="submitting">
+  <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+</p-blockUI>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-1 label_for_right">
+      Customer:
+    </div>
+    <div class="ui-g-12 ui-md-4">
+      <nesi-ReactiveDropDown [placeholder]="'Select Customer'" [(ngModel)]="selectCustomer" [options]="customers" (onChange)="customerSelect($event)"></nesi-ReactiveDropDown>
+    </div>
+    <div class="ui-g-11 ui-md-4" *ngIf="isDropdown && allitems && allitems.length>0">
+      <p-dropdown [style]="{'width':'100%'}" [placeholder]="'Select Quote'" [options]="allitems" [(ngModel)]="selectItem" (onChange)="select($event)"
+        [filter]="(allitems && allitems.length >5)" [required]="false">
+        <ng-template let-item pTemplate="item">
+          <div>{{item.label}}</div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+    <div class="ui-g-1 ui-md-1" *ngIf="isDropdown && allitems && allitems.length>0">
+      <button type="button" [disabled]="!selectItem" pButton icon="fa-window" (click)="select({value: selectItem})"></button>
+    </div>
+    <div class="ui-g-12 ui-md-4" *ngIf="!isDropdown" [style.margin-top]="cs.isSm? '20px': '0'">
+      <div class="ui-inputgroup">
+        <span class="ui-float-label ">
+          <p-autoComplete [size]="30" (onFocus)="text=''" id="float-input" [(ngModel)]="text" [suggestions]="allitems" (completeMethod)="search($event)"
+            (onSelect)="select($event)" dataKey="value" field="label" [minlength]="3"></p-autoComplete>
+          <label for="float-input">Search Quote (at least 3 chars)</label>
+        </span>
+        <span class="ui-inputgroup-addon">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <p-dialog header="Select items from Quote: {{label}}" [positionTop]="50"  [width]="cs.dialogWidth"
+    [modal]="true" [responsive]="true" [(visible)]="dialogDisplay">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <div class="ui-g-12">
+        <div class="ui-g-1 ui-g-offset-11">
+          <p-checkbox (onChange)="checkAll($event)" [(ngModel)]="checkedAll" binary="true"></p-checkbox>
+        </div>
+      </div>
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <ng-container formArrayName="rows">
+          <div *ngFor="let row of rows.controls; let i=index">
+            <div class="ui-g-12" [formGroupName]="i" [ngClass]="{'greyBack': i % 2==1,'whiteBack': i %2 ==0}">
+              <div class="ui-g-1 right">
+                {{i+1}}
+              </div>
+              <div class="ui-g-10">
+                <textarea pInputTextarea [rows]="5" [cols]="30" [autoResize]="true" id="name" formControlName="label"></textarea>
+              </div>
+              <div class="ui-g-1">
+                <p-checkbox id="check_{{i}}" formControlName="is_checked" binary="true"></p-checkbox>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <div class="ui-g-12">
+          <button pButton icon="fa-plus" label="Add item(s)"></button>
+        </div>
+      </form>
+    </div>
+  </p-dialog>
+</div>

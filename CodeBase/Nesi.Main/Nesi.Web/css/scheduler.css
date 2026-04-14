@@ -1,0 +1,100 @@
+﻿
+     .calendar_override{
+         box-shadow:none !important;
+     }
+        .dropTargetActive {
+            border-color: #ff0000;
+        }
+        .dropTargetHover {
+           border-color: #ff0000;
+        }
+		#draggable3 {width: 500px;  padding: 0em; padding-top: 0em; z-index:200; }
+     .style1
+	 {
+		 text-align: right;
+	 }
+	.shadow
+	{
+		box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5);
+	}
+     .style2
+	 {
+		 text-align: center;
+	 }
+     .style3
+	 {
+		 height: 31px;
+	 }
+     .style4
+	 {
+		 font-family: Arial;
+		 text-align: left;
+	 }
+     .style5
+	 {
+		 height: 18px;
+	 }
+     .style6
+	 {
+		 height: 82px;
+	 }
+		.dropTargetHover
+		{
+			background-color:#cfc !important;
+			border: dashed 1px #090 !important;
+		}
+		 .TimeMarkerClass
+        {
+           position: absolute;
+        background-color: Red;
+        border: 1px solid #9da0aa;
+        width: 1px;
+        font-size: 1px;
+        border-top-width: 0;
+        border-bottom-width: 0; 
+        }
+     .auto-style1 {
+         height: 19px;
+     }
+		.dc 
+			{
+			min-width: 70px; 
+			min-height:43px; 
+			text-align:left;
+			padding: 2px;
+			}
+		.remove_wrap
+			{
+			overflow: hidden; 
+			white-space: nowrap;
+			}
+		.dc .wo
+			{
+			font-size: 1em;
+			}
+		.dc .sub
+			{
+			font-size: 0.75em;
+			}
+		.dc .hours
+			{
+			font-size: 0.75em !important;
+			text-align: right;
+			}
+     	.ht /* Day Cell - Shortform*/
+			{
+			 padding: 0px 0px 0px 0px; 
+			 width: 100px; 
+			 height: 45px; 
+			 font-family: Arial, Helvetica, sans-serif; 
+			 font-size: 9pt; 
+			 vertical-align: middle;
+			 text-align: left;
+     		}
+		 .ht.o {background-color: #FFA500;}
+		 .ht.gr {background-color: #FAFAD2; }
+		 .ht.trans {background-color: transparent;}
+
+div.dxsc-time-cells-scroll-container td.dxscGroupSeparatorHorizontal.dxsc-gr-sep-horizontal {
+	height: 1.5px;
+}

@@ -1,0 +1,120 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12 ui-g-lesspad ">
+      <div class="ui-lg-left-50 ui-g-12 ui-md-4 ui-g-nopad ui-lg-2 label_for_newquote">
+        Quote Number:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <input pInputText formControlName="quote_id">
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('quote_id')" [errorMsg]="inputErrorMsg"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-lg-left-50 ui-g-12 ui-md-4 ui-g-nopad ui-lg-2 label_for_newquote">
+        Job Description:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <input pInputText formControlName="job_description">
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('job_description')" [errorMsg]="inputErrorMsg"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-lg-left-50 ui-g-12 ui-md-4 ui-g-nopad ui-lg-2 label_for_newquote">
+        Quoted By (Business Unit):
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <nesi-ReactiveDropDown formControlName="quote_businessUnit" [options]="businessUnits" (onChange)="loadUserList($event)"></nesi-ReactiveDropDown>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-lg-left-50 ui-g-12 ui-md-4 ui-g-nopad ui-lg-2 label_for_newquote">
+        Quote By (Name):
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <nesi-ReactiveDropDown formControlName="quote_by" [options]="users"></nesi-ReactiveDropDown>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-lg-left-50 ui-g-12 ui-md-4 ui-g-nopad ui-lg-2 label_for_newquote">
+        Customer Name:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <input pInputText formControlName="customer_name">
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('customer_name')" [errorMsg]="inputErrorMsg"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-lg-left-50 ui-lg-left-50 ui-g-12 ui-md-4 ui-g-nopad ui-lg-2 label_for_newquote">
+        Quoted Before:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" formControlName="date_before"  placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-lg-left-50 ui-g-12 ui-md-4 ui-g-nopad ui-lg-2 label_for_newquote">
+        Quoted After:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" formControlName="date_after"  placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-lg-left-50 ui-g-12 ui-md-4 ui-g-nopad ui-lg-2 label_for_newquote">
+        Status:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <nesi-ReactiveDropDown formControlName="status" [options]="status"></nesi-ReactiveDropDown>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-lg-offset-2 ui-lg-8 ui-g-lesspad">
+      <button pButton type="submit" label="Search" icon="fa-search"></button>
+    </div>
+
+    <div class="ui-g-12" *ngIf="afterSubmited">
+      <div *ngIf="totalResultRecords==0" class="center larger">There is no quote matching your defined criteria.</div>
+      <div *ngIf="totalResultRecords==1" class="center larger">There is {{totalResultRecords}} quote matching your defined criteria.</div>
+      <div *ngIf="totalResultRecords>1 && totalResultRecords<1000" class="center larger">There are {{totalResultRecords}} quotes matching your defined criteria.</div>
+      <div *ngIf="totalResultRecords>=1000" class="center larger">This will show top 1000 quotes matching your defined criteria.</div>
+      <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon">
+            <i class="fa fa-search"></i>
+          </span>
+          <input #gb type="text" pInputText size="50" placeholder="Filter">
+        </div>
+      </div>
+      <p-dataTable [rows]="10" [paginator]="true" [pageLinks]="10" [value]="searchResults" rowHover="true" [scrollHeight]="isDialog? '300px':'600px'"
+        [responsive]="true" (onRowClick)="openRowQuote($event)" sortMode="multiple" resizableColumns="false" [globalFilter]="gb"
+        #dt>
+        <!-- <p-column [style]="{'width':'2%'}" header="#">
+          <ng-template pTemplate="body" let-index="rowIndex">
+            {{index+1}}
+          </ng-template>
+        </p-column> -->
+        <p-column [style]="{'width':'8%'}" field="open_date" header="Date" [sortable]="true">
+            <ng-template let-col let-item="rowData" pTemplate="body">
+               {{item[col.field] | date: 'yyyy-MM-dd'}}
+              </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'5%'}" field="quote_id" header="Quote #" [sortable]="true">
+            <ng-template let-col let-item="rowData" pTemplate="body">
+                {{item[col.field]}} v{{item.revision}}
+               </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'35%'}" field="job_description" header="Desc." [sortable]="true"></p-column>
+        <p-column [style]="{'width':'15%'}" field="customer_name" header="Customer Name" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'10%'}" field="contact_name" header="Contact" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'5%'}" field="quoted_price" header="Price" [sortable]="true">
+          <ng-template let-col let-item="rowData" pTemplate="body">
+            ${{item[col.field]}}
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'8%'}" field="quoted_by" header="Quoted by" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'8%'}" field="phone" header="Phone" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'8%'}" field="status" header="Status" [sortable]="true"></p-column>
+
+      </p-dataTable>
+    </div>
+  </form>
+</div>

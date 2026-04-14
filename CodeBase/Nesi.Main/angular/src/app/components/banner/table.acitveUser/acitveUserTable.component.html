@@ -1,0 +1,17 @@
+<table cellpadding="3" class='icon-table'>
+  <tbody>
+    <tr *ngIf="!showAll" class='header'>
+      <td colspan='3' class='top'> Recent {{ OnlineUserList.length }} Active Users </td>
+    </tr>
+    <tr class='header'>
+      <td>#</td>
+      <td>Time</td>
+      <td>User Name</td>
+    </tr>
+    <tr *ngFor="let user of OnlineUserList; let i = index" class="bodyrow">
+      <td><b>{{i+1}}</b></td>
+      <td>{{user.activeTime}}</td>
+      <td>{{user.name}}</td>
+    </tr>
+  </tbody>
+</table>

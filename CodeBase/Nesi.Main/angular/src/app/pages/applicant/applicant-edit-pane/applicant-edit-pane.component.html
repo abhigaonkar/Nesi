@@ -1,0 +1,14 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-tabView [activeIndex]="tabIndex" (onChange)="tabChanged($event)">
+    <p-tabPanel header="Applicant Information" leftIcon="fa-user" [disabled]="submitting">
+      <nesi-applicant-edit (loaded)="submitting=false" (loading)="submitting=true" [employee]="applicant" (onSave)="applicant_saved($event)"
+        *ngIf="tabIndex==0"></nesi-applicant-edit>
+    </p-tabPanel>
+    <p-tabPanel header="Offer of Employment" leftIcon="fa-paperclip" [disabled]="submitting" *ngIf="applicant_id>0">
+      <nesi-employee-employment [employee]="applicant" (loaded)="submitting=false" (loading)="submitting=true" *ngIf="tabIndex==1"></nesi-employee-employment>
+    </p-tabPanel>
+    <p-tabPanel header="Files" leftIcon="fa-file-alt" [disabled]="submitting" *ngIf="applicant_id>0">
+      <nesi-applicant-file [applicant]="applicant" (loaded)="submitting=false" (loading)="submitting=true" *ngIf="tabIndex==2"></nesi-applicant-file>
+    </p-tabPanel>
+  </p-tabView>
+</div>

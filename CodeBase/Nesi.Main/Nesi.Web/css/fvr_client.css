@@ -1,0 +1,134 @@
+﻿
+		.up,
+		html,
+		body			{
+						font-size:		12px;
+						font-family:	arial;
+						height:			100%;
+						}
+		.main			{
+						}
+		.wiz			{
+						width:				100%;
+						height:				100%;
+						}
+		.sidesteps		{
+						text-align:			left;
+						width:				100%;
+						margin-bottom:		30px;
+						}
+		.sidestepicon		
+            {
+			width:			16px;
+			height:			16px;
+			float:			left;
+			margin:			2px;
+			}
+		.sidestep .up_req,
+		.sidestep.selected .up_req
+		    {
+            font-size:          0.75em;
+            color:				#777 !important;
+		    }
+
+		.sidestep		
+            {
+            display:			block;
+            text-indent:		5px;
+            padding:			3px;
+            margin-bottom:		2px;
+            font-size:			1.35em;
+            border:				solid 1px #ccc;
+            border-left:       solid 20px #ccc;
+            text-decoration:	none;
+            cursor:				pointer;
+            height:             35px;
+            color:				#000;
+            }
+        .sidestep.available		
+            {
+            }
+        .sidestep.selected		
+            {
+            cursor:				inherit !important;
+            border-left:       solid 20px #58b;
+
+            background-color:   #fff;
+            color:				#000 !important;
+            }
+		.sidestep.available:hover	
+            {
+            }
+		.step			{
+						height:				100%;
+						padding-top:		5px;
+						}
+		.header			{
+						text-align:			left;
+						background-color:	#fff;
+						font-size:			30px;
+						font-weight:		bold;
+						color:				#4682B4;
+						border-bottom:		solid 1px #ccc;
+						}
+		.sub_header		{
+						text-align:			left;
+						font-size:			16px;
+						font-weight:		bold;
+						color:				#bbb;
+						text-indent:		10px;
+						}
+		.emp_info		{
+						
+						}
+		.emp_info .h	{
+						text-align:			left;
+						padding:			10px;
+						}
+		.emp_info .c	{
+						width:				175px;
+						text-align:			left;
+						font-weight:		bold;
+						}
+		.emp_info .v	{
+						
+						}
+		.emp_info .v .i	{
+						font-size:			11.5px;
+						}
+@media screen and (min-width:722px) {
+    .column {
+        float: left;
+    }
+        .wrapper
+            {
+            width: 100%;
+            position: relative;
+            }
+        .column.menu {
+            width: 23%;
+            margin-right: 10px;
+        }
+
+        .column.body {
+            min-width: 600px;
+            width: 75%;
+            float:right;
+        }
+}
+@media screen and (max-width: 721px)  {
+    .column {
+    }
+    
+        .wrapper
+            {
+            width: 100%;
+            }
+        .column.menu {
+            width: 100%;
+        }
+
+        .column.body {
+            width: 100%;
+        }
+}

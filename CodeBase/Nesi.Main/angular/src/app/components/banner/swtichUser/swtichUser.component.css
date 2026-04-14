@@ -1,0 +1,11 @@
+select {
+  width: 120px;
+}
+
+i {
+  cursor: pointer;
+}
+
+.red{
+  color: red;
+}

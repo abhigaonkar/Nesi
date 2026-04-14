@@ -1,0 +1,38 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="min-height:600px;">
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+        Termination Reason (actual):
+      </div>
+      <div class="ui-g-12 ui-lg-8  ui-g-lesspad label_for_left_less">
+        <textarea pInputTextArea  [rows]="5" maxlength="50000" formControlName="act"></textarea>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('act','required')" [errorMsg]="'Termination Reason (actual) is required'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+        Termination Reason (ROE):
+      </div>
+      <div class="ui-g-12 ui-lg-8  ui-g-lesspad label_for_left_less">
+        <p-dropdown [filter]="true" maxlength="50" placeholder="Select Reason" [style]="{'width':'100%'}" [options]="profile.roeList"
+          formControlName="roe"></p-dropdown>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('roe','required')" [errorMsg]="'Termination Reason (ROE) is required'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+        Last Date Worked:
+      </div>
+      <div class="ui-g-12 ui-lg-8   ui-g-lesspad label_for_left_less">
+        <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="ldw"  placeholder="yyyy-mm-dd"
+          showIcon="true"></p-calendar>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('ldw','required')" [errorMsg]="'Last Date Worked is required'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-lg-4  ui-g-lesspad ui-lg-offset-4">
+        <button pButton type="submit" label="Save" icon="fa-save"></button>
+      </div>
+    </div>
+  </form>
+</div>

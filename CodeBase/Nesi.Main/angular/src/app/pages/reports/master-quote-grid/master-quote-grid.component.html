@@ -1,0 +1,68 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+        <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Master Quote Grid'}]"></nesi-breadcurmb>
+    </div>
+    <div class="ui-g-12">
+        <nesi-datatable [id]='78' gridName="MasterQuoteGrid" gridTitle="" refreshCache="true" (onRefresh)="loadDetail()" [need_query_param]="false"
+            [callbackForRow]="masterQuoteGridReportCallback" (onSeachFinish)="seachFinish($event)" [callback]="masterQuoteGridReportColumnCallback"
+            (onEdit)="openEdit($event)" [newNotesConfig]="{notes: notesConfig}" [dropdownOptions]="{pct_chance_reason: reasonList}"
+            [spinnerConfig]="{pct_chance: spinnerConfig}"
+            [fixed_header_scroll]="270"
+            [visible_business_type]="'S'"
+            (onDropDownChange)="dropDownForChanceReason($event)">
+            <table cellpadding="2" cellspacing="2" style="font-family: Arial; font-size: x-small; font-weight: bold; background-color: lightgrey"
+                width="100%">
+                <tr>
+                    <td colspan="2" style="font-size: 13px; color:white;" nowrap="nowrap">
+                        Percent Chance
+                    </td>
+                    <td style="font-size: 13px;">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color:white;">
+                        30%
+                    </td>
+                    <td bgcolor="#FFFFCC" style="color: #000;">
+                        Budget quote/ Bid Tender
+                    </td>
+                    <td nowrap="nowrap" style="font-size: medium; color:white;">
+                        Quote Hit Rate:&nbsp; {{rate}}
+                    </td>
+                </tr>
+                <tr>
+                    <td  style="color:white;">
+                        60%
+                    </td>
+                    <td bgcolor="#FFFF99" style="color: #000;">
+                        We are 1 of 3 contractors bidding
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td  style="color:white;">
+                        90%
+                    </td>
+                    <td bgcolor="#CCFF99" width="100px" style="color: #000;">
+                        We are the only contractor bidding
+                    </td>
+                    <td width="100%">
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+        </nesi-datatable>
+    </div>
+</div>
+
+<p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Editing {{entity && entity.quote}}" [draggable]="true"
+    [(visible)]="displayEdit" [positionTop]="50" (onHide)="exitFromEditor()">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <masterQuote-editor [masterQuote]="entity" (onExit)="exitFromEditor()" [editLink]="linkForEdit" [noteLink]="linkForNote"
+            [reasonForChangeList]="reasonList">
+        </masterQuote-editor>
+    </div>
+</p-dialog>

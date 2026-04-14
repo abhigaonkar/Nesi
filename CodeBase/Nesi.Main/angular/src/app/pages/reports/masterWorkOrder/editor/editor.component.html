@@ -1,0 +1,179 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw" style="position:absolute;top:25%;left:50%"></i>
+</p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            BVWO:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.bvwo }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Customer:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.customer }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Description:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <input pInputText formControlName="description">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Acting RAM on WO:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-dropdown [filter]="true" maxlength="50" [style]="{'width':'100%'}" [options]="optionList" formControlName="acting_ram"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Exp Hrs Lbr:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <input pInputText formControlName="exp_hours">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad" *ngIf="showExpectedStartDate">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Expected Start Date:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="expected_startdate"  placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Expected End Date:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="expected_enddate"  placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Expected Sales:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <input pInputText formControlName="expected_sales">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Notes:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <textarea pInputTextarea formControlName="notes"></textarea>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Service Call:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-checkbox binary="true" formControlName="sc"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            PO:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.po }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            RD:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-checkbox binary="true" formControlName="rd"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Asset:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.asset }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            On Hold:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-checkbox binary="true" formControlName="hold"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            City:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.city }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            State:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.province }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Service Address:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.service_addr }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            RAM:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.ram }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Mat cost:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.materialcost }}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Lab cost:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterWorkOrder && _masterWorkOrder.laborcost }}
+          </div>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+        <button pButton type="Button" label="Cancel" icon="fa-close" (click)="exit()"></button>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+        <button pButton type="submit" label="Save" icon="fa-save"></button>
+      </div>
+    </form>
+  </div>
+</blockable-div>

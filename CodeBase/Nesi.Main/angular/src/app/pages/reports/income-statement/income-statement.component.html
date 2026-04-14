@@ -1,0 +1,12 @@
+<div id="incomeStatementSection">
+    <app-parameter-component (generated)="fetchReport($event)" (loadingInfo)="showLoading($event)">
+    </app-parameter-component>
+
+    <div *ngIf="incomeStatementData">
+        <app-return-view [returnData]="incomeStatementData"></app-return-view>
+    </div>
+</div>
+
+<dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [position]="{ of: '#incomeStatementSection' }" [(visible)]="loadingVisible"
+    [showIndicator]="true" [showPane]="true" [shading]="true" [closeOnOutsideClick]="false">
+</dx-load-panel>

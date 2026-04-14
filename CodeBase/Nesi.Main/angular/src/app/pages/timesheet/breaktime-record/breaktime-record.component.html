@@ -1,0 +1,93 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform">
+        <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-g-lesspad">
+                <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_breaktime">
+                </div>
+                <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6 label_for_breaktime_left" >
+                        Please fill out your break time info for the day
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_breaktime">
+                Start Time:
+            </div>
+            <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+                <p-calendar [timeOnly]="true" formControlName="start_time" hourFormat="24"></p-calendar>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_breaktime">
+                Morning Break Start:
+            </div>
+            <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+                <p-calendar [timeOnly]="true" formControlName="morning_break_start"></p-calendar>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_breaktime">
+                Morning Break Duration:
+            </div>
+            <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+                <p-spinner formControlName="morning_break_duration" [min]="0" [max]="60" size="30"></p-spinner>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_breaktime">
+                Lunch Break Start:
+            </div>
+            <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+                <p-calendar [timeOnly]="true" formControlName="lunch_break_start"></p-calendar>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_breaktime">
+                Lunch Break Duration:
+            </div>
+            <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+                <p-spinner formControlName="lunch_break_duration" [min]="0" [max]="120" size="30"></p-spinner>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_breaktime">
+                Afternoon Break Start:
+            </div>
+            <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+                <p-calendar [timeOnly]="true" formControlName="afternoon_break_start"></p-calendar>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_breaktime">
+                Afternoon Break Duration:
+            </div>
+            <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+                <p-spinner formControlName="afternoon_break_duration" [min]="0" [max]="60" size="30"></p-spinner>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_breaktime">
+
+            </div>
+            <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6 label_for_breaktime_left">
+                <p-checkbox binary="true" formControlName="confirmed" label="Upon submitting, you are agreeing that the supplied times and durations are correct."
+                    #confirmIt></p-checkbox>
+            </div>
+        </div>
+
+        <button pButton type="button" label="Submit" icon="fa-file" iconPos="left" (click)="onSubmit()" [disabled]="(userform.get('confirmed').value == false) ||
+                 (start_time.invalid) ||
+                 (morning_break_start.invalid) ||
+                 (morning_break_duration.invalid) ||
+                 (lunch_break_start .invalid) ||
+                 (lunch_break_duration.invalid) ||
+                 (afternoon_break_start.invalid) ||
+                 (afternoon_break_duration.invalid)">
+        </button>
+    </form>
+</div>

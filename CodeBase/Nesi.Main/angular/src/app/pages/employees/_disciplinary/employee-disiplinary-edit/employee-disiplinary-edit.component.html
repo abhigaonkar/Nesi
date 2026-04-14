@@ -1,0 +1,53 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv2">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv2>
+    <div class="ui-g">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g-12 ui-g-nopad">
+          <p-panel [toggleable]="true">
+            <p-header>
+              <i class="fa fa-fw fa-pencil"></i> {{header_label}} Discipline
+            </p-header>
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right">Enter Date of Discipline:</div>
+                <div class="ui-g-12 ui-lg-6 label_for_left_less">
+                  <div class="ui-g-8 ui-g-nopad">
+                  </div>
+                  <div class="ui-g-4 ui-g-nopad left">
+                    <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="date"  placeholder="yyyy-mm-dd"
+                      showIcon="true"></p-calendar>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right">Comments:</div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <p-editor formControlName="comments" [style]="{'height':'120px'}"></p-editor>
+                  <nesi-fieldErrorDisplay [displayError]="isFieldInValid('comments','required')" [errorMsg]="'Comments is required'"></nesi-fieldErrorDisplay>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right">Attach File:</div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <div class="ui-g-12 ui-g-nopad"> {{userform.get('file_name').value}} </div>
+                  <div class="ui-g-12 ui-g-nopad">
+                    <p-fileUpload name="files[]" [url]="uploadURL" (onUpload)="onUploaded($event)" (onBeforeSend)="onBefoeUpload($event)" maxFileSize="5000000">
+                    </p-fileUpload>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-g-12">
+                <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+                  <button pButton type="submit" label="{{header_label}}" icon="fa-save"></button>
+                </div>
+              </div>
+            </div>
+          </p-panel>
+        </div>
+      </form>
+    </div>
+  </blockable-div>
+</div>

@@ -1,0 +1,72 @@
+﻿#general		{
+    margin:					10px;
+				
+}
+#general .c		{
+    font-family:			arial;
+    font-size:				12px;
+    color:black;
+				
+}
+#general .ch	{
+    font-family:			arial;
+    font-size:				12px;
+				
+				
+}
+.custpo_notice			{
+    position:		initial;
+    float:			right;
+}
+.custpo {
+    position: initial;
+    float: left;
+}
+.prog_table
+{
+    border:			solid 1px #999;
+    padding:		2px;
+}
+.prog_table .c
+{
+    font-weight:	bold;
+}
+
+.CaptionCellStyle {
+    white-space: normal;
+}
+
+
+.integMsg {
+    white-space: pre;
+}
+#header_info {
+    text-align: left;
+    display: flex;
+    min-height: 125px;
+}
+#header_info .l_pane {
+    float: left;
+    width: 80%;
+}
+#header_info .r_pane {
+    float: left;
+    width: 15%;
+    text-align:right;
+    min-width:250px;
+}
+#header_info .pad {
+    padding: 2px;
+}
+#header_info .left {
+    text-align: left;
+}
+#header_info .right {
+    text-align: right;
+}
+#header_info .clear {
+    clear: both;
+}
+.dxpcLite {
+    position:initial !important;
+}

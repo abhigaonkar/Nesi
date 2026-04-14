@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="xrLabel46.Text" xml:space="preserve">
+    <value>Prices are based on job site conditions (at the customers facility) being in substantially the same condition as they were at the time of inspection by our project manager or estimator.  The term "substantially the same" will be determined based on a reasonable assessment of the job site during the work period contemplated by this contract.  Such determination will be done in good faith and in consultation with the customer.</value>
+  </data>
+  <data name="lb_equipment.Text" xml:space="preserve">
+    <value>Any modifications that maybe required to the equipment being supplied with power to meet machine safety requirements, local codes or local specifications such as CSA, OSHA, TSSA, etc are the responsibility of others.</value>
+  </data>
+	<data name="terms_conditions" xml:space="preserve">
+    <value>This Purchase Order is subject to our Standard Purchase Terms, available at https://sparkpowercorp.com/standard-terms/</value>
+  </data>
+  <data name="lb_lien.Text" xml:space="preserve">
+    <value>By accepting this quote, Customer acknowledges and accepts our legal rights in the jurisdiction in which services and/or materials are provided which includes, without limitation, all protection afforded by the applicable lien legislation. Such rights shall remain intact unless modified in writing by both parties.</value>
+  </data>
+  <data name="xrLabel54.Text" xml:space="preserve">
+    <value>Prices are based on current steel and copper prices.  Due to recent fluctuations in these raw material markets, material prices quoted may not be valid at the time of usage.  Based on this, we reserves the right to adjust pricing without additional markup only on those materials being affected.</value>
+  </data>
+  <data name="xrLabel52.Text" xml:space="preserve">
+    <value>Unless otherwise stated in the quote or the project is bound to a specific timeframe stated in the quote, the price is based on work being completed during regular business hours, in a continuous fashion.  We will not be held responsible for any disruptions caused beyond its reasonable  control including labor action, civil disobedience, weather or similar items which may prevent the efficient completion of the work quoted herein.</value>
+  </data>
+  <data name="xrLabel48.Text" xml:space="preserve">
+    <value>Work performed that is not specified herein shall be regarded as additional to this quote.  These will be billed at our standard time and material rates or quoted separately.  We will obtain the approval of the customer prior to performing such additional work.</value>
+  </data>
+  <data name="xrLabel42.Text" xml:space="preserve">
+    <value>The customer agrees until the total completion of the project, to protect all unfinished work, materials and tools on the site, and other appliances for the use or incidental thereto for the performance of this Agreement, whether furnished by us, or Customer or from the elements and from all other kinds of damage which may be caused in any manner whatsoever other than caused by the negligence or our actions or any of our representatives or workers used in the completion of this project.  Except as noted herein, the customer shall be entirely responsible for any loss or damage to said work, materials, tools, equipment, and other appliances in any manner aforementioned.</value>
+  </data>
+  <data name="xrLabel40.Text" xml:space="preserve">
+    <value>Rates and prices are predicated upon the prompt payment of invoices (in accordance with the payments that are outlined above); accordingly, for amounts not paid within (30) days of the invoice date, 1.5% per month (18%APR), plus the cost of collection will be added to the unpaid balance.</value>
+  </data>
+  <metadata name="dsquotemaster1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="quote_forprintoutTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>149, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="xrPictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+</root>

@@ -1,0 +1,2065 @@
+/* -- ValidationSummary -- */
+.dxvsValidationSummary_DevDashboard01
+{
+	font: 11px Arial, Geneva, sans-serif;
+	color: Red;
+}
+.dxvsValidationSummary_DevDashboard01 td.dxvsRC_DevDashboard01
+{
+	vertical-align: top;
+	padding: 2px 5px 4px 6px;
+}
+.dxvsValidationSummary_DevDashboard01 .dxvsE_DevDashboard01
+{
+}
+.dxvsValidationSummary_DevDashboard01 table.dxvsHT_DevDashboard01
+{
+	width: 100%;
+}
+.dxvsValidationSummary_DevDashboard01 td.dxvsH_DevDashboard01
+{
+	padding: 2px 0;
+}
+.dxvsValidationSummary_DevDashboard01 a.dxvsHL_DevDashboard01,
+.dxvsValidationSummary_DevDashboard01 a.dxvsHL_DevDashboard01:visited
+{
+	color: red;
+}
+.dxvsValidationSummary_DevDashboard01 a.dxvsHL_DevDashboard01
+{
+	text-decoration: none;
+	border-bottom: 1px dashed #f70;
+}
+.dxvsValidationSummary_DevDashboard01 a.dxvsHL_DevDashboard01:hover
+{
+	color: #f70;
+}
+.dxvsValidationSummary_DevDashboard01 table.dxvsT_DevDashboard01
+{
+}
+.dxvsValidationSummary_DevDashboard01 tr.dxvsE_DevDashboard01
+{
+}
+.dxvsValidationSummary_DevDashboard01 td.dxvsETC_DevDashboard01
+{
+	padding: 2px 0;
+}
+.dxvsValidationSummary_DevDashboard01 ul.dxvsL_DevDashboard01
+{
+}
+.dxvsValidationSummary_DevDashboard01 ol.dxvsL_DevDashboard01
+{
+}
+.dxvsValidationSummary_DevDashboard01 li.dxvsE_DevDashboard01
+{
+	padding: 2px 0;
+}
+
+/* TrackBar */
+.dxeTrackBar_DevDashboard01
+{
+    font: 11px Arial, Geneva, sans-serif;
+	user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	visibility: hidden;
+}
+
+.dxeDisabled_DevDashboard01 .dxeTBHSys a,
+.dxeDisabled_DevDashboard01 .dxeTBVSys a
+{
+    cursor: default;
+}
+
+.dxeTBBarHighlight_DevDashboard01
+{
+	font-size: 0;
+}
+
+.dxeTBScale_DevDashboard01,
+.dxeTBTrack_DevDashboard01,
+.dxeTBBarHighlight_DevDashboard01
+{
+	cursor: pointer;
+}
+
+.dxeTBScale_DevDashboard01
+{
+	z-index: 1;
+	font-size: 0.91em;
+}
+.dxeTBSecondaryDH_DevDashboard01,
+.dxeTBMainDH_DevDashboard01
+{
+	z-index: 4;
+}
+
+.dxeTrackBar_DevDashboard01.dxeTBHSys
+{
+	width: 170px;
+	height: 47px;
+}
+.dxeTrackBar_DevDashboard01.dxeTBVSys
+{
+	height: 170px;
+	width: 47px;
+}
+.dxeTrackBar_DevDashboard01.dxeTBBScaleSys.dxeTBVSys
+{
+	width: 70px;
+}
+.dxeTrackBar_DevDashboard01.dxeTBBScaleSys.dxeTBHSys
+{	
+	height: 70px;
+}
+
+.dxeTBTrack_DevDashboard01
+{
+	z-index: 2;
+	position: absolute;
+}
+
+.dxeTBHSys .dxeTBTrack_DevDashboard01
+{
+	background-image:  url('edtTrackBarTrackH.gif');
+}
+.dxeTBVSys .dxeTBTrack_DevDashboard01
+{
+	background-image:  url('edtTrackBarTrackV.gif');
+}
+
+.dxeTBHSys .dxeTBTrack_DevDashboard01, 
+.dxeTBHSys .dxeTBBarHighlight_DevDashboard01
+{
+	height: 9px;
+}
+.dxeTBVSys .dxeTBTrack_DevDashboard01, 
+.dxeTBVSys .dxeTBBarHighlight_DevDashboard01
+{
+	width: 9px;
+}
+
+.dxeTBHSys .dxeTBMainDH_DevDashboard01,
+.dxeTBHSys .dxeTBSecondaryDH_DevDashboard01
+{	
+	top: -5px;
+	width:13px;
+	height:19px;
+}
+.dxeTBVSys .dxeTBMainDH_DevDashboard01,
+.dxeTBVSys .dxeTBSecondaryDH_DevDashboard01
+{
+	left: -5px;
+	width:19px;
+	height:13px;
+}
+
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBTrack_DevDashboard01,
+.dxeTBVSys .dxeTBTrack_DevDashboard01
+{
+	left: 6px;
+}
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBTrack_DevDashboard01
+{
+	right: 6px;
+	left: auto;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBTrack_DevDashboard01
+{
+	bottom: 6px;
+	top: auto;
+}
+.dxeTBHSys .dxeTBRBScaleSys .dxeTBTrack_DevDashboard01,
+.dxeTBHSys .dxeTBTrack_DevDashboard01
+{
+	top: 6px;
+}
+
+.dxeTBBarHighlight_DevDashboard01
+{
+	left: 0px;
+	top: 0px;
+	position:absolute;
+	z-index: 3;
+}
+
+.dxeTBHSys .dxeTBBarHighlight_DevDashboard01
+{
+	background-image:  url('edtTrackBarBarHighlightH.gif');
+}
+.dxeTBVSys .dxeTBBarHighlight_DevDashboard01
+{
+	background-image:  url('edtTrackBarBarHighlightV.gif');
+}
+
+.dxeTBRBLabel_DevDashboard01,
+.dxeTBLTLabel_DevDashboard01
+{
+	text-align: center;
+	cursor: default;
+}
+.dxeTBSmallTickSys .dxeTBRBLabel_DevDashboard01,
+.dxeTBSmallTickSys .dxeTBLTLabel_DevDashboard01,
+.dxeTBLargeTickSys .dxeTBRBLabel_DevDashboard01,
+.dxeTBLargeTickSys .dxeTBLTLabel_DevDashboard01
+{	
+	position: absolute;
+}
+
+.dxeTBHSys .dxeTBRBLabel_DevDashboard01,
+.dxeTBHSys .dxeTBLTLabel_DevDashboard01
+{
+	width: 100%;
+}
+
+.dxeTBIncBtn_DevDashboard01,
+.dxeTBDecBtn_DevDashboard01
+{
+}
+
+.dxeTBVSys .dxeTBRBLabel_DevDashboard01,
+.dxeTBVSys .dxeTBLTLabel_DevDashboard01
+{
+	padding-top: 2px;
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBRBLabel_DevDashboard01
+{
+	margin-left: -4px;
+}
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBRBLabel_DevDashboard01,
+.dxeTBVSys .dxeTBBScaleSys .dxeTBLTLabel_DevDashboard01
+{
+	right: 0px;
+}
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBLTLabel_DevDashboard01,
+.dxeTBVSys .dxeTBBScaleSys .dxeTBRBLabel_DevDashboard01
+{
+	left: 0px;
+}
+.dxeTBHSys .dxeTBRBScaleSys .dxeTBRBLabel_DevDashboard01,
+.dxeTBHSys .dxeTBBScaleSys .dxeTBLTLabel_DevDashboard01
+{
+	bottom: 0px;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBLTLabel_DevDashboard01,
+.dxeTBHSys .dxeTBBScaleSys .dxeTBRBLabel_DevDashboard01
+{
+	top: 0px;
+}
+
+.dxeTBHSys .dxeTBItem_DevDashboard01 .dxeTBRBLabel_DevDashboard01,
+.dxeTBHSys .dxeTBItem_DevDashboard01 .dxeTBLTLabel_DevDashboard01
+{
+	display: inline-block;
+	margin-left: 0px!important;
+}
+.dxeTBHSys .dxeTBRBScaleSys .dxeTBItem_DevDashboard01 .dxeTBRBLabel_DevDashboard01
+{
+	padding-top: 12px;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBItem_DevDashboard01 .dxeTBLTLabel_DevDashboard01
+{
+	margin-top: 8px;
+}
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBItem_DevDashboard01 .dxeTBRBLabel_DevDashboard01 
+{
+	margin-left: 5px;
+}
+
+.dxeTBSelectedItem_DevDashboard01 .dxeTBRBLabel_DevDashboard01,
+.dxeTBSelectedItem_DevDashboard01 .dxeTBLTLabel_DevDashboard01,
+.dxeTBSelectedTick_DevDashboard01 .dxeTBRBLabel_DevDashboard01,
+.dxeTBSelectedTick_DevDashboard01 .dxeTBLTLabel_DevDashboard01
+{
+	color: #898D98;
+}
+
+.dxeDisabled_DevDashboard01 .dxeTBSelectedItem_DevDashboard01 .dxeTBRBLabel_DevDashboard01,
+.dxeDisabled_DevDashboard01 .dxeTBSelectedItem_DevDashboard01 .dxeTBLTLabel_DevDashboard01,
+.dxeDisabled_DevDashboard01 .dxeTBSelectedTick_DevDashboard01 .dxeTBRBLabel_DevDashboard01,
+.dxeDisabled_DevDashboard01 .dxeTBSelectedTick_DevDashboard01 .dxeTBLTLabel_DevDashboard01
+{
+	color: #C4C6CB;
+}
+
+.dxeTBRBLabel_DevDashboard01,
+.dxeTBLTLabel_DevDashboard01,
+.dxeTBItem_DevDashboard01
+{
+	color: #C4C6CC;
+}
+
+.dxeDisabled_DevDashboard01 .dxeTBRBLabel_DevDashboard01,
+.dxeDisabled_DevDashboard01 .dxeTBLTLabel_DevDashboard01,
+.dxeDisabled_DevDashboard01 .dxeTBItem_DevDashboard01
+{
+	color: #E1E2E5;
+}
+
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBItem_DevDashboard01
+{
+	text-align: left;
+}
+
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBItem_DevDashboard01
+{
+	text-align: right;
+}
+
+.dxeTBVSys .dxeTBBScaleSys .dxeTBItem_DevDashboard01
+{
+	text-align: center;
+}
+
+.dxeTBHSys .dxeTBItem_DevDashboard01
+{
+	background-image:  url('edtTrackBarLargeTickH.gif');
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBItem_DevDashboard01
+{
+	background-image:  url('edtTrackBarDoubleSmallTickH.gif');
+}
+.dxeTBVSys .dxeTBItem_DevDashboard01 
+{
+	background-image:  url('edtTrackBarLargeTickV.gif');
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBItem_DevDashboard01
+{
+	background-image:  url('edtTrackBarDoubleSmallTickV.gif');
+}
+
+.dxeTBHSys .dxeTBLargeTick_DevDashboard01
+{
+	background-image:  url('edtTrackBarLargeTickH.gif');
+}
+.dxeTBVSys .dxeTBLargeTick_DevDashboard01
+{
+	background-image: url('edtTrackBarLargeTickV.gif');
+}
+.dxeTBHSys .dxeTBSmallTick_DevDashboard01
+{
+	background-image: url('edtTrackBarSmallTickH.gif');
+}
+.dxeTBVSys .dxeTBSmallTick_DevDashboard01
+{
+	background-image: url('edtTrackBarSmallTickV.gif');
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBLargeTick_DevDashboard01
+{
+	background-image: url('edtTrackBarDoubleLargeTickH.gif');
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBLargeTick_DevDashboard01
+{
+	background-image: url('edtTrackBarDoubleLargeTickV.gif');
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBSmallTick_DevDashboard01
+{
+	background-image: url('edtTrackBarDoubleSmallTickH.gif');
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBSmallTick_DevDashboard01
+{
+	background-image: url('edtTrackBarDoubleSmallTickV.gif');
+}
+
+.dxeTBVSys .dxeTBIncBtn_DevDashboard01,
+.dxeTBVSys .dxeReversedDirectionSys .dxeTBDecBtn_DevDashboard01
+{
+	bottom: 0px;
+	top: auto;
+}
+.dxeTBVSys .dxeTBDecBtn_DevDashboard01,
+.dxeTBVSys .dxeReversedDirectionSys .dxeTBIncBtn_DevDashboard01
+{
+	top: 0px;
+	bottom: auto;
+}
+.dxeTBHSys .dxeTBDecBtn_DevDashboard01, 
+.dxeTBHSys .dxeReversedDirectionSys .dxeTBIncBtn_DevDashboard01
+{
+	left: 0px;
+	right: auto;
+}
+.dxeTBHSys .dxeTBIncBtn_DevDashboard01,
+.dxeTBHSys .dxeReversedDirectionSys .dxeTBDecBtn_DevDashboard01
+{
+	right: 0px;
+	left: auto;
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBDecBtn_DevDashboard01,
+.dxeTBVSys .dxeTBBScaleSys .dxeTBIncBtn_DevDashboard01
+{
+	margin-left: -9px;
+	left: 50%;
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBDecBtn_DevDashboard01,
+.dxeTBHSys .dxeTBBScaleSys .dxeTBIncBtn_DevDashboard01
+{
+	margin-top: -9px;
+	top: 50%;
+}
+.dxeTBVSys .dxeTBBScaleSys .dxeTBTrack_DevDashboard01
+{ 
+	margin-left: -4px;
+	left: 50%;
+}
+.dxeTBHSys .dxeTBBScaleSys .dxeTBTrack_DevDashboard01
+{ 
+	margin-top: -4px;
+	top: 50%;
+}
+
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBDecBtn_DevDashboard01,
+.dxeTBVSys .dxeTBLTScaleSys .dxeTBIncBtn_DevDashboard01
+{
+	right: 2px;
+	left: auto;
+}
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBDecBtn_DevDashboard01,
+.dxeTBHSys .dxeTBLTScaleSys .dxeTBIncBtn_DevDashboard01
+{
+	bottom: 2px;
+	top: auto;
+}
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBDecBtn_DevDashboard01,
+.dxeTBVSys .dxeTBRBScaleSys .dxeTBIncBtn_DevDashboard01,
+.dxeTBVSys .dxeTBDecBtn_DevDashboard01,
+.dxeTBVSys .dxeTBIncBtn_DevDashboard01
+{
+	left: 2px;
+}
+.dxeTBHSys .dxeTBRBScaleSys .dxeTBDecBtn_DevDashboard01,
+.dxeTBHSys .dxeTBRBScaleSys .dxeTBIncBtn_DevDashboard01,
+.dxeTBHSys .dxeTBDecBtn_DevDashboard01,
+.dxeTBHSys .dxeTBIncBtn_DevDashboard01
+{
+	top: 2px;
+}
+
+.dxeHelpText_DevDashboard01,
+.dxeTBValueToolTip_DevDashboard01
+{
+    font: 11px Arial, Geneva, sans-serif;
+}
+div.dxeHelpText_DevDashboard01,
+.dxeTBValueToolTip_DevDashboard01
+{
+	padding: 3px 8px 4px 8px;
+    display: inline;
+    position:absolute;
+    border-radius: 3px;
+    z-index: 41998;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #A8A8A8;
+    background: #FDFEFE;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FDFEFE', endColorstr='#EEEFF2');
+	background: -webkit-gradient(linear, left top, left bottom, from(#FDFEFE), to(#EEEFF2));
+	background: -moz-linear-gradient(top,  #FDFEFE,  #EEEFF2);
+}
+td.dxeHelpText_DevDashboard01 {
+    visibility: visible;
+    color: #9F9F9F;
+}
+td.dxeHelpText_DevDashboard01 label {
+    font-size: 0.91em;
+}
+td.dxeHelpText_DevDashboard01.dxeHHelpTextSys {
+    padding: 0 6px;
+}
+td.dxeHelpText_DevDashboard01.dxeVHelpTextSys {
+    padding: 2px 0;
+}
+
+/* InternalCheckBox */
+.dxeIRBFocused_DevDashboard01
+{
+	border: 1px dotted #a390ec;
+	margin: 0px!important;
+}
+.dxeIRadioButton_DevDashboard01
+{
+}
+
+.dxeButtonEditSys .dxic .dxeLoadingDiv_DevDashboard01
+{
+	opacity: 1!important;
+	filter: alpha(opacity=100)!important;
+}
+
+.dxeButtonEditSys .dxic .dxeLoadingPanel_DevDashboard01
+{
+    background-color: transparent!important;
+}
+
+.dxeButtonEditSys .dxic .dxeLoadingPanel_DevDashboard01 td.dx
+{
+	padding: 0px!important;
+}
+
+.dxeButtonEditSys .dxic .dxeLoadingPanel_DevDashboard01 td.dx > span
+{
+	display: none;
+}
+
+.dxeButtonEditSys .dxic .dxeLoadingPanel_DevDashboard01 td.dx > img
+{
+	height: 15px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.dxeReadOnly_DevDashboard01
+{
+}
+.dxeBase_DevDashboard01
+{
+	font: 11px Arial, Geneva, sans-serif;
+}
+/* -- ErrorFrame -- */
+.dxeErrorCell_DevDashboard01
+{
+	font: 11px Arial, Geneva, sans-serif;
+	color: Red;
+    border-color: black;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+.dxeErrorFrameWithoutError_DevDashboard01
+{
+	border: 1px solid Red;
+}
+.dxeErrorFrameWithoutError_DevDashboard01 .dxeControlsCell_DevDashboard01,
+.dxeErrorFrameWithoutError_DevDashboard01.dxeControlsCell_DevDashboard01
+{
+	padding: 2px;
+}
+
+.dxeEditArea_DevDashboard01
+{
+	border-top: 1px solid #9da0aa;
+	border-right: 1px solid #c2c4cb;
+	border-bottom: 1px solid #d9dae0;
+	border-left: 1px solid #c2c4cb;
+}
+body input.dxeEditArea_DevDashboard01 /*Bootstrap correction*/
+{
+    color: black;
+}
+input[type="text"].dxeEditArea_DevDashboard01, /*Bootstrap correction*/
+input[type="password"].dxeEditArea_DevDashboard01 /*Bootstrap correction*/
+{
+    margin-top: 0;
+    margin-bottom: 1px;
+}
+
+.dxFirefox input[type="text"].dxeEditArea_DevDashboard01,
+.dxFirefox input[type="password"].dxeEditArea_DevDashboard01
+{
+	margin-top: -1px;
+    margin-bottom: 0;
+}
+
+/* -- Buttons -- */
+.dxeButtonEditButton_DevDashboard01,
+.dxeCalendarButton_DevDashboard01,
+.dxeSpinIncButton_DevDashboard01,
+.dxeSpinDecButton_DevDashboard01,
+.dxeSpinLargeIncButton_DevDashboard01,
+.dxeSpinLargeDecButton_DevDashboard01,
+.dxeColorEditButton_DevDashboard01
+{
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.dxeCalendarButton_DevDashboard01,
+.dxeColorEditButton_DevDashboard01
+{
+	border-style: solid;
+	border-color: #a9acb5;
+}
+.dxeButtonEditButton_DevDashboard01
+{
+	border-style: solid;
+	border-color: Transparent;
+	-border-color: White;
+}
+.dxeButtonEditButton_DevDashboard01.dxeButtonEditButtonHover_DevDashboard01
+{
+	border-color: #c0c9e3;
+}
+.dxeButtonEditButton_DevDashboard01.dxeButtonEditButtonPressed_DevDashboard01
+{
+	border-color: #c2c4cb;
+}
+.dxeButtonEditButton_DevDashboard01.dxeDisabled_DevDashboard01
+{
+	border-color: Transparent;
+	-border-color: White;
+}
+
+.dxeCalendarButton_DevDashboard01,
+.dxeColorEditButton_DevDashboard01
+{
+	border-width: 1px;
+}
+.dxeButtonEditButton_DevDashboard01
+{
+	border-top-width: 0;
+	border-right-width: 0;
+	border-bottom-width: 0;
+	border-left-width: 1px;
+}
+.dxeButtonEdit_DevDashboard01 .dxeButtonLeft
+{
+	border-top-width: 0;
+	border-right-width: 1px;
+	border-bottom-width: 0;
+	border-left-width: 0;
+}
+.dxeSpinIncButton_DevDashboard01,
+.dxeSpinDecButton_DevDashboard01,
+.dxeSpinLargeIncButton_DevDashboard01,
+.dxeSpinLargeDecButton_DevDashboard01
+{
+	border-width: 0;
+}
+
+.dxeButtonEditButton_DevDashboard01,
+.dxeSpinLargeIncButton_DevDashboard01,
+.dxeSpinLargeDecButton_DevDashboard01,
+.dxeSpinIncButton_DevDashboard01,
+.dxeSpinDecButton_DevDashboard01
+{
+	background: White none;
+}
+
+.dxeButtonEditButton_DevDashboard01 
+{
+	padding: 3px 2px 3px 3px;
+}
+.dxeSpinIncButton_DevDashboard01
+{
+	padding: 2px 5px 2px 5px;
+}
+.dxeSpinDecButton_DevDashboard01
+{
+	padding: 3px 5px 2px 5px;
+}
+.dxeSpinLargeIncButton_DevDashboard01,
+.dxeSpinLargeDecButton_DevDashboard01
+{
+	padding: 6px 4px 6px 4px;
+}
+
+.dxeCalendarButton_DevDashboard01,
+.dxeColorEditButton_DevDashboard01
+{
+	background: #ebedf2 url('edtBtnBack.png') repeat-x left top;
+	padding: 3px 11px 4px;
+	min-width: 37px;
+}
+
+
+.dxeButtonEditButton_DevDashboard01.dxeButtonEditClearButton_DevDashboard01,
+.dxeButtonEditButton_DevDashboard01.dxeButtonEditClearButton_DevDashboard01:hover
+{
+    background: none;
+    border-width: 0;
+    padding-top: 2px;
+}
+
+/* -- Pressed -- */
+.dxeCalendarButtonPressed_DevDashboard01,
+.dxeColorEditButton_DevDashboard01:active
+{
+	color: #3c3c3c;
+	border-color: #9da0aa;
+	background: #dbdde2 url('edtBtnPBack.png') repeat-x left top;
+}
+.dxeButtonEditButtonPressed_DevDashboard01,
+.dxeSpinIncButtonPressed_DevDashboard01,
+.dxeSpinDecButtonPressed_DevDashboard01,
+.dxeSpinLargeIncButtonPressed_DevDashboard01, 
+.dxeSpinLargeDecButtonPressed_DevDashboard01
+{
+	background: #e3e5e8 url('edtDropDownBtnPBack.png') repeat-x left top;
+}
+
+/* -- Hover -- */
+.dxeCalendarButtonHover_DevDashboard01,
+.dxeColorEditButton_DevDashboard01:hover
+{
+	border-color: #a9acb5;
+}
+.dxeCalendarButtonHover_DevDashboard01,
+.dxeColorEditButton_DevDashboard01:hover
+{
+	background: #dde6fe url('edtBtnHBack.png') repeat-x left top;
+}
+.dxeButtonEditButtonHover_DevDashboard01,
+.dxeSpinIncButtonHover_DevDashboard01,
+.dxeSpinDecButtonHover_DevDashboard01,
+.dxeSpinLargeIncButtonHover_DevDashboard01,
+.dxeSpinLargeDecButtonHover_DevDashboard01
+{
+	background: #e6edfe url('edtDropDownBtnHBack.png') repeat-x left top;
+}
+
+.dxeButtonEdit_DevDashboard01
+{
+	background-color: white;
+	border-top: 1px solid #9da0aa;
+	border-right: 1px solid #c2c4cb;
+	border-bottom: 1px solid #d9dae0;
+	border-left: 1px solid #c2c4cb;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    font: 11px Arial, Geneva, sans-serif;
+}
+.dxIE.dxBrowserVersion-7 .dxeButtonEdit_DevDashboard01
+{
+	border-collapse: expression(cellSpacing='0');
+}
+.dxeButtonEdit_DevDashboard01 td.dxic
+{
+    padding: 3px 3px 2px 3px;
+}
+.dxIE.dxBrowserVersion-7 .dxeTextBox_DevDashboard01 td.dxic
+{
+	padding: 2px 3px 0px 3px;
+}
+.dxIE.dxBrowserVersion-7 *[dir="rtl"].dxeTextBox_DevDashboard01 td.dxic {
+    padding-right: 2px;
+}
+.dxIE.dxBrowserVersion-7 *[dir="rtl"].dxeButtonEdit_DevDashboard01 td.dxic {
+    padding-right: 3px;
+}
+.dxeButtonEdit_DevDashboard01 .dxeEditArea_DevDashboard01
+{
+	background-color: white;
+}
+.dxeButtonEdit_DevDashboard01 .dxeIIC,
+.dxeButtonEdit_DevDashboard01 .dxeIICR
+{
+	padding: 1px;
+}
+.dxeButtonEdit_DevDashboard01 .dxeIIC img
+{
+	padding-left: 3px;
+}
+.dxeButtonEdit_DevDashboard01 .dxeIICR img
+{
+	padding-right: 3px;
+}
+
+.dxeTextBox_DevDashboard01
+{
+	background-color: white;
+	border-top: 1px solid #9da0aa;
+	border-right: 1px solid #c2c4cb;
+	border-bottom: 1px solid #d9dae0;
+	border-left: 1px solid #c2c4cb;
+
+    font: 11px Arial, Geneva, sans-serif;
+}
+.dxeTextBox_DevDashboard01 .dxeEditArea_DevDashboard01
+{
+	background-color: white;
+}
+.dxeRadioButtonList_DevDashboard01,
+.dxeCheckBoxList_DevDashboard01
+{
+	border-top: 1px solid #9da0aa;
+	border-right: 1px solid #c2c4cb;
+	border-bottom: 1px solid #d9dae0;
+	border-left: 1px solid #c2c4cb;
+}
+
+.dxeCheckBoxList_DevDashboard01 .dxe > table,
+.dxeRadioButtonList_DevDashboard01 .dxe > table 
+{
+    width: 100%;
+}
+
+.dxeRadioButtonList_DevDashboard01,
+.dxeCheckBoxList_DevDashboard01
+{
+	font: 11px Arial, Geneva, sans-serif;
+}
+.dxeRadioButtonList_DevDashboard01 td.dxe,
+.dxeCheckBoxList_DevDashboard01 td.dxe
+{
+	padding: 7px 5px 6px 11px;
+}
+.dxeRadioButtonList_DevDashboard01[dir='rtl'] td.dxe,
+.dxeCheckBoxList_DevDashboard01[dir='rtl'] td.dxe
+{
+	padding: 7px 11px 6px 5px;
+}
+
+/* Disabled */
+.dxeDisabled_DevDashboard01 .dxeButtonEditButton_DevDashboard01,
+.dxeDisabled_DevDashboard01 .dxeSpinIncButton_DevDashboard01,
+.dxeDisabled_DevDashboard01 .dxeSpinDecButton_DevDashboard01,
+.dxeDisabled_DevDashboard01 .dxeSpinLargeIncButton_DevDashboard01,
+.dxeDisabled_DevDashboard01 .dxeSpinLargeDecButton_DevDashboard01
+{
+	background: White none;
+}
+
+/* -- Memo -- */
+.dxeMemo_DevDashboard01
+{
+	background-color: white;
+	border-top: 1px solid #9da0aa;
+	border-right: 1px solid #c2c4cb;
+	border-bottom: 1px solid #d9dae0;
+	border-left: 1px solid #c2c4cb;
+
+    font: 11px Arial, Geneva, sans-serif;
+}
+.dxeMemoEditArea_DevDashboard01
+{
+    outline: none;
+	background-color: white;
+}
+
+/* -- Hyperlink -- */
+.dxeHyperlink_DevDashboard01
+{
+	font: 11px Arial, Geneva, sans-serif;
+	color: #1b3f91;
+	text-decoration: none;
+}
+a.dxeHyperlink_DevDashboard01:hover
+{
+	text-decoration: underline;
+}
+a.dxeHyperlink_DevDashboard01:visited
+{
+	color: #8684ed;
+}
+
+/* -- ListBox -- */
+.dxeListBox_DevDashboard01
+{
+	color: #201f35;
+	font: 11px Arial, Geneva, sans-serif;
+	background-color: white;
+	border-top: 1px solid #9da0aa;
+	border-right: 1px solid #c2c4cb;
+	border-bottom: 1px solid #d9dae0;
+	border-left: 1px solid #c2c4cb;
+	width: 70px;
+	height: 109px;
+}
+.dxeListBox_DevDashboard01 div.dxlbd
+{
+	height: 108px;
+}
+.dxeListBoxItemRow_DevDashboard01
+{
+	cursor: default;
+}
+.dxeListBoxItem_DevDashboard01
+{
+	padding: 2px 5px;
+	white-space: nowrap;
+	text-align: left;
+	border-width: 0;
+}
+.dxeListBoxItem_DevDashboard01 em
+{
+	background: #e2eafd none repeat 0 0;
+	color: #201f35;
+	font-weight: bold;
+	font-style: normal;
+}
+
+.dxeListBox_DevDashboard01 td.dxeI,
+.dxeListBox_DevDashboard01 td.dxeIM,
+.dxeListBox_DevDashboard01 .dxeHIC, 
+.dxeListBox_DevDashboard01 td.dxeFTM,
+.dxeListBox_DevDashboard01 td.dxeTM,
+.dxeListBox_DevDashboard01 td.dxeC,
+.dxeListBox_DevDashboard01 td.dxeCM,
+.dxeListBox_DevDashboard01 td.dxeHCC,
+.dxeListBox_DevDashboard01 td.dxeMI,
+.dxeListBox_DevDashboard01 td.dxeMIM
+{
+	border-right-width: 0!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeIR,
+.dxeListBox_DevDashboard01 td.dxeIMR,
+.dxeListBox_DevDashboard01 .dxeHICR, 
+.dxeListBox_DevDashboard01 td.dxeFTMR,
+.dxeListBox_DevDashboard01 td.dxeTMR,
+.dxeListBox_DevDashboard01 td.dxeCR,
+.dxeListBox_DevDashboard01 td.dxeCMR,
+.dxeListBox_DevDashboard01 td.dxeHCCR,
+.dxeListBox_DevDashboard01 td.dxeMIR,
+.dxeListBox_DevDashboard01 td.dxeMIMR
+{
+	border-left-width: 0!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeCM,
+.dxeListBox_DevDashboard01 td.dxeHCC,
+.dxeListBox_DevDashboard01 td.dxeCMR,
+.dxeListBox_DevDashboard01 td.dxeHCCR
+{
+	width: 31px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.dxIE.dxBrowserVersion-7 .dxeListBox_DevDashboard01 td.dxeCM,
+.dxIE.dxBrowserVersion-7 .dxeListBox_DevDashboard01 td.dxeHCC,
+.dxIE.dxBrowserVersion-7 .dxeListBox_DevDashboard01 td.dxeCMR,
+.dxIE.dxBrowserVersion-7 .dxeListBox_DevDashboard01 td.dxeHCCR
+{
+	width: 21px;
+}
+
+.dxeListBox_DevDashboard01 td.dxeIM,
+.dxeListBox_DevDashboard01 td.dxeIMR
+{
+	width: 0;
+}
+.dxeListBox_DevDashboard01 td.dxeC
+{
+	padding-right: 3px!important;
+}
+.dxeListBox_DevDashboard01 td.dxeCR
+{
+	padding-left: 3px!important;
+}
+.dxeListBox_DevDashboard01 td.dxeC > span,
+.dxeListBox_DevDashboard01 td.dxeCM > span
+{
+    margin: 2px 2px 2px 3px;
+}
+.dxeListBox_DevDashboard01 td.dxeCR > span,
+.dxeListBox_DevDashboard01 td.dxeCMR > span
+{
+    margin: 2px 3px 2px 2px;
+}
+.dxeListBox_DevDashboard01 td.dxeT
+{
+	width: 100%;
+	padding-left: 0!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeTR
+{
+	width: 100%;
+	padding-right: 0!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeT,
+.dxeListBox_DevDashboard01 td.dxeMI
+{
+	border-left-width: 0!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeTR,
+.dxeListBox_DevDashboard01 td.dxeMIR
+{
+	border-right-width: 0!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeFTM,
+.dxeListBox_DevDashboard01 td.dxeTM,
+.dxeListBox_DevDashboard01 td.dxeLTM,
+.dxeListBox_DevDashboard01 .dxeHFC,
+.dxeListBox_DevDashboard01 .dxeHC,
+.dxeListBox_DevDashboard01 .dxeHLC,
+.dxeListBox_DevDashboard01 td.dxeFTMR,
+.dxeListBox_DevDashboard01 td.dxeTMR,
+.dxeListBox_DevDashboard01 td.dxeLTMR,
+.dxeListBox_DevDashboard01 .dxeHFCR,
+.dxeListBox_DevDashboard01 .dxeHCR,
+.dxeListBox_DevDashboard01 .dxeHLCR
+{
+	overflow: hidden;
+}
+
+.dxeListBox_DevDashboard01 td.dxeFTM,
+.dxeListBox_DevDashboard01 td.dxeTM,
+.dxeListBox_DevDashboard01 .dxeHFC,
+.dxeListBox_DevDashboard01 .dxeHC
+{
+	padding-right: 6px!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeFTMR,
+.dxeListBox_DevDashboard01 td.dxeTMR,
+.dxeListBox_DevDashboard01 .dxeHFCR,
+.dxeListBox_DevDashboard01 .dxeHCR
+{
+	padding-left: 6px!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeLTM,
+.dxeListBox_DevDashboard01 td.dxeTM,
+.dxeListBox_DevDashboard01 .dxeHC,
+.dxeListBox_DevDashboard01 .dxeHLC
+{
+	padding-left: 6px!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeLTMR,
+.dxeListBox_DevDashboard01 td.dxeTMR,
+.dxeListBox_DevDashboard01 .dxeHCR,
+.dxeListBox_DevDashboard01 .dxeHLCR
+{
+	padding-right: 6px!important;
+}
+
+.dxeListBox_DevDashboard01 .dxeFTM,
+.dxeListBox_DevDashboard01 .dxeTM,
+.dxeListBox_DevDashboard01 .dxeHFC,
+.dxeListBox_DevDashboard01 .dxeHC,
+.dxeListBox_DevDashboard01 .dxeLTM,
+.dxeListBox_DevDashboard01 .dxeTM,
+.dxeListBox_DevDashboard01 .dxeHC,
+.dxeListBox_DevDashboard01 .dxeHLC,
+.dxeListBox_DevDashboard01 td.dxeIM,
+.dxeListBox_DevDashboard01 td.dxeFTM,
+.dxeListBox_DevDashboard01 td.dxeTM,
+.dxeListBox_DevDashboard01 td.dxeCM,
+.dxeListBox_DevDashboard01 td.dxeMIM,
+.dxeListBox_DevDashboard01 .dxeFTMR,
+.dxeListBox_DevDashboard01 .dxeTMR,
+.dxeListBox_DevDashboard01 .dxeHFCR,
+.dxeListBox_DevDashboard01 .dxeHCR,
+.dxeListBox_DevDashboard01 .dxeLTMR,
+.dxeListBox_DevDashboard01 .dxeTMR,
+.dxeListBox_DevDashboard01 .dxeHCR,
+.dxeListBox_DevDashboard01 .dxeHLCR,
+.dxeListBox_DevDashboard01 td.dxeIMR,
+.dxeListBox_DevDashboard01 td.dxeFTMR,
+.dxeListBox_DevDashboard01 td.dxeTMR,
+.dxeListBox_DevDashboard01 td.dxeCMR,
+.dxeListBox_DevDashboard01 td.dxeMIMR
+{
+	border-top-width: 0;
+	border-bottom-width: 0;
+}
+
+/*Grid lines*/
+
+.dxeListBox_DevDashboard01 td.dxeLTM,
+.dxeListBox_DevDashboard01 td.dxeTM,
+.dxeListBox_DevDashboard01 td.dxeMIM
+{
+	border-left: 1px solid #d9dae0!important;
+}
+.dxeListBox_DevDashboard01 td.dxeLTM 
+{
+	border-right: 1px solid Transparent!important;
+}
+.dxeListBox_DevDashboard01 td.dxeLTMR,
+.dxeListBox_DevDashboard01 td.dxeTMR,
+.dxeListBox_DevDashboard01 td.dxeMIMR
+{
+	border-right: 1px solid #d9dae0!important;
+}
+
+.dxeListBox_DevDashboard01 td.dxeIM,
+.dxeListBox_DevDashboard01 td.dxeFTM,
+.dxeListBox_DevDashboard01 td.dxeTM,
+.dxeListBox_DevDashboard01 td.dxeLTM,
+.dxeListBox_DevDashboard01 td.dxeCM,
+.dxeListBox_DevDashboard01 td.dxeMIM,
+.dxeListBox_DevDashboard01 td.dxeIMR,
+.dxeListBox_DevDashboard01 td.dxeFTMR,
+.dxeListBox_DevDashboard01 td.dxeTMR,
+.dxeListBox_DevDashboard01 td.dxeLTMR,
+.dxeListBox_DevDashboard01 td.dxeCMR,
+.dxeListBox_DevDashboard01 td.dxeMIMR
+{
+	border-bottom: 1px solid #d9dae0;
+}
+
+.dxeListBoxItemSelected_DevDashboard01     
+{
+	color: #201f35;
+	background: #eff0f2 none;
+}
+.dxeListBoxItemHover_DevDashboard01        
+{
+	color: #201f35;
+	background: #e2eafd none;
+}
+.dxeListBoxItemHover_DevDashboard01 em,
+.dxeListBoxItemSelected_DevDashboard01 em
+{
+	background-image: none;
+}
+
+/*Header*/
+
+.dxeListBox_DevDashboard01 .dxeHD
+{
+	background: #f3f3f4 url('lbHeaderBack.png') repeat-x left top;
+	border-bottom: 1px solid #abacb9;
+}
+.dxeHD .dxeListBoxItem_DevDashboard01
+{
+	color: #201f35;
+	border-top-width: 0;
+	border-right-width: 1px;
+	border-bottom-width: 0;
+	border-left-width: 1px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.dxeListBox_DevDashboard01 .dxeHC,
+.dxeListBox_DevDashboard01 .dxeHLC,
+.dxeListBox_DevDashboard01 td.dxeHMIC
+{
+	border-left: 1px solid #cacbd3;
+}
+
+.dxeListBox_DevDashboard01 .dxeHCR,
+.dxeListBox_DevDashboard01 .dxeHLCR,
+.dxeListBox_DevDashboard01 td.dxeHMICR
+{
+	border-right: 1px solid #cacbd3;
+	text-align: right;
+}
+
+.dxeListBox_DevDashboard01 .dxeHIC,
+.dxeListBox_DevDashboard01 .dxeHFC,
+.dxeListBox_DevDashboard01 .dxeHCC
+{
+}
+
+.dxeListBox_DevDashboard01 .dxeHICR,
+.dxeListBox_DevDashboard01 .dxeHFCR,
+.dxeListBox_DevDashboard01 .dxeHCCR
+{
+}
+
+.dxeListBox_DevDashboard01 .dxeHFC,
+.dxeListBox_DevDashboard01 .dxeHC,
+.dxeListBox_DevDashboard01 .dxeHMIC
+{
+	border-right-width: 0;
+}
+
+.dxeListBox_DevDashboard01 .dxeHFCR,
+.dxeListBox_DevDashboard01 .dxeHCR,
+.dxeListBox_DevDashboard01 .dxeHMICR
+{
+	border-left-width: 0;
+	text-align: right;
+}
+
+.dxeListBox_DevDashboard01 .dxeHLC
+{
+	border-right: 1px solid #cacbd3;
+}
+
+.dxeListBox_DevDashboard01 .dxeHLCR
+{
+	border-left: 1px solid #cacbd3;
+	text-align: right;
+}
+
+/* -- Calendar -- */
+.dxeCalendar_DevDashboard01
+{
+    font: 11px Arial, Geneva, sans-serif;
+	font-weight: normal;
+	color: #201f35;
+	border: 1px solid #9da0aa;
+	background-color: White;
+	cursor: default;
+}
+.dxeCalendar_DevDashboard01 td.dxMonthGrid
+{
+	padding: 1px 8px;
+}
+.dxeCalendar_DevDashboard01 td.dxMonthGridWithWeekNumbers
+{
+	padding: 1px 20px 6px 8px;
+}
+.dxeCalendar_DevDashboard01 td.dxMonthGridWithWeekNumbersRtl
+{
+	padding: 1px 8px 1px 20px;
+}
+.dxeCalendarDayHeader_DevDashboard01
+{
+	padding: 2px 4px 6px;
+	border-bottom: 1px solid #d7d8dd;
+}
+.dxeCalendarWeekNumber_DevDashboard01
+{
+	font-size: 0.82em;
+	text-align: right;
+	padding: 3px 8px 2px 4px;
+	color: #cccccc;
+}
+.dxeCalendarDay_DevDashboard01
+{
+	padding: 2px 5px 3px;
+	text-align: center;
+}
+.dxeCalendarWeekend_DevDashboard01        
+{
+	color: #c00000;
+}
+.dxeCalendarOtherMonth_DevDashboard01     
+{
+	color: #cccccc;
+}
+.dxeCalendarOutOfRange_DevDashboard01     
+{
+	color: #cccccc;
+}
+.dxeCalendarDayDisabled_DevDashboard01 {
+	background-color: #fcfdfe;
+	color: #ecedee!important;
+}
+.dxeCalendarToday_DevDashboard01         
+{
+	border: 1px solid #c95c05;
+    padding: 1px 4px 2px;
+}
+.dxeCalendarSelected_DevDashboard01       
+{
+	color: #201f35;
+	background-color: #e2eafd;
+}
+.dxeDayInRange.dxeCalendarSelected_DevDashboard01
+{
+    background-color: #f6f9fe;
+}
+.dxeCalendarHeader_DevDashboard01
+{
+	border-style: none;
+	padding: 4px 4px 12px;
+}
+.dxeCalendarHeader_DevDashboard01 td.dxe
+{
+	text-align: center;
+	cursor: pointer;
+}
+.dxeCalendarHeader_DevDashboard01 .dxeCHS
+{
+    min-width: 1px;
+}
+.dxIE.dxBrowserVersion-7 .dxeCalendarHeader_DevDashboard01 .dxeCHS {
+	width: 1px;
+}
+.dxeCalendarFooter_DevDashboard01
+{
+	background-color: White;
+	padding: 11px 0;
+}
+.dxeCalendarFooter_DevDashboard01 .dxeCFS
+{
+    min-width: 12px;
+    *width: 12px;
+}
+.dxeCalendarFastNav_DevDashboard01
+{
+	color: #201f35;
+	background: White none;
+	border-top: 1px solid #9da0aa;
+	border-right: 1px solid #9da0aa;
+	border-bottom: 0 solid #9da0aa;
+	border-left: 1px solid #9da0aa;
+	padding: 5px 8px;
+	cursor: default;
+}
+.dxeCalendarFastNavMonthArea_DevDashboard01
+{
+	padding: 0px 9px;
+}
+.dxeCalendarFastNavYearArea_DevDashboard01
+{
+    padding-top: 8px;
+}
+.dxeCalendarFastNavFooter_DevDashboard01
+{
+	color: #201f35;
+	background: White none;
+	padding: 8px 0 17px;
+	border-top: 0 solid #d7d8dd;
+	border-right: 1px solid #9da0aa;
+	border-bottom: 1px solid #9da0aa;
+	border-left: 1px solid #9da0aa;
+}
+.dxeCalendarFastNavFooter_DevDashboard01 .dxeCFNFS
+{
+    min-width: 11px;
+    *width: 11px;
+}
+.dxeCalendarFastNavMonth_DevDashboard01,
+.dxeCalendarFastNavYear_DevDashboard01
+{
+	color: #201f35;
+	padding: 3px 5px;
+	text-align: center;
+	cursor: pointer;
+}
+.dxeCalendarFastNavYear_DevDashboard01
+{
+	padding: 3px 5px;
+}
+.dxeCalendarFastNavMonth_DevDashboard01
+{
+	padding: 6px;
+}
+
+.dxeCalendarFastNavMonthHover_DevDashboard01,
+.dxeCalendarFastNavYearHover_DevDashboard01
+{
+	color: #201f35;
+	background: #f3ebfe none;
+	border-width: 0;
+}
+.dxeCalendarFastNavYearHover_DevDashboard01,
+.dxeCalendarFastNavYearSelected_DevDashboard01
+{
+	padding: 3px 5px;
+}
+.dxeCalendarFastNavMonthHover_DevDashboard01,
+.dxeCalendarFastNavMonthSelected_DevDashboard01
+{
+	padding: 6px;
+}
+.dxeCalendarFastNavMonthSelected_DevDashboard01,
+.dxeCalendarFastNavYearSelected_DevDashboard01
+{
+	color: #201f35;
+	background-color: #e2eafd;
+}
+.dxeDateEditTimeEditCell_DevDashboard01
+{
+    padding: 7px 34px 9px;
+    width: 100px;
+}
+.dxeDateEditClockCell_DevDashboard01
+{
+    padding: 14px 24px 0;
+}
+.dxeCalendarFooter_DevDashboard01.dxeDETSF
+{
+    padding-left: 11px;
+    padding-right: 11px;
+}
+.dxeCalendarHeader_DevDashboard01.dxeDETSH
+{
+    display: none;
+}
+
+/* Disabled */
+.dxeDisabled_DevDashboard01,
+.dxeDisabled_DevDashboard01 td.dxe
+{
+	color: #b1b1b8;
+	cursor: default;
+}
+.dxeEditArea_DevDashboard01.dxeDisabled_DevDashboard01 /*Bootstrap correction*/
+{
+    color: #b1b1b8;
+}
+a.dxeDisabled_DevDashboard01:hover
+{
+	color: #b1b1b8;
+}
+.dxeButtonDisabled_DevDashboard01
+{
+	color: #b1b1b8;
+	cursor: default;
+}
+/* -- Button -- */
+.dxbButton_DevDashboard01
+{
+	color: #201f35;
+	font: 11px Arial, Geneva, sans-serif;
+	border: 1px solid #a9acb5;
+	background: #ebedf2 url('edtBtnBack.png') repeat-x left top;
+	padding: 1px;
+}
+.dxbButtonHover_DevDashboard01
+{
+	color: #201f35;
+	background: #dde6fe url('edtBtnHBack.png') repeat-x left top;
+	border: 1px solid #a9acb5;
+}
+.dxbButtonChecked_DevDashboard01
+{
+	color: #3c3c3c;
+	background: #dbdde2 url('edtBtnPBack.png') repeat-x left top;
+	border: 1px solid #9da0aa;
+}
+.dxbButtonPressed_DevDashboard01
+{
+	color: #3c3c3c;
+	background: #dbdde2 url('edtBtnPBack.png') repeat-x left top;
+	border: 1px solid #9da0aa;
+}
+.dxbButton_DevDashboard01 div.dxb
+{
+	padding: 2px 14px;
+	border: 1px dotted transparent;
+}
+.dxbButton_DevDashboard01 div.dxbf
+{
+	border: 1px dotted black;
+}
+/* Button Link */
+a.dxbButton_DevDashboard01
+{
+	color: #1b3f91;
+	text-decoration: none;
+}
+a.dxbButton_DevDashboard01:hover
+{
+	text-decoration: underline;
+}
+a.dxbButton_DevDashboard01:visited
+{
+	color: #8684ed;
+}
+/* Disabled */
+.dxbDisabled_DevDashboard01
+{
+	border-color: #e1e2e5;
+	background: #f8f9fa url('edtBtnDisabledBack.png') repeat-x left top;
+}
+.dxbDisabled_DevDashboard01,
+a.dxbButton_DevDashboard01.dxbDisabled_DevDashboard01
+{
+	color: #babac1;
+	cursor: default;
+    text-decoration: none;
+}
+/* -- FilterControl -- */
+.dxfcControl_DevDashboard01
+{
+	font: 11px Arial, Geneva, sans-serif;
+	color: #201f35;
+	padding: 0 1em;
+}
+.dxfcTable_DevDashboard01
+{
+	border-collapse: separate!important;
+}
+.dxfcTable_DevDashboard01 td.dxfc
+{
+	padding: 0px 0px 0px 3px;
+}
+a.dxfcPropertyName_DevDashboard01
+{
+	white-space: nowrap!important;
+	color: Blue!important;
+}
+a.dxfcGroupType_DevDashboard01
+{
+	white-space: nowrap!important;
+	padding: 0px 3px!important;
+	color: Red!important;
+}
+a.dxfcOperation_DevDashboard01
+{
+	white-space: nowrap!important;
+	color: Green!important;
+}
+a.dxfcValue_DevDashboard01
+{
+	white-space: nowrap!important;
+	color: Gray!important;
+}
+
+.dxeMaskHint_DevDashboard01
+{
+	font: 11px Arial, Geneva, sans-serif;
+	color: Black;
+	background: #ffffe1 none;
+	padding: 2px 5px 3px;
+	border: 1px solid Black;
+}
+
+.dxfcControl_DevDashboard01 ul.dxfc-tree,
+.dxfcControl_DevDashboard01 .dxfc-tree ul
+{
+    list-style-type: none;
+    margin: 0;
+    overflow-y: hidden;
+    padding: 0;
+}
+
+.dxfcControl_DevDashboard01 .dxfc-tree
+{
+    width: 100%;
+}
+
+.dxfcControl_DevDashboard01 .dxfc-subnd
+{
+    margin-left: 22px;
+}
+
+.dxfcControl_DevDashboard01 .dxfc > li > table
+{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.dxfcControl_DevDashboard01 .dxfc-elb
+{
+    float: left;
+    height: 21px;
+    vertical-align: top;
+    width: 26px;
+}
+
+.dxfcControl_DevDashboard01 .dxfc-clr
+{
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+    width: 0;
+}
+
+.dxfcControl_DevDashboard01 .dxfc-nd
+{
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 24px;
+    outline: 0 none;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.dxfcControl_DevDashboard01 .dxfc-nd > tbody > tr > td > a,
+.dxfcControl_DevDashboard01 .dxfc-nd > tbody > tr > td > span,
+.dxfcControl_DevDashboard01 .dxfc-nd > tbody > tr > td > img,
+.dxfcControl_DevDashboard01 .dxfc-editor
+{
+    vertical-align: middle;
+}
+
+.dxfcControl_DevDashboard01 .dxfc-nd > tbody > tr > td > a,
+.dxfcControl_DevDashboard01 .dxfc-nd > tbody > tr > td > td,
+.dxfcControl_DevDashboard01 .dxfc-nd > tbody > tr > td > span
+{
+    padding: 0 0.1ex;
+}
+
+.dxfcControl_DevDashboard01 .dxfc-nd > tbody > tr > td > a
+{
+    line-height: 24px;
+}
+
+.dxfcControl_DevDashboard01 .dxfc-ln
+{
+    vertical-align: top;
+}
+/* -- ProgressBar -- */
+.dxeProgressBar_DevDashboard01
+{
+	background: #f3f4f5 url('edtProgressBack.png') repeat-x left top;
+	border: 1px solid #b9bac3;
+	font: 11px Arial, Geneva, sans-serif;
+	color: #201f35;
+    height: 21px;
+}
+.dxeProgressBar_DevDashboard01 .dxePBMainCell,
+.dxeProgressBar_DevDashboard01 td.dxe
+{
+	padding: 0;
+}
+.dxeProgressBarIndicator_DevDashboard01
+{
+	background: #edd0f4 url('edtProgressIndicatorBack.png') repeat-x left top;
+}
+
+/* -- DropDownWindow -- */
+.dxpcDropDown_DevDashboard01,
+.dxeDropDownWindow_DevDashboard01
+{
+    font: 11px Arial, Geneva, sans-serif;
+}
+.dxeDropDownWindow_DevDashboard01
+{
+	background-color: white;
+	border: 1px solid #9da0aa;
+}
+
+/*----------------- ColorTable -----------------*/
+.dxeColorIndicator_DevDashboard01
+{
+	border: 1px solid #9da0aa;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+.dxeItemPicker_DevDashboard01
+{
+	background-color: White;
+	border: 1px solid #9da0aa;
+}
+.dxeColorTable_DevDashboard01 td.dx,
+.dxeItemPicker_DevDashboard01 td.dx
+{
+	padding: 4px;
+}
+.dxeColorTableCell_DevDashboard01,
+.dxeItemPickerCell_DevDashboard01
+{
+	padding: 3px;
+	cursor: pointer;
+}
+.dxeColorTableCellDiv_DevDashboard01
+{
+	border: 1px solid #808080;
+	width: 12px;
+	height: 12px;
+	font-size: 0;
+}
+.dxeColorTableCellSelected_DevDashboard01
+{
+	padding: 2px!important;
+	background: #e9eaee url('../Web/mItemSBack.png') repeat-x left top;
+	border: 1px solid #9da0aa;
+}
+.dxeColorTableCellHover_DevDashboard01,
+.dxeItemPickerCellHover_DevDashboard01
+{
+	padding: 2px!important;
+	background: #e3ebff url('../Web/mSubItemHBack.png') repeat-x left top;
+	border: 1px solid #a6a9b2;
+}
+
+/* -- Invalid Style -- */
+.dxeInvalid_DevDashboard01
+{
+}
+.dxeInvalid_DevDashboard01 .dxeEditArea_DevDashboard01,
+.dxeInvalid_DevDashboard01 .dxeMemoEditArea_DevDashboard01
+{
+}
+
+/* -- Focused Style -- */
+.dxeFocused_DevDashboard01
+{
+	border-top: 1px solid #434756;
+	border-right: 1px solid #7d808d;
+	border-bottom: 1px solid #aaacb9;
+	border-left: 1px solid #7d808d;
+}
+
+.dxeFocused_DevDashboard01.dxeTrackBar_DevDashboard01
+{	
+	border: 0px;
+}
+
+/* -- Null Text Style -- */
+.dxeNullText_DevDashboard01 .dxeEditArea_DevDashboard01,
+.dxeNullText_DevDashboard01 .dxeMemoEditArea_DevDashboard01
+{
+	color: #b1b1b8;
+}
+
+/* -- Captcha -- */
+.dxcaControl_DevDashboard01 
+{
+    font: 11px Arial, Geneva, sans-serif;
+}
+
+.dxcaRefreshButton_DevDashboard01
+{
+	color: #1b3f91;
+	text-decoration: none;
+}
+
+.dxcaDisabledRefreshButton_DevDashboard01
+{
+	color: #b1b1b8;
+}
+
+.dxcaRefreshButtonCell_DevDashboard01
+{
+	padding-left: 2px;
+}
+
+.dxcaRefreshButtonText_DevDashboard01
+{
+}
+
+.dxcaDisabledRefreshButtonText_DevDashboard01
+{
+}
+
+.dxcaTextBoxCell_DevDashboard01,
+.dxcaTextBoxCellNoIndent_DevDashboard01
+{
+}
+
+.dxcaTextBoxCell_DevDashboard01 .dxeErrorCell_DevDashboard01
+{
+}
+
+.dxcaTextBoxCellNoIndent_DevDashboard01 .dxeErrorCell_DevDashboard01
+{
+	padding-left: 0px;
+	padding-top: 4px;
+	color: Red;
+}
+
+.dxcaTextBoxLabel_DevDashboard01
+{
+	padding-bottom: 4px;
+	display: block;
+}
+
+.dxcaLoadingPanel_DevDashboard01
+{
+	font: 11px Arial, Geneva, sans-serif;
+	color: #201f35;
+	background: White none;
+	border: 1px solid #9da0aa;
+}
+
+.dxcaLoadingPanel_DevDashboard01 td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 7px 10px;
+}
+.dxcaLoadingPanel_DevDashboard01 .dxlp-loadingImage 
+{
+	margin:0px;
+}
+
+.dxpcLite_DevDashboard01 .dxHFBPS
+{
+    width: 6px;
+}
+
+.dxeTextBox_DevDashboard01,
+.dxeButtonEdit_DevDashboard01,
+.dxeIRadioButton_DevDashboard01,
+.dxeRadioButtonList_DevDashboard01,
+.dxeCheckBoxList_DevDashboard01
+{
+    cursor: default;
+}
+
+/* Removes flicking in iOS Safari*/
+.dxeTrackBar_DevDashboard01, 
+.dxeIRadioButton_DevDashboard01, 
+.dxeButtonEdit_DevDashboard01, 
+.dxeTextBox_DevDashboard01, 
+.dxeRadioButtonList_DevDashboard01, 
+.dxeCheckBoxList_DevDashboard01, 
+.dxeMemo_DevDashboard01, 
+.dxeListBox_DevDashboard01, 
+.dxeCalendar_DevDashboard01, 
+.dxeColorTable_DevDashboard01
+{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/*B232817*/
+.dxIE.dxBrowserVersion-9 .dxeEditArea_DevDashboard01,
+.dxIE.dxBrowserVersion-10 .dxeEditArea_DevDashboard01
+{
+	padding-bottom: 1px;
+    margin-bottom: 0px;
+}
+.dxMacOSMobilePlatform .dxeEditArea_DevDashboard01
+{
+    padding-bottom: 2px!important;
+    margin-bottom: -1px!important;
+}
+
+/* ASPxCololrEdit */
+.dxcpParametersCellSys .dxcpWebColorInput_DevDashboard01
+{
+	float: right;
+	margin-top: 40px;
+}
+.dxIE.dxBrowserVersion-7 .dxcpParametersCellSys .dxcpWebColorInput_DevDashboard01
+{
+	margin-top: 35px;
+}
+.dxcpColorParameterMainDiv_DevDashboard01
+{
+	padding: 0px 0 4px 9px;
+	width: 90px;
+	text-align: right;
+}
+.dxeCustomColorButton_DevDashboard01
+{
+    padding-top: 3px;
+    padding-bottom: 3px;
+	margin: 3px 7px;
+	cursor: pointer;
+}
+.dxcpCurrentColor_DevDashboard01, 
+.dxcpSavedColor_DevDashboard01
+{
+	height: 35px;
+}
+.dxcpCurrentAndSaved_DevDashboard01
+{
+	width: 65px;
+	margin: 34px 0px 0px auto;
+	cursor: pointer;
+}
+.dxeColorTablesMainDiv_DevDashboard01,
+.dxeColorSelectorMainDiv_DevDashboard01
+{
+	background-color: #FFFFFF;
+}
+.dxeColorSelectorMainDiv_DevDashboard01
+{
+	padding: 7px;
+}
+.dxcpColorArea_DevDashboard01,
+.dxcpHueAreaImage_DevDashboard01,
+.dxcpCurrentAndSaved_DevDashboard01,
+.dxeColorTablesMainDiv_DevDashboard01,
+.dxeColorSelectorMainDiv_DevDashboard01,
+.dxcpParametersCell_DevDashboard01 input
+{
+	border: 1px solid #9da0aa;
+}
+.dxeButtonsPanelDiv_DevDashboard01
+{
+	margin-top: 15px;
+	text-align: right;
+}
+.dxeButtonsPanelDiv_DevDashboard01 input
+{
+	min-width: 61px;
+	margin-left: 10px;
+}
+
+/* -- ASPxTokenBox -- */
+input.dxeTokenBoxInput_DevDashboard01[type="text"] {
+	display: inline-block;
+	float: left;
+	outline: none;
+	width: 30px;
+	padding: 2px 0px 2px 0px;
+	margin: 0px 1px 1px 1px;
+}
+.dxeToken_DevDashboard01 {
+    display: inline-block;
+	float: left;
+	min-width: 30px;
+	margin: 0px 1px 1px 0px;
+}
+.dxeTokenText_DevDashboard01, .dxeTokenRemoveButton_DevDashboard01 {
+	display: block;
+	float: left;
+}
+.dxeTokenText_DevDashboard01 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0px 2px 0px 4px;
+	padding: 2px 0px 2px 0px;
+}
+.dxeTokenRemoveButton_DevDashboard01 {
+	cursor: pointer;
+	margin-top: 2px;
+}
+.dxeToken_DevDashboard01 {
+	background: #f4f4f4 url('edtTokenBoxTokenBackground.png') repeat-x top;
+}
+.dxeButtonEdit_DevDashboard01 td.dxictb {
+    padding: 1px 1px 0px 1px;
+	margin-bottom: 0px;
+}
+.dxIE.dxBrowserVersion-7 .dxeTokenText_DevDashboard01 {
+	padding: 4px 0px 3px 0px;
+}
+.dxIE.dxBrowserVersion-7 .dxeTokenRemoveButton_DevDashboard01 {
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+.dxeButtonEdit_DevDashboard01 td.dxictb {
+    padding: 0px;
+}
+.dxFirefox input.dxeTokenBoxInput_DevDashboard01[type="text"] {
+	padding: 1px 0px 1px 0px;
+}
+.dxFirefox .dxeTokenText_DevDashboard01 {
+	padding: 1px 0px 1px 0px;
+}
+
+/* Editor caption */
+.dxeCaptionCell_DevDashboard01
+{
+    font: 11px Arial, Geneva, sans-serif;
+    color: #201f35;
+    white-space: nowrap;
+    line-height: 16px;
+    height: 100%;
+}
+.dxeRoot_DevDashboard01
+{
+}
+.dxeCaption_DevDashboard01
+{
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeTextEditCTypeSys
+{
+    padding-top: 3px;
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeCheckBoxCTypeSys
+{
+    padding-top: 3px;
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeRadioButtonCTypeSys
+{
+    padding-top: 4px;
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeCheckBoxListCTypeSys
+{
+    padding-top: 11px;
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeRadioButtonListCTypeSys
+{
+    padding-top: 11px;
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeListBoxCTypeSys
+{
+    padding-top: 2px;
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeTrackBarCTypeSys
+{
+    padding-top: 2px;
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeProgressBarCTypeSys
+{
+    padding-top: 3px;
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeMemoCTypeSys
+{
+    padding-top: 3px;
+}
+.dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeCustomCTypeSys
+{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.dxIE.dxBrowserVersion-7 .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeCheckBoxCTypeSys
+{
+    padding-top: 2px;
+}
+.dxIE.dxBrowserVersion-7 .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeRadioButtonCTypeSys
+{
+    padding-top: 3px;
+}
+.dxIE.dxBrowserVersion-7 .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeCheckBoxListCTypeSys
+{
+    padding-top: 10px;
+}
+.dxIE.dxBrowserVersion-7 .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeRadioButtonListCTypeSys
+{
+    padding-top: 10px;
+}
+.dxIE.dxBrowserVersion-7 .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeListBoxCTypeSys
+{
+    padding-top: 1px;
+}
+.dxIE.dxBrowserVersion-7 .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeProgressBarCTypeSys
+{
+    padding-top: 2px;
+}
+.dxIE.dxBrowserVersion-7 .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeMemoCTypeSys
+{
+    padding-top: 2px;
+}
+
+.dxFirefox .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeTextEditCTypeSys,
+.dxFirefox .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeMemoCTypeSys,
+.dxFirefox .dxeCaptionCell_DevDashboard01.dxeCaptionVATSys.dxeProgressBarCTypeSys
+{
+    padding-top: 2px;
+}
+
+.dxeRequiredMark_DevDashboard01 {
+    color: green;
+    font-style: normal;
+}
+
+.dxeOptionalMark_DevDashboard01 {
+    color: gray;
+    font-style: normal;
+}
+/*Loading Panel*/
+.dxlpLoadingPanel_DevDashboard01,
+.dxlpLoadingPanelWithContent_DevDashboard01
+{
+	font: 11px Arial, Geneva, sans-serif;
+	color: #201f35;
+	background-color: White;
+	border: 1px solid #9da0aa;
+}
+.dxlpLoadingPanel_DevDashboard01 td.dx,
+.dxlpLoadingPanelWithContent_DevDashboard01 td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 7px 10px;
+}
+.dxlpLoadingPanel_DevDashboard01 .dxlp-loadingImage,
+.dxcaLoadingPanel_DevDashboard01 .dxlp-loadingImage,
+.dxlpLoadingPanelWithContent_DevDashboard01 .dxlp-loadingImage {
+	background-image: url('../Web/Loading.gif');
+	height: 32px;
+	width: 32px;
+}
+
+/* Out of range warning*/
+.dxeOutOfRWarn_DevDashboard01 {
+    font: 11px Arial, Geneva, sans-serif;
+    padding: 3px 8px 4px 8px;
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: red;
+    border-radius: 3px;
+    z-index: 41998;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #A8A8A8;
+}
+.dxeOutOfRWarnRight_DevDashboard01 {
+    margin-left: 10px;
+}
+.dxeOutOfRWarnBottom_DevDashboard01 {
+    margin-top: 10px;
+}

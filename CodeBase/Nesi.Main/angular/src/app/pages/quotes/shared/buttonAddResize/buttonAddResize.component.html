@@ -1,0 +1,24 @@
+<div class="ui-g">
+  <div class="ui-g-6 ui-md-3">
+    <button [disabled]="edit_disabled" type="button" pButton label="Add Blank Item" (click)="add.emit()" icon="fa-plus"></button>
+  </div>
+  <div class="ui-g-6 ui-md-3">
+    <!-- <button [disabled]="edit_disabled" type="button" pButton label="From Existing Quote" (click)="displayType=1" icon="fa-plus"></button> -->
+    <p-toggleButton [disabled]="edit_disabled" [(ngModel)]="fromQuote_checked" (onChange)="fromQuote_checked_change()" onLabel="Add from Quote" offLabel="Add from Quote" onIcon="fa-check-square"
+      offIcon="fa-square" [style]="{'width':'100%'}"></p-toggleButton>
+  </div>
+  <div class="ui-g-6 ui-md-3">
+    <!-- <button [disabled]="edit_disabled" type="button" pButton label="From Pre-defined of Business Unit" (click)="displayType=2" icon="fa-plus"></button> -->
+    <p-toggleButton [disabled]="edit_disabled" [(ngModel)]="fromPredfined_checked" (onChange)="fromPredifined_checked_change()" onLabel="Add from Template" offLabel="Add from Template" onIcon="fa-check-square"
+      offIcon="fa-square" [style]="{'width':'100%'}"></p-toggleButton>  </div>
+  <div class="ui-g-6 ui-md-3">
+    <p-toggleButton  onIcon="fa-check-square" offIcon="fa-square" onLabel="Auto-size All Textbox" offLabel="Auto-size All Textbox"
+      (onChange)="handleChange($event)" [(ngModel)]="val"></p-toggleButton>
+  </div>
+</div>
+<div class="ui-g-12" *ngIf="!edit_disabled">
+  <nesi-quote-add-section-from-quote *ngIf="displayType==1" (onChange)="addfromQuote.emit($event)" [quote_id]="quote_id" [revision]="revision"
+    [type]="type"></nesi-quote-add-section-from-quote>
+  <nesi-quote-add-section-from-specific *ngIf="displayType==2" (onChange)="addfromQuote.emit($event)" [quote_id]="quote_id"
+    [revision]="revision" [type]="type"></nesi-quote-add-section-from-specific>
+</div>

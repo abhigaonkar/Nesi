@@ -1,0 +1,6 @@
+<p-dropdown [style]="{'width':'100%'}" [required]="required" [options]="options" [(ngModel)]="value" (onChange)="onchanged($event)"
+  [filter]="options && options.length>10" [placeholder]="'Select Business Unit'">
+  <ng-template let-bu pTemplate="item">
+    <div>{{bu.label}}</div>
+  </ng-template>
+</p-dropdown>

@@ -1,0 +1,31 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform"  (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g-12">
+          Why did we lose the job? (required)
+      </div>
+      <div class="ui-g-12">
+        <textarea pInputTextarea  formControlName="why_lose"  [rows]="6"></textarea>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('why_lose')" [errorMsg]="'You must enter the reason.'"></nesi-fieldErrorDisplay>
+      </div>
+      <div class="ui-g-12">
+          Who was the competitor? (optional)
+      </div>
+      <div class="ui-g-12">
+        <textarea pInputTextarea  formControlName="who_competitor"  [rows]="6"></textarea>
+      </div>
+      <div class="ui-g-12">
+          What was the price that it went for? (optional)
+      </div>
+      <div class="ui-g-12">
+        <textarea pInputTextarea  formControlName="what_price"  [rows]="6"></textarea>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-6">
+            <button pButton label="KILL QUOTE" type="submit" class="ui-button-warning" icon="fa-times"></button>
+          </div>
+        <div class="ui-g-6">
+          <button pButton label="Close" (click)="cancel.emit()" type="button" icon="fa-times-circle"></button>
+        </div>
+      </div>
+    </form>
+  </div>

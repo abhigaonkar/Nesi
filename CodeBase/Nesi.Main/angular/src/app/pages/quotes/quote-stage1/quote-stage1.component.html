@@ -1,0 +1,136 @@
+<div *ngIf="model" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    Because this is a large quote, we will be implementing the process requiring your approval at this stage to reduce shop time
+    spent on quoting jobs that we will never get, but also to improve our chances on quotes that we should win. So please
+    fill out the information the information here and then review the schedule that is produced.
+  </div>
+  <div class="ui-g-12 bold">
+    Initial Filter Questions:
+  </div>
+  <div class="ui-g-12">
+    <table width="100%">
+      <ng-container *ngFor="let item of (model && model.filters);let i=index">
+        <tr [ngClass]="{'greyBack':i % 2==1,'whiteBack': i %2 ==0}">
+          <td>
+            {{item.question}}
+          </td>
+          <td>
+            {{item.result==1? 'Yes': 'No'}}
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+        Started By:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+        {{model && model.started_by}}
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+        Expected Quote Value:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+        {{model && model.value}}
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+        Quote Due Date:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+        {{model && model.due}}
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+        Expected Work Completion Date:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+        {{model && model.completion}}
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+        Allowable Hours to Quote:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+        <input pInputText  type="number"  step="0.01" formControlName="hours">
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('hours')" [errorMsg]="'Please input valid number of hours.'"></nesi-fieldErrorDisplay>
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+        Point Person:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+        <nesi-ReactiveDropDown  [required]="1" [options]="model && model.ddl5" formControlName="rt5"></nesi-ReactiveDropDown>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('rt5')" errorMsg="Point Person is required"></nesi-fieldErrorDisplay>
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+        Estimator:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+        <nesi-ReactiveDropDown  [required]="1" [options]="model && model.ddl6" formControlName="rt6"></nesi-ReactiveDropDown>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('rt6')" errorMsg="Estimator is required"></nesi-fieldErrorDisplay>
+      </div>
+      <ng-container *ngIf="model && model.quote_level==3">
+        <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+          Review Team Member 1:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+          <nesi-ReactiveDropDown [required]="1" [options]="model && model.ddl5" formControlName="rt1"></nesi-ReactiveDropDown>
+          <nesi-fieldErrorDisplay [displayError]="isFieldInValid('rt1')" errorMsg=" Review Team Member 1 is required"></nesi-fieldErrorDisplay>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+          Review Team Member 2:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+          <nesi-ReactiveDropDown [required]="1" [options]="model && model.ddl5" formControlName="rt2"></nesi-ReactiveDropDown>
+          <nesi-fieldErrorDisplay [displayError]="isFieldInValid('rt2')" errorMsg=" Review Team Member 2 is required"></nesi-fieldErrorDisplay>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+          Review Team Member 3:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+          <nesi-ReactiveDropDown  [required]="1" [options]="model && model.ddl5" formControlName="rt3"></nesi-ReactiveDropDown>
+          <nesi-fieldErrorDisplay [displayError]="isFieldInValid('rt3')" errorMsg=" Review Team Member 3 is required"></nesi-fieldErrorDisplay>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-g-lesspad bold">
+          Review Team Member 4:
+        </div>
+        <div class="ui-g-12 ui-md-8 ui-g-lesspad">
+          <nesi-ReactiveDropDown  [required]="1" [options]="model && model.ddl5" formControlName="rt4"></nesi-ReactiveDropDown>
+          <nesi-fieldErrorDisplay [displayError]="isFieldInValid('rt4')" errorMsg=" Review Team Member 4 is required"></nesi-fieldErrorDisplay>
+        </div>
+      </ng-container>
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-6">
+          <button pButton  label="Allow Quote to Proceed" icon="fa-check"></button>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+          <button class="ui-button-danger" pButton [disabled]="showStage1Kill" type="button" label="STOP THIS QUOTE!" icon="fa-times"
+            (click)="showStage1Kill=true"></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <p-dialog [positionTop]="150" [(visible)]="showStage1Kill" header="Kill this quote!" [modal]="false" [responsive]="true">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <!-- <div class="ui-g-12">
+        You are about to close a quote and the following people will get a notification ...
+      </div>
+      <div class="ui-g-12 ui-g-lesspad ui-g-1emleft" *ngFor="let item of rt_names">
+        {{item}}
+      </div> -->
+      <div class="ui-g-12 bold">
+        Why are you closing this quote?
+      </div>
+      <div class="ui-g-12">
+        <textarea pInputTextarea rows="5" cols="25" [(ngModel)]="reason" #text></textarea>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-6">
+          <button class="ui-button-danger" [disabled]="!reason" pButton type="button" label="Kill Quote" (click)="killQuote()" icon="fa-minus-circle"></button>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+          <button  pButton type="button"   (click)="showStage1Kill=false" label="Cancel" icon="fa-times-circle"></button>
+        </div>
+      </div>
+    </div>
+  </p-dialog>
+</div>

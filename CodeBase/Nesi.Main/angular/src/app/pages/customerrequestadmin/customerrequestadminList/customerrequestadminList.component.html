@@ -1,0 +1,87 @@
+
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    <nesi-breadcurmb [items]="[{label: 'Customers'},{label: 'Customer Request Admin'}]"></nesi-breadcurmb>
+  </div>
+  <!--<div class="ui-g-12">
+    <nesi-datatable [id]='267' [dropdownOptions]="{status: statusList}" (onDropDownChange)="update($event)" (onTextBoxChange)="update($event)"
+                    [selectionMode]="null" (onSave)="loadGrid()" gridName="CustomerRequestAdminGrid" gridTitle="" (onCreate)="openCreate($event)"
+                    [visible_business_type]="'S'" [need_query_param]="false" (onEdit)="openEdit($event)" (onRefresh)="loadGrid(true)"></nesi-datatable>
+  </div>-->
+
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-lg-3">
+      <label>Select Entity Type:</label>
+      <p-dropdown [options]="availableEntities"
+                  [(ngModel)]="selectedEntityKey"
+                  optionLabel="label"
+                  (onChange)="onEntityChange()"
+                  [style]="{width:'100%'}">
+      </p-dropdown>
+    </div>
+  </div>
+
+  <div class="ui-g-12">
+    <nesi-datatable [id]='267'
+                    [selectionMode]="null" (onSave)="loadGrid()" gridName="CustomerRequestAdminGrid" gridTitle="" (onCreate)="openCreate($event)"
+                    [visible_business_type]="'S'" [need_query_param]="false" (onEdit)="openEdit($event)" (onRefresh)="loadGrid(true)"></nesi-datatable>
+  </div>
+</div>
+<nesi-sidebar [(visible)]="displayNew" header="New Customer Request Admin" [larger]="true">
+  <!-- <p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="New Applicant" [draggable]="true" [(visible)]="displayNew"
+  [positionTop]="50"> -->
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <nesi-customerrequestadminNew (loaded)="submitting=false" (loading)="submitting=true" [tablename]="tablename" (close)="onModalClose()"
+                                    (openEdit)="openEdit($event)" *ngIf="displayNew"></nesi-customerrequestadminNew>
+      
+    </div>
+  </div>
+  <!-- </p-dialog> -->
+</nesi-sidebar>
+
+<nesi-sidebar [(visible)]="displayEdit" header="Editing {{entity && entity.name}}" [larger]="true">
+  <!-- <p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Editing {{entity && entity.name}}" [draggable]="true"
+  [(visible)]="displayEdit" [positionTop]="50"> -->
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <nesi-customerrequestadminEdit [customerrequest]="entity" [tablename]="tablename" [tablenamedisplay]="tablenamedisplay" (close)="onModalClose()" (refreshGrid)="refreshGrid($event)"></nesi-customerrequestadminEdit>
+    </div>
+  </div>
+  <!-- </p-dialog> -->
+</nesi-sidebar>
+  <!--<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <nesi-breadcurmb [items]="[{label: 'Customer'},{label: 'Customer Request Admin'}]"></nesi-breadcurmb>
+    </div>
+    <div class="ui-g-12">
+      <p-checkbox binary="true" [(ngModel)]="show_all" label=" Show All Admin tables " (onChange)="loadGrid()"></p-checkbox>
+    </div>
+    <div class="ui-g-12">
+      <nesi-datatable [id]='267' [dropdownOptions]="{status: statusList}" (onDropDownChange)="update($event)" (onTextBoxChange)="update($event)"
+        [selectionMode]="null" (onSave)="loadGrid()" gridName="CustomerRequestAdminGrid" gridTitle="" (onCreate)="openCreate($event)"
+        [visible_business_type]="'S'" [need_query_param]="false" (onEdit)="openEdit($event)" (onRefresh)="loadGrid(true)"></nesi-datatable>
+    </div>
+  </div>
+
+  <nesi-sidebar [(visible)]="displayEdit" header="Editing {{entity && entity.name}}" [larger]="true" open_url="/#/opens/267/customerrequestadmin/{{entity?.id}}">-->
+  <!-- <p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Editing {{entity && entity.name}}" [draggable]="true"
+  [(visible)]="displayEdit" [positionTop]="50"> -->
+  <!--<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <nesi-customerrequestadmin-edit-pane [customerrequestadmin]="entity" (close)="displayEdit=false" (refreshGrid)="refreshGrid($event)"></nesi-customerrequestadmin-edit-pane>
+    </div>
+  </div>-->
+  <!-- </p-dialog> -->
+  <!--</nesi-sidebar>
+  <nesi-sidebar [(visible)]="displayNew" header="New Detail" [larger]="true" >-->
+  <!-- <p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="New Applicant" [draggable]="true" [(visible)]="displayNew"
+  [positionTop]="50"> -->
+  <!--<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <nesi-customerrequestadmin-start-new (loaded)="submitting=false" (loading)="submitting=true" [employee]="entity" (close)="displayNew=false"
+        (openEdit)="openEdit($event)" *ngIf="displayNew"></nesi-customerrequestadmin-start-new>
+    </div>
+  </div>-->
+  <!-- </p-dialog> -->
+  <!--</nesi-sidebar>-->

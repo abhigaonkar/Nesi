@@ -1,0 +1,79 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+</p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid  customer_smaller">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <!-- <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+        ID:
+      </div>
+      <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+        <input pInputText formControlName="address_id" readonly="true" class="no_border back_transparent">
+      </div>
+    </div> -->
+      <!-- <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+        Default GL Account:
+      </div>
+      <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+        <p-dropdown [style]="{'width':'100%'}" [options]="profile && profile.glReceiveList" formControlName="gl_account"></p-dropdown>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('gl_account')" [errorMsg]="'GL Account is required.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div> -->
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+          Taxes 1:
+        </div>
+        <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+          <p-dropdown [style]="{'width':'100%'}" [options]="profile && profile.taxList" formControlName="tax_1"></p-dropdown>
+          <nesi-fieldErrorDisplay [displayError]="isFieldInValid('tax_1')" [errorMsg]="'Taxes 1 is required.'"></nesi-fieldErrorDisplay>
+        </div>
+        <div class="ui-g-12 ui-lg-2  ui-lg-offset-1 ui-g-nopad label_for_left_less">
+          <input pInputText formControlName="taxex_1">
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+          Taxes 2:
+        </div>
+        <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+          <p-dropdown [style]="{'width':'100%'}" [options]="profile && profile.taxList" formControlName="tax_2"></p-dropdown>
+          <nesi-fieldErrorDisplay [displayError]="isFieldInValid('tax_2')" [errorMsg]="'Taxes 2 is required.'"></nesi-fieldErrorDisplay>
+        </div>
+        <div class="ui-g-12 ui-lg-2 ui-lg-offset-1 ui-g-nopad label_for_left_less">
+          <input pInputText formControlName="taxex_2">
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+          Taxes 3:
+        </div>
+        <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+          <p-dropdown [style]="{'width':'100%'}" [options]="profile && profile.taxList" formControlName="tax_3"></p-dropdown>
+          <nesi-fieldErrorDisplay [displayError]="isFieldInValid('tax_3')" [errorMsg]="'Taxes 3 is required.'"></nesi-fieldErrorDisplay>
+        </div>
+        <div class="ui-g-12 ui-lg-2  ui-lg-offset-1 ui-g-nopad label_for_left_less">
+          <input pInputText formControlName="taxex_3">
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+          Taxes 4:
+        </div>
+        <div class="ui-g-12 ui-lg-6 ui-g-nopad label_for_left_less">
+          <p-dropdown [style]="{'width':'100%'}" [options]="profile && profile.taxList" formControlName="tax_4"></p-dropdown>
+          <nesi-fieldErrorDisplay [displayError]="isFieldInValid('tax_4')" [errorMsg]="'Taxes 4 is required.'"></nesi-fieldErrorDisplay>
+        </div>
+        <div class="ui-g-12 ui-lg-2  ui-lg-offset-1 ui-g-nopad label_for_left_less">
+          <input pInputText formControlName="taxex_4">
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-lg-2 ui-lg-offset-2 ui-g-nopad">
+          <button  [disabled]="!customer_base_profile || !customer_base_profile.is_admin_authenticated"  type="submit" pButton label="Save" icon="fa-save"></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</blockable-div>

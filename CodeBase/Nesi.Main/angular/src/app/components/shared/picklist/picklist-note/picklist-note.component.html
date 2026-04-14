@@ -1,0 +1,14 @@
+<div class="hovernote">
+    <i title="Click to edit"  (mousemove)="moveTip($event)" [ngClass]="notes?'fa fa-comment-alt fa-15x':'fa fa-comment fa-15x'"
+        (click)="addNoteDisplay=true"></i>
+    <span *ngIf="notes" [style.left]="tooltipX" [style.top]="tooltipY">
+        {{notes}}
+    </span>
+</div>
+
+<p-dialog header="Notes for Part #:{{partno}}" [modal]="true" [responsive]="true" [(visible)]="addNoteDisplay">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <nesi-picklist-add-note (onChange)="addNoteDisplay=false;changed.emit($event)" [notes]="notes" [id]="id"></nesi-picklist-add-note>
+        <nesi-picklist-edit-note (onChange)="addNoteDisplay=false;changed.emit($event)" [notes]="notes" [id]="id"></nesi-picklist-edit-note>
+    </div>
+</p-dialog>

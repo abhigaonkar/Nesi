@@ -1,0 +1,46 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-lg-2 label_for_right ">
+      Table:
+    </div>
+    <div class="ui-g-12 ui-lg-3 label_for_left_less">
+      <label>{{tablenamedisplay}}</label>
+    </div>
+  </div>
+  
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-lg-2 label_for_right ">
+      Name:
+    </div>
+    <div class="ui-g-12 ui-lg-3 label_for_left_less">
+      <input pInputText maxlength="50" formControlName="name">
+    </div>
+    
+    <!-- Show Industrial Type dropdown ONLY for End Market Segment -->
+    <ng-container *ngIf="tablename === 'cus_end_market_segment'">
+      <div class="ui-g-12 ui-lg-2 label_for_right ">
+        Industrial Type: <span style="color:red;">*</span>
+      </div>
+      <div class="ui-g-12 ui-lg-3 label_for_left_less">
+        <p-dropdown 
+          [options]="industrialTypes" 
+          formControlName="industrial_type_id"
+          placeholder="Select Industrial Type"
+          [filter]="true"
+          [showClear]="false">
+        </p-dropdown>
+      </div>
+    </ng-container>
+    
+    <div class="ui-g-12 ui-lg-2 label_for_right ">
+      Is Active:
+    </div>
+    <div class="ui-g-12 ui-lg-3 label_for_left_less">
+      <p-checkbox formControlName="is_active" binary="true"></p-checkbox>
+    </div>
+    
+    <div class="ui-g-12 ui-lg-2 label_for_left_less">
+      <button pButton type="submit" label="Submit ->" [disabled]="saving"></button>
+    </div>
+  </div>
+</form>

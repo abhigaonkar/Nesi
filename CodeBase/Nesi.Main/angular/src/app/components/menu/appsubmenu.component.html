@@ -1,0 +1,47 @@
+<ng-template ngFor let-child let-i="index" [ngForOf]="(root ? item : item.items)">
+  <li [ngClass]="{'active-menuitem': isActive(i) && !expandALL}" [class]="child.badgeStyleClass">
+    <a *ngIf="child.items" [attr.tabindex]="!visible ? '-1' : null" [attr.target]="child.target" (mouseenter)="hover=true" (mouseleave)="hover=false">
+      <i [ngClass]="child.icon" style="cursor: pointer" (click)="itemClick($event,child,i,1)"></i>
+      <a [ngClass]="{'light': menuStyle=='light' && !(isActive(i) && !expandALL),'dark': menuStyle=='dark' &&!(isActive(i) && !expandALL),'active-menuitem': isActive(i) && !expandALL}"
+        [href]="child.url||'#'" [routerLink]="child.routerLink" (click)="itemClick($event,child,i,1)">
+        <span style="display: inline-block;width:140px;cursor: pointer">{{child.label}}</span>
+      </a>
+      <span class="menuitem-badge menuitem-badge-main" *ngIf="child.badge>0">{{child.badge}}</span>
+      <span class="menuitem-badge menuitem-badge-new menuitem-badge-main"
+      (auxclick)="itemClick($event,child,i,3)" title="Click to open dev version"
+      (click)="itemClick($event,child,i,3)"
+      (mousewheel)="itemClick($event,child,i,3)"
+        *ngIf="child.badge===-1">DEV</span>
+      <i class="fa fa-fw fa-angle-down" style="cursor: pointer" *ngIf="child.items && child.items.length > 0" (click)="itemClick($event,child,i,2)"></i>
+    </a>
+
+    <a [href]="child.url||'#'" (click)="itemClick($event,child,i)" *ngIf="!child.items && child.routerLink" [routerLink]="child.routerLink"
+      routerLinkActive="active-menuitem-routerlink" [routerLinkActiveOptions]="{exact: true}" [attr.tabindex]="!visible ? '-1' : null"
+      [attr.target]="child.target" (mouseenter)="hover=true" (mouseleave)="hover=false">
+      <i [ngClass]="child.icon"></i>
+      <span style="display: inline-block;width:140px;cursor: pointer">{{child.label}}</span>
+      <span class="menuitem-badge" *ngIf="child.badge>0">{{child.badge}}</span>
+      <span class="menuitem-badge menuitem-badge-new" title="Click to open dev version"
+      (auxclick)="itemClick($event,child,i,3)"
+      (click)="itemClick($event,child,i,3)"
+      *ngIf="child.badge===-1">DEV</span>
+    </a>
+
+    <a [href]="child.url||'#'" (click)="itemClick($event,child,i)" *ngIf="!child.items && !child.routerLink" [attr.tabindex]="!visible ? '-1' : null"
+      [attr.target]="child.target" (mouseenter)="hover=true" (mouseleave)="hover=false">
+      <i [ngClass]="child.icon"></i>
+      <span style="display: inline-block;width:140px;cursor: pointer">{{child.label}}</span>
+      <span class="menuitem-badge" *ngIf="child.badge>0">{{child.badge}}</span>
+      <span class="menuitem-badge menuitem-badge-new" title="Click to open dev version"
+      (auxclick)="itemClick($event,child,i,3)"
+      (click)="itemClick($event,child,i,3)"
+      *ngIf="child.badge===-1">DEV</span>
+    </a>
+    <!-- <div class="layout-menu-tooltip">
+      <div class="layout-menu-tooltip-arrow"></div>
+      <div class="layout-menu-tooltip-text">{{child.label}}</div>
+    </div> -->
+    <ul app-submenu [item]="child" *ngIf="child.items" [visible]="isActive(i)" [reset]="reset" [@children]="app.slimMenu&&root ? isActive(i) ? 'visible'
+                     : 'hidden' : isActive(i) ? 'visibleAnimated' : 'hiddenAnimated'"></ul>
+  </li>
+</ng-template>

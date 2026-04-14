@@ -1,0 +1,14 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-lg-8">
+        <nesi-quote-edit-general-detail [quoted_price]="quoted_price" [q]="q" (onChange)="quoteChanged($event)" (CustomerChanged)="onCustomerChanged($event)" (ContactChanged)="onContactChanged($event)" (OpportunityChanged)='onOpportunityChanged($event)'></nesi-quote-edit-general-detail>
+      </div>
+      <div class="ui-g-12 ui-lg-4">
+        <nesi-quote-edit-general-customer (address_Changed)="addressChanged($event)"  (printing)="checkValid()" [is_ready_for_print]="is_read_for_print"  [q]="q"
+        (triggerValidation)="validationMediator($event)"
+        ></nesi-quote-edit-general-customer>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+</p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+          Customer AR Notes:
+        </div>
+        <div class="ui-g-12 ui-lg-10 ui-g-nopad label_for_left_less">
+          <textarea [rows]="10" style="height:300px;" formControlName="customer_arnotes" pInputTextarea></textarea>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-lesspad">
+        <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+          Special Invoicing Instructions:
+        </div>
+        <div class="ui-g-12 ui-lg-10 ui-g-nopad label_for_left_less">
+          <textarea [rows]="5"  style="height:120px;"  formControlName="memo" pInputTextarea></textarea>
+        </div>
+      </div>
+      <div class="ui-g-12  ui-g-lesspad">
+        <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+          <button type="submit" pButton label="Save" icon="fa-save"></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</blockable-div>

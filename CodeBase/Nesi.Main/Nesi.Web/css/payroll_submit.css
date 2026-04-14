@@ -1,0 +1,733 @@
+﻿/*
+Target Structure
+-------------------------------
+#payroll_submission
+	.framework
+		#header
+			button
+			#pay_period
+		#sub_header
+			.prev
+			.member
+			.outof
+			.next
+		#worksheet
+			.columnhead
+			.hour_row
+				.date
+				.name_w1
+				.name_w2
+				.hours
+				.description
+		#totals
+			.week_total
+				.text
+				.hours
+			.master_total
+				.text
+				.hours
+		#submit
+			.text
+			.hourbox
+				input
+			.button
+				button
+		#status
+			.good
+			.bad
+			.neutral
+
+*/
+
+/*-- Framework ------------------------------------------------------------------------- */
+#payroll_submission .framework										{
+																	padding-bottom:			50px;
+																	}
+
+
+#payroll_submission .framework td									{
+																	font-family:			arial;
+																	font-size:				11px;
+																	color:					#000;
+																	padding:				5px;
+																	}
+
+/*-- header Info ------------------------------------------------------------------------- */
+#payroll_submission .framework #header								{
+																	font-family:			Arial;
+																	font-size:				12px;
+																	color:					#777;
+																	width:					100%;
+																	text-align:				right;
+																	border-bottom:			solid 1px #eee;
+																	padding-bottom:			10px;
+																	margin-bottom:			10px;
+																	}
+
+#payroll_submission .framework #header button						{
+																	font-size:				11px;
+																	width:					100px;
+																	padding:				2px;
+																	font-weight:			bold;
+																	float:					left;
+																	cursor:					pointer;
+																	}
+
+#payroll_submission .framework #header #from_period					{
+																	float:					right;
+																	}
+
+
+
+/*-- Sub_Header Info ----------------------------------------------------------------------- */
+
+
+#payroll_submission .framework .sub_header							{
+																	width:					750px;
+																	background-color:		#fff;
+																	}
+
+#payroll_submission .framework .sub_header .member .name			{
+																	font-family:			verdana;
+																	font-size:				20px;
+																	text-transform:			uppercase;
+																	font-weight:			bold;
+																	text-align:				left;
+																	}
+#payroll_submission .framework .sub_header .member .pay_type		{
+																	font-family:			verdana;
+																	font-size:				11px;
+																	text-transform:			uppercase;
+																	text-align:				left;
+																	border-top:				solid 1px #ccc;
+																	padding:				5px;
+																	}
+#payroll_submission .framework .sub_header .member .member_type		{
+																	font-family:			verdana;
+																	font-size:				11px;
+																	text-transform:			uppercase;
+																	text-align:				left;
+																	border-bottom:			solid 1px #ccc;
+																	margin-bottom:			5px;
+																	padding:				5px;
+																	}
+
+#payroll_submission .framework .sub_header .out_of					{
+																	font-family:			verdana;
+																	font-size:				10px;
+																	text-transform:			uppercase;
+																	font-style:				oblique;
+																	text-align:				left;
+																	font-weight:			bold;
+																	color:					#777;
+																	padding-left:			5px;
+																	}
+
+#payroll_submission .framework .sub_header .prev_next					{
+																	font-family:			arial black;
+																	width:					50px;
+																	font-weight:			bold;
+																	background-color:		#ccc;
+																	color:					#090;
+																	border:					solid 1px #090;
+																	cursor:					pointer;
+																	}
+
+#payroll_submission .framework .sub_header .prev_next:hover			{
+																	background-color:		#eee;
+																	}
+
+#payroll_submission .framework .sub_header .disabled				{
+																	font-family:			arial black;
+																	width:					50px;
+																	font-weight:			bold;
+																	background-color:		#fff;
+																	color:					#ddd;
+																	border:					solid 1px #ddd;
+																	}
+
+#payroll_submission .framework .sub_header .prev					{
+																	width:					35px;
+																	padding:				5px;
+																	}
+
+#payroll_submission .framework .sub_header .next					{
+																	width:					35px;
+																	padding:				5px;
+																	}
+/*-- REPORTING --------------------------*/
+
+	#payroll_submission .framework #reporting							{
+																		width:					auto;
+																		}
+
+	#payroll_submission .framework #reporting th						{
+																		background-color:		#000;
+																		color:					#fff;
+																		font-family:			arial;
+																		font-size:				12px;
+																		font-weight:			bold;
+																		text-align:				center;
+																		padding:				5px;
+																		cursor:					pointer;
+																		border:					solid 1px #000;
+																		}
+	#payroll_submission .framework #reporting th:hover					{
+																		background-color:		#888;
+																		}
+
+
+	#payroll_submission .framework #reporting th i						{
+																		display:				block;
+																		text-transform:			none;
+																		font-size:				10px;
+																		}
+	
+
+	#payroll_submission .framework #reporting .hour_row:hover			{
+																		background-color:		#fc0;
+																		}
+
+	#payroll_submission .framework #reporting .hour_row .name			{
+																		font-weight:			bold;
+																		font-size:				11px;
+																		color:					#000;
+																		text-transform:			uppercase;
+																		text-align:				left;
+																		border-right:			solid 1px #000;
+																		border-bottom:			solid 1px #aaa;
+																		width:					100px;
+																		}
+
+	#payroll_submission .framework #reporting .hour_row .hours			{
+																		width:					37px;
+																		color:					#000;
+																		text-align:				center;
+																		font-weight:			bold;
+																		border-right:			solid 1px #000;
+																		border-bottom:			solid 1px #aaa;
+																		}
+
+	#payroll_submission .framework #reporting .hour_row .pay			{
+																		width:					auto;
+																		color:					#000;
+																		text-align:				center;
+																		font-weight:			bold;
+																		background-color:		#cfc;
+																		border-right:			solid 1px #000;
+																		border-bottom:			solid 1px #aaa;
+																		}
+
+	#payroll_submission .framework #reporting .hour_row .action			{
+																		}
+
+	#payroll_submission .framework #reporting .hour_row .action	button	{
+																		font-size:				11px;
+																		padding:				2px;
+																		font-weight:			bold;
+																		cursor:					pointer;
+																		}
+	#payroll_submission .framework #reporting .hourless_h	td			{
+																		background-color:		#777;
+																		padding:				5px;
+																		color:					#fff;
+																		font-weight:			bold;
+																		font-size:				14px;
+																		border-bottom:			solid 1px #000;
+																		text-align:				center;
+																		text-transform:			uppercase;
+																		}
+	#payroll_submission .framework #reporting .hourless	.h				{
+																		font-weight:			bold;
+																		font-size:				11px;
+																		color:					#fff;
+																		text-transform:			uppercase;
+																		text-align:				center;
+																		background-color:		#000;
+																		border-right:			solid 1px #000;
+																		border-bottom:			solid 1px #aaa;
+																		padding:				5px;
+																		}
+	#payroll_submission .framework #reporting .hourless	.name			{
+																		font-weight:			bold;
+																		font-size:				11px;
+																		color:					#000;
+																		text-transform:			uppercase;
+																		text-align:				left;
+																		width:					150px;
+																		background-color:		#fc0;
+																		border-right:			solid 1px #000;
+																		border-bottom:			solid 1px #aaa;
+																		padding:				5px;
+																		}
+	#payroll_submission .framework #reporting .hourless	.hours			{
+																		width:					37px;
+																		color:					#ccc;
+																		text-align:				center;
+																		font-weight:			bold;
+																		border-right:			solid 1px #ccc;
+																		border-bottom:			solid 1px #aaa;
+																		}
+	#payroll_submission .framework #reporting .hourless	.pay			{
+																		width:					50px;
+																		color:					#ccc;
+																		text-align:				center;
+																		background-color:		#cfc;
+																		font-weight:			bold;
+																		border-right:			solid 1px #ccc;
+																		border-bottom:			solid 1px #aaa;
+																		}
+
+	#payroll_submission .framework #reporting .detail_row				{
+																		height:					1px;
+																		background-color:		#ddd;
+																		border-left:			solid 1px #333;
+																		border-bottom:			solid 1px #000;
+																		border-right:			solid 1px #333;
+																		}
+
+	#payroll_submission .framework #reporting .detail_row .wage			{
+																		float:					left;
+																		display:				none;
+																		color:					#000;
+																		text-align:				left;
+																		border:					solid 1px #999;
+																		}
+
+	#payroll_submission .framework #reporting .detail_row .wage .cat	{
+																		font-family:			arial black;
+																		font-weight:			bold;
+																		text-transform:			uppercase;
+																		padding:				5px;
+																		background-color:		#99a;
+																		width:					150px;
+																		}
+
+	#payroll_submission .framework #reporting .detail_row .wage .val	{
+																		font-weight:			bold;
+																		background-color:		#fff;
+																		padding:				5px;
+																		width:					150px;
+																		color:					#090;
+																		}
+
+	#payroll_submission .framework #reporting .detail_row .wage .val i	{
+																		color:					#f00;
+																		}
+
+	#payroll_submission .framework #reporting .detail_row .info			{
+																		width:					570px;
+																		float:					right;
+																		display:				none;
+																		text-align:				left;
+																		border:					solid 1px #999;
+																		}
+	#payroll_submission .framework #reporting .detail_row .info .cat	{
+																		font-family:			arial black;
+																		font-weight:			bold;
+																		text-transform:			uppercase;
+																		padding:				5px;
+																		background-color:		#99a;
+																		}
+
+	#payroll_submission .framework #reporting .detail_row .info .val	{
+																		background-color:		#fff;
+																		padding:				5px;
+																		}
+	
+
+	#payroll_submission .framework #reporting .send_payroll				{
+																		background-color:		#777;
+																		padding:				5px;
+																		border-right:			solid 1px #000;
+																		border-bottom:			solid 1px #000;
+																		}
+
+	#payroll_submission .framework #reporting .send_payroll button		{
+																		font-size:				11px;
+																		width:					125px;
+																		padding:				2px;
+																		font-weight:			bold;
+																		cursor:					pointer;
+																		}
+
+	#payroll_submission .framework #reporting .nothing_yet				{
+																		font-size:				12px;
+																		font-weight:			bold;
+																		background-color:		#cfc;
+																		padding:				100px;
+																		border:					solid 1px #000;
+																		}
+		/*-- Master Total ------------------------------------------------------------------------ */
+		#payroll_submission .framework #reporting #master_total .text		{
+																			background-color:		#000;
+																			color:					#fff;
+																			text-align:				left;
+																			font-weight:			bold;
+																			border-bottom:			solid 1px #fff;
+																			}
+
+		#payroll_submission .framework #reporting #master_total .hours		{
+																			background-color:		#000;
+																			color:					#fff;
+																			font-weight:			bold;
+																			text-align:				center;
+																			border-bottom:			solid 1px #fff;
+																			}
+		#payroll_submission .framework #reporting #master_total .pay		{
+																			background-color:		#000;
+																			color:					#fff;
+																			font-weight:			bold;
+																			text-align:				center;
+																			border-bottom:			solid 1px #fff;
+																			}
+		#payroll_submission .framework #reporting #master_total .misc		{
+																			background-color:		#000;
+																			color:					#fff;
+																			font-weight:			bold;
+																			text-align:				center;
+																			border-bottom:			solid 1px #fff;
+																			}
+
+
+
+/*-- WORKSHEET --------------------------*/
+
+
+		/*-- Report Info ------------------------------------------------------------------------ */
+		#payroll_submission .framework #worksheet							{
+																			width:					750px;
+																			}
+
+		#payroll_submission .framework #worksheet .column_header			{
+																			background-color:		#000;
+																			color:					#fff;
+																			font-family:			arial;
+																			font-size:				12px;
+																			font-weight:			bold;
+																			text-align:				center;
+																			padding:				5px;
+																			}
+
+		#payroll_submission .framework #worksheet .hour_row:hover			{
+																			background-color:		#fc0;
+																			}
+
+		#payroll_submission .framework #worksheet .hour_row .date			{
+																			color:					#000;
+																			font-weight:			bold;
+																			text-align:				center;
+																			border-right:			solid 1px #000;
+																			}
+
+		#payroll_submission .framework #worksheet .hour_row .custname_w1	{
+																			font-weight:			bold;
+																			color:					#000;
+																			text-transform:			uppercase;
+																			text-align:				left;
+																			border-right:			solid 1px #000;
+																			border-bottom:			solid 1px #ccc;
+																			background-color:		#eee;
+																			width:					auto;
+																			}
+
+		#payroll_submission .framework #worksheet .hour_row .custname_w2	{
+																			background-color:		#9f9;
+																			font-weight:			bold;
+																			color:					#000;
+																			text-transform:			uppercase;
+																			text-align:				left;
+																			border-bottom:			solid 1px #999;
+																			border-right:			solid 1px #000;
+																			width:					auto;
+																			}
+
+		#payroll_submission .framework #worksheet .hour_row .hours			{
+																			width:					auto;
+																			color:					#000;
+																			text-align:				center;
+																			font-weight:			bold;
+																			border-right:			solid 1px #000;
+																			}
+
+		#payroll_submission .framework #worksheet .hour_row .description	{
+																			background-color:		#cfc;
+																			border-right:			solid 1px #000;
+																			font-weight:			bold;
+																			}
+
+		/*-- Week Totals ----------------------------------------------------------------------- */
+
+		#payroll_submission .framework #week_total .text					{
+																			background-color:		#666;
+																			color:					#fff;
+																			text-align:				left;
+																			padding-left:			100px;
+																			font-weight:			bold;
+																			border-bottom:			solid 1px #fff;
+																			}
+
+		#payroll_submission .framework #week_total .hours					{
+																			background-color:		#666;
+																			color:					#fff;
+																			font-weight:			bold;
+																			text-align:				center;
+																			border-bottom:			solid 1px #fff;
+																			width:					50px;
+																			}
+
+		/*-- Master Total ------------------------------------------------------------------------ */
+		#payroll_submission .framework #master_total .text					{
+																			background-color:		#000;
+																			color:					#fff;
+																			padding-left:			50px;
+																			text-align:				left;
+																			font-weight:			bold;
+																			border-bottom:			solid 1px #fff;
+																			}
+
+		#payroll_submission .framework #master_total .hours					{
+																			background-color:		#000;
+																			color:					#fff;
+																			font-weight:			bold;
+																			text-align:				center;
+																			border-bottom:			solid 1px #fff;
+																			}
+		#payroll_submission .framework #master_total .text i				{
+																			display:				block;
+																			font-size:				10px;
+																			font-weight:			normal;
+																			}
+
+		/*-- Submit Hours --------------------------------------------------------------------------- */
+
+		#payroll_submission .framework #submit								{
+																			}
+
+		#payroll_submission .framework #submit .text						{
+																			font-size:				14px;
+																			font-family:			arial;
+																			font-weight:			bold;
+																			text-align:				left;
+																			border-bottom:			solid 1px #000;
+																			}
+
+		#payroll_submission .framework #submit .hourbox						{
+																			background-color:		#fff;
+																			border-bottom:			solid 1px #000;
+																			border-right:			solid 1px #000;
+																			}
+
+		#payroll_submission .framework #submit .hourbox input				{
+																			width:					100%;
+																			font-size:				11px;
+																			font-family:			arial;
+																			text-align:				center;
+																			font-weight:			bold;
+																			border:					solid 1px #777;
+																			}
+
+		#payroll_submission .framework #sendpane button						{
+																			background-color:		#090;
+																			font-size:				11px;
+																			font-family:			arial;
+																			font-weight:			bold;
+																			text-align:				center;
+																			border:					solid 1px #060;
+																			width:					100%;
+																			padding:				10px;
+																			cursor:					pointer;
+																			color:					#fff;
+																			}
+
+		#payroll_submission .framework #sendpane #proceed					{
+																			background-color:		#fff;
+																			color:					#000;
+																			border:					solid 1px #fff;
+																			}
+/*-----------------------------------------------------------------------------------------------------------*/
+
+		#payroll_submission .framework #expenses							{
+																			width:					100%;
+																			margin-top:				5px;
+																			}
+
+		#payroll_submission .framework #expenses .h							{
+																			background-color:		#06c;
+																			color:					#fff;
+																			font-weight:			bold;
+																			text-transform:			uppercase;
+																			text-align:				center;
+																			}
+
+		#payroll_submission .framework #expenses .name						{
+																			text-align:				left;
+																			width:					60%;
+																			border-left:			solid 1px #ccc;
+																			border-right:			solid 1px #ccc;
+																			border-bottom:			solid 1px #ccc;
+																			}
+
+		#payroll_submission .framework #expenses .name .item_text			{
+																			color:					#666;
+																			}
+
+		#payroll_submission .framework #expenses .amount					{
+																			width:					20%;
+																			font-weight:			bold;
+																			font-size:				14px;
+																			border-bottom:			solid 1px #ccc;
+																			border-right:			solid 1px #ccc;
+																			}
+
+		#payroll_submission .framework #expenses .action					{
+																			width:					5%;
+																			}
+
+		#payroll_submission .framework #expenses .no_results				{
+																			padding:				20px;
+																			font-weight:			bold;
+																			font-size:				12px;
+																			color:					#999;
+																			border:					solid 1px #06c;
+																			}
+/*-----------------------------------------------------------------------------------------------------------*/
+
+		#payroll_submission .framework #vacation							{
+																			width:					100%;
+																			margin-top:				5px;
+																			}
+
+		#payroll_submission .framework #vacation .h							{
+																			background-color:		#ccc;
+																			color:					#666;
+																			text-transform:			uppercase;
+																			text-align:				center;
+																			font-weight:			bold;
+																			}
+
+		#payroll_submission .framework #vacation .results					{
+																			color:					#666;
+																			font-weight:			bold;
+																			font-size:				12px;
+																			border:					solid 1px #ccc;
+																			padding:				20px;
+																			}
+
+		#payroll_submission .framework #vacation .no_results				{
+																			padding:				20px;
+																			font-weight:			bold;
+																			color:					#999;
+																			font-size:				12px;
+																			border-left:			solid 1px #ccc;
+																			border-right:			solid 1px #ccc;
+																			border-bottom:			solid 1px #ccc;
+																			}
+/*-----------------------------------------------------------------------------------------------------------*/
+
+		#payroll_submission .framework #extrapayments						{
+																			width:					100%;
+																			margin-top:				5px;
+																			}
+
+		#payroll_submission .framework #extrapayments .h					{
+																			background-color:		#ccc;
+																			color:					#666;
+																			text-transform:			uppercase;
+																			text-align:				center;
+																			font-weight:			bold;
+																			}
+																			
+		#payroll_submission .framework #extrapayments .results				{
+																			color:					#666;
+																			font-weight:			bold;
+																			font-size:				18px;
+																			border:					solid 1px #ccc;
+																			padding:				20px;
+																			}
+
+		#payroll_submission .framework #extrapayments .no_results			{
+																			padding:				20px;
+																			font-weight:			bold;
+																			color:					#999;
+																			font-size:				12px;
+																			border-left:			solid 1px #ccc;
+																			border-right:			solid 1px #ccc;
+																			border-bottom:			solid 1px #ccc;
+																			}
+/*-----------------------------------------------------------------------------------------------------------*/
+		#payroll_submission .framework #adjustments							{
+																			width:					750px;
+																			margin:					10px;
+																			}
+
+		#payroll_submission .framework #adjustments .h						{
+																			background-color:		#c00;
+																			color:					#fff;
+																			text-transform:			uppercase;
+																			text-align:				right;
+																			font-weight:			bold;
+																			}
+
+		#payroll_submission .framework #adjustments .icon					{
+																			width:					64px;
+																			}
+
+		#payroll_submission .framework #adjustments .results					{
+																			color:					#666;
+																			font-weight:			bold;
+																			font-size:				11px;
+																			border:					solid 1px #c00;
+																			padding:				10px;
+																			}
+
+		#payroll_submission .framework #adjustments .input					{
+																			padding-top:			15px;
+																			}
+
+		#payroll_submission .framework #adjustments .input input			{
+																			font-size:				11px;
+																			font-weight:			bold;
+																			}
+
+		#payroll_submission .framework #adjustments .no_results				{
+																			padding:				20px;
+																			font-weight:			bold;
+																			color:					#999;
+																			font-size:				12px;
+																			border-left:			solid 1px #ccc;
+																			border-right:			solid 1px #ccc;
+																			border-bottom:			solid 1px #ccc;
+																			}
+
+		/*-- Status  -------------------------------------------------------------------------- */
+
+		#payroll_submission .framework #status			 					{
+																			}
+
+		#payroll_submission .framework #status .total 						{
+																			font-size:				11px;
+																			font-family:			verdana;
+																			font-weight:			bold;
+																			text-align:				center;
+																			}
+
+		#payroll_submission .framework #status .total .neutral				{
+																			color:					#777;
+																			}
+
+		#payroll_submission .framework #status .total .good					{
+																			color:					#070;
+																			}
+
+		#payroll_submission .framework #status .total .bad					{
+																			color:					#f00;
+																			}
+
+		#payroll_submission .framework #status .total .addendum				{
+																			color:					#000;
+																			font-size:				9px;
+																			font-family:			verdana;
+																			font-style:				oblique;
+																			font-weight:			normal;
+																			}

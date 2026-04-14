@@ -1,0 +1,238 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw" style="position:absolute;top:25%;left:50%"></i>
+</p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div style="height: 300px; width:100%;">
+
+        <div class="ui-grid">
+          <div class="ui-grid-col-6">
+            <div class="ui-grid">
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Invoice:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText readonly="readonly" formControlName="wOProg_InvoiceNo">
+                  </div>
+                </div>
+              </div>
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6  label_for_right">Customer:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText readonly="readonly" formControlName="wOProg_CustomerName" class="fontSize11px">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-grid-col-6">
+            <div class="ui-grid">
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Customer Status:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <p-dropdown maxlength="50" [style]="{'width':'210px' , 'font-size': '12px'}"  [options]="customerStatusList"  formControlName="customer_collection_status">
+                    </p-dropdown>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Invoice Amt:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText readonly="readonly" formControlName="wOProg_InvoicedNetTotal">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-grid">
+          <div class="ui-grid-col-6">
+            <div class="ui-grid">
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Exp Pay Date:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" placeholder="yyyy-mm-dd" showIcon="true" formControlName="exp_pay"></p-calendar>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Confirmed:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" placeholder="yyyy-mm-dd" showIcon="true" formControlName="woprog_ExpectedCheckRun"></p-calendar>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-grid-col-6">
+            <div class="ui-grid">
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Invoice Status:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <p-dropdown maxlength="50" [style]="{'width':'210px'}" [options]="invoiceStatusList" formControlName="woprog_invoice_collection_status">
+                    </p-dropdown>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Cust PO:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText  formControlName="wOProg_CustPO">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-grid">
+        </div>
+
+        <div class="ui-grid">
+          <div class="ui-grid-col-1">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="ui-grid-col-11 ui-datatable">
+            <p-dataTable [value]="list" [responsive]="true" rowHover="true" expandableRows="true" rowExpandMode="single" scrollHeight="200px"
+              headerStyleClass="masterOutstandingInvoiceNotesClass">
+              <p-header>
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                  <div class="ui-g-12 ui-lg-2">
+                    <button pButton type="button" label="Add New Note" icon="fa-plus" (click)="addNewNote()"></button>
+                  </div>
+                  <div class="ui-g-12 ui-lg-6">
+                    Invoice Notes
+                  </div>
+                </div>
+              </p-header>
+              <p-column [style]="{'width':'5%'}" styleClass="col-button">
+                <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+                  <button type="button" pButton (click)="editNote(data)" icon="fa-pencil"></button>
+                </ng-template>
+              </p-column>
+              <p-column [style]="{'width':'15%'}" field="notedate" header="Date">
+                <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+                  {{data[col.field]}}
+                </ng-template>
+              </p-column>
+              <p-column [style]="{'width':'15%'}" field="member" header="Member"></p-column>
+              <p-column [style]="{'width':'65%'}" field="note" header="Notes" styleClass="yellowForNote">
+                <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+                  <div [innerHTML]="data[col.field]"></div>
+                </ng-template>
+              </p-column>
+            </p-dataTable>
+          </div>
+        </div>
+
+        <div class="ui-grid">
+          <div class="ui-grid-col-6">
+            <div class="ui-grid">
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Balance:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText readonly="readonly" formControlName="balance">
+                  </div>
+                </div>
+              </div>
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Mat Cost:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText formControlName="mat_cost">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-grid-col-6">
+            <div class="ui-grid">
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Lab Cost:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText formControlName="lab_cost">
+                  </div>
+                </div>
+              </div>
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Note Date:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText readonly="readonly" formControlName="note_date">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-grid">
+          <div class="ui-grid-col-6">
+            <div class="ui-grid">
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Phone:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText readonly="readonly" formControlName="phone">
+                  </div>
+                </div>
+              </div>
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">WO Terms:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText  formControlName="terms">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-grid-col-6">
+            <div class="ui-grid">
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6 label_for_right">Cust Terms:</div>
+                  <div class="ui-grid-col-6 label_for_left_less">
+                    <input pInputText formControlName="cust_terms">
+                  </div>
+                </div>
+              </div>
+              <div class="ui-grid-col-6">
+                <div class="ui-grid">
+                  <div class="ui-grid-col-6"></div>
+                  <div class="ui-grid-col-6"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+        <button pButton type="Button" label="Cancel" icon="fa-close" (click)="exit()"></button>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+        <button pButton type="submit" label="Save" icon="fa-save"></button>
+      </div>
+    </form>
+  </div>
+</blockable-div>
+
+<p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Notes" appendTo="body" [draggable]="true"
+  [(visible)]="noteDisplay" [positionTop]="250">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+   <nesi-moig-note-editor [editMode]="_editMode" [existingNote]="_existingNote" [invoice]="_masterOutstandingInvoice" (onExit)="exitFromNoteEditor($event)" >
+   </nesi-moig-note-editor>
+  </div>
+</p-dialog>

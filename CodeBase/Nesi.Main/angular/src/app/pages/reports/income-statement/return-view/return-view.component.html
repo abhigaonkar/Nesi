@@ -1,0 +1,7 @@
+<div *ngIf="returnData.success && returnData.message">
+  <p-message severity="success" [text]="returnData.message"></p-message>
+</div>
+
+<div *ngIf="!returnData.success && returnData.message">
+  <p-message severity="info" [text]="returnData.message"></p-message>
+</div>

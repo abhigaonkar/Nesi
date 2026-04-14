@@ -1,0 +1,139 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw" style="position:absolute;top:25%;left:50%"></i>
+</p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div style="height: 400px">
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Expected Start Date:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="qO_startdate" placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Expected End Date:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="completion" placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Due Date:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="date_due" placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Exp PO Date:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="exp_podate" placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Chance %:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-spinner formControlName="pct_chance" [min]="0" [max]="90" [step]="30"></p-spinner>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Reason For Chance:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-dropdown [filter]="true" maxlength="50" [style]="{'width':'100%'}" [options]="optionList" formControlName="pct_chance_reason"></p-dropdown>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            PM To Follow Up On Quote:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-checkbox binary="true" formControlName="follow_up"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Parallel Bid:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <p-checkbox binary="true" formControlName="parallel_bid"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Notes
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            <textarea pInputTextarea formControlName="notes" (click)="op.toggle($event)" readonly style="resize:none;"></textarea>
+            <p-overlayPanel #op styleClass="overlaypanel-wrapper" appendTo="body">
+              <textarea pInputTextarea cols="60" formControlName="newNote" style="height:60px;" placeholder="New Note">
+              </textarea>
+              <div class="">
+                <button pButton type="Button" label="Close" icon="fa-close" (click)="op.hide();"></button>
+                <button pButton type="submit" label="Save" icon="fa-save" (click)="updateNote($event)"></button>
+              </div>
+            </p-overlayPanel>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Business Unit:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{ _masterQuote && _masterQuote.business_unit }}
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Customer:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{  _masterQuote && _masterQuote.customer }}
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Contact:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{  _masterQuote &&  _masterQuote.contact }}
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 label_for_right ui-g-nopad">
+            Status:
+          </div>
+          <div class="ui-g-12 ui-lg-4 label_for_left ui-g-nopad">
+            {{  _masterQuote && _masterQuote.status}}
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+        <button pButton type="Button" label="Cancel" icon="fa-close" (click)="exit()"></button>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+        <button pButton type="submit" label="Save" icon="fa-save"></button>
+      </div>
+    </form>
+  </div>
+</blockable-div>

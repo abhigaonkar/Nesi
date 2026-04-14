@@ -1,0 +1,360 @@
+
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+</p-blockUI>
+<div *ngIf="!customer_id">
+  Customer Id does not provide.
+</div>
+<blockable-div #pblockableDiv>
+  <div *ngIf="customer_id" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_edit">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g-12 ui-lg-9 ui-g-nopad">
+        <div class="ui-g-12 ui-g-nopad">
+          <!-- <div class="ui-g-12 ui-lg-1 ui-g-lesspad label_for_right">
+              Customer Name:
+          </div>
+          <div class="ui-g-12 ui-lg-3 ui-g-lesspad  label_for_left_less">
+              {{profile && profile.profile.customer_name}}
+          </div> -->
+          <div class="ui-g-12 ui-lg-4 ui-g-lesspad label_for_right">
+            <div class="ui-g-3 ui-g-lesspad">
+              Customer Name:
+            </div>
+            <div class="ui-g-9 ui-g-lesspad left">
+              {{profile && profile.profile.customer_name}}
+              <button type="button" (click)="handle_customer_request()"><i class="fa fa-edit"></i></button>
+
+            </div>
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad  label_for_right">
+            Account Manager:
+          </div>
+          <div class="ui-g-12 ui-lg-5 ui-g-lesspad  label_for_left_less">
+            <p-dropdown [filter]="true" placeholder="Select Account Manager" [style]="{'width':'100%'}" [options]="profile && profile.accountManagerList"
+                        formControlName="account_manager_id"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('account_manager_id')" [errorMsg]="'Account Manager is required.'"></nesi-fieldErrorDisplay>
+          </div>
+          <div class="ui-g-12 ui-lg-1 ui-g-lesspad  label_for_left_less">
+            <p-checkbox binary="true" label="Is Partner?" formControlName="is_partner"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+
+
+          <div class="ui-g-12 ui-lg-4 ui-g-lesspad label_for_right">
+            <div class="ui-g-3 ui-g-lesspad label_for_right">
+              Status:
+            </div>
+            <div class="ui-g-2 ui-g-lesspad label_for_right">
+              {{status}}
+            </div>
+          </div>
+          <!--Start -->
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad  label_for_right">
+            Business Development Manager:
+          </div>
+          <div class="ui-g-12 ui-lg-5 ui-g-lesspad  label_for_left_less">
+            <p-dropdown [filter]="false" [disabled]="true" placeholder="Select Business Development Manager" [style]="{'width':'100%'}" [options]="profile && profile.regAccountManagerList"
+                        formControlName="reg_account_manager_id"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('reg_account_manager_id')" [errorMsg]="'Business Development Manager is required.'"></nesi-fieldErrorDisplay>
+          </div>
+          <!--<div class="ui-g-12 ui-lg-1 ui-g-lesspad  label_for_left_less">
+    &nbsp;
+  </div>-->
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 ui-g-lesspad label_for_right">
+            <div class="ui-g-3 ui-g-lesspad">
+              &nbsp;
+            </div>
+            <div class="ui-g-9 ui-g-lesspad left">
+              &nbsp;
+            </div>
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad  label_for_right">
+            Account Development Specialist:
+          </div>
+          <div class="ui-g-12 ui-lg-5 ui-g-lesspad  label_for_left_less">
+            <p-dropdown [filter]="true" [disabled]="true" placeholder="Account Development Specialist" [style]="{'width':'100%'}" [options]="profile && profile.projectIsrList"
+                        formControlName="isr"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 ui-g-lesspad label_for_right">
+            <div class="ui-g-3 ui-g-lesspad">
+              &nbsp;
+            </div>
+            <div class="ui-g-9 ui-g-lesspad left">
+              &nbsp;
+            </div>
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad  label_for_right">
+            Strategic Account Manager:
+          </div>
+          <div class="ui-g-12 ui-lg-5 ui-g-lesspad  label_for_left_less">
+            <p-dropdown [filter]="true" [disabled]="true" placeholder="Strategic Account Manager" [style]="{'width':'100%'}" [options]="profile && profile.projectOsrList"
+                        formControlName="osr"></p-dropdown>
+          </div>
+        </div>
+        <!--End -->
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 ui-g-lesspad label_for_right">
+            <div class="ui-g-3 ui-g-lesspad">
+              &nbsp;
+            </div>
+            <div class="ui-g-9 ui-g-lesspad left">
+              &nbsp;
+            </div>
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad  label_for_right">
+            Project Manager:
+          </div>
+          <div class="ui-g-12 ui-lg-5 ui-g-lesspad  label_for_left_less">
+            <p-dropdown [filter]="true" placeholder="Select Project Manager" [style]="{'width':'100%'}" [options]="profile && profile.projectManagerList"
+                        formControlName="project_manager_id"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('project_manager_id')" [errorMsg]="'Project Manager is required.'"></nesi-fieldErrorDisplay>
+          </div>
+          <div class="ui-g-12 ui-lg-1 ui-g-lesspad  label_for_left_less">
+            <p-checkbox binary="true" label="On Hold?" formControlName="is_on_hold"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-1  bold right">
+            QC LV1 Date:
+          </div>
+          <div class="ui-g-12 ui-lg-3  left">
+            <div class="ui-g-12 ui-g-nopad ui-lg-4">
+              {{profile && profile.profile.qc_dt1_text || 'N/A'}}
+            </div>
+            <div (click)="changeQC(3)" class="ui-g-12  ui-g-nopad ui-lg-4 allow_click" *ngIf="profile && profile.is_qc_allowed &&  profile.profile.qc_dt1_text">
+              Remove QC1
+            </div>
+            <div (click)="changeQC(1)" class="ui-g-12  ui-g-nopad ui-lg-4 allow_click" *ngIf="profile && profile.is_qc_allowed && !profile.profile.qc_dt1_text">
+              Approve QC1
+            </div>
+          </div>
+          <div class="ui-g-12 ui-lg-2  bold right">
+            QC LV2 Date:
+          </div>
+          <div class="ui-g-12 ui-lg-5   left">
+            <div class="ui-g-12 ui-g-nopad ui-lg-4">
+              {{profile && profile.profile.qc_dt2_text || 'N/A'}}
+            </div>
+            <div (click)="changeQC(4)" class="ui-g-12  ui-g-nopad ui-lg-4 allow_click" *ngIf="profile && profile.is_qc_allowed &&  profile.profile.qc_dt2_text">
+              Remove QC2
+            </div>
+            <div (click)="changeQC(2)" class="ui-g-12  ui-g-nopad ui-lg-4 allow_click" *ngIf="profile && profile.is_qc_allowed && !profile.profile.qc_dt2_text">
+              Approve QC2
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-lg-1   label_for_left_less">
+            <button pButton label="Save" icon="fa-save"></button>
+          </div>
+        </div>
+        <div class="ui-g-12" *ngIf="this.userform.get('is_on_hold') && this.userform.get('is_on_hold').value">
+          On Hold Reason:
+          <textarea pInputTextarea rows="5" formControlName="why_hold"></textarea>
+          <nesi-fieldErrorDisplay [displayError]="this.userform.get('is_on_hold') && this.userform.get('is_on_hold').value && !this.userform.get('why_hold').value"
+                                  [errorMsg]="'You must fill out a reason why you\'re putting this customer on hold.'"></nesi-fieldErrorDisplay>
+          <!-- <nesi-fieldErrorDisplay [displayError]="this.profile && this.profile.profile.why_hold && this.userform.get('why_hold').value==this.profile.profile.why_hold"
+              [errorMsg]="'You must fill out a (different) reason why you\'re taking this customer on/off hold.'"></nesi-fieldErrorDisplay> -->
+        </div>
+      </div>
+      <div class="ui-g-12 ui-lg-3 ui-g-nopad">
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-lesspad right bold">
+            Customer ID #:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad right bold">
+            {{profile&&profile.customer_id}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-nopad right bold">
+            Sales To Date:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad right bold">
+            {{profile&&profile.profile.total_all | currency:'CAD':'symbol-narrow':'1.2-2'}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-lesspad right bold">
+            Sales Last Year To Date:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad  right bold">
+            {{profile&&profile.profile.total_1_year | currency:'CAD':'symbol-narrow':'1.2-2'}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-lesspad right bold">
+            Sales 2 Years To Date:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad right bold">
+            {{profile&&profile.profile.total_2_year | currency:'CAD':'symbol-narrow':'1.2-2'}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-lesspad right bold">
+            Active:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad right bold">
+            {{profile&&profile.profile.active ? 'Yes' : 'No'}}
+          </div>
+        </div>
+            <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-7 ui-g-lesspad right bold">
+            Key Account:
+          </div>
+          <div class="ui-g-5 ui-g-lesspad right bold">
+            {{profile&&profile.profile.key_account ? 'Yes' : 'No'}}
+          </div>
+        </div>
+      </div>
+      <p-dialog header="Why Hold?" [width]="cs.dialogWidth" [modal]="true" [responsive]="true" [(visible)]="display_why_hold">
+        <div class="ui-g-12">
+          <textarea pInputTextarea rows="5" formControlName="why_hold"></textarea>
+          <nesi-fieldErrorDisplay [displayError]="!this.userform.get('why_hold').value" [errorMsg]="'You must fill out a reason why you\'re putting this customer on hold.'"></nesi-fieldErrorDisplay>
+          <nesi-fieldErrorDisplay [displayError]="this.profile && this.profile.profile.why_hold && this.userform.get('why_hold').value==this.profile.profile.why_hold"
+                                  [errorMsg]="'You must fill out a (different) reason why you\'re taking this customer on/off hold.'"></nesi-fieldErrorDisplay>
+        </div>
+        <div class="ui-g-12 ui-lg-2 ui-lg-offset-10">
+          <button [disabled]="!this.userform.get('why_hold').value || (this.profile && this.profile.profile.why_hold && this.userform.get('why_hold').value==this.profile.profile.why_hold)"
+                  pButton label="Save" icon="fa-save"></button>
+        </div>
+      </p-dialog>
+    </form>
+
+
+    <div class="ui-g-12" *ngIf="all_addresses_list && all_addresses_list.length>10">
+      <p-panel header="Choose/Filter Addresses">
+        <p-multiSelect [style]="{'width':'100%'}" [filter]="true" [options]="all_addresses_list" [(ngModel)]="selected_addresses"
+                       selectedItemsLabel="{0} address selected"></p-multiSelect>
+      </p-panel>
+    </div>
+    <div class="ui-g-12" *ngIf="addresses">
+      <p-accordion [activeIndex]="activeIndex" (onOpen)="onAccordionOpen($event)" (onClose)="activeIndex=-1">
+        <p-accordionTab header="Chargeout Settings" [disabled]="!(profile && profile.is_allowed_to_view_chargeout_settings)">
+          <nesi-customer-accounting-settings [customer_base_profile]="customer_base_profile" *ngIf="activeIndex==0" [customer_id]="customer_id" [disabled]="disabled"></nesi-customer-accounting-settings>
+        </p-accordionTab>
+        <p-accordionTab header="Addresses">
+          <p-accordion [activeIndex]="activeIndex_addr" (onOpen)="onAccordionOpen_addr($event)" (onClose)="activeIndex_addr=-1">
+            <!--     <p-accordionTab header="New Address" [disabled]="!(profile && profile.is_admin_authenticated)" visible="false">
+                     <nesi-customer-address (address_updated)="addressUpdated($event)" [customer_base_profile]="customer_base_profile" *ngIf="activeIndex_addr==0"
+                         [customer_id]="customer_id" [address_id]="-1"></nesi-customer-address>
+                 </p-accordionTab> -->
+            <ng-container *ngFor="let add of addresses; let i = index">
+              <p-accordionTab [header]="add.label">
+                <nesi-customer-address [disabled]="disabled" (address_updated)="addressUpdated($event)" *ngIf="activeIndex_addr==i" [customer_base_profile]="customer_base_profile"
+                                       [customer_id]="customer_id" [address_id]="add.value"></nesi-customer-address>
+              </p-accordionTab>
+            </ng-container>
+          </p-accordion>
+        </p-accordionTab>
+        <p-accordionTab header="Contacts">
+          <p-accordion [activeIndex]="activeIndex_contact_list" (onOpen)="onAccordionOpen_contact_list($event)"
+                       (onClose)="activeIndex_contact_list=-1">
+            <ng-container *ngFor="let add of addresses; let i = index">
+              <p-accordionTab [header]="add.label">
+                <nesi-customer-contact-list [customer_base_profile]="customer_base_profile" [customer_id]="customer_id"
+                                            [address_id]="add.value" [disabled]="disabled">
+                </nesi-customer-contact-list>
+              </p-accordionTab>
+            </ng-container>
+          </p-accordion>
+        </p-accordionTab>
+        <p-accordionTab header="Phone Numbers">
+          <p-accordion [activeIndex]="activeIndex_phone_list" (onOpen)="onAccordionOpen_phone_list($event)"
+                       (onClose)="activeIndex_phone_list=-1">
+            <ng-container *ngFor="let add of addresses; let i = index">
+              <p-accordionTab [header]="add.label">
+                <nesi-customer-contact-phone [disabled]="disabled" [customer_base_profile]="customer_base_profile" *ngIf="activeIndex_phone_list==i" [customer_id]="customer_id"
+                                             [address_id]="add.value">
+                </nesi-customer-contact-phone>
+              </p-accordionTab>
+            </ng-container>
+          </p-accordion>
+        </p-accordionTab>
+        <p-accordionTab header="Sales Settings">
+          <p-accordion [activeIndex]="activeIndex_sales" (onOpen)="onAccordionOpen_sales($event)" (onClose)="activeIndex_sales=-1">
+            <ng-container *ngFor="let add of addresses; let i = index">
+              <p-accordionTab [header]="add.label">
+                <nesi-customer-sales [disabled]="disabled" [customer_base_profile]="customer_base_profile" *ngIf="activeIndex_sales==i" [customer_id]="customer_id"
+                                     [address_id]="add.value">
+                </nesi-customer-sales>
+              </p-accordionTab>
+            </ng-container>
+          </p-accordion>
+        </p-accordionTab>
+         <p-accordionTab header="Business Units">
+                       <nesi-customer-business-unit
+                                [disabled]="disabled"
+                                [customer_base_profile]="customer_base_profile"
+                                [customer_id]="customer_id">
+                          </nesi-customer-business-unit>
+        </p-accordionTab>
+        <p-accordionTab header="Work Orders">
+          <p-accordion [activeIndex]="activeIndex_workorders" (onOpen)="onAccordionOpen_workorders($event)"
+                       (onClose)="activeIndex_workorders=-1">
+            <ng-container *ngFor="let add of addresses; let i = index">
+              <p-accordionTab [header]="add.label">
+                <nesi-customer-workorders [disabled]="disabled" [customer_base_profile]="customer_base_profile" *ngIf="activeIndex_workorders==i" [customer_id]="customer_id"
+                                          [address_id]="add.value">
+                </nesi-customer-workorders>
+              </p-accordionTab>
+            </ng-container>
+          </p-accordion>
+        </p-accordionTab>
+        <p-accordionTab header="Quotes">
+          <p-accordion [activeIndex]="activeIndex_quotes" (onOpen)="onAccordionOpen_quotes($event)" (onClose)="activeIndex_quotes=-1">
+            <ng-container *ngFor="let add of addresses; let i = index">
+              <p-accordionTab [header]="add.label">
+                <nesi-customer-quotes [disabled]="disabled" [customer_base_profile]="customer_base_profile" *ngIf="activeIndex_quotes==i" [customer_id]="customer_id"
+                                      [address_id]="add.value">
+                </nesi-customer-quotes>
+              </p-accordionTab>
+            </ng-container>
+          </p-accordion>
+        </p-accordionTab>
+        <p-accordionTab header="Notes">
+          <p-accordion [activeIndex]="activeIndex_activity" (onOpen)="onAccordionOpen_activity($event)" (onClose)="activeIndex_activity=-1">
+            <ng-container *ngFor="let add of addresses; let i = index">
+              <p-accordionTab [header]="add.label">
+                <nesi-customer-activity [disabled]="disabled" [customer_base_profile]="customer_base_profile" *ngIf="activeIndex_activity==i" [customer_id]="customer_id"
+                                        [address_id]="add.value">
+                </nesi-customer-activity>
+              </p-accordionTab>
+            </ng-container>
+          </p-accordion>
+        </p-accordionTab>
+        <p-accordionTab header="Assets">
+          <p-accordion [activeIndex]="activeIndex_assets" (onOpen)="onAccordionOpen_assets($event)" (onClose)="activeIndex_assets=-1">
+            <ng-container *ngFor="let add of addresses; let i = index">
+              <p-accordionTab [header]="add.label">
+                <nesi-customer-asset [disabled]="disabled" [customer_base_profile]="customer_base_profile" *ngIf="activeIndex_assets==i" [customer_id]="customer_id"
+                                     [address_id]="add.value">
+                </nesi-customer-asset>
+              </p-accordionTab>
+            </ng-container>
+          </p-accordion>
+        </p-accordionTab>
+        <p-accordionTab header="Phone Calls">
+          <nesi-customer-phonenumber [customer_base_profile]="customer_base_profile" *ngIf="activeIndex==9" [customer_id]="customer_id">
+          </nesi-customer-phonenumber>
+        </p-accordionTab>
+        <!-- <p-accordionTab header="Emails">
+            <nesi-customer-email [customer_base_profile]="customer_base_profile" *ngIf="activeIndex==10"
+            [customer_id]="customer_id">
+            </nesi-customer-email>
+        </p-accordionTab> -->
+        <p-accordionTab header="Specialties">
+          <nesi-customer-specialties [disabled]="disabled" [customer_base_profile]="customer_base_profile" *ngIf="activeIndex==11" [customer_id]="customer_id">
+          </nesi-customer-specialties>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+
+  </div>
+
+</blockable-div>

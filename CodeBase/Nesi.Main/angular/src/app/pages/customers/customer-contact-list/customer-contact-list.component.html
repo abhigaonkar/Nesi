@@ -1,0 +1,70 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+      <div class="ui-g-12 ui-g-lesspad">
+        <p-dataTable [value]="data"  [responsive]="true" [globalFilter]="gb" rowHover="true" expandableRows="true"
+          rowExpandMode="single" [globalFilter]="gb"  #d>
+          <p-header>
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+              <div class="ui-g-12 ui-lg-2">
+                <button pButton type="button"  label="{{!addnewDisplay? 'Add New Contact': 'Close Add New Contact'}}" icon="{{!addnewDisplay? 'fa-plus':'fa-times'}}"
+                  (click)="add_new()"></button>
+              </div>
+              <div class="ui-g-12 ui-lg-2">
+                  <button pButton type="button"  label="Nesi.ca Privileges and Access" icon="fa-universal-access"
+                    (click)="open_privileges()"></button>
+                </div>
+              <div class="ui-g-12 ui-lg-6">
+                <div class="ui-inputgroup">
+                  <span class="ui-inputgroup-addon">
+                    <i class="fa fa-search"></i>
+                  </span>
+                  <input #gb type="text" style="height:25px" pInputText size="50" placeholder="Global Filter">
+                </div>
+              </div>
+              <div class="ui-g-12" *ngIf="addnewDisplay">
+                <nesi-customer-contact [disable]="!(lists && lists.isprivilege)" (onChange)="addNewToList($event)" [lists]="lists" (cancel)="addnewDisplay=false" [customer_id]="customer_id"
+                  [customer_base_profile]="customer_base_profile" [address_id]="address_id" [contact]="new_contact"></nesi-customer-contact>
+              </div>
+            </div>
+          </p-header>
+          <p-column expander="true" [style]="{'width':'80px'}" header="Edit"></p-column>
+          <p-column [style]="{'width':'80px'}" header="Delete">
+            <ng-template let-col let-item="rowData"  pTemplate="body">
+              <button (click)="delete_contact(item)"  pButton icon="fa-times" type="button" class="ui-button-warning"></button>            
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'10%'}" field="contact_title" header="Title" [sortable]="true"></p-column>
+          <p-column [style]="{'width':'10%'}" field="contact_name" header="Name" [sortable]="true" item-width="200px"></p-column>
+          <p-column [style]="{'width':'9%'}"  field="contact_cellphone" header="Cell Phone" [sortable]="true"></p-column>
+          <p-column [style]="{'width':'9%'}" field="contact_directline" header="Direct Line" [sortable]="true"></p-column>
+          <p-column [style]="{'width':'5%'}" field="contact_extension" header="Ext." [sortable]="true"></p-column>
+          <p-column [style]="{'width':'10%'}" field="contact_email" header="Email" [sortable]="true"></p-column>
+          <p-column [style]="{'width':'7%'}"  field="contact_password" header="NESI PW" [sortable]="true" [hidden]="true"></p-column>
+          <p-column [style]="{'width':'6%'}"  field="contact_status" header="Active" [sortable]="true">
+  
+          </p-column>
+          <p-column [style]="{'width':'5%'}" field="contact_status_label" header="Status" [sortable]="true"></p-column>
+          <p-column [style]="{'width':'7%'}" field="login_enabled" header="Login Enable" [sortable]="true" [hidden]="true">
+            <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+              <span>{{item[col.field]? 'Enabled':'Disabled'}}</span>
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'7%','text-align':'center'}"  field="stopsurveys" header="Stop Surveys" [sortable]="true">
+            <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+              <p-checkbox disabled="true" binary="true" [(ngModel)]="item[col.field]"></p-checkbox>
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'5%','text-align':'center'}" field="wos" header="Wos" [sortable]="true"></p-column>
+          <p-column [style]="{'width':'5%','text-align':'center'}" field="quotes" header="Quotes" [sortable]="true"></p-column>
+  
+          <ng-template let-contact pTemplate="rowexpansion">
+            <nesi-customer-contact (onChange)="updateContact($event)" [disable]="!(lists && lists.isprivilege)" [lists]="lists" (cancel)="d.toggleRow(contact)" [customer_id]="customer_id"
+              [customer_base_profile]="customer_base_profile" [address_id]="address_id" [contact]="contact"></nesi-customer-contact>
+          </ng-template>
+        </p-dataTable>
+      </div>
+    </div>
+  </blockable-div>

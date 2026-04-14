@@ -1,0 +1,82 @@
+<div class="ui-g-12">
+  <div class="ui-g-12 ui-md-2 label_for_right">
+    Business Unit:
+  </div>
+  <div class="ui-g-12 ui-md-4">
+    <nesi-visibleBusinessUnitDropDown [(ngModel)]="selected_business_unit" (onChange)="loadDetail()"></nesi-visibleBusinessUnitDropDown>
+  </div>
+</div>
+<div class="ui-g-12">
+  <p-dataTable [emptyMessage]="'No work order found'" [paginator]="true" [value]="items" sortMode="single" resizableColumns="true"
+    [loading]="loading" [loadingIcon]="'fa-spinner'" [responsive]="true" [rows]="20" [paginator]="true" [pageLinks]="10" dataKey="woprog_bvwo"
+    rowHover="true" [globalFilter]="gb" [sortField]="'woprog_bvwo'" [sortOrder]="-1" reorderableColumns="true" #dt>
+    <p-header>
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <div class="ui-g-12 ui-md-3">
+          <p-multiSelect [options]="columnOptions" [(ngModel)]="cols" selectedItemsLabel="{0} columns selected"></p-multiSelect>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="fa fa-search"></i>
+            </span>
+            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+          </div>
+        </div>
+      </div>
+    </p-header>
+    <p-column *ngIf="showCol('Wo No')" field="woprog_bvwo" [style]="{'width':'5%'}" header="Wo No" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        <a *ngIf="!cs.isSm" class="a_link" href="{{host}}/redir.aspx?url=%2fwo_prog_frame.aspx%3faction%3dshow%26woprog_id%3d{{data.woprog_id}}%26business_unit_id%3d{{selected_business_unit}}"
+          target="_blank">
+          {{data.woprog_bvwo}}
+        </a>
+        <a *ngIf="cs.isSm" class="a_link" href="{{host}}/redir.aspx?url=/sections/workorder/mobile_wo/index.aspx?id={{data.woprog_id}}%26is_mobile=1"
+        target="_blank">
+        {{data.woprog_bvwo}}
+      </a>
+        
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('Customer Name')" field="woprog_customername" [style]="{'width':'10%'}" header="Customer Name" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        <a  class="a_link" href="{{host}}/redir.aspx?url=%2fsections%2fcustomer%2fframe.aspx%3fcustomer_id%3d{{data.customer_id}}"
+          target="_blank">
+          {{data.woprog_customername}}
+        </a>
+      
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('Description')" field="woprog_description" [style]="{'width':'10%'}" header="Description" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Cust PO')" field="woprog_custpo" [style]="{'width':'4%'}" header="Cust PO" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Status')" field="status" [style]="{'width':'5%'}" header="Status" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Last Modified')" field="last_modified" [style]="{'width':'6%'}" header="Last Modified" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        {{data.date | date:'yyyy-MM-dd'}}
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('Last Modified By')" field="cutby" [style]="{'width':'8%'}" header="Last Modified By" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Still to be Billed')" field="woprog_stilltobebilled" [style]="{'width':'5%'}" header="Still to be Billed"
+      [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Cut Date')" field="woprog_cutdatetime" [style]="{'width':'5%'}" header="Cut Date" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        {{data.woprog_cutdatetime | date:'yyyy-MM-dd'}}
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('Quote')" field="quote_id" [style]="{'width':'5%'}" header="Quote" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('PM')" field="pm" [style]="{'width':'5%'}" header="PM" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Invoice #')" field="woprog_invoiceno" [style]="{'width':'5%'}" header="Invoice #" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Contact')" field="contact_Name" [style]="{'width':'5%'}" header="Contact" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Next Date')" field="open_dt" [style]="{'width':'5%'}" header="Next Date" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        {{data.open_dt | date:'yyyy-MM-dd'}}
+      </ng-template>
+    </p-column>
+    <p-column *ngIf="showCol('On Hold')" field="hold" [style]="{'width':'5%'}" header="On Hold" [sortable]="true"></p-column>
+    <p-column *ngIf="showCol('Margin')" field="margin" [style]="{'width':'5%'}" header="Margin" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        {{data.margin | percent: '1.1-1'}}
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</div>

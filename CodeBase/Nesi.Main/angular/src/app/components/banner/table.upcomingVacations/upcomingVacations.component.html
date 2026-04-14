@@ -1,0 +1,28 @@
+<ng-container *ngIf="UpcomingVacationsList ">
+  <ng-container *ngFor="let bitem of UpcomingVacationsList | groupBy: 'businessUnitName'">
+    <h3>{{bitem.key}}</h3>
+    <table cellpadding="3" class='icon-table' width="100%">
+      <tbody>
+         <tr class='header'>
+          <td width="50%">Name</td>
+          <td width="25%">Starts</td>
+          <td width="25%">Returns</td>
+        </tr>
+        <tr *ngFor="let item of bitem.value">
+          <td>{{item.name}}</td>
+          <td>{{item.startDate | date: "yyyy-MM-dd"}}</td>
+          <td>{{item.returnDate | date: "yyyy-MM-dd"}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="UpcomingVacationsList.length == 0">
+      <table cellpadding="3" class='icon-table' width="100%">
+        <tbody>
+          <tr>
+            <td>No Upcoming Vacations</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+</ng-container>

@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="part_info_index" masterpagefile="~/IntraDefault.master" Codebehind="index.aspx.cs" %>

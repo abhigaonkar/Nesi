@@ -1,0 +1,216 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-3 ui-lg-2 label_for_newquote">
+        Customer:
+      </div>
+      <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+        <p-autoComplete formControlName="customer" [suggestions]="customers" (completeMethod)="filterCustomer($event)" [size]="30"
+          (onSelect)="customerSelected($event,'customer_id')" field="label" dataKey="value" forceSelection="true" placeholder="Input more than 2 characters to search"
+          [minLength]="2"></p-autoComplete>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('customer')" [errorMsg]="'You must select a valid customer.'"></nesi-fieldErrorDisplay>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-2 ui-g-nopad">
+            <p-button type="button" icon = "fa fa-edit" (click)="handle_customer_request()"></p-button>
+        </div>
+      <img *ngIf="q && q.is_Qced" align="absmiddle" src="../../../../assets/images/quote/decal/decal[isqc].png" title="Customer has been QC'ed."
+        height="16" width="16" id="is_QCed">
+      <img *ngIf="q && !q.is_Qced" align="absmiddle" src="../../../../assets/images/quote/decal/decal[notqc].png" title="Customer has NOT been QC'ed. Limitations will be put in place"
+        height="16" width="16" id="is_QCed">
+      <img *ngIf="q && q.is_actived" align="absmiddle" src="../../../../assets/images/quote/decal/decal[active].png" title="Customer is active."
+        id="is_active" height="16" width="34">
+      <img *ngIf="q && !q.is_actived" align="absmiddle" src="../../../../assets/images/quote/decal/decal[onhold].png" title="Customer is hold."
+        id="is_active" height="16" width="34">
+    </div>
+    </div>
+      <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+            Business Unit:
+          </div>
+          <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+            <nesi-ReactiveDropDown formControlName="quote_businessUnit" [options]="businessUnits" (onChange)="BusinessUnitSelected($event);loadUserList($event,'managed_by')"></nesi-ReactiveDropDown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('quote_businessUnit')" [errorMsg]="'You must select a valid business unit.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <!-- <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+            Revenue Line:
+          </div>
+          <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+            <p-dropdown [style]="{'width':'100%'}"  [placeholder]="'&nbsp;'" formControlName="revenueLine" [options]="revenueLines" [required]="true"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('revenueLine')" [errorMsg]="'You must select a valid Revenue Line.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div> -->
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+            To be Managed By:
+          </div>
+          <div class="ui-g-10 ui-md-7 ui-g-nopad ui-lg-5">
+            <p-dropdown [style]="{'width':'100%'}" [placeholder]="'&nbsp;'" [options]="users" [filter]="users && users.length>10" [required]="true"
+              formControlName="managed_by">
+            </p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('managed_by')" [errorMsg]="'You must select a valid project manager.'"></nesi-fieldErrorDisplay>
+          </div>
+          <div *ngIf="privilege61" class="ui-g-2 ui-md-2 ui-g-nopad ui-lg-1">
+            <div class="ui-g-6 ui-md-2 ui-md-offset-1">
+              <p-checkbox binary="true" (onChange)="lockedChange()" name="quoterlockedbool" formControlName="quoter_locked"></p-checkbox>
+            </div>
+            <div class="ui-g-6 ui-md-1">
+              <img hspace='5' src='../../../../assets/images/icon/icon[lock].gif' width='16' height='16' />
+            </div>
+          </div>
+        </div>
+  <!-- Add this section after the "To be Managed By" field -->
+
+<div class="ui-g-12 ui-g-lesspad">
+  <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+    BDM:
+  </div>
+  <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+    <p-dropdown 
+      [style]="{'width':'100%'}" 
+      [placeholder]="getBDMPlaceholder()" 
+      [options]="bdmList" 
+      [disabled]="!userform.get('customer_id').value || !userform.get('quote_businessUnit').value || isLoadingBDM"
+      [filter]="bdmList && bdmList.length > 10"  
+      formControlName="bdm">
+    </p-dropdown>
+    
+    <!-- Loading indicator -->
+    <div *ngIf="isLoadingBDM" class="ui-g-12" style="text-align: center; margin-top: 5px;">
+      <i class="fa fa-spinner fa-spin"></i> Loading BDM options...
+    </div>
+    
+    <!-- Show different error messages based on state -->
+    <nesi-fieldErrorDisplay 
+      *ngIf="(!userform.get('customer_id').value || !userform.get('quote_businessUnit').value) && !isLoadingBDM" 
+      [displayError]="true" 
+      [errorMsg]="'Please select both customer and business unit first to load BDM options.'">
+    </nesi-fieldErrorDisplay>
+    
+    <nesi-fieldErrorDisplay 
+      *ngIf="userform.get('customer_id').value && userform.get('quote_businessUnit').value && bdmList.length === 0 && !isLoadingBDM" 
+      [displayError]="true" 
+      [errorMsg]="'No BDM assigned to this customer/business unit combination.'">
+    </nesi-fieldErrorDisplay>
+    
+    <nesi-fieldErrorDisplay 
+      *ngIf="userform.get('customer_id').value && userform.get('quote_businessUnit').value && bdmList.length > 0 && !isLoadingBDM" 
+      [displayError]="isFieldInValid('bdm')" 
+      [errorMsg]="'You must select a valid BDM.'">
+    </nesi-fieldErrorDisplay>
+  </div>
+</div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+        Address:
+      </div>
+      <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+        <nesi-ReactiveDropDown formControlName="customer_address" (onChange)="addressSelected($event)" [options]="customerAddresses"></nesi-ReactiveDropDown>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('customer_address')" [errorMsg]="'You must select a customer address.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+        Contact:
+      </div>
+      <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+        <div class="ui-g-11 ui-g-nopad">
+          <nesi-ReactiveDropDown formControlName="customer_contact" [options]="customerContacts"></nesi-ReactiveDropDown>
+        </div>
+        <div class="ui-g-1 ui-g-nopad">
+          <button type="button" *ngIf="cs.isLg" [disabled]="!userform.get('customer_address').value" (click)="addContact()" pButton [label]="'Add'"
+            icon="fa fa-plus"></button>
+          <button type="button" *ngIf="!cs.isLg" [disabled]="!userform.get('customer_address').value" (click)="addContact()" pButton icon="fa fa-plus"></button>
+        </div>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('customer_contact')" [errorMsg]="'You must select a valid contact.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+        Expected $ Value:
+      </div>
+      <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+        <input pInputText type="number" step="0.01" formControlName="expected_value">
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('expected_value')" [errorMsg]="'You must enter an expected sales value greater than 0'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+        Chance of Winning:
+      </div>
+      <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+        <p-spinner [maxlength]="2" readonly="true" [min]="30" [max]="90" [step]="30" formControlName="chance_winning"></p-spinner>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('chance_winning')" [errorMsg]="'You must select a value of chance of winning.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+        When is this quote due?
+      </div>
+      <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+        <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" formControlName="date_due"  placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('date_due')" [errorMsg]="'You must select a valid expected due date.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+        Expected Start Date: 
+      </div>
+      <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+        <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" formControlName="date_expected_start" placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('date_expected_start')" [errorMsg]="'You must select a valid expected start date.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+        When will the job be invoiced?
+      </div>
+      <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+        <p-calendar dateFormat="yy-mm-dd" showButtonBar="true" formControlName="date_invoiced"  placeholder="yyyy-mm-dd" showIcon="true"></p-calendar>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('date_invoiced')" [errorMsg]="'You must select a valid expected end date.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-lesspad">
+      <div class="ui-g-12 ui-md-3  ui-lg-2 label_for_newquote">
+        Job Description:
+      </div>
+      <div class="ui-g-12 ui-md-9 ui-g-nopad ui-lg-6">
+        <textarea pInputTextarea [rows]="4" autoResize="autoResize" formControlName="job_description"></textarea>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('job_description')" [errorMsg]="'You must enter a valid description.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+   
+    <div class="ui-g-12 ui-g-lesspad quoteQualifiers">
+      <div class="ui-g-2 ">Qualifiers</div>
+      <div class="ui-g-10 ui-g-nopad">
+        <!-- <p-listbox  [filter]="true" [options]="qualifierList" formControlName="qualifiers"  multiple="multiple" checkbox="checkbox"></p-listbox> -->
+        <div class="ui-g-12 ui-g-lesspad" *ngFor="let item of qualifierList">
+          <p-checkbox name="ck_qualifier" value="{{item.value}}" label="{{item.label}}" [formControl]="userform.get('qualifiers')"></p-checkbox>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g-12 ui-g-nopad ">
+      <div class="ui-g-12 tableCaption">
+        Other Open Quotes for this Customer:
+      </div>
+      <p-dataTable [value]="customerQuotes" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="3" (onRowClick)="openRowQuote($event)"
+        rowHover="true">
+        <p-column field="quoteid" header="Quote #"></p-column>
+        <p-column field="status" header="Status"></p-column>
+        <p-column field="description" header="Description"></p-column>
+        <p-column field="quotedby" header="Quote By"></p-column>
+      </p-dataTable>
+    </div>
+    <div class="ui-g-12 ui-g-nopad ">
+      <button pButton type="submit" label="Start Quote ->" icon="fa-save"></button>
+    </div>
+  </form>
+  <p-dialog header="New Contact" [modal]="true" [responsive]="true" [(visible)]="addNewContactDisplay">
+    <nesi-new-customer-contact [customerId]="selectedCustomerId" [addressId]="selectedAddressId"  (onChange)="contactSaved($event)" (close)="contactCancel()"></nesi-new-customer-contact>
+  </p-dialog>
+
+ 
+</div>

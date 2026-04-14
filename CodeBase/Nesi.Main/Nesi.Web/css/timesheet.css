@@ -1,0 +1,65 @@
+﻿#timesheet																				{
+																						
+																						}
+
+#timesheet #timefinder																	{
+																						width:						100%;
+																						}
+
+#timesheet #timefinder .cat																{
+																						font-family:				arial;
+																						font-size:					12px;
+																						font-weight:				bold;
+																						width:						175px;
+																						text-transform:				uppercase;
+																						border-right:				solid 1px #000;
+																						}
+
+#timesheet #timefinder .val																{
+																						
+																						}
+
+#timesheet #timefinder .val input														{
+																						font-family:				arial;
+																						font-size:					12px;
+																						width:						75px;
+																						font-weight:				bold;
+																						text-align:					center;
+																						text-transform:				uppercase;
+																						}
+
+#timesheet #timefinder .val select														{
+																						font-family:				arial;
+																						font-size:					12px;
+																						width:						250px;
+																						font-weight:				bold;
+																						text-transform:				uppercase;
+																						}
+
+#timesheet #detail																		{
+																						
+																						}
+
+#timesheet #detail #typeof																{
+																						background-color:			#888;
+																						padding:					5px;
+																						color:						#fff;
+																						font-weight:				bold;
+																						border:						solid 1px #000;
+																						}
+
+#timesheet #detail .cat																	{
+																						font-weight:				bold;
+																						text-transform:				uppercase;
+																						border-right:				solid 1px #000;
+																						width:						175px;
+																						}
+
+#timesheet #detail .val																	{
+																						}
+
+#timesheet #detail .val select															{
+																						font-weight:				bold;
+																						text-transform:				uppercase;
+																						width:						450px;
+																						}

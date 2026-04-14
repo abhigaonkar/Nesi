@@ -1,0 +1,440 @@
+.dxWeb_xrdvRibbonIcon_BtnDocumentMap_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnDocumentMapDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnDocumentMapLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnDocumentMapLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnFirstPage_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnFirstPageDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnFirstPageLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnFirstPageLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnLastPage_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnLastPageDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnLastPageLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnLastPageLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnNextPage_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnNextPageDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnNextPageLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnNextPageLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnParameters_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnParametersDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnParametersLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnParametersLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrevPage_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrevPageDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrevPageLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrevPageLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrint_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrintDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrintLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrintLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrintPage_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrintPageDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrintPageLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnPrintPageLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSave_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSaveDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSaveLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSaveLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSaveWindow_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSaveWindowDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSaveWindowLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSaveWindowLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSearch_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSearchDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSearchLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_BtnSearchLargeDisabled_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToCsv_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToCsvLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToHtml_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToHtmlLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToImg_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToImgLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToMht_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToMhtLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToPdf_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToPdfLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToRtf_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToRtfLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToTxt_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToTxtLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToXls_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToXlsLarge_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToXlsx_DevDashboard01,
+.dxWeb_xrdvRibbonIcon_ExportToXlsxLarge_DevDashboard01
+{
+    background-image: url('DocumentViewerSprite.png');
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+.dxWeb_xrdvRibbonIcon_BtnDocumentMap_DevDashboard01
+{
+    background-position: -231px -99px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnDocumentMapDisabled_DevDashboard01
+{
+    background-position: -221px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnDocumentMapLarge_DevDashboard01
+{
+    background-position: -132px -33px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnDocumentMapLargeDisabled_DevDashboard01
+{
+    background-position: -198px -33px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnFirstPage_DevDashboard01
+{
+    background-position: -34px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnFirstPageDisabled_DevDashboard01
+{
+    background-position: -85px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnFirstPageLarge_DevDashboard01
+{
+    background-position: 0px 0px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnFirstPageLargeDisabled_DevDashboard01
+{
+    background-position: -99px -33px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnLastPage_DevDashboard01
+{
+    background-position: -68px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnLastPageDisabled_DevDashboard01
+{
+    background-position: -187px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnLastPageLarge_DevDashboard01
+{
+    background-position: -66px -99px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnLastPageLargeDisabled_DevDashboard01
+{
+    background-position: -132px 0px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnNextPage_DevDashboard01
+{
+    background-position: -102px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnNextPageDisabled_DevDashboard01
+{
+    background-position: -102px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnNextPageLarge_DevDashboard01
+{
+    background-position: -99px -66px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnNextPageLargeDisabled_DevDashboard01
+{
+    background-position: -66px -66px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnParameters_DevDashboard01
+{
+    background-position: -221px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnParametersDisabled_DevDashboard01
+{
+    background-position: 0px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnParametersLarge_DevDashboard01
+{
+    background-position: -165px -99px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnParametersLargeDisabled_DevDashboard01
+{
+    background-position: -231px 0px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrevPage_DevDashboard01
+{
+    background-position: -68px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrevPageDisabled_DevDashboard01
+{
+    background-position: 0px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrevPageLarge_DevDashboard01
+{
+    background-position: 0px -66px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrevPageLargeDisabled_DevDashboard01
+{
+    background-position: 0px -99px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrint_DevDashboard01
+{
+    background-position: -170px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrintDisabled_DevDashboard01
+{
+    background-position: -51px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrintLarge_DevDashboard01
+{
+    background-position: -198px 0px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrintLargeDisabled_DevDashboard01
+{
+    background-position: -99px 0px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrintPage_DevDashboard01
+{
+    background-position: -204px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrintPageDisabled_DevDashboard01
+{
+    background-position: -51px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrintPageLarge_DevDashboard01
+{
+    background-position: -33px -99px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnPrintPageLargeDisabled_DevDashboard01
+{
+    background-position: -66px -33px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSave_DevDashboard01
+{
+    background-position: -153px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSaveDisabled_DevDashboard01
+{
+    background-position: -204px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSaveLarge_DevDashboard01
+{
+    background-position: -231px -33px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSaveLargeDisabled_DevDashboard01
+{
+    background-position: -165px -66px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSaveWindow_DevDashboard01
+{
+    background-position: -34px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSaveWindowDisabled_DevDashboard01
+{
+    background-position: -248px -99px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSaveWindowLarge_DevDashboard01
+{
+    background-position: 0px -33px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSaveWindowLargeDisabled_DevDashboard01
+{
+    background-position: -33px 0px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSearch_DevDashboard01
+{
+    background-position: -119px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSearchDisabled_DevDashboard01
+{
+    background-position: -119px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSearchLarge_DevDashboard01
+{
+    background-position: -132px -99px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_BtnSearchLargeDisabled_DevDashboard01
+{
+    background-position: -198px -66px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToCsv_DevDashboard01
+{
+    background-position: -17px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToCsvLarge_DevDashboard01
+{
+    background-position: -132px -66px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToHtml_DevDashboard01
+{
+    background-position: -85px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToHtmlLarge_DevDashboard01
+{
+    background-position: -165px -33px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToImg_DevDashboard01
+{
+    background-position: -187px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToImgLarge_DevDashboard01
+{
+    background-position: -99px -99px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToMht_DevDashboard01
+{
+    background-position: -136px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToMhtLarge_DevDashboard01
+{
+    background-position: -33px -66px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToPdf_DevDashboard01
+{
+    background-position: -170px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToPdfLarge_DevDashboard01
+{
+    background-position: -165px 0px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToRtf_DevDashboard01
+{
+    background-position: -153px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToRtfLarge_DevDashboard01
+{
+    background-position: -33px -33px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToTxt_DevDashboard01
+{
+    background-position: -136px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToTxtLarge_DevDashboard01
+{
+    background-position: -198px -99px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToXls_DevDashboard01
+{
+    background-position: -238px -132px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToXlsLarge_DevDashboard01
+{
+    background-position: -66px 0px;
+    width: 32px;
+    height: 32px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToXlsx_DevDashboard01
+{
+    background-position: -17px -149px;
+    width: 16px;
+    height: 16px;
+}
+.dxWeb_xrdvRibbonIcon_ExportToXlsxLarge_DevDashboard01
+{
+    background-position: -231px -66px;
+    width: 32px;
+    height: 32px;
+}
+

@@ -1,0 +1,128 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxGridView runat="server" CssFilePath="{0}/styles.css" CssPostfix="NETheme01" Width="100%" Font-Names="Calibri" Font-Size="Small">
+<SettingsBehavior ConfirmDelete="True" EnableRowHotTrack="True"></SettingsBehavior>
+
+<SettingsPager CurrentPageNumberFormat="{0}">
+<PageSizeItemSettings ShowPopupShadow="False">
+<DropDownImage>
+<SpriteProperties HottrackedCssClass="dxWeb_pPopOutHover_NETheme01" PressedCssClass="dxWeb_pPopOutPressed_NETheme01"></SpriteProperties>
+</DropDownImage>
+</PageSizeItemSettings>
+</SettingsPager>
+
+<Settings ColumnMinWidth="10"></Settings>
+
+<SettingsLoadingPanel Delay="0" Text="" ImagePosition="Top"></SettingsLoadingPanel>
+
+<Images SpriteCssFilePath="{0}/sprite.css">
+<LoadingPanelOnStatusBar Url="GridView/gvLoadingOnStatusBar.gif"></LoadingPanelOnStatusBar>
+</Images>
+
+<Styles CssPostfix="NETheme01" CssFilePath="{0}/styles.css">
+<Header VerticalAlign="Middle" Font-Bold="True" ForeColor="#FFFFFF"></Header>
+
+<RowHotTrack BackColor="LightSteelBlue"></RowHotTrack>
+
+<AlternatingRow Enabled="True" BackColor="WhiteSmoke"></AlternatingRow>
+
+<FocusedRow BackColor="Gainsboro" ForeColor="White"></FocusedRow>
+
+<FilterRow BackColor="#E0E0E0"></FilterRow>
+
+<Cell Wrap="False">
+<Paddings Padding="7px"></Paddings>
+
+<BorderBottom BorderStyle="None"></BorderBottom>
+</Cell>
+
+<Footer>
+<BorderTop BorderStyle="None"></BorderTop>
+
+<BorderBottom BorderStyle="None"></BorderBottom>
+</Footer>
+
+<GroupPanel>
+<BorderBottom BorderStyle="None"></BorderBottom>
+</GroupPanel>
+
+<HeaderPanel VerticalAlign="Middle"></HeaderPanel>
+
+<PagerBottomPanel>
+<BorderTop BorderStyle="None"></BorderTop>
+
+<BorderBottom BorderStyle="None"></BorderBottom>
+</PagerBottomPanel>
+
+<LoadingPanel HorizontalAlign="Center" VerticalAlign="Middle">
+<Paddings Padding="15px" PaddingTop="15px" PaddingBottom="0px"></Paddings>
+
+<BackgroundImage VerticalPosition="center"></BackgroundImage>
+
+<Border BorderColor="PeachPuff" BorderStyle="Solid" BorderWidth="5px"></Border>
+</LoadingPanel>
+
+<CommandColumn>
+<BorderBottom BorderStyle="None"></BorderBottom>
+</CommandColumn>
+
+<FilterCell>
+<BorderBottom BorderStyle="None"></BorderBottom>
+</FilterCell>
+
+<TitlePanel Font-Size="13pt" ForeColor="White"></TitlePanel>
+
+<FilterBar BackColor="#DFDFDF">
+<Border BorderStyle="None"></Border>
+</FilterBar>
+
+<FilterBarLink ForeColor="#404040"></FilterBarLink>
+</Styles>
+
+<StylesPager>
+<Pager ItemSpacing="0px" Spacing="0px"></Pager>
+</StylesPager>
+
+<StylesEditors>
+<Calendar>
+<Border BorderColor="Silver" BorderStyle="Solid" BorderWidth="1px"></Border>
+</Calendar>
+
+<LoadingPanel BackColor="Transparent">
+<BackgroundImage Repeat="NoRepeat"></BackgroundImage>
+</LoadingPanel>
+
+<LoadingDiv BackColor="Transparent">
+<BackgroundImage Repeat="NoRepeat"></BackgroundImage>
+</LoadingDiv>
+</StylesEditors>
+
+<StylesPopup>
+<Common>
+<Header VerticalAlign="Middle"></Header>
+
+<ModalBackground Opacity="0"></ModalBackground>
+</Common>
+
+<EditForm>
+<MainArea BackColor="White"></MainArea>
+
+<Content>
+<Paddings Padding="10px"></Paddings>
+</Content>
+
+<Header VerticalAlign="Middle" BackColor="#00B33C" Font-Names="Arial" Font-Size="20px" ForeColor="White">
+<Paddings PaddingLeft="10px" PaddingTop="5px"></Paddings>
+</Header>
+
+<ModalBackground Opacity="0"></ModalBackground>
+</EditForm>
+
+<FilterBuilder>
+<ModalBackground Opacity="0"></ModalBackground>
+</FilterBuilder>
+</StylesPopup>
+
+<Border BorderStyle="None"></Border>
+</dx:ASPxGridView>

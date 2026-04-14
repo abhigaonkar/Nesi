@@ -1,0 +1,118 @@
+<div class="ui-g-12" *ngIf="!summary">
+  {{businessUnit_name}}
+  <i class="fa fa-spinner fa-spin"></i>
+</div>
+<div class="ui-g-12 ui-g-nopad  row_body" *ngIf="summary && !isSm">
+  <div class="ui-g-2 ui-g-nopad">
+    <div class="ui-g-4 ui-g-nopad">
+      <button pButton label="Add" icon="fa-plus" (click)="openUrl('add',summary.businessUnit_id,'WorkOrder')" *ngIf="can_cut_WO"></button>
+    </div>
+    <div class="ui-g-3 ui-g-nopad row_cell center">
+      {{summary.just_scanned}}
+    </div>
+    <div class="ui-g-5 ui-g-nopad row_cell bold a_link" (click)="openUrl('businessUnit_name',summary.businessUnit_id,'WorkOrder')">
+      {{businessUnit_name}}
+    </div>
+  </div>
+  <div class="ui-g-10 ui-g-nopad">
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'total'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.total"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'open'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.open"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'on_hold'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.on_hold"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'being_processed'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.being_processed"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'init_prep'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.init_prep"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'open_pos'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.open_pos"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'rework'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.rework"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'questions'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.questions"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'pm_approval'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.pm_approval"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'bm_approval'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.bm_approval"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'to_be_invoiced'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.to_be_invoiced"></nesi-workOrder-summary-countValue>
+    </div>
+    <div class="ui-g-1 ui-g-nopad">
+      <nesi-workOrder-summary-countValue [name]="'waiting_cut_po'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.waiting_cut_po"></nesi-workOrder-summary-countValue>
+    </div>
+  </div>
+</div>
+
+<div class="ui-g-12 ui-g-nopad " *ngIf="summary && isSm">
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-6 ui-g-nopad label_for_right">
+      Business unit:
+    </div>
+    <div class="ui-g-6 ui-g-nopad row_cell bold a_link" (click)="openUrl('businessUnit_name',summary.businessUnit_id,'WorkOrder')">
+      {{businessUnit_name}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-6 ui-g-nopad label_for_right">
+      Just Scanned:
+    </div>
+    <div class="ui-g-6 ui-g-nopad row_cell center">
+      {{summary.just_scanned}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-6 ui-g-nopad">
+        &nbsp;
+      </div>
+      <div class="ui-g-6 ui-g-nopad">
+        <button pButton label="Add" icon="fa-plus" (click)="openUrl('add',summary.businessUnit_id,'WorkOrder')" *ngIf="can_cut_WO"></button>
+      </div>
+    </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'total'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.total"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'open'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.open"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'on_hold'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.on_hold"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'being_processed'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.being_processed"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'init_prep'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.init_prep"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'open_pos'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.open_pos"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'rework'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.rework"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'questions'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.questions"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'pm_approval'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.pm_approval"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'bm_approval'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.bm_approval"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'to_be_invoiced'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.to_be_invoiced"></nesi-workOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-workOrder-summary-countValue [name]="'waiting_cut_po'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.waiting_cut_po"></nesi-workOrder-summary-countValue>
+  </div>
+</div>

@@ -1,0 +1,181 @@
+﻿body * 
+	{
+	font-family:  Roboto-Regular,HelveticaNeue,Arial,sans-serif !important;
+	}
+body
+	{
+	}
+table
+	{
+	width: 100% !important;
+	}
+textarea,
+select,
+button,
+input[type=submit],
+input[type=button],
+input[type=text],
+input[type=date],
+input[type=password],
+input[type=number]
+	{
+	width: 100% ;
+	min-height: 35px;
+	font-size: 16px;
+	border: 0 !important;
+	background-color: whitesmoke;
+	
+	}
+.emphasis
+	{
+	font-size: 1.5em !important;
+	}
+.pad5
+	{
+	padding: 5px;
+	}
+.font16
+	{
+	font-size: 16px;
+	}
+.greybg
+	{
+	background-color: #f5f5f5;
+	}
+.clearbg
+	{
+	}
+.clearbg select,
+.clearbg input
+	{
+	}
+textarea
+	{
+	min-height: 100px;
+	resize: vertical;
+	}
+.menuddl
+	{
+	background-color: #4682b4;
+	color: #fff !important;
+	}
+input[type=button],
+button
+	{
+	height: 35px;
+	}
+.whitetext
+	{
+	background-color: #4682b4 !important;
+	color: #fff !important;
+	}
+.aligncenter
+	{
+	text-align: center !important;
+	}
+.alignleft
+	{
+	text-align: left !important;
+	}
+.smallbutton
+    {
+    width: 30%;
+    }
+.field
+	{
+	clear:both;
+	padding: 3px;
+	overflow:auto;
+	}
+.field .name
+	{
+	font-size: 16px;
+	float:left;
+	width: 48%;
+	min-height: 27px;
+	padding-top: 8px;
+	color: #4682b4;
+	}
+.field .value
+	{
+	float:left;
+	width: 49%;
+	}
+.field .value.text
+	{
+	font-size: 16px !important;
+	min-height: 27px;
+	padding-top: 8px;
+	padding-left: 3px;
+	}
+.fixed_field
+	{
+	position: fixed;
+	}
+.title	
+	{
+	color: #4682b4 !important;
+	font-size: 16px;
+	}
+.link	
+	{
+	color: #4682b4 !important;
+	font-size: 14px;
+	}
+.warning
+	{
+	color: #ff471e;
+	font-size: 11px;
+	margin-bottom: 10px;
+	}
+.ddl_tabs
+	{
+	font-size: 16px !important;
+	width: 100% !important;
+	padding: 3px;
+	left: 0;
+	}
+.progress_bar			{
+						position:			absolute;
+						left:				0px;
+						
+						height:				150%;
+						width:				100%;
+						filter:				alpha(opacity=0);
+						-moz-opacity:		0.0;
+						-khtml-opacity:		0.0;
+						opacity:			0.0;
+						}
+.progress_barimg		{
+						position:			absolute;
+						left:				49%;
+						margin-left:		-50px;
+						top:				49%;
+						padding:			5px;
+						}
+/* DevEx Overrides */
+/* no borders */
+.dxeListBox,
+.dxeButtonEditButton,
+.dxeLoadingPanel,
+.dxeButtonEdit,
+.dxeTextBox
+	{
+	border: 0 !important;
+	background-image:none !important;
+	background-color: white !important;
+	}
+.dxucBrowseButton 
+	{
+	background-image:none !important;
+	background-color: white !important;
+	}
+.dxpcDropDown 
+	{
+	width: 98% !important;
+	}
+/* Remove image */
+.dxEditors_edtDropDown
+	{
+	display: none;
+	}

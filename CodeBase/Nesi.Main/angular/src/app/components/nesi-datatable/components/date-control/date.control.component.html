@@ -1,0 +1,26 @@
+<div class="date-control qc_date_container">
+  <div class="date-box">
+    <span>From:</span>
+    <p-calendar dateFormat="yy-mm-dd" [maxDate]="toDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [(ngModel)]="fromDate" 
+[showIcon]="true" #from></p-calendar>
+  </div>
+  <div class="date-box">
+    <span>To:</span>
+    <p-calendar dateFormat="yy-mm-dd" [minDate]="fromDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [(ngModel)]="toDate" [showIcon]="true" #end></p-calendar>
+  </div>
+  <div class="ui-g checkbox-row">
+    <div class="ui-g-6 checkbox-list" *ngFor="let check of checkBoxOptions">
+      <p-checkbox name="groupname" [label]="check" [value]="check" [(ngModel)]="checkedValues">
+        <div class="checkbox-items">this is ok</div>
+      </p-checkbox>
+    </div>
+  </div>
+  <div class="ui-g">
+  <div class="ui-dialog-footer">
+  <div class="ui-dialog-buttonpane ui-helper-clearfix">
+    <button pButton type="submit" icon="fa-save" label="OK" (click)="submit($event)"></button>
+    <button pButton type="button" icon="fa-times-circle" label="Cancel" (click)="cancel($event)"></button>
+  </div>
+</div>
+</div>
+</div>

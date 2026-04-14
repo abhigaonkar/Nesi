@@ -1,0 +1,17 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+      <p-tabView>
+        <p-tabPanel header="Details" leftIcon="fa-list">
+          <nesi-customer-sales-properties [disabled]="disabled" [customer_base_profile]="customer_base_profile" [lists]="lists" [data]="data" [customer_id]="customer_id"
+            [address_id]="address_id"></nesi-customer-sales-properties>
+        </p-tabPanel>
+        <p-tabPanel header="History" leftIcon="fa-history">
+          <nesi-customer-sales-history [disabled]="disabled" [customer_base_profile]="customer_base_profile" [lists]="lists" [data]="data" [customer_id]="customer_id"
+            [address_id]="address_id"></nesi-customer-sales-history>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </blockable-div>

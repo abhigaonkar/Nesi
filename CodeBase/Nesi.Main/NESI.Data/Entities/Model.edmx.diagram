@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae29782e6fca442d9f7e43380c900b78" Name="Diagram1" ZoomLevel="58">
+        <EntityTypeShape EntityType="NESI.accounting_period" Width="1.5" PointX="0.75" PointY="68.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.active_memberoffer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.address" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.address_netsuite_map" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.adp_canada_codes" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.allowed_bu_on_wo" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.applicants" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.appointment_resource_member_hide_link" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.appointment_resource_member_link" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.appointment_status" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.appointments" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.apstatus" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ar_notes" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.area_codes" Width="1.5" PointX="11.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.asset_customer_rate" Width="1.5" PointX="6" PointY="112.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.asset_history_action" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.asset_status" Width="1.5" PointX="6.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.assets" Width="1.5" PointX="3.75" PointY="51.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.assets_history" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.assets_type" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audit_group" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audit_item" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audit_type" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audit_typegroup_link" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.auditgroup" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audithistory_details" Width="1.5" PointX="15.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audithistory_header" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audititem" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audititem_group" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audititem_ratingdesc" Width="1.5" PointX="6.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.audititem_type" Width="1.5" PointX="11.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.auto_report_history" Width="1.5" PointX="17.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.auto_reports" Width="1.5" PointX="17.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.auto_reports_schedule" Width="1.5" PointX="17.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.bankedpay_ledger" Width="1.5" PointX="17.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.bankedpay_ledger_type" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.barcode_prefix" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.benefit_details" Width="1.5" PointX="13.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.bingo_data" Width="1.5" PointX="4.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.bingo_queries" Width="1.5" PointX="19.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.bonus_membertype_link" Width="1.5" PointX="6.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.bonus_type" Width="1.5" PointX="8.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.breaktime" Width="1.5" PointX="3" PointY="87.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.bu_paytype_link" Width="1.5" PointX="6" PointY="88.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.business" Width="1.5" PointX="19.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.business_unit" Width="1.5" PointX="0.75" PointY="74" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.business_unit_comp_div" Width="1.5" PointX="10.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.business_unit_hiearchy" Width="1.5" PointX="19.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.business_unit_po_dist" Width="1.5" PointX="19.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cap_training_schedule" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone" Width="1.5" PointX="19.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone_app_device" Width="1.5" PointX="21.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone_app_imei" Width="1.5" PointX="21.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone_app_sim" Width="1.5" PointX="21.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone_carrier" Width="1.5" PointX="12.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone_gps" Width="1.5" PointX="14.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone_history" Width="1.5" PointX="21.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone_number" Width="1.5" PointX="6.75" PointY="77.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone_number_history" Width="1.5" PointX="21.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cellphone_status" Width="1.5" PointX="21.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.certificate_history" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.certificate_skill_link" Width="1.5" PointX="16.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.certificate_training_link" Width="1.5" PointX="23.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.certificates" Width="1.5" PointX="6.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.certificates_credential_link" Width="1.5" PointX="23.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.chargeout" Width="1.5" PointX="8.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.collection_history" Width="1.5" PointX="23.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.contact" Width="1.5" PointX="23.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.contact_history" Width="1.5" PointX="23.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.contact_netsuite_map" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.contactpage" Width="1.5" PointX="10.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.contactpageprivilege" Width="1.5" PointX="25.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.conversion_map" Width="1.5" PointX="25.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.conversion_unit" Width="1.5" PointX="25.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.core_responsibilities" Width="1.5" PointX="25.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.core_responsibilities_privilege" Width="1.5" PointX="16.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.country" Width="1.5" PointX="18.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cr_certificates" Width="1.5" PointX="25.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cr_group" Width="1.5" PointX="20.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cr_qualifications" Width="1.5" PointX="25.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cr_review" Width="1.5" PointX="22.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cr_skills_link" Width="1.5" PointX="24.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cr_skills_priority" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.credit_card_purchase" Width="1.5" PointX="0.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.credit_card_purchase_netsuite_xref" Width="1.5" PointX="2.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.credit_cards" Width="1.5" PointX="12.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.currency" Width="1.5" PointX="0.75" PointY="65.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.currency_history" Width="1.5" PointX="26.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.cust_vend_requests" Width="1.5" PointX="27.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer" Width="1.5" PointX="3.75" PointY="105.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_asset" Width="1.5" PointX="4.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_asset_history" Width="1.5" PointX="6.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_business_unit" Width="1.5" PointX="6" PointY="85.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_collection_status" Width="1.5" PointX="8.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_company" Width="1.5" PointX="27.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_default_invoice_types" Width="1.5" PointX="27.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_history" Width="1.5" PointX="27.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_internal_link" Width="1.5" PointX="27.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_netsuite_map" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_or_contact_status" Width="1.5" PointX="1.5" PointY="111" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_origin" Width="1.5" PointX="14.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_rate" Width="1.5" PointX="16.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_sales_properties" Width="1.5" PointX="18.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_ticketheader" Width="1.5" PointX="20.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_ticketissues" Width="1.5" PointX="22.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_ticketmanager" Width="1.5" PointX="28.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_ticketpage" Width="1.5" PointX="24.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_ticketpriority" Width="1.5" PointX="28.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_ticketstatus" Width="1.5" PointX="29.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_tickettype" Width="1.5" PointX="29.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.daily_finance" Width="1.5" PointX="29.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.dashboard" Width="1.5" PointX="29.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.dashboard_header" Width="1.5" PointX="26.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.dashboard_snapshot_daily" Width="1.5" PointX="28.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.dashboard_snapshot_hist" Width="1.5" PointX="6.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.dashboard_thresholds" Width="1.5" PointX="8.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.days_off_canned_reasons" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.digitalsignage" Width="1.5" PointX="30.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.distribution_group" Width="1.5" PointX="30.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.distribution_group_link" Width="1.5" PointX="30.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.download" Width="1.5" PointX="2.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.downloadcat" Width="1.5" PointX="31.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.edit_type" Width="1.5" PointX="31.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.emaillog" Width="1.5" PointX="31.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.emp_review" Width="1.5" PointX="10.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.emp_review_group" Width="1.5" PointX="31.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.emp_review_history" Width="1.5" PointX="12.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.emp_review_items" Width="1.5" PointX="31.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.emp_trm" Width="1.5" PointX="22.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.emp_trm_chklist_lnk" Width="1.5" PointX="30.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.emp_trm_chklist_opt" Width="1.5" PointX="31.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.er_branch_data" Width="1.5" PointX="14.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.er_vendor_data" Width="1.5" PointX="32.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.eritem" Width="1.5" PointX="32.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.erjob" Width="1.5" PointX="32.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.error" Width="1.5" PointX="32.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.error_log" Width="1.5" PointX="33.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.event_table" Width="1.5" PointX="33.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.expense_category" Width="1.5" PointX="3.75" PointY="59.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.expense_category_business_unit" Width="1.5" PointX="6" PointY="91.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.expense_reimbursement" Width="1.5" PointX="33.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.expense_reimbursement_netsuite_xref" Width="1.5" PointX="34.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.expense_seller" Width="1.5" PointX="0.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ext_website_credentials" Width="1.5" PointX="2.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.failed_login" Width="1.5" PointX="34.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.faq" Width="1.5" PointX="34.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.faq_section" Width="1.5" PointX="24.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.fytarget" Width="1.5" PointX="34.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.fytarget_employees" Width="1.5" PointX="34.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gantt_data" Width="1.5" PointX="35.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_chart_of_accounts" Width="1.5" PointX="30.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_chart_of_accounts_staging" Width="1.5" PointX="8.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_control_accounts" Width="1.5" PointX="35.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_group_te" Width="1.5" PointX="35.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_note_te" Width="1.5" PointX="35.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_special_account_te_link" Width="1.5" PointX="36.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_special_accounts" Width="1.5" PointX="10.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_subgroup_te" Width="1.5" PointX="12.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_te" Width="1.5" PointX="5.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gl_type_mapping" Width="1.5" PointX="8" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gltrans" Width="1.5" PointX="14.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.graph" Width="1.5" PointX="36.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.gridviewlayouts" Width="1.5" PointX="20.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.history_action_type" Width="1.5" PointX="36.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.historycust" Width="1.5" PointX="36.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.historypo" Width="1.5" PointX="36.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.holidays" Width="1.5" PointX="36.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.hu_snapshot" Width="1.5" PointX="0.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.huddle" Width="1.5" PointX="11.25" PointY="77.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.huddle_source" Width="1.5" PointX="12.25" PointY="74.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.huddle_task" Width="1.5" PointX="14.5" PointY="85.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.huddle_task_comments" Width="1.5" PointX="19.75" PointY="88" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.huddle_user" Width="1.5" PointX="17.5" PointY="84" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inc_stmt_note" Width="1.5" PointX="2.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.internal_companyno" Width="1.5" PointX="37.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.internal_project" Width="1.5" PointX="37.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.invattribute" Width="1.5" PointX="37.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_alternate" Width="1.5" PointX="37.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_annual_count_header" Width="1.5" PointX="16.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_annual_counts" Width="1.5" PointX="22.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_annual_counts_history" Width="1.5" PointX="24.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_attribute" Width="1.5" PointX="38.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_attribute_value" Width="1.5" PointX="38.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_audit" Width="1.5" PointX="38.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_barcode" Width="1.5" PointX="38.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_branch" Width="1.5" PointX="38.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_branch_options" Width="1.5" PointX="32.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_consignment" Width="1.5" PointX="34.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_cost" Width="1.5" PointX="36.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_description" Width="1.5" PointX="38.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_dollar_balance_daily" Width="1.5" PointX="39.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_expiry_period" Width="1.5" PointX="39.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_group_dtl" Width="1.5" PointX="39.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_group_hdr" Width="1.5" PointX="10.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_history" Width="1.5" PointX="39.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_import_stage" Width="1.5" PointX="40.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_incorrect_levels" Width="1.5" PointX="16.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_item_detail" Width="1.5" PointX="40.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_item_master" Width="1.5" PointX="18.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_kit_dtl" Width="1.5" PointX="40.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_kit_hdr" Width="1.5" PointX="40.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_location" Width="1.5" PointX="3" PointY="67.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_location_master" Width="1.5" PointX="3" PointY="71.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_location_type" Width="1.5" PointX="40.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_note" Width="1.5" PointX="40.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_per_unit" Width="1.5" PointX="40.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_picture" Width="1.5" PointX="38.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_price" Width="1.5" PointX="3" PointY="74.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_price_history" Width="1.5" PointX="40.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_reference" Width="1.5" PointX="2.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_referencetype" Width="1.5" PointX="41.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_sellprice" Width="1.5" PointX="41.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_sellprice_history" Width="1.5" PointX="41.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_sold_as" Width="1.5" PointX="20.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_tag" Width="1.5" PointX="10.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_tag_link" Width="1.5" PointX="42.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_tag_preset" Width="1.5" PointX="42.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_tag_tradename" Width="1.5" PointX="42.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_tax" Width="1.5" PointX="42.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_usage" Width="1.5" PointX="42.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.invoice_collection_status" Width="1.5" PointX="26.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.invoice_service_email_report_history" Width="1.5" PointX="42.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.journal_entry" Width="1.5" PointX="3" PointY="82.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.journal_entry_line" Width="1.5" PointX="5.25" PointY="133.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.leavetype" Width="1.5" PointX="32.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.log" Width="1.5" PointX="42.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.log_action" Width="1.5" PointX="34.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.log_page" Width="1.5" PointX="42.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.log_page_asax" Width="1.5" PointX="43.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.log_section" Width="1.5" PointX="4.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.logging_agent_error_log" Width="1.5" PointX="43.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.manufacturer" Width="1.5" PointX="43.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.manufacturervendor" Width="1.5" PointX="12.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.markup_formula" Width="1.5" PointX="22.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.master_skill_review_questions" Width="1.5" PointX="42.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.master_skills" Width="1.5" PointX="44.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.matt" Width="1.5" PointX="44.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member" Width="1.5" PointX="9" PointY="73.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_apprentice_level" Width="1.5" PointX="14.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_certificates" Width="1.5" PointX="44.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_fvr_dtl" Width="1.5" PointX="44.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_fvr_hdr" Width="1.5" PointX="44.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_fvr_history" Width="1.5" PointX="44.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_fvr_status" Width="1.5" PointX="44.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_fvr_tab" Width="1.5" PointX="44.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_fvr_template_detail" Width="1.5" PointX="44.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_fvr_template_header" Width="1.5" PointX="44.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_hrstatus" Width="1.5" PointX="45.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_i_template" Width="1.5" PointX="45.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_import_stage" Width="1.5" PointX="16.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_netsuite_xref" Width="1.5" PointX="45.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_offers" Width="1.5" PointX="18.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_paytype" Width="1.5" PointX="24.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_skills" Width="1.5" PointX="26.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_task_cc" Width="1.5" PointX="32.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_tile" Width="1.5" PointX="34.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_tile_type" Width="1.5" PointX="36.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_tile_type_link" Width="1.5" PointX="38.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_timesheet_accuracy" Width="1.5" PointX="46.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.member_todo_list_helper" Width="1.5" PointX="0.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.memberaddressaudit" Width="1.5" PointX="2.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.memberdaysoff" Width="1.5" PointX="5.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.memberdaysoffack" Width="1.5" PointX="46.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.memberdivision" Width="1.5" PointX="46.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membergraph" Width="1.5" PointX="46.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membernote" Width="1.5" PointX="46.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.memberoffer_cr" Width="1.5" PointX="46.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.memberoffer_milestones" Width="1.5" PointX="46.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.memberpage" Width="1.5" PointX="14.25" PointY="91.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.memberpageprivilege" Width="1.5" PointX="19.5" PointY="91.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime" Width="1.5" PointX="12" PointY="81.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime_netsuite_xref" Width="1.5" PointX="46.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime_projecttask" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime_projecttask_netsuite_xref" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime_shop_link" Width="1.5" PointX="46.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime_shop_type" Width="1.5" PointX="40.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime_tags" Width="1.5" PointX="11.25" PointY="98.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime_ts_lite_paytypes" Width="1.5" PointX="46.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime_type" Width="1.5" PointX="42.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertime_type_gl_link" Width="1.5" PointX="46.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertimeaudit" Width="1.5" PointX="12.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertype" Width="1.5" PointX="6.75" PointY="94.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertype_auto_reports" Width="1.5" PointX="47.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertype_chargeout_history" Width="1.5" PointX="3" PointY="133" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertype_classification" Width="1.5" PointX="47.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertype_responsibilities" Width="1.5" PointX="47.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertypehours" Width="1.5" PointX="44.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertypepage" Width="1.5" PointX="46.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertypepageprivilege" Width="1.5" PointX="48.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.memberwage" Width="1.5" PointX="48.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.message" Width="1.5" PointX="48.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.messageboard_chat" Width="1.5" PointX="20.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.messageto" Width="1.5" PointX="48.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.messagetype" Width="1.5" PointX="22.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.migration_expense_category_for_po" Width="1.5" PointX="48.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.n2_profile_category" Width="1.5" PointX="12.75" PointY="68.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.n2_profile_property" Width="1.5" PointX="15" PointY="68" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.n2_user_profile" Width="1.5" PointX="17.25" PointY="88.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ne_file_revision" Width="1.5" PointX="48.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ne_session" Width="1.5" PointX="48.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.nesi_conversion_table" Width="1.5" PointX="32.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.netsuite_queue" Width="1.5" PointX="34.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.netsuite_sales_rep" Width="1.5" PointX="48.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.netsuite_sync_error" Width="1.5" PointX="36.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.new_milestone" Width="1.5" PointX="48.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.note_templates" Width="1.5" PointX="48.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.oncall_schedule" Width="1.5" PointX="48.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ownership" Width="1.5" PointX="49.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.page" Width="1.5" PointX="12" PointY="116.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.page_related" Width="1.5" PointX="49.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.page_wiki" Width="1.5" PointX="49.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.pageprivilege" Width="1.5" PointX="24.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.pageprivilege_template" Width="1.5" PointX="26.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.pageprivilege_template_item" Width="1.5" PointX="38.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.part_request" Width="1.5" PointX="40.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.part_request_history" Width="1.5" PointX="48.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.part_request_origin" Width="1.5" PointX="50.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.part_request_statuslist" Width="1.5" PointX="50.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.partner_skills" Width="1.5" PointX="50.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.passport" Width="1.5" PointX="50.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.payperiod_tax_entity" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.payperiods" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.payroll" Width="1.5" PointX="50.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.payroll_entry_types" Width="1.5" PointX="50.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.payroll_extra_payments" Width="1.5" PointX="50.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.payroll_hours" Width="1.5" PointX="50.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.payroll_progress" Width="1.5" PointX="50.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.paytypehours" Width="1.5" PointX="3.75" PointY="64.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.phone_log" Width="1.5" PointX="42.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.phone_numbers" Width="1.5" PointX="44.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.po_details_current" Width="1.5" PointX="50.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.po_gl_acct" Width="1.5" PointX="0.75" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.po_import_stage" Width="1.5" PointX="51.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.po_line_import_stage" Width="1.5" PointX="20.75" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprog_cc" Width="1.5" PointX="32.75" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprog_header" Width="1.5" PointX="3" PointY="136.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprog_notes" Width="1.5" PointX="34.75" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprog_part_history" Width="1.5" PointX="5.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprog_payment_method" Width="1.5" PointX="52.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprog_scans" Width="1.5" PointX="52.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprog_shipping" Width="1.5" PointX="52.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprog_status" Width="1.5" PointX="12" PointY="71.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprogcomment" Width="1.5" PointX="52.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.poprogstatus" Width="1.5" PointX="14.25" PointY="81.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.privilege" Width="1.5" PointX="17.25" PointY="97.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.privilege_detail" Width="1.5" PointX="52.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.privilege_global" Width="1.5" PointX="22.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.privilege_global_link" Width="1.5" PointX="52.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.privilege_global_link_type" Width="1.5" PointX="24.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.progress_billings" Width="1.5" PointX="52.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.properties" Width="1.5" PointX="26.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.prov" Width="1.5" PointX="9.75" PointY="69.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.qualifications" Width="1.5" PointX="52.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quick_extensions" Width="1.5" PointX="52.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_canned_description" Width="1.5" PointX="52.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_chance" Width="1.5" PointX="36.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_competitor" Width="1.5" PointX="52.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_cust_notes" Width="1.5" PointX="52.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_extratext" Width="1.5" PointX="52.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_field_title" Width="1.5" PointX="46.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_filter" Width="1.5" PointX="52.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_filter_questions" Width="1.5" PointX="52.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_follow_up" Width="1.5" PointX="53.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_history" Width="1.5" PointX="28.75" PointY="53.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_kill_reason" Width="1.5" PointX="54.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_kill_reason_map" Width="1.5" PointX="0.75" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_kill_tier" Width="1.5" PointX="7.75" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_master" Width="1.5" PointX="54.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_post_mortem" Width="1.5" PointX="9.75" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_post_mortem_questions" Width="1.5" PointX="14.75" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_pricetype" Width="1.5" PointX="54.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_process_question_history" Width="1.5" PointX="54.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_process_questions" Width="1.5" PointX="54.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_received_reason" Width="1.5" PointX="54.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_received_reason_map" Width="1.5" PointX="54.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_schedule" Width="1.5" PointX="54.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_section" Width="1.5" PointX="55.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_status" Width="1.5" PointX="22.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_term" Width="1.5" PointX="24.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_worksheet" Width="1.5" PointX="30.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_worksheet_current_cost" Width="1.5" PointX="32.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.r_engine_category" Width="1.5" PointX="12.75" PointY="113.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.r_engine_permission" Width="1.5" PointX="17.25" PointY="91.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.r_engine_report" Width="1.5" PointX="15" PointY="112.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.rd" Width="1.5" PointX="34.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.releases" Width="1.5" PointX="36.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.rental_equipment" Width="1.5" PointX="38.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.rental_equipment_category" Width="1.5" PointX="44.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.report" Width="1.5" PointX="46.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.reports_to_helper" Width="1.5" PointX="48.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.revenue_line" Width="1.5" PointX="3" PointY="129.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.revenue_line_business_unit" Width="1.5" PointX="3" PointY="92.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.rfq_header" Width="1.5" PointX="50.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.rfq_lineitem" Width="1.5" PointX="56.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.rfq_part_list" Width="1.5" PointX="56.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.rfq_vendor_list" Width="1.5" PointX="56.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.rss_feed" Width="1.5" PointX="56.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.salesperson" Width="1.5" PointX="56.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.section" Width="1.5" PointX="56.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.session" Width="1.5" PointX="56.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.session_collection" Width="1.5" PointX="26.75" PointY="56.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ship" Width="1.5" PointX="56.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.shopping_cart" Width="1.5" PointX="16.5" PointY="93.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.shopping_cart_header" Width="1.5" PointX="11.25" PointY="101.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.signature" Width="1.5" PointX="11.25" PointY="104.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.specific_notes" Width="1.5" PointX="56.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.stbb_bymonth" Width="1.5" PointX="56.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.stock_transfer" Width="1.5" PointX="40.75" PointY="56.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.stock_transfer_type" Width="1.5" PointX="56.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.suggestion" Width="1.5" PointX="56.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.target" Width="1.5" PointX="56.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.target_type" Width="1.5" PointX="56.75" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.task" Width="1.5" PointX="0.75" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.task_history" Width="1.5" PointX="57.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.task_member" Width="1.5" PointX="7.75" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.task_status" Width="1.5" PointX="9.75" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.tax" Width="1.5" PointX="14.75" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.tax_entity" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.tax_entity_group" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.tax_entity_group_link" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.tax_entity_hiearchy" Width="1.5" PointX="16.75" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.tax_entity_hierarchy" Width="1.5" PointX="18.75" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.term" Width="1.5" PointX="1.5" PointY="114.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.territory_mapping" Width="1.5" PointX="56.75" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticket_files" Width="1.5" PointX="58.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticket_group" Width="1.5" PointX="11.25" PointY="108.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticket_group_type_link" Width="1.5" PointX="13.5" PointY="108.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticket_memberview" Width="1.5" PointX="24" PointY="88.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticket_tasks" Width="1.5" PointX="27" PointY="89.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticket_team" Width="1.5" PointX="58.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticket_team_memberid" Width="1.5" PointX="58.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticket_vote" Width="1.5" PointX="24" PointY="91.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticketheader" Width="1.5" PointX="21.75" PointY="92" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticketissues" Width="1.5" PointX="27" PointY="85.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticketmanager" Width="1.5" PointX="19.5" PointY="97.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticketpage" Width="1.5" PointX="13.5" PointY="105.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticketpriority" Width="1.5" PointX="19.5" PointY="100.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticketstatus" Width="1.5" PointX="19.5" PointY="102.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.tickettype" Width="1.5" PointX="19.5" PointY="105" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.titles" Width="1.5" PointX="11.75" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.training_curriculum" Width="1.5" PointX="58.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.training_header" Width="1.5" PointX="58.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.training_header_history" Width="1.5" PointX="58.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.training_history" Width="1.5" PointX="20.75" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.training_module" Width="1.5" PointX="22.75" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.training_schedule" Width="1.5" PointX="58.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.training_type" Width="1.5" PointX="58.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.truck_history" Width="1.5" PointX="58.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.user_switch" Width="1.5" PointX="58.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vacation_log" Width="1.5" PointX="58.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vacation_master" Width="1.5" PointX="58.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vacation_note" Width="1.5" PointX="42.75" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vacation_payment_method" Width="1.5" PointX="44.75" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vacation_status" Width="1.5" PointX="46.75" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vacation_transactions" Width="1.5" PointX="58.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vacation_type" Width="1.5" PointX="58.75" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vendor" Width="1.5" PointX="3.75" PointY="95.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vendor_business_unit" Width="1.5" PointX="6" PointY="82.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vendor_documents" Width="1.5" PointX="58.75" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vendor_merge_history" Width="1.5" PointX="58.75" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vendor_netsuite_map" Width="1.5" PointX="59.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.video" Width="1.5" PointX="34.75" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.video_category" Width="1.5" PointX="36.75" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.video_page_lnk" Width="1.5" PointX="48.75" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.video_privilege" Width="1.5" PointX="50.75" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.video_watch_history" Width="1.5" PointX="52.75" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.visible_business_units" Width="1.5" PointX="14.25" PointY="95.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.watch" Width="1.5" PointX="60.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.watch_wo_costs_sells_log" Width="1.5" PointX="5.75" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.who_to_ask" Width="1.5" PointX="60.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_associated" Width="1.5" PointX="7.75" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_checklist" Width="1.5" PointX="60.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_checklist_history" Width="1.5" PointX="60.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_detail_current" Width="1.5" PointX="60.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_detail_current_audit" Width="1.5" PointX="17.75" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_detail_history" Width="1.5" PointX="24.75" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_detail_lineitem_billtype" Width="1.5" PointX="26.75" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_freeze" Width="1.5" PointX="60.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_import_stage" Width="1.5" PointX="60.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_lag" Width="1.5" PointX="60.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_line_import_stage" Width="1.5" PointX="60.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_survey" Width="1.5" PointX="60.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wocomment" Width="1.5" PointX="60.75" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprog" Width="1.5" PointX="3" PointY="156.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprog_asset" Width="1.5" PointX="54.75" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprog_invoice_text" Width="1.5" PointX="60.75" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprog_jobtag" Width="1.5" PointX="61.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprog_project_notes" Width="1.5" PointX="9.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprog_scheduler" Width="1.5" PointX="11.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprog_status" Width="1.5" PointX="13.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprog_tasks" Width="1.5" PointX="9.75" PointY="112.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprogchanges" Width="1.5" PointX="3" PointY="188.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprogchanges_snapshot" Width="1.5" PointX="28.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprogcomment" Width="1.5" PointX="30.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprogstatus" Width="1.5" PointX="38.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_prefinint" Width="1.5" PointX="40.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.linked_altalink_workorders" Width="1.5" PointX="42.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprogstatus_completiontime" Width="1.5" PointX="44.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.active_members" Width="1.5" PointX="56.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.activememberforandy" Width="1.5" PointX="62.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.adp_payroll_pivot" Width="1.5" PointX="62.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.adp_payroll_pivot2" Width="1.5" PointX="62.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.adp_payroll_pivot3" Width="1.5" PointX="62.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.business_development_timesheets" Width="1.5" PointX="19.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.common_used_master_id" Width="1.5" PointX="21.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.crm_contact_history" Width="1.5" PointX="62.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.crm_contacts1" Width="1.5" PointX="62.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.crm_customer1" Width="1.5" PointX="62.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.crm_customerlist" Width="1.5" PointX="62.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.crm_emaillog" Width="1.5" PointX="32.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.crm_phonelog_incoming" Width="1.5" PointX="34.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.crm_phonelog_outgoing" Width="1.5" PointX="62.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.crm_quotegraph" Width="1.5" PointX="62.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.crm_woscutbymonth" Width="1.5" PointX="62.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.currentwage" Width="1.5" PointX="62.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.customer_see_ar" Width="1.5" PointX="46.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory" Width="1.5" PointX="62.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_bv_style" Width="1.5" PointX="48.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.inventory_lookup" Width="1.5" PointX="50.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.master_er_report" Width="1.5" PointX="62.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.membertype_chargeout" Width="1.5" PointX="58.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.no_of_quotes_bypm" Width="1.5" PointX="62.75" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.no_of_received_quotes_bypm" Width="1.5" PointX="60.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.payperiod" Width="1.5" PointX="62.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.po_details" Width="1.5" PointX="5.75" PointY="63.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.purchase_order" Width="1.5" PointX="52.75" PointY="63.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote" Width="1.5" PointX="64.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_details" Width="1.5" PointX="7.75" PointY="64.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_for_print" Width="1.5" PointX="64.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_notes" Width="1.5" PointX="13.75" PointY="64.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.quote_v2" Width="1.5" PointX="64.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.rptemployeephonelist" Width="1.5" PointX="64.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.table_fragmentation" Width="1.5" PointX="64.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.table_usage" Width="1.5" PointX="64.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.test" Width="1.5" PointX="36.75" PointY="64.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.ticket" Width="1.5" PointX="38.75" PointY="64.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.v_memberpageprivilege" Width="1.5" PointX="64.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.v_membertime" Width="1.5" PointX="40.75" PointY="64.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vacation" Width="1.5" PointX="64.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vacation_amounts" Width="1.5" PointX="42.75" PointY="64.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.viw_err" Width="1.5" PointX="64.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_active_business_units" Width="1.5" PointX="64.75" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_activecustomers" Width="1.5" PointX="54.75" PointY="64.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_activepms" Width="1.5" PointX="64.75" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_activevendors" Width="1.5" PointX="64.75" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_address" Width="1.5" PointX="9.75" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customer" Width="1.5" PointX="21.75" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customer_counts" Width="1.5" PointX="26.75" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customer_history_all" Width="1.5" PointX="28.75" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customers" Width="1.5" PointX="30.75" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customerslastyearmtd" Width="1.5" PointX="32.75" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customerslastytdcanada" Width="1.5" PointX="44.75" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customerslastytdusa" Width="1.5" PointX="60.75" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customersmtd" Width="1.5" PointX="66.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customersytdcanada" Width="1.5" PointX="66.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customersytdusa" Width="1.5" PointX="66.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_customertaxes" Width="1.5" PointX="66.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_digital_signage" Width="1.5" PointX="66.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_erjobs" Width="1.5" PointX="66.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_gl_chart_of_accounts" Width="1.5" PointX="66.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_gl_coa" Width="1.5" PointX="66.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_inventory_reorder" Width="1.5" PointX="56.75" PointY="66.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_invoice_stuff" Width="1.5" PointX="66.75" PointY="63.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_invoicedates" Width="1.5" PointX="66.75" PointY="66.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_labour_vendor_bill" Width="1.5" PointX="68.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_laser_wo" Width="1.5" PointX="68.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_master_purchases" Width="1.5" PointX="68.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_member" Width="1.5" PointX="68.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_memberpage" Width="1.5" PointX="17.75" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_memberpageprivilege" Width="1.5" PointX="19.75" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_membertypes" Width="1.5" PointX="21.75" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_no_of_received_quotes_bypm_lastqtr" Width="1.5" PointX="32.75" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_openquotes" Width="1.5" PointX="42.75" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_payperiods_payrollhours" Width="1.5" PointX="44.75" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_payroll_summary" Width="1.5" PointX="68.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_payroll_summary_extd" Width="1.5" PointX="68.75" PointY="53.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_po_line_grid" Width="1.5" PointX="68.75" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_pogrid_onwopage" Width="1.5" PointX="58.75" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_poheaderinfo" Width="1.5" PointX="60.75" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_poprog" Width="1.5" PointX="62.75" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_purchase_order" Width="1.5" PointX="68.75" PointY="63.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_quoteprojectnotes" Width="1.5" PointX="26.75" PointY="69.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_slowapicalls" Width="1.5" PointX="64.75" PointY="69.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_ticket_changerequest" Width="1.5" PointX="70.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_valid_wos" Width="1.5" PointX="70.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_vendor" Width="1.5" PointX="70.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_vendors" Width="1.5" PointX="70.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_wo_parts" Width="1.5" PointX="70.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_woprog" Width="1.5" PointX="70.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_woprog_quote_split" Width="1.5" PointX="70.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vw_woprogstatus" Width="1.5" PointX="70.75" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwanniversaries" Width="1.5" PointX="54.75" PointY="70.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwanniversaries2" Width="1.5" PointX="70.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwmembertimelast2years" Width="1.5" PointX="70.75" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwmembertimelast6months" Width="1.5" PointX="70.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwmembertimelastweek" Width="1.5" PointX="70.75" PointY="67.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwno_of_quotes_bypm_lastquarter" Width="1.5" PointX="5.75" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwquote_firstprinteddate" Width="1.5" PointX="14.75" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwresource" Width="1.5" PointX="16.75" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwslugging" Width="1.5" PointX="18.75" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwticketsclosedlastweek" Width="1.5" PointX="20.75" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwwocomments" Width="1.5" PointX="32.75" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.vwwoprogstatus_invoiced" Width="1.5" PointX="44.75" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_detail" Width="1.5" PointX="72.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_detailh" Width="1.5" PointX="72.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.wo_scan_report" Width="1.5" PointX="72.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.woprog_quoteid" Width="1.5" PointX="26.75" PointY="72.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NESI.work_order" Width="1.5" PointX="72.75" PointY="29.75" IsExpanded="true" />
+        <AssociationConnector Association="NESI.FK_accounting_period_accounting_period_accounting_period_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_journal_entry_accounting_period_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_asset_customer_rate_asset_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_asset_customer_rate_customer_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_breaktime_business_unit_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_breaktime_entered_by_member_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_breaktime_member_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.bu_paytype_link_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.bu_paytype_link_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_customer_business_unit_business_unit_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_expense_category_business_unit_business_unit_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_journal_entry_business_unit_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_revenue_line_business_unit_business_unit_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_vendor_business_unit_business_unit_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.inventory_location_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.inventory_location_master_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.inventory_price_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.member_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.membertime_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.membertype_chargeout_history_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.poprog_header_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.visible_business_units_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.woprog_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.woprogchanges_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.member_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_journal_entry_currency_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.customer_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_customer_business_unit_customer_customer_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_customer_term_Term_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_expense_category_business_unit_expense_category_expense_categ" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.gl_type_mapping_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_task_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_user_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_task_ibfk_4" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_task_comments_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_task_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_task_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_task_comments_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.huddle_user_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_journal_entry_line_journal_entry_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_journal_entry_line_revenue_line_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_journal_entry_line_woprog_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_profile_member_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.member_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.memberpage_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.memberpageprivilege_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.membertime_tags_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.poprogstatus_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.r_engine_permission_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.shopping_cart_header_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.shopping_cart_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.signature_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticket_group_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticket_memberview_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticket_tasks_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticket_vote_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketheader_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketheader_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketheader_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketheader_ibfk_4" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketissues_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketmanager_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.visible_business_units_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.memberpage_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.memberpageprivilege_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.memberpageprivilege_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_membertime_origmembertime" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_membertime_prov" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.membertime_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.membertime_projecttask_netsuite_xref_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_property_category" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_profile_property" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketpage_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.payperiod_tax_entity_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.payperiod_tax_entity_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.poprogstatus_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.r_engine_report_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.r_engine_permission_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_revenue_line_business_unit_revenue_line_revenue_line_id" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.shopping_cart_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.tax_entity_group_link_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.tax_entity_group_link_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticket_group_type_link_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketmanager_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketpage_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticket_group_type_link_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticket_memberview_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticket_tasks_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticket_vote_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketheader_ibfk_5" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketheader_ibfk_6" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketheader_ibfk_7" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketheader_ibfk_8" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.ticketissues_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="NESI.FK_vendor_business_unit_vendor_Vendor_ID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

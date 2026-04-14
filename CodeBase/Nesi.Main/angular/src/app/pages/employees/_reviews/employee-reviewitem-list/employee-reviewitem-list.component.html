@@ -1,0 +1,56 @@
+<p-dataTable [value]="list" [responsive]="true" rowHover="true" rowGroupMode="subheader" groupField="group" expandableRowGroups="true"
+  [sortableRowGroup]="false" #d>
+  <p-header>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <div class="ui-g-12 left">
+        <p-checkbox binary="true" label="Expand All" [(ngModel)]="expand_all" (onChange)="expandall($event)"></p-checkbox>
+      </div>
+      <table class="review_legend">
+        <tr>
+          <td>
+            1-Does Not Meet Expectations
+          </td>
+          <td>
+            2-Sometimes Meets Expectations
+          </td>
+          <td>
+            3-Regularly Meets Expectations
+          </td>
+          <td>
+            4-Sometimes Exceeds Expectations
+          </td>
+          <td>
+            5-Always Exceeds Expectations
+          </td>
+        </tr>
+      </table>
+    </div>
+  </p-header>
+  <ng-template pTemplate="rowgroupheader" let-data>
+    <span [ngClass]="{'back_lightsalmon': get_score(data.group)<3 && get_score(data.group)!==0}">
+      {{data.group}}:{{get_score_text(data.group)}}</span>
+  </ng-template>
+  <p-column [style]="{'width':'15%'}" field="question" header="Review Item"></p-column>
+  <p-column [style]="{'width':'20%'}" field="score" header="Score">
+    <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+      <p-radioButton [disabled]="locked" (onClick)="submit(data)" name="group_{{data.id}}" value="1" label="1" [(ngModel)]="data.score"
+        inputId="opt_{{data.id}}"></p-radioButton>
+      <p-radioButton [disabled]="locked" (onClick)="submit(data)" name="group_{{data.id}}" value="2" label="2" [(ngModel)]="data.score"
+        inputId="opt_{{data.id}}"></p-radioButton>
+      <p-radioButton [disabled]="locked" (onClick)="submit(data)" name="group_{{data.id}}" value="3" label="3" [(ngModel)]="data.score"
+        inputId="opt_{{data.id}}"></p-radioButton>
+      <p-radioButton [disabled]="locked" (onClick)="submit(data)" name="group_{{data.id}}" value="4" label="4" [(ngModel)]="data.score"
+        inputId="opt_{{data.id}}"></p-radioButton>
+      <p-radioButton [disabled]="locked" (onClick)="submit(data)" name="group_{{data.id}}" value="5" label="5" [(ngModel)]="data.score"
+        inputId="opt_{{data.id}}"></p-radioButton>
+      <p-radioButton [disabled]="locked" (onClick)="submit(data)" name="group_{{data.id}}" value="0" label="N/A" [(ngModel)]="data.score"
+        inputId="opt_{{data.id}}"></p-radioButton>
+    </ng-template>
+  </p-column>
+  <p-column [style]="{'width':'30%'}" field="reviewedby" header="Notes">
+    <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+      <textarea [disabled]="locked" class="back_yellow" pInputTextarea [(ngModel)]="data.notes" (change)="submit(data)"></textarea>
+    </ng-template>
+  </p-column>
+
+</p-dataTable>

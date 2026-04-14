@@ -1,0 +1,101 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller" style="min-height: 600px">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g" *ngIf="!profile.isnull && !profile.can_access">
+      Access denied
+    </div>
+    <div class="ui-g" *ngIf="profile.can_access">
+      <div class="ui-g-12 ui-lg-9 ui-g-lesspad">
+        <div class="ui-g-12 ui-g-nopad" *ngIf="offer_id>0">
+          <!-- <div class="ui-g-2 ui-g-lesspad">
+            <button type="button" class="ui-button-secondary" pButton label="Save" icon="fa-save" (click)="save()"></button>
+          </div> -->
+          <div class="ui-g-2 ui-g-lesspad" *ngIf="this.expire_visible">
+            <button type="button" [disabled]="offer_id==0" class="ui-button-secondary" pButton label="Expire" icon="fa-check-circle"
+              (click)="expire()"></button>
+          </div>
+          <div class="ui-g-2 ui-g-lesspad" *ngIf="this.accept_visible">
+            <button type="button" [disabled]="offer_id==0 || !this.accept_enabled" class="ui-button-secondary" pButton label="Accepted"
+              icon="fa-check-circle" (click)="accept()"></button>
+          </div>
+          <div class="ui-g-2 ui-g-lesspad" *ngIf="this.action_visible">
+            <button type="button" [disabled]="offer_id==0 || !this.action_enabled" class="ui-button-secondary" pButton label="{{action_label}}"
+              icon="fa-check-circle" (click)="action()"></button>
+          </div>
+          <div class="ui-g-2 ui-g-lesspad">
+            <button type="button" [disabled]="offer_id==0" class="ui-button-secondary" pButton label="Preview" icon="fa-eye" (click)="preview()"></button>
+          </div>
+          <div class="ui-g-2 ui-g-lesspad">
+            <button type="button" [disabled]="offer_id==0 || !print_enabled" class="ui-button-secondary" pButton label="{{print_label}}"
+              *ngIf="print_visible" icon="fa-print" (click)="print()"></button>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <p-tabView [activeIndex]="activeTab" (onChange)="tabChanged($event)">
+            <p-tabPanel header="Details" leftIcon="fa-info">
+              <nesi-employee-offer-detail  [save_enabled]="save_enabled"  (onChange)="detail_changed($event)" [employee]="employee" [offer]="offer" *ngIf="activeTab===0"></nesi-employee-offer-detail>
+            </p-tabPanel>
+            <p-tabPanel [disabled]="offer_id==0" header="Wage and Compensation" leftIcon="fa-money-bill">
+              <nesi-employee-offer-wage  [save_enabled]="save_enabled"  [employee]="employee" [offer]="offer" *ngIf="activeTab===1" (refresh)="reloadComplPlanInfo()"></nesi-employee-offer-wage>
+            </p-tabPanel>
+            <p-tabPanel [disabled]="offer_id==0" header="Milestones / Objectives" leftIcon="fa-flag">
+              <nesi-employee-offer-milestones  [save_enabled]="save_enabled"  [employee]="employee" [offer]="offer" *ngIf="activeTab===2"></nesi-employee-offer-milestones>
+            </p-tabPanel>
+            <p-tabPanel [disabled]="offer_id==0" header="Responsibilities" leftIcon="fa-tasks">
+              <nesi-employee-offer-responsibilities  [save_enabled]="save_enabled"  [employee]="employee" [offer]="offer" *ngIf="activeTab===3"></nesi-employee-offer-responsibilities>
+            </p-tabPanel>
+            <p-tabPanel [disabled]="offer_id==0" header="Extras" leftIcon="fa-align-justify">
+              <nesi-employee-offer-extras  [save_enabled]="save_enabled" [employee]="employee" [offer]="offer" *ngIf="activeTab===4"></nesi-employee-offer-extras>
+            </p-tabPanel>
+            <p-tabPanel [disabled]="offer_id==0" header="Signback" leftIcon="fa-pen">
+              <nesi-employee-offer-signback [save_enabled]="save_enabled" [employee]="employee" [offer]="offer" *ngIf="activeTab===5"></nesi-employee-offer-signback>
+            </p-tabPanel>
+          </p-tabView>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-lg-3 ui-g-lesspad">
+        <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+          <div class="ui-g-12 ui-g-lesspad">
+            <div class="ui-g-12 ui-lg-6 ui-g-nopad bold "> Offer Status:</div>
+            <div class="ui-g-12 ui-lg-6 ui-g-nopad">{{profile.status || offer && offer.status || 'In Development'}}</div>
+          </div>
+
+          <div class="ui-g-12 ui-g-lesspad bold">
+            Development Notes:
+          </div>
+          <div class="ui-g-12 ui-g-lesspad">
+            <textarea formControlName="new_notes" pInputTextarea rows="5" cols="25" style="height:150px"></textarea>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('new_notes')" [errorMsg]="'Notes is required'"></nesi-fieldErrorDisplay>
+          </div>
+          <div class="ui-g-12 ui-g-lesspad">
+            <button pButton label="Add Notes" [disabled]="userform.disabled" icon="fa-plus"></button>
+          </div>
+          <div class="ui-g-12 ui-g-lesspad">
+            <textarea readonly="true" class="back_notes" style="height:400px" formControlName="history_notes" pInputTextarea rows="20"
+              cols="25"></textarea>
+          </div>
+        </form>
+
+      </div>
+      <p-dialog header="Please review" [(visible)]="displayConfirmWhenHaveMoreAcceptedOffers" (onHide)="confirmNO()">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <div class="ui-g">
+            <div class="ui-g-12">
+              <span class="larger">{{confirmInfo}}</span>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-6">
+                <button type="button" (click)="confirmAccept()" pButton class="" label="Yes"></button>
+              </div>
+              <div class="ui-g-6">
+                <button type="button" (click)="confirmNO()" pButton class="" label="No"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-dialog>
+    </div>
+  </blockable-div>
+</div>

@@ -1,0 +1,42 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12 ui-g-lesspad">
+    <p-dataTable [value]="histories" [responsive]="true" rowHover="true" exportFilename="Expense Entries" #dt>
+      <p-header>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+          <div class="ui-g-12 ui-md-3 ui-lg-2">
+            <button type="button" [disabled]="!(this.histories && this.histories.length > 0)" pButton icon="fa-file" iconPos="left"
+              label="Export" (click)="dt.exportCSV()"></button>
+          </div>
+        </div>
+      </p-header>
+      <p-column field="approved" header="Approved" [style]="{'width':'100px'}">
+        <ng-template pTemplate="body" let-item="rowData">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-6">
+              <button type="button" [disabled]="item.approved_int >-1 || item.date_purchased<minDate" pButton (click)="delete(item)" icon="fa-times"></button>
+            </div>
+            <div class="ui-g-6 ui-rtl" dir="rtl">
+              <i class='fa fa-15x fw fa-thumbs-up' title="{{item.tooltip}}" *ngIf="item.approved_int==1"></i>
+              <i class='fa fa-15x fw fa-thumbs-down' title="{{item.tooltip}}" *ngIf="item.approved_int==0"> </i>
+              <i class='fa fa-15x fw fa-hourglass' title="{{item.tooltip}}" *ngIf="item.approved_int==-1"> </i>
+            </div>
+          </div>
+        </ng-template>
+      </p-column>
+      <p-column field="pay_period" header="Pay Period"></p-column>
+      <p-column field="date_requested" header="Date Requested">
+        
+      </p-column>
+      <p-column field="seller" header="Seller"></p-column>
+      <p-column field="amount" header="Total">
+        <ng-template pTemplate="body" let-item="rowData">
+          <span>{{item.amount | currency:'CAD':'symbol-narrow':'1.2-2'}}</span>
+        </ng-template>
+      </p-column>
+      <p-column field="approved_by" header="Approval Manager"></p-column>
+      <p-column field="item_text" header="Description"></p-column>
+
+      <!-- <p-footer>Total Rows:{{totalRecords}} Total Pages:{{totalPages}}</p-footer> -->
+    </p-dataTable>
+  </div>
+</div>

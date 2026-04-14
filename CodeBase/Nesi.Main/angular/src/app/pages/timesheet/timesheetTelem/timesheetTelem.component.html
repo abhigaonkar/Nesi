@@ -1,0 +1,94 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Business Unit:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <nesi-timesheetWorkOrderCustomer [URL]="APIURLBuList" (OnAfterLoadUrl)="AfterLoadUrl()" [disabled]="disabled" [(ngModel)]="selectedBu"
+        (onChange)="OnChangeBu($event)"></nesi-timesheetWorkOrderCustomer>
+    </div>
+
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      How was your day?
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <p-rating [(ngModel)]="rating" [cancel]="false"></p-rating>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Hrs:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input type="number"  step="0.5" pInputText [(ngModel)]="hours" class="inputHrs" [min]="minvalue" [max]="maxvalue" (change)="onChange($event)" />
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Call Comments:
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <nesi-phoneComment [userId]="inputValue && inputValue.userId" [date]="inputValue && inputValue.selectedDate"></nesi-phoneComment>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Call(s):
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input type="number" pInputText [(ngModel)]="calls" class="inputTelem" />
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Meeting(s):
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input type="number" pInputText [(ngModel)]="meetings" class="inputTelem" />
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Drop Off(s):
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input type="number" pInputText [(ngModel)]="dropoffs" class="inputTelem" />
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Email(s):
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input type="number" pInputText [(ngModel)]="emails" class="inputTelem" />
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      VM(s):
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input type="number" pInputText [(ngModel)]="vms" class="inputTelem" />
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+
+    <div class="ui-g-12 ui-md-2 label_for_right">
+      Quote Opp(s):
+    </div>
+    <div class="ui-g-12 ui-md-10">
+      <input type="number" pInputText [(ngModel)]="quoteopps" class="inputTelem" />
+    </div>
+  </div>
+</div>

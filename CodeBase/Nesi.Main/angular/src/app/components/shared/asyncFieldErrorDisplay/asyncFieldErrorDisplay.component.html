@@ -1,0 +1,10 @@
+<div class="ui-message ui-messages-error ui-corner-all ui-g-nopad" *ngIf="control.errors && control.errors[field]">
+  <i class="fa fa-exclamation-circle"></i>
+  <span>{{ errorMsg.replace('{0}',control.errors[field]) }}</span>
+</div>
+<div *ngIf="control.status==='PENDING'">
+  <i class="fa fa-spinner fa-spin bold"  style="font-size:13px"></i>
+</div>
+<div *ngIf="control.status==='VALID' && show_check">
+  <i class="fa fa-check-circle green bold" style="font-size:13px"></i>
+</div>

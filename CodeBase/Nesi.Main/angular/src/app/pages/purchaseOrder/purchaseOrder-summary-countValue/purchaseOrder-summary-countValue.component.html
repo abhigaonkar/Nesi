@@ -1,0 +1,9 @@
+<div class="ui-g-6 label_for_right smaller"  *ngIf="cs.isSm">
+  {{value && value.name}}
+</div>
+<div class="ui-g-2 ui-md-4 ui-g-nopad count" [ngClass]="getClass('count')" (click)="link_click($event)">
+  {{value && value.count || 0}}
+</div>
+<div class="ui-g-4 ui-md-8 ui-g-nopad value" [ngClass]="getClass('value')" (click)="link_click($event)">
+  {{value && value.value || 0 | currency:'CAD':'symbol-narrow':'1.0-0'}}
+</div>

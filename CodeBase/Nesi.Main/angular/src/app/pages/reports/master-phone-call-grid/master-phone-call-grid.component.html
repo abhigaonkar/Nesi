@@ -1,0 +1,8 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+        <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Master Phone Call Grid'}]"></nesi-breadcurmb>
+    </div>
+    <div class="ui-g-12">
+        <nesi-datatable [id]='203' gridName="MasterPhoneCallGrid" gridTitle="" refreshCache="true" (onRefresh)="loadDetail(true)"></nesi-datatable>
+    </div>
+</div>

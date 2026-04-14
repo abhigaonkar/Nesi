@@ -1,0 +1,182 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid customer_smaller">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g-12 ui-g-lesspad">
+          <!-- <div class="ui-g-12 ui-lg-4 ui-g-nopad right">
+          ID:
+        </div>
+        <div class="ui-g-12 ui-lg-8 ui-g-nopad left">
+          <input pInputText formControlName="address_id" readonly="true" class="no_border back_transparent">
+        </div> -->
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Address Type:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <p-dropdown [style]="{'width':'100%'}" [options]="table_list" formControlName="table"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Description (Name):
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <input pInputText formControlName="description" readonly="true">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Address:
+            <br/>
+            <b>(Line 1 is required)</b>
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="200" placeholder="Line 1*" formControlName="address_line_1" readonly="true">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_line_1')" [errorMsg]="'Address Line 1 is required.'"></nesi-fieldErrorDisplay>
+            <input pInputText maxlength="200" placeholder="Line 2" formControlName="address_line_2" readonly="true">
+            <input pInputText maxlength="200" placeholder="Line 3" formControlName="address_line_3" readonly="true">
+            <input pInputText maxlength="200" placeholder="Line 4" formControlName="address_line_4" readonly="true">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            City:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="address_city" readonly="true">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_city')" [errorMsg]="'City is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Prov/State:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <p-dropdown [filter]="true" placeholder="Select Prov/State" [style]="{'width':'100%'}" [options]="profile && profile.provList"
+              formControlName="address_prov"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_prov')" [errorMsg]="'Prov/State is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Postal Code:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="10" formControlName="address_postalcode" readonly="true">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_postalcode')" [errorMsg]="'Postal Code is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Country:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" maxlength="50" placeholder="Select Country" [style]="{'width':'100%'}" [options]="profile && profile.countryList"
+              formControlName="address_country"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('address_country')" [errorMsg]="'Country is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Phone:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <span>
+              (
+              <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="phone_area" readonly="true">)
+            </span>
+            <span>
+              <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="phone_prefix" readonly="true">
+            </span>
+            <span>
+              -
+              <input class="phone_number_2" minlength="4" maxlength="4" pInputText formControlName="phone_suffix" readonly="true">
+            </span>
+            <span>
+              <b>Ext.</b>
+              <input class="phone_number_1" pInputText formControlName="phone_ext" readonly="true">
+            </span>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('phone_area') || isFieldInValid('phone_prefix') || isFieldInValid('phone_suffix')"
+              [errorMsg]="'Valid Phone number is required.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Fax:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <span>
+              (
+              <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="fax_area" readonly="true">)
+            </span>
+            <span>
+              <input class="phone_number_1" minlength="3" maxlength="3" pInputText formControlName="fax_prefix" readonly="true">
+            </span>
+            <span>
+              -
+              <input class="phone_number_2" minlength="4" maxlength="4" pInputText formControlName="fax_suffix" readonly="true">
+            </span>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('fax_area') || isFieldInValid('fax_prefix') || isFieldInValid('fax_suffix')"
+              [errorMsg]="'Fax number is not valid.'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Website:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="website">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Active:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+              <p-checkbox formControlName="active" disabled=true binary="true"></p-checkbox>
+          </div>
+        </div>
+        <!-- <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            GPS Coordinates:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="gps_coordinates">
+          </div>
+        </div> -->
+        <!-- <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Facebook:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="facebook">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Twitter:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="twitter">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-lg-4 ui-g-nopad label_for_right">
+            Linkedin:
+          </div>
+          <div class="ui-g-12 ui-lg-8 ui-g-nopad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="linkedin">
+          </div>
+        </div> -->
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-3 ui-lg-offset-4">
+            <button [disabled]="!customer_base_profile || !customer_base_profile.is_admin_authenticated" type="submit" pButton label="Save" icon="fa-save"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </blockable-div>

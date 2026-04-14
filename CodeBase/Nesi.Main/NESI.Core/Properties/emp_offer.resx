@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="xrLabel21.Text" xml:space="preserve">
+    <value>You agree to abide by the Company’s employment policies as set out in the Employee Handbook, our Safety Manual and posted branch specific policies established by the Branch Manager (or your supervisor) now and as they may be modified in the future. Our policies exist to (1) ensure that our company is meeting or exceeding all standards and regulations for which we are legally responsible; and (2) allow us to most effectively meet our corporate objectives.  The Employee Handbook, Safety Manual and all policies are subject to change by the Company from time to time in its discretion.  You will meet at least annually with your supervisor to review your performance and at which meetings annual performance targets and milestones will be established.</value>
+  </data>
+  <data name="xrLabel23.Text" xml:space="preserve">
+    <value>In the event that our business relationship comes to an end, it is mutually beneficial to determine our respective obligations ahead of time. Accordingly, your employment may cease under any of the following circumstances:
+
+Resignation - Employment termination initiated by an Employee who chooses to leave the Company voluntarily. Although advanced notice is not required, the Company requests at least two week’s written resignation notice from all Employees. For highly responsible and/or managerial positions, the Employee is requested to provide at least one month’s written resignation notice, so that suitable arrangements for supervision and continuation of the work can be made.
+
+In its sole discretion, the Company may choose to make the resignation effective immediately or at any time prior to the end of the working notice period provided by the Employee. Upon making such an election, the Company will provide payment in lieu of the notice and vacation pay equal to the amounts which would have been earned to the end of the working notice period provided, and no further amounts or notice or payment in lieu of notice will be due.
+
+Termination Without Cause - the Company may terminate your employment in our sole discretion without cause, by providing you with the following (inclusive of any entitlements under applicable Employment Standards legislation):
+
+a) Salary accrued to the Termination Date;
+b) Continued coverage under the company’s group benefits plan for the minimum notice period prescribed by applicable Employment Standards legislation;
+c) Payout of unused accrued vacation pay, calculated and paid in accordance with the minimum requirements of applicable Employment Standards legislation;
+d) Payment of any bonus compensation owing from a previous year end;
+e) And;
+I.If the termination cause is due to shortage or work, or company insolvency, payment will be in accordance with the minimum requirements of applicable Employment Standards legislation, or
+II.If the Termination Date falls between 3-12 months after you start date, 1 weeks base salary, or
+III.If the Termination Date falls more than 12 months after your Start Date, a payment equal to the greater of: 1 week for each completed 12 month period of employment with the Company, up to a maximum aggregate of 3 months; or,
+IV.The minimum notice and minimum severance (if any) to which you are entitled under applicable Employment
+Standards legislation.
+
+Any payments will be paid in a lump sum within 30 business days after the Termination Date.
+
+Any payments will be based on your then current annual base salary.
+
+Termination With Cause - We may terminate your employment for just cause at any time without notice, pay in lieu of notice, severance pay, or other liability. Reasons for dismissal include, but are not limited to, conduct in violation of company policies and procedures, including policies related to the use of confidential information, unethical or unprofessional behaviour, insubordinate behaviour, dishonesty, destruction of property, or the commission of an unlawful act.
+Any payments made pursuant to the above provisions are in full satisfaction of any amounts owing to you including statutory entitlements and common law damages in any way related to your employment.</value>
+  </data>
+  <data name="sig_prelude.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABhAG4AcwBpAGMAcABnADEAMgA1ADIADQAKAHsADQAKAFwAZgBvAG4AdAB0AGIAbAANAAoAewBcAGYAMAAgAFQAaQBtAGUAcwAgAE4AZQB3ACAAUgBvAG0AYQBuADsAfQANAAoAewBcAGYAMQAgAEEAcgBpAGEAbAA7AH0ADQAKAH0ADQAKAHsADQAKAFwAYwBvAGwAbwByAHQAYgBsAA0ACgA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMgA1ADUAOwANAAoAfQANAAoAXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcAB7AFwAcwBlAGMAdABkAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAbAB7AFwAZgAxAFwAZgBzADEANgBcAGMAZgAxACAAcwBpAGcAXwBwAHIAZQBsAHUAZABlAH0AXABwAGEAcgB9AA0ACgB9AA0ACgA=</value>
+  </data>
+  <data name="xrLabel18.Text" xml:space="preserve">
+    <value>I accept the Company’s offer of employment on the terms and conditions set out in this agreement.  I have reviewed this agreement carefully and acknowledge that I have been advised to and have had the opportunity and reasonable time to obtain independent legal advice prior to signing this agreement.  I understand that this letter is a legally binding employment agreement between myself and the Company.</value>
+  </data>
+  <data name="xrLabel39.Text" xml:space="preserve">
+    <value>Unless otherwise agreed in writing, this agreement will continue to govern our employment relationship regardless of any changes to your employment including, but not limited to, changes to your position, location of employment, hours of work, compensation and benefits. The provisions in this agreement which, by their nature, are intended to apply after termination of employment shall survive the termination of this agreement.</value>
+  </data>
+  <data name="xrLabel36.Text" xml:space="preserve">
+    <value>No waiver of a breach of any term of this agreement is binding unless it is in writing and signed by the party waiving it. Unless otherwise specified, any waiver will be limited to the specific breach waived.  Time will be of the essence of this Agreement and, following any waiver or indulgence by any party, time will again be of the essence of this Agreement.</value>
+  </data>
+  <data name="xrLabel38.Text" xml:space="preserve">
+    <value>The provisions of this Agreement are severable. If any section, paragraph, subparagraph, sentence or provisions shall be restricted, invalid or unenforceable in any jurisdiction, such provision shall be ineffective only to the extent of such restriction, invalidity or unenforceability in such jurisdiction without invalidating the remaining provisions of this agreement, and all provisions shall be given full force and effect separately from the restricted, invalid or unenforceable section, paragraph, subparagraph, sentence or provision, as the case may be, and without affecting the validity or enforceability of such provision in any other jurisdiction.</value>
+  </data>
+  <data name="xrLabel37.Text" xml:space="preserve">
+    <value>This agreement constitutes our entire employment agreement and supersedes any previous negotiations, discussions, agreements or promises existing prior to the date hereof or made to you by anyone, whether oral or written, including any former employment agreement the Company, which shall no longer be of force or effect. You further acknowledge and agree that this agreement was prepared by the Company’s solicitors and that any rule of construction to the effect that any ambiguity is to be resolved against the drafting party is not applicable in any interpretation of this agreement.
+</value>
+  </data>
+  <data name="xrLabel35.Text" xml:space="preserve">
+    <value>The Company may assign this agreement to a related company or to a successor in the business of the Company.  You may not assign or transfer this agreement or any of your rights, benefits or obligations hereunder.</value>
+  </data>
+  <data name="xrLabel25.Text" xml:space="preserve">
+    <value>You agree that you will use computers and communication equipment owned by the Company in an appropriate, professional manner, understanding that emails and internet sites visited will be monitored and calls are tracked in our customer relational management system. The location of our equipment may be monitored from time to time. You will be responsible for all tooling and equipment issued to you by the Company. All such tooling going missing and/or damaged aside from normal wear and tear may result in you having to pay for repair or replacement.
+</value>
+  </data>
+  <data name="xrLabel22.Text" xml:space="preserve">
+    <value>Confidentiality
+In the course of your employment, you may receive confidential information about the Company and its customers, and other persons having business relations with the Company.  During the term of this agreement and following the termination of this agreement for any reasons, you will not use or disclose, publish or transmit confidential information to any unauthorized person, nor will you remove any confidential information from the Company’s premises without our permission.
+
+For purposes of this agreement, the term “confidential information” means all confidential or proprietary information, in any form or media whatsoever, of the Company in addition to all such information relating to the business of the Company, including any confidential information disclosed verbally, in writing or displayed visually or otherwise made available to you or which otherwise comes to your attention or which you learn by virtue of or through employment or service with the Company, including information relating to the business, operations, plans, financial condition or assets of the Company, technology, methods, technical information, processes, trade secrets, Intellectual Property (as defined below), financial data and information, products, service plans, marketing plans, partnerships, or lists of actual or potential customers or suppliers, information about any person or entity have business relations with the Company, personal information about an identifiable individual and any material derived from or incorporating any such information.
+
+You agree to keep confidential all passwords providing access to confidential information provided to you and you agree to not directly or indirectly attempt to or gain access to any confidential information to which you are not permitted access (including, without limitation, through unauthorized use of computer passwords).
+
+Non-Solicitation of Employees
+You agree that during your employment and for the twelve (12) month period immediately following cessation of your employment with the Company (whether terminated by you or the Company, with or without just cause), you will not, either directly or indirectly, on your own or with or through any person, firm, corporation or entity, solicit any employees of the Company with whom you had contact during your employment with the Company, to leave their employment with the Company or become engaged with a competitor of the Company.
+
+Non-Solicitation of Clients
+You agree that during your employment and for the twelve (12) month period immediately following termination of your employment with the Company (whether terminated by you or the Company, with or without just cause), you will not, either directly or indirectly, on your own or with or through any person, firm, corporation or entity, solicit business (of the type of business carried on by the Company) of any clients of the Company with whom or which you had material contact in the two (2) years immediately preceding the termination of your employment with the Company.
+
+Ownership Rights
+The Company maintains exclusive ownership rights to any material or developments that you may create, invent, design, or author (a) while employed at the Company, that relate to or are connected with areas of existing or reasonably foreseeable business interests of the Company or (b) with the use of facilities, equipment, materials, tools, or resources of  the Company, including copyrights, patents, trademarks, trade names, services, marks, industrial designs, trade secrets and other intellectual property rights, including in all software, databases, methods, ideas, devices, discoveries, hardware, technology, business plans, documentation, inventions, copyrightable materials, designs, practices, processes, techniques, works of authorship, research materials,  and related know-how, and all improvements and advances (“Intellectual Property”).
+
+You irrevocably assign and agree to assign to the Company, all rights of any kind in such Intellectual Property, together with all registrations and applications for registration and rights to apply for registration of any Intellectual Property that you may have or acquire in all Intellectual Property, whether existing or created prior to, on or subsequent to the date hereof.
+
+An Employee’s invention shall not be assigned or offered to be assigned to the Company if the invention was developed by
+entirely by the Employee on his own time without using the Company’s equipment, supplies, facilities, or trade secret
+information. This provision shall not apply to any invention that either: (1) relate at the time of conception or reduction to practice of the invention to the Company’s business, or actual or demonstrably anticipated research or development by the Company; or (2) result from any work performed by the employee for the Company.
+
+Remedy and Acknowledgment
+You recognize and agree that a breach of any of the provisions of this section entitled 
+“Protection of Company Interest” will cause irreparable harm to the Company and that actual damages may be difficult to ascertain and, in any event, may be inadequate. Accordingly, you agree that in the event of such breach, the Company shall, in addition to monetary damages and any other remedy, be entitled to equitable remedies, including injunctive relief.  By signing this agreement, you agree and acknowledge that the terms, including the duration and limitations set out in this Section “Protection of Company Interest” are reasonable and properly required for the adequate protection of the business interests of the Company.</value>
+  </data>
+  <metadata name="dt_emp_offer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="dt_emp_offer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>142, 17</value>
+  </metadata>
+  <metadata name="dt_emp_offer3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>267, 17</value>
+  </metadata>
+  <metadata name="dt_emp_offer4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>392, 17</value>
+  </metadata>
+  <data name="xrLabel13.Text" xml:space="preserve">
+    <value>All employees share the following key corporate responsibilities:
+	1.  Enhancing the Company’s reputation for professionalism, safety and quality;
+	2.  Protecting and increasing the Company’s assets; and
+	3.  Assisting our customers in achieving their corporate goals.
+
+In addition to the above, your position has specific responsibilities against which your performance will be measured.  The Company reserves the right to amend your responsibilities as required to meet our corporate objectives.  Your starting responsibilities are set out in Appendix A following this letter.</value>
+  </data>
+  <data name="xrLabel40.Text" xml:space="preserve">
+    <value>Incentive compensation is not considered earned until paid out.  
+
+Because incentive compensation is intended to encourage retention of highly-performing employees, if you resign or your employment is terminated by the Company for just cause, you will be deemed to have relinquished any unpaid incentive compensation, whether or not declared by the Company and whether or not you worked the entire fiscal year.  If the Company terminates your employment without just cause, it will pay you any incentive compensation earned by you that has already been declared by the Company but has not yet been paid, and you will not be entitled to any additional incentive compensation.  
+
+The Company may revise your Incentive Compensation Plan from time to time in its sole discretion.</value>
+  </data>
+</root>

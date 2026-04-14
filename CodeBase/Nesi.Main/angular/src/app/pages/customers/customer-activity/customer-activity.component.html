@@ -1,0 +1,79 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div *ngIf="profile">
+      <p-tabView [activeIndex]="tabIndex" (onChange)="tabChange($event)">
+        <p-tabPanel header="Sales Notes">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-lesspad">
+              <label>Seen by sales and PM's</label>
+              <textarea pInputTextarea rows="5" cols="25" [(ngModel)]="salesnotes"></textarea>
+            </div>
+            <div class="ui-g-12 ui-lg-1 ui-g-lesspad">
+              <button pButton (click)="add_salesnotes()" type="button" label="Add Note" icon='fa-plus'></button>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <textarea class="back_notes" [readonly]="!isEditPastNotes" pInputTextarea rows="10" [(ngModel)]="profile.customer_salesnotes"></textarea>
+            </div>
+            <div class="ui-g-12 ui-lg-1 ui-g-lesspad">
+              <button pButton *ngIf="isEditPastNotes" (click)="save_salesnotes()" type="button" label="Save Notes" icon='fa-save'></button>
+            </div>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Public Notes">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-lesspad">
+              <label>Everyone can see these notes</label>
+              <textarea pInputTextarea rows="5" cols="25" [(ngModel)]="publicnotes"></textarea>
+            </div>
+            <div class="ui-g-12 ui-lg-1 ui-g-lesspad">
+              <button pButton (click)="add_publicnotes()" type="button" label="Add Note" icon='fa-plus'></button>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad">
+              <textarea class="back_notes" readonly="true" pInputTextarea rows="10" [(ngModel)]="profile.public_notes"></textarea>
+            </div>
+          </div>
+        </p-tabPanel>
+        <!-- <p-tabPanel header="Customer AR Notes" *ngIf="isBilling">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-lesspad">
+              <label>(Private)</label>
+              <textarea class="back_notes" pInputTextarea rows="5" cols="25" [(ngModel)]="profile.customer_arnotes"></textarea>
+            </div>
+            <div class="ui-g-12 ui-lg-1 ui-g-lesspad">
+              <button pButton (click)="save_arnotes()" type="button" label="Save Note" icon='fa-save'></button>
+            </div>
+          </div>
+        </p-tabPanel> -->
+        <!-- <p-tabPanel header="Special Invoicing Instructions" *ngIf="isBilling">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-lesspad">
+              <label>If no email address exists, this will appear on the invoice.</label>
+              <textarea class="back_notes" pInputTextarea rows="5" cols="25" [(ngModel)]="profile.customer_memo"></textarea>
+            </div>
+            <div class="ui-g-12 ui-lg-1 ui-g-lesspad">
+              <button pButton (click)="save_invocing_instructions()" type="button" label="Save Note" icon='fa-save'></button>
+            </div>
+          </div>
+        </p-tabPanel> -->
+        <p-tabPanel header="Special WorkOrder Instructions" *ngIf="isBilling">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-lesspad">
+              <label>This will appear on the work order.</label>
+              <textarea class="back_notes" pInputTextarea rows="5" cols="25" [(ngModel)]="profile.customer_workorder_memo"></textarea>
+            </div>
+            <div class="ui-g-12 ui-lg-1 ui-g-lesspad">
+              <button pButton (click)="save_workorder_instructions()" type="button" label="Save Note" icon='fa-save'></button>
+            </div>
+          </div>
+        </p-tabPanel>
+        <!-- <p-tabPanel header="Ar Emails" *ngIf="isBackOffice">
+          <nesi-customer-aremails *ngIf="tabIndex==5" [customer_id]="customer_id" [customer_base_profile]="customer_base_profile"></nesi-customer-aremails>
+        </p-tabPanel>
+        <p-tabPanel header="Invoice Notes" *ngIf="isBackOffice">
+          <nesi-customer-invoicingnotes *ngIf="tabIndex==6" [customer_id]="customer_id" [customer_base_profile]="customer_base_profile"></nesi-customer-invoicingnotes>
+        </p-tabPanel> -->
+      </p-tabView>
+    </div>
+  </blockable-div>

@@ -1,0 +1,24 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxPageControl runat="server"  SpriteCssFilePath="{0}/sprite.css" CssPostfix="NETheme01" CssFilePath="{0}/styles.css">
+<SettingsLoadingPanel Text=""></SettingsLoadingPanel>
+
+<LoadingPanelImage Url="Web/loading_panel.gif"></LoadingPanelImage>
+
+<ActiveTabStyle Wrap="False" BackColor="#EAEAEA">
+<HoverStyle BackColor="#EAEAEA" Font-Bold="True" ForeColor="#000000"></HoverStyle>
+</ActiveTabStyle>
+
+<TabStyle Height="30px" Wrap="False" BackColor="WhiteSmoke" ForeColor="#333333">
+<HoverStyle BackColor="#B4CCE0" ForeColor="White"></HoverStyle>
+
+<Paddings PaddingLeft="15px" PaddingRight="15px" PaddingBottom="15px"></Paddings>
+</TabStyle>
+
+<ContentStyle>
+<Border BorderColor="#EAEAEA" BorderStyle="Solid" BorderWidth="5px"></Border>
+</ContentStyle>
+
+<DisabledStyle ForeColor="#333333"></DisabledStyle>
+</dx:ASPxPageControl>

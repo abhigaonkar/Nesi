@@ -1,0 +1,84 @@
+<div class="ui-g-12" *ngIf="!summary">
+  {{businessUnit_name}}
+  <i class="fa fa-spinner fa-spin"></i>
+</div>
+<div class="ui-g-12 ui-g-nopad  row_body" *ngIf="summary && !isSm">
+  <div class="ui-g-4 ui-g-nopad">
+    <div class="ui-g-3 ui-g-nopad">
+      <button pButton label="Add" icon="fa-plus" (click)="openUrl('add',summary.businessUnit_id,'PurchaseOrder')"></button>
+    </div>
+    <div class="ui-g-1">
+      &nbsp;
+    </div>
+    <div class="ui-g-8 ui-g-nopad row_cell bold a_link" (click)="openUrl('businessUnit_name',summary.businessUnit_id,'PurchaseOrder')">
+      {{businessUnit_name}}
+    </div>
+  </div>
+  <div class="ui-g-1 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'total'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.total"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-1 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'just_cut'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.just_cut"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-1 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'waiting_approval'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.waiting_approval"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-1 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'be_issued'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.be_issued"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-1 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'waiting_confirmation'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.waiting_confirmation"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-1 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'waiting_parts'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.waiting_parts"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-1 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'questions'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.questions"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-1 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'ap_problems'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.ap_problems"></nesi-purchaseOrder-summary-countValue>
+  </div>
+</div>
+
+<div class="ui-g-12 ui-g-nopad " *ngIf="summary && isSm">
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-6 ui-g-nopad label_for_right">
+      Business unit:
+    </div>
+    <div class="ui-g-6 ui-g-nopad row_cell bold a_link" (click)="openUrl('businessUnit_name',summary.businessUnit_id,'PurchaseOrder')">
+      {{businessUnit_name}}
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-6 ui-g-nopad">
+      &nbsp;
+    </div>
+    <div class="ui-g-6 ui-g-nopad">
+      <button pButton label="Add" icon="fa-plus" (click)="openUrl('add',summary.businessUnit_id,'PurchaseOrder')"></button>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'total'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.total"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'just_cut'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.just_cut"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'waiting_approval'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.waiting_approval"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'be_issued'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.be_issued"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'waiting_confirmation'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.waiting_confirmation"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'waiting_parts'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.waiting_parts"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'questions'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.questions"></nesi-purchaseOrder-summary-countValue>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-purchaseOrder-summary-countValue [name]="'ap_problems'" [businessUnit_id]="summary.businessUnit_id" [value]="summary.ap_problems"></nesi-purchaseOrder-summary-countValue>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12 ui-lg-6 ui-g-nopad">
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+        <button pButton label="List" icon="fa fa-list" [ngClass]="{'ui-button-active': url==''}" #list type="button" [routerLink]="['/home/65/quotes']"></button>
+      </div>
+      <div class="ui-g-12  ui-lg-2 ui-g-lesspad">
+        <button pButton label="Start New" [ngClass]="{'ui-button-active': url=='new'}" #new type="button" [routerLink]="['/home/65/quotes/new']"
+          icon="fa fa-plus"></button>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+        <button pButton label="Search" [ngClass]="{'ui-button-active': url=='search'}" #search type="button" [routerLink]="['/home/65/quotes/search']"
+          icon="fa fa-search"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g-12 ui-lg-offset-4 ui-lg-2 ui-g-lesspad ">
+    <form>
+      <div class="ui-inputgroup">
+        <input #quote_Id type="text" size="10" pInputText [(ngModel)]="quoteId" name="quoteid" placeholder="Quote Id">
+        <button pButton label="GO ->" class="noiconbutton" (click)="goQuote()"></button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+  <p-tabView [activeIndex]="tabIndex" (onChange)="tabChanged($event)" *ngIf="base_profile.can_access">
+    <p-tabPanel header="User Infomation" leftIcon="fa-user" [disabled]="submitting">
+      <nesi-employee-user-information (loaded)="submitting=false" (loading)="submitting=true" 
+      (terminated)="terminated()"
+      *ngIf="currentIndex===0" [employee]="employee"></nesi-employee-user-information>
+    </p-tabPanel>
+    <p-tabPanel header="IT" leftIcon="fa-laptop" [disabled]="submitting" *ngIf="tab_enabled[1]">
+      <nesi-employee-it (loaded)="submitting=false" (loading)="submitting=true" *ngIf="currentIndex===1" [employee]="employee"></nesi-employee-it>
+    </p-tabPanel>
+    <p-tabPanel header="Wage" leftIcon="fa-money-bill" *ngIf="tab_enabled[2]" [disabled]="submitting">
+      <nesi-employee-wage (loaded)="submitting=false" (loading)="submitting=true" *ngIf="currentIndex===2" [employee]="employee"></nesi-employee-wage>
+    </p-tabPanel>
+    <p-tabPanel header="Days Off / Vacation" leftIcon="fa-plane" *ngIf="tab_enabled[3]" [disabled]="submitting">
+      <nesi-employee-day-off (loaded)="submitting=false"
+      [vacation_visible]="base_profile.vacation_visible"
+      (loading)="submitting=true" *ngIf="currentIndex===3" [employee]="employee"></nesi-employee-day-off>
+    </p-tabPanel>
+    <p-tabPanel header="Disciplinary" leftIcon="fa-gavel" *ngIf="tab_enabled[4]" [disabled]="submitting">
+      <nesi-employee-disciplinary (loaded)="submitting=false" (loading)="submitting=true" *ngIf="currentIndex===4" [employee]="employee"></nesi-employee-disciplinary>
+    </p-tabPanel>
+    <p-tabPanel header="Privileges" leftIcon="fa-user-secret" *ngIf="tab_enabled[5]" [disabled]="submitting">
+      <nesi-employee-privileges (loaded)="submitting=false" (loading)="submitting=true" *ngIf="currentIndex===5"  [employee]="employee"></nesi-employee-privileges>
+    </p-tabPanel>
+    <p-tabPanel header="Files" leftIcon="fa-file-alt" *ngIf="tab_enabled[6]" [disabled]="submitting">
+      <nesi-employee-files (loaded)="submitting=false" (loading)="submitting=true" *ngIf="currentIndex===6" [employee]="employee"></nesi-employee-files>
+    </p-tabPanel>
+    <p-tabPanel header="Termination" leftIcon="fa-ban" *ngIf="tab_enabled[7]" [disabled]="submitting">
+      <nesi-employee-termination (loaded)="submitting=false" (loading)="submitting=true" *ngIf="currentIndex===7"  [employee]="employee" ></nesi-employee-termination>
+    </p-tabPanel>
+    <p-tabPanel header="Employment Agreements" leftIcon="fa-paperclip" *ngIf="tab_enabled[8]" [disabled]="submitting">
+      <nesi-employee-employment (loaded)="submitting=false" (loading)="submitting=true" *ngIf="currentIndex===8" [employee]="employee"></nesi-employee-employment>
+    </p-tabPanel>
+    <p-tabPanel header="Reviews" leftIcon="fa-list" *ngIf="tab_enabled[9]" [disabled]="submitting">
+      <nesi-employee-reviews (loaded)="submitting=false" (loading)="submitting=true" *ngIf="currentIndex===9"  [employee]="employee" ></nesi-employee-reviews>
+    </p-tabPanel>
+    <p-tabPanel header="Footprints" leftIcon="fa-suitcase" *ngIf="tab_enabled[10]" [disabled]="submitting">
+      <nesi-employee-footprints (loaded)="submitting=false" (loading)="submitting=true" *ngIf="currentIndex===10" [employee]="employee"></nesi-employee-footprints>
+    </p-tabPanel>
+  </p-tabView>
+
+  <p-messages *ngIf="base_profile.loaded && !base_profile.can_access" [(value)]="base_profile.error_message" [closable]="false"></p-messages>
+
+</div>

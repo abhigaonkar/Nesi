@@ -1,0 +1,52 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-md-2">
+        To:
+      </div>
+      <div class="ui-g-12 ui-md-10">
+        <p-multiSelect [filter]="users && users.length>5" [options]="users" formControlName="to" selectedItemsLabel="{0} users selected"></p-multiSelect>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('to')" [errorMsg]="'You must at least select a user.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-md-2">
+        Subject:
+      </div>
+      <div class="ui-g-12 ui-md-10">
+        <input pInputText formControlName="subject" placeholder="Input subject here">
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('subject')" [errorMsg]="'Subject is required.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-md-2">
+        Body:
+      </div>
+      <div class="ui-g-12 ui-md-10">
+        <!-- <textarea pInputTextarea [autoResize]="true" rows="12" cols="30" formControlName="body" placeholder="Input body here"></textarea> -->
+        <p-editor formControlName="body"  [style]="{'height':'320px'}"></p-editor>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('subject')" [errorMsg]="'Body is required.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-md-2">
+        Attachment:
+      </div>
+      <div class="ui-g-12 ui-md-10">
+        <div class="ui-g-12"> {{userform.get('file_name').value}} </div>
+        <div class="ui-g-12">
+          <p-fileUpload name="files[]" [url]="uploadURL" (onUpload)="onUploaded($event)" (onBeforeSend)="onBefoeUpload($event)" maxFileSize="5000000">
+          </p-fileUpload>
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-md-5 ui-md-offset-2">
+        <button pButton label="Send Message" icon="fa-envelope"></button>
+      </div>
+      <div class="ui-g-12 ui-md-5">
+        <button pButton label="Cancel" icon="fa-times-circle" type="button" (click)="cancel.emit()"></button>
+      </div>
+    </div>
+  </form>
+</div>

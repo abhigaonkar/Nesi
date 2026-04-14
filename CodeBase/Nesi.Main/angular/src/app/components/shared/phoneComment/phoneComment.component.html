@@ -1,0 +1,10 @@
+<p-dataTable rowHover="true"  [value]="items" [responsive]="true" #d (onEditComplete)="EditComplete($event)" [editable]="true">
+    <p-column field="phone_log_from_number" header="From Number"></p-column>
+    <p-column field="phone_log_from_name" header="From Name"></p-column>
+    <p-column field="phone_log_to_number" header="To Number"></p-column>
+    <p-column field="phone_log_to_name" header="To Name"></p-column>
+    <p-column field="phone_log_duration" header="Call Duration (Seconds)"></p-column>
+    <p-column field="notes" header="Comments" [editable]="true"></p-column>
+
+    <!-- <p-footer>Total Rows:{{totalRecords}} Total Pages:{{totalPages}}</p-footer> -->
+  </p-dataTable>

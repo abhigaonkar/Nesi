@@ -1,0 +1,56 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid smaller" style="min-height: 600px">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <p-dataTable [value]="profile.list" [responsive]="true" [globalFilter]="gb" rowHover="true" expandableRows="true" rowExpandMode="single"
+        [globalFilter]="gb" #d>
+        <p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-lg-2">
+              <button pButton type="button" label="Add New" icon="fa-plus" (click)="add_new()"></button>
+            </div>
+            <div class="ui-g-12 ui-lg-6">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+                <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+              </div>
+            </div>
+          </div>
+        </p-header>
+        <p-column [style]="{'width':'120px'}" styleClass="col-button">
+          <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+            <button type="button" pButton (click)="edit(data)" icon="fa-pencil"></button>
+            <button type="button" pButton (click)="print(data)" icon="fa-print"></button>
+            <button type="button" pButton (click)="delete(data)" class="ui-button-danger" icon="fa-times" [disabled]="data.locked"></button>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'5%'}" field="id" header="Id" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'10%'}" field="date" header="Date" [sortable]="true">
+          <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+            {{data[col.field] | date: 'yyyy-MM-dd'}}
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'30%'}" field="reviewedby" header="Reviewed By" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'10%','text-align':'center'}" field="avg" header="Average" [sortable]="true">
+        </p-column>
+        <p-column [style]="{'width':'7%','text-align':'center'}" field="locked" header="locked" [sortable]="true">
+          <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+            <p-checkbox binary="true" [(ngModel)]="data[col.field]" [disabled]="true"></p-checkbox>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'15%','text-align':'center'}" field="status" header="Status" [sortable]="true"></p-column>
+        <p-column [style]="{'width':'5%','text-align':'center'}" field="offerid" header="Offer" [sortable]="true"></p-column>
+      </p-dataTable>
+    </div>
+  </blockable-div>
+</div>
+<p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Review for {{profile.fullName}}" appendTo="body"
+  [draggable]="true" [(visible)]="display" [positionTop]="50">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <nesi-employee-review (onChange)="loadData()" [review]="selected" *ngIf="display" (onPrint)="print($event)" (onDelete)="delete($event)"></nesi-employee-review>
+  </div>
+</p-dialog>

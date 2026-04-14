@@ -1,0 +1,748 @@
+﻿<p-blockUI [blocked]="primeLoader" [target]="pblockableDiv2">
+  <!-- <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i> -->
+</p-blockUI>
+<blockable-div #pblockableDiv2>
+  <div class="main-wrapper">
+    <span *ngIf="newReport" class="grid-header">
+      <div class="ui-grid" *ngIf="gridTitle">
+        <div class="grid-title">
+          <span class="reportHeader" *ngIf="reportTitle">
+            <h4>{{gridTitle}}</h4>
+          </span>
+          <span class="set-default">
+            <a [ngClass]="(processing) ? 'visible-not':''" (click)="showsetDefaultPage()">{{defaultPageSettingMessage}}</a>
+            <div class="loading-data" *ngIf="processing">
+              <i class="fa fa-spinner fa-pulse"></i>
+            </div>
+          </span>
+        </div>
+      </div>
+    </span>
+    <div [hidden]="!newReport" class="grid-header btn-sec">
+      <div class="ui-grid">
+
+        <div class="col-space">
+          <button pButton (click)="refresh_cache()" label="Refresh" icon="fa-sync"></button>
+        </div>
+        <div class="col-space" *ngIf="visible_business_type!=='N'">
+          <p-multiSelect [options]="visible_business_unit_list" [(ngModel)]="selectedBusinessUnits" selectedItemsLabel="{0} Business Units Chooser"
+            [maxSelectedLabels]="0" defaultLabel="Select business units" (onPanelHide)="selectBusinessUnitsChanged()"></p-multiSelect>
+        </div>
+        <div class="column_chooser  col-space">
+          <div class="multifilter">
+            <p-multiSelect [options]="columnOptions" (onPanelShow)="getCurrentColumnWidths()" (onChange)="updateColumnWidth($event)"
+              [maxSelectedLabels]="0" [(ngModel)]="columnArray" #multiSelect></p-multiSelect>
+          </div>
+        </div>
+        <div class="to_excel col-space" *ngIf="genericApiObject['exportToExcel'] ? genericApiObject['exportToExcel'] != '' : false">
+          <app-export type="excel" [reportTitle]="reportTitle" name="Excel" [fileName]="gridTitle" [groupColumns]="groupArray" [defaultColumns]="columnArray"
+            (start)="primeLoader=true" (end)="primeLoader=false" [sortingObject]="multiSortMeta" [filterObject]="filterObj"
+            [filterBuilder]="buildFilterString(true)" [otherFilterBuilders]="getOtherFilterBuildString()" [otherFilterConditions]="getOtherFilterConditions()"
+            [visible_business_string]="visible_business_string" [apiObject]="genericApiObject" [golbalFilter]="gb" [reportQueryParam]="reportQueryParam"></app-export>
+        </div>
+        <div class="to_pdf col-space" *ngIf="genericApiObject['exportToPdf'] ? genericApiObject['exportToPdf'] != '' : false">
+          <app-export type="pdf" [reportTitle]="reportTitle" name="PDF" [fileName]="gridTitle" [groupColumns]="groupArray" [visible_business_string]="visible_business_string"
+            [defaultColumns]="columnArray" (start)="primeLoader=true" (end)="primeLoader=false" [sortingObject]="multiSortMeta"
+            [filterBuilder]="buildFilterString(true)" [otherFilterBuilders]="getOtherFilterBuildString()" [otherFilterConditions]="getOtherFilterConditions()"
+            [filterObject]="filterObj" [apiObject]="genericApiObject" [golbalFilter]="gb" [reportQueryParam]="reportQueryParam"></app-export>
+        </div>
+
+        <div class="globle_filter col-space">
+          <div class="globle-filter">
+            <i class="fa fa-search"></i>
+            <input #gb type="text" pInputText placeholder="Global Filter">
+          </div>
+        </div>
+        <div *ngIf="tableEditable && genericApiObject['bulkEdit']" class="bulk-edit">
+          <div class="bulk_btn col-space">
+            <button pButton type="button" [disabled]="bulkEnable || (groupArray && groupArray.length > 0)" (click)="bulkEditEnable()"
+              label="Bulk Editing">
+              <span *ngIf="!bulkEnable" class="hide-m">Enable </span>
+            </button>
+          </div>
+          <div class="col-space">
+            <button pButton type="button" [disabled]="!isInlineEditingValid" *ngIf="bulkEnable" (click)="bulkEditSave()" label="Save"
+              class="ui-button-success"></button>
+          </div>
+          <div class="col-space">
+            <button pButton type="button" *ngIf="bulkEnable" (click)="bulkEditCancel()" label="Cancel"></button>
+          </div>
+        </div>
+
+        <div class="tab_r_col col-right" [hidden]="primeLoader">
+          <div class="default_btn input-combo">
+            <input [(ngModel)]="selectedLayout.name" [disabled]="selectedLayout.memberId==0" pInputText placeholder="Layout Name" maxlength="75"
+            />
+          </div>
+          <a (click)="op4.toggle($event)">
+            <i class="fa fa-fw fa-caret-down ui-clickable"></i>
+          </a>
+          <button (click)="saveLayout();" *ngIf="save_layout_visibile" title="Save Current Layout" class="save saveLayoutButton" (mousedown)="keyDownPress()"
+            style="margin-left: -10px;">
+            <i class="fa fa-save"></i>
+            <span>Save</span>
+          </button>
+          <button (click)="openNewLayoutDialog();" title="Clear current layout, starting a new one." class="new">
+            <i class="fa fa-file-plus"></i>
+            <span>New</span>
+          </button>
+          <button (click)="copyLayout()" title="Use this to save your filtered view from below... or pull from someone else's view."
+            class="copy">
+            <i class="fa fa-clone"></i>
+            <span>Copy</span>
+          </button>
+          <button *ngIf="save_global_layout" (click)="saveGlobalLayout()" title="Use this this layout as global default layout." class="copy">
+            <i class="fa fa-globe"></i>
+            <span>Global</span>
+          </button>
+          <p-overlayPanel #op4 styleClass="layout-box" [dismissable]="true">
+            <app-layout-datatable #appLayout [columnProperties]="reportSchema" (populateGridEvent)="onPopulateGridEvent($event)" [memberLayoutData]="layouts"
+              gridId="{{gridId}}"></app-layout-datatable>
+          </p-overlayPanel>
+        </div>
+      </div>
+    </div>
+    <div class="grid-header check-col">
+      <div class="ui-grid">
+        <ng-content></ng-content>
+      </div>
+    </div>
+
+    <div (drop)="drop($event)" (dragover)="allowDrop($event)" *ngIf="newReport" class="drag-box myDefaultWidth">
+      <p-panel>
+        <span *ngIf="groupArray && groupArray.length === 0">Drag a column header here to group by that column</span>
+        <div class="drag-item-box" aria-placeholder="Drag a column header here to group by that column" (onDragStart)="subDragStart(col)"
+          *ngFor="let col of groupArray; let indx = index">
+          <!-- pDraggable="subDragGroup" -->
+          <div *ngIf="indx === 0" class="dropArea" [ngClass]="{ 'dragActive': isDragActive === -1 }" (onDrop)="subDrop($event, -1);"
+            id="-1" pDroppable="subDragGroup" (onDragEnter)="onDragEnter($event)" (onDragLeave)="onDragLeave($event)">
+            <i class="dt-fa-up fa fa-arrow-down" aria-hidden="true"></i>
+            <i class="dt-fa-down fa fa-arrow-up" aria-hidden="true"></i>
+          </div>
+          <button class="dragged-item" [value]="col">
+            <a (click)="changeSort(col)">
+              <i class="fa" [ngClass]="{'fa-sort-up': (getFlag(col) == 1),'fa-sort-down': (getFlag(col) == -1)}"></i>
+            </a>
+            {{getHeader(col)}}
+            <i class="fa fa-bars barcolor" title="Item Filter" aria-hidden="true" (click)="getFilterData($event,col,op3);op3.toggle($event)"></i>
+            <p-overlayPanel (onBeforeHide)="setMultiSelectFilter(col,'equals')" #op3 styleClass="overlaypanel-wrapper" [style]="{'width':getColumnFromColumnArray(col).type !== 'date' ? '200px':'225px'}"
+              appendTo="body">
+              <div *ngIf="distinctLoader"  class="loading-data">
+                <i class="fa fa-spinner fa-pulse"></i>
+              </div>
+              <ng-container *ngIf="(filterData[col] ? filterData[col].length: false)">
+                <p-listbox *ngIf="getColumnFromColumnArray(col).type !== 'date'" [options]="filterData[col]" (onChange)="setSelectedValue($event,col)"
+                  class="filterBox" [(ngModel)]="groupMultiselect[indx]" multiple="multiple" [showToggleAll]="false" checkbox="checkbox"
+                  filter="filter">
+                  <ng-template let-entity let-i="index" pTemplate="item">
+                    <span [pTooltip]="entity.value">{{entity.label}}</span>
+                  </ng-template>
+                </p-listbox>
+                <date-control [field]="col" *ngIf="getColumnFromColumnArray(col).type == 'date'" (hideOverlay)="op3.hide();" (filterRecordsBetweenDates)="filterRecordsBetweenDates($event);op3.hide();"></date-control>
+                <i class="fa fa-spinner fa-spin fa-3x fa-fw" *ngIf="distinctLoader" style="position:absolute;top:30%;left:30%;color:black"></i>
+              </ng-container>
+            </p-overlayPanel>
+
+            <span class="ui-inputgroup-addon" (click)="changeGroup(col)">
+              <i class="fa fa-times"></i>
+            </span>
+          </button>
+          <div class="dropArea" (onDrop)="subDrop($event, indx);" [ngClass]="{'dragActive': isDragActive === indx, 'width-100-px': indx==groupArray.length-1}"
+            pDroppable="subDragGroup" id={{indx}} (onDragEnter)="onDragEnter($event)" (onDragLeave)="onDragLeave($event)">
+            <i class="dt-fa-up fa fa-arrow-down" aria-hidden="true"></i>
+            <i class="dt-fa-down fa fa-arrow-up" aria-hidden="true"></i>
+          </div>
+        </div>
+      </p-panel>
+    </div>
+    <!-- DEFAULTE DATATABLE-->
+    <div class="content-section implementation grid-table" *ngIf="(groupArray ? groupArray.length === 0 : true) && newReport">
+      <span [ngClass]="{
+          'fixed_header_checkbox_relative': !fixed_header,
+          'fixed_header_checkbox_fixed': fixed_header}">
+        <i *ngIf="apply_fixed_header && fixed_header_scroll>0" class="fa fa-lock" (click)="applyFixedHeaderChange(false)" [pTooltip]="'Freeze/Unfreeze Header Row'"
+          tooltipPosition="top"></i>
+        <i *ngIf="!apply_fixed_header  && fixed_header_scroll>0" class="fa fa-lock-open" (click)="applyFixedHeaderChange(true)" [pTooltip]="'Freeze/Unfreeze Header Row'"
+          tooltipPosition="top"></i>
+      </span>
+      <p-dataTable sortMode="multiple" [reorderableColumns]="!fixed_header" [loading]="primeLoader" [value]="genericDataSet" (onEditComplete)="editComplete($event.data)"
+        (onEditInit)="capturePreviousData($event.data)" (onFilter)="resetFilter($event)" resizableColumns="true" [editable]="bulkEnable"
+        [filters]="filterObj" [schema]="columnArray" columnResizeMode="expand" [globalFilter]="gb" [rows]="paginationConfig.rows"
+        (onScroll)="table_scroll($event)"
+        [rowHover]="true" [paginator]="paginatorFlag" (askConfirmation)="confirm($event)" [pageLinks]="paginationConfig.pageLinks" [rowsPerPageOptions]="paginationConfig.rowPerPageOptions"
+        [lazy]="lazy" (onLazyLoad)="lazyLoadData($event)" [totalRecords]="totalRecords" [responsive]="true" (onSort)="updateMultiSortMeta($event)"
+        [selectionMode]="selectionMode" (onDtViewInitilized)="viewReady($event)" (onColReorder)="updateOnColReorder($event);"
+        [rowStyleClass]="_callbackForRow" (onRowGroupCollapse)="onRowGroupCollapse($event)" (onNestedGroupCollapse)="onNestedGroupCollapse($event)"
+        (onRowClick)="onRowClick($event)" (onRowSelect)="OnRowSelect($event)" [gridName]="gridName" [columnStyleClass]="callback"
+        [fixed_header]="fixed_header" (onColResize)="copyColumnWidth(true)" [bulkEnableForPN] = "bulkEnable" (onPage)="onPageHandler($event)" 
+        (onSort)="onPageSortHandler($event)"  [currentPageNumber]="currentPageRowFromOnPageEvent"  [sortObject]="sortObject" #dt>
+
+        <p-footer>
+          <table class="footer-filter">
+            <tr *ngIf="checkFilter()">
+              <td width="20">
+                <p-checkbox [(ngModel)]="checked" binary="true" (onChange)="toggleFilter(checked)"></p-checkbox>
+              </td>
+              <td width="100">
+                <a (click)="clearFilter()">Clear All</a>
+              </td>
+              <td align="left">
+                <a class="filterTextBuilder2" (click)="openFilterDialog(-1)">
+                  {{ buildFilterString(false)}}
+                </a>
+              </td>
+            </tr>
+            <tr *ngIf="!checkFilter()">
+              <td width="20">
+                &nbsp;
+              </td>
+              <td width="100">
+                &nbsp;
+              </td>
+              <td>
+                <a style="cursor:pointer" (click)="openFilterDialog(-1)">Create Filter</a>
+              </td>
+            </tr>
+            <ng-container *ngIf="otherFilterConditions && otherFilterConditions.length>0 && checkFilter()">
+              <ng-container *ngFor="let filter_object of otherFilterConditions;let i=index">
+                <tr *ngIf="checkFilter(i)">
+                  <td width="20">
+                    <i class="fa fa-times-circle" style="cursor:pointer;" (click)="removeOtherFilter(i);loadDataWithFilters()"></i>
+                  </td>
+                  <td width="100">
+                    <a (click)="currentOtherFilterCondition_index=i;opFilter1.toggle($event)" class="show-hide" style="cursor:pointer;">
+                      {{filter_object}}
+                    </a>
+                  </td>
+                  <td align="left">
+                    <a class="filterTextBuilder" (click)="openFilterDialog(i)">
+                      {{ buildFilterString(false,i)}}
+                    </a>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="checkFilter() && (!otherFilterObjects || otherFilterObjects.length===0 || checkFilter(otherFilterObjects.length-1))">
+              <tr>
+                <td width="20">
+                  &nbsp;
+                </td>
+                <td width="100">
+                  <a (click)="currentOtherFilterCondition_index=otherFilterConditions.length;opFilter1.toggle($event)" class="show-hide" style="cursor:pointer;">
+                    &nbsp;
+                  </a>
+                </td>
+                <td align="left">
+                  <a style="cursor:pointer" (click)="openFilterDialog(otherFilterConditions.length)">Add Filter</a>
+                </td>
+              </tr>
+            </ng-container>
+          </table>
+        </p-footer>
+
+        <ng-container *ngFor="let column of columnArray; let indx = index ">
+          <p-column [style]="column.Style" [headerStyleClass]="(column.first && genericApiObject.create) ? 'addBtn':''" [bodyStyle]="column.color ? {'background-color':column.color} : {}"
+            *ngIf="column['display'] && (indx == 0 ? tableEditable : true)" [field]="column.field" [header]="column.label"
+            [sortable]="column.sort" [filter]="column.filter" filterMatchMode="{{filterType[indx]}}" [editable]="column.editable">
+            <ng-template pTemplate="header">
+              <div *ngIf="!column.first && column.filter" class="ui-inputgroup shorting-list">
+                <span [pTooltip]="column.toolTip || column.label" tooltipPosition="top">{{column.label}} </span>
+                <i *ngIf="!fixed_header && (!column.hideItemFilter)" class="fa fa-bars barcolor" title="Item Filter" aria-hidden="true" (click)="getFilterData($event,column.field,op3);op3.toggle($event);"></i>
+                <p-overlayPanel (onBeforeHide)="setMultiSelectFilter(column.field,'equals')" #op3 styleClass="overlaypanel-wrapper" [style]="{'width':column.type !== 'date' ? '200px':'225px'}"
+                  appendTo="body">
+                  <div *ngIf="distinctLoader"  class="loading-data">
+                    <i class="fa fa-spinner fa-pulse"></i>
+                  </div>
+                  <ng-container *ngIf="(filterData[column.field] ? filterData[column.field].length: false)">
+                    <p-listbox *ngIf="column.type !== 'date'" [options]="filterData[column.field]" [(ngModel)]="multiSelectFilter[indx]" class="filterBox"
+                      multiple="multiple" [showToggleAll]="false" checkbox="checkbox" filter="filter">
+                      <ng-template let-entity let-i="index" pTemplate="filter">
+                        <span [pTooltip]="entity.value">{{entity.label}}</span>
+                      </ng-template>
+                    </p-listbox>
+                    <date-control [field]="column.field" *ngIf="column.type === 'date'" (hideOverlay)="op3.hide();" (filterRecordsBetweenDates)="filterRecordsBetweenDates($event);op3.hide();"
+                      [filterRoot]="filterBuilder"></date-control>
+                    <i class="fa fa-spinner fa-spin fa-3x fa-fw" *ngIf="distinctLoader" style="position:absolute;top:30%;left:30%;color:black"></i>
+                  </ng-container>
+                </p-overlayPanel>
+              </div>
+              <button type="button" class="ui-button-success" [disabled]="disableAddbtn" *ngIf="column.first && genericApiObject.create" label="Add" title="New" pButton
+                icon="fa-plus" (click)="addRowDialog()"></button>
+
+            </ng-template>
+            <ng-template let-entity="rowData" let-index="rowIndex" pTemplate="body">
+
+              <!-- First Row Buttons -->
+              <div class="center">
+                <button class="edit_button" *ngIf="column.first && genericApiObject.edit && entity.edit!=='0' " (click)="editRowDialog(entity)"
+                  pButton type="button" icon="fa-pencil"></button>
+                <button *ngIf="column.first && genericApiObject.delete && entity.delete!=='0' && showDeleteButton(entity)" (click)="deleteRowDialog(entity)" class="ui-button-warning edit_button"
+                  pButton type="button" icon="fa-times"></button>
+                <button class="edit_button" *ngIf="column.first && genericApiObject.viewInvoiceUrl && showInvoiceButton(entity)" pButton
+                  type="button" icon="fa-envelope" (click)="getHyperlinkUrl(entity, genericApiObject, 'viewInvoiceUrl', 'viewInvoiceUrlParams')"></button>
+                <p-checkbox *ngIf="column.first && genericApiObject.isSelectable" (onChange)="selectItem(entity, $event)" [ngModel]="false"
+                  binary="true">
+                </p-checkbox>
+              </div>
+
+              <!-- <div *ngIf="column.type=='edit'" class="center">
+                <button class="edit_button" (click)="onEdit.emit(entity)" *ngIf="entity[column.field]==1" pButton type="button" icon="fa-pencil"></button>
+              </div> -->
+
+              <div *ngIf="column.type=='boolean'" class="center" #viewCheckB>
+                <p-checkbox (onChange)="booleanValueChange(convertStringToLowerCase(entity[column.field]) === 'true', column.field, entity);inlineEditValidations(viewCheckB, entity, column, entity[column.field], index)"
+                  [ngModel]="convertStringToLowerCase(entity[column.field]) === 'true'" [disabled]="bulkEnable ? !column.editable: true"
+                  binary="true"></p-checkbox>
+              </div>
+
+              <div class="text-data" *ngIf="(!column.hyperlink && !column.first && column.type !=='boolean')" [ngStyle]="{'text-align': column.type == 'number' ? 'right' : 'left', 'font-weight': applyBoldFontOnColumn(column) ? 'bold' : '' }">
+                <span [title]="entity[column.field] || entity[column.field] == 0 ? (entity[column.field] | currency : column.format.currency : 'symbol-narrow' : column.format.format) : entity[column.field]"
+                  *ngIf="column.type == 'currency'">{{entity[column.field] || entity[column.field] == 0 ? (entity[column.field] | currency : column.format.currency
+                  : 'symbol-narrow' : column.format.format) : entity[column.field]}}</span>
+                <span [title]="entity[column.field] ? (entity[column.field] | percent : column.format.format) : entity[column.field]" *ngIf="column.type == 'percent'">{{entity[column.field] ? (entity[column.field] | percent : column.format.format) : entity[column.field]}}</span>
+                <span [title]="entity[column.field] | date : column.format.format" *ngIf="column.type == 'date'">{{checkDate(entity[column.field]) | date : column.format.format}} </span>
+                <span [title]="entity[column.field] | phoneFormat" *ngIf="column.type == 'phone'">{{entity[column.field] | phoneFormat}} </span>
+                <span [title]="entity[column.field]" *ngIf="column.type == 'string'">{{entity[column.field]}} </span>
+                <span [title]="entity[column.field]" *ngIf=" (column.type == 'number'|| column.type == 'spinner' ) && column.rawType != 'rating'">{{column.format && column.format.format ? (entity[column.field] | number : column.format.format) : entity[column.field]}}
+                </span>
+                <span *ngIf="column.type == 'number' && column.rawType == 'rating'" [pTooltip]="entity[column.field]">
+                  <p-rating [(ngModel)]="entity[column.field]" [readonly]="true" [cancel]="false"></p-rating>
+                </span>
+                <textarea [title]="entity[column.field]" *ngIf="column.type == 'notes'" rows="1" readonly>{{entity[column.field]}} </textarea>
+                <textarea [title]="entity[column.field]" *ngIf="column.type == 'newnts' && entity[column.field].length > 1" rows="1" readonly
+                  style="resize:none; height:40px;">{{entity[column.field]}} </textarea>
+                <textarea [title]="entity[column.field]" *ngIf="column.type == 'newnts' && !(entity[column.field].length > 1)" rows="1" readonly
+                  style="resize:none; height:20px;">{{entity[column.field]}} </textarea>
+                <textarea pInputTextarea [(ngModel)]="entity[column.field]" (change)="onTextBoxChange.emit({field:column.field, index: index,data: entity})"
+                  *ngIf="column.type == 'textbox'" rows="1"></textarea>
+                <p-dropdown appendTo="body" [style]="{'width':'100%'}" *ngIf="column.type == 'dropdown'" [options]="dropdownOptions[column.field]"
+                  [(ngModel)]="entity[column.field]" (onChange)="onDropDownChange.emit({field: column.field, index: index,data: entity})"></p-dropdown>
+              </div>
+            
+              <a (click)="getHyperlinkUrl(entity, column, 'hyperlinkUrl', 'hyperlinkUrlParam')" *ngIf="(column.hyperlink  && !column.first && column.type !=='boolean')"
+                [ngStyle]="{'text-align': column.type == 'number' ? 'right' : 'left', 'font-weight': applyBoldFontOnColumn(column) ? 'bold' : ''}">
+                <span [title]="entity[column.field] || entity[column.field] == 0 ? (entity[column.field] | currency : column.format.currency : 'symbol-narrow' : column.format.format) : entity[column.field]"
+                  *ngIf="column.type == 'currency'">{{entity[column.field] || entity[column.field] == 0 ? (entity[column.field] | currency : column.format.currency
+                  : 'symbol-narrow' : column.format.format) : entity[column.field]}}</span>
+                <span [title]="entity[column.field] ? (entity[column.field] | percent : column.format.format) : entity[column.field]" *ngIf="column.type == 'percent'">{{entity[column.field] ? (entity[column.field] | percent : column.format.format) : entity[column.field]}}</span>
+                <span [title]="entity[column.field] | date : column.format.format" *ngIf="column.type == 'date'">{{checkDate(entity[column.field]) | date : column.format.format}}
+                </span>
+                <span [title]="entity[column.field] | phoneFormat" *ngIf="column.type == 'phone'">{{entity[column.field] | phoneFormat}} </span>
+                <span [title]="entity[column.field]" *ngIf="column.type == 'string'">{{entity[column.field]}} </span>
+                <span [title]="entity[column.field]" *ngIf="column.type == 'number'">{{column.format ? (entity[column.field] | number : column.format.format) : entity[column.field]}} </span>
+                <span *ngIf="column.type == 'fa'" style="width: 100%;" class="center">
+                  <i *ngIf="entity[column.field]" [class]="'fa ' + entity[column.field]"></i>
+                </span>
+                <textarea [title]="entity[column.field]" *ngIf="column.type == 'notes'" rows="1" readonly>{{entity[column.field]}} </textarea>
+                <textarea pInputTextarea [(ngModel)]="entity[column.field]" (change)="onTextBoxChange.emit({field:column.field,index: index,data: entity})"
+                  *ngIf="column.type == 'textbox'" rows="1"></textarea> </a>
+               
+            </ng-template>
+
+            <ng-template *ngIf="column.type == 'boolean'" let-entity="rowData" let-index="rowIndex" pTemplate="editor">
+              <div class="center" #editCheckB>
+                <p-checkbox (onChange)="booleanValueChange(convertStringToLowerCase(entity[column.field]) === 'true', column.field, entity);inlineEditValidations(editCheckB, entity, column, entity[column.field], index)"
+                  [ngModel]="convertStringToLowerCase(entity[column.field]) === 'true'" [disabled]="!bulkEnable" binary="true"></p-checkbox>
+              </div>
+            </ng-template>
+
+            <!-- Inline editing for textbox -->
+            <ng-template *ngIf="column.type == 'string' || column.type == 'number'" let-index="rowIndex" let-entity="rowData" pTemplate="editor">
+              <input pInputText [(ngModel)]="entity[column.field]" (blur)="inlineEditValidations($event, entity, column, entity[column.field], index)"
+                type="text">
+            </ng-template>
+
+            <!-- Inline editing for notes -->
+            <ng-template *ngIf="column.type == 'notes'" let-index="rowIndex" let-entity="rowData" pTemplate="editor">
+              <textarea (blur)="inlineEditValidations($event, entity, column, entity[column.field], index)" pInputTextarea [(ngModel)]="entity[column.field]"
+                autoResize="autoResize"></textarea>
+            </ng-template>
+            <ng-template *ngIf="column.type == 'newnts'" let-index="rowIndex" let-entity="rowData" pTemplate="editor">
+              <textarea pInputTextarea [(ngModel)]="entity[column.field]" readonly style="resize:none; height:40px;" (click)="op.toggle($event)"></textarea>
+              <p-overlayPanel #op styleClass="overlaypanel-wrapper" appendTo="body" [dismissable]="false">
+                <textarea pInputTextarea cols="40" (blur)="inlineEditValidations($event, entity, column, entity[column.field], index)" placeholder="New Note"
+                  [ngModel]="defaultNote" #newNote>
+                    </textarea>
+                <button pButton type="Button" label="Close" icon="fa-close" (click)="op.hide();"></button>
+                <button pButton type="submit" label="Save" icon="fa-save" (click)="newNotesConfig[column.field].call(entity, newNote.value, newNotesConfig[column.field].that);op.hide();">
+                </button>
+              </p-overlayPanel>
+            </ng-template>
+            <ng-template *ngIf="column.type == 'spinner'" let-index="rowIndex" let-entity="rowData" pTemplate="editor">
+              <p-spinner [(ngModel)]="entity[column.field]" [min]="spinnerConfig[column.field].min" [max]="spinnerConfig[column.field].max"
+                [step]="spinnerConfig[column.field].step" (onBlur)="inlineEditValidations($event, entity, column, entity[column.field], index)">
+              </p-spinner>
+            </ng-template>
+            <ng-template *ngIf="column.type == 'textbox'" let-index="rowIndex" let-entity="rowData" pTemplate="editor">
+              <textarea (blur)="inlineEditValidations($event, entity, column, entity[column.field], index)" pInputTextarea [(ngModel)]="entity[column.field]"
+                autoResize="autoResize"></textarea>
+            </ng-template>
+            <ng-template *ngIf="column.type == 'date'" let-index="rowIndex" let-entity="rowData" pTemplate="editor">
+              <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" appendTo="body" dateFormat="yy-mm-dd" [(ngModel)]="entity[column.field]"
+                [showIcon]="true" (onBlur)="inlineEditValidationsForCalendarOnBlur($event, entity, column, entity[column.field], index)"
+                (onSelect)="inlineEditValidationsForCalendar($event, entity, column, entity[column.field], index)">
+              </p-calendar>
+            </ng-template>
+
+            <!-- Overlay for inline editing a note, has been removed -->
+            <!-- <ng-template *ngIf="column.type == 'notes'" let-index="rowIndex" let-entity="rowData" pTemplate="editor">
+              <text-area-layover [column]="column" [rowIndex]="index" [rowData]="entity" (saveEditedNote)="saveInlineEditedNote($event)"></text-area-layover>
+            </ng-template> -->
+
+            <!-- Conditionlal matching regex expression -->
+            <ng-template pTemplate="filter" *ngIf="column.filterType === 'custom' && !column.first && column.filter" let-col>
+              <div class="filter-list" *ngIf="!fixed_header">
+                <input *ngIf="column.type!='date' && column.type!='boolean'" type="text" [placeholder]="" [(ngModel)]="selectedValue[indx]"
+                  (keyup)="updateFilterValue(col.field, $event, column.type, indx); dt.filter($event,col.field,col.filterMatchMode, column.type);"
+                  class="ui-column-filter" (change)="onBlurMethod($event, col.field, column.type, indx, col.filterMatchMode)"
+                  [disabled]="IsFilterRowMultple(col.field) || isBlankOrIsNotBlank(col.field) || fixed_header" title="{{filterTooltip(col.field)}}" [index]="indx">
+                <p-dropdown *ngIf="column.type == 'boolean'" [options]="booleanFilterValues" [(ngModel)]="selectedValue[indx]" (onChange)="updateFilterValue(col.field, $event, column.type, indx); dt.filter($event,col.field,'equals', column.type);"
+                  placeholder="Select" appendTo="body" [style]="{'width':'100%'}" [index]="indx" [disabled]="fixed_header"
+                  [dropdown]='dropdown' #dropdown>
+                </p-dropdown>
+                <span class="ui-inputgroup-addon" *ngIf="column.type != 'boolean'">
+                  <i *ngIf="!fixed_header" class="fa fa-filter" title="Type of Filter" (click)="setDefaultFilter(column,indx);rexOp1.toggle($event)"></i>
+                </span>
+                <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" *ngIf="column.type=='date'" (onSelect)="dt.filter($event,column.field+'^dateTime',(col.filterMatchMode ? col.filterMatchMode : 'equals'), column.type);"
+                  appendTo="body" dateFormat="yy-mm-dd" [(ngModel)]="selectedValue[indx]" [showIcon]="true" [index]="indx"
+                  [disabled]=" isBlankOrIsNotBlank(col.field) || fixed_header" [calendar]="calendar" #calendar (keyup)="onChangeMethod($event, indx)"></p-calendar>
+                <p-overlayPanel #rexOp1 styleClass="overlaypanel-wrapper" appendTo="body">
+                  <p-listbox appendTo="filter" [options]="column.type == 'date' ? filterMatchModeDate : ((column.type == 'number' || column.type == 'currency' || column.type == 'percent') ? 
+                  filterMatchModeNumber : (IsFilterRowMultple(col.field) ? filterMatchModeStringMulitple: filterMatchModeString))"
+                    [(ngModel)]="filterType[indx]" (click)="rexOp1.hide();" (onChange)="setFilterValueIntoCurrentEvent(col, $event, indx); dt.filter($event,col.field,col.filterMatchMode, column.type);"></p-listbox>
+                </p-overlayPanel>
+              </div>
+            </ng-template>
+
+
+            <!-- called for each column footer to show summary -->
+            <ng-template *ngIf="!column.first && hasSummary" pTemplate="footer" let-col>
+              <span *ngIf="column.type == 'percent'" style="float:left;">{{summary[column.field] | percent : column.format.format}}</span>
+              <span *ngIf="column.type == 'number'" style="float:left;">{{column.format ? (summary[column.field] | number : column.format.format) : summary[column.field]}}</span>
+              <span *ngIf="column.type == 'currency'" style="float:left;">{{summary[column.field] | currency : column.format.currency : 'symbol-narrow' : column.format.format}}</span>
+            </ng-template>
+          </p-column>
+        </ng-container>
+      </p-dataTable>
+    </div>
+
+    
+    <!-- CUSTOM DATATABLE -->
+    <div class="content-section implementation nested-grid grid-table" *ngIf="(display && groupArray.length !== 0) && newReport">
+      <span [ngClass]="{
+          'fixed_header_checkbox_relative': !fixed_header,
+          'fixed_header_checkbox_fixed': fixed_header}">
+        <i *ngIf="apply_fixed_header && fixed_header_scroll>0" class="fa fa-lock" (click)="applyFixedHeaderChange(false)" [pTooltip]="'Freeze/Unfreeze Header Row'"
+          tooltipPosition="top"></i>
+        <i *ngIf="!apply_fixed_header && fixed_header_scroll>0" class="fa fa-lock-open" (click)="applyFixedHeaderChange(true)" [pTooltip]="'Freeze/Unfreeze Header Row'"
+          tooltipPosition="top"></i>
+      </span>
+      <p-dataTable [value]="genericDataSet" sortMode="multiple" [loading]="primeLoader" [multiSortMeta]="multiSortMeta" rowGroupMode="subheader"
+        [globalFilter]="gb" (onRowGroupExpand)="addExpandedRowGroup($event)" [filters]="filterObj" (deleteSubRow)="deleteSubRow($event)"
+        (editSubRow)="editSubRow($event)" [groupFieldArray]="groupArray" expandableRowGroups="true" [editable]="true" [sortableRowGroup]="false"
+        resizableColumns="true" columnResizeMode="expand" [reorderableColumns]="!fixed_header" [responsive]="true" [schema]="columnArray"
+        [rowHover]="true" [selectionMode]="selectionMode" [groupSummary]="summaryConfig" [fieldLabelHashTable]="fieldLabelHashTable"
+        (onSort)="updateMultiSortMeta($event)" (onColReorder)="updateOnColReorder($event);" [rows]="paginationConfig.rows"
+        (onScroll)="table_scroll($event)"
+        [paginator]="true" [pageLinks]="paginationConfig.pageLinks" [rowsPerPageOptions]="paginationConfig.rowPerPageOptions"
+        [lazy]="lazy" (onLazyLoad)="lazyLoadGroup($event)" [totalRecords]="totalRecords" (onDtViewInitilized)="viewReady($event)"
+        (onFilter)="resetFilter($event)" [genericApiObject]="genericApiObject" [tableKeyField]="tableKeyField" [rowStyleClass]="_callbackForRow"
+        [columnStyleClass]="callback" (onRowClick)="onRowClick($event)" (onRowGroupCollapse)="onRowGroupCollapse($event)" (onNestedGroupExpand)="onNestedGroupExpanded($event)"
+        (onNestedGroupCollapse)="onNestedGroupCollapse($event)" [gridName]="gridName" [groupSummaryTable]="groupSummaryTable"
+        [fixed_header]="fixed_header" (onColResize)="copyColumnWidth(true)" (onPage)="onPageHandler($event)" 
+        (onSort)="onPageSortHandler($event)" [currentPageNumber]="currentPageRowFromOnPageEvent" [sortObject]="sortObject" #dp>
+
+       
+
+        <p-footer>
+          <table class="footer-filter">
+            <tr *ngIf="checkFilter()">
+              <td width="20">
+                <p-checkbox [(ngModel)]="checked" binary="true" (onChange)="toggleFilter(checked)"></p-checkbox>
+              </td>
+              <td width="100">
+                <a (click)="clearFilter()">Clear All</a>
+              </td>
+              <td align="left">
+                <a class="filterTextBuilder2" (click)="openFilterDialog(-1)">
+                  {{ buildFilterString(false)}}
+                </a>
+              </td>
+            </tr>
+            <tr *ngIf="!checkFilter()">
+              <td width="20">
+                &nbsp;
+              </td>
+              <td width="100">
+                &nbsp;
+              </td>
+              <td>
+                <a style="cursor:pointer" (click)="openFilterDialog(-1)">Create Filter</a>
+              </td>
+            </tr>
+            <ng-container *ngIf="otherFilterConditions && otherFilterConditions.length>0 && checkFilter()">
+              <ng-container *ngFor="let filter_object of otherFilterConditions;let i=index">
+                <tr *ngIf="checkFilter(i)">
+                  <td width="20">
+                    <i class="fa fa-times-circle" style="cursor:pointer;" (click)="removeOtherFilter(i);loadDataWithFilters()"></i>
+                  </td>
+                  <td width="100">
+                    <a (click)="currentOtherFilterCondition_index=i;opFilter1.toggle($event)" class="show-hide" style="cursor:pointer;">
+                      {{filter_object}}
+                    </a>
+                  </td>
+                  <td align="left">
+                    <a class="filterTextBuilder" (click)="openFilterDialog(i)">
+                      {{ buildFilterString(false,i)}}
+                    </a>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="checkFilter() && (!otherFilterObjects || otherFilterObjects.length===0 || checkFilter(otherFilterObjects.length-1))">
+              <tr>
+                <td width="20">
+                  &nbsp;
+                </td>
+                <td width="100">
+                  <a (click)="currentOtherFilterCondition_index=otherFilterConditions.length;opFilter1.toggle($event)" class="show-hide" style="cursor:pointer;">
+                    &nbsp;
+                  </a>
+                </td>
+                <td align="left">
+                  <a style="cursor:pointer" (click)="openFilterDialog(otherFilterConditions.length)">Add Filter</a>
+                </td>
+              </tr>
+            </ng-container>
+          </table>
+        </p-footer>
+
+        <ng-template pTemplate="rowgroupheader" let-rowData>{{rowData[groupArray[0]]}}
+          <span>{{dp.getSummary(rowData,dp.groupFieldArray[0], true)}}</span>
+        </ng-template>
+        <ng-container *ngFor="let column of columnArray; let indx = index">
+          <p-column [style]="column.Style" [headerStyleClass]="(column.first && genericApiObject.create) ? 'addBtn':''" *ngIf="column['display'] && (indx == 0 ? tableEditable : true)"
+            [field]="column.field" [header]="column.label" [sortable]="column.sort" filterMatchMode="{{filterType[indx]}}"
+            [filter]="column.filter" [hidden]="groupArray.indexOf(column.field) != -1">
+            <ng-template pTemplate="header">
+              <div *ngIf="!column.first && column.filter" class="ui-inputgroup shorting-list">
+                <!-- <input class="dragdrop" value="{{column.label}}" onkeydown="return false;" /> -->
+                <span [pTooltip]="column.label" tooltipPosition="top">{{column.label}} </span>
+                <i *ngIf="!fixed_header && (!column.hideItemFilter)" class="fa fa-bars barcolor" title="Item Filter" aria-hidden="true" (click)="getFilterData($event,column.field,op3);op3.toggle($event)"></i>
+                <p-overlayPanel #op3 (onBeforeHide)="setMultiSelectFilter(column.field,'equals')" styleClass="overlaypanel-wrapper" [style]="{'width':column.type !== 'date' ? '200px':'225px'}"
+                  appendTo="body">
+                  <div *ngIf="distinctLoader"  class="loading-data">
+                    <i class="fa fa-spinner fa-pulse"></i>
+                  </div>
+                  <ng-container *ngIf="(filterData[column.field] ? filterData[column.field].length: false)">
+                    <p-listbox *ngIf="column.type !== 'date'" [options]="filterData[column.field]" [(ngModel)]="multiSelectFilter[indx]" class="filterBox"
+                      multiple="multiple" [showToggleAll]="false" checkbox="checkbox" filter="filter">
+                      <ng-template let-entity let-i="index" pTemplate="filter">
+                        <span [pTooltip]="entity.value">{{entity.label}}</span>
+                      </ng-template>
+                    </p-listbox>
+                    <date-control [field]="column.field" *ngIf="column.type === 'date'" (hideOverlay)="op3.hide();" (filterRecordsBetweenDates)="filterRecordsBetweenDates($event);op3.hide();"
+                      [filterRoot]="filterBuilder"></date-control>
+                    <i class="fa fa-spinner fa-spin fa-3x fa-fw" *ngIf="distinctLoader" style="position:absolute;top:30%;left:30%;color:black"></i>
+                  </ng-container>
+                </p-overlayPanel>
+              </div>
+              <button *ngIf="column.first && genericApiObject.create" type="button" class="ui-button-success" label="Add" pButton icon="fa-plus"
+                (click)="addRowDialog()"></button>
+            </ng-template>
+
+            <ng-template let-entity="rowData" let-index="rowIndex" pTemplate="body">
+              <div class="center">
+                <!--  <a *ngIf="column.first" (click)="editRowDialog(entity)">
+                  <span class="fa fa-pencil" title="Edit"></span>
+                </a> -->
+                <button class="edit_button" *ngIf="column.first && genericApiObject.edit && entity.edit!=='0' " (click)="editRowDialog(entity)"
+                  (click)="editRowDialog(entity)" pButton type="button" icon="fa-pencil"></button>
+
+                <button *ngIf="column.first && genericApiObject.delete && entity.delete!=='0' " (click)="deleteRowDialog(entity)" class="ui-button-warning edit_button"
+                  pButton type="button" icon="fa-times"></button>
+
+
+                <!-- <a *ngIf="column.first && column.messageIcon">
+                  <span class="fa fa-envelope" title="View Invoice"></span>
+                </a> -->
+                <button class="edit_button" *ngIf="column.first && genericApiObject.viewInvoiceUrl && showInvoiceButton(entity)" pButton
+                  type="button" icon="fa-envelope" (click)="getHyperlinkUrl(entity, genericApiObject,'viewInvoiceUrl', 'viewInvoiceUrlParams')"></button>
+
+                <p-checkbox *ngIf="column.first && genericApiObject.isSelectable" (onChange)="selectItem(entity, $event)" [ngModel]="false"
+                  binary="true">
+                </p-checkbox>
+              </div>
+
+              <!-- <div *ngIf="column.type=='edit'" class="center">
+                <button class="edit_button" (click)="onEdit.emit(entity)" *ngIf="entity[column.field]==1" pButton type="button" icon="fa-pencil"></button>
+              </div> -->
+
+              <div class="center">
+                <p-checkbox *ngIf="column.type=='boolean'" (onChange)="booleanValueChange(convertStringToLowerCase(entity[column.field]) === 'true', column.field, entity)"
+                  [ngModel]="convertStringToLowerCase(entity[column.field]) === 'true'" disabled="false" binary="true"></p-checkbox>
+              </div>
+              <div class="text-data" *ngIf="(!column.hyperlink && !column.first && column.type !=='boolean')" [ngStyle]="{'text-align': column.type == 'number' ? 'right' : 'left', 'font-weight': applyBoldFontOnColumn(column) ? 'bold' : ''}">
+                <span [title]="entity[column.field] || entity[column.field] == 0 ? (entity[column.field] | currency : column.format.currency : 'symbol-narrow' : column.format.format) : entity[column.field]"
+                  *ngIf="column.type == 'currency'">{{entity[column.field] || entity[column.field] == 0 ? (entity[column.field] | currency : column.format.currency
+                  : 'symbol-narrow' : column.format.format) : entity[column.field]}}</span>
+                <span [title]="entity[column.field] ? (entity[column.field] | percent : column.format.format) : entity[column.field]" *ngIf="column.type == 'percent'">{{entity[column.field] ? (entity[column.field] | percent : column.format.format) : entity[column.field]}}</span>
+                <span [title]="entity[column.field] | date : column.format.format" *ngIf="column.type == 'date'">{{checkDate(entity[column.field]) | date : column.format.format}} </span>
+                <span [title]="entity[column.field] | phoneFormat" *ngIf="column.type == 'phone'">{{entity[column.field] | phoneFormat}} </span>
+                <span [title]="entity[column.field]" *ngIf="column.type == 'string'">{{entity[column.field]}} </span>
+                <span [title]="entity[column.field]" *ngIf="(column.type == 'number'|| column.type == 'spinner' )  && column.rawType != 'rating'">{{column.format ? (entity[column.field] | number : column.format.format) : entity[column.field]}} </span>
+                <span *ngIf="column.type == 'number' && column.rawType == 'rating'" [title]="entity[column.field]">
+                  <p-rating [(ngModel)]="entity[column.field]" [readonly]="true" [cancel]="false"></p-rating>
+                </span>
+                <span *ngIf="column.type == 'fa'" style="width: 100%;" class="center">
+                  <i [class]="'fa ' + entity[column.field]"></i>
+                </span>
+                <textarea [title]="entity[column.field]" *ngIf="column.type == 'notes'" rows="1" readonly>{{entity[column.field]}} </textarea>
+                <textarea [title]="entity[column.field]" *ngIf="column.type == 'newnts'" rows="1" readonly>{{entity[column.field]}} </textarea>
+                <textarea pInputTextarea [(ngModel)]="entity[column.field]" (change)="onTextBoxChange.emit({field:column.field,index: index,data: entity})"
+                  *ngIf="column.type == 'textbox'" rows="1"></textarea>
+                <p-dropdown appendTo="body" [style]="{'width':'100%'}" *ngIf="column.type == 'dropdown'" [options]="dropdownOptions[column.field]"
+                  [(ngModel)]="entity[column.field]" (onChange)="onDropDownChange.emit({field: column.field, index: index,data: entity})"></p-dropdown>
+              </div>
+
+              <a (click)="getHyperlinkUrl(entity, column, 'hyperlinkUrl', 'hyperlinkUrlParam')" *ngIf="(column.hyperlink && !column.first && column.type !=='boolean')"
+                [ngStyle]="{'display':'block','text-align': column.type == 'number' ? 'right' : 'left', 'font-weight': applyBoldFontOnColumn(column) ? 'bold' : ''}">
+                <span [title]="entity[column.field] || entity[column.field] == 0 ? (entity[column.field] | currency : column.format.currency : 'symbol-narrow' : column.format.format) : entity[column.field]"
+                  *ngIf="column.type == 'currency'">{{entity[column.field] || entity[column.field] == 0 ? (entity[column.field] | currency : column.format.currency
+                  : 'symbol-narrow' : column.format.format) : entity[column.field]}}</span>
+                <span [title]="entity[column.field] ? (entity[column.field] | percent : column.format) : entity[column.field]" *ngIf="column.type == 'percent'">{{entity[column.field] ? (entity[column.field] | percent : column.format.format) : entity[column.field]}}</span>
+                <span [title]="entity[column.field] | date : column.format" *ngIf="column.type == 'date' && checkDate(entity[column.field])">{{checkDate(entity[column.field]) | date : column.format.format}} </span>
+                <span [title]="entity[column.field] | phoneFormat" *ngIf="column.type == 'phone'">{{entity[column.field] | phoneFormat}} </span>
+                <span [title]="entity[column.field]" *ngIf="column.type == 'string'">{{entity[column.field]}} </span>
+                <span [title]="entity[column.field]" *ngIf="column.type == 'number'">{{column.format ? (entity[column.field] | number : column.format.format) : entity[column.field]}} </span>
+                <textarea [title]="entity[column.field]" *ngIf="column.type == 'notes'" rows="1" readonly>{{entity[column.field]}} </textarea>
+                <textarea pInputTextarea [(ngModel)]="entity[column.field]" (change)="onTextBoxChange.emit({field:column.field,index: index,data: entity})"
+                  *ngIf="column.type == 'textbox'" rows="1"></textarea> </a>
+            </ng-template>
+
+            <!-- Conditionlal matching regex expression -->
+            <ng-template pTemplate="filter" *ngIf="column.filterType === 'custom' && !column.first && column.filter" let-col>
+              <div class="filter-list" *ngIf="!fixed_header">
+                <input *ngIf="column.type!='date' && column.type!='boolean'" type="text" [placeholder]="" [(ngModel)]="selectedValue[indx]"
+                  (keyup)="updateFilterValue(col.field, $event, column.type, indx);dp.filter($event,col.field,col.filterMatchMode, column.type)"
+                  (change)="onBlurMethod($event, col.field, column.type, indx, col.filterMatchMode)" class="ui-column-filter"
+                  [disabled]="IsFilterRowMultple(col.field) || isBlankOrIsNotBlank(col.field) || fixed_header" title="{{filterTooltip(col.field)}}" [index]="indx">
+                <p-dropdown appendTo="body" *ngIf="column.type == 'boolean'" [options]="booleanFilterValues" [(ngModel)]="selectedValue[indx]"
+                  (onChange)="updateFilterValue(col.field, $event, column.type, indx); dp.filter($event,col.field,'equals', column.type);"
+                  title="{{filterTooltip(col.field)}}" placeholder="Select" [style]="{'width':'100%'}" [index]="indx" [dropdown]='dropdown'
+                  [disabled]="fixed_header" #dropdown></p-dropdown>
+
+                <span class="ui-inputgroup-addon" *ngIf="column.type != 'boolean'">
+                  <i *ngIf="!fixed_header" class="fa fa-filter" title="Type of Filter" (click)="setDefaultFilter(column,indx);rexOp1.toggle($event)"></i>
+                </span>
+                <p-calendar [monthNavigator]="true" styleClass="ui-column-filter" inputStyleClass="ui-column-filter" [yearNavigator]="true"
+                  yearRange="2000:2030" *ngIf="column.type=='date'" (onSelect)="dp.filter($event,column.field+'^dateTime',(col.filterMatchMode ? col.filterMatchMode : 'equals'), column.type);"
+                  appendTo="body" dateFormat="yy-mm-dd" [(ngModel)]="selectedValue[indx]" [showIcon]="true" [index]="indx"
+                  [disabled]=" isBlankOrIsNotBlank(col.field) || fixed_header" title="{{filterTooltip(col.field)}}" [calendar]="calendar" #calendar></p-calendar>
+                <p-overlayPanel styleClass="overlaypanel-wrapper" appendTo="body" #rexOp1>
+                  <p-listbox appendTo="filter" [options]="column.type == 'date'? filterMatchModeDate : (column.type == 'number' || column.type == 'currency' || column.type == 'percent') ? 
+                  filterMatchModeNumber : (IsFilterRowMultple(col.field) ? filterMatchModeStringMulitple: filterMatchModeString)"
+                    [(ngModel)]="filterType[indx]" (click)="rexOp1.hide();" title="{{filterTooltip(col.field)}}" (onChange)="setFilterValueIntoCurrentEvent(col, $event, indx);
+                      dp.filter($event,col.field,col.filterMatchMode, column.type);">
+                  </p-listbox>
+
+                </p-overlayPanel>
+              </div>
+            </ng-template>
+
+            <!-- called for each column footer summary -->
+            <ng-template *ngIf="!column.first && hasSummary" pTemplate="footer" let-col>
+              <span *ngIf="column.type == 'percent'" style="float:left;">{{summary[column.field] | percent : column.format.format}}</span>
+              <span *ngIf="column.type == 'number'" style="float:left;">{{column.format ? (summary[column.field] | number : column.format.format) : summary[column.field]}}</span>
+              <span *ngIf="column.type == 'currency'" style="float:left;">{{summary[column.field] | currency : column.format.currency : 'symbol-narrow' : column.format.format}}</span>
+            </ng-template>
+          </p-column>
+        </ng-container>
+
+
+        <!-- called for individual group summary
+        <ng-template pTemplate="rowgroupfooter" let-row>
+          <ng-container *ngFor="let col of dp.columns; let j = index">
+            <td *ngIf="j==0"></td>
+            <td *ngIf="j!=0 && !col.hidden">{{groupSummary ? (groupSummary[col.field] ? (groupSummary[col.field]['type'] + ': ' + groupSummary[col.field]['value']) : ''): ''}}</td>
+          </ng-container>
+        </ng-template>-->
+      </p-dataTable>
+    </div>
+
+    <!-- DIALOG BOX -->
+
+    <!-- ADD New Row and Edit Row Dialog box -->
+    <p-dialog [(visible)]="displayDialogAdd || editDisplayDialog" [styleClass]="'add-edit-form'" [responsive]="true" showEffect="fade"
+      appendTo="body" [modal]="true" (onHide)="displayDialogAdd=false;editDisplayDialog=false">
+      <p-header>
+        {{displayDialogAdd ? 'Add Form' : 'Edit Form'}}
+      </p-header>
+      <app-add-edit-form *ngIf="displayDialogAdd || editDisplayDialog" [gridName]="gridName" [rowData]="rowData" [columnArray]="baseCoulmnArray"
+        [genericApiObject]="genericApiObject" actionType="{{displayDialogAdd ? 'create' : 'edit'}}" (emitRecord)="saveRecord($event)"
+        [queryParam]="reportQueryParam" (closeDialog)="displayDialogAdd = false; editDisplayDialog = false;"></app-add-edit-form>
+    </p-dialog>
+
+    <p-dialog header="Are you sure?" [(visible)]="confirmDisplayDialog" [responsive]="true" showEffect="fade" [modal]="true"
+      appendTo="body">
+      <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="rowData">
+        {{confirmDisplayDialogLabel}}
+      </div>
+      <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+          <button type="button" pButton icon="fa-times-circle" label="Cancel" (click)="confirmDisplayDialog=false"></button>
+          <button type="button" class="btn btn-danger" pButton icon="fa-check" label="{{confirmDisplayDialogBtnLabel}}" (click)="confirmDisplayDialog=false; formOperations(this.selectedItemIndex, this.rowData);"></button>
+        </div>
+      </p-footer>
+    </p-dialog>
+
+    <!--
+         Not Needed Anymore, As we are using growlMessage
+    <p-dialog header="Notification!" [(visible)]="alertDisplayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+        <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="rowData">
+            <div class="ui-grid-row">
+              <p>{{alertDisplayDialogMsg}}</p>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="fa-thumbs-up" label="Ok" (click)="alertDisplayDialog=false"></button>
+            </div>
+        </p-footer>
+    </p-dialog> -->
+
+
+    <!-- Filter Dialog -->
+
+    <p-sidebar position="right" [styleClass]="'ui-sidebar-md'" [(visible)]="displayFilter" showEffect="fade"
+       [modal]="true" (onHide)="checkActionType()">
+      <p-header style="font-size: 32px">
+        Filter Builder
+      </p-header>
+      <div>
+        <filter-builder [filters]="currentFilterRoot" [columns]="columnArray" [matchModeString]="filterMatchModeString" [matchModeNumber]="filterMatchModeNumber"
+          [matchModeDate]="filterMatchModeDate" [matchModeBoolean]="filterMatchModeBooelan"></filter-builder>
+      </div>
+      <p-footer>
+        <div style="padding-top:30px;">
+            <button  type="button" pButton icon="fa-save"  label="Ok"  (click)="filterClosable = true;saveFilter()"> </button>
+            &nbsp;
+            <button  type="button" pButton icon="fa-times-circle"  label="Cancel"  (click)="closeFilter()"></button>
+          </div>
+      </p-footer>
+      </p-sidebar>
+  </div>
+</blockable-div>
+
+
+<p-overlayPanel #opFilter1 styleClass="layout-box overlaypanel-wrapper" [dismissable]="true" appendTo="body">
+  <div style="padding:10px">
+    <div *ngFor="let op of filterOperators; let i = index">
+      <a style="cursor:pointer;" (click)="changeFilterOperator(op)"> {{op['imgSrc']}}</a>
+      <a style="cursor:pointer; padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px;" (click)="changeFilterOperator(op);">
+        {{op['label']}}</a>
+      <hr *ngIf=" i != (filterOperators.length-1) ">
+    </div>
+  </div>
+
+</p-overlayPanel>

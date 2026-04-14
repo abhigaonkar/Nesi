@@ -1,0 +1,121 @@
+<dx-data-grid id="incomeStatementGrid" [dataSource]="records" [allowColumnReordering]="false" [showColumnLines]="true"
+    [showRowLines]="true" [showBorders]="true" (onCellPrepared)="onCellPrepared($event)" [repaintChangesOnly]="true">
+
+    <dxi-column dataField="account" caption="Account" sortOrder="asc" [width]="300">
+    </dxi-column>
+    <dxi-column dataField="note" caption="Note" cellTemplate="cellTemplate_Note" [width]="60">
+        <dxo-header-filter [allowSearch]="false"></dxo-header-filter>
+    </dxi-column>
+    <dxi-column dataField="mtd" caption="MTD">
+        <dxo-format type="currency" [precision]="2"></dxo-format>
+    </dxi-column>
+    <dxi-column dataField="mtd_sales" caption="MTD %">
+        <dxo-format type="percent" [precision]="2"></dxo-format>
+    </dxi-column>
+    <dxi-column dataField="bmtd" caption="Budget MTD">
+        <dxo-format type="currency" [precision]="2"></dxo-format>
+    </dxi-column>
+    <dxi-column dataField="bmtddiff" caption="Variance MTD">
+        <dxo-format type="currency" [precision]="2"></dxo-format>
+    </dxi-column>
+    <dxi-column dataField="ytd" caption="YTD">
+        <dxo-format type="currency" [precision]="2"></dxo-format>
+    </dxi-column>
+    <dxi-column dataField="ytd_sales" caption="YTD %">
+        <dxo-format type="percent" [precision]="2" cellTemplate="revertCellTemplate"></dxo-format>
+    </dxi-column>
+    <dxi-column dataField="bytd" caption="Budget YTD">
+        <dxo-format type="currency" [precision]="2"></dxo-format>
+    </dxi-column>
+    <dxi-column dataField="bytddiff" caption="Variance YTD">
+        <dxo-format type="currency" [precision]="2"></dxo-format>
+    </dxi-column>
+    <dxi-column dataField="drcr" caption="DCCR" [width]="60"></dxi-column>
+    <dxi-column dataField="date_modified" caption="" [visible]="false"></dxi-column>
+    <dxi-column dataField="acct_no" caption="" [visible]="false"></dxi-column>
+
+    <dxi-column dataField="pos" [groupIndex]="0" groupCellTemplate="groupCellTemplate0"></dxi-column>
+    <dxi-column dataField="type" [groupIndex]="1" sortOrder="desc" groupCellTemplate="groupCellTemplate1"></dxi-column>
+    <dxi-column dataField="gl_group_alias" [groupIndex]="2" groupCellTemplate="groupCellTemplate2"></dxi-column>
+
+    <div *dxTemplate="let data of 'cellTemplate_Note'">
+        <a *ngIf="data.rowType != 'groupFooter'" (click)="showNote(data.data)"> <img [src]="imagePath"></a>
+    </div>
+
+    <div *dxTemplate="let cell of 'cellTemplate'">
+        <div style="background: green">{{cell.text}}</div>
+    </div>
+
+    <div *dxTemplate="let cell of 'groupCellTemplate0'">
+        <div style="color: black !important;">{{cell.text}}</div>
+    </div>
+
+    <div *dxTemplate="let cell of 'groupCellTemplate1'">
+        <div style="color: black !important;">{{cell.text}}</div>
+    </div>
+
+    <div *dxTemplate="let cell of 'groupCellTemplate2'">
+        <div style="color: black !important;">{{cell.text}}</div>
+    </div>
+
+    <dxo-summary [calculateCustomSummary]="calculateSelectedRow">
+        <dxi-group-item column="account" summaryType="custom" displayFormat="Total:" [showInGroupFooter]="true"
+            [alignByColumn]="true"></dxi-group-item>
+        <dxi-group-item column="mtd" summaryType="sum" displayFormat="{0}" [showInGroupFooter]="true" [alignByColumn]="true"
+            [valueFormat]="{ type: 'currency', precision: 2 }"></dxi-group-item>
+        <dxi-group-item column="mtd_sales" summaryType="sum" displayFormat="{0}" [showInGroupFooter]="true"
+            [alignByColumn]="true" [valueFormat]="{ type: 'percent', precision: 2 }"></dxi-group-item>
+        <dxi-group-item column="bmtddiff" summaryType="sum" displayFormat="{0}" [showInGroupFooter]="true"
+            [alignByColumn]="true" [valueFormat]="{ type: 'currency', precision: 2 }"></dxi-group-item>
+        <dxi-group-item column="ytd" summaryType="sum" displayFormat="{0}" [showInGroupFooter]="true" [alignByColumn]="true"
+            [valueFormat]="{ type: 'currency', precision: 2 }"></dxi-group-item>
+        <dxi-group-item column="ytd_sales" summaryType="sum" displayFormat="{0}" [showInGroupFooter]="true"
+            [alignByColumn]="true" [valueFormat]="{ type: 'percent', precision: 2 }"></dxi-group-item>
+        <dxi-group-item column="bytddiff" summaryType="sum" displayFormat="{0}" [showInGroupFooter]="true"
+            [alignByColumn]="true" [valueFormat]="{ type: 'currency', precision: 2 }"></dxi-group-item>
+        <dxi-group-item column="bmtd" summaryType="sum" displayFormat="{0}" [showInGroupFooter]="true" [alignByColumn]="true"
+            [valueFormat]="{ type: 'currency', precision: 2 }"></dxi-group-item>
+        <dxi-group-item column="bytd" summaryType="sum" displayFormat="{0}" [showInGroupFooter]="true" [alignByColumn]="true"
+            [valueFormat]="{ type: 'currency', precision: 2 }"></dxi-group-item>
+
+        <dxi-total-item column="account" summaryType="" displayFormat="Net Income:"></dxi-total-item>
+
+        <dxi-total-item column="mtd" summaryType="sum" [valueFormat]="{ type: 'currency', precision: 2 }" displayFormat="{0}"></dxi-total-item>
+        <dxi-total-item column="mtd_sales" summaryType="sum" [valueFormat]="{ type: 'percent', precision: 2 }"
+            displayFormat="{0}"></dxi-total-item>
+        <dxi-total-item column="bmtd" summaryType="sum" [valueFormat]="{ type: 'currency', precision: 2 }"
+            displayFormat="{0}"></dxi-total-item>
+        <dxi-total-item column="bmtddiff" summaryType="sum" [valueFormat]="{ type: 'currency', precision: 2 }"
+            displayFormat="{0}"></dxi-total-item>
+
+        <dxi-total-item column="ytd" summaryType="sum" [valueFormat]="{ type: 'currency', precision: 2 }" displayFormat="{0}"></dxi-total-item>
+        <dxi-total-item column="ytd_sales" summaryType="sum" [valueFormat]="{ type: 'percent', precision: 2 }"
+            displayFormat="{0}"></dxi-total-item>
+        <dxi-total-item column="bytd" summaryType="sum" [valueFormat]="{ type: 'currency', precision: 2 }"
+            displayFormat="{0}"></dxi-total-item>
+        <dxi-total-item column="bytddiff" summaryType="sum" [valueFormat]="{ type: 'currency', precision: 2 }"
+            displayFormat="{0}"></dxi-total-item>
+    </dxo-summary>
+
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-sorting mode="multiple"></dxo-sorting>
+    <dxo-paging [enabled]="false" caption=""></dxo-paging>
+    <dxo-export [enabled]="true" fileName="incomestatement" [allowExportSelectedData]="false" [customizeExcelCell]="customizeExcelCell"></dxo-export>
+
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+
+    <dxo-load-panel shadingColor="rgba(0,0,0,0.4)" [showIndicator]="true" [showPane]="true" [shading]="true" [enabled]="true">
+    </dxo-load-panel>
+</dx-data-grid>
+
+<dx-popup *ngIf="currentRecord" [width]="660" [height]="540" [showTitle]="true" [title]="currentRecord.account" [dragEnabled]="true" [closeOnOutsideClick]="false"
+    [(visible)]="popupVisible">
+    <div *dxTemplate="let data of 'content'">
+        <div class='popup-property-details'>
+            In developing...
+        </div>
+    </div>
+</dx-popup>
+<!-- <button (click)="getRecords()">Records</button> -->
+

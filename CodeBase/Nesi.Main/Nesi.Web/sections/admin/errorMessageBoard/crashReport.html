@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+
+
+
+  <style type="text/css">
+  table{
+    width: 100%;
+  }
+    table, .first {
+      border-top: 3px solid black;
+      border-bottom: 1px solid black;
+      border-collapse:collapse;
+      font-size: 24px;
+    }
+    thead{
+
+      font-size: 45px;
+      font-weight: bold;
+    }
+    .global{
+      color: red;
+    }
+
+  </style>
+
+
+  <script type="text/javascript">
+//http://jordan.nesi.ca/sections/admin/errorMessageBoard/errorMessageData.asmx/getInfo
+  $(document).ready(function(){
+
+
+
+
+
+var oldTime = 0;
+var queueMemberTime = [];
+var queueWoTime = [];
+var neMemberTimeAvg = "...";
+var neWoProgTimeAvg = "...";
+
+var array = [];
+var errorsHtml = "";
+var errorsHtmlOld = "";
+
+window.setInterval(function(){
+//Android.stopLoad();
+//Android.showLoad("Get");
+  
+ $.ajax({
+  type: "POST",
+  data: "data",
+  dataType: "xml",
+  url: "/sections/admin/errorMessageBoard/errorMessageData.asmx/getMostError",
+  crossDomain: true,
+  success: function(xml){
+          $(xml).find("ErrorLogData").each(function()
+          {
+              var one = $(this).find("errorDesc").text();
+              var host = $(this).find("host").text();
+              var member = $(this).find("member").text();
+
+
+              var errorsToday = $(this).find("errorsToday").text();
+              var criticalTickets = $(this).find("criticalTickets").text();
+              var errorCount = $(this).find("errorCount").text();
+              var randomTicket = $(this).find("randomTicket").text();
+              var isGlobal = $(this).find("isGlobal").text();
+
+
+              $("#crashCount").html(errorsToday);
+              globalClass = "";
+                if (isGlobal == "1"){
+                    globalClass = "global";
+                }
+
+                errorsHtml += "<tr class='first "+globalClass+" ' ><td>Count:<strong>" +  errorCount + "</strong></td><td>Host:<strong>"+ host + "</strong></td> <td>Member:<strong>"+ member + "</strong></td> </tr>";
+                errorsHtml += "<tr class='"+globalClass+"' > <td colspan='3'> " + one +"</td> </tr>";
+          });
+          
+        
+  }
+ });
+//checkServerStatus( "https://www.nesi.ca" );
+//checkServerStatus( "https://beta.nesi.ca" );
+
+if (errorsHtml == errorsHtmlOld){
+  errorsHtml = "";
+}else{
+
+$("#crashReports").html(errorsHtml).fadeIn();
+errorsHtmlOld = errorsHtml;
+errorsHtml = "";
+//$(errorsHtml).prependTo("#output");
+}
+
+
+
+            //  Android.showToast("Errorzzz", 250);
+}, 3000);
+
+
+});
+  </script>
+</head>
+<body>
+
+  <table style="border: 3px solid black;font-family:'Arial';">
+    <thead>
+      <tr>
+        <td colspan="3">Crash Report &emsp; Last 24 Hours&emsp;&emsp;&emsp;&emsp;Total Crashes: <span id="crashCount" style="color: red;"></span></td>
+      </tr>
+    </thead>
+    <tbody id="crashReports">
+
+
+    </tbody>
+  </table>
+
+</body>
+</html>

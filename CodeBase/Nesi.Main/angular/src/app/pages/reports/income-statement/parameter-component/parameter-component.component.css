@@ -1,0 +1,22 @@
+:host ::ng-deep  .dx-list-item {
+    border: 0px;
+    width: 20% !important;
+    float: left !important;
+}
+
+:host ::ng-deep .dx-field-label {
+    width: 150px !important;
+}
+
+:host ::ng-deep .dx-field-value {
+    float: left !important;
+}
+
+::ng-deep .bold {
+    font-weight: bold;
+}
+
+.longRow {
+    width: 100% !important;
+    height: 100% !important;
+}

@@ -1,0 +1,333 @@
+<div *ngIf="ctrlUrl" id="splash" class="splash-screen">
+  <div class="splash-screen-loader">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+
+<div *ngIf="!ctrlUrl">
+  <p-blockUI [blocked]="!canSubmit">
+    <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+  </p-blockUI>
+  <div class="container ">
+    <div class="row justify-content-center">
+
+      <div class="logo">
+        <img src="assets/images/Logos/{{SandboxProductionLogo()}}" width="250px">
+      </div>
+
+    </div>
+
+
+    <ng-container *ngIf="rebootTime>=0 && showAll && isChrome">
+
+      <div class="row justify-content-center">
+        <form class="col-10 col-sm-9 col-md-7 col-lg-5 signin-window form-signin" novalidate (ngSubmit)="signIn()" [formGroup]="signInForm">
+          <div class="row justify-content-center">
+            <div class="col-10 col-sm-9 col-md-9 col-lg-9">
+              <div class="form-row">
+                <div class="form-group col-12">
+                  <label for="inputUsername4" class="col-form-label">
+                    <h2>Username</h2>
+                  </label>
+                  <input type="text" class="form-control" id="inputUsername4" formControlName="username" tabindex="1" placeholder="Username"/>
+                </div>
+                <div *ngIf="usenameNotValidated" class="alert validation-error">Username is required and at least 3 characters.</div>
+                <!-- Invalid CSS "is-invalid"
+        Valid CSS "is-valid"-->
+                <div class="form-group col-12">
+                  <label for="inputPassword4" class="col-form-label">
+                    <h2>Password</h2>
+                  </label>
+                  <input type="password" tabindex="2" class="form-control" formControlName="password" id="inputPassword4" placeholder="Enter your password"
+                    required>
+                </div>
+                <div *ngIf="passwordNotValidated" class="alert validation-error">Password is required and at least 4 characters.</div>
+              </div>
+              <input class="btn btn-lg btn-primary btn-block" tabindex="3" type='submit' [class.bt-disabled]="!canSubmit || !signInForm.valid"
+                [disabled]="!canSubmit || !signInForm.valid" #submitBtn value="Login" />
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+
+      <div class="row justify-content-center link_popup">
+
+        <div class="forgot_pw" id="ForgotPWBtn" (click)="showForgotPassword = true">Forgot Password?</div>
+
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!isChrome">
+      <div class="row justify-content-center">
+        <div class="reboot_timer justify-content-center">
+          <i class="fa fa-ban fa-2x"></i>
+          <div>Please use Chrome to access Spark Ops.</div>
+          <div>
+            <a href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank">Download Chrome</a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="rebootTime<0  && showAll">
+      <div class="row justify-content-center">
+        <div class="reboot_timer justify-content-center">
+          <i class="fa fa-cog fa-spin fa-2x"></i>
+          <div>Spark Ops is updating, please come back in {{-rebootTime | timerFormat}}</div>
+          <a href="/">REFRESH</a>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!showAll && !ctrlUrl">
+      <div class="row justify-content-center">
+        <div class="reboot_timer justify-content-center">
+          <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+          <div class="loading">Loading...</div>
+        </div>
+      </div>
+    </ng-container>
+
+
+
+    <!-- The Need Login Modal -->
+    <div id="NeedloginModal" class="modal row justify-content-center" *ngIf="showRequestPassword">
+
+      <!-- Modal content -->
+      <div class="row justify-content-center">
+
+        <div class="modal-logo">
+        </div>
+
+      </div>
+
+      <div class="modal-content col-10 col-sm-9 col-md-6 col-lg-4">
+        <div class="row justify-content-center">
+
+          <form class="col-10 col-sm-10 col-md-8 col-lg-8 modal-container">
+
+
+            <div class="row justify-content-center">
+              <a class="col-12 modal-header" href="#" (click)="showRequestPassword = true">I need a login</a>
+            </div>
+
+
+            <div class="row justify-content-center">
+              <div class="col-12">
+
+                <div class="form-row modal-body">
+
+                  <div class="form-group col-12">
+                    <h3>Please submit your email if you would like access to our portal.</h3>
+                    <p>One of our support team will be in touch as soon as possible.</p>
+                  </div>
+
+                  <div class="form-group col-12">
+                    <label for="requestEmail" class="col-form-label">
+                      <h2>Email Address</h2>
+                    </label>
+                    <input type="text" #requestEmail class="form-control" placeholder="Email">
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+
+          </form>
+
+        </div>
+
+
+        <div class="row justify-content-center modal-btn">
+
+          <button class="col-6 btn btn-lg btn-primary btn-block needlogin-btn-cancel" (click)="showRequestPassword=false" type="cancel">Cancel</button>
+          <button class="col-6 btn btn-lg btn-primary btn-block btn-request" (click)="sendRequestPassword(requestEmail)" type="request">Send Request</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- The Need Login Modal -->
+    <div id="ForgotPWModal" class="modal row justify-content-center" *ngIf="showForgotPassword">
+
+      <!-- Modal content -->
+      <div class="row justify-content-center">
+
+        <div class="modal-logo">
+        </div>
+
+      </div>
+
+      <div class="modal-content col-10 col-sm-9 col-md-6 col-lg-4">
+        <div class="row justify-content-center">
+
+          <form class="col-10 col-sm-10 col-md-8 col-lg-8 modal-container">
+
+
+            <div class="row justify-content-center">
+              <h1 class="col-12 modal-header">Forgot Password?</h1>
+            </div>
+
+
+            <div class="row justify-content-center">
+              <div class="col-12">
+
+                <div class="form-row modal-body">
+
+                  <div class="form-group col-12">
+                    <h3>If you have lost the password to your account, just let us know the username you use to log in.</h3>
+                    <p>You will receive an email with further instructions.</p>
+                  </div>
+
+                  <div class="form-group col-12">
+                    <label for="forgotPasswordUserName" class="col-form-label">
+                      <h2>Username</h2>
+                    </label>
+                    <input type="text" #forgotPasswordUserName name="username"  class="form-control" placeholder="Enter username">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row justify-content-center modal-btn">
+          <button class="col-6 btn btn-lg btn-primary btn-block forgotpw-btn-cancel" (click)="showForgotPassword=false" type="cancel">Cancel</button>
+          <button class="col-6 btn btn-lg btn-primary btn-block btn-request" (click)="sendForgotPassword(forgotPasswordUserName)" type="request">Send Request</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Change Password Modal -->
+    <div id="ChangePWModal" class="modal  justify-content-center" *ngIf="showChangePassword">
+
+      <!-- Modal content -->
+      <div class=" justify-content-center">
+        <div class="modal-logo">
+        </div>
+      </div>
+
+      <div class="modal-content col-10 col-sm-9 col-md-6 col-lg-4">
+        <form class="" novalidate (ngSubmit)="postChangePassword()" [formGroup]="changePasswordForm" action="" onsubmit="return false;">
+          <h1 class=" modal-header">Change Password</h1>
+
+          <div class="form-group ">
+            <label for="inputUsername5" class="col-form-label">
+              <h2>Username</h2>
+            </label>
+            <input type="text" name="username" [readOnly]="!ForcePasswordUsernameEditable" class="form-control" id="inputUsername5" formControlName="username" placeholder="Username">
+          </div>
+          <div class="form-group ">
+            <label for="inputPassword51" class="col-form-label">
+              <h2>Current Password</h2>
+            </label>
+            <input type="password" name="password" #oldPass class="form-control" id="inputPassword51" formControlName="oldPassword"
+              placeholder="Enter current password">
+            <div class="invalid-feedback">
+              At least 4 characters.
+            </div>
+            <div class="form-group">
+              <label for="inputPassword52" class="col-form-label">
+                <h2>New Password</h2>
+              </label>
+              <input type="password" #newPass class="form-control" id="inputPassword52" formControlName="newPassword">
+            </div>
+          </div>
+          <!-- <div *ngIf="!newpasswordCpNotValidated" class="alert validation-warn">
+            Password is required.
+          </div> -->
+          <div *ngIf="hasNewPWDValue">
+          <ng-container *ngIf="PasswordTooShort; then tooshort; else noshort" class="alert validation-error">
+          </ng-container>
+          <ng-template #tooshort>
+            <div class="alert validation-error">
+                 <i class="fa fa-times"></i> Password is too short - Passwords must be at least 8 characters long.
+          </div>
+           </ng-template>
+           <ng-template #noshort>
+              <div class="alert validation-warn">
+                     <i class="fa fa-check"></i> Password must be least 8 characters long.
+              </div>
+           </ng-template>
+           <ng-container *ngIf="PasswordNoUppercase; then NoUppercase; else Uppercase" class="alert validation-error">
+          </ng-container>
+          <ng-template #NoUppercase>
+            <div class="alert validation-error">
+                 <i class="fa fa-times"></i> No uppercase provided.
+          </div>
+           </ng-template>
+           <ng-template #Uppercase>
+              <div class="alert validation-warn">
+                     <i class="fa fa-check"></i> Include uppercase.
+              </div>
+           </ng-template>
+           <ng-container *ngIf="PasswordNoLowercase; then NoLowercase; else Lowercase" class="alert validation-error">
+          </ng-container>
+          <ng-template #NoLowercase>
+            <div class="alert validation-error">
+                 <i class="fa fa-times"></i> No lowercase provided.
+          </div>
+           </ng-template>
+           <ng-template #Lowercase>
+              <div class="alert validation-warn">
+                     <i class="fa fa-check"></i> Include lowercase.
+              </div>
+           </ng-template>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword53" class="col-form-label">
+              <h2>Confirm Password</h2>
+            </label>
+            <input type="password" #confirmPass class="form-control" id="inputPassword53" formControlName="confirmPassword">
+          </div>
+          <!-- <div *ngIf="confirmpasswordCpNotValidated" class="alert validation-error">
+            Password is required.
+          </div> -->
+          <div *ngIf="hasConfirmPWDValue">
+          <ng-container  *ngIf="!confirmpasswordCpNotMatch; then NoMatched; else PasswordMatched">
+          </ng-container>
+          <ng-template #NoMatched>
+           <div class="alert validation-error">
+             <i class="fa fa-times"></i> Passwords do not match.
+         </div>
+          </ng-template>
+          <ng-template #PasswordMatched>
+             <div class="alert validation-warn">
+                    <i class="fa fa-check"></i> Confirm password is matched with new password.
+             </div>
+          </ng-template>
+           </div>
+          <div class="row justify-content-center modal-btn">
+
+            <button tabindex="-1" class="col-6 btn btn-lg btn-primary btn-block forgotpw-btn-cancel" (click)="cancelChangePassword()"
+              type="button">Cancel</button>
+            <input class="col-6 btn btn-lg btn-primary btn-block btn-request"  type="submit" value="Change Password"/>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+
+
+    <div class="row justify-content-center">
+
+      <div class="credit">Spark Ops Copyright © {{currentYear}}</div>
+
+    </div>
+
+
+
+  </div>
+  <!-- /container -->
+</div>

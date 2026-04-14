@@ -1,0 +1,18 @@
+<nesi-breadcurmb [items]="[{label: 'Integ.Errors'}]"></nesi-breadcurmb>
+
+<div id="integrationerrordisplay">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_left">
+        Select Month to view Integration Error Logs
+        <dx-select-box [items]="months" displayExpr="ym" (onValueChanged)="onValueChanged($event)">
+        </dx-select-box>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="display">
+    <nesi-integration-error [dur]="selectedmonth" (record)="fetchRecord()"></nesi-integration-error>
+  </div>
+</div>
+
+

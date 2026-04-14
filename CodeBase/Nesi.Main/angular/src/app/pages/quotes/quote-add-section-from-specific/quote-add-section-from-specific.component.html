@@ -1,0 +1,62 @@
+<p-blockUI [blocked]="submitting">
+  <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+</p-blockUI>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-1 label_for_right">
+      Business Unit:
+    </div>
+    <div class="ui-g-11 ui-md-8">
+      <nesi-visibleBusinessUnitDropDown (onChange)="selectBusinessUnitChanged($event)" [required]="false" [(ngModel)]="buId"></nesi-visibleBusinessUnitDropDown>
+    </div>
+    <div class="ui-g-1 ui-md-1">
+      <button type="button" [disabled]="!buId" pButton icon="fa-window" (click)="selectBusinessUnitChanged($event)"></button>
+    </div>
+  </div>
+</div>
+<div class="s_dialog">
+<p-dialog header="Select items from pre-define of {{label}}" 
+ [positionTop]="50" [width]="cs.dialogWidth" [modal]="true" 
+  [responsive]="true" [(visible)]="dialogDisplay">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <div class="ui-g-6">
+        <button type="button" (click)="addRow()" pButton icon="fa-plus-circle" *ngIf="can_edit" label="Add a pre-define item"></button>
+      </div>
+      <div class="ui-g-1 ui-g-offset-5">
+        <p-checkbox *ngIf="rows && rows.controls && rows.controls.length>0" (onChange)="checkAll($event)" [(ngModel)]="checkedAll"
+          binary="true"></p-checkbox>
+      </div>
+    </div>
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <ng-container formArrayName="rows">
+        <div *ngFor="let row of rows.controls; let i=index">
+          <div class="ui-g-12" [formGroupName]="i" [ngClass]="{'greyBack': i % 2==1,'whiteBack': i %2 ==0}">
+            <div class="ui-g-1">
+              <div class="ui-g-12" *ngIf="can_edit">
+                <button type="button" (click)="saveRow(row,i)" pButton icon="fa-save"></button>
+              </div>
+              <div class="ui-g-12" *ngIf="can_edit">
+                <button type="button" (click)="deleteRow(row,i)" class="ui-button-warning" pButton icon="fa-times"></button>
+              </div>
+            </div>
+            <div class="ui-g-1 right">
+              {{i+1}}
+            </div>
+            <div class="ui-g-9">
+              <textarea pInputTextarea [rows]="5" [cols]="30" [autoResize]="true" id="name" formControlName="label"></textarea>
+            </div>
+            <div class="ui-g-1">
+              <p-checkbox id="check_{{i}}" *ngIf="row.get('value').value>0" formControlName="is_checked" binary="true"></p-checkbox>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="ui-g-12">
+        <button pButton icon="fa-plus" label="Add item(s) to {{type==1?'Scope of Work': 'Notes/Adders'}}"></button>
+      </div>
+    </form>
+  </div>
+</p-dialog>
+</div>

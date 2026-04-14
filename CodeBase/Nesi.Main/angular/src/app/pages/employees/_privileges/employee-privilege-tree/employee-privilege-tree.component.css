@@ -1,0 +1,20 @@
+.page {
+    font-weight: bold;
+    color:blue;
+}
+
+.page:hover {
+    color: #094;
+}
+
+.priv {
+    color:green;
+    font-weight: bold;
+}
+
+.priv:hover {
+    font-weight: normal;
+}
+.type_priv {
+    background-color: yellow;
+}

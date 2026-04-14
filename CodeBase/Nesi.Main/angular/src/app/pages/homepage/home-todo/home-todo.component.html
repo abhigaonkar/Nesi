@@ -1,0 +1,30 @@
+<div class="ui-g-12 home_todo">
+  <p-dataTable [rows]="10" [emptyMessage]="'No to do list found.'" [paginator]="true" [pageLinks]="10" [value]="items" sortMode="multiple"
+    resizableColumns="false" rowHover="true" [loading]="loading" [loadingIcon]="'fa-spinner'" [responsive]="true" (onRowClick)="openTodo($event)">
+    <p-header>
+      To Do Right Now
+    </p-header>
+    <p-column field="overdue" [style]="{'width':'10%'}" header="Over due" [sortable]="true"></p-column>
+    <p-column field="link2" [style]="{'width':'25%'}" header="Subject" [sortable]="true">
+      <ng-template let-data="rowData" pTemplate="body">
+        <span class="a_link"> {{ data.link2 }}</span>
+      </ng-template>
+    </p-column>
+    <p-column field="description" [style]="{'width':'60%'}" header="Description" [sortable]="true"></p-column>
+  </p-dataTable>
+</div>
+<nesi-sidebar [submitting]="submitting" [(visible)]="display" [header]="selected_item?.link2" [larger]="true" (onHide)="Refresh()"
+  [open_url]="selected_item?.link">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <nesi-Nesi1 (onloading)="submitting=true" (onloaded)="submitting=false" *ngIf="display && selected_item?.link && !selected_item?.n2_page"
+        [direct_url]="selected_item?.link"></nesi-Nesi1>
+      <nesi-employee-termination (onChange)="Refresh()" *ngIf="is_employee_termination" [employee]="employee"></nesi-employee-termination>
+      <nesi-employee-user-information (onChange)="Refresh()" *ngIf="is_employee_userinfo" [employee]="employee"></nesi-employee-user-information>
+      <nesi-employee-offer (onChange)="Refresh()" *ngIf="is_employee_offer" [employee]="employee" [offer]="offerToPass"></nesi-employee-offer>
+      <nesi-employee-it *ngIf="is_employee_it" [employee]="employee"></nesi-employee-it>
+      <nesi-quote-detail-edit *ngIf="is_quote" [quoteId]="qutoe_id" [revision]="revision"></nesi-quote-detail-edit>
+      <nesi-customer-edit-general (onChange)="Refresh()" *ngIf="is_customer" [customer_id]="customer_id"></nesi-customer-edit-general>
+    </div>
+  </div>
+</nesi-sidebar>

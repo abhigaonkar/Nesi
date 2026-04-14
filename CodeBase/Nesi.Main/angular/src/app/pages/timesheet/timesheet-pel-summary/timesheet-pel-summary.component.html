@@ -1,0 +1,22 @@
+<ng-container *ngIf="data">
+  <div class="ui-g-12">
+    <div class="ui-g-12 center">
+      <b>PEL Days:</b> {{data.used_days}} of {{data.total_days}} days ({{data.used_hours}} of {{data.total_hours}} hours) used
+      <p-progressBar [value]="data.used_days/data.total_days * 100"></p-progressBar>
+    </div>
+  </div>
+  <div class="ui-g-12">
+    <div class="ui-g-12  center">
+      <b>Paid PEL Days:</b> {{data.used_paid_days}} of {{data.total_paid_days}} days ({{data.used_paid_hours}} of {{data.total_paid_hours}}
+      hours) used
+      <p-progressBar [value]="data.used_paid_days/data.total_paid_days *100"></p-progressBar>
+    </div>
+  </div>
+  <div class="ui-g-12">
+    <div class="ui-g-12 center">
+      <b>Unpaid PEL Days:</b> {{data.used_unpaid_days}} of {{data.total_unpaid_days}} days ({{data.used_unpaid_hours}} of {{data.total_unpaid_hours}}
+      hours) used
+      <p-progressBar [value]="data.used_unpaid_days/data.total_unpaid_days*100"></p-progressBar>
+    </div>
+  </div>
+</ng-container>

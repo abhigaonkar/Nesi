@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98A6BEFD-C625-412E-B5C6-448BCD2C6CEB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NESI.BLL</RootNamespace>
+    <AssemblyName>NESI.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MattLocal|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\MattLocal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MattLocal|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\MattLocal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Attributes, Version=6.0.0.0, Culture=neutral, PublicKeyToken=bbc347385eae1a0e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.Attributes.6.0.0\lib\net45\AutoMapper.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v19.2">
+      <HintPath>..\Nesi.Bin\DevExpress.Data.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v19.2">
+      <HintPath>..\Nesi.Bin\DevExpress.Xpo.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPdf, Version=2019.6.5.20629, Culture=neutral, PublicKeyToken=94e1c31412563c75, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPdf.2019.6.5\lib\net40\IronPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="Pervasive.Data.SqlClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c84cd5c63851e072" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BLLGridBase.cs" />
+    <Compile Include="Base\ProfileBase.cs" />
+    <Compile Include="Common\Cache\BusinessUnit.cs" />
+    <Compile Include="Common\Cache\DatatableCacher.cs" />
+    <Compile Include="Common\Cache\Global.cs" />
+    <Compile Include="Common\Cache\IReportCacher.cs" />
+    <Compile Include="Common\Cache\ListCacher.cs" />
+    <Compile Include="Common\Cache\MemoryCacher.cs" />
+    <Compile Include="Common\Cache\OnlineUser.cs" />
+    <Compile Include="Common\Cache\OriginalUser.cs" />
+    <Compile Include="Common\Cache\TaxEntity.cs" />
+    <Compile Include="Common\Shared\PasswordChangeValidationResult.cs" />
+    <Compile Include="Common\Shared\UserIdentity.cs" />
+    <Compile Include="Common\Shared\NesiWebApiClient.cs" />
+    <Compile Include="Core\FileManager\CreditCardFile.cs" />
+    <Compile Include="Core\NesiEmailBuilder.cs" />
+    <Compile Include="Core\UserExtensions.cs" />
+    <Compile Include="EmbeddedFiles\AssemblyFileLoader.cs" />
+    <Compile Include="Common\Shared\Alert.cs" />
+    <Compile Include="Common\Shared\DataTablePagination.cs" />
+    <Compile Include="Common\Shared\DateTimeTools.cs" />
+    <Compile Include="Common\Shared\MimeTypeMap.cs" />
+    <Compile Include="Common\Shared\UserManager.cs" />
+    <Compile Include="Common\Shared\Configuration.cs" />
+    <Compile Include="Common\Shared\DataTypeConvert.cs" />
+    <Compile Include="Common\Shared\Debug.cs" />
+    <Compile Include="Common\Shared\Email.cs" />
+    <Compile Include="Common\Shared\Encryption.cs" />
+    <Compile Include="Common\Shared\Value.cs" />
+    <Compile Include="Common\ToolBox\FailedLogin.cs" />
+    <Compile Include="Common\Shared\IfNull.cs" />
+    <Compile Include="Common\Shared\Misc.cs" />
+    <Compile Include="Common\ToolBox\SearchHistory\InventorySearchHistory.cs" />
+    <Compile Include="Base\ProfileCategoryBase.cs" />
+    <Compile Include="Core\BusinessUnit.cs" />
+    <Compile Include="Core\FileManager\CustomerAssetFile.cs" />
+    <Compile Include="Core\FileManager\ApplicantFile.cs" />
+    <Compile Include="Core\FileManager\ImageToPdf.cs" />
+    <Compile Include="Core\FileManager\VendorFile.cs" />
+    <Compile Include="Core\FileManager\EmployeeSignBackFileStore.cs" />
+    <Compile Include="Core\FileManager\MemberFile.cs" />
+    <Compile Include="Core\FileManager\CustomerFile.cs" />
+    <Compile Include="Core\FileManager\EmployeeDiscplineFileStore.cs" />
+    <Compile Include="Core\FileManager\FileStore.cs" />
+    <Compile Include="Core\FileManager\TempFile.cs" />
+    <Compile Include="Core\FileManager\MessageAttachFile.cs" />
+    <Compile Include="Core\FileManager\QuoteFile.cs" />
+    <Compile Include="Core\FileManager\WorkOrderScannedFile.cs" />
+    <Compile Include="Core\Logger\ClientErrorHandler.cs" />
+    <Compile Include="Core\FileManager\TicketFile.cs" />
+    <Compile Include="Core\Logger\WebAPIPageLogger.cs" />
+    <Compile Include="Core\Ne2Expense.cs" />
+    <Compile Include="Core\FileManager\ExpenseFile.cs" />
+    <Compile Include="Core\FileManager\NeFileBase.cs" />
+    <Compile Include="Core\FileManager\SafetyFile.cs" />
+    <Compile Include="Core\FileManager\TestFile.cs" />
+    <Compile Include="Core\FileManager\UploadFile.cs" />
+    <Compile Include="Core\FileManager\WorkOrderFile.cs" />
+    <Compile Include="Core\MemberType.cs" />
+    <Compile Include="Common\Shared\NeCurrency.cs" />
+    <Compile Include="Core\Ne2Customer.cs" />
+    <Compile Include="Core\Ne2PayPeriod.cs" />
+    <Compile Include="Core\Ne2Payroll.cs" />
+    <Compile Include="Core\Ne2Passport.cs" />
+    <Compile Include="Core\Ne2PayTypeHours.cs" />
+    <Compile Include="Core\Ne2PhoneLog.cs" />
+    <Compile Include="Core\Ne2Quote.cs" />
+    <Compile Include="Core\Ne2WOProg.cs" />
+    <Compile Include="Core\OCR\CognitiveOCR.cs" />
+    <Compile Include="Core\Privileges\NeCheckPrivilege.cs" />
+    <Compile Include="EmbeddedResources\EmbeddedBLLResourceMarker.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Layout\Banner\AllActiveUser.cs" />
+    <Compile Include="Layout\Banner\ChangePassword.cs" />
+    <Compile Include="Layout\Banner\DefaultPage.cs" />
+    <Compile Include="Layout\Banner\IdSearch.cs" />
+    <Compile Include="Layout\Menu\DashMessage.cs" />
+    <Compile Include="Layout\Menu\MenuRouter.cs" />
+    <Compile Include="Layout\Menu\MenuType.cs" />
+    <Compile Include="Core\Member\ActiveUser.cs" />
+    <Compile Include="Layout\Banner\Message.cs" />
+    <Compile Include="Layout\Banner\QuickExtension.cs" />
+    <Compile Include="Layout\Banner\ToDo2.cs" />
+    <Compile Include="Layout\Banner\UpcomingVacations.cs" />
+    <Compile Include="Layout\Banner\AverageDaysToInvoice.cs" />
+    <Compile Include="Layout\Banner\WhoDoIAsk.cs" />
+    <Compile Include="Layout\Banner\ToDo.cs" />
+    <Compile Include="Layout\Banner\Fvr.cs" />
+    <Compile Include="Layout\Banner\SwtichUser.cs" />
+    <Compile Include="Layout\Menu\MenuGenerator.cs" />
+    <Compile Include="Layout\Menu\MenuItem.cs" />
+    <Compile Include="Layout\Tickets\Tickets.cs" />
+    <Compile Include="Core\Employee\EmployeePassword.cs" />
+    <Compile Include="Core\Member\UserFactory.cs" />
+    <Compile Include="Core\User\UserAuthorize.cs" />
+    <Compile Include="Core\User\UserMenu.cs" />
+    <Compile Include="Core\User\UserPassword.cs" />
+    <Compile Include="Core\User\UserProfiles.cs" />
+    <Compile Include="Base\BLLBase.cs" />
+    <Compile Include="Pages\AdminTools\IntegErrorBase.cs" />
+    <Compile Include="Pages\Applicant\ApplicantBase.cs" />
+    <Compile Include="Pages\Applicant\ApplicantEdit.cs" />
+    <Compile Include="Pages\Applicant\ApplicantHomeGrid.cs" />
+    <Compile Include="Pages\Applicant\ApplicantStartNew.cs" />
+    <Compile Include="Pages\AssetRate\AssetCustomerRateAddParameter.cs" />
+    <Compile Include="Pages\AssetRate\AssetCustomerRateDeleteParameter.cs" />
+    <Compile Include="Pages\AssetRate\AssetCustomerRateQueryParameter.cs" />
+    <Compile Include="Pages\AssetRate\AssetCustomerRateRecord.cs" />
+    <Compile Include="Pages\AssetRate\AssetCustomerRateService.cs" />
+    <Compile Include="Pages\AssetRate\AssetCustomerRateUpdateParameter.cs" />
+    <Compile Include="Pages\AssetRate\AssetQueryForWorkOrderParameter.cs" />
+    <Compile Include="Pages\AssetRate\BuisnessUnitRecord.cs" />
+    <Compile Include="Pages\AssetRate\ErrorRecord.cs" />
+    <Compile Include="Pages\AssetRate\GetVisiableBUParameter.cs" />
+    <Compile Include="Pages\AssetRate\IAssetCustomerRate.cs" />
+    <Compile Include="Pages\AssetRate\OperationResult.cs" />
+    <Compile Include="Pages\CustomerRequestAdmin\CustomerRequestAdminGrid.cs" />
+    <Compile Include="Pages\Customers\CustomerAccountingSettings.cs" />
+    <Compile Include="Pages\Customers\CustomerBusinessUnitGrid.cs" />
+    <Compile Include="Pages\Customers\CustomerInvoicingInstructionsGrid.cs" />
+    <Compile Include="Pages\Customers\CustomerBase.cs" />
+    <Compile Include="Pages\Customers\CustomerContact.cs" />
+    <Compile Include="Pages\Customers\CustomerEdit.cs" />
+    <Compile Include="Pages\Customers\CustomerArEmailsGrid.cs" />
+    <Compile Include="Pages\Customers\CustomerHomeSearch.cs" />
+    <Compile Include="Pages\Customers\CustomerNew.cs" />
+    <Compile Include="Pages\Customers\CustomerEmailsGrid.cs" />
+    <Compile Include="Pages\Customers\CustomerNotes.cs" />
+    <Compile Include="Pages\Customers\CustomerPhoneNumber.cs" />
+    <Compile Include="Pages\Customers\CustomerSales.cs" />
+    <Compile Include="Pages\Customers\CustomerQuotesGrid.cs" />
+    <Compile Include="Pages\Customers\CustomerPhoneCallsGrid.cs" />
+    <Compile Include="Pages\Customers\CustomerSpecialties.cs" />
+    <Compile Include="Pages\Customers\CustomerWorkOrdersGrid.cs" />
+    <Compile Include="Pages\Employees\EmployeeBase.cs" />
+    <Compile Include="Pages\Employees\EmployeeContact.cs" />
+    <Compile Include="Pages\Employees\EmployeeDaysOffVacationOverride.cs" />
+    <Compile Include="Pages\Employees\EmployeeDiscplinaryGrid.cs" />
+    <Compile Include="Pages\Employees\EmployeeDaysOffVacationTransactionGrid.cs" />
+    <Compile Include="Pages\Employees\EmployeeDaysOffVacationRequestGrid.cs" />
+    <Compile Include="Pages\Employees\EmployeeDaysOffGrid.cs" />
+    <Compile Include="Pages\Employees\EmployeeEdit.cs" />
+    <Compile Include="Pages\Employees\EmployeeEmploymentAgreements.cs" />
+    <Compile Include="Pages\Employees\EmployeeFootPrints.cs" />
+    <Compile Include="Pages\Employees\EmployeeIT.cs" />
+    <Compile Include="Pages\Employees\EmployeeList.cs" />
+    <Compile Include="Pages\Employees\EmployeeOffer.cs" />
+    <Compile Include="Pages\Employees\EmployeePrivileges.cs" />
+    <Compile Include="Pages\Employees\EmployeeReview.cs" />
+    <Compile Include="Pages\Employees\EmployeesHomeGrid.cs" />
+    <Compile Include="Pages\Employees\EmployeeTermination.cs" />
+    <Compile Include="Pages\Employees\EmployeeUserInfo.cs" />
+    <Compile Include="Pages\Employees\EmployeeWage.cs" />
+    <Compile Include="Pages\Employees\NeEmpReview.cs" />
+    <Compile Include="Pages\Employees\NeMemberOffer.cs" />
+    <Compile Include="Pages\HomePage\HomePageBase.cs" />
+    <Compile Include="Pages\HomePage\HomePageContact.cs" />
+    <Compile Include="Pages\MessagesPage\MessagesPageBase.cs" />
+    <Compile Include="Pages\NewLaborRates\INewLaborRate.cs" />
+    <Compile Include="Pages\NewLaborRates\NewLaborRateService.cs" />
+    <Compile Include="Pages\PurchaseOrder\PurchaseOrderBase.cs" />
+    <Compile Include="Pages\PurchaseOrder\PurchaseOrderBusinessUnitDetail.cs" />
+    <Compile Include="Pages\Quotes\NeQuote.cs" />
+    <Compile Include="Pages\Quotes\QuoteBLL.cs" />
+    <Compile Include="Pages\Quotes\QuoteBLLBase.cs" />
+    <Compile Include="Pages\Quotes\QuoteDetail.cs" />
+    <Compile Include="Pages\Quotes\QuoteEdit.cs" />
+    <Compile Include="Pages\Quotes\QuoteNew.cs" />
+    <Compile Include="Pages\Quotes\QuoteSearch.cs" />
+    <Compile Include="Pages\Quotes\QuoteStrategBase.cs" />
+    <Compile Include="Pages\Quotes\QuoteStrategy.cs" />
+    <Compile Include="Pages\Quotes\QuoteStrategyStage1.cs" />
+    <Compile Include="Pages\Quotes\QuoteStrategyUpdate.cs" />
+    <Compile Include="Pages\ReleaseSystem\PasswordEnhance.cs" />
+    <Compile Include="Pages\ReleaseSystem\ReleaseSystem.cs" />
+    <Compile Include="Pages\Reports\Address.cs" />
+    <Compile Include="Pages\Reports\AdvancePayReport.cs" />
+    <Compile Include="Pages\Reports\BalanceSheet.cs" />
+    <Compile Include="Pages\Reports\Customer.cs" />
+    <Compile Include="Pages\Reports\CustomerAsset.cs" />
+    <Compile Include="Pages\Reports\CustomerLoginHistoryGrid.cs" />
+    <Compile Include="Pages\Reports\CustomerRatesGrid.cs" />
+    <Compile Include="Pages\Reports\CustomerSurveysGrid.cs" />
+    <Compile Include="Pages\Reports\CustStatusHistory.cs" />
+    <Compile Include="Pages\Reports\DataTableGrouping.cs" />
+    <Compile Include="Pages\Reports\FVRGrid.cs" />
+    <Compile Include="Pages\Reports\IModel.cs" />
+    <Compile Include="Pages\Reports\IncomeStatement.cs" />
+    <Compile Include="Pages\Reports\InventoryCountsGrid.cs" />
+    <Compile Include="Pages\Reports\InventoryUsage.cs" />
+    <Compile Include="Pages\Reports\InvoicingTime.cs" />
+    <Compile Include="Pages\Reports\JobCostReport.cs" />
+    <Compile Include="Pages\Reports\Layout.cs" />
+    <Compile Include="Pages\Reports\MasterContact.cs" />
+    <Compile Include="Pages\Reports\MasterCustomersGrid.cs" />
+    <Compile Include="Pages\Reports\MasterOutstandingInvoicesGrid.cs" />
+    <Compile Include="Pages\Reports\MasterPhoneCallGrid.cs" />
+    <Compile Include="Pages\Reports\MasterPurchasesGrid.cs" />
+    <Compile Include="Pages\Reports\MasterQuoteGrid.cs" />
+    <Compile Include="Pages\Reports\MasterResponsibilitesGrid.cs" />
+    <Compile Include="Pages\Reports\MasterVendor.cs" />
+    <Compile Include="Pages\Reports\MasterWorkOrder.cs" />
+    <Compile Include="Pages\Reports\MasterWorkOrderV2.cs" />
+    <Compile Include="Pages\Reports\Member.cs" />
+    <Compile Include="Pages\Reports\NetSuite.cs" />
+    <Compile Include="Pages\Reports\PartnerSpecialties.cs" />
+    <Compile Include="Pages\Reports\WOLineGrid.cs" />
+    <Compile Include="Pages\Shared\NewCustomerContact.cs" />
+    <Compile Include="Pages\Shared\PickList\Quote\InventorySearch.cs" />
+    <Compile Include="Pages\Shared\PickList\PickListBase.cs" />
+    <Compile Include="Pages\Shared\PickList\Quote\PickListQuote.cs" />
+    <Compile Include="Pages\Shared\PickList\Quote\PickListQuoteBase.cs" />
+    <Compile Include="Pages\Shared\PickList\Quote\PickListQuoteLine.cs" />
+    <Compile Include="Pages\Shared\Reports\DailyProjectSummary.cs" />
+    <Compile Include="Pages\Shared\Reports\IronPdf_Report.cs" />
+    <Compile Include="Pages\TicketFlyOut\TicketFlyOut.cs" />
+    <Compile Include="Pages\Timesheet\Bank\Banked_pay.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\BreakTimeRecordChangeNotification.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\BreakTimeQueryParameter.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\BreakTimeRecord.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\BreakTimeRecordLog.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\BreakTimeRecordOnGivenDate.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\BreakTimeRecordRequirementRecord.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\BranchBreakTimeRequirementInputParameter.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\BreakTimeRecordResult.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\BreakTimeService.cs" />
+    <Compile Include="Pages\Timesheet\BreakTime\IBreakTimeService.cs" />
+    <Compile Include="Pages\Timesheet\Expense\ExpenseBLL.cs" />
+    <Compile Include="Pages\Timesheet\Expense\ExpenseBase.cs" />
+    <Compile Include="Pages\Timesheet\Expense\ExpenseHistory.cs" />
+    <Compile Include="Pages\Timesheet\Expense\ExpensePerDiem.cs" />
+    <Compile Include="Pages\Timesheet\ITimesheetTransfer.cs" />
+    <Compile Include="Pages\Timesheet\JobType\BusinessJobTypeConfig.cs" />
+    <Compile Include="Pages\Timesheet\JobType\BusinessJobTypeConfigQueryParameter.cs" />
+    <Compile Include="Pages\Timesheet\JobType\IJobTypeService.cs" />
+    <Compile Include="Pages\Timesheet\JobType\JobTypeInfo.cs" />
+    <Compile Include="Pages\Timesheet\JobType\JobTypeRecordQueryParameter.cs" />
+    <Compile Include="Pages\Timesheet\JobType\JobTypeRecord.cs" />
+    <Compile Include="Pages\Timesheet\JobType\JobTypeService.cs" />
+    <Compile Include="Pages\Timesheet\PEL\PELSchedule.cs" />
+    <Compile Include="Pages\Timesheet\Quote.cs" />
+    <Compile Include="Pages\Timesheet\Shop.cs" />
+    <Compile Include="Pages\Timesheet\Telem.cs" />
+    <Compile Include="Pages\Timesheet\Timesheet.cs" />
+    <Compile Include="Pages\BusinessUnit\BusinessUnit.cs" />
+    <Compile Include="Pages\Timesheet\TimesheetCumulative.cs" />
+    <Compile Include="Pages\Timesheet\TimesheetTransferService.cs" />
+    <Compile Include="Pages\Timesheet\Vacation\Vacation.cs" />
+    <Compile Include="Pages\Timesheet\Vacation\VacationBLL.cs" />
+    <Compile Include="Pages\Timesheet\Vacation\VacationHistory.cs" />
+    <Compile Include="Pages\Timesheet\Vacation\VacationRequest.cs" />
+    <Compile Include="Pages\Timesheet\WorkOrder.cs" />
+    <Compile Include="Pages\Vendors\VendorMarket.cs" />
+    <Compile Include="Pages\Vendors\VendorSpecialties.cs" />
+    <Compile Include="Pages\Vendors\VendorPhoneCallsGrid.cs" />
+    <Compile Include="Pages\Vendors\VendorEmailsGrid.cs" />
+    <Compile Include="Pages\Vendors\VendorAccounting.cs" />
+    <Compile Include="Pages\Vendors\VendorAddress.cs" />
+    <Compile Include="Pages\Vendors\VendorBvContact.cs" />
+    <Compile Include="Pages\Vendors\VendorEdit.cs" />
+    <Compile Include="Pages\Vendors\VendorEditBase.cs" />
+    <Compile Include="Pages\Vendors\VendorHomeSearch.cs" />
+    <Compile Include="Pages\Vendors\VendorBase.cs" />
+    <Compile Include="Pages\Vendors\VendorPhoneNumber.cs" />
+    <Compile Include="Pages\Vendors\VendorPoGrid.cs" />
+    <Compile Include="Pages\Vendors\VendorNESIContactsGrid.cs" />
+    <Compile Include="Pages\Vendors\VendorNotes.cs" />
+    <Compile Include="Pages\Vendors\VendorStartNew.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssertUsageRecord.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetAvailabeQueryParameter.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetQueryParameter.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetRecord.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetUsageAddResult.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetUsageAddInputParameter.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetUsageService.Add.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetUsageService.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetUsageService.Update.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetUsageUpdateInputParameter.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\AssetUsageUpdateResult.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\IAssetUsage.cs" />
+    <Compile Include="Pages\WorkOrder\Asset\ValidationRecord.cs" />
+    <Compile Include="Pages\WorkOrder\WorkOrderBase.cs" />
+    <Compile Include="Pages\WorkOrder\WorkOrderBuckets.cs" />
+    <Compile Include="Pages\WorkOrder\WorkOrderBusinessUnitDetail.cs" />
+    <Compile Include="Pages\WorkOrder\WorkOrderEdit.cs" />
+    <Compile Include="Pages\WorkOrder\WorkOrderFileBase.cs" />
+    <Compile Include="Pages\WorkOrder\WorkOrderMain.cs" />
+    <Compile Include="Pages\WorkOrder\WorkOrderMainTabs.cs" />
+    <Compile Include="Pages\WorkOrder\WorkOrderRenameFile.cs" />
+    <Compile Include="Pages\WorkOrder\WorkOrderScannedFile.cs" />
+    <Compile Include="Pages\WorkOrder\WorkorderWoComments.cs" />
+    <Compile Include="Repository\AuthRepository.cs" />
+    <Compile Include="Core\Member\Contact.cs" />
+    <Compile Include="Core\Member\Customer.cs" />
+    <Compile Include="Core\Employee\Employee.cs" />
+    <Compile Include="Core\User\User.cs" />
+    <Compile Include="Core\Member\Vendor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NESI.Common\NESI.Common.csproj">
+      <Project>{4bbc7f80-e983-491d-83e6-4ebb727591d3}</Project>
+      <Name>NESI.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NESI.Core\NESI.Core.csproj">
+      <Project>{cc6b2814-61ea-4de8-8710-d7fde78e3e45}</Project>
+      <Name>NESI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NESI.Data\NESI.Data.csproj">
+      <Project>{6c889c08-156a-40a7-aaf5-26670ed5f26c}</Project>
+      <Name>NESI.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NESI.DTO\NESI.DTO.csproj">
+      <Project>{78279208-2b7d-4dbb-b76c-63c2b4903db7}</Project>
+      <Name>NESI.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Core\FileManager\packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedResources\ForgotPassword.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedResources\NewNesiCredentials.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedResources\CustomerLoginDisabled.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedResources\WORequiresInspection.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

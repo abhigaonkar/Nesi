@@ -1,0 +1,8 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxSpellChecker" Assembly="DevExpress.Web.ASPxSpellChecker.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxSpellChecker runat="server" SpriteCssFilePath="{0}/sprite.css" CssPostfix="NETheme01" CssFilePath="{0}/styles.css">
+    <LoadingPanelImage Url="SpellChecker/Loading.gif" />
+</dx:ASPxSpellChecker>
+
+

@@ -1,0 +1,51 @@
+<div class="ui-g-12 ui-g-nopad ui-md-4 hide">
+  <span class="ui-inputgroup">
+    <span class="ui-float-label ">
+      <p-autoComplete [style]="{'width': '100%'}" (onFocus)="textFocus($event)" [size]="30" id="float-input" [(ngModel)]="text"
+        [suggestions]="allitems" (completeMethod)="search($event)" (onSelect)="select($event)" dataKey="value" field="label"
+        emptyMessage="No result found. Only input numbers, please." [forceSelection]="true" autoHighlight="true"></p-autoComplete>
+      <label for="float-input">{{placeholder}}</label>
+    </span>
+    <span class="ui-inputgroup-addon">
+      <i class="fa fa-search"></i>
+    </span>
+  </span>
+</div>
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  <div class="ui-g-12 ui-g-nopad ui-md-8" *ngIf="item" [style.margin-top]="cs.isLg? '-8px':'20px'">
+    <div class="ui-g-3 ui-md-2">
+      <span class="ui-float-label">
+        <input id="qty" type="number" step="1" pInputText formControlName="qty">
+        <label for="qty">Qty</label>
+      </span>
+    </div>
+    <div class="ui-g-3 ui-md-2">
+      <span class="ui-float-label">
+        <input title="{{getCost_ToolTip(item.cost_level)}}" 
+          [ngClass]="'cost_level_'+ (cost_readonly ? item.cost_level : '30')" [readonly]="cost_readonly" (change)="fillCost2()"
+          id="cost" type="number" step="0.01" pInputText formControlName="cost">
+        <label for="cost">Cost</label>
+      </span>
+    </div>
+    <div class="ui-g-3 ui-md-2">
+      <span class="ui-float-label">
+        <input readonly="true" id="extd" type="number"  step="0.01" pInputText formControlName="extd">
+        <label for="extd">Extd</label>
+      </span>
+    </div>
+    <div class="ui-g-3 ui-md-2">
+      <span class="ui-float-label">
+        <input id="extd2" type="number"  step="0.01" pInputText formControlName="extd2">
+        <label for="extd2">~Ext'd</label>
+      </span>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+      <button pButton icon="fa-add" label="Add Part"></button>
+    </div>
+
+  </div>
+
+</form>
+<div class="ui-g-12 ui-g-nopad" style="margin-left:5px;" *ngIf="item && item.description">
+  <b>Description:</b> {{item.description}}
+</div>

@@ -1,0 +1,32 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxTreeList" Assembly="DevExpress.Web.ASPxTreeList.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxTreeList runat="server" CssFilePath="{0}/styles.css" CssPostfix="NETheme01">
+<Settings ShowTreeLines="False"></Settings>
+
+<SettingsPager CurrentPageNumberFormat="{0}">
+<PageSizeItemSettings ShowPopupShadow="False">
+<DropDownImage>
+<SpriteProperties HottrackedCssClass="dxWeb_pPopOutHover_NETheme01" PressedCssClass="dxWeb_pPopOutPressed_NETheme01"></SpriteProperties>
+</DropDownImage>
+</PageSizeItemSettings>
+</SettingsPager>
+
+<Images SpriteCssFilePath="{0}/sprite.css">
+<LoadingPanel Url="TreeList/Loading.gif"></LoadingPanel>
+</Images>
+
+<Styles CssPostfix="NETheme01" CssFilePath="{0}/styles.css"></Styles>
+
+<StylesPager>
+<Pager ItemSpacing="1px" Spacing="1px"></Pager>
+</StylesPager>
+
+<StylesEditors>
+<Calendar>
+<Border BorderColor="Silver" BorderStyle="Solid" BorderWidth="1px"></Border>
+</Calendar>
+</StylesEditors>
+</dx:ASPxTreeList>
+
+

@@ -1,0 +1,20 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="min-height: 600px">
+    <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+    </p-blockUI>
+    <blockable-div #pblockableDiv>
+        <div class="ui-g">
+            <p-tabView [activeIndex]="activeTab" (onChange)="tabChanged($event)">
+                <p-tabPanel header="Days Off" leftIcon="fa-toggle-off">
+                    <nesi-employee-days-off-list></nesi-employee-days-off-list>
+                </p-tabPanel>
+                <p-tabPanel header="Requests" leftIcon="fa-newspaper" *ngIf="vacation_visible">
+                    <nesi-employee-days-off-vacation-request></nesi-employee-days-off-vacation-request>
+                </p-tabPanel>
+                <p-tabPanel header="Transactions / Override " leftIcon="fa-exchange" *ngIf="vacation_visible">
+                    <nesi-employee-days-off-vacation-trascations [employee]="employee"></nesi-employee-days-off-vacation-trascations>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </blockable-div>
+</div>

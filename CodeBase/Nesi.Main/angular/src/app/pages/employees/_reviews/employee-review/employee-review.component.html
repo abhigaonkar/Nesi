@@ -1,0 +1,142 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-lg-8">
+        <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4 ui-g-lesspad right bold ">
+              Review ID:
+            </div>
+            <div class="ui-g-12 ui-lg-8  ui-g-lesspad">
+              {{profile.entity.id}}
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4  ui-g-lesspad right bold ">
+              Employee Name:
+            </div>
+            <div class="ui-g-12 ui-lg-8  ui-g-lesspad">
+              {{profile.entity.fullName}}
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+              Reviewed By:
+            </div>
+            <div class="ui-g-12 ui-lg-8  ui-g-lesspad label_for_left_less">
+              <p-dropdown [filter]="true" maxlength="50" placeholder="Select Reviewed By" [style]="{'width':'100%'}" [options]="profile.reviewedByList"
+                formControlName="reviewed_by_id"></p-dropdown>
+              <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('reviewed_by_id','required')" [errorMsg]="'Reviewed by is required'"></nesi-fieldErrorDisplay>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+              Date of Review:
+            </div>
+            <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_left_less">
+              <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="date" placeholder="yyyy-mm-dd"
+                showIcon="true"></p-calendar>
+              <nesi-fieldErrorDisplay [displayError]="isFieldInValid('date','required')" [errorMsg]="'Date of review is required'"></nesi-fieldErrorDisplay>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+              Employement Agreement:
+            </div>
+            <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_left_less">
+              <p-dropdown [filter]="true" maxlength="50" placeholder="Select Employment Agreement" [style]="{'width':'100%'}" [options]="profile.offerList"
+                formControlName="offerid"></p-dropdown>
+              <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('offerid','required')" [errorMsg]="'Employment agreement is required'"></nesi-fieldErrorDisplay>
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4 ui-g-lesspad right bold ">
+              Review Status:
+            </div>
+            <div class="ui-g-12 ui-lg-8  ui-g-lesspad">
+              {{profile.entity.status}}
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-lg-4  ui-g-lesspad right bold ">
+              Membertype:
+            </div>
+            <div class="ui-g-12 ui-lg-8  ui-g-lesspad">
+              {{profile.entity.membertype_name}}
+            </div>
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad" *ngIf="review_id>0">
+            <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+              Locked Down:
+            </div>
+            <div class="ui-g-12 ui-lg-8  ui-g-lesspad text_for_left">
+              <p-checkbox binary="true" formControlName="locked"></p-checkbox>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-g-nopad" *ngIf="profile.entity.locked && unlcoked_message">
+            <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+              Unlocked Down:
+            </div>
+            <div class="ui-g-12 ui-lg-8  ui-g-lesspad text_for_left">
+              {{unlcoked_message}}
+            </div>
+          </div>
+          <div class="ui-g-12">
+            <div class="ui-g-12 ui-lg-2  ui-lg-offset-4">
+              <button pButton [disabled]="save_disabled" type="submit" [label]="review_id===0?'Next ->' :'Save'" icon="fa-save"></button>
+            </div>
+            <div class="ui-g-12 ui-lg-2  ">
+              <button pButton [disabled]="!print_enabled" type="button" class="ui-button-secondary" label="Print" icon="fa-print" (click)="print(false)"></button>
+            </div>
+            <div class="ui-g-12 ui-lg-4" *ngIf="print_copy_visible">
+              <button pButton type="button" class="ui-button-secondary" label="Print Employee's Copy" icon="fa-print" (click)="print_copy()"></button>
+            </div>
+            <div class="ui-g-12 ui-lg-2 " *ngIf="delete_visible">
+              <button pButton type="button" class="ui-button-danger" label="Delete" icon="fa-times" (click)="delete()"></button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="ui-g-12 ui-lg-4">
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-6 ui-g-lesspad right bold ">
+            General Review:
+          </div>
+          <div class="ui-g-12 ui-lg-6  ui-g-lesspad">
+            {{profile.score1>0 ? profile.score1 : 'Not Scored'}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-6 ui-g-lesspad right bold ">
+            Core Responsibilities:
+          </div>
+          <div class="ui-g-12 ui-lg-6  ui-g-lesspad">
+            {{profile.score2>0 ? profile.score2 : 'Not Scored'}}
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="ui-g-12">
+        <p-tabView>
+          <p-tabPanel header="Universal Review" leftIcon="fa-list">
+            <nesi-employee-reviewitem-list [list]="profile.reviewList" (itemChanged)="reviewItem_changed($event)" [locked]="profile.entity.locked"></nesi-employee-reviewitem-list>
+          </p-tabPanel>
+          <p-tabPanel header="Core Responsibility Review" leftIcon="fa-task">
+            <nesi-employee-reviewitem-list [list]="profile.core_reviewList" (itemChanged)="reviewItem_changed($event)" [locked]="profile.entity.locked"></nesi-employee-reviewitem-list>
+          </p-tabPanel>
+          <p-tabPanel header="Milestones" leftIcon="fa-flag">
+            <nesi-employee-reviewitem-milestone [list]="profile.milestoneList" (itemChanged)="milestone_changed($event)" [locked]="profile.entity.locked"></nesi-employee-reviewitem-milestone>
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+    </div>
+  </blockable-div>
+</div>

@@ -1,0 +1,1786 @@
+2025-05-21 10:42:05,143 INFO NESI.WebAPI.Initialization.Global - Application started in Default
+2025-05-21 10:42:05,152 INFO NESI.WebAPI.Initialization.Global - DEBUG symbol NOT defined for this environment
+2025-05-21 10:42:05,288 INFO core.XpoUtility - Processing XPA assemblies
+2025-05-21 10:42:05,411 DEBUG core.XpoUtility - Adding XPO type information for accounting_period
+2025-05-21 10:42:05,459 DEBUG core.XpoUtility - Adding XPO type information for active_memberoffer
+2025-05-21 10:42:05,460 DEBUG core.XpoUtility - Adding XPO type information for address
+2025-05-21 10:42:05,463 DEBUG core.XpoUtility - Adding XPO type information for address_netsuite_map
+2025-05-21 10:42:05,464 DEBUG core.XpoUtility - Adding XPO type information for adp_canada_codes
+2025-05-21 10:42:05,464 DEBUG core.XpoUtility - Adding XPO type information for allowed_bu_on_wo
+2025-05-21 10:42:05,464 DEBUG core.XpoUtility - Adding XPO type information for applicants
+2025-05-21 10:42:05,465 DEBUG core.XpoUtility - Adding XPO type information for appointments
+2025-05-21 10:42:05,465 DEBUG core.XpoUtility - Adding XPO type information for appointment_resource_member_hide_link
+2025-05-21 10:42:05,465 DEBUG core.XpoUtility - Adding XPO type information for appointment_resource_member_link
+2025-05-21 10:42:05,465 DEBUG core.XpoUtility - Adding XPO type information for appointment_status
+2025-05-21 10:42:05,465 DEBUG core.XpoUtility - Adding XPO type information for apstatus
+2025-05-21 10:42:05,466 DEBUG core.XpoUtility - Adding XPO type information for area_codes
+2025-05-21 10:42:05,466 DEBUG core.XpoUtility - Adding XPO type information for ar_notes
+2025-05-21 10:42:05,466 DEBUG core.XpoUtility - Adding XPO type information for assets
+2025-05-21 10:42:05,467 DEBUG core.XpoUtility - Adding XPO type information for assets_history
+2025-05-21 10:42:05,467 DEBUG core.XpoUtility - Adding XPO type information for assets_type
+2025-05-21 10:42:05,467 DEBUG core.XpoUtility - Adding XPO type information for asset_customer_rate
+2025-05-21 10:42:05,468 DEBUG core.XpoUtility - Adding XPO type information for asset_history_action
+2025-05-21 10:42:05,468 DEBUG core.XpoUtility - Adding XPO type information for asset_status
+2025-05-21 10:42:05,468 DEBUG core.XpoUtility - Adding XPO type information for auditgroup
+2025-05-21 10:42:05,468 DEBUG core.XpoUtility - Adding XPO type information for audithistory_details
+2025-05-21 10:42:05,468 DEBUG core.XpoUtility - Adding XPO type information for audithistory_header
+2025-05-21 10:42:05,468 DEBUG core.XpoUtility - Adding XPO type information for audititem
+2025-05-21 10:42:05,468 DEBUG core.XpoUtility - Adding XPO type information for audititem_group
+2025-05-21 10:42:05,468 DEBUG core.XpoUtility - Adding XPO type information for audititem_ratingdesc
+2025-05-21 10:42:05,469 DEBUG core.XpoUtility - Adding XPO type information for audititem_type
+2025-05-21 10:42:05,469 DEBUG core.XpoUtility - Adding XPO type information for audit_group
+2025-05-21 10:42:05,469 DEBUG core.XpoUtility - Adding XPO type information for audit_item
+2025-05-21 10:42:05,469 DEBUG core.XpoUtility - Adding XPO type information for audit_type
+2025-05-21 10:42:05,469 DEBUG core.XpoUtility - Adding XPO type information for audit_typegroup_link
+2025-05-21 10:42:05,469 DEBUG core.XpoUtility - Adding XPO type information for auto_reports
+2025-05-21 10:42:05,469 DEBUG core.XpoUtility - Adding XPO type information for auto_reports_schedule
+2025-05-21 10:42:05,469 DEBUG core.XpoUtility - Adding XPO type information for auto_report_history
+2025-05-21 10:42:05,469 DEBUG core.XpoUtility - Adding XPO type information for bankedpay_ledger
+2025-05-21 10:42:05,470 DEBUG core.XpoUtility - Adding XPO type information for bankedpay_ledger_type
+2025-05-21 10:42:05,470 DEBUG core.XpoUtility - Adding XPO type information for barcode_prefix
+2025-05-21 10:42:05,470 DEBUG core.XpoUtility - Adding XPO type information for benefit_details
+2025-05-21 10:42:05,470 DEBUG core.XpoUtility - Adding XPO type information for bingo_data
+2025-05-21 10:42:05,470 DEBUG core.XpoUtility - Adding XPO type information for bingo_queries
+2025-05-21 10:42:05,470 DEBUG core.XpoUtility - Adding XPO type information for bonus_membertype_link
+2025-05-21 10:42:05,470 DEBUG core.XpoUtility - Adding XPO type information for bonus_type
+2025-05-21 10:42:05,471 DEBUG core.XpoUtility - Adding XPO type information for breaktime
+2025-05-21 10:42:05,471 DEBUG core.XpoUtility - Adding XPO type information for business
+2025-05-21 10:42:05,471 DEBUG core.XpoUtility - Adding XPO type information for business_unit
+2025-05-21 10:42:05,475 DEBUG core.XpoUtility - Adding XPO type information for business_unit_comp_div
+2025-05-21 10:42:05,475 DEBUG core.XpoUtility - Adding XPO type information for business_unit_hiearchy
+2025-05-21 10:42:05,475 DEBUG core.XpoUtility - Adding XPO type information for business_unit_po_dist
+2025-05-21 10:42:05,476 DEBUG core.XpoUtility - Adding XPO type information for bu_paytype_link
+2025-05-21 10:42:05,476 DEBUG core.XpoUtility - Adding XPO type information for cap_training_schedule
+2025-05-21 10:42:05,476 DEBUG core.XpoUtility - Adding XPO type information for cellphone
+2025-05-21 10:42:05,476 DEBUG core.XpoUtility - Adding XPO type information for cellphone_app_device
+2025-05-21 10:42:05,476 DEBUG core.XpoUtility - Adding XPO type information for cellphone_app_imei
+2025-05-21 10:42:05,476 DEBUG core.XpoUtility - Adding XPO type information for cellphone_app_sim
+2025-05-21 10:42:05,476 DEBUG core.XpoUtility - Adding XPO type information for cellphone_carrier
+2025-05-21 10:42:05,477 DEBUG core.XpoUtility - Adding XPO type information for cellphone_gps
+2025-05-21 10:42:05,477 DEBUG core.XpoUtility - Adding XPO type information for cellphone_history
+2025-05-21 10:42:05,477 DEBUG core.XpoUtility - Adding XPO type information for cellphone_number
+2025-05-21 10:42:05,477 DEBUG core.XpoUtility - Adding XPO type information for cellphone_number_history
+2025-05-21 10:42:05,477 DEBUG core.XpoUtility - Adding XPO type information for cellphone_status
+2025-05-21 10:42:05,477 DEBUG core.XpoUtility - Adding XPO type information for certificates
+2025-05-21 10:42:05,478 DEBUG core.XpoUtility - Adding XPO type information for certificates_credential_link
+2025-05-21 10:42:05,478 DEBUG core.XpoUtility - Adding XPO type information for certificate_history
+2025-05-21 10:42:05,478 DEBUG core.XpoUtility - Adding XPO type information for certificate_skill_link
+2025-05-21 10:42:05,478 DEBUG core.XpoUtility - Adding XPO type information for certificate_training_link
+2025-05-21 10:42:05,478 DEBUG core.XpoUtility - Adding XPO type information for chargeout
+2025-05-21 10:42:05,478 DEBUG core.XpoUtility - Adding XPO type information for collection_history
+2025-05-21 10:42:05,478 DEBUG core.XpoUtility - Adding XPO type information for contact
+2025-05-21 10:42:05,479 DEBUG core.XpoUtility - Adding XPO type information for contactpage
+2025-05-21 10:42:05,479 DEBUG core.XpoUtility - Adding XPO type information for contactpageprivilege
+2025-05-21 10:42:05,479 DEBUG core.XpoUtility - Adding XPO type information for contact_history
+2025-05-21 10:42:05,479 DEBUG core.XpoUtility - Adding XPO type information for contact_netsuite_map
+2025-05-21 10:42:05,479 DEBUG core.XpoUtility - Adding XPO type information for conversion_map
+2025-05-21 10:42:05,479 DEBUG core.XpoUtility - Adding XPO type information for conversion_unit
+2025-05-21 10:42:05,480 DEBUG core.XpoUtility - Adding XPO type information for core_responsibilities
+2025-05-21 10:42:05,480 DEBUG core.XpoUtility - Adding XPO type information for core_responsibilities_privilege
+2025-05-21 10:42:05,480 DEBUG core.XpoUtility - Adding XPO type information for country
+2025-05-21 10:42:05,481 DEBUG core.XpoUtility - Adding XPO type information for credit_cards
+2025-05-21 10:42:05,481 DEBUG core.XpoUtility - Adding XPO type information for credit_card_purchase
+2025-05-21 10:42:05,481 DEBUG core.XpoUtility - Adding XPO type information for credit_card_purchase_netsuite_xref
+2025-05-21 10:42:05,482 DEBUG core.XpoUtility - Adding XPO type information for cr_certificates
+2025-05-21 10:42:05,482 DEBUG core.XpoUtility - Adding XPO type information for cr_group
+2025-05-21 10:42:05,482 DEBUG core.XpoUtility - Adding XPO type information for cr_qualifications
+2025-05-21 10:42:05,482 DEBUG core.XpoUtility - Adding XPO type information for cr_review
+2025-05-21 10:42:05,482 DEBUG core.XpoUtility - Adding XPO type information for cr_skills_link
+2025-05-21 10:42:05,483 DEBUG core.XpoUtility - Adding XPO type information for cr_skills_priority
+2025-05-21 10:42:05,483 DEBUG core.XpoUtility - Adding XPO type information for currency
+2025-05-21 10:42:05,483 DEBUG core.XpoUtility - Adding XPO type information for currency_history
+2025-05-21 10:42:05,483 DEBUG core.XpoUtility - Adding XPO type information for customer
+2025-05-21 10:42:05,484 DEBUG core.XpoUtility - Adding XPO type information for customer_asset
+2025-05-21 10:42:05,485 DEBUG core.XpoUtility - Adding XPO type information for customer_asset_history
+2025-05-21 10:42:05,485 DEBUG core.XpoUtility - Adding XPO type information for customer_business_unit
+2025-05-21 10:42:05,485 DEBUG core.XpoUtility - Adding XPO type information for customer_collection_status
+2025-05-21 10:42:05,485 DEBUG core.XpoUtility - Adding XPO type information for customer_company
+2025-05-21 10:42:05,485 DEBUG core.XpoUtility - Adding XPO type information for customer_default_invoice_types
+2025-05-21 10:42:05,485 DEBUG core.XpoUtility - Adding XPO type information for customer_history
+2025-05-21 10:42:05,485 DEBUG core.XpoUtility - Adding XPO type information for customer_internal_link
+2025-05-21 10:42:05,485 DEBUG core.XpoUtility - Adding XPO type information for customer_netsuite_map
+2025-05-21 10:42:05,486 DEBUG core.XpoUtility - Adding XPO type information for customer_origin
+2025-05-21 10:42:05,486 DEBUG core.XpoUtility - Adding XPO type information for customer_or_contact_status
+2025-05-21 10:42:05,486 DEBUG core.XpoUtility - Adding XPO type information for customer_rate
+2025-05-21 10:42:05,486 DEBUG core.XpoUtility - Adding XPO type information for customer_sales_properties
+2025-05-21 10:42:05,487 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketheader
+2025-05-21 10:42:05,487 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketissues
+2025-05-21 10:42:05,488 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketmanager
+2025-05-21 10:42:05,488 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketpage
+2025-05-21 10:42:05,489 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketpriority
+2025-05-21 10:42:05,489 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketstatus
+2025-05-21 10:42:05,489 DEBUG core.XpoUtility - Adding XPO type information for customer_tickettype
+2025-05-21 10:42:05,489 DEBUG core.XpoUtility - Adding XPO type information for cust_vend_requests
+2025-05-21 10:42:05,490 DEBUG core.XpoUtility - Adding XPO type information for daily_finance
+2025-05-21 10:42:05,490 DEBUG core.XpoUtility - Adding XPO type information for dashboard
+2025-05-21 10:42:05,491 DEBUG core.XpoUtility - Adding XPO type information for dashboardtmp
+2025-05-21 10:42:05,491 DEBUG core.XpoUtility - Adding XPO type information for dashboard_header
+2025-05-21 10:42:05,492 DEBUG core.XpoUtility - Adding XPO type information for dashboard_snapshot_daily
+2025-05-21 10:42:05,493 DEBUG core.XpoUtility - Adding XPO type information for dashboard_snapshot_hist
+2025-05-21 10:42:05,494 DEBUG core.XpoUtility - Adding XPO type information for dashboard_thresholds
+2025-05-21 10:42:05,494 DEBUG core.XpoUtility - Adding XPO type information for days_off_canned_reasons
+2025-05-21 10:42:05,494 DEBUG core.XpoUtility - Adding XPO type information for digitalsignage
+2025-05-21 10:42:05,494 DEBUG core.XpoUtility - Adding XPO type information for distribution_group
+2025-05-21 10:42:05,494 DEBUG core.XpoUtility - Adding XPO type information for distribution_group_link
+2025-05-21 10:42:05,495 DEBUG core.XpoUtility - Adding XPO type information for download
+2025-05-21 10:42:05,495 DEBUG core.XpoUtility - Adding XPO type information for downloadcat
+2025-05-21 10:42:05,495 DEBUG core.XpoUtility - Adding XPO type information for edit_type
+2025-05-21 10:42:05,495 DEBUG core.XpoUtility - Adding XPO type information for emaillog
+2025-05-21 10:42:05,495 DEBUG core.XpoUtility - Adding XPO type information for emp_review
+2025-05-21 10:42:05,495 DEBUG core.XpoUtility - Adding XPO type information for emp_review_group
+2025-05-21 10:42:05,495 DEBUG core.XpoUtility - Adding XPO type information for emp_review_history
+2025-05-21 10:42:05,496 DEBUG core.XpoUtility - Adding XPO type information for emp_review_items
+2025-05-21 10:42:05,496 DEBUG core.XpoUtility - Adding XPO type information for emp_trm
+2025-05-21 10:42:05,496 DEBUG core.XpoUtility - Adding XPO type information for emp_trm_chklist_lnk
+2025-05-21 10:42:05,496 DEBUG core.XpoUtility - Adding XPO type information for emp_trm_chklist_opt
+2025-05-21 10:42:05,496 DEBUG core.XpoUtility - Adding XPO type information for eritem
+2025-05-21 10:42:05,496 DEBUG core.XpoUtility - Adding XPO type information for erjob
+2025-05-21 10:42:05,497 DEBUG core.XpoUtility - Adding XPO type information for error
+2025-05-21 10:42:05,497 DEBUG core.XpoUtility - Adding XPO type information for error_log
+2025-05-21 10:42:05,497 DEBUG core.XpoUtility - Adding XPO type information for er_branch_data
+2025-05-21 10:42:05,497 DEBUG core.XpoUtility - Adding XPO type information for er_vendor_data
+2025-05-21 10:42:05,498 DEBUG core.XpoUtility - Adding XPO type information for event_table
+2025-05-21 10:42:05,498 DEBUG core.XpoUtility - Adding XPO type information for expense_category
+2025-05-21 10:42:05,498 DEBUG core.XpoUtility - Adding XPO type information for expense_category_business_unit
+2025-05-21 10:42:05,498 DEBUG core.XpoUtility - Adding XPO type information for expense_reimbursement
+2025-05-21 10:42:05,498 DEBUG core.XpoUtility - Adding XPO type information for expense_reimbursement_netsuite_xref
+2025-05-21 10:42:05,499 DEBUG core.XpoUtility - Adding XPO type information for expense_seller
+2025-05-21 10:42:05,499 DEBUG core.XpoUtility - Adding XPO type information for ext_website_credentials
+2025-05-21 10:42:05,499 DEBUG core.XpoUtility - Adding XPO type information for failed_login
+2025-05-21 10:42:05,499 DEBUG core.XpoUtility - Adding XPO type information for faq
+2025-05-21 10:42:05,499 DEBUG core.XpoUtility - Adding XPO type information for faq_section
+2025-05-21 10:42:05,499 DEBUG core.XpoUtility - Adding XPO type information for fytarget
+2025-05-21 10:42:05,500 DEBUG core.XpoUtility - Adding XPO type information for fytarget_employees
+2025-05-21 10:42:05,500 DEBUG core.XpoUtility - Adding XPO type information for gantt_data
+2025-05-21 10:42:05,500 DEBUG core.XpoUtility - Adding XPO type information for gltrans
+2025-05-21 10:42:05,501 DEBUG core.XpoUtility - Adding XPO type information for gl_chart_of_accounts
+2025-05-21 10:42:05,502 DEBUG core.XpoUtility - Adding XPO type information for gl_chart_of_accounts_staging
+2025-05-21 10:42:05,503 DEBUG core.XpoUtility - Adding XPO type information for gl_control_accounts
+2025-05-21 10:42:05,503 DEBUG core.XpoUtility - Adding XPO type information for gl_group_te
+2025-05-21 10:42:05,503 DEBUG core.XpoUtility - Adding XPO type information for gl_note_te
+2025-05-21 10:42:05,503 DEBUG core.XpoUtility - Adding XPO type information for gl_special_accounts
+2025-05-21 10:42:05,503 DEBUG core.XpoUtility - Adding XPO type information for gl_special_account_te_link
+2025-05-21 10:42:05,504 DEBUG core.XpoUtility - Adding XPO type information for gl_subgroup_te
+2025-05-21 10:42:05,504 DEBUG core.XpoUtility - Adding XPO type information for gl_te
+2025-05-21 10:42:05,504 DEBUG core.XpoUtility - Adding XPO type information for gl_type_mapping
+2025-05-21 10:42:05,504 DEBUG core.XpoUtility - Adding XPO type information for graph
+2025-05-21 10:42:05,505 DEBUG core.XpoUtility - Adding XPO type information for gridviewlayouts
+2025-05-21 10:42:05,505 DEBUG core.XpoUtility - Adding XPO type information for historycust
+2025-05-21 10:42:05,505 DEBUG core.XpoUtility - Adding XPO type information for historypo
+2025-05-21 10:42:05,505 DEBUG core.XpoUtility - Adding XPO type information for history_action_type
+2025-05-21 10:42:05,505 DEBUG core.XpoUtility - Adding XPO type information for holidays
+2025-05-21 10:42:05,506 DEBUG core.XpoUtility - Adding XPO type information for huddle
+2025-05-21 10:42:05,506 DEBUG core.XpoUtility - Adding XPO type information for huddle_source
+2025-05-21 10:42:05,506 DEBUG core.XpoUtility - Adding XPO type information for huddle_task
+2025-05-21 10:42:05,507 DEBUG core.XpoUtility - Adding XPO type information for huddle_task_comments
+2025-05-21 10:42:05,507 DEBUG core.XpoUtility - Adding XPO type information for huddle_user
+2025-05-21 10:42:05,507 DEBUG core.XpoUtility - Adding XPO type information for hu_snapshot
+2025-05-21 10:42:05,507 DEBUG core.XpoUtility - Adding XPO type information for inc_stmt_note
+2025-05-21 10:42:05,507 DEBUG core.XpoUtility - Adding XPO type information for internal_companyno
+2025-05-21 10:42:05,507 DEBUG core.XpoUtility - Adding XPO type information for internal_project
+2025-05-21 10:42:05,508 DEBUG core.XpoUtility - Adding XPO type information for invattribute
+2025-05-21 10:42:05,508 DEBUG core.XpoUtility - Adding XPO type information for inventory_alternate
+2025-05-21 10:42:05,508 DEBUG core.XpoUtility - Adding XPO type information for inventory_annual_counts
+2025-05-21 10:42:05,508 DEBUG core.XpoUtility - Adding XPO type information for inventory_annual_counts_history
+2025-05-21 10:42:05,508 DEBUG core.XpoUtility - Adding XPO type information for inventory_annual_count_header
+2025-05-21 10:42:05,508 DEBUG core.XpoUtility - Adding XPO type information for inventory_attribute
+2025-05-21 10:42:05,509 DEBUG core.XpoUtility - Adding XPO type information for inventory_attribute_value
+2025-05-21 10:42:05,509 DEBUG core.XpoUtility - Adding XPO type information for inventory_audit
+2025-05-21 10:42:05,510 DEBUG core.XpoUtility - Adding XPO type information for inventory_barcode
+2025-05-21 10:42:05,510 DEBUG core.XpoUtility - Adding XPO type information for inventory_branch
+2025-05-21 10:42:05,511 DEBUG core.XpoUtility - Adding XPO type information for inventory_branch_options
+2025-05-21 10:42:05,511 DEBUG core.XpoUtility - Adding XPO type information for inventory_consignment
+2025-05-21 10:42:05,511 DEBUG core.XpoUtility - Adding XPO type information for inventory_cost
+2025-05-21 10:42:05,512 DEBUG core.XpoUtility - Adding XPO type information for inventory_description
+2025-05-21 10:42:05,512 DEBUG core.XpoUtility - Adding XPO type information for inventory_dollar_balance_daily
+2025-05-21 10:42:05,512 DEBUG core.XpoUtility - Adding XPO type information for inventory_expiry_period
+2025-05-21 10:42:05,512 DEBUG core.XpoUtility - Adding XPO type information for inventory_group_dtl
+2025-05-21 10:42:05,512 DEBUG core.XpoUtility - Adding XPO type information for inventory_group_hdr
+2025-05-21 10:42:05,512 DEBUG core.XpoUtility - Adding XPO type information for inventory_history
+2025-05-21 10:42:05,512 DEBUG core.XpoUtility - Adding XPO type information for inventory_import_stage
+2025-05-21 10:42:05,513 DEBUG core.XpoUtility - Adding XPO type information for inventory_incorrect_levels
+2025-05-21 10:42:05,513 DEBUG core.XpoUtility - Adding XPO type information for inventory_item_detail
+2025-05-21 10:42:05,513 DEBUG core.XpoUtility - Adding XPO type information for inventory_item_master
+2025-05-21 10:42:05,513 DEBUG core.XpoUtility - Adding XPO type information for inventory_kit_dtl
+2025-05-21 10:42:05,513 DEBUG core.XpoUtility - Adding XPO type information for inventory_kit_hdr
+2025-05-21 10:42:05,514 DEBUG core.XpoUtility - Adding XPO type information for inventory_location
+2025-05-21 10:42:05,514 DEBUG core.XpoUtility - Adding XPO type information for inventory_location_master
+2025-05-21 10:42:05,514 DEBUG core.XpoUtility - Adding XPO type information for inventory_location_type
+2025-05-21 10:42:05,514 DEBUG core.XpoUtility - Adding XPO type information for inventory_note
+2025-05-21 10:42:05,514 DEBUG core.XpoUtility - Adding XPO type information for inventory_per_unit
+2025-05-21 10:42:05,514 DEBUG core.XpoUtility - Adding XPO type information for inventory_picture
+2025-05-21 10:42:05,515 DEBUG core.XpoUtility - Adding XPO type information for inventory_price
+2025-05-21 10:42:05,515 DEBUG core.XpoUtility - Adding XPO type information for inventory_price_history
+2025-05-21 10:42:05,516 DEBUG core.XpoUtility - Adding XPO type information for inventory_reference
+2025-05-21 10:42:05,516 DEBUG core.XpoUtility - Adding XPO type information for inventory_referencetype
+2025-05-21 10:42:05,516 DEBUG core.XpoUtility - Adding XPO type information for inventory_sellprice
+2025-05-21 10:42:05,517 DEBUG core.XpoUtility - Adding XPO type information for inventory_sellprice_history
+2025-05-21 10:42:05,517 DEBUG core.XpoUtility - Adding XPO type information for inventory_sold_as
+2025-05-21 10:42:05,517 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag
+2025-05-21 10:42:05,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag_link
+2025-05-21 10:42:05,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag_preset
+2025-05-21 10:42:05,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag_tradename
+2025-05-21 10:42:05,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_tax
+2025-05-21 10:42:05,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_usage
+2025-05-21 10:42:05,520 DEBUG core.XpoUtility - Adding XPO type information for inventory_usage_copy
+2025-05-21 10:42:05,520 DEBUG core.XpoUtility - Adding XPO type information for invoice_collection_status
+2025-05-21 10:42:05,520 DEBUG core.XpoUtility - Adding XPO type information for invoice_service_email_report_history
+2025-05-21 10:42:05,520 DEBUG core.XpoUtility - Adding XPO type information for journal_entry
+2025-05-21 10:42:05,521 DEBUG core.XpoUtility - Adding XPO type information for journal_entry_line
+2025-05-21 10:42:05,521 DEBUG core.XpoUtility - Adding XPO type information for leavetype
+2025-05-21 10:42:05,521 DEBUG core.XpoUtility - Adding XPO type information for log
+2025-05-21 10:42:05,522 DEBUG core.XpoUtility - Adding XPO type information for logging_agent_error_log
+2025-05-21 10:42:05,522 DEBUG core.XpoUtility - Adding XPO type information for log_action
+2025-05-21 10:42:05,522 DEBUG core.XpoUtility - Adding XPO type information for log_page
+2025-05-21 10:42:05,523 DEBUG core.XpoUtility - Adding XPO type information for log_page_asax
+2025-05-21 10:42:05,523 DEBUG core.XpoUtility - Adding XPO type information for log_section
+2025-05-21 10:42:05,523 DEBUG core.XpoUtility - Adding XPO type information for manufacturer
+2025-05-21 10:42:05,524 DEBUG core.XpoUtility - Adding XPO type information for manufacturervendor
+2025-05-21 10:42:05,524 DEBUG core.XpoUtility - Adding XPO type information for markup_formula
+2025-05-21 10:42:05,524 DEBUG core.XpoUtility - Adding XPO type information for master_skills
+2025-05-21 10:42:05,524 DEBUG core.XpoUtility - Adding XPO type information for master_skill_review_questions
+2025-05-21 10:42:05,525 DEBUG core.XpoUtility - Adding XPO type information for matt
+2025-05-21 10:42:05,525 DEBUG core.XpoUtility - Adding XPO type information for member
+2025-05-21 10:42:05,529 DEBUG core.XpoUtility - Adding XPO type information for memberaddressaudit
+2025-05-21 10:42:05,530 DEBUG core.XpoUtility - Adding XPO type information for memberdaysoff
+2025-05-21 10:42:05,530 DEBUG core.XpoUtility - Adding XPO type information for memberdaysoffack
+2025-05-21 10:42:05,530 DEBUG core.XpoUtility - Adding XPO type information for memberdivision
+2025-05-21 10:42:05,530 DEBUG core.XpoUtility - Adding XPO type information for membergraph
+2025-05-21 10:42:05,530 DEBUG core.XpoUtility - Adding XPO type information for membernote
+2025-05-21 10:42:05,530 DEBUG core.XpoUtility - Adding XPO type information for memberoffer_cr
+2025-05-21 10:42:05,531 DEBUG core.XpoUtility - Adding XPO type information for memberoffer_milestones
+2025-05-21 10:42:05,531 DEBUG core.XpoUtility - Adding XPO type information for memberpage
+2025-05-21 10:42:05,531 DEBUG core.XpoUtility - Adding XPO type information for memberpageprivilege
+2025-05-21 10:42:05,531 DEBUG core.XpoUtility - Adding XPO type information for membertime
+2025-05-21 10:42:05,532 DEBUG core.XpoUtility - Adding XPO type information for membertimeaudit
+2025-05-21 10:42:05,533 DEBUG core.XpoUtility - Adding XPO type information for membertime_netsuite_xref
+2025-05-21 10:42:05,533 DEBUG core.XpoUtility - Adding XPO type information for membertime_projecttask
+2025-05-21 10:42:05,533 DEBUG core.XpoUtility - Adding XPO type information for membertime_projecttask_netsuite_xref
+2025-05-21 10:42:05,533 DEBUG core.XpoUtility - Adding XPO type information for membertime_shop_link
+2025-05-21 10:42:05,533 DEBUG core.XpoUtility - Adding XPO type information for membertime_shop_type
+2025-05-21 10:42:05,533 DEBUG core.XpoUtility - Adding XPO type information for membertime_tags
+2025-05-21 10:42:05,533 DEBUG core.XpoUtility - Adding XPO type information for membertime_ts_lite_paytypes
+2025-05-21 10:42:05,534 DEBUG core.XpoUtility - Adding XPO type information for membertime_type
+2025-05-21 10:42:05,534 DEBUG core.XpoUtility - Adding XPO type information for membertime_type_gl_link
+2025-05-21 10:42:05,534 DEBUG core.XpoUtility - Adding XPO type information for membertype
+2025-05-21 10:42:05,534 DEBUG core.XpoUtility - Adding XPO type information for membertypehours
+2025-05-21 10:42:05,534 DEBUG core.XpoUtility - Adding XPO type information for membertypepage
+2025-05-21 10:42:05,535 DEBUG core.XpoUtility - Adding XPO type information for membertypepageprivilege
+2025-05-21 10:42:05,535 DEBUG core.XpoUtility - Adding XPO type information for membertype_auto_reports
+2025-05-21 10:42:05,535 DEBUG core.XpoUtility - Adding XPO type information for membertype_chargeout
+2025-05-21 10:42:05,535 DEBUG core.XpoUtility - Adding XPO type information for membertype_chargeout_back
+2025-05-21 10:42:05,535 DEBUG core.XpoUtility - Adding XPO type information for membertype_chargeout_history
+2025-05-21 10:42:05,535 DEBUG core.XpoUtility - Adding XPO type information for membertype_classification
+2025-05-21 10:42:05,535 DEBUG core.XpoUtility - Adding XPO type information for membertype_responsibilities
+2025-05-21 10:42:05,535 DEBUG core.XpoUtility - Adding XPO type information for memberwage
+2025-05-21 10:42:05,536 DEBUG core.XpoUtility - Adding XPO type information for memberx
+2025-05-21 10:42:05,537 DEBUG core.XpoUtility - Adding XPO type information for member_apprentice_level
+2025-05-21 10:42:05,537 DEBUG core.XpoUtility - Adding XPO type information for member_certificates
+2025-05-21 10:42:05,537 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_dtl
+2025-05-21 10:42:05,537 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_hdr
+2025-05-21 10:42:05,538 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_history
+2025-05-21 10:42:05,538 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_status
+2025-05-21 10:42:05,538 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_tab
+2025-05-21 10:42:05,538 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_template_detail
+2025-05-21 10:42:05,538 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_template_header
+2025-05-21 10:42:05,538 DEBUG core.XpoUtility - Adding XPO type information for member_hrstatus
+2025-05-21 10:42:05,538 DEBUG core.XpoUtility - Adding XPO type information for member_import_stage
+2025-05-21 10:42:05,539 DEBUG core.XpoUtility - Adding XPO type information for member_i_template
+2025-05-21 10:42:05,539 DEBUG core.XpoUtility - Adding XPO type information for member_netsuite_xref
+2025-05-21 10:42:05,539 DEBUG core.XpoUtility - Adding XPO type information for member_offers
+2025-05-21 10:42:05,540 DEBUG core.XpoUtility - Adding XPO type information for member_offers_prod
+2025-05-21 10:42:05,540 DEBUG core.XpoUtility - Adding XPO type information for member_offers_uat
+2025-05-21 10:42:05,541 DEBUG core.XpoUtility - Adding XPO type information for member_paytype
+2025-05-21 10:42:05,541 DEBUG core.XpoUtility - Adding XPO type information for member_skills
+2025-05-21 10:42:05,541 DEBUG core.XpoUtility - Adding XPO type information for member_task_cc
+2025-05-21 10:42:05,541 DEBUG core.XpoUtility - Adding XPO type information for member_temp
+2025-05-21 10:42:05,541 DEBUG core.XpoUtility - Adding XPO type information for member_tile
+2025-05-21 10:42:05,541 DEBUG core.XpoUtility - Adding XPO type information for member_tile_type
+2025-05-21 10:42:05,542 DEBUG core.XpoUtility - Adding XPO type information for member_tile_type_link
+2025-05-21 10:42:05,542 DEBUG core.XpoUtility - Adding XPO type information for member_timesheet_accuracy
+2025-05-21 10:42:05,542 DEBUG core.XpoUtility - Adding XPO type information for member_todo_list_helper
+2025-05-21 10:42:05,542 DEBUG core.XpoUtility - Adding XPO type information for message
+2025-05-21 10:42:05,542 DEBUG core.XpoUtility - Adding XPO type information for messageboard_chat
+2025-05-21 10:42:05,542 DEBUG core.XpoUtility - Adding XPO type information for messageto
+2025-05-21 10:42:05,542 DEBUG core.XpoUtility - Adding XPO type information for messagetype
+2025-05-21 10:42:05,542 DEBUG core.XpoUtility - Adding XPO type information for migration_expense_category_for_po
+2025-05-21 10:42:05,542 DEBUG core.XpoUtility - Adding XPO type information for n2_profile_category
+2025-05-21 10:42:05,543 DEBUG core.XpoUtility - Adding XPO type information for n2_profile_property
+2025-05-21 10:42:05,543 DEBUG core.XpoUtility - Adding XPO type information for n2_user_profile
+2025-05-21 10:42:05,543 DEBUG core.XpoUtility - Adding XPO type information for nesi_conversion_table
+2025-05-21 10:42:05,543 DEBUG core.XpoUtility - Adding XPO type information for netsuite_queue
+2025-05-21 10:42:05,543 DEBUG core.XpoUtility - Adding XPO type information for netsuite_sync_error
+2025-05-21 10:42:05,543 DEBUG core.XpoUtility - Adding XPO type information for new_milestone
+2025-05-21 10:42:05,543 DEBUG core.XpoUtility - Adding XPO type information for ne_file_revision
+2025-05-21 10:42:05,544 DEBUG core.XpoUtility - Adding XPO type information for ne_session
+2025-05-21 10:42:05,544 DEBUG core.XpoUtility - Adding XPO type information for note_templates
+2025-05-21 10:42:05,544 DEBUG core.XpoUtility - Adding XPO type information for oncall_schedule
+2025-05-21 10:42:05,544 DEBUG core.XpoUtility - Adding XPO type information for ownership
+2025-05-21 10:42:05,544 DEBUG core.XpoUtility - Adding XPO type information for page
+2025-05-21 10:42:05,545 DEBUG core.XpoUtility - Adding XPO type information for pageprivilege
+2025-05-21 10:42:05,545 DEBUG core.XpoUtility - Adding XPO type information for pageprivilege_template
+2025-05-21 10:42:05,545 DEBUG core.XpoUtility - Adding XPO type information for pageprivilege_template_item
+2025-05-21 10:42:05,545 DEBUG core.XpoUtility - Adding XPO type information for page_related
+2025-05-21 10:42:05,545 DEBUG core.XpoUtility - Adding XPO type information for page_wiki
+2025-05-21 10:42:05,546 DEBUG core.XpoUtility - Adding XPO type information for partner_skills
+2025-05-21 10:42:05,546 DEBUG core.XpoUtility - Adding XPO type information for part_request
+2025-05-21 10:42:05,546 DEBUG core.XpoUtility - Adding XPO type information for part_request_history
+2025-05-21 10:42:05,546 DEBUG core.XpoUtility - Adding XPO type information for part_request_origin
+2025-05-21 10:42:05,546 DEBUG core.XpoUtility - Adding XPO type information for part_request_statuslist
+2025-05-21 10:42:05,546 DEBUG core.XpoUtility - Adding XPO type information for passport
+2025-05-21 10:42:05,546 DEBUG core.XpoUtility - Adding XPO type information for payperiods
+2025-05-21 10:42:05,547 DEBUG core.XpoUtility - Adding XPO type information for payperiod_tax_entity
+2025-05-21 10:42:05,547 DEBUG core.XpoUtility - Adding XPO type information for payroll
+2025-05-21 10:42:05,547 DEBUG core.XpoUtility - Adding XPO type information for payroll_entry_types
+2025-05-21 10:42:05,547 DEBUG core.XpoUtility - Adding XPO type information for payroll_extra_payments
+2025-05-21 10:42:05,547 DEBUG core.XpoUtility - Adding XPO type information for payroll_hours
+2025-05-21 10:42:05,548 DEBUG core.XpoUtility - Adding XPO type information for payroll_progress
+2025-05-21 10:42:05,548 DEBUG core.XpoUtility - Adding XPO type information for paytypehours
+2025-05-21 10:42:05,548 DEBUG core.XpoUtility - Adding XPO type information for phone_log
+2025-05-21 10:42:05,548 DEBUG core.XpoUtility - Adding XPO type information for phone_numbers
+2025-05-21 10:42:05,549 DEBUG core.XpoUtility - Adding XPO type information for poprogcomment
+2025-05-21 10:42:05,549 DEBUG core.XpoUtility - Adding XPO type information for poprogstatus
+2025-05-21 10:42:05,549 DEBUG core.XpoUtility - Adding XPO type information for poprog_cc
+2025-05-21 10:42:05,549 DEBUG core.XpoUtility - Adding XPO type information for poprog_header
+2025-05-21 10:42:05,550 DEBUG core.XpoUtility - Adding XPO type information for poprog_notes
+2025-05-21 10:42:05,550 DEBUG core.XpoUtility - Adding XPO type information for poprog_part_history
+2025-05-21 10:42:05,551 DEBUG core.XpoUtility - Adding XPO type information for poprog_payment_method
+2025-05-21 10:42:05,551 DEBUG core.XpoUtility - Adding XPO type information for poprog_scans
+2025-05-21 10:42:05,551 DEBUG core.XpoUtility - Adding XPO type information for poprog_shipping
+2025-05-21 10:42:05,551 DEBUG core.XpoUtility - Adding XPO type information for poprog_status
+2025-05-21 10:42:05,551 DEBUG core.XpoUtility - Adding XPO type information for po_details_current
+2025-05-21 10:42:05,551 DEBUG core.XpoUtility - Adding XPO type information for po_gl_acct
+2025-05-21 10:42:05,552 DEBUG core.XpoUtility - Adding XPO type information for po_import_stage
+2025-05-21 10:42:05,552 DEBUG core.XpoUtility - Adding XPO type information for po_line_import_stage
+2025-05-21 10:42:05,552 DEBUG core.XpoUtility - Adding XPO type information for privilege
+2025-05-21 10:42:05,552 DEBUG core.XpoUtility - Adding XPO type information for privilege_detail
+2025-05-21 10:42:05,552 DEBUG core.XpoUtility - Adding XPO type information for privilege_global
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for privilege_global_link
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for privilege_global_link_type
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for progress_billings
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for properties
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for prov
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for qualifications
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for quick_extensions
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for quote_canned_description
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for quote_chance
+2025-05-21 10:42:05,553 DEBUG core.XpoUtility - Adding XPO type information for quote_competitor
+2025-05-21 10:42:05,554 DEBUG core.XpoUtility - Adding XPO type information for quote_cust_notes
+2025-05-21 10:42:05,554 DEBUG core.XpoUtility - Adding XPO type information for quote_extratext
+2025-05-21 10:42:05,554 DEBUG core.XpoUtility - Adding XPO type information for quote_field_title
+2025-05-21 10:42:05,554 DEBUG core.XpoUtility - Adding XPO type information for quote_filter
+2025-05-21 10:42:05,554 DEBUG core.XpoUtility - Adding XPO type information for quote_filter_questions
+2025-05-21 10:42:05,554 DEBUG core.XpoUtility - Adding XPO type information for quote_follow_up
+2025-05-21 10:42:05,555 DEBUG core.XpoUtility - Adding XPO type information for quote_history
+2025-05-21 10:42:05,555 DEBUG core.XpoUtility - Adding XPO type information for quote_kill_reason
+2025-05-21 10:42:05,555 DEBUG core.XpoUtility - Adding XPO type information for quote_kill_reason_map
+2025-05-21 10:42:05,555 DEBUG core.XpoUtility - Adding XPO type information for quote_kill_tier
+2025-05-21 10:42:05,556 DEBUG core.XpoUtility - Adding XPO type information for quote_master
+2025-05-21 10:42:05,559 DEBUG core.XpoUtility - Adding XPO type information for quote_post_mortem
+2025-05-21 10:42:05,559 DEBUG core.XpoUtility - Adding XPO type information for quote_post_mortem_questions
+2025-05-21 10:42:05,560 DEBUG core.XpoUtility - Adding XPO type information for quote_pricetype
+2025-05-21 10:42:05,560 DEBUG core.XpoUtility - Adding XPO type information for quote_process_questions
+2025-05-21 10:42:05,560 DEBUG core.XpoUtility - Adding XPO type information for quote_process_question_history
+2025-05-21 10:42:05,560 DEBUG core.XpoUtility - Adding XPO type information for quote_received_reason
+2025-05-21 10:42:05,560 DEBUG core.XpoUtility - Adding XPO type information for quote_received_reason_map
+2025-05-21 10:42:05,560 DEBUG core.XpoUtility - Adding XPO type information for quote_schedule
+2025-05-21 10:42:05,562 DEBUG core.XpoUtility - Adding XPO type information for quote_section
+2025-05-21 10:42:05,562 DEBUG core.XpoUtility - Adding XPO type information for quote_status
+2025-05-21 10:42:05,562 DEBUG core.XpoUtility - Adding XPO type information for quote_term
+2025-05-21 10:42:05,562 DEBUG core.XpoUtility - Adding XPO type information for quote_worksheet
+2025-05-21 10:42:05,562 DEBUG core.XpoUtility - Adding XPO type information for quote_worksheet_current_cost
+2025-05-21 10:42:05,563 DEBUG core.XpoUtility - Adding XPO type information for rd
+2025-05-21 10:42:05,563 DEBUG core.XpoUtility - Adding XPO type information for releases
+2025-05-21 10:42:05,563 DEBUG core.XpoUtility - Adding XPO type information for rental_equipment
+2025-05-21 10:42:05,563 DEBUG core.XpoUtility - Adding XPO type information for rental_equipment_category
+2025-05-21 10:42:05,563 DEBUG core.XpoUtility - Adding XPO type information for report
+2025-05-21 10:42:05,563 DEBUG core.XpoUtility - Adding XPO type information for reports_to_helper
+2025-05-21 10:42:05,563 DEBUG core.XpoUtility - Adding XPO type information for revenue_line
+2025-05-21 10:42:05,564 DEBUG core.XpoUtility - Adding XPO type information for revenue_line_business_unit
+2025-05-21 10:42:05,564 DEBUG core.XpoUtility - Adding XPO type information for rfq_header
+2025-05-21 10:42:05,564 DEBUG core.XpoUtility - Adding XPO type information for rfq_lineitem
+2025-05-21 10:42:05,564 DEBUG core.XpoUtility - Adding XPO type information for rfq_part_list
+2025-05-21 10:42:05,564 DEBUG core.XpoUtility - Adding XPO type information for rfq_vendor_list
+2025-05-21 10:42:05,564 DEBUG core.XpoUtility - Adding XPO type information for rss_feed
+2025-05-21 10:42:05,564 DEBUG core.XpoUtility - Adding XPO type information for r_engine_category
+2025-05-21 10:42:05,565 DEBUG core.XpoUtility - Adding XPO type information for r_engine_permission
+2025-05-21 10:42:05,565 DEBUG core.XpoUtility - Adding XPO type information for r_engine_report
+2025-05-21 10:42:05,565 DEBUG core.XpoUtility - Adding XPO type information for salesperson
+2025-05-21 10:42:05,565 DEBUG core.XpoUtility - Adding XPO type information for section
+2025-05-21 10:42:05,565 DEBUG core.XpoUtility - Adding XPO type information for session
+2025-05-21 10:42:05,565 DEBUG core.XpoUtility - Adding XPO type information for session_collection
+2025-05-21 10:42:05,565 DEBUG core.XpoUtility - Adding XPO type information for ship
+2025-05-21 10:42:05,566 DEBUG core.XpoUtility - Adding XPO type information for shopping_cart
+2025-05-21 10:42:05,566 DEBUG core.XpoUtility - Adding XPO type information for shopping_cart_header
+2025-05-21 10:42:05,566 DEBUG core.XpoUtility - Adding XPO type information for signature
+2025-05-21 10:42:05,566 DEBUG core.XpoUtility - Adding XPO type information for specific_notes
+2025-05-21 10:42:05,566 DEBUG core.XpoUtility - Adding XPO type information for stbb_bymonth
+2025-05-21 10:42:05,566 DEBUG core.XpoUtility - Adding XPO type information for stock_transfer
+2025-05-21 10:42:05,567 DEBUG core.XpoUtility - Adding XPO type information for stock_transfer_type
+2025-05-21 10:42:05,567 DEBUG core.XpoUtility - Adding XPO type information for suggestion
+2025-05-21 10:42:05,567 DEBUG core.XpoUtility - Adding XPO type information for target
+2025-05-21 10:42:05,567 DEBUG core.XpoUtility - Adding XPO type information for target_type
+2025-05-21 10:42:05,567 DEBUG core.XpoUtility - Adding XPO type information for task
+2025-05-21 10:42:05,568 DEBUG core.XpoUtility - Adding XPO type information for task_history
+2025-05-21 10:42:05,568 DEBUG core.XpoUtility - Adding XPO type information for task_member
+2025-05-21 10:42:05,568 DEBUG core.XpoUtility - Adding XPO type information for task_status
+2025-05-21 10:42:05,568 DEBUG core.XpoUtility - Adding XPO type information for tax
+2025-05-21 10:42:05,568 DEBUG core.XpoUtility - Adding XPO type information for tax_entity
+2025-05-21 10:42:05,569 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_group
+2025-05-21 10:42:05,569 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_group_link
+2025-05-21 10:42:05,569 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_hiearchy
+2025-05-21 10:42:05,569 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_hierarchy
+2025-05-21 10:42:05,570 DEBUG core.XpoUtility - Adding XPO type information for term
+2025-05-21 10:42:05,570 DEBUG core.XpoUtility - Adding XPO type information for territory_mapping
+2025-05-21 10:42:05,570 DEBUG core.XpoUtility - Adding XPO type information for ticketheader
+2025-05-21 10:42:05,570 DEBUG core.XpoUtility - Adding XPO type information for ticketissues
+2025-05-21 10:42:05,571 DEBUG core.XpoUtility - Adding XPO type information for ticketmanager
+2025-05-21 10:42:05,571 DEBUG core.XpoUtility - Adding XPO type information for ticketpage
+2025-05-21 10:42:05,571 DEBUG core.XpoUtility - Adding XPO type information for ticketpriority
+2025-05-21 10:42:05,571 DEBUG core.XpoUtility - Adding XPO type information for ticketstatus
+2025-05-21 10:42:05,571 DEBUG core.XpoUtility - Adding XPO type information for tickettype
+2025-05-21 10:42:05,571 DEBUG core.XpoUtility - Adding XPO type information for ticket_files
+2025-05-21 10:42:05,571 DEBUG core.XpoUtility - Adding XPO type information for ticket_group
+2025-05-21 10:42:05,571 DEBUG core.XpoUtility - Adding XPO type information for ticket_group_type_link
+2025-05-21 10:42:05,572 DEBUG core.XpoUtility - Adding XPO type information for ticket_memberview
+2025-05-21 10:42:05,572 DEBUG core.XpoUtility - Adding XPO type information for ticket_tasks
+2025-05-21 10:42:05,572 DEBUG core.XpoUtility - Adding XPO type information for ticket_team
+2025-05-21 10:42:05,572 DEBUG core.XpoUtility - Adding XPO type information for ticket_team_memberid
+2025-05-21 10:42:05,572 DEBUG core.XpoUtility - Adding XPO type information for ticket_vote
+2025-05-21 10:42:05,572 DEBUG core.XpoUtility - Adding XPO type information for titles
+2025-05-21 10:42:05,572 DEBUG core.XpoUtility - Adding XPO type information for tmp_woprog
+2025-05-21 10:42:05,574 DEBUG core.XpoUtility - Adding XPO type information for training_curriculum
+2025-05-21 10:42:05,574 DEBUG core.XpoUtility - Adding XPO type information for training_header
+2025-05-21 10:42:05,575 DEBUG core.XpoUtility - Adding XPO type information for training_header_history
+2025-05-21 10:42:05,575 DEBUG core.XpoUtility - Adding XPO type information for training_history
+2025-05-21 10:42:05,575 DEBUG core.XpoUtility - Adding XPO type information for training_module
+2025-05-21 10:42:05,575 DEBUG core.XpoUtility - Adding XPO type information for training_schedule
+2025-05-21 10:42:05,575 DEBUG core.XpoUtility - Adding XPO type information for training_type
+2025-05-21 10:42:05,575 DEBUG core.XpoUtility - Adding XPO type information for truck_history
+2025-05-21 10:42:05,576 DEBUG core.XpoUtility - Adding XPO type information for user_switch
+2025-05-21 10:42:05,576 DEBUG core.XpoUtility - Adding XPO type information for vacation_log
+2025-05-21 10:42:05,576 DEBUG core.XpoUtility - Adding XPO type information for vacation_master
+2025-05-21 10:42:05,576 DEBUG core.XpoUtility - Adding XPO type information for vacation_note
+2025-05-21 10:42:05,576 DEBUG core.XpoUtility - Adding XPO type information for vacation_payment_method
+2025-05-21 10:42:05,576 DEBUG core.XpoUtility - Adding XPO type information for vacation_status
+2025-05-21 10:42:05,576 DEBUG core.XpoUtility - Adding XPO type information for vacation_transactions
+2025-05-21 10:42:05,577 DEBUG core.XpoUtility - Adding XPO type information for vacation_type
+2025-05-21 10:42:05,577 DEBUG core.XpoUtility - Adding XPO type information for vendor
+2025-05-21 10:42:05,577 DEBUG core.XpoUtility - Adding XPO type information for vendor_business_unit
+2025-05-21 10:42:05,577 DEBUG core.XpoUtility - Adding XPO type information for vendor_documents
+2025-05-21 10:42:05,577 DEBUG core.XpoUtility - Adding XPO type information for vendor_merge_history
+2025-05-21 10:42:05,577 DEBUG core.XpoUtility - Adding XPO type information for vendor_netsuite_map
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for video
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for video_category
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for video_page_lnk
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for video_privilege
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for video_watch_history
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for visible_business_units
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for watch
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for watch_wo_costs_sells_log
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for who_to_ask
+2025-05-21 10:42:05,578 DEBUG core.XpoUtility - Adding XPO type information for wocomment
+2025-05-21 10:42:05,579 DEBUG core.XpoUtility - Adding XPO type information for wodetailh_temp
+2025-05-21 10:42:05,579 DEBUG core.XpoUtility - Adding XPO type information for woprog
+2025-05-21 10:42:05,581 DEBUG core.XpoUtility - Adding XPO type information for woprogchanges
+2025-05-21 10:42:05,581 DEBUG core.XpoUtility - Adding XPO type information for woprogchanges_snapshot
+2025-05-21 10:42:05,581 DEBUG core.XpoUtility - Adding XPO type information for woprogcomment
+2025-05-21 10:42:05,581 DEBUG core.XpoUtility - Adding XPO type information for woprogstatus
+2025-05-21 10:42:05,581 DEBUG core.XpoUtility - Adding XPO type information for woprog_asset
+2025-05-21 10:42:05,582 DEBUG core.XpoUtility - Adding XPO type information for woprog_invoice_text
+2025-05-21 10:42:05,582 DEBUG core.XpoUtility - Adding XPO type information for woprog_jobtag
+2025-05-21 10:42:05,582 DEBUG core.XpoUtility - Adding XPO type information for woprog_project_notes
+2025-05-21 10:42:05,582 DEBUG core.XpoUtility - Adding XPO type information for woprog_scheduler
+2025-05-21 10:42:05,582 DEBUG core.XpoUtility - Adding XPO type information for woprog_status
+2025-05-21 10:42:05,582 DEBUG core.XpoUtility - Adding XPO type information for woprog_tasks
+2025-05-21 10:42:05,582 DEBUG core.XpoUtility - Adding XPO type information for wo_associated
+2025-05-21 10:42:05,582 DEBUG core.XpoUtility - Adding XPO type information for wo_checklist
+2025-05-21 10:42:05,583 DEBUG core.XpoUtility - Adding XPO type information for wo_checklist_history
+2025-05-21 10:42:05,583 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_current
+2025-05-21 10:42:05,583 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_current_audit
+2025-05-21 10:42:05,584 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_history
+2025-05-21 10:42:05,585 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_lineitem_billtype
+2025-05-21 10:42:05,585 DEBUG core.XpoUtility - Adding XPO type information for wo_freeze
+2025-05-21 10:42:05,585 DEBUG core.XpoUtility - Adding XPO type information for wo_import_stage
+2025-05-21 10:42:05,585 DEBUG core.XpoUtility - Adding XPO type information for wo_lag
+2025-05-21 10:42:05,586 DEBUG core.XpoUtility - Adding XPO type information for wo_line_import_stage
+2025-05-21 10:42:05,586 DEBUG core.XpoUtility - Adding XPO type information for wo_survey
+2025-05-21 10:42:07,817 INFO NESI.WebAPI.SwaggerConfig - Registering Swagger support...
+2025-05-21 10:44:07,726 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 10:44:56,314 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 10:45:23,473 ERROR NESI.WebAPI.Infrastructures.Filters.LogPageAttribute - Failed to log page http://localhost:53450/api/Layout/AllActive
+System.Data.Entity.Core.EntityException: The underlying provider failed on Open. ---> MySql.Data.MySqlClient.MySqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.TimeoutException: Timeout in IO operation
+   at MySql.Data.MySqlClient.TimedStream.StopTimer()
+   at MySql.Data.MySqlClient.TimedStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.BufferedStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at MySql.Data.MySqlClient.MySqlStream.ReadFully(Stream stream, Byte[] buffer, Int32 offset, Int32 count)
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   --- End of inner exception stack trace ---
+   at MySql.Data.MySqlClient.ExceptionInterceptor.Throw(Exception exception)
+   at MySql.Data.MySqlClient.MySqlConnection.HandleTimeoutOrThreadAbort(Exception ex)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.Driver.LoadServerProperties(MySqlConnection connection)
+   at MySql.Data.MySqlClient.Driver.Configure(MySqlConnection connection)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   at System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass59.<ExecuteStoreCommand>b__57()
+   at NESI.BLL.Base.BLLBase.BLLToolbox.doSQL_void(String sql, Object[] paramsObjects) in C:\Users\jay.kandasamy\source\repos\SparkOps\Nesi.Main\NESI.BLL\Base\BLLBase.cs:line 289
+   at NESI.BLL.Core.Logger.WebAPIPageLogger.AddLog(LogPage model) in C:\Users\jay.kandasamy\source\repos\SparkOps\Nesi.Main\NESI.BLL\Core\Logger\WebAPIPageLogger.cs:line 15
+   at NESI.WebAPI.Infrastructures.Filters.LogPageAttribute.OnActionExecuted(HttpActionExecutedContext actionExecutedContext) in C:\Users\jay.kandasamy\source\repos\SparkOps\Nesi.Main\NESI.WebAPI\Infrastructures\Filters\LogPageAttribute.cs:line 83
+2025-05-21 11:07:56,401 INFO NESI.WebAPI.Initialization.Global - Application started in Default
+2025-05-21 11:07:56,407 INFO NESI.WebAPI.Initialization.Global - DEBUG symbol NOT defined for this environment
+2025-05-21 11:07:56,728 INFO core.XpoUtility - Processing XPA assemblies
+2025-05-21 11:07:56,766 DEBUG core.XpoUtility - Adding XPO type information for accounting_period
+2025-05-21 11:07:56,786 DEBUG core.XpoUtility - Adding XPO type information for active_memberoffer
+2025-05-21 11:07:56,787 DEBUG core.XpoUtility - Adding XPO type information for address
+2025-05-21 11:07:56,788 DEBUG core.XpoUtility - Adding XPO type information for address_netsuite_map
+2025-05-21 11:07:56,788 DEBUG core.XpoUtility - Adding XPO type information for adp_canada_codes
+2025-05-21 11:07:56,788 DEBUG core.XpoUtility - Adding XPO type information for allowed_bu_on_wo
+2025-05-21 11:07:56,788 DEBUG core.XpoUtility - Adding XPO type information for applicants
+2025-05-21 11:07:56,789 DEBUG core.XpoUtility - Adding XPO type information for appointments
+2025-05-21 11:07:56,789 DEBUG core.XpoUtility - Adding XPO type information for appointment_resource_member_hide_link
+2025-05-21 11:07:56,789 DEBUG core.XpoUtility - Adding XPO type information for appointment_resource_member_link
+2025-05-21 11:07:56,789 DEBUG core.XpoUtility - Adding XPO type information for appointment_status
+2025-05-21 11:07:56,789 DEBUG core.XpoUtility - Adding XPO type information for apstatus
+2025-05-21 11:07:56,789 DEBUG core.XpoUtility - Adding XPO type information for area_codes
+2025-05-21 11:07:56,789 DEBUG core.XpoUtility - Adding XPO type information for ar_notes
+2025-05-21 11:07:56,789 DEBUG core.XpoUtility - Adding XPO type information for assets
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for assets_history
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for assets_type
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for asset_customer_rate
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for asset_history_action
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for asset_status
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for auditgroup
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audithistory_details
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audithistory_header
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audititem
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audititem_group
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audititem_ratingdesc
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audititem_type
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audit_group
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audit_item
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audit_type
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for audit_typegroup_link
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for auto_reports
+2025-05-21 11:07:56,790 DEBUG core.XpoUtility - Adding XPO type information for auto_reports_schedule
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for auto_report_history
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for bankedpay_ledger
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for bankedpay_ledger_type
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for barcode_prefix
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for benefit_details
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for bingo_data
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for bingo_queries
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for bonus_membertype_link
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for bonus_type
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for breaktime
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for business
+2025-05-21 11:07:56,791 DEBUG core.XpoUtility - Adding XPO type information for business_unit
+2025-05-21 11:07:56,793 DEBUG core.XpoUtility - Adding XPO type information for business_unit_comp_div
+2025-05-21 11:07:56,793 DEBUG core.XpoUtility - Adding XPO type information for business_unit_hiearchy
+2025-05-21 11:07:56,793 DEBUG core.XpoUtility - Adding XPO type information for business_unit_po_dist
+2025-05-21 11:07:56,793 DEBUG core.XpoUtility - Adding XPO type information for bu_paytype_link
+2025-05-21 11:07:56,793 DEBUG core.XpoUtility - Adding XPO type information for cap_training_schedule
+2025-05-21 11:07:56,793 DEBUG core.XpoUtility - Adding XPO type information for cellphone
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for cellphone_app_device
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for cellphone_app_imei
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for cellphone_app_sim
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for cellphone_carrier
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for cellphone_gps
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for cellphone_history
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for cellphone_number
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for cellphone_number_history
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for cellphone_status
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for certificates
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for certificates_credential_link
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for certificate_history
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for certificate_skill_link
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for certificate_training_link
+2025-05-21 11:07:56,794 DEBUG core.XpoUtility - Adding XPO type information for chargeout
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for collection_history
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for contact
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for contactpage
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for contactpageprivilege
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for contact_history
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for contact_netsuite_map
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for conversion_map
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for conversion_unit
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for core_responsibilities
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for core_responsibilities_privilege
+2025-05-21 11:07:56,795 DEBUG core.XpoUtility - Adding XPO type information for country
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for credit_cards
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for credit_card_purchase
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for credit_card_purchase_netsuite_xref
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for cr_certificates
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for cr_group
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for cr_qualifications
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for cr_review
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for cr_skills_link
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for cr_skills_priority
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for currency
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for currency_history
+2025-05-21 11:07:56,796 DEBUG core.XpoUtility - Adding XPO type information for customer
+2025-05-21 11:07:56,797 DEBUG core.XpoUtility - Adding XPO type information for customer_asset
+2025-05-21 11:07:56,797 DEBUG core.XpoUtility - Adding XPO type information for customer_asset_history
+2025-05-21 11:07:56,797 DEBUG core.XpoUtility - Adding XPO type information for customer_business_unit
+2025-05-21 11:07:56,797 DEBUG core.XpoUtility - Adding XPO type information for customer_collection_status
+2025-05-21 11:07:56,797 DEBUG core.XpoUtility - Adding XPO type information for customer_company
+2025-05-21 11:07:56,797 DEBUG core.XpoUtility - Adding XPO type information for customer_default_invoice_types
+2025-05-21 11:07:56,797 DEBUG core.XpoUtility - Adding XPO type information for customer_history
+2025-05-21 11:07:56,797 DEBUG core.XpoUtility - Adding XPO type information for customer_internal_link
+2025-05-21 11:07:56,797 DEBUG core.XpoUtility - Adding XPO type information for customer_netsuite_map
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_origin
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_or_contact_status
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_rate
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_sales_properties
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketheader
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketissues
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketmanager
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketpage
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketpriority
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketstatus
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for customer_tickettype
+2025-05-21 11:07:56,798 DEBUG core.XpoUtility - Adding XPO type information for cust_vend_requests
+2025-05-21 11:07:56,799 DEBUG core.XpoUtility - Adding XPO type information for daily_finance
+2025-05-21 11:07:56,799 DEBUG core.XpoUtility - Adding XPO type information for dashboard
+2025-05-21 11:07:56,799 DEBUG core.XpoUtility - Adding XPO type information for dashboardtmp
+2025-05-21 11:07:56,799 DEBUG core.XpoUtility - Adding XPO type information for dashboard_header
+2025-05-21 11:07:56,799 DEBUG core.XpoUtility - Adding XPO type information for dashboard_snapshot_daily
+2025-05-21 11:07:56,800 DEBUG core.XpoUtility - Adding XPO type information for dashboard_snapshot_hist
+2025-05-21 11:07:56,800 DEBUG core.XpoUtility - Adding XPO type information for dashboard_thresholds
+2025-05-21 11:07:56,800 DEBUG core.XpoUtility - Adding XPO type information for days_off_canned_reasons
+2025-05-21 11:07:56,800 DEBUG core.XpoUtility - Adding XPO type information for digitalsignage
+2025-05-21 11:07:56,800 DEBUG core.XpoUtility - Adding XPO type information for distribution_group
+2025-05-21 11:07:56,800 DEBUG core.XpoUtility - Adding XPO type information for distribution_group_link
+2025-05-21 11:07:56,800 DEBUG core.XpoUtility - Adding XPO type information for download
+2025-05-21 11:07:56,800 DEBUG core.XpoUtility - Adding XPO type information for downloadcat
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for edit_type
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for emaillog
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for emp_review
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for emp_review_group
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for emp_review_history
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for emp_review_items
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for emp_trm
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for emp_trm_chklist_lnk
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for emp_trm_chklist_opt
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for eritem
+2025-05-21 11:07:56,801 DEBUG core.XpoUtility - Adding XPO type information for erjob
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for error
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for error_log
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for er_branch_data
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for er_vendor_data
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for event_table
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for expense_category
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for expense_category_business_unit
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for expense_reimbursement
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for expense_reimbursement_netsuite_xref
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for expense_seller
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for ext_website_credentials
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for failed_login
+2025-05-21 11:07:56,802 DEBUG core.XpoUtility - Adding XPO type information for faq
+2025-05-21 11:07:56,803 DEBUG core.XpoUtility - Adding XPO type information for faq_section
+2025-05-21 11:07:56,803 DEBUG core.XpoUtility - Adding XPO type information for fytarget
+2025-05-21 11:07:56,803 DEBUG core.XpoUtility - Adding XPO type information for fytarget_employees
+2025-05-21 11:07:56,803 DEBUG core.XpoUtility - Adding XPO type information for gantt_data
+2025-05-21 11:07:56,803 DEBUG core.XpoUtility - Adding XPO type information for gltrans
+2025-05-21 11:07:56,803 DEBUG core.XpoUtility - Adding XPO type information for gl_chart_of_accounts
+2025-05-21 11:07:56,804 DEBUG core.XpoUtility - Adding XPO type information for gl_chart_of_accounts_staging
+2025-05-21 11:07:56,804 DEBUG core.XpoUtility - Adding XPO type information for gl_control_accounts
+2025-05-21 11:07:56,804 DEBUG core.XpoUtility - Adding XPO type information for gl_group_te
+2025-05-21 11:07:56,804 DEBUG core.XpoUtility - Adding XPO type information for gl_note_te
+2025-05-21 11:07:56,804 DEBUG core.XpoUtility - Adding XPO type information for gl_special_accounts
+2025-05-21 11:07:56,804 DEBUG core.XpoUtility - Adding XPO type information for gl_special_account_te_link
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for gl_subgroup_te
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for gl_te
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for gl_type_mapping
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for graph
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for gridviewlayouts
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for historycust
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for historypo
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for history_action_type
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for holidays
+2025-05-21 11:07:56,805 DEBUG core.XpoUtility - Adding XPO type information for huddle
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for huddle_source
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for huddle_task
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for huddle_task_comments
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for huddle_user
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for hu_snapshot
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for inc_stmt_note
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for internal_companyno
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for internal_project
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for invattribute
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for inventory_alternate
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for inventory_annual_counts
+2025-05-21 11:07:56,806 DEBUG core.XpoUtility - Adding XPO type information for inventory_annual_counts_history
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_annual_count_header
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_attribute
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_attribute_value
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_audit
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_barcode
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_branch
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_branch_options
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_consignment
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_cost
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_description
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_dollar_balance_daily
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_expiry_period
+2025-05-21 11:07:56,807 DEBUG core.XpoUtility - Adding XPO type information for inventory_group_dtl
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_group_hdr
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_history
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_import_stage
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_incorrect_levels
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_item_detail
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_item_master
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_kit_dtl
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_kit_hdr
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_location
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_location_master
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_location_type
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_note
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_per_unit
+2025-05-21 11:07:56,808 DEBUG core.XpoUtility - Adding XPO type information for inventory_picture
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_price
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_price_history
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_reference
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_referencetype
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_sellprice
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_sellprice_history
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_sold_as
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag_link
+2025-05-21 11:07:56,809 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag_preset
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag_tradename
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for inventory_tax
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for inventory_usage
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for inventory_usage_copy
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for invoice_collection_status
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for invoice_service_email_report_history
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for journal_entry
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for journal_entry_line
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for leavetype
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for log
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for logging_agent_error_log
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for log_action
+2025-05-21 11:07:56,810 DEBUG core.XpoUtility - Adding XPO type information for log_page
+2025-05-21 11:07:56,811 DEBUG core.XpoUtility - Adding XPO type information for log_page_asax
+2025-05-21 11:07:56,811 DEBUG core.XpoUtility - Adding XPO type information for log_section
+2025-05-21 11:07:56,811 DEBUG core.XpoUtility - Adding XPO type information for manufacturer
+2025-05-21 11:07:56,811 DEBUG core.XpoUtility - Adding XPO type information for manufacturervendor
+2025-05-21 11:07:56,811 DEBUG core.XpoUtility - Adding XPO type information for markup_formula
+2025-05-21 11:07:56,811 DEBUG core.XpoUtility - Adding XPO type information for master_skills
+2025-05-21 11:07:56,811 DEBUG core.XpoUtility - Adding XPO type information for master_skill_review_questions
+2025-05-21 11:07:56,811 DEBUG core.XpoUtility - Adding XPO type information for matt
+2025-05-21 11:07:56,811 DEBUG core.XpoUtility - Adding XPO type information for member
+2025-05-21 11:07:56,813 DEBUG core.XpoUtility - Adding XPO type information for memberaddressaudit
+2025-05-21 11:07:56,813 DEBUG core.XpoUtility - Adding XPO type information for memberdaysoff
+2025-05-21 11:07:56,813 DEBUG core.XpoUtility - Adding XPO type information for memberdaysoffack
+2025-05-21 11:07:56,813 DEBUG core.XpoUtility - Adding XPO type information for memberdivision
+2025-05-21 11:07:56,813 DEBUG core.XpoUtility - Adding XPO type information for membergraph
+2025-05-21 11:07:56,813 DEBUG core.XpoUtility - Adding XPO type information for membernote
+2025-05-21 11:07:56,813 DEBUG core.XpoUtility - Adding XPO type information for memberoffer_cr
+2025-05-21 11:07:56,814 DEBUG core.XpoUtility - Adding XPO type information for memberoffer_milestones
+2025-05-21 11:07:56,814 DEBUG core.XpoUtility - Adding XPO type information for memberpage
+2025-05-21 11:07:56,814 DEBUG core.XpoUtility - Adding XPO type information for memberpageprivilege
+2025-05-21 11:07:56,814 DEBUG core.XpoUtility - Adding XPO type information for membertime
+2025-05-21 11:07:56,814 DEBUG core.XpoUtility - Adding XPO type information for membertimeaudit
+2025-05-21 11:07:56,814 DEBUG core.XpoUtility - Adding XPO type information for membertime_netsuite_xref
+2025-05-21 11:07:56,814 DEBUG core.XpoUtility - Adding XPO type information for membertime_projecttask
+2025-05-21 11:07:56,814 DEBUG core.XpoUtility - Adding XPO type information for membertime_projecttask_netsuite_xref
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertime_shop_link
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertime_shop_type
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertime_tags
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertime_ts_lite_paytypes
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertime_type
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertime_type_gl_link
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertype
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertypehours
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertypepage
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertypepageprivilege
+2025-05-21 11:07:56,815 DEBUG core.XpoUtility - Adding XPO type information for membertype_auto_reports
+2025-05-21 11:07:56,816 DEBUG core.XpoUtility - Adding XPO type information for membertype_chargeout
+2025-05-21 11:07:56,816 DEBUG core.XpoUtility - Adding XPO type information for membertype_chargeout_back
+2025-05-21 11:07:56,816 DEBUG core.XpoUtility - Adding XPO type information for membertype_chargeout_history
+2025-05-21 11:07:56,816 DEBUG core.XpoUtility - Adding XPO type information for membertype_classification
+2025-05-21 11:07:56,816 DEBUG core.XpoUtility - Adding XPO type information for membertype_responsibilities
+2025-05-21 11:07:56,816 DEBUG core.XpoUtility - Adding XPO type information for memberwage
+2025-05-21 11:07:56,816 DEBUG core.XpoUtility - Adding XPO type information for memberx
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_apprentice_level
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_certificates
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_dtl
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_hdr
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_history
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_status
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_tab
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_template_detail
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_template_header
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_hrstatus
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_import_stage
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_i_template
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_netsuite_xref
+2025-05-21 11:07:56,817 DEBUG core.XpoUtility - Adding XPO type information for member_offers
+2025-05-21 11:07:56,818 DEBUG core.XpoUtility - Adding XPO type information for member_offers_prod
+2025-05-21 11:07:56,818 DEBUG core.XpoUtility - Adding XPO type information for member_offers_uat
+2025-05-21 11:07:56,818 DEBUG core.XpoUtility - Adding XPO type information for member_paytype
+2025-05-21 11:07:56,818 DEBUG core.XpoUtility - Adding XPO type information for member_skills
+2025-05-21 11:07:56,818 DEBUG core.XpoUtility - Adding XPO type information for member_task_cc
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for member_temp
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for member_tile
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for member_tile_type
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for member_tile_type_link
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for member_timesheet_accuracy
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for member_todo_list_helper
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for message
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for messageboard_chat
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for messageto
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for messagetype
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for migration_expense_category_for_po
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for n2_profile_category
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for n2_profile_property
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for n2_user_profile
+2025-05-21 11:07:56,819 DEBUG core.XpoUtility - Adding XPO type information for nesi_conversion_table
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for netsuite_queue
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for netsuite_sync_error
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for new_milestone
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for ne_file_revision
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for ne_session
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for note_templates
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for oncall_schedule
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for ownership
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for page
+2025-05-21 11:07:56,820 DEBUG core.XpoUtility - Adding XPO type information for pageprivilege
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for pageprivilege_template
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for pageprivilege_template_item
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for page_related
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for page_wiki
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for partner_skills
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for part_request
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for part_request_history
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for part_request_origin
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for part_request_statuslist
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for passport
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for payperiods
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for payperiod_tax_entity
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for payroll
+2025-05-21 11:07:56,821 DEBUG core.XpoUtility - Adding XPO type information for payroll_entry_types
+2025-05-21 11:07:56,822 DEBUG core.XpoUtility - Adding XPO type information for payroll_extra_payments
+2025-05-21 11:07:56,822 DEBUG core.XpoUtility - Adding XPO type information for payroll_hours
+2025-05-21 11:07:56,822 DEBUG core.XpoUtility - Adding XPO type information for payroll_progress
+2025-05-21 11:07:56,822 DEBUG core.XpoUtility - Adding XPO type information for paytypehours
+2025-05-21 11:07:56,822 DEBUG core.XpoUtility - Adding XPO type information for phone_log
+2025-05-21 11:07:56,822 DEBUG core.XpoUtility - Adding XPO type information for phone_numbers
+2025-05-21 11:07:56,822 DEBUG core.XpoUtility - Adding XPO type information for poprogcomment
+2025-05-21 11:07:56,822 DEBUG core.XpoUtility - Adding XPO type information for poprogstatus
+2025-05-21 11:07:56,822 DEBUG core.XpoUtility - Adding XPO type information for poprog_cc
+2025-05-21 11:07:56,823 DEBUG core.XpoUtility - Adding XPO type information for poprog_header
+2025-05-21 11:07:56,823 DEBUG core.XpoUtility - Adding XPO type information for poprog_notes
+2025-05-21 11:07:56,823 DEBUG core.XpoUtility - Adding XPO type information for poprog_part_history
+2025-05-21 11:07:56,823 DEBUG core.XpoUtility - Adding XPO type information for poprog_payment_method
+2025-05-21 11:07:56,823 DEBUG core.XpoUtility - Adding XPO type information for poprog_scans
+2025-05-21 11:07:56,823 DEBUG core.XpoUtility - Adding XPO type information for poprog_shipping
+2025-05-21 11:07:56,823 DEBUG core.XpoUtility - Adding XPO type information for poprog_status
+2025-05-21 11:07:56,824 DEBUG core.XpoUtility - Adding XPO type information for po_details_current
+2025-05-21 11:07:56,824 DEBUG core.XpoUtility - Adding XPO type information for po_gl_acct
+2025-05-21 11:07:56,824 DEBUG core.XpoUtility - Adding XPO type information for po_import_stage
+2025-05-21 11:07:56,824 DEBUG core.XpoUtility - Adding XPO type information for po_line_import_stage
+2025-05-21 11:07:56,824 DEBUG core.XpoUtility - Adding XPO type information for privilege
+2025-05-21 11:07:56,824 DEBUG core.XpoUtility - Adding XPO type information for privilege_detail
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for privilege_global
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for privilege_global_link
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for privilege_global_link_type
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for progress_billings
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for properties
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for prov
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for qualifications
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quick_extensions
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_canned_description
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_chance
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_competitor
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_cust_notes
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_extratext
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_field_title
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_filter
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_filter_questions
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_follow_up
+2025-05-21 11:07:56,825 DEBUG core.XpoUtility - Adding XPO type information for quote_history
+2025-05-21 11:07:56,826 DEBUG core.XpoUtility - Adding XPO type information for quote_kill_reason
+2025-05-21 11:07:56,826 DEBUG core.XpoUtility - Adding XPO type information for quote_kill_reason_map
+2025-05-21 11:07:56,826 DEBUG core.XpoUtility - Adding XPO type information for quote_kill_tier
+2025-05-21 11:07:56,826 DEBUG core.XpoUtility - Adding XPO type information for quote_master
+2025-05-21 11:07:56,827 DEBUG core.XpoUtility - Adding XPO type information for quote_post_mortem
+2025-05-21 11:07:56,827 DEBUG core.XpoUtility - Adding XPO type information for quote_post_mortem_questions
+2025-05-21 11:07:56,827 DEBUG core.XpoUtility - Adding XPO type information for quote_pricetype
+2025-05-21 11:07:56,827 DEBUG core.XpoUtility - Adding XPO type information for quote_process_questions
+2025-05-21 11:07:56,827 DEBUG core.XpoUtility - Adding XPO type information for quote_process_question_history
+2025-05-21 11:07:56,827 DEBUG core.XpoUtility - Adding XPO type information for quote_received_reason
+2025-05-21 11:07:56,828 DEBUG core.XpoUtility - Adding XPO type information for quote_received_reason_map
+2025-05-21 11:07:56,828 DEBUG core.XpoUtility - Adding XPO type information for quote_schedule
+2025-05-21 11:07:56,828 DEBUG core.XpoUtility - Adding XPO type information for quote_section
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for quote_status
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for quote_term
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for quote_worksheet
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for quote_worksheet_current_cost
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for rd
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for releases
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for rental_equipment
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for rental_equipment_category
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for report
+2025-05-21 11:07:56,829 DEBUG core.XpoUtility - Adding XPO type information for reports_to_helper
+2025-05-21 11:07:56,830 DEBUG core.XpoUtility - Adding XPO type information for revenue_line
+2025-05-21 11:07:56,830 DEBUG core.XpoUtility - Adding XPO type information for revenue_line_business_unit
+2025-05-21 11:07:56,830 DEBUG core.XpoUtility - Adding XPO type information for rfq_header
+2025-05-21 11:07:56,830 DEBUG core.XpoUtility - Adding XPO type information for rfq_lineitem
+2025-05-21 11:07:56,830 DEBUG core.XpoUtility - Adding XPO type information for rfq_part_list
+2025-05-21 11:07:56,830 DEBUG core.XpoUtility - Adding XPO type information for rfq_vendor_list
+2025-05-21 11:07:56,830 DEBUG core.XpoUtility - Adding XPO type information for rss_feed
+2025-05-21 11:07:56,830 DEBUG core.XpoUtility - Adding XPO type information for r_engine_category
+2025-05-21 11:07:56,831 DEBUG core.XpoUtility - Adding XPO type information for r_engine_permission
+2025-05-21 11:07:56,831 DEBUG core.XpoUtility - Adding XPO type information for r_engine_report
+2025-05-21 11:07:56,831 DEBUG core.XpoUtility - Adding XPO type information for salesperson
+2025-05-21 11:07:56,831 DEBUG core.XpoUtility - Adding XPO type information for section
+2025-05-21 11:07:56,831 DEBUG core.XpoUtility - Adding XPO type information for session
+2025-05-21 11:07:56,831 DEBUG core.XpoUtility - Adding XPO type information for session_collection
+2025-05-21 11:07:56,831 DEBUG core.XpoUtility - Adding XPO type information for ship
+2025-05-21 11:07:56,831 DEBUG core.XpoUtility - Adding XPO type information for shopping_cart
+2025-05-21 11:07:56,831 DEBUG core.XpoUtility - Adding XPO type information for shopping_cart_header
+2025-05-21 11:07:56,832 DEBUG core.XpoUtility - Adding XPO type information for signature
+2025-05-21 11:07:56,832 DEBUG core.XpoUtility - Adding XPO type information for specific_notes
+2025-05-21 11:07:56,832 DEBUG core.XpoUtility - Adding XPO type information for stbb_bymonth
+2025-05-21 11:07:56,832 DEBUG core.XpoUtility - Adding XPO type information for stock_transfer
+2025-05-21 11:07:56,832 DEBUG core.XpoUtility - Adding XPO type information for stock_transfer_type
+2025-05-21 11:07:56,832 DEBUG core.XpoUtility - Adding XPO type information for suggestion
+2025-05-21 11:07:56,832 DEBUG core.XpoUtility - Adding XPO type information for target
+2025-05-21 11:07:56,832 DEBUG core.XpoUtility - Adding XPO type information for target_type
+2025-05-21 11:07:56,833 DEBUG core.XpoUtility - Adding XPO type information for task
+2025-05-21 11:07:56,833 DEBUG core.XpoUtility - Adding XPO type information for task_history
+2025-05-21 11:07:56,833 DEBUG core.XpoUtility - Adding XPO type information for task_member
+2025-05-21 11:07:56,833 DEBUG core.XpoUtility - Adding XPO type information for task_status
+2025-05-21 11:07:56,833 DEBUG core.XpoUtility - Adding XPO type information for tax
+2025-05-21 11:07:56,833 DEBUG core.XpoUtility - Adding XPO type information for tax_entity
+2025-05-21 11:07:56,834 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_group
+2025-05-21 11:07:56,834 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_group_link
+2025-05-21 11:07:56,834 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_hiearchy
+2025-05-21 11:07:56,834 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_hierarchy
+2025-05-21 11:07:56,834 DEBUG core.XpoUtility - Adding XPO type information for term
+2025-05-21 11:07:56,834 DEBUG core.XpoUtility - Adding XPO type information for territory_mapping
+2025-05-21 11:07:56,834 DEBUG core.XpoUtility - Adding XPO type information for ticketheader
+2025-05-21 11:07:56,835 DEBUG core.XpoUtility - Adding XPO type information for ticketissues
+2025-05-21 11:07:56,835 DEBUG core.XpoUtility - Adding XPO type information for ticketmanager
+2025-05-21 11:07:56,835 DEBUG core.XpoUtility - Adding XPO type information for ticketpage
+2025-05-21 11:07:56,835 DEBUG core.XpoUtility - Adding XPO type information for ticketpriority
+2025-05-21 11:07:56,835 DEBUG core.XpoUtility - Adding XPO type information for ticketstatus
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for tickettype
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for ticket_files
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for ticket_group
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for ticket_group_type_link
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for ticket_memberview
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for ticket_tasks
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for ticket_team
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for ticket_team_memberid
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for ticket_vote
+2025-05-21 11:07:56,836 DEBUG core.XpoUtility - Adding XPO type information for titles
+2025-05-21 11:07:56,837 DEBUG core.XpoUtility - Adding XPO type information for tmp_woprog
+2025-05-21 11:07:56,838 DEBUG core.XpoUtility - Adding XPO type information for training_curriculum
+2025-05-21 11:07:56,838 DEBUG core.XpoUtility - Adding XPO type information for training_header
+2025-05-21 11:07:56,838 DEBUG core.XpoUtility - Adding XPO type information for training_header_history
+2025-05-21 11:07:56,839 DEBUG core.XpoUtility - Adding XPO type information for training_history
+2025-05-21 11:07:56,839 DEBUG core.XpoUtility - Adding XPO type information for training_module
+2025-05-21 11:07:56,839 DEBUG core.XpoUtility - Adding XPO type information for training_schedule
+2025-05-21 11:07:56,839 DEBUG core.XpoUtility - Adding XPO type information for training_type
+2025-05-21 11:07:56,839 DEBUG core.XpoUtility - Adding XPO type information for truck_history
+2025-05-21 11:07:56,839 DEBUG core.XpoUtility - Adding XPO type information for user_switch
+2025-05-21 11:07:56,839 DEBUG core.XpoUtility - Adding XPO type information for vacation_log
+2025-05-21 11:07:56,839 DEBUG core.XpoUtility - Adding XPO type information for vacation_master
+2025-05-21 11:07:56,840 DEBUG core.XpoUtility - Adding XPO type information for vacation_note
+2025-05-21 11:07:56,840 DEBUG core.XpoUtility - Adding XPO type information for vacation_payment_method
+2025-05-21 11:07:56,840 DEBUG core.XpoUtility - Adding XPO type information for vacation_status
+2025-05-21 11:07:56,840 DEBUG core.XpoUtility - Adding XPO type information for vacation_transactions
+2025-05-21 11:07:56,840 DEBUG core.XpoUtility - Adding XPO type information for vacation_type
+2025-05-21 11:07:56,840 DEBUG core.XpoUtility - Adding XPO type information for vendor
+2025-05-21 11:07:56,841 DEBUG core.XpoUtility - Adding XPO type information for vendor_business_unit
+2025-05-21 11:07:56,841 DEBUG core.XpoUtility - Adding XPO type information for vendor_documents
+2025-05-21 11:07:56,841 DEBUG core.XpoUtility - Adding XPO type information for vendor_merge_history
+2025-05-21 11:07:56,841 DEBUG core.XpoUtility - Adding XPO type information for vendor_netsuite_map
+2025-05-21 11:07:56,841 DEBUG core.XpoUtility - Adding XPO type information for video
+2025-05-21 11:07:56,841 DEBUG core.XpoUtility - Adding XPO type information for video_category
+2025-05-21 11:07:56,841 DEBUG core.XpoUtility - Adding XPO type information for video_page_lnk
+2025-05-21 11:07:56,842 DEBUG core.XpoUtility - Adding XPO type information for video_privilege
+2025-05-21 11:07:56,842 DEBUG core.XpoUtility - Adding XPO type information for video_watch_history
+2025-05-21 11:07:56,842 DEBUG core.XpoUtility - Adding XPO type information for visible_business_units
+2025-05-21 11:07:56,842 DEBUG core.XpoUtility - Adding XPO type information for watch
+2025-05-21 11:07:56,842 DEBUG core.XpoUtility - Adding XPO type information for watch_wo_costs_sells_log
+2025-05-21 11:07:56,842 DEBUG core.XpoUtility - Adding XPO type information for who_to_ask
+2025-05-21 11:07:56,842 DEBUG core.XpoUtility - Adding XPO type information for wocomment
+2025-05-21 11:07:56,842 DEBUG core.XpoUtility - Adding XPO type information for wodetailh_temp
+2025-05-21 11:07:56,842 DEBUG core.XpoUtility - Adding XPO type information for woprog
+2025-05-21 11:07:56,844 DEBUG core.XpoUtility - Adding XPO type information for woprogchanges
+2025-05-21 11:07:56,845 DEBUG core.XpoUtility - Adding XPO type information for woprogchanges_snapshot
+2025-05-21 11:07:56,845 DEBUG core.XpoUtility - Adding XPO type information for woprogcomment
+2025-05-21 11:07:56,845 DEBUG core.XpoUtility - Adding XPO type information for woprogstatus
+2025-05-21 11:07:56,845 DEBUG core.XpoUtility - Adding XPO type information for woprog_asset
+2025-05-21 11:07:56,845 DEBUG core.XpoUtility - Adding XPO type information for woprog_invoice_text
+2025-05-21 11:07:56,846 DEBUG core.XpoUtility - Adding XPO type information for woprog_jobtag
+2025-05-21 11:07:56,846 DEBUG core.XpoUtility - Adding XPO type information for woprog_project_notes
+2025-05-21 11:07:56,846 DEBUG core.XpoUtility - Adding XPO type information for woprog_scheduler
+2025-05-21 11:07:56,846 DEBUG core.XpoUtility - Adding XPO type information for woprog_status
+2025-05-21 11:07:56,846 DEBUG core.XpoUtility - Adding XPO type information for woprog_tasks
+2025-05-21 11:07:56,847 DEBUG core.XpoUtility - Adding XPO type information for wo_associated
+2025-05-21 11:07:56,847 DEBUG core.XpoUtility - Adding XPO type information for wo_checklist
+2025-05-21 11:07:56,847 DEBUG core.XpoUtility - Adding XPO type information for wo_checklist_history
+2025-05-21 11:07:56,847 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_current
+2025-05-21 11:07:56,848 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_current_audit
+2025-05-21 11:07:56,848 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_history
+2025-05-21 11:07:56,849 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_lineitem_billtype
+2025-05-21 11:07:56,849 DEBUG core.XpoUtility - Adding XPO type information for wo_freeze
+2025-05-21 11:07:56,850 DEBUG core.XpoUtility - Adding XPO type information for wo_import_stage
+2025-05-21 11:07:56,850 DEBUG core.XpoUtility - Adding XPO type information for wo_lag
+2025-05-21 11:07:56,850 DEBUG core.XpoUtility - Adding XPO type information for wo_line_import_stage
+2025-05-21 11:07:56,851 DEBUG core.XpoUtility - Adding XPO type information for wo_survey
+2025-05-21 11:08:05,244 INFO NESI.WebAPI.SwaggerConfig - Registering Swagger support...
+2025-05-21 11:10:41,376 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 11:12:51,520 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 11:15:47,230 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 11:15:58,520 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 11:16:00,919 ERROR NESI.WebAPI.Initialization.Global - Unhandled application error
+System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<BufferResponseContentAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<InvokeCore>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Cors.CorsMiddleware.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2025-05-21 11:16:30,706 ERROR NESI.WebAPI.Initialization.Global - Unhandled application error
+System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<BufferResponseContentAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<InvokeCore>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Cors.CorsMiddleware.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2025-05-21 11:17:51,715 ERROR NESI.WebAPI.Initialization.Global - Unhandled application error
+System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<BufferResponseContentAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<InvokeCore>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Cors.CorsMiddleware.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2025-05-21 13:46:01,958 INFO NESI.WebAPI.Initialization.Global - Application started in Default
+2025-05-21 13:46:01,965 INFO NESI.WebAPI.Initialization.Global - DEBUG symbol NOT defined for this environment
+2025-05-21 13:46:02,401 INFO core.XpoUtility - Processing XPA assemblies
+2025-05-21 13:46:02,451 DEBUG core.XpoUtility - Adding XPO type information for accounting_period
+2025-05-21 13:46:02,490 DEBUG core.XpoUtility - Adding XPO type information for active_memberoffer
+2025-05-21 13:46:02,490 DEBUG core.XpoUtility - Adding XPO type information for address
+2025-05-21 13:46:02,493 DEBUG core.XpoUtility - Adding XPO type information for address_netsuite_map
+2025-05-21 13:46:02,493 DEBUG core.XpoUtility - Adding XPO type information for adp_canada_codes
+2025-05-21 13:46:02,493 DEBUG core.XpoUtility - Adding XPO type information for allowed_bu_on_wo
+2025-05-21 13:46:02,493 DEBUG core.XpoUtility - Adding XPO type information for applicants
+2025-05-21 13:46:02,493 DEBUG core.XpoUtility - Adding XPO type information for appointments
+2025-05-21 13:46:02,494 DEBUG core.XpoUtility - Adding XPO type information for appointment_resource_member_hide_link
+2025-05-21 13:46:02,494 DEBUG core.XpoUtility - Adding XPO type information for appointment_resource_member_link
+2025-05-21 13:46:02,494 DEBUG core.XpoUtility - Adding XPO type information for appointment_status
+2025-05-21 13:46:02,494 DEBUG core.XpoUtility - Adding XPO type information for apstatus
+2025-05-21 13:46:02,494 DEBUG core.XpoUtility - Adding XPO type information for area_codes
+2025-05-21 13:46:02,494 DEBUG core.XpoUtility - Adding XPO type information for ar_notes
+2025-05-21 13:46:02,494 DEBUG core.XpoUtility - Adding XPO type information for assets
+2025-05-21 13:46:02,495 DEBUG core.XpoUtility - Adding XPO type information for assets_history
+2025-05-21 13:46:02,495 DEBUG core.XpoUtility - Adding XPO type information for assets_type
+2025-05-21 13:46:02,495 DEBUG core.XpoUtility - Adding XPO type information for asset_customer_rate
+2025-05-21 13:46:02,495 DEBUG core.XpoUtility - Adding XPO type information for asset_history_action
+2025-05-21 13:46:02,495 DEBUG core.XpoUtility - Adding XPO type information for asset_status
+2025-05-21 13:46:02,495 DEBUG core.XpoUtility - Adding XPO type information for auditgroup
+2025-05-21 13:46:02,495 DEBUG core.XpoUtility - Adding XPO type information for audithistory_details
+2025-05-21 13:46:02,495 DEBUG core.XpoUtility - Adding XPO type information for audithistory_header
+2025-05-21 13:46:02,495 DEBUG core.XpoUtility - Adding XPO type information for audititem
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for audititem_group
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for audititem_ratingdesc
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for audititem_type
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for audit_group
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for audit_item
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for audit_type
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for audit_typegroup_link
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for auto_reports
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for auto_reports_schedule
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for auto_report_history
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for bankedpay_ledger
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for bankedpay_ledger_type
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for barcode_prefix
+2025-05-21 13:46:02,496 DEBUG core.XpoUtility - Adding XPO type information for benefit_details
+2025-05-21 13:46:02,497 DEBUG core.XpoUtility - Adding XPO type information for bingo_data
+2025-05-21 13:46:02,497 DEBUG core.XpoUtility - Adding XPO type information for bingo_queries
+2025-05-21 13:46:02,497 DEBUG core.XpoUtility - Adding XPO type information for bonus_membertype_link
+2025-05-21 13:46:02,497 DEBUG core.XpoUtility - Adding XPO type information for bonus_type
+2025-05-21 13:46:02,497 DEBUG core.XpoUtility - Adding XPO type information for breaktime
+2025-05-21 13:46:02,497 DEBUG core.XpoUtility - Adding XPO type information for business
+2025-05-21 13:46:02,497 DEBUG core.XpoUtility - Adding XPO type information for business_unit
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for business_unit_comp_div
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for business_unit_hiearchy
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for business_unit_po_dist
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for bu_paytype_link
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for cap_training_schedule
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for cellphone
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for cellphone_app_device
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for cellphone_app_imei
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for cellphone_app_sim
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for cellphone_carrier
+2025-05-21 13:46:02,500 DEBUG core.XpoUtility - Adding XPO type information for cellphone_gps
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for cellphone_history
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for cellphone_number
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for cellphone_number_history
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for cellphone_status
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for certificates
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for certificates_credential_link
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for certificate_history
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for certificate_skill_link
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for certificate_training_link
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for chargeout
+2025-05-21 13:46:02,501 DEBUG core.XpoUtility - Adding XPO type information for collection_history
+2025-05-21 13:46:02,502 DEBUG core.XpoUtility - Adding XPO type information for contact
+2025-05-21 13:46:02,502 DEBUG core.XpoUtility - Adding XPO type information for contactpage
+2025-05-21 13:46:02,502 DEBUG core.XpoUtility - Adding XPO type information for contactpageprivilege
+2025-05-21 13:46:02,502 DEBUG core.XpoUtility - Adding XPO type information for contact_history
+2025-05-21 13:46:02,502 DEBUG core.XpoUtility - Adding XPO type information for contact_netsuite_map
+2025-05-21 13:46:02,502 DEBUG core.XpoUtility - Adding XPO type information for conversion_map
+2025-05-21 13:46:02,502 DEBUG core.XpoUtility - Adding XPO type information for conversion_unit
+2025-05-21 13:46:02,502 DEBUG core.XpoUtility - Adding XPO type information for core_responsibilities
+2025-05-21 13:46:02,503 DEBUG core.XpoUtility - Adding XPO type information for core_responsibilities_privilege
+2025-05-21 13:46:02,503 DEBUG core.XpoUtility - Adding XPO type information for country
+2025-05-21 13:46:02,503 DEBUG core.XpoUtility - Adding XPO type information for credit_cards
+2025-05-21 13:46:02,503 DEBUG core.XpoUtility - Adding XPO type information for credit_card_purchase
+2025-05-21 13:46:02,503 DEBUG core.XpoUtility - Adding XPO type information for credit_card_purchase_netsuite_xref
+2025-05-21 13:46:02,503 DEBUG core.XpoUtility - Adding XPO type information for cr_certificates
+2025-05-21 13:46:02,503 DEBUG core.XpoUtility - Adding XPO type information for cr_group
+2025-05-21 13:46:02,504 DEBUG core.XpoUtility - Adding XPO type information for cr_qualifications
+2025-05-21 13:46:02,504 DEBUG core.XpoUtility - Adding XPO type information for cr_review
+2025-05-21 13:46:02,504 DEBUG core.XpoUtility - Adding XPO type information for cr_skills_link
+2025-05-21 13:46:02,504 DEBUG core.XpoUtility - Adding XPO type information for cr_skills_priority
+2025-05-21 13:46:02,504 DEBUG core.XpoUtility - Adding XPO type information for currency
+2025-05-21 13:46:02,504 DEBUG core.XpoUtility - Adding XPO type information for currency_history
+2025-05-21 13:46:02,504 DEBUG core.XpoUtility - Adding XPO type information for customer
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_asset
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_asset_history
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_business_unit
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_collection_status
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_company
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_default_invoice_types
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_history
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_internal_link
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_netsuite_map
+2025-05-21 13:46:02,505 DEBUG core.XpoUtility - Adding XPO type information for customer_origin
+2025-05-21 13:46:02,506 DEBUG core.XpoUtility - Adding XPO type information for customer_or_contact_status
+2025-05-21 13:46:02,506 DEBUG core.XpoUtility - Adding XPO type information for customer_rate
+2025-05-21 13:46:02,506 DEBUG core.XpoUtility - Adding XPO type information for customer_sales_properties
+2025-05-21 13:46:02,506 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketheader
+2025-05-21 13:46:02,506 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketissues
+2025-05-21 13:46:02,506 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketmanager
+2025-05-21 13:46:02,506 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketpage
+2025-05-21 13:46:02,507 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketpriority
+2025-05-21 13:46:02,507 DEBUG core.XpoUtility - Adding XPO type information for customer_ticketstatus
+2025-05-21 13:46:02,507 DEBUG core.XpoUtility - Adding XPO type information for customer_tickettype
+2025-05-21 13:46:02,507 DEBUG core.XpoUtility - Adding XPO type information for cust_vend_requests
+2025-05-21 13:46:02,507 DEBUG core.XpoUtility - Adding XPO type information for daily_finance
+2025-05-21 13:46:02,507 DEBUG core.XpoUtility - Adding XPO type information for dashboard
+2025-05-21 13:46:02,507 DEBUG core.XpoUtility - Adding XPO type information for dashboardtmp
+2025-05-21 13:46:02,507 DEBUG core.XpoUtility - Adding XPO type information for dashboard_header
+2025-05-21 13:46:02,507 DEBUG core.XpoUtility - Adding XPO type information for dashboard_snapshot_daily
+2025-05-21 13:46:02,508 DEBUG core.XpoUtility - Adding XPO type information for dashboard_snapshot_hist
+2025-05-21 13:46:02,508 DEBUG core.XpoUtility - Adding XPO type information for dashboard_thresholds
+2025-05-21 13:46:02,508 DEBUG core.XpoUtility - Adding XPO type information for days_off_canned_reasons
+2025-05-21 13:46:02,508 DEBUG core.XpoUtility - Adding XPO type information for digitalsignage
+2025-05-21 13:46:02,509 DEBUG core.XpoUtility - Adding XPO type information for distribution_group
+2025-05-21 13:46:02,509 DEBUG core.XpoUtility - Adding XPO type information for distribution_group_link
+2025-05-21 13:46:02,509 DEBUG core.XpoUtility - Adding XPO type information for download
+2025-05-21 13:46:02,509 DEBUG core.XpoUtility - Adding XPO type information for downloadcat
+2025-05-21 13:46:02,509 DEBUG core.XpoUtility - Adding XPO type information for edit_type
+2025-05-21 13:46:02,509 DEBUG core.XpoUtility - Adding XPO type information for emaillog
+2025-05-21 13:46:02,509 DEBUG core.XpoUtility - Adding XPO type information for emp_review
+2025-05-21 13:46:02,509 DEBUG core.XpoUtility - Adding XPO type information for emp_review_group
+2025-05-21 13:46:02,509 DEBUG core.XpoUtility - Adding XPO type information for emp_review_history
+2025-05-21 13:46:02,510 DEBUG core.XpoUtility - Adding XPO type information for emp_review_items
+2025-05-21 13:46:02,510 DEBUG core.XpoUtility - Adding XPO type information for emp_trm
+2025-05-21 13:46:02,510 DEBUG core.XpoUtility - Adding XPO type information for emp_trm_chklist_lnk
+2025-05-21 13:46:02,510 DEBUG core.XpoUtility - Adding XPO type information for emp_trm_chklist_opt
+2025-05-21 13:46:02,510 DEBUG core.XpoUtility - Adding XPO type information for eritem
+2025-05-21 13:46:02,510 DEBUG core.XpoUtility - Adding XPO type information for erjob
+2025-05-21 13:46:02,510 DEBUG core.XpoUtility - Adding XPO type information for error
+2025-05-21 13:46:02,510 DEBUG core.XpoUtility - Adding XPO type information for error_log
+2025-05-21 13:46:02,511 DEBUG core.XpoUtility - Adding XPO type information for er_branch_data
+2025-05-21 13:46:02,511 DEBUG core.XpoUtility - Adding XPO type information for er_vendor_data
+2025-05-21 13:46:02,511 DEBUG core.XpoUtility - Adding XPO type information for event_table
+2025-05-21 13:46:02,511 DEBUG core.XpoUtility - Adding XPO type information for expense_category
+2025-05-21 13:46:02,511 DEBUG core.XpoUtility - Adding XPO type information for expense_category_business_unit
+2025-05-21 13:46:02,511 DEBUG core.XpoUtility - Adding XPO type information for expense_reimbursement
+2025-05-21 13:46:02,511 DEBUG core.XpoUtility - Adding XPO type information for expense_reimbursement_netsuite_xref
+2025-05-21 13:46:02,512 DEBUG core.XpoUtility - Adding XPO type information for expense_seller
+2025-05-21 13:46:02,512 DEBUG core.XpoUtility - Adding XPO type information for ext_website_credentials
+2025-05-21 13:46:02,512 DEBUG core.XpoUtility - Adding XPO type information for failed_login
+2025-05-21 13:46:02,512 DEBUG core.XpoUtility - Adding XPO type information for faq
+2025-05-21 13:46:02,512 DEBUG core.XpoUtility - Adding XPO type information for faq_section
+2025-05-21 13:46:02,512 DEBUG core.XpoUtility - Adding XPO type information for fytarget
+2025-05-21 13:46:02,512 DEBUG core.XpoUtility - Adding XPO type information for fytarget_employees
+2025-05-21 13:46:02,512 DEBUG core.XpoUtility - Adding XPO type information for gantt_data
+2025-05-21 13:46:02,512 DEBUG core.XpoUtility - Adding XPO type information for gltrans
+2025-05-21 13:46:02,513 DEBUG core.XpoUtility - Adding XPO type information for gl_chart_of_accounts
+2025-05-21 13:46:02,513 DEBUG core.XpoUtility - Adding XPO type information for gl_chart_of_accounts_staging
+2025-05-21 13:46:02,514 DEBUG core.XpoUtility - Adding XPO type information for gl_control_accounts
+2025-05-21 13:46:02,514 DEBUG core.XpoUtility - Adding XPO type information for gl_group_te
+2025-05-21 13:46:02,514 DEBUG core.XpoUtility - Adding XPO type information for gl_note_te
+2025-05-21 13:46:02,514 DEBUG core.XpoUtility - Adding XPO type information for gl_special_accounts
+2025-05-21 13:46:02,514 DEBUG core.XpoUtility - Adding XPO type information for gl_special_account_te_link
+2025-05-21 13:46:02,514 DEBUG core.XpoUtility - Adding XPO type information for gl_subgroup_te
+2025-05-21 13:46:02,515 DEBUG core.XpoUtility - Adding XPO type information for gl_te
+2025-05-21 13:46:02,515 DEBUG core.XpoUtility - Adding XPO type information for gl_type_mapping
+2025-05-21 13:46:02,515 DEBUG core.XpoUtility - Adding XPO type information for graph
+2025-05-21 13:46:02,515 DEBUG core.XpoUtility - Adding XPO type information for gridviewlayouts
+2025-05-21 13:46:02,515 DEBUG core.XpoUtility - Adding XPO type information for historycust
+2025-05-21 13:46:02,515 DEBUG core.XpoUtility - Adding XPO type information for historypo
+2025-05-21 13:46:02,515 DEBUG core.XpoUtility - Adding XPO type information for history_action_type
+2025-05-21 13:46:02,515 DEBUG core.XpoUtility - Adding XPO type information for holidays
+2025-05-21 13:46:02,516 DEBUG core.XpoUtility - Adding XPO type information for huddle
+2025-05-21 13:46:02,516 DEBUG core.XpoUtility - Adding XPO type information for huddle_source
+2025-05-21 13:46:02,516 DEBUG core.XpoUtility - Adding XPO type information for huddle_task
+2025-05-21 13:46:02,516 DEBUG core.XpoUtility - Adding XPO type information for huddle_task_comments
+2025-05-21 13:46:02,516 DEBUG core.XpoUtility - Adding XPO type information for huddle_user
+2025-05-21 13:46:02,516 DEBUG core.XpoUtility - Adding XPO type information for hu_snapshot
+2025-05-21 13:46:02,516 DEBUG core.XpoUtility - Adding XPO type information for inc_stmt_note
+2025-05-21 13:46:02,517 DEBUG core.XpoUtility - Adding XPO type information for internal_companyno
+2025-05-21 13:46:02,517 DEBUG core.XpoUtility - Adding XPO type information for internal_project
+2025-05-21 13:46:02,517 DEBUG core.XpoUtility - Adding XPO type information for invattribute
+2025-05-21 13:46:02,517 DEBUG core.XpoUtility - Adding XPO type information for inventory_alternate
+2025-05-21 13:46:02,517 DEBUG core.XpoUtility - Adding XPO type information for inventory_annual_counts
+2025-05-21 13:46:02,517 DEBUG core.XpoUtility - Adding XPO type information for inventory_annual_counts_history
+2025-05-21 13:46:02,517 DEBUG core.XpoUtility - Adding XPO type information for inventory_annual_count_header
+2025-05-21 13:46:02,517 DEBUG core.XpoUtility - Adding XPO type information for inventory_attribute
+2025-05-21 13:46:02,517 DEBUG core.XpoUtility - Adding XPO type information for inventory_attribute_value
+2025-05-21 13:46:02,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_audit
+2025-05-21 13:46:02,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_barcode
+2025-05-21 13:46:02,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_branch
+2025-05-21 13:46:02,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_branch_options
+2025-05-21 13:46:02,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_consignment
+2025-05-21 13:46:02,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_cost
+2025-05-21 13:46:02,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_description
+2025-05-21 13:46:02,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_dollar_balance_daily
+2025-05-21 13:46:02,518 DEBUG core.XpoUtility - Adding XPO type information for inventory_expiry_period
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_group_dtl
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_group_hdr
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_history
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_import_stage
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_incorrect_levels
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_item_detail
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_item_master
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_kit_dtl
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_kit_hdr
+2025-05-21 13:46:02,519 DEBUG core.XpoUtility - Adding XPO type information for inventory_location
+2025-05-21 13:46:02,520 DEBUG core.XpoUtility - Adding XPO type information for inventory_location_master
+2025-05-21 13:46:02,520 DEBUG core.XpoUtility - Adding XPO type information for inventory_location_type
+2025-05-21 13:46:02,520 DEBUG core.XpoUtility - Adding XPO type information for inventory_note
+2025-05-21 13:46:02,520 DEBUG core.XpoUtility - Adding XPO type information for inventory_per_unit
+2025-05-21 13:46:02,520 DEBUG core.XpoUtility - Adding XPO type information for inventory_picture
+2025-05-21 13:46:02,520 DEBUG core.XpoUtility - Adding XPO type information for inventory_price
+2025-05-21 13:46:02,520 DEBUG core.XpoUtility - Adding XPO type information for inventory_price_history
+2025-05-21 13:46:02,520 DEBUG core.XpoUtility - Adding XPO type information for inventory_reference
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_referencetype
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_sellprice
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_sellprice_history
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_sold_as
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag_link
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag_preset
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_tag_tradename
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_tax
+2025-05-21 13:46:02,521 DEBUG core.XpoUtility - Adding XPO type information for inventory_usage
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for inventory_usage_copy
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for invoice_collection_status
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for invoice_service_email_report_history
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for journal_entry
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for journal_entry_line
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for leavetype
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for log
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for logging_agent_error_log
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for log_action
+2025-05-21 13:46:02,522 DEBUG core.XpoUtility - Adding XPO type information for log_page
+2025-05-21 13:46:02,523 DEBUG core.XpoUtility - Adding XPO type information for log_page_asax
+2025-05-21 13:46:02,523 DEBUG core.XpoUtility - Adding XPO type information for log_section
+2025-05-21 13:46:02,523 DEBUG core.XpoUtility - Adding XPO type information for manufacturer
+2025-05-21 13:46:02,523 DEBUG core.XpoUtility - Adding XPO type information for manufacturervendor
+2025-05-21 13:46:02,523 DEBUG core.XpoUtility - Adding XPO type information for markup_formula
+2025-05-21 13:46:02,523 DEBUG core.XpoUtility - Adding XPO type information for master_skills
+2025-05-21 13:46:02,523 DEBUG core.XpoUtility - Adding XPO type information for master_skill_review_questions
+2025-05-21 13:46:02,523 DEBUG core.XpoUtility - Adding XPO type information for matt
+2025-05-21 13:46:02,523 DEBUG core.XpoUtility - Adding XPO type information for member
+2025-05-21 13:46:02,526 DEBUG core.XpoUtility - Adding XPO type information for memberaddressaudit
+2025-05-21 13:46:02,526 DEBUG core.XpoUtility - Adding XPO type information for memberdaysoff
+2025-05-21 13:46:02,526 DEBUG core.XpoUtility - Adding XPO type information for memberdaysoffack
+2025-05-21 13:46:02,526 DEBUG core.XpoUtility - Adding XPO type information for memberdivision
+2025-05-21 13:46:02,526 DEBUG core.XpoUtility - Adding XPO type information for membergraph
+2025-05-21 13:46:02,526 DEBUG core.XpoUtility - Adding XPO type information for membernote
+2025-05-21 13:46:02,526 DEBUG core.XpoUtility - Adding XPO type information for memberoffer_cr
+2025-05-21 13:46:02,527 DEBUG core.XpoUtility - Adding XPO type information for memberoffer_milestones
+2025-05-21 13:46:02,527 DEBUG core.XpoUtility - Adding XPO type information for memberpage
+2025-05-21 13:46:02,527 DEBUG core.XpoUtility - Adding XPO type information for memberpageprivilege
+2025-05-21 13:46:02,527 DEBUG core.XpoUtility - Adding XPO type information for membertime
+2025-05-21 13:46:02,527 DEBUG core.XpoUtility - Adding XPO type information for membertimeaudit
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertime_netsuite_xref
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertime_projecttask
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertime_projecttask_netsuite_xref
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertime_shop_link
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertime_shop_type
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertime_tags
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertime_ts_lite_paytypes
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertime_type
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertime_type_gl_link
+2025-05-21 13:46:02,528 DEBUG core.XpoUtility - Adding XPO type information for membertype
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for membertypehours
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for membertypepage
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for membertypepageprivilege
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for membertype_auto_reports
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for membertype_chargeout
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for membertype_chargeout_back
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for membertype_chargeout_history
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for membertype_classification
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for membertype_responsibilities
+2025-05-21 13:46:02,529 DEBUG core.XpoUtility - Adding XPO type information for memberwage
+2025-05-21 13:46:02,530 DEBUG core.XpoUtility - Adding XPO type information for memberx
+2025-05-21 13:46:02,530 DEBUG core.XpoUtility - Adding XPO type information for member_apprentice_level
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_certificates
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_dtl
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_hdr
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_history
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_status
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_tab
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_template_detail
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_fvr_template_header
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_hrstatus
+2025-05-21 13:46:02,531 DEBUG core.XpoUtility - Adding XPO type information for member_import_stage
+2025-05-21 13:46:02,532 DEBUG core.XpoUtility - Adding XPO type information for member_i_template
+2025-05-21 13:46:02,532 DEBUG core.XpoUtility - Adding XPO type information for member_netsuite_xref
+2025-05-21 13:46:02,532 DEBUG core.XpoUtility - Adding XPO type information for member_offers
+2025-05-21 13:46:02,532 DEBUG core.XpoUtility - Adding XPO type information for member_offers_prod
+2025-05-21 13:46:02,532 DEBUG core.XpoUtility - Adding XPO type information for member_offers_uat
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for member_paytype
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for member_skills
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for member_task_cc
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for member_temp
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for member_tile
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for member_tile_type
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for member_tile_type_link
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for member_timesheet_accuracy
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for member_todo_list_helper
+2025-05-21 13:46:02,533 DEBUG core.XpoUtility - Adding XPO type information for message
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for messageboard_chat
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for messageto
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for messagetype
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for migration_expense_category_for_po
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for n2_profile_category
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for n2_profile_property
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for n2_user_profile
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for nesi_conversion_table
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for netsuite_queue
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for netsuite_sync_error
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for new_milestone
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for ne_file_revision
+2025-05-21 13:46:02,534 DEBUG core.XpoUtility - Adding XPO type information for ne_session
+2025-05-21 13:46:02,535 DEBUG core.XpoUtility - Adding XPO type information for note_templates
+2025-05-21 13:46:02,535 DEBUG core.XpoUtility - Adding XPO type information for oncall_schedule
+2025-05-21 13:46:02,535 DEBUG core.XpoUtility - Adding XPO type information for ownership
+2025-05-21 13:46:02,535 DEBUG core.XpoUtility - Adding XPO type information for page
+2025-05-21 13:46:02,535 DEBUG core.XpoUtility - Adding XPO type information for pageprivilege
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for pageprivilege_template
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for pageprivilege_template_item
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for page_related
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for page_wiki
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for partner_skills
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for part_request
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for part_request_history
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for part_request_origin
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for part_request_statuslist
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for passport
+2025-05-21 13:46:02,536 DEBUG core.XpoUtility - Adding XPO type information for payperiods
+2025-05-21 13:46:02,537 DEBUG core.XpoUtility - Adding XPO type information for payperiod_tax_entity
+2025-05-21 13:46:02,537 DEBUG core.XpoUtility - Adding XPO type information for payroll
+2025-05-21 13:46:02,537 DEBUG core.XpoUtility - Adding XPO type information for payroll_entry_types
+2025-05-21 13:46:02,537 DEBUG core.XpoUtility - Adding XPO type information for payroll_extra_payments
+2025-05-21 13:46:02,537 DEBUG core.XpoUtility - Adding XPO type information for payroll_hours
+2025-05-21 13:46:02,537 DEBUG core.XpoUtility - Adding XPO type information for payroll_progress
+2025-05-21 13:46:02,537 DEBUG core.XpoUtility - Adding XPO type information for paytypehours
+2025-05-21 13:46:02,537 DEBUG core.XpoUtility - Adding XPO type information for phone_log
+2025-05-21 13:46:02,538 DEBUG core.XpoUtility - Adding XPO type information for phone_numbers
+2025-05-21 13:46:02,538 DEBUG core.XpoUtility - Adding XPO type information for poprogcomment
+2025-05-21 13:46:02,538 DEBUG core.XpoUtility - Adding XPO type information for poprogstatus
+2025-05-21 13:46:02,538 DEBUG core.XpoUtility - Adding XPO type information for poprog_cc
+2025-05-21 13:46:02,538 DEBUG core.XpoUtility - Adding XPO type information for poprog_header
+2025-05-21 13:46:02,539 DEBUG core.XpoUtility - Adding XPO type information for poprog_notes
+2025-05-21 13:46:02,539 DEBUG core.XpoUtility - Adding XPO type information for poprog_part_history
+2025-05-21 13:46:02,539 DEBUG core.XpoUtility - Adding XPO type information for poprog_payment_method
+2025-05-21 13:46:02,539 DEBUG core.XpoUtility - Adding XPO type information for poprog_scans
+2025-05-21 13:46:02,539 DEBUG core.XpoUtility - Adding XPO type information for poprog_shipping
+2025-05-21 13:46:02,539 DEBUG core.XpoUtility - Adding XPO type information for poprog_status
+2025-05-21 13:46:02,539 DEBUG core.XpoUtility - Adding XPO type information for po_details_current
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for po_gl_acct
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for po_import_stage
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for po_line_import_stage
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for privilege
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for privilege_detail
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for privilege_global
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for privilege_global_link
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for privilege_global_link_type
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for progress_billings
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for properties
+2025-05-21 13:46:02,540 DEBUG core.XpoUtility - Adding XPO type information for prov
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for qualifications
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quick_extensions
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_canned_description
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_chance
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_competitor
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_cust_notes
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_extratext
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_field_title
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_filter
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_filter_questions
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_follow_up
+2025-05-21 13:46:02,541 DEBUG core.XpoUtility - Adding XPO type information for quote_history
+2025-05-21 13:46:02,542 DEBUG core.XpoUtility - Adding XPO type information for quote_kill_reason
+2025-05-21 13:46:02,542 DEBUG core.XpoUtility - Adding XPO type information for quote_kill_reason_map
+2025-05-21 13:46:02,542 DEBUG core.XpoUtility - Adding XPO type information for quote_kill_tier
+2025-05-21 13:46:02,542 DEBUG core.XpoUtility - Adding XPO type information for quote_master
+2025-05-21 13:46:02,543 DEBUG core.XpoUtility - Adding XPO type information for quote_post_mortem
+2025-05-21 13:46:02,543 DEBUG core.XpoUtility - Adding XPO type information for quote_post_mortem_questions
+2025-05-21 13:46:02,543 DEBUG core.XpoUtility - Adding XPO type information for quote_pricetype
+2025-05-21 13:46:02,543 DEBUG core.XpoUtility - Adding XPO type information for quote_process_questions
+2025-05-21 13:46:02,543 DEBUG core.XpoUtility - Adding XPO type information for quote_process_question_history
+2025-05-21 13:46:02,543 DEBUG core.XpoUtility - Adding XPO type information for quote_received_reason
+2025-05-21 13:46:02,543 DEBUG core.XpoUtility - Adding XPO type information for quote_received_reason_map
+2025-05-21 13:46:02,543 DEBUG core.XpoUtility - Adding XPO type information for quote_schedule
+2025-05-21 13:46:02,544 DEBUG core.XpoUtility - Adding XPO type information for quote_section
+2025-05-21 13:46:02,544 DEBUG core.XpoUtility - Adding XPO type information for quote_status
+2025-05-21 13:46:02,544 DEBUG core.XpoUtility - Adding XPO type information for quote_term
+2025-05-21 13:46:02,544 DEBUG core.XpoUtility - Adding XPO type information for quote_worksheet
+2025-05-21 13:46:02,544 DEBUG core.XpoUtility - Adding XPO type information for quote_worksheet_current_cost
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for rd
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for releases
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for rental_equipment
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for rental_equipment_category
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for report
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for reports_to_helper
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for revenue_line
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for revenue_line_business_unit
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for rfq_header
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for rfq_lineitem
+2025-05-21 13:46:02,545 DEBUG core.XpoUtility - Adding XPO type information for rfq_part_list
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for rfq_vendor_list
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for rss_feed
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for r_engine_category
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for r_engine_permission
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for r_engine_report
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for salesperson
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for section
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for session
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for session_collection
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for ship
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for shopping_cart
+2025-05-21 13:46:02,546 DEBUG core.XpoUtility - Adding XPO type information for shopping_cart_header
+2025-05-21 13:46:02,547 DEBUG core.XpoUtility - Adding XPO type information for signature
+2025-05-21 13:46:02,547 DEBUG core.XpoUtility - Adding XPO type information for specific_notes
+2025-05-21 13:46:02,547 DEBUG core.XpoUtility - Adding XPO type information for stbb_bymonth
+2025-05-21 13:46:02,547 DEBUG core.XpoUtility - Adding XPO type information for stock_transfer
+2025-05-21 13:46:02,547 DEBUG core.XpoUtility - Adding XPO type information for stock_transfer_type
+2025-05-21 13:46:02,547 DEBUG core.XpoUtility - Adding XPO type information for suggestion
+2025-05-21 13:46:02,547 DEBUG core.XpoUtility - Adding XPO type information for target
+2025-05-21 13:46:02,547 DEBUG core.XpoUtility - Adding XPO type information for target_type
+2025-05-21 13:46:02,547 DEBUG core.XpoUtility - Adding XPO type information for task
+2025-05-21 13:46:02,548 DEBUG core.XpoUtility - Adding XPO type information for task_history
+2025-05-21 13:46:02,548 DEBUG core.XpoUtility - Adding XPO type information for task_member
+2025-05-21 13:46:02,548 DEBUG core.XpoUtility - Adding XPO type information for task_status
+2025-05-21 13:46:02,548 DEBUG core.XpoUtility - Adding XPO type information for tax
+2025-05-21 13:46:02,548 DEBUG core.XpoUtility - Adding XPO type information for tax_entity
+2025-05-21 13:46:02,548 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_group
+2025-05-21 13:46:02,548 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_group_link
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_hiearchy
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for tax_entity_hierarchy
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for term
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for territory_mapping
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for ticketheader
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for ticketissues
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for ticketmanager
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for ticketpage
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for ticketpriority
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for ticketstatus
+2025-05-21 13:46:02,549 DEBUG core.XpoUtility - Adding XPO type information for tickettype
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for ticket_files
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for ticket_group
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for ticket_group_type_link
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for ticket_memberview
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for ticket_tasks
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for ticket_team
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for ticket_team_memberid
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for ticket_vote
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for titles
+2025-05-21 13:46:02,550 DEBUG core.XpoUtility - Adding XPO type information for tmp_woprog
+2025-05-21 13:46:02,551 DEBUG core.XpoUtility - Adding XPO type information for training_curriculum
+2025-05-21 13:46:02,551 DEBUG core.XpoUtility - Adding XPO type information for training_header
+2025-05-21 13:46:02,552 DEBUG core.XpoUtility - Adding XPO type information for training_header_history
+2025-05-21 13:46:02,552 DEBUG core.XpoUtility - Adding XPO type information for training_history
+2025-05-21 13:46:02,552 DEBUG core.XpoUtility - Adding XPO type information for training_module
+2025-05-21 13:46:02,552 DEBUG core.XpoUtility - Adding XPO type information for training_schedule
+2025-05-21 13:46:02,552 DEBUG core.XpoUtility - Adding XPO type information for training_type
+2025-05-21 13:46:02,552 DEBUG core.XpoUtility - Adding XPO type information for truck_history
+2025-05-21 13:46:02,552 DEBUG core.XpoUtility - Adding XPO type information for user_switch
+2025-05-21 13:46:02,552 DEBUG core.XpoUtility - Adding XPO type information for vacation_log
+2025-05-21 13:46:02,553 DEBUG core.XpoUtility - Adding XPO type information for vacation_master
+2025-05-21 13:46:02,553 DEBUG core.XpoUtility - Adding XPO type information for vacation_note
+2025-05-21 13:46:02,553 DEBUG core.XpoUtility - Adding XPO type information for vacation_payment_method
+2025-05-21 13:46:02,553 DEBUG core.XpoUtility - Adding XPO type information for vacation_status
+2025-05-21 13:46:02,553 DEBUG core.XpoUtility - Adding XPO type information for vacation_transactions
+2025-05-21 13:46:02,553 DEBUG core.XpoUtility - Adding XPO type information for vacation_type
+2025-05-21 13:46:02,553 DEBUG core.XpoUtility - Adding XPO type information for vendor
+2025-05-21 13:46:02,553 DEBUG core.XpoUtility - Adding XPO type information for vendor_business_unit
+2025-05-21 13:46:02,553 DEBUG core.XpoUtility - Adding XPO type information for vendor_documents
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for vendor_merge_history
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for vendor_netsuite_map
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for video
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for video_category
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for video_page_lnk
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for video_privilege
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for video_watch_history
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for visible_business_units
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for watch
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for watch_wo_costs_sells_log
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for who_to_ask
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for wocomment
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for wodetailh_temp
+2025-05-21 13:46:02,554 DEBUG core.XpoUtility - Adding XPO type information for woprog
+2025-05-21 13:46:02,556 DEBUG core.XpoUtility - Adding XPO type information for woprogchanges
+2025-05-21 13:46:02,556 DEBUG core.XpoUtility - Adding XPO type information for woprogchanges_snapshot
+2025-05-21 13:46:02,556 DEBUG core.XpoUtility - Adding XPO type information for woprogcomment
+2025-05-21 13:46:02,556 DEBUG core.XpoUtility - Adding XPO type information for woprogstatus
+2025-05-21 13:46:02,556 DEBUG core.XpoUtility - Adding XPO type information for woprog_asset
+2025-05-21 13:46:02,556 DEBUG core.XpoUtility - Adding XPO type information for woprog_invoice_text
+2025-05-21 13:46:02,556 DEBUG core.XpoUtility - Adding XPO type information for woprog_jobtag
+2025-05-21 13:46:02,556 DEBUG core.XpoUtility - Adding XPO type information for woprog_project_notes
+2025-05-21 13:46:02,556 DEBUG core.XpoUtility - Adding XPO type information for woprog_scheduler
+2025-05-21 13:46:02,557 DEBUG core.XpoUtility - Adding XPO type information for woprog_status
+2025-05-21 13:46:02,557 DEBUG core.XpoUtility - Adding XPO type information for woprog_tasks
+2025-05-21 13:46:02,557 DEBUG core.XpoUtility - Adding XPO type information for wo_associated
+2025-05-21 13:46:02,557 DEBUG core.XpoUtility - Adding XPO type information for wo_checklist
+2025-05-21 13:46:02,557 DEBUG core.XpoUtility - Adding XPO type information for wo_checklist_history
+2025-05-21 13:46:02,557 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_current
+2025-05-21 13:46:02,558 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_current_audit
+2025-05-21 13:46:02,558 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_history
+2025-05-21 13:46:02,559 DEBUG core.XpoUtility - Adding XPO type information for wo_detail_lineitem_billtype
+2025-05-21 13:46:02,559 DEBUG core.XpoUtility - Adding XPO type information for wo_freeze
+2025-05-21 13:46:02,559 DEBUG core.XpoUtility - Adding XPO type information for wo_import_stage
+2025-05-21 13:46:02,559 DEBUG core.XpoUtility - Adding XPO type information for wo_lag
+2025-05-21 13:46:02,559 DEBUG core.XpoUtility - Adding XPO type information for wo_line_import_stage
+2025-05-21 13:46:02,559 DEBUG core.XpoUtility - Adding XPO type information for wo_survey
+2025-05-21 13:46:04,081 INFO NESI.WebAPI.SwaggerConfig - Registering Swagger support...
+2025-05-21 13:47:07,578 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 13:47:30,620 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 13:47:36,144 ERROR NESI.WebAPI.Initialization.Global - Unhandled application error
+System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<BufferResponseContentAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<InvokeCore>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Cors.CorsMiddleware.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2025-05-21 13:48:03,185 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 13:48:06,725 DEBUG NESI.WebAPI.Controllers.API.CurrentUser.SignIn.SignInController - Checking reboot time for 'localhost'
+2025-05-21 13:48:08,505 ERROR NESI.WebAPI.Initialization.Global - Unhandled application error
+System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<BufferResponseContentAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Owin.HttpMessageHandlerAdapter.<InvokeCore>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Cors.CorsMiddleware.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2025-05-21 13:51:00,029 ERROR NESI.WebAPI.Infrastructures.Filters.LogPageAttribute - Request failed http://localhost:53450/api/Core/Filemanager/Files, StatusCode: NotFound
+2025-05-21 13:53:25,975 ERROR NESI.WebAPI.Infrastructures.Filters.LogPageAttribute - Request failed http://localhost:53450/api/Core/Filemanager/Files, StatusCode: NotFound

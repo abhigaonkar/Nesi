@@ -1,0 +1,255 @@
+<nesi-breadcurmb [isHome]="false" [items]="[{label: 'Profile Settings'}]"></nesi-breadcurmb>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-md-6">
+      <p-fieldset legend="Menu Mode" [toggleable]="true">
+        <div>
+          <p-radioButton name="rdMenuMode" value="static" label="Always Show" [(ngModel)]="menuMode" (click)="setMenuMode()"></p-radioButton>
+        </div>
+        <div>
+          <p-radioButton name="rdMenuMode" value="overlay" label="Stay Hidden" [(ngModel)]="menuMode" (click)="setMenuMode()"></p-radioButton>
+        </div>
+        <div *ngIf="false">
+          <p-radioButton name="rdMenuMode" value="slim" label="Slim" [(ngModel)]="menuMode" (click)="setMenuMode()"></p-radioButton>
+        </div>
+      </p-fieldset>
+    </div>
+
+    <div class="ui-g-12 ui-md-6">
+      <p-fieldset legend="Menu Style" [toggleable]="true">
+        <div>
+          <p-radioButton name="rdMenuStyle" value="light" [(ngModel)]="menuStyle" label="Light" (click)="setMenuStyle()"></p-radioButton>
+
+        </div>
+        <div>
+          <p-radioButton name="rdMenuStyle" value="dark" [(ngModel)]="menuStyle" label="Dark" (click)="setMenuStyle()"></p-radioButton>
+
+        </div>
+        <div *ngIf="false">
+          <br>
+
+        </div>
+      </p-fieldset>
+    </div>
+    <ng-container *ngIf="! ts.isContact">
+
+      <!-- <div *ngIf="false" class="ui-g-12 ui-lg-6">
+        <p-fieldset legend="Layout Color" [toggleable]="true">
+          <div class="ui-g-6 ui-md-6" style="margin:0">
+            <div>
+              <p-radioButton name="rdLayoutColor" value="default" [(ngModel)]="layoutColor" label="Default" (click)="setLayoutColor()"></p-radioButton>
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="blue" [(ngModel)]="layoutColor" label="Blue" (click)="setLayoutColor()"></p-radioButton>
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="green" [(ngModel)]="layoutColor" label="Green" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="turquoise" [(ngModel)]="layoutColor" label="Turquoise" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="purple" [(ngModel)]="layoutColor" label="Purple" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="orange" [(ngModel)]="layoutColor" label="Orange" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="deeppurple" [(ngModel)]="layoutColor" label="Deep Purple" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="lime" [(ngModel)]="layoutColor" label="Lime" (click)="setLayoutColor()"></p-radioButton>
+            </div>
+            <div>
+            </div>
+
+          </div>
+          <div class="ui-g-6 ui-md-6" style="margin:0">
+            <div>
+              <p-radioButton name="rdLayoutColor" value="bliss" [(ngModel)]="layoutColor" label="Bliss" (click)="setLayoutColor()"></p-radioButton>
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="crimson" [(ngModel)]="layoutColor" label="Crimson" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="disco" [(ngModel)]="layoutColor" label="Disco" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="sunset" [(ngModel)]="layoutColor" label="Sunset" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="deepsea" [(ngModel)]="layoutColor" label="Deep Sea" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="opa" [(ngModel)]="layoutColor" label="Opa" (click)="setLayoutColor()"></p-radioButton>
+
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="cheer" [(ngModel)]="layoutColor" label="Cheer" (click)="setLayoutColor()"></p-radioButton>
+            </div>
+            <div>
+              <p-radioButton name="rdLayoutColor" value="smoke" [(ngModel)]="layoutColor" label="Smoke" (click)="setLayoutColor()"></p-radioButton>
+            </div>
+            <div>
+            </div>
+
+          </div>
+        </p-fieldset>
+      </div>
+
+      <div *ngIf="false" class="ui-g-12 ui-md-6">
+        <p-fieldset legend="Theme" [toggleable]="true">
+          <div>
+            <p-radioButton name="rdTheme" value="blue" [(ngModel)]="theme" label="Blue" (click)="setTheme()"></p-radioButton>
+
+          </div>
+          <div>
+            <p-radioButton name="rdTheme" value="green" [(ngModel)]="theme" label="Green" (click)="setTheme()"></p-radioButton>
+
+          </div>
+          <div>
+            <p-radioButton name="rdTheme" value="turquoise" [(ngModel)]="theme" label="Turquoise" (click)="setTheme()"></p-radioButton>
+
+          </div>
+          <div>
+            <p-radioButton name="rdTheme" value="purple" [(ngModel)]="theme" label="Purple" (click)="setTheme()"></p-radioButton>
+
+          </div>
+          <div>
+            <p-radioButton name="rdTheme" value="orange" [(ngModel)]="theme" label="Orange" (click)="setTheme()"></p-radioButton>
+
+          </div>
+          <div>
+            <p-radioButton name="rdTheme" value="deeppurple" [(ngModel)]="theme" label="Deep Purple" (click)="setTheme()"></p-radioButton>
+
+          </div>
+          <div>
+            <p-radioButton name="rdTheme" value="lime" [(ngModel)]="theme" label="Lime" (click)="setTheme()"></p-radioButton>
+
+          </div>
+          <div>
+            <p-radioButton name="rdTheme" value="lightblue" [(ngModel)]="theme" label="Light Blue" (click)="setTheme()"></p-radioButton>
+
+          </div>
+          <div>
+
+
+          </div>
+        </p-fieldset>
+      </div> -->
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-6">
+          <p-fieldset legend="Time Settings" [toggleable]="true">
+            <div class="morespace">
+              Toast Message Notification display time {{messageLifeTime}} (seconds)
+            </div>
+            <div>
+              <p-slider [(ngModel)]="messageLifeTime" name="f_messageLifeTime" [style]="{'width':'100%'}" [animate]="true" [step]="1" [min]="1"
+                [max]="10" (onChange)="setMessageLifeTime()"></p-slider>
+            </div>
+            <div class="morespace">
+              Automaticlly SignOut Time {{signOutTime}} (hours)
+            </div>
+            <div>
+              <p-slider [(ngModel)]="signOutTime" name="f_signOutTime" [style]="{'width':'100%'}" [animate]="true" [step]="1" [min]="1"
+                [max]="24" (onChange)="setSignOutTime()"></p-slider>
+            </div>
+            <!--
+            Turn this off for now
+            <div class="morespace">
+            <p-inputSwitch name="f_toggleNotificationWhenOtherSignedIn" [(ngModel)]="toggleNotificationWhenOtherSignedIn" onLabel="Show"
+              offLabel="Hide" (onChange)="setSignIn()"></p-inputSwitch><span>when other users signin</span>
+          </div>
+          <div class="morespace">
+            <p-inputSwitch name="f_toggleNotificationWhenOtherSignedOut" [(ngModel)]="toggleNotificationWhenOtherSignedOut" onLabel="Show"
+              offLabel="Hide" (onChange)="setSignOut()"></p-inputSwitch><span>when other users signout</span>
+          </div> -->
+            <div style="height:80px">
+              &nbsp;
+            </div>
+          </p-fieldset>
+        </div>
+
+        <div class="ui-g-12 ui-lg-6">
+          <p-fieldset legend="Icon Settings" [toggleable]="true">
+            <div class="ui-g-12 ">
+              <p-inputSwitch title="Always show Message Icon" name="f_messages_icon" [(ngModel)]="toggleMessageIcon" onLabel="Show" offLabel="Hide"
+                (onChange)="setMessageIcon()"></p-inputSwitch>
+              <span>
+                <i class="fa fw fa-comments fa-15x"></i>
+              </span>
+            </div>
+            <div class="ui-g-12">
+              <p-inputSwitch title="Show To Do List Icon if I have tasks" name="f_task_icon" [(ngModel)]="toggleTasksIcon" onLabel="Show"
+                offLabel="Hide" (onChange)="setTaskIcon()"></p-inputSwitch>
+              <span>
+                <i class="fa fw fa-tasks fa-15x"></i>
+              </span>
+            </div>
+            <div class="ui-g-12 ui-lg-5">
+              <p-inputSwitch title="Always Show Active User List Icon" name="f_activeUsers_icon" [(ngModel)]="toggleOnlineUserIcon" onLabel="Show"
+                offLabel="Hide" (onChange)="setOnlineUserIcon()"></p-inputSwitch>
+              <span>
+                <i class="fa fw fa-user fa-15x"></i>
+              </span>
+
+            </div>
+            <div class="ui-g-12 ui-lg-5">
+              <p-inputSwitch title="Show Active Users Badge" name="f_activeUsers_badge" [(ngModel)]="toggleOnlineUserBadge" onLabel="Show"
+                offLabel="Hide" (onChange)="setOnlineUserBadge()"></p-inputSwitch>
+              <span class="icon-wrapper" style="float:none;">
+                <i class="fa fw fa-user fa-15x"></i>
+                <span class=" orange-icon-badge">4</span>
+              </span>
+            </div>
+           <!--> <div class="ui-g-12">
+              <p-inputSwitch title="Always show Tickets List Icon" tooltipStyleClass="tooltip" name="f_tickets_icon" [(ngModel)]="toggleTicketIcon"
+                onLabel="Show" offLabel="Hide" (onChange)="setTicketIcon()"></p-inputSwitch>
+              <span>
+                <i class="fa fw fa-life-ring fa-15x"></i>
+              </span>
+            </div>-->
+          </p-fieldset>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-lg-6">
+        <p-fieldset legend="User Settings" [toggleable]="true">
+          <div class="ui-g-6">
+            <button pButton align="right" type="button" class="ui-button-primary" label="FVR's and Contact Information" (click)="openUserSettings()"
+              pTooltip="View FVR's and edit contact information" escape="false"></button>
+          </div>
+          <div class="ui-g-6">
+            <button pButton align="right" type="button" class="ui-button-primary" label="Sync Windows Password" (click)="displayPasswordInput=true"
+              *ngIf="isLdapUser" pTooltip="Sync Windows Password With nesi.ca password"></button>
+          </div>
+        </p-fieldset>
+      </div>
+    </ng-container>
+  </div>
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-md-6">
+      <button pButton align="right" type="button" class="ui-button-primary" style="float:right;" label=" Save " icon="fa fa-save"
+        iconPos="left" (click)="saveProfiles()" [disabled]="!isDirty"></button>
+    </div>
+  </div>
+</div>
+
+<p-dialog [responsive]="true" [modal]="true" header="Enter Current Password" appendTo="body" [draggable]="false" [(visible)]="displayPasswordInput">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid ui-g">
+    <div class="ui-g-12">
+      <input type="password" pInputText [(ngModel)]="currentPassword">
+    </div>
+    <div class="ui-g-12">
+      <button pButton type="button" [disabled]="!currentPassword" (click)="syncLdapPassword()" label="Sync" icon="fa-check"></button>
+    </div>
+  </div>
+</p-dialog>

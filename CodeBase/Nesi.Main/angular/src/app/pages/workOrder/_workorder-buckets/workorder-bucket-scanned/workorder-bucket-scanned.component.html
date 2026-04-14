@@ -1,0 +1,22 @@
+<div class="ui-g-12 ui-g-nopad workorder_bucket_header">
+  Just Scanned ({{list.length}})
+</div>
+<div class="ui-g-12 ui-g-nopad">
+  <p-scrollPanel [style]="{'width': '100%', 'height': height + 'px', 'background-color': 'white'}" title="">
+    <ng-container *ngFor="let item of list; let i=index">
+      <nesi-workorder-bucket-scanned-item [business_unit_id]="business_unit_id" [item]="item"></nesi-workorder-bucket-scanned-item>
+    </ng-container>
+    <br>
+    <br>
+    <br>
+  </p-scrollPanel>
+  <div class="ui-g-12 ui-g-nopad">
+      <p-fileUpload   mode="basic" auto="true" chooseLabel="Upload Files ..."
+      multiple="multiple" accept=".jpg,.pdf,.png,.gif,.bmp"
+      name="files[]" [url]="uploadURL" (onUpload)="onUploaded($event)" (onBeforeSend)="onBefoeUpload($event)" maxFileSize="5000000">
+        </p-fileUpload>
+  </div>
+</div>
+<div class="ui-g-12 ui-g-nopad bold center">
+  &nbsp;
+</div>

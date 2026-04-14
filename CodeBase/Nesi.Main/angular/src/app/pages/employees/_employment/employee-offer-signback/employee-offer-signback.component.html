@@ -1,0 +1,32 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <div class="ui-g-12">
+        Upload the signed back offer
+      </div>
+      <div class="ui-g-12" *ngIf="profile.fileList && profile.fileList.length>0">
+        *You can only have one signed upload, the last upload will overwrite the original.:
+      </div>
+      <ng-container *ngFor="let file of profile.fileList">
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-8 ui-g-lesspad">
+            <input readonly="true" pInputText [(ngModel)]="file.label" style="height:29px">
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+            <button  pButton label="View" icon="fa-eye" (click)="viewFile(file.value)"></button>
+          </div>
+          <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+            <button [disabled]="!save_enabled" pButton label="Delete" icon="fa-times" class="ui-button-danger" (click)="deleteFile(file.value)"></button>
+          </div>
+        </div>
+      </ng-container>
+      <div class="ui-g-12">
+        <p-fileUpload  name="files[]" [url]="uploadURL" (onUpload)="onUploaded($event)" (onBeforeSend)="onBefoeUpload($event)" maxFileSize="5000000">
+        </p-fileUpload>
+      </div>
+    </div>
+  </blockable-div>
+</div>

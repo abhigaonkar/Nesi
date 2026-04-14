@@ -1,0 +1,94 @@
+<%@ Master Language="C#" AutoEventWireup="true" Inherits="nonFrame" EnableTheming="true" Codebehind="nonFrame.master.cs" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%Response.Expires = -1000;%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head id="Head1" runat="server" >
+	<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
+	<link href="App_Themes/BlueStyle/common.css?new" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/functions.js"></script>
+	<script type="text/javascript">
+
+var ts_start = new Date().getTime();
+$("document").ready(function () {
+    
+	page_obj.plcapture();
+			//page_obj.scrollCheck.bind();
+	
+});
+</script>
+
+		<style type="text/css">
+    .modal
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        z-index: 99;
+        opacity: 1.0;
+        filter: alpha(opacity=80);
+        -moz-opacity: 0.8;
+        min-height: 100%;
+        width: 100%;
+    }
+    .loading
+    {
+        font-family: Arial;
+        font-size: 10pt;
+      
+        width: 200px;
+        height: 100px;
+        display: none;
+        position: fixed;
+        background-color: transparent;
+        z-index: 999;
+    }
+</style>
+
+		<title>Spark Ops</title>
+		<link type="text/css" href="/css/base/ui.all.css" runat="server" id="jquerycss" rel="Stylesheet" />	
+	    <link id="ico" rel="shortcut icon"   />
+		<asp:contentplaceholder id="header_placeholder" runat="server"/>
+	</head>
+
+	<body id="NonFrameMasterPageBodyTag" runat="server">
+		<input type="hidden" id="pl_id" value="" runat="server" /> 
+		<div id="jqueryjs" runat="server">
+			
+		</div>
+		<div id="jqueryuijs" runat="server">
+			<script type="text/javascript" src="/js/jquery-ui-1.7.1.custom.min.js"></script>
+		</div>
+		<div id="jqueryautocompletejs" runat="server">
+			<script type="text/javascript" src="/js/jquery.autocomplete.js"></script>
+		</div>
+		<div id="jqueryspellcheckjs" runat="server">
+			<script type="text/javascript" src="/js/jquery.spellcheck.js"></script>
+		</div>
+		<div id="jquerytipjs" runat="server">
+			<script type="text/javascript" src="/js/jquery.tip.js"></script>
+		</div>
+		<div id="jquerytablesorterjs" runat="server">
+			<script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+		</div>
+		<div id="jqueryinventorynewjs" runat="server">
+			<script type="text/javascript" src="/js/jquery.inventory_new.js"></script>
+		</div>
+		<div id="functionsjs" runat="server">
+		</div>
+		<div id="top_level_modal_progress" class="loading" align="center">
+    <img src="/images/loading_panel.gif" alt="" id="ld_pic" />
+</div>
+		<form id="form1" runat="server">
+			<table cellpadding="0" cellspacing="0" id="maincontent1" width="100%">
+				<tr>
+					<td valign="top">
+						<asp:contentplaceholder id="cphMasterBody" runat="server"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+		
+	</body>
+</html>
+

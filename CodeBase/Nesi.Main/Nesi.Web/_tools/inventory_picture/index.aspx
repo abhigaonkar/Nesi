@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="inventory_picture_index" masterpagefile="~/IntraDefault.master" Codebehind="index.aspx.cs" %>

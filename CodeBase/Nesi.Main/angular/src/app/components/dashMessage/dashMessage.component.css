@@ -1,0 +1,18 @@
+.dashmessageDiv {
+  margin:0 auto;
+  width: 200px;
+  margin-top: -120px;
+  padding-bottom: 120px;
+}
+
+textarea {
+  width: 100%;
+}
+
+.savebutton {
+  width: 100%;
+}
+
+.empty {
+  height: 120px;
+}

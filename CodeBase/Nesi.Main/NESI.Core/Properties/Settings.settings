@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="core.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="NS_apptype_Production" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">601911ED-755A-4741-A86D-556CA56D20F9</Value>
+    </Setting>
+    <Setting Name="NS_apptype_InvoiceService" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">9266735C-7490-4972-960C-7211E695F67D</Value>
+    </Setting>
+    <Setting Name="NS_apptype_Development" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">187EB6D7-B341-415D-B586-0F6F85D195B6</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

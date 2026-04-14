@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Nesi.Web\\Nesi.Web.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "NESI.SignalR\\NESI.SignalR.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "NESI.WebAPI\\NESI.WebAPI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,229 @@
+﻿	.PAYROLLREPORT								{
+												WIDTH:					100%;
+												}
+
+	.PAYROLLREPORT .TIMEFINDER					{
+												WIDTH:					100%;
+												BORDER:					SOLID 1PX #CCC;
+												}
+
+	.PAYROLLREPORT .TIMEFINDER .C				{
+												COLOR:					#000;
+												FONT-WEIGHT:			BOLD;
+												BORDER-RIGHT:			SOLID 1PX #CCC;
+												}
+
+	.PAYROLLREPORT .TIMEFINDER .V				{
+												COLOR:					#000;
+												TEXT-ALIGN:				LEFT;
+												}
+
+	.PAYROLLREPORT .TIMEFINDER SELECT			{
+												WIDTH:					400PX;
+												FONT-FAMILY:			ARIAL;
+												FONT-SIZE:				12PX;
+												}
+
+	.PAYROLLREPORT .TIMEFINDER .INPUT			{
+												WIDTH:					75PX;
+												TEXT-ALIGN:				CENTER;
+												}
+
+	.PAYROLLREPORT .TIMEFINDER .FOOTER			{
+												PADDING-LEFT:			150PX;
+												TEXT-ALIGN:				LEFT;
+												}
+
+
+
+
+	.PAYROLLREPORT .TIMESHEET					{
+												WIDTH:					100%;
+												}
+
+	.PAYROLLREPORT .TIMESHEET SPAN				{
+												FONT-FAMILY:			ARIAL;
+												FONT-SIZE:				11PX;
+												}
+
+	.PAYROLLREPORT .TIMESHEET TD				{
+												FONT-FAMILY:			ARIAL;
+												FONT-SIZE:				11PX;
+												COLOR:					#000;
+												PADDING:				5PX;
+												}
+
+	.PAYROLLREPORT .TIMESHEET .SIG				{
+												DISPLAY:				NONE;
+												}
+
+
+	.PAYROLLREPORT .TIMESHEET .DETAILS			{
+												PADDING-BOTTOM:			50PX;
+												}
+
+
+
+	.PAYROLLREPORT .DETAILS .HEADER				{
+												BACKGROUND-COLOR:		#000;
+												COLOR:					#FFF;
+												FONT-FAMILY:			ARIAL;
+												FONT-SIZE:				12PX;
+												FONT-WEIGHT:			BOLD;
+												TEXT-ALIGN:				CENTER;
+												PADDING:				5PX;
+												}
+
+	.PAYROLLREPORT .TIMESHEET .MEMBER SPAN		{
+												FONT-FAMILY:			VERDANA;
+												FONT-SIZE:				18PX;
+												TEXT-TRANSFORM:			UPPERCASE;
+												HEIGHT:					100PX;
+												FONT-WEIGHT:			BOLD;
+												PADDING-LEFT:			15PX;
+												TEXT-ALIGN:				LEFT;
+												}
+
+	.PAYROLLREPORT .DETAILS .DATE_W1			{
+												width:					10%;
+												COLOR:					#000;
+												FONT-WEIGHT:			BOLD;
+												TEXT-ALIGN:				CENTER;
+												BORDER-RIGHT:			SOLID 1PX #000;
+												}
+
+	.PAYROLLREPORT .DETAILS .WO_W1				{
+												width:					10%;
+												FONT-WEIGHT:			BOLD;
+												COLOR:					#000;
+												TEXT-TRANSFORM:			UPPERCASE;
+												TEXT-ALIGN:				LEFT;
+												BORDER-RIGHT:			SOLID 1PX #999;
+												BORDER-BOTTOM:			SOLID 1PX #CCC;
+												}
+
+
+	.PAYROLLREPORT .DETAILS .NAME_W1			{
+												width:					25%;
+												FONT-WEIGHT:			BOLD;
+												COLOR:					#000;
+												TEXT-TRANSFORM:			UPPERCASE;
+												TEXT-ALIGN:				LEFT;
+												BORDER-RIGHT:			SOLID 1PX #999;
+												BORDER-BOTTOM:			SOLID 1PX #CCC;
+												BACKGROUND-COLOR:		#EEE;
+												}
+
+	.PAYROLLREPORT .DETAILS .HOURS_W1			{	
+												width:					3%;
+												color:					#000;
+												text-align:				center;
+												font-weight:			bold;
+												border-right:			solid 1px #999;
+												}
+	.PAYROLLREPORT .DETAILS .DESCRIPT_W1		{
+												width:					20%;
+												color:					#000;
+												font-weight:			bold;
+												text-align:				center;
+												border-right:			solid 1px #999;
+												}
+
+	.PAYROLLREPORT .DETAILS .DATE_W2			{
+												width:					10%;
+												COLOR:					#000;
+												FONT-WEIGHT:			BOLD;
+												TEXT-ALIGN:				CENTER;
+												BORDER-RIGHT:			SOLID 1PX #000;
+												}
+
+	.PAYROLLREPORT .DETAILS .WO_W2				{
+												width:					10%;
+												FONT-WEIGHT:			BOLD;
+												COLOR:					#000;
+												TEXT-TRANSFORM:			UPPERCASE;
+												TEXT-ALIGN:				LEFT;
+												BORDER-RIGHT:			SOLID 1PX #999;
+												BORDER-BOTTOM:			SOLID 1PX #CCC;
+												}
+
+
+	.PAYROLLREPORT .DETAILS .NAME_W2			{
+												width:					25%;
+												BACKGROUND-COLOR:		#9F9;
+												FONT-WEIGHT:			BOLD;
+												COLOR:					#000;
+												TEXT-TRANSFORM:			UPPERCASE;
+												TEXT-ALIGN:				LEFT;
+												BORDER-BOTTOM:			SOLID 1PX #999;
+												BORDER-RIGHT:			SOLID 1PX #999;
+												}
+
+	.PAYROLLREPORT .DETAILS .HOURS_W2			{
+												width:					3%;
+												color:					#000;
+												font-weight:			bold;
+												text-align:				center;
+												border-right:			solid 1px #999;
+												}
+	.PAYROLLREPORT .DETAILS .DESCRIPT_W2		{
+												width:					20%;
+												color:					#000;
+												font-weight:			bold;
+												text-align:				center;
+												border-right:			solid 1px #999;
+												}
+
+	.PAYROLLREPORT .DETAILS .footer-text		{
+												BACKGROUND-COLOR:		#000;
+												COLOR:					#FFF;
+												TEXT-ALIGN:				LEFT;
+												FONT-WEIGHT:			BOLD;
+												}
+
+	.PAYROLLREPORT .DETAILS .footer-hours		{
+												BACKGROUND-COLOR:		#000;
+												COLOR:					#FFF;
+												FONT-WEIGHT:			BOLD;
+												TEXT-ALIGN:				CENTER;
+												}
+
+	.PAYROLLREPORT .DETAILS .footer-text_w		{
+												BACKGROUND-COLOR:		#666;
+												COLOR:					#FFF;
+												TEXT-ALIGN:				LEFT;
+												FONT-WEIGHT:			BOLD;
+												BORDER-BOTTOM:			SOLID 1PX #FFF;
+												}
+
+	.PAYROLLREPORT .DETAILS .footer-hours_w		{
+												BACKGROUND-COLOR:		#666;
+												COLOR:					#FFF;
+												FONT-WEIGHT:			BOLD;
+												TEXT-ALIGN:				CENTER;
+												BORDER-BOTTOM:			SOLID 1PX #FFF;
+												}
+	.PAYROLLREPORT .DETAILS .footer-text_t		{
+												BACKGROUND-COLOR:		#000;
+												COLOR:					#FFF;
+												TEXT-ALIGN:				LEFT;
+												FONT-WEIGHT:			BOLD;
+												BORDER-BOTTOM:			SOLID 1PX #FFF;
+												}
+
+	.PAYROLLREPORT .DETAILS .footer-hours_t		{
+												BACKGROUND-COLOR:		#000;
+												COLOR:					#FFF;
+												FONT-WEIGHT:			BOLD;
+												TEXT-ALIGN:				CENTER;
+												BORDER-BOTTOM:			SOLID 1PX #FFF;
+												}
+/*
+	.PAYROLLREPORT .DETAILS TR:HOVER			{
+												BACKGROUND-COLOR:		#FC6;
+												}
+*/
+
+	.PAYROLLREPORT .hideme						{
+												DISPLAY:				NONE;
+												}

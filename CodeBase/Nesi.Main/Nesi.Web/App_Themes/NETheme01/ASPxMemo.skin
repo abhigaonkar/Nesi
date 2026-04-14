@@ -1,0 +1,6 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxMemo runat="server" SpriteCssFilePath="{0}/sprite.css" CssPostfix="NETheme01" CssFilePath="{0}/styles.css">
+<CaptionStyle Font-Names="&#39;Segoe UI&#39;,Helvetica,&#39;Droid Sans&#39;,Tahoma,Geneva,sans-serif" Font-Size="12px" ForeColor="#737373"></CaptionStyle>
+</dx:ASPxMemo>

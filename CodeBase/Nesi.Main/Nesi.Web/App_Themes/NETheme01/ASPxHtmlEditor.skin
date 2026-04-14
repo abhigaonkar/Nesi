@@ -1,0 +1,22 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dx" %>
+
+<dx:ASPxHtmlEditor runat="server" CssFilePath="{0}/styles.css" CssPostfix="NETheme01">
+<Styles CssPostfix="NETheme01" CssFilePath="{0}/styles.css">
+<ContentArea BackColor="#FFFFFF"></ContentArea>
+
+<ViewArea>
+<BorderBottom BorderStyle="None" BorderWidth="4px"></BorderBottom>
+</ViewArea>
+</Styles>
+
+<Images SpriteCssFilePath="{0}/sprite.css">
+<ToolbarPopOut>
+<SpriteProperties HottrackedCssClass="dxHtmlEditor_heToolbarPopOutHover_NETheme01"></SpriteProperties>
+</ToolbarPopOut>
+
+<LoadingPanel Url="HtmlEditor/Loading.gif"></LoadingPanel>
+</Images>
+
+<Border BorderColor="#E0E0E0" BorderStyle="Solid" BorderWidth="5px"></Border>
+</dx:ASPxHtmlEditor>

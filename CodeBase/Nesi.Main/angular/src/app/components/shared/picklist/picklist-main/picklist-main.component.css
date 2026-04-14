@@ -1,0 +1,18 @@
+@media screen and (min-width: 1024px) {
+
+.label_for_add_parts {
+    position: absolute;
+    top: 275px;
+    left: 40px;
+    width:300px;
+}
+
+}
+
+@media screen and (max-width: 1024px) {
+
+    .label_for_add_parts {
+       margin-left: 10px;
+       margin-bottom: -10px;
+    }
+}

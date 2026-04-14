@@ -1,0 +1,133 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4 ui-g-lesspad right bold ">
+            Status in Spark Ops:
+          </div>
+          <div class="ui-g-12 ui-lg-8  ui-g-lesspad">
+            {{profile.status}}
+          </div>
+        </div>      
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad right bold ">
+            HR Status:
+          </div>
+          <div class="ui-g-12 ui-lg-8  ui-g-lesspad">
+            {{profile.hr_status}}
+          </div>
+        </div>
+        <hr />
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad right bold ">
+            Employee Name:
+          </div>
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad">
+            {{profile.fullname}}
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4   ui-g-lesspad right bold">
+            Business Unit:
+          </div>
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad">
+            {{profile.business_unit_name}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad right bold">
+            Position:
+          </div>
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad">
+            {{profile.membertype_name}}
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+            Termination Date:
+          </div>
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_left_less">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="term_date"  placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('term_date','required')" [errorMsg]="'Termination Date is required'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4   ui-g-lesspad label_for_right ">
+            Termination Time:
+          </div>
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_left_less">
+            <input pInputText maxlength="50" formControlName="term_time">
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('term_time','required')" [errorMsg]="'Termination Time is required'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+            Last Date Worked:
+          </div>
+          <div class="ui-g-12 ui-lg-4   ui-g-lesspad label_for_left_less">
+            <p-calendar [style]="{'width': '100%'}" dateFormat="yy-mm-dd" showButtonBar="true" formControlName="last_day_worked"  placeholder="yyyy-mm-dd"
+              showIcon="true"></p-calendar>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('last_day_worked','required')" [errorMsg]="'Last Date Worked is required'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+            Termination Reason (actual):
+          </div>
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_left_less">
+            <textarea pInputTextArea  [rows]="5" maxlength="50000" formControlName="reason_actual"></textarea>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('reason_actual','required')" [errorMsg]="'Termination Reason (actual) is required'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+            Termination Reason (ROE):
+          </div>
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_left_less">
+            <p-dropdown [filter]="true" maxlength="50" placeholder="Select Reason" [style]="{'width':'100%'}" [options]="profile.roeList"
+              formControlName="reason_roe"></p-dropdown>
+            <nesi-fieldErrorDisplay [displayError]="isFieldInValid('reason_roe','required')" [errorMsg]="'Termination Reason (ROE) is required'"></nesi-fieldErrorDisplay>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+            Will Employee be Returning?:
+          </div>
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad text_for_left">
+            <p-checkbox binary="true" formControlName="is_returning"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad label_for_right ">
+            Has employee returned all company property?:
+          </div>
+          <div class="ui-g-12 ui-lg-4  ui-g-lesspad text_for_left">
+            <p-checkbox binary="true" formControlName="is_returned_property"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-2  ui-g-lesspad ui-lg-offset-4">
+            <button pButton type="submit" label="Save" icon="fa-save"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <hr/>
+    <div class="ui-g-12">
+      <p-tabView>
+        <p-tabPanel header="Check List" leftIcon="fa-list">
+          <nesi-employee-termination-checklist  (onChange)="onChange.emit($event)"  [employee]="employee"></nesi-employee-termination-checklist>
+        </p-tabPanel>
+        <p-tabPanel header="FootPrints" leftIcon="fa-suitcase">
+          <nesi-employee-footprints  (onChange)="onChange.emit($event)" [employee]="employee"></nesi-employee-footprints>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </blockable-div>
+</div>

@@ -1,0 +1,95 @@
+<p-blockUI [blocked]="submitting">
+  <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+</p-blockUI>
+<div class="ui-g-12 ui-md-6">
+  <span class="ui-float-label ui-float-label-top">
+    <label>Select Customer</label>
+  </span>
+  <nesi-ReactiveDropDown [placeholder]="'Select Customer'" [(ngModel)]="selectCustomer" [options]="customers" (onChange)="customerSelect($event)"></nesi-ReactiveDropDown>
+</div>
+<div class="ui-g-12 ui-md-6" *ngIf="isDropdown">
+  <div class="ui-g-10 ui-g-nopad">
+    <span class="ui-float-label ui-float-label-top">
+      <label>Select Quote</label>
+    </span>
+    <p-dropdown [disabled]=" !allitems || allitems.length==0" [style]="{'width':'100%'}" [placeholder]="placeholder" [options]="allitems"
+      [(ngModel)]="selectItem" (onChange)="select($event)" [filter]="(allitems && allitems.length >5)" [required]="false">
+      <ng-template let-item pTemplate="item">
+        <div>{{item.label}}</div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+  <div class="ui-g-2 ui-g-nopad">
+    <div class="ui-g-6 ui-g-nopad">
+      <button pButton [disabled]="!selectItem" icon="fa-window" (click)="select({value: selectItem})"></button>
+    </div>
+    <div class="ui-g-6 ui-g-nopad right">
+      <button pButton icon="fa-times" class="ui-button-danger" (click)="close.emit()"></button>
+    </div>
+  </div>
+</div>
+<div class="ui-g-12 ui-md-5" *ngIf="!isDropdown" [style.margin-top]="cs.isSm? '20px': '0'">
+  <span class="ui-float-label ui-float-label-top">
+    <label for="float-input">Search Quote (at least 3 chars)</label>
+  </span>
+  <div class="ui-inputgroup">
+    <p-autoComplete [size]="30" (onFocus)="text=''" id="float-input" [(ngModel)]="text" [suggestions]="allitems" (completeMethod)="search($event)"
+      (onSelect)="select($event)" dataKey="value" field="label" [minlength]="3"></p-autoComplete>
+    <span class="ui-inputgroup-addon">
+      <i class="fa fa-search"></i>
+    </span>
+  </div>
+</div>
+<div class="ui-g-12 ui-md-1 right" *ngIf="!(isDropdown && allitems && allitems.length>0)">
+  <button pButton icon="fa-times" class="ui-button-danger" (click)="close.emit()"></button>
+</div>
+<p-dialog header="{{sourceName}}: {{label}}" [width]="cs.dialogWidth"
+[minHeight]="840"
+[modal]="true" [responsive]="true" [(visible)]="dialogDisplay">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12  ui-g-nopad ">
+      <div class="ui-g-12 ui-lg-2 ui-g-nopad label_for_right">
+        Sections:
+      </div>
+      <div class="ui-g-12 ui-lg-8 ui-g-nopad  label_for_left_less">
+        <p-multiSelect
+        appendTo="body" selectedItemsLabel="{0} sections selected"
+        placeholder="Choose sections"
+         [options]="sectionList" [(ngModel)]="selected_sections" 
+         (onChange)="setFilterRows()" ></p-multiSelect>
+      </div>
+      <div class="ui-g-1 ui-g-offset-11  ui-g-nopad  ui-lg-2">
+        <p-checkbox (onChange)="checkAll($event)" [(ngModel)]="checkedAll" binary="true"></p-checkbox>
+      </div>
+    </div>
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <ng-container formArrayName="filter_rows">
+        <!-- <div *ngFor="let row of rows.controls; let i=index"> -->
+        <p-dataList [value]="filter_rows.controls" [paginator]="true" [rows]="25">
+          <ng-template let-row let-i="index" pTemplate="item">
+            <div class="ui-g-12" [formGroupName]="i" [ngClass]="{'greyBack': i % 2==1,'whiteBack': i %2 ==0}">
+              <div class="ui-g-1">
+                {{i+1}}
+              </div>
+              <div class="ui-g-8">
+                <nesi-picklist-selectItem (startLoad)="costStart()" (loaded)="costLoaded($event,i)" [quote_id]="quote_id" [revision]="revision"
+                  [item]="row.value"></nesi-picklist-selectItem>
+              </div>
+
+              <div class="ui-g-2">
+                <input id="qty" pInputText type="number" step="1" formControlName="qty">
+              </div>
+              <div class="ui-g-1">
+                <p-checkbox id="check_{{i}}" formControlName="is_checked" binary="true"></p-checkbox>
+              </div>
+            </div>
+          </ng-template>
+        </p-dataList>
+        <!-- </div> -->
+      </ng-container>
+      <div class="ui-g-12">
+        <button pButton icon="fa-plus" label="Add"></button>
+      </div>
+    </form>
+  </div>
+</p-dialog>

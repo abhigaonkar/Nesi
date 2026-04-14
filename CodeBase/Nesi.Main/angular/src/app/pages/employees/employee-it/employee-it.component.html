@@ -1,0 +1,158 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid smaller">
+
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <p-panel [toggleable]="true">
+          <p-header>
+            <i class="fa fa-fw fa-lock-open"></i> Login / Email Information
+          </p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Spark Ops Username:
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                <input pInputText maxlength="50" formControlName="username">
+              </div>
+            </div>
+
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Old Employee ID:
+              </div>
+              <div class="ui-g-12 ui-lg-1 label_for_left_less">
+                <input pInputText maxlength="50" formControlName="id">
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Old Employee Login:
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                <input pInputText maxlength="50" formControlName="emplogon">
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Company Email Address:
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                <input pInputText maxlength="50" formControlName="neEmail">
+                <nesi-fieldErrorDisplay [displayError]="formHasError('neEmail',['neEmail'])" [errorMsg]="'Company Email Address is required.'"></nesi-fieldErrorDisplay>
+              </div>
+              <div class="ui-g-12 ui-lg-6 text_for_left">
+                <p-checkbox binary="true" label="Should have Email" formControlName="gets_neemail"></p-checkbox>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                LDAP Username:
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                <input pInputText maxlength="50" formControlName="ldaP_user">
+                <nesi-fieldErrorDisplay [displayError]="formHasError('ldaP_user',['ldaP_user'])" [errorMsg]="'LDAP Username is required.'"></nesi-fieldErrorDisplay>
+              </div>
+              <!-- <div class="ui-g-12 ui-lg-3 ">
+                <button pButton align="right" type="button" class="ui-button-primary" label="Sync Windows Password" (click)="syncITLdapPassword()"
+                  *ngIf="userform.get('ldaP_user').value" pTooltip="Sync Windows Password With nesi.ca password"></button>
+              </div> -->
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Extension:
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                <input pInputText maxlength="50" formControlName="phoneExtension">
+                <nesi-fieldErrorDisplay [displayError]="formHasError('phoneExtension',['phoneExtension'])" [errorMsg]="'Extension is required.'"></nesi-fieldErrorDisplay>
+              </div>
+              <div class="ui-g-12 ui-lg-6 text_for_left">
+                <p-checkbox binary="true" label="Should have Extension" formControlName="gets_phoneext"></p-checkbox>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Cellphone ID (Hardware):
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                <p-dropdown [filter]="true" maxlength="50" placeholder="Select Cellphone" [style]="{'width':'100%'}" [options]="profile.cellphoneList"
+                  formControlName="cellphone_id"></p-dropdown>
+                <nesi-fieldErrorDisplay [displayError]="formHasError('cellphone_id',['cellphone_id'])" [errorMsg]="'Cellphone ID is required.'"></nesi-fieldErrorDisplay>
+              </div>
+              <div class="ui-g-12 ui-lg-6 text_for_left">
+                <p-checkbox binary="true" label="Should have Cellphone" formControlName="gets_phone"></p-checkbox>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Company Cellphone Number (SIM):
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                <p-dropdown [filter]="true" maxlength="50" placeholder="Select Number" [style]="{'width':'100%'}" [options]="profile.simList"
+                  formControlName="cellphone_number_id"></p-dropdown>
+                <nesi-fieldErrorDisplay [displayError]="formHasError('cellphone_number_id',['cellphone_number_id'])" [errorMsg]="'Company Cellphone Number (SIM) is required.'"></nesi-fieldErrorDisplay>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Barcode Scanner:
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                &nbsp;
+              </div>
+              <div class="ui-g-12 ui-lg-6 text_for_left">
+                <p-checkbox binary="true" label="Should have Barcode Scanner" formControlName="gets_barcodescanner"></p-checkbox>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Laptop:
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                &nbsp;
+              </div>
+              <div class="ui-g-12 ui-lg-6 text_for_left">
+                <p-checkbox binary="true" label="Should have Laptop" formControlName="gets_laptop"></p-checkbox>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Include in Mobile Contact List:
+              </div>
+              <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                <p-checkbox binary="true" formControlName="include_in_mobile_contactlist"></p-checkbox>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-g-12 ui-lg-2 label_for_right ">
+                Last Mobile Login:
+              </div>
+              <div class="ui-g-12 ui-lg-4 text_for_left">
+                {{userform.get('last_mobile_login').value || 'Unknown'}}
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-2 ui-lg-offset-2">
+            <button pButton type="submit" label="Save" icon="fa-save"></button>
+          </div>
+        </div>
+      </form>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-12 ui-lg-2 label_for_right ">
+          Reset Spark Ops Password:
+        </div>
+        <div class="ui-g-12 ui-lg-4 label_for_left_less">
+          <input pInputText type="password" [(ngModel)]="newpassword" maxlength="50">
+        </div>
+        <div class="ui-g-12 ui-lg-2">
+          <button pButton label="Reset Password" (click)="resetPassword()" icon="fa-check"></button>
+        </div>
+      </div>
+    </div>
+  </blockable-div>
+</div>

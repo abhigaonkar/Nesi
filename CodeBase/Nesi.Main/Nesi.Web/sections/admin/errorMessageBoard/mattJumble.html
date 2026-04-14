@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+</head>
+<body>
+
+  <script type="text/javascript">
+
+
+
+
+
+
+
+
+$(document).ready(function(){
+
+
+
+var oldTime = 0;
+var queueMemberTime = [];
+var queueWoTime = [];
+var neMemberTimeAvg = "...";
+var neWoProgTimeAvg = "...";
+
+var array = [];
+
+window.setInterval(function(){
+//Android.stopLoad();
+//Android.showLoad("Get");
+  
+ $.ajax({
+  type: "POST",
+  data: "data",
+  dataType: "xml",
+  url: "/sections/admin/errorMessageBoard/errorMessageData.asmx/getLastError",
+  crossDomain: true,
+  success: function(xml){
+          $(xml).find("ErrorData").each(function()
+          {
+              var one = $(this).find("errorDesc").text();
+              var two = $(this).find("LastName").text();
+
+
+              var neMemberTime = $(this).find("NeEmail").text();
+              var neWoProgTime = $(this).find("CompanyName").text();
+              var errorsToday = $(this).find("PhoneNumber").text();
+              var criticalTickets = $(this).find("criticalTickets").text();
+              
+              var randomTicket = $(this).find("randomTicket").text();
+
+             /* queueMemberTime.push(parseFloat(neMemberTime));
+              queueWoTime.push(parseFloat(neWoProgTime));
+
+              if (queueMemberTime.length >= 20){
+                  
+                var count = 0;
+                var count2 = 0;
+                for(var i=0, n=queueMemberTime.length; i < n; i++) 
+                { 
+                  count += queueMemberTime[i]; 
+                  count2 += queueWoTime[i]; 
+                }
+
+                  neMemberTimeAvg =  Math.round((count / queueMemberTime.length) * 100) / 100 ;
+                  queueMemberTime = [];
+
+                  neWoProgTimeAvg =  Math.round((count2 / queueWoTime.length) * 100) / 100 ;
+                  queueWoTime = [];
+              }*/
+
+              $("#memberTime").html("<strong>&emsp;Total Errors Today:</strong> " + errorsToday + "<hr>");
+
+
+              if (typeof old === 'undefined') {
+                old = "";
+              }
+              if (old === one+two || array.indexOf(one+two) >= 0){
+                //nothing
+              }else{
+                $("<div><strong>"+two+ "</strong><br>     " + one + "<hr></div>").hide().prependTo("#output").slideDown(1000).effect("highlight", {color: 'red'}, 800).effect("highlight", {color: 'red'}, 200).effect("highlight", {color: 'red'}, 500);
+
+                // $("#output").fadeIn('slow').prepend("<hr>");
+                // $("#output").fadeIn('slow').prepend("<strong>"+two+ "</strong><br>     " + one);
+                // $("#output").fadeIn('slow').prepend("<br>");
+                old = one + two;
+                array.push(one+two);
+              }
+
+
+
+          });
+          
+        
+  }
+ });
+//checkServerStatus( "https://www.nesi.ca" );
+//checkServerStatus( "https://beta.nesi.ca" );
+
+            //  Android.showToast("Errorzzz", 250);
+}, 3000);
+
+
+});
+
+function checkServerStatus( url )
+{
+    var script = document.body.appendChild(document.createElement("script"));
+    script.onerror = function()
+    {
+        $("<div ><strong><mark>"+url+" IS DOWN!</mark> "+Date()+" </strong><hr></div>").hide().prependTo("#output").slideDown(1000).effect("highlight", {color: 'red'}, 800).effect("highlight", {color: 'red'}, 200).effect("highlight", {color: 'red'}, 500);
+    };
+    script.src = url;
+
+}
+refreshAt(2,30,0);
+function refreshAt(hours, minutes, seconds) {
+    var now = new Date();
+    var then = new Date();
+
+    if(now.getHours() > hours ||
+       (now.getHours() == hours && now.getMinutes() > minutes) ||
+        now.getHours() == hours && now.getMinutes() == minutes && now.getSeconds() >= seconds) {
+        then.setDate(now.getDate() + 1);
+    }
+    then.setHours(hours);
+    then.setMinutes(minutes);
+    then.setSeconds(seconds);
+
+    var timeout = (then.getTime() - now.getTime());
+    setTimeout(function() { 
+
+      window.location.reload(true); 
+
+    }, timeout);
+}
+
+
+
+
+
+  </script>
+
+      <div id="memberTime" style="font-size: 45px; font-family:'Arial'"></div>
+      <div id="output" style="font-size: 40px; font-family:'Arial'; padding-left: 10px; padding-right: 10px;"></div>
+
+</div>
+</body>
+</html>

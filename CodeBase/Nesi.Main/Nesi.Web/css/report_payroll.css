@@ -1,0 +1,103 @@
+﻿#report_payroll											{
+														width:								100%;
+														}
+
+#report_payroll	.reports								{
+														width:								100%;
+														}
+#report_payroll	.reports select							{
+														width:								100%;
+														height:								100px;
+														font-size:							11px;
+														font-weight:						bold;
+														border:								0px;
+														}
+
+#report_payroll	.report									{
+														padding:							3px;
+														margin:								3px;
+														border:								solid 1px #ddd;
+														}
+#report_payroll	.show_reports							{
+														width:								100%;
+														font-size:							11px;
+														font-weight:						bold;
+														border:								solid 1px #ccc;
+														background-color:					#cfc;
+														}
+
+#report_payroll	.report	.report_name					{
+														padding:							5px;
+														font-size:							20px;
+														font-weight:						bold;
+														background-color:					#060;
+														color:								#fff;
+														text-transform:						uppercase;
+														}
+
+#report_payroll	.report	#E3 .company_list,				
+#report_payroll	.report	#E2 .company_list,				
+#report_payroll	.report	#E1 .company_list				{
+														width:								100%;
+														font-weight:						bold;
+														}
+
+#report_payroll	.report	#E3 #E3_rowset,					
+#report_payroll	.report	#E2 #E2_rowset,					
+#report_payroll	.report	#E1 #E1_rowset					{
+														width:								50%;
+														}
+
+
+#report_payroll	.report	#E3 #E3_rowset thead th			{
+														background-color:					#000;
+														font-weight:						bold;
+														color:								#fff;
+														cursor:								pointer;
+														text-transform:						uppercase;
+														}
+					
+#report_payroll	.report	#E2 #E2_rowset thead th			{
+														background-color:					#000;
+														font-weight:						bold;
+														color:								#fff;
+														cursor:								pointer;
+														text-transform:						uppercase;
+														}
+
+#report_payroll	.report	#E1 #E1_rowset thead th			{
+														background-color:					#000;
+														font-weight:						bold;
+														color:								#fff;
+														text-transform:						uppercase;
+														}
+
+#report_payroll	.report	#E1 #E1_rowset .E1_rowhead		{
+														background-color:					#cfc;
+														font-weight:						bold;
+														border-bottom:						solid 1px #060;
+														border-top:							solid 1px #090;
+														border-right:						solid 1px #ddd;
+														text-transform:						uppercase;
+														}
+
+#report_payroll	.report	#E1 #E1_rowset .E1_rowitem td	{
+														border-right:						solid 1px #ddd;
+														border-bottom:						solid 1px #ddd;
+														}
+
+#report_payroll	.report	#E2 #E2_rowset .E2_rowitem:hover,
+#report_payroll	.report	#E3 #E3_rowset .E3_rowitem:hover		{
+														background-color:					#cfc;
+														}
+#report_payroll	.report	#E1 #E1_rowset .E1_rowitem .x,
+#report_payroll	.report	#E2 #E2_rowset .E2_rowitem .x,
+#report_payroll	.report	#E3 #E3_rowset .E3_rowitem .x	{
+														color:								#ccc;
+														}
+#report_payroll	.report	#E2 #E2_rowset .E2_rowitem td,
+#report_payroll	.report	#E3 #E3_rowset .E3_rowitem td	{
+														border-right:						solid 1px #ddd;
+														border-bottom:						solid 1px #ddd;
+														text-align:							center;
+														}

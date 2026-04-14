@@ -1,0 +1,28 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Inventory Counts'}]"></nesi-breadcurmb>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g-12 ui-lg-1 label_for_right">
+      Business Unit:
+    </div>
+    <div class="ui-g-12 ui-lg-2">
+      <nesi-visibleBusinessUnitDropDown [(ngModel)]="selected_business_unit" (onChange)="ReLoadDetail()"></nesi-visibleBusinessUnitDropDown>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-g-12 ui-lg-1 label_for_right">
+       Show Location:
+      </div>
+      <div class="ui-g-12 ui-lg-2 label_for_left">
+        <p-checkbox [(ngModel)]="checked" binary="true" (onChange)="ReLoadDetail()"></p-checkbox>
+      </div>
+    </div>
+  <div class="ui-g-12 ui-g-nopad">
+    <nesi-datatable 
+    [need_query_param]="true"
+    [fixed_header_scroll]="210"
+    [id]='103' gridName="InventoryCountsGrid" gridTitle="" refreshCache="true" (onRefresh)="loadDetail(false)">
+    </nesi-datatable>
+  </div>
+</div>

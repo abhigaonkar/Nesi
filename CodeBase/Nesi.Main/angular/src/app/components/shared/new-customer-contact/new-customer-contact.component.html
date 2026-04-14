@@ -1,0 +1,55 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        Name:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <input pInputText type="text" formControlName="name">
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('name')" [errorMsg]="'You must enter a valid name.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        Title: 
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <nesi-ReactiveDropDown formControlName="title" [options]="titles"></nesi-ReactiveDropDown>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('title')" [errorMsg]="'You must select a valid title.'"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        Email:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <input pInputText type="email" formControlName="email">
+        <nesi-fieldErrorDisplay [displayError]="formHasError('emailorphone',['email','phone'])" errorMsg="You must enter a valid cell phone or email address."></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        Extension #:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <input pInputText type="text" formControlName="extension">
+      </div>
+    </div> <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-g-nopad">
+        Cell Phone:
+      </div>
+      <div class="ui-g-12 ui-md-8 ui-g-nopad">
+        <input pInputText type="text" formControlName="phone">
+        <nesi-fieldErrorDisplay [displayError]="formHasError('emailorphone',['email','phome'])" errorMsg="You must enter a valid cell phone or email address."></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-6">
+        <button pButton type="submit" label="Save" icon="fa-save"></button>
+      </div>
+      <div class="ui-g-6">
+        <button pButton type="button"  label="Cancel" icon="fa-times-circle" (click)="clickCancel()"></button>
+      </div>
+    </div>
+  </form>
+</div>

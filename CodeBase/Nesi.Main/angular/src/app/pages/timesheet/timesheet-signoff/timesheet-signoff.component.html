@@ -1,0 +1,73 @@
+   <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+     <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g">
+      <div class="ui-g-9 ui-g-nopad">
+          <div class="ui-g-4"></div>
+          <div class="ui-g-4 label_for_right">
+                Cut PO:      
+          </div>
+          <div class="ui-g-4">
+              <input id="input" type="text" pInputText formControlName="cutpo"  />
+          </div>
+          <div class="ui-g-12 sig-container" #sigContainer1 >
+                <signature-field formControlName="signatureField" (window:resize)="onResize($event)"></signature-field>
+          </div>
+          <div class="ui-g-12">
+
+          </div>
+          <div  class="ui-g-12" >
+            <span class="ui-float-label">
+                  <input id="input" type="text" [style]="{'width':'100%'}" pInputText formControlName="printname" required="true"/>
+                  <label for="float-input">Print Name</label>
+           </span>
+           </div>
+           <div class="ui-g-6">
+                <p-dropdown appendTo="body" [style]="{'width':'100%'}"   [placeholder]="'&nbsp;'" [options]="customerContacts" 
+                       formControlName="customer_contact" (onChange)="onchanged($event)" >
+                 </p-dropdown>
+          </div>
+          <div class="ui-g-3">
+                        <button pButton   type="button"  label="Add" icon="fa fa-plus" iconPos="left" (click)="addContact()"></button>
+          </div>
+          <div class="ui-g-3">
+              <button pButton   type="button"  label="Edit" icon="fa-edit" iconPos="left" (click)="editContact()" [disabled]="!(customer_contact>1)"></button>
+          </div>
+          <div  class="ui-g-12" *ngIf="IsMultiContactsVisible" >
+                 <div *ngFor="let option of multiContacts; let i = index" class="ui-g-3">
+                        <p-checkbox formControlName="{{option.value}}" value="{{option.value}}"  [(ngModel)]="send_to_contact_ids" label="{{option.label}}" (onChange)="onChecked($event)" ></p-checkbox>
+                </div>
+                <div *ngIf="1==0">
+                Selected Categories
+                <input id="input" type="text" pInputText formControlName="send_to_contact_ids"  />
+                <span *ngFor="let cat of send_to_contact_ids" style="margin-right:10px">{{cat}}</span>
+              </div>
+        </div>
+      </div>
+
+    <div class="ui-g-3 ui-g-nopad" >       
+                <div class="ui-g-12">
+                     <button pButton   type="button"  label="Cancel" icon="fa-times-circle" iconPos="left" (click)="closeClick($event)"></button>
+                </div>
+                <div class="ui-g-12">
+                  <button pButton  type="button" (click)="ReviewPDf()" icon="fa-eraser" iconPos="left" label="Review PDF"  [disabled]="userform.controls.signatureField.valid"></button>
+              </div>
+                <div class="ui-g-12">
+                     <button pButton  type="button" (click)="clear()" icon="fa-eraser" iconPos="left" label="Clear Signature Pad" [disabled]="!userform.controls.signatureField.valid"></button>
+                </div>
+                <div class="ui-g-12">
+                    <button pButton type="submit" iconPos="left" label="Submit" icon="fa fa-save" [disabled]="!userform.valid" ></button>
+                </div>   
+                <div class="ui-g-12">
+                    <button pButton type="button" iconPos="left" label="Email selected contact" icon="fa fa-envelope" [disabled]="false" (click)="email()"></button>
+                    <div class="" *ngIf="sendingFlag">{{sendingMsg}}</div>
+               </div> 
+    </div>
+         
+       </div>
+    </div>
+   
+   </form>
+   <p-dialog header="New Contact" [responsive]="true" [(visible)]="addNewContactDisplay">
+          <nesi-new-customer-contact [customerId]="selectedCustomerId" [addressId]="selectedAddressId" (onChange)="contactSaved($event)" (close)="contactCancel()"></nesi-new-customer-contact>
+  </p-dialog>
+ 

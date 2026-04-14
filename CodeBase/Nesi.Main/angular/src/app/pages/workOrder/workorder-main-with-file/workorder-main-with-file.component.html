@@ -1,0 +1,10 @@
+<div class="ui-g-12 ui-g-nopad">
+  <split-container [init_position]="init_position" [(position)]="position" (resize)="resize($event)" >
+    <div class="split-left" split-behaviour="fixed">
+      <nesi-workorder-main (pdf_path)="get_pdf_path($event)"></nesi-workorder-main>
+    </div>
+    <div class="split-right" split-behaviour="dynamic">
+      <nesi-workorder-show-scanned-file  [url]="pdf_path"></nesi-workorder-show-scanned-file>
+    </div>
+  </split-container>
+</div>

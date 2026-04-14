@@ -1,0 +1,35 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+</p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Vendor Note:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <textarea pInputTextarea rows="5" cols="25" formControlName="data"></textarea>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            NotePad:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <textarea pInputTextarea rows="5" cols="25" formControlName="data2"></textarea>
+          </div>
+        </div>
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-offset-2 ui-lg-4">
+            <button type="submit" pButton label="Save Notes" icon="fa-save"></button>
+          </div>
+        </div>
+      </form>
+      <div class="ui-g-12">
+        <textarea class="back_notes" [autoResize]="true" readonly="true" pInputTextarea rows="10" cols="25" [(ngModel)]="profile.past_notes"></textarea>
+      </div>
+    </div>
+  </div>
+</blockable-div>

@@ -1,0 +1,175 @@
+﻿html					{
+						width:				100%;
+						}
+body					{
+						width:				100%;
+						margin:				0px;
+						background:			#ddd; /* Old browsers */
+						background:			-moz-linear-gradient(top,  #ddd 0%, #ffffff 25px); /* FF3.6+ */
+						background:			-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ddd), color-stop(25px,#ffffff)); /* Chrome,Safari4+ */
+						background:			-webkit-linear-gradient(top,  #ddd 0%,#ffffff 25px); /* Chrome10+,Safari5.1+ */
+						background:			-o-linear-gradient(top,  #ddd 0%,#ffffff 25px); /* Opera 11.10+ */
+						background:			-ms-linear-gradient(top,  #ddd 0%,#ffffff 25px); /* IE10+ */
+						background:			linear-gradient(to bottom,  #ddd 0%,#ffffff 25px); /* W3C */
+						background-repeat:	repeat-x;
+						font-family:		Roboto-Regular,HelveticaNeue,Arial,sans-serif;
+						filter:				progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddd', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+						}
+.login_button			{
+						width:				100%;
+						height:				40px;
+						}
+.login_textbox			{
+						width:				100%;
+						height:				40px;
+						font-size:			25px;
+						}
+.login_title			{
+						font-size:			18px;
+						font-family:		Arial Black;
+						}
+.login_textboxtitle		{
+						text-align:			center;
+						font-weight:		bold;
+						}
+.logo					{
+						position:			absolute;
+						left:				50%;
+						top:				0;
+						margin-left:		-43px;
+						}
+.menu_toggle			{
+						position:			fixed;
+						left:				0;
+						top:				0;
+						z-index:			5;
+						background-color:	#4682b4;
+						border-right:		solid 1px #a8dadc;
+						border-bottom:		solid 1px #a8dadc;
+						border-radius:		0 0 5px 0;
+						}
+.menu_toggle_disabled	{
+						float:				left;
+						}
+.menu_bar	
+	{
+	height:				44px;
+	margin-bottom:		10px;
+	}
+.menu					{
+						position:			fixed;
+						left:				-260px;
+						top:				0px;
+						width:				260px;
+						background-color:	#ccc;
+						z-index:			1000;
+						margin-bottom:		10px;
+						overflow: auto;
+						height: 100%;
+
+						}
+			
+.menu .o				{
+						font-family:		'Droid Sans', Helvetica, sans-serif;
+						font-weight:		bold;
+						font-size:			18px;
+						cursor:				pointer;
+						padding:			10px 5px 10px 10px;
+						background-color:	#e0e0e0;
+						border-top:			none;
+						border-bottom:		none;
+						border-right:		none;
+						}
+.menu .o:hover			{
+						background-color:	#eee;
+						}
+.menu .o img			{
+						margin-right:	5px;
+						width:			16px;
+						height:			16px;
+						}
+.tab					{
+						}
+.member_plate			{
+						background-color: #4682b4; /* Old browsers */
+
+
+						}	
+.member_plate b			{
+						font-size:					1.45em;
+						font-weight:				bold;
+						display:					block;
+						color:						#fff;
+						margin-bottom:				-3px;
+						}
+.member_plate .branch	{
+						font-size:					1em;
+						display:					block;
+						color:						#eee;
+						}
+.member_plate .type		{
+						font-size:					0.75em;
+						display:					block;
+						padding-bottom:				5px;
+						color:						#ddd;
+						font-style:					oblique;
+						}
+.member_plate img		{
+						width:						27px;
+						height:						40px;
+						margin:						5px;
+						vertical-align:				middle;
+						float:						left;
+/*
+						border-radius:				3px;
+						border:						solid 1px #000;
+						background:					-moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); 
+						background:					-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); 
+						background:					-webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+						background:					-o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+						background:					-ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+						background:					linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+						filter:						progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+*/
+						}
+.scan					{
+						background-color:			#f00;
+						color:						#fff;
+						}
+.orientation 			{
+						z-index:					3;
+						background-color:			#ddd;
+						position:					absolute;
+						right:						25px;
+						top:						25px;
+						border-radius:				3px;
+						}
+.orientation.p			{
+						width:						35px;
+						height:						50px;
+						}
+.orientation.l			{
+						width:						50px;
+						height:						35px;
+						}
+.attention
+	{
+	width:						80%;
+	border:						solid 2px #ccc;
+	padding:					20px;
+	border-radius:				3px;
+	font-weight:				bold;
+	}
+.attention .icon
+	{
+	float:						left;
+	height:						48px;
+	width:						48px;
+	margin:						5px;
+	}
+.attention .subtext				
+	{
+	margin-top:					5px;
+	font-weight:				normal;
+	font-size:					.95em;
+	}

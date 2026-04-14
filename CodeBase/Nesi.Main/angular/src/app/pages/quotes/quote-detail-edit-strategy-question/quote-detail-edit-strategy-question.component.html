@@ -1,0 +1,35 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+  <!-- <div class="ui-g-12 tableCaption">
+    {{type}}
+  </div> -->
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <ng-container formArrayName="rows">
+      <div *ngFor="let row of rows.controls; let i=index">
+        <div class="ui-g-12 ui-g-nopad" [formGroupName]="i" [ngClass]="{'greyBack': i % 2==1,'whiteBack': i %2 ==0}">
+          <div class="ui-g-12 ui-md-7">
+            {{row.get('question').value}}
+          </div>
+          <div class="ui-g-4 ui-md-1">
+            <p-checkbox binary="true" formControlName="is_checked" (onChange)="calculateScore()"></p-checkbox>
+          </div>
+          <div class="ui-g-8 ui-md-4" *ngIf="!is_readonly">
+            <input pInputText formControlName="notes">
+          </div>
+          <div class="ui-g-8 ui-md-4" *ngIf="is_readonly">
+            {{row.get('notes').value}}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="ui-g-12 ui-md-4 bold larger">
+      score: {{score}}
+    </div>
+    <div class="ui-g-12 ui-md-4" *ngIf="!is_readonly">
+      <button pButton type="submit" label="All Done!" icon="fa-check"></button>
+    </div>
+    <div class="ui-g-12 ui-md-4" *ngIf="!is_readonly">
+      <button pButton type="button" label="Clear" class="ui-button-warning" icon="fa-times" (click)="clearClick()" ></button>
+    </div>
+  </form>
+</div>

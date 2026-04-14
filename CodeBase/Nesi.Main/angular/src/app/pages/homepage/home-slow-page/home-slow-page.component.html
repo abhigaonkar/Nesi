@@ -1,0 +1,14 @@
+<div class="ui-g-12 home_autoBingo">
+  <p-dataTable [emptyMessage]="'No slow page found.'" [paginator]="false" [value]="items" sortMode="single" resizableColumns="false"
+     [loading]="loading" [loadingIcon]="'fa-spinner'" [responsive]="true" [sortField]="'t_total'" [sortOrder]="-1"  >
+    <p-header>
+      Page load speeds (Past 7 days)
+    </p-header>
+    <p-column field="url" [style]="{'width':'40%'}" header="Page" [sortable]="true"></p-column>
+    <p-column field="count_id" [style]="{'width':'10%'}" header="Page Hits" [sortable]="true"></p-column>
+    <p-column field="count_over_three" [style]="{'width':'10%'}" header="Hits Over 3s" [sortable]="true"></p-column>
+    <p-column field="avg_time" [style]="{'width':'10%'}" header="Total AVG Time" [sortable]="true"></p-column>
+    <p-column field="t_over_three" [style]="{'width':'10%'}" header="Time Over 3s" [sortable]="true"></p-column>
+    <p-column field="t_total" [style]="{'width':'10%'}" header="Total Time" [sortable]="true"></p-column>
+  </p-dataTable>
+</div>

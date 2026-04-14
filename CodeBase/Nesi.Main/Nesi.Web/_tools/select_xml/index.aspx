@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="select_xml" masterpagefile="~/IntraDefault.master" Codebehind="index.aspx.cs" %>

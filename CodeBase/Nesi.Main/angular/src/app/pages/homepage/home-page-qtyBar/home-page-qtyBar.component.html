@@ -1,0 +1,3 @@
+<div [ngClass]="{'level_3': value<=level_2, 'level_2': value>level_2 && value<=level_1, 'level_1': value>level_1}">
+  <p-progressBar [value]="value" [showValue]="true" [unit]="''"></p-progressBar>
+</div>

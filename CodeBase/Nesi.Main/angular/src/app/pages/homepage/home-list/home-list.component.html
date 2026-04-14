@@ -1,0 +1,51 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <nesi-breadcurmb [isHome]="true" [items]="[{label: 'Home Page'}]"></nesi-breadcurmb>
+  <div *ngIf="is_developer==1">
+    <div class="ui-g-4 ui-g-nopad">   
+      <button class="btn btn-primary" pButton type="button" icon="fas fa-sync fa-lg" (click)="refreshPage()"></button>
+    </div>
+    </div>
+  <div class="ui-g-12 ui-g-nopad" *ngIf="!isContact">
+    <nesi-home-todo></nesi-home-todo>
+  </div>
+  <div *ngIf="is_developer==1">
+    <div class="ui-g-12 ui-g-nopad">
+      <nesi-home-autobingo></nesi-home-autobingo>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <nesi-home-invoice-service></nesi-home-invoice-service>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <nesi-home-slow-page></nesi-home-slow-page>
+    </div>
+  </div>
+  <div *ngIf="is_developer==2">
+    <div class="ui-g-12 ui-md-12 ui-lg-6 ">
+
+      <nesi-home-pane [redAge]="5" [level_1]="8" [level_2]="4" [title]="'My Quotes'" [name]="'Quotes'"></nesi-home-pane>
+      <nesi-home-pane [redAge]="5" [level_1]="7" [level_2]="3" [title]="'My Work orders being Processed'" [name]="'WoStatus'"></nesi-home-pane>
+    </div>
+    <div class="ui-g-12 ui-md-12 ui-lg-6">
+      <nesi-home-pane [redAge]="60" [status_name]="'Project Manager'" [level_1]="12" [level_2]="8" [title]="'Branch Quotes Waiting for Customers'"
+        [name]="'BranchQuotes'"></nesi-home-pane>
+      <nesi-home-pane [redAge]="60" [status_name]="'Project Manager'" [level_1]="20" [level_2]="10" [title]="'Branch Work orders being Processed'"
+        [name]="'WoStatusBranch'"></nesi-home-pane>
+      <nesi-home-pane [redAge]="60" [status_name]="'Project Manager'" [level_1]="7" [level_2]="3" [title]="'Branch Work orders Waiting for PM'"
+        [name]="'WoWaitingPM'"></nesi-home-pane>
+      <nesi-home-pane [redAge]="60" *ngIf="show_branchpo" [status_name]="'Status'" [level_1]="7" [level_2]="3" [title]="'Branch Purchase Orders'"
+        [name]="'Branchpo'"></nesi-home-pane>
+    </div>
+  </div>
+
+  <div class="ui-g-12 ui-g-nopad" *ngIf="isContact">
+    <div class="ui-g-4" *ngIf="show_quote">
+      <div class='sq_button quote_button' id="quote_button" (click)="openQuote()">I would like a quote...</div>
+    </div>
+    <div class="ui-g-4" *ngIf="show_wo">
+      <div class='sq_button wo_button' id="wo_button" (click)="openWo()">Let's start another job...</div>
+    </div>
+    <div class="ui-g-4" *ngIf="show_faq">
+      <div class='sq_button faq_button' id="faq_button" (click)="openFaq()">F.A.Qs</div>
+    </div>
+  </div>
+</div>

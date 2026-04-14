@@ -1,0 +1,85 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    <nesi-breadcurmb [items]="[{label: 'Reports'},{label: 'Master Outstanding Invoices Grid'}]"></nesi-breadcurmb>
+  </div>
+  <div class="ui-g-12">
+    <nesi-datatable [id]='113' [visible_business_type]="'S'" gridName="MasterOutstandingInvoicesGrid" gridTitle="" refreshCache="true"
+      (onRefresh)="loadDetail()"
+      [callback]="masterOutstandingInvoicesGridColumnCallback"
+      [callbackForRow]="masterOutstandingInvoicesGridCallback"
+      (onEdit)="openEdit($event)">
+      <table style="width: 100%; white-space:normal;">
+        <tr>
+          <td style="background-color: #FFCCCC; white-space:normal;" width="100px">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td align="left" width="100px" nowrap="nowrap">
+            In Dispute</td>
+          <td nowrap="nowrap" rowspan="2" valign="middle">
+            <strong style="padding: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With Selected:&nbsp;&nbsp;&nbsp;&nbsp; </strong>
+          </td>
+          <td style=" margin: 0px; padding: 0px;" width="300px" rowspan="2" valign="middle">
+            <table cellpadding="0" style="width: 100%; white-space: nowrap;">
+              <tr>
+                <td style="margin: 0px; padding: 0px; text-align: left; white-space: nowrap;">
+                  Confirmed Paid Date:&nbsp;
+                </td>
+                <td style="margin: 0px; padding: 0px;" [formGroup]="userform">
+                  <p-calendar dateFormat="yy-mm-dd" showIcon="true" showButtonBar="true"  placeholder="yyyy-mm-dd" formControlName="confirmedPaidDate"
+                    [showIcon]="true"  [style]="{'width': '120px'}">
+                  </p-calendar>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td rowspan="2" style=" margin: 0px; padding: 0px;" valign="middle">
+            <button pButton type="Button" label="Apply" icon="fa-save" (click)="confirmPaidDate()"></button>
+          </td>
+          <td rowspan="4" valign="top">
+            &nbsp;</td>
+          <td width="100%" rowspan="4">
+            &nbsp;</td>
+        </tr>
+        <tr>
+          <td style="background-color: #FFFF00" width="50px">
+            &nbsp;</td>
+          <td align="left" width="100px" nowrap="nowrap">
+            Do Not Contact</td>
+        </tr>
+        <tr>
+          <td style="background-color: #99FF99" width="50px">
+            &nbsp;</td>
+          <td align="left" width="100px" nowrap="nowrap">
+            Write Off</td>
+          <td nowrap="nowrap">
+            &nbsp;</td>
+          <td nowrap="nowrap">
+            &nbsp;</td>
+          <td nowrap="nowrap">
+            &nbsp;</td>
+        </tr>
+        <tr>
+          <td style="background-color: #99CCFF" width="50px">
+            &nbsp;</td>
+          <td align="left" width="100px" nowrap="nowrap">
+            Branch Manager</td>
+          <td nowrap="nowrap">
+            &nbsp;</td>
+          <td nowrap="nowrap">
+            &nbsp;</td>
+          <td nowrap="nowrap">
+            &nbsp;</td>
+        </tr>
+      </table>
+    </nesi-datatable>
+  </div>
+</div>
+
+<p-dialog [width]="cs.dialogWidth" [responsive]="true" [modal]="true" header="Editing Invoice Collection" [draggable]="true"
+    [(visible)]="displayEdit" [positionTop]="100" (onHide)="exitFromEditor()">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+      <master-outstanding-invoice-editor [masterOutstandingInvoice]="entity"  [editLink]="editLink" (onExit)="exitFromEditor()" 
+        [customerStatusList]="customerStatusList"
+        [invoiceStatusList]="invoiceStatusList">
+      </master-outstanding-invoice-editor>
+    </div>
+</p-dialog>

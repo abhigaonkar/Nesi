@@ -1,0 +1,143 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid smaller">
+  <p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+  </p-blockUI>
+  <blockable-div #pblockableDiv>
+    <div class="ui-g">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+        <p-panel [toggleable]="true">
+          <p-header>
+            <i class="fa fa-fw fa-info"></i> Applicant Id: {{applicant_id}}
+          </p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g">
+              <div class="ui-g-12  ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  First Name (Given Name):
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText maxlength="50" formControlName="firstname">
+                  <nesi-fieldErrorDisplay [displayError]="isFieldInValid('firstname')" [errorMsg]="' First Name is required.'"></nesi-fieldErrorDisplay>
+                </div>
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Last Name (Surname):
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText maxlength="50" formControlName="lastname">
+                  <nesi-fieldErrorDisplay [displayError]="isFieldInValid('lastname')" [errorMsg]="' Last Name is required.'"></nesi-fieldErrorDisplay>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Address:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText maxlength="150" formControlName="address">
+                </div>
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Apt:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText maxlength="50" formControlName="apt">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  City:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText maxlength="50" formControlName="city">
+                </div>
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  State/Province:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <p-dropdown [filter]="false" maxlength="50" placeholder="Select Province/State" [style]="{'width':'100%'}" [options]="profile.provinceList"
+                    formControlName="province"></p-dropdown>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Country:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <p-dropdown [filter]="false" maxlength="50" placeholder="Select Country" [style]="{'width':'100%'}" [options]="profile.countryList"
+                    formControlName="country"></p-dropdown>
+                </div>
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Zip/Postal:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText maxlength="10" formControlName="postal">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Cell Phone:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText maxlength="20" formControlName="cellphone">
+                  <nesi-fieldErrorDisplay [displayError]="isFieldInValid('cellphone') && isVaildPhone()" [errorMsg]="' cell phone is required.'"></nesi-fieldErrorDisplay>
+                </div>
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Home Phone:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText maxlength="20" formControlName="homephone">
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Email:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                  <input pInputText type="email" maxlength="150" formControlName="email">
+                  <nesi-fieldErrorDisplay [displayError]="!isValidEmail()" [errorMsg]="' Email is required, and must be valid (cant be nomail@)'"></nesi-fieldErrorDisplay>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Business Unit:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <p-dropdown  [filter]="true" placeholder="Select Business Unit" [style]="{'width':'100%'}" [options]="profile.businessUnitList"
+                    formControlName="business_unit_id"></p-dropdown>
+                    <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('business_unit_id')" [errorMsg]="' Business Unit is required.'"></nesi-fieldErrorDisplay>
+                  </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Title:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <p-dropdown [filter]="true"  placeholder="Select Title" [style]="{'width':'100%'}" [options]="profile.memberTypeList"
+                    formControlName="membertypeid"></p-dropdown>
+                    <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('membertypeid')" [errorMsg]="' Title is required.'"></nesi-fieldErrorDisplay>
+                </div>
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Status:
+                </div>
+                <div class="ui-g-12 ui-lg-4 label_for_left_less">
+                    <p-dropdown [filter]="false" placeholder="Select Status" [style]="{'width':'100%'}" [options]="statusList"
+                    formControlName="status"></p-dropdown>
+                    <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('status')" [errorMsg]="' Status is required.'"></nesi-fieldErrorDisplay>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-g-nopad">
+                <div class="ui-g-12 ui-lg-2 label_for_right ">
+                  Notes:
+                </div>
+                <div class="ui-g-12 ui-lg-10 label_for_left_less">
+                  <textarea  class="back_notes" pInputTextArea rows="5" maxlength="50" formControlName="notes"></textarea>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-lg-2 ui-lg-offset-2 ui-g-nopad">
+                <button pButton icon="fa-save" label="Save"></button>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+      </form>
+    </div>
+  </blockable-div>
+</div>

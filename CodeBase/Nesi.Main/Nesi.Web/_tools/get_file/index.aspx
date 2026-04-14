@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="get_file_index" masterpagefile="~/nonFrame.master" Codebehind="index.aspx.cs" %>

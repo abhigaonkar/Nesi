@@ -1,0 +1,137 @@
+<p-blockUI [blocked]="submitting" [target]="pblockableDiv">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw blockui"></i>
+</p-blockUI>
+<blockable-div #pblockableDiv>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-g-lesspad">
+                <div class="ui-g-12 ui-g-lesspad" *ngIf="isShown">
+                      <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+                        Business Unit:
+                      </div>
+                      <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+                        <p-dropdown [filter]="true" [style]="{'width':'100%'}" [options]="profile.businessUnitList" 
+                          formControlName="business_unit"></p-dropdown>
+                      </div>
+                </div>
+             
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Terms:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" placeholder="Select Term" [style]="{'width':'100%'}" [options]="profile.termList"
+              formControlName="vendor_term_id" disabled="true"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            PO Exempt (Not PO's needed):
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-checkbox binary="true" formControlName="po_exempt"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Print CPRS:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-checkbox binary="true" formControlName="cprs"></p-checkbox>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Identification No. Type:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" placeholder="Select Identification No. Type" [style]="{'width':'100%'}" [options]="profile && profile.idTypeList"
+              formControlName="vendor_idtype"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Identification Number:*:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText maxlength="10" formControlName="vendor_idnumber">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad" *ngIf="isShown">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Credit Type:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" maxlength="50" placeholder="Select Credit Type" [style]="{'width':'100%'}" [options]="profile && profile.creditTypeList"
+              formControlName="vendor_credit_type"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad" *ngIf="isShown">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Credit Limit:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText maxlength="10" formControlName="vendor_credit_limit">
+          </div> 
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Account Number:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText maxlength="10" formControlName="vendor_account">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Buyer Name:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <input pInputText maxlength="10" formControlName="vendor_buyer">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad" *ngIf="isShown">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Tax 1:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" maxlength="50" placeholder="Select Tax" [style]="{'width':'100%'}" [options]="profile && profile.taxList"
+              formControlName="tax1"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad" *ngIf="isShown">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Tax 2:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" maxlength="50" placeholder="Select Tax" [style]="{'width':'100%'}" [options]="profile && profile.taxList"
+              formControlName="tax2"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad" *ngIf="isShown">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Tax 3:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" maxlength="50" placeholder="Select Tax" [style]="{'width':'100%'}" [options]="profile && profile.taxList"
+              formControlName="tax3"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12 ui-g-lesspad" *ngIf="isShown">
+          <div class="ui-g-12 ui-g-nopad ui-lg-2 label_for_right">
+            Tax 4:
+          </div>
+          <div class="ui-g-12 ui-g-nopad ui-lg-8 label_for_left_less">
+            <p-dropdown [filter]="true" maxlength="50" placeholder="Select Tax" [style]="{'width':'100%'}" [options]="profile && profile.taxList"
+              formControlName="tax4"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-lg-offset-2 ui-lg-2">
+            <button type="submit" pButton label="Save Address" icon="fa-save"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</blockable-div>

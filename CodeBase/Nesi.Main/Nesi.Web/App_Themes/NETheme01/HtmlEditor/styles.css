@@ -1,0 +1,272 @@
+/* ----------------- Main ----------------- */
+/* Loading panel */
+.dxheLoadingDiv_NETheme01
+{
+    background: white;
+    opacity: 0.85;
+    filter: alpha(opacity=85);
+}
+.dxheLoadingPanel_NETheme01
+{
+	border: 1px solid #C3C3C3;
+	background-color: white;
+	font: 14px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #333333;
+}
+.dxheLoadingPanel_NETheme01 td.dx
+{
+white-space: nowrap;
+    	text-align: center;
+	padding: 10px 14px;
+}
+
+.dxheControl_NETheme01
+{
+}
+
+/* Area */
+.dxheContentArea_NETheme01
+{
+    padding: 4px 4px;
+border:solid 0px;
+
+
+}
+.dxheContentArea_NETheme01 .dxheErrorFrame_NETheme01
+{
+	font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+	color: #D00707;
+	background-color: #FBC7C7;
+	margin-bottom: 6px;
+}
+.dxheContentArea_NETheme01 .dxheErrorFrame_NETheme01 .dxhe {
+    padding: 5px;
+}
+.dxheContentArea_NETheme01 .dxheErrorFrame_NETheme01 .dxhe td {
+    padding: 0px;
+}
+.dxheContentArea_NETheme01 .dxheErrorFrame_NETheme01 .dxheErrorFrameCloseButton_NETheme01 {
+    cursor: pointer;
+}
+.dxheViewArea_NETheme01
+{
+}
+.dxheContentArea_NETheme01 td.dxheViewArea_NETheme01 /*B209529*/
+{
+	font-size: 0;
+}
+.dxheHtmlViewArea_NETheme01,
+.dxheDesignViewArea_NETheme01,
+.dxhePreviewArea_NETheme01 
+{
+    	margin: 0px;
+    	background: none #FFFFFF;
+border: 0;
+    	font-size: smaller;
+    	font: normal 12px Arial, Helvetica, sans-serif;    
+}
+.dxheContentArea_NETheme01 .dxeMemo_NETheme01 td,
+body.dxheDesignViewArea_NETheme01,
+body.dxhePreviewArea_NETheme01
+{
+    padding: 0 0 0 4px;
+}
+.dxheContentArea_NETheme01 .dxeMemoEditArea_NETheme01
+{
+    padding-left: 0;
+    padding-right: 0;
+}
+.dxheControl_NETheme01.dxhe-rtl .dxheContentArea_NETheme01 .dxeMemo_NETheme01 td,
+body.dxheDesignViewArea_NETheme01.dxhe-rtl,
+body.dxhePreviewArea_NETheme01.dxhe-rtl
+{
+	padding: 0 4px 0 0;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{
+    .dxheControl_NETheme01.dxhe-rtl .dxheContentArea_NETheme01 .dxeMemo_NETheme01 td
+    {
+	    padding: 0 0 0 4px;
+    }
+}
+.dxheControl_NETheme01 .dxeMemo_NETheme01 textarea 
+{
+	resize: none;
+}
+/* Element appearance in DesignView */
+body.dxheDesignViewArea_NETheme01 table.dxEmptyBorderTable_NETheme01,
+body.dxheDesignViewArea_NETheme01 table.dxEmptyBorderTable_NETheme01 td  {
+    border:1px dotted gray;
+}
+@media print 
+{
+	body.dxheDesignViewArea_NETheme01 table.dxEmptyBorderTable_NETheme01,
+	body.dxheDesignViewArea_NETheme01 table.dxEmptyBorderTable_NETheme01 td  
+	{
+		border:0px;
+	}
+}
+
+/* Status Bar */
+.dxheStatusBar_NETheme01 
+{
+border:solid 0px;
+}
+.dxheStatusBar_NETheme01 .dxheStatusBarTab_NETheme01
+{
+	padding-left: 11px;
+	padding-right: 12px;
+	padding-bottom: 5px;
+	background: Transparent;
+}
+.dxheStatusBarActiveTab_NETheme01 
+{
+border:solid 0px;
+
+}
+.dxHtmlEditor_heSizeGrip_NETheme01
+{
+    cursor: se-resize;
+}
+.dxHtmlEditor_heSizeGripRtl_NETheme01
+{
+    cursor: ne-resize;
+}
+.dxheSizeGripContainer_NETheme01
+{
+    float: left;
+    height: 0;
+    width: 100%;
+    text-align: right;
+    font-size: 0;
+    margin-top: -16px;
+}
+.dxheControl_NETheme01.dxhe-rtl .dxheSizeGripContainer_NETheme01 
+{
+	text-align: left;
+}
+/* ----------------- Dialog Forms ----------------- */
+#dxInsertTableForm .buttonsCell,
+#dxInsertLinkForm .buttonsCell,
+#dxInsertImageForm .buttonsCell,
+#dxPasteFromWordForm .buttonsCell,
+#dxTableColumnPropertiesForm .buttonsCell,
+#dxSelectImageForm .buttonsCell,
+.dxheCustomDialog_NETheme01 .dxhecd-Buttons
+{
+    background-color: white;
+    border-top: Solid 1px #E0E0E0;
+    padding: 11px;
+}
+/* Insert Image Form */
+#dxInsertImageForm .imagePreviewCell,
+#dxSelectImageForm .imagePreviewCell
+{
+    color: #878787;
+    border: dashed 1px #cac8c8;
+}
+#dxPasteFromWordForm .pasteContainerCell td
+{
+	border: Solid 1px #9F9F9F;
+}
+/*----------------- Toolbars -----------------*/
+.dxtbSpacing_NETheme01
+{
+	height: 1px;
+}
+.dxtbControl_NETheme01 
+{
+    font: 12px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+       width: 100%;
+    border-bottom: Solid 1px #c0c0c0;
+}
+.dxtbControl_NETheme01 td.dxmMenu_NETheme01
+{
+	border-width: 0px;
+}
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxm-main 
+{
+	background-color: #FFFFFF;
+}
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxmtb.dxm-horizontal .dxm-separator 
+{
+}
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxmtb.dxm-horizontal .dxm-separator b
+{
+	margin-top: 3px;
+	background-color: #c0c0c0;
+}
+.dxtbComboBoxMenuItem_NETheme01
+{
+    padding-top: 2px;
+}
+
+/* Toolbars Lightweight Mode */
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxm-main {
+    border-width: 0px;
+}
+.dxmLite_NETheme01 .dxmtb .dxtb-comboBoxMenuItem {
+	border-width: 0px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxm-horizontal.dxmtb .dxm-image-l .dxm-dropDownMode.dxtb-cb .dxm-content, 
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxm-horizontal.dxmtb .dxm-image-r .dxm-dropDownMode.dxtb-cb .dxm-content
+{
+	padding-top: 3px;
+	padding-bottom: 4px;
+}
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxm-horizontal.dxmtb .dxm-image-l .dxm-item.dxtb-cddi .dxm-content, 
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxm-horizontal.dxmtb .dxm-image-r .dxm-item.dxtb-cddi .dxm-content
+{
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxm-horizontal.dxmtb .dxm-image-l .dxm-item.dxtb-cddi .dxm-content img, 
+.dxtbControl_NETheme01 .dxmLite_NETheme01 .dxm-horizontal.dxmtb .dxm-image-r .dxm-item.dxtb-cddi .dxm-content img
+{
+	margin-top: -1px;
+}
+.dxmLite_NETheme01 .dxhetipControl_NETheme01 img
+{
+	vertical-align: top;
+}
+
+/* ToolbarColorButton */
+.dxtcbControl_NETheme01 { }
+.dxtcbColorDiv_NETheme01
+{
+	width: 16px;
+	height: 3px;
+	font-size:0px;
+	background-color: Transparent;
+}
+
+/*----------------- RoundPanel -----------------*/
+.dxheRP.dxrpControl_NETheme01 .dxrpContent_NETheme01,
+.dxheRP.dxrpControl_NETheme01 .dxrpLE,
+.dxheRP.dxrpControl_NETheme01 .dxrpRE,
+.dxheRP.dxrpControl_NETheme01 .dxrpBE,
+.dxheRP.dxrpControl_NETheme01 .dxrpNHTE
+{
+}
+.dxheRP.dxrpControl_NETheme01 .dxrpContent_NETheme01
+{
+    padding: 9px 8px;
+}
+.dxheRP.dxrpControl_NETheme01 .dxrpTE,
+.dxheRP.dxrpControl_NETheme01 .dxrpNHTE,
+.dxheRP.dxrpControl_NETheme01 .dxrpLE,
+.dxheRP.dxrpControl_NETheme01 .dxrpHLE,
+.dxheRP.dxrpControl_NETheme01 .dxrpRE,
+.dxheRP.dxrpControl_NETheme01 .dxrpHRE,
+.dxheRP.dxrpControl_NETheme01 .dxrpBE,
+.dxheRP.dxrpControlGB_NETheme01 .dxrpNHTE,
+.dxheRP.dxrpControlGB_NETheme01 .dxrpLE,
+.dxheRP.dxrpControlGB_NETheme01 .dxrpHLE,
+.dxheRP.dxrpControlGB_NETheme01 .dxrpRE,
+.dxheRP.dxrpControlGB_NETheme01 .dxrpBE
+{
+}
+
+

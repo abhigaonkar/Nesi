@@ -1,0 +1,13 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+    <div class="ui-g-12">
+      <p-editor  [readonly]="!enabled" [(ngModel)]="value" [style]="{'height':'320px'}"></p-editor>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 ui-md-offset-4">
+        <button pButton [label]="'Save'"  [disabled]="!enabled" type="button" icon="fa-save" (click)="save('save')"></button>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <button pButton [label]="'All Done!'" [disabled]="!enabled" type="button" icon="fa-check" (click)="save('done')"></button>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+<nesi-breadcurmb [items]="[{label: 'Branch Credit Card Purchases'}]"></nesi-breadcurmb>
+
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        *User:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <nesi-ReactiveDropDown [options]="currentUserProfile && currentUserProfile.visibleUserList" formControlName="member_id"
+          (onChange)="loadSelectedUserProfile()"></nesi-ReactiveDropDown>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right_nopad">
+        *Purchase Date:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <p-calendar formControlName="date_purchased" [minDate]="CalendedrMinDate" dateFormat="yy-mm-dd" placeholder="yyyy-mm-dd"
+          showIcon="true"></p-calendar>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        *Purchased From?:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <p-autoComplete formControlName="seller_id" [suggestions]="sellerList" (completeMethod)="filterSeller($event)"
+          [size]="30" placeholder="Input more than 2 characters to search" [minLength]="2"></p-autoComplete>
+
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('seller_id')" errorMsg="Purchased From is required"></nesi-fieldErrorDisplay>
+
+      </div>
+    </div>
+
+    <div class="ui-g-12" *ngIf="!allow_unlinked_timesheet">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        Work Order #:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <p-dropdown [options]="selectedUserProfile && selectedUserProfile.workOrders" formControlName="wo_number"
+          dataKey="woprog_id" [style]="{'width':'100%'}" placeholder="&nbsp;" [filterBy]="'customer_name,woprog_bvwo,description'"
+          [filter]="selectedUserProfile && selectedUserProfile.workOrders.length>10">
+          <ng-template let-wo pTemplate="item">
+            <div class="ui-g ui-g-nopad" [ngClass]="{'top_border': cs.isSm}">
+              <div class="ui-g-9 ui-lg-3  ui-g-nopad">
+                {{wo.customer_name}}
+              </div>
+              <div class="ui-g-3 ui-lg-2 ui-g-nopad">
+                {{wo.woprog_bvwo}}
+              </div>
+              <div class="ui-g-12 ui-lg-7  ui-g-nopad">
+                {{wo.description}}
+              </div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+        If you can't find your work order, it might be on hold, or it's been set as a labor only work order.
+      </div>
+    </div>
+
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right_nopad">
+        OR was this a shop expense?:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <p-checkbox binary="true" formControlName="isShop" (onChange)="shopChanged($event)"></p-checkbox>
+        <nesi-fieldErrorDisplay [displayError]="formHasError('workOrderOrShop',['wo_number','isShop'])" errorMsg="Please either choose a work order, or check the shop expense checkbox."></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right_nopad">
+        *Amount:
+        <br />
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <input type="number" step="0.01" pInputText formControlName="amount" placeholder="Amount" [readOnly]="!receiptRequried">
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('amount')" errorMsg="Amount is required and greater than 0."></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        Currency:
+
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <p-dropdown [options]="currencies" formControlName="currency"></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">*Credit Card Used:</div>
+      <div class="ui-g-12 ui-md-8">
+        <nesi-ReactiveDropDown [options]="cards" formControlName="credit_card_id" (onChange)="creditCardChanged($event)"></nesi-ReactiveDropDown>
+        <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('master_id')" errorMsg="Category of Purchase is required"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        *Category of Purchase:
+
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <nesi-ReactiveDropDown [options]="categories" formControlName="master_id" (onChange)="categoryChanged($event)"></nesi-ReactiveDropDown>
+        <nesi-fieldErrorDisplay [displayError]="isDropdownInValid('master_id')" errorMsg="Category of Purchase is required"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        Physical copy of receipt:
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <input pInputText readonly="true" style="border: 0" formControlName="file_name">
+        <!-- <div class="ui-g-12"> {{userform.get('file_name').value}} </div> -->
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('file_name')" errorMsg="Please upload physical copy of receipt"></nesi-fieldErrorDisplay>
+        <p-fileUpload name="files[]" [url]="uploadURL" (onUpload)="onUploaded($event)" (onBeforeSend)="onBefoeUpload($event)"
+          maxFileSize="5000000">
+        </p-fileUpload>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4 label_for_right">
+        *Description of item(s) purchased:
+        <br />This goes on the work order, so please be careful with wording.
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <textarea [rows]="5" formControlName="item_text" pInputTextarea autoResize="autoResize" placeholder="Description of item(s) purchased"></textarea>
+        <nesi-fieldErrorDisplay [displayError]="isFieldInValid('item_text')" errorMsg="Description is required"></nesi-fieldErrorDisplay>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-4">
+
+      </div>
+      <div class="ui-g-12 ui-md-8">
+        <button pButton type="submit" label="Submit" icon="fa-save" (click)="reloadGrid()"></button>
+      </div>
+    </div>
+
+  
+      <iframe class="iframe" width="100%" frameborder="0" height="650px" runat="server" src="/sections/purchaseorder/company_credit_card_gridView.aspx?page_id=194&is_n1=true"></iframe>
+    

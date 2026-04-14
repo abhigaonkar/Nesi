@@ -1,0 +1,20 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <nesi-breadcurmb [items]="[{label: 'Vacation Requests'},{label: tabName}]"></nesi-breadcurmb>
+  <nesi-timesheetBarMenu [Profile]="Profile"></nesi-timesheetBarMenu>
+  <div class="ui-g-12">
+    <p-tabView #d (onChange)="tabChanged($event)">
+      <p-tabPanel header="Schedule" [leftIcon]="'fa-calendar-check'">
+        <nesi-timesheetVacationSchedule (onChange)="VacationChanged()" (confirmStart)="onsubmitting=true" (afterSubmit)="onsubmitting=false"></nesi-timesheetVacationSchedule>
+      </p-tabPanel>
+      <p-tabPanel *ngIf="showWithdrawal" header="Withdrawal" [leftIcon]="'fa-share-square'">
+        <nesi-timesheetVacationWithdrawal (onChange)="VacationChanged()" (beforeSubmit)="onsubmitting=true" (afterSubmit)="onsubmitting=false"></nesi-timesheetVacationWithdrawal>
+      </p-tabPanel>
+      <p-tabPanel header="Past Requests" [leftIcon]="'fa-history'">
+        <nesi-timesheetVacationPast (deleted)="VacationChanged()"></nesi-timesheetVacationPast>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>
+<p-blockUI [target]="d" [blocked]="onsubmitting">
+  <i class="fa fa-spinner  fa-spin fa-2x middlecenter"></i>
+</p-blockUI>

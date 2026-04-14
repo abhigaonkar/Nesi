@@ -1,0 +1,314 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+  <div class="ui-g-12">
+    <div class="ui-g-12 ui-lg-5 ui-g-nopad">
+      <div class="ui-g-12 ui-g-nopad ui-lg-offset-2 ui-lg-2">
+        <button pButton label="Print" style="margin-left:5px;" icon="fa-print" (click)="printWorkSheet()"></button>
+      </div>
+      <div class="ui-g-12 ui-g-nopad ui-lg-2" style="padding-left:15px;">
+        <button pButton label="Export"  icon="fa-file-excel" (click)="excelWorkSheet()"></button>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-2 label_for_right">
+          Section:
+        </div>
+        <div class="ui-g-9">
+          <p-dropdown [style]="{'width':'100%'}" [options]="sections" [(ngModel)]="selectedSection" [filter]="sections && sections.length>10"
+            (onChange)="sectionChanged($event)"></p-dropdown>
+        </div>
+        <div class="ui-g-1" style="margin-left:-13px">
+          <button [disabled]="edit_disabled" title="Click to add/edit sections" pButton icon="fa-plus" (click)="editSections()"></button>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-g-nopad">
+        <div class="ui-g-2 label_for_right">
+          Source:
+        </div>
+        <div class="ui-g-9">
+          <p-dropdown [style]="{'width':'100%'}" [options]="sources" [(ngModel)]="selectedSource" (onChange)="sourceChanged($event)"
+            [filter]="sources && sources.length>10" [disabled]="edit_disabled || selectedSection==0" scrollHeight="600px"></p-dropdown>
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-lg-7 ui-g-nopad">
+      <nesi-picklist-anlysis [edit_disabled]="edit_disabled" [quote_id]="quote_id" [revision]="revision" [model]="model" (print)="printWorkSheet()"
+        (excel)="excelWorkSheet()" (applyDiscount)="applyDicsount($event)" (priceUpdated)="quote_price_updated($event)" *ngIf="model"></nesi-picklist-anlysis>
+    </div>
+    <div class="ui-g-12 ui-g-nopad bold label_for_add_parts" *ngIf="!edit_disabled && selectedSource>0">
+      Add Parts
+    </div>
+    <div class="ui-g-12" *ngIf="!edit_disabled">
+      <div class="ui-g-12 boxing greyBack" *ngIf="selectedSection>0 && selectedSource>0" [ngClass]="{'paddingtop20': selectedSource==1 || selectedSource==5 || selectedSource==6 || selectedSource==7}">
+        <!-- <nesi-picklist-search-material *ngIf="selectedSource==1" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+      [revision]="revision" [section_id]="selectedSection"></nesi-picklist-search-material> -->
+        <nesi-picklist-search-inventory *ngIf="selectedSource==1" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [can_see_cost]="model.member_can_see_cost" [revision]="revision" [section_id]="selectedSection" (close)="selectedSource=0"
+          (part9595)="selectedSource=10" (cancelSearch)="cancel_search()">
+        </nesi-picklist-search-inventory>
+        <nesi-picklist-search-labor *ngIf="selectedSource==2" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [revision]="revision" [section_id]="selectedSection" (close)="selectedSource=0"></nesi-picklist-search-labor>
+        <nesi-picklist-search-kitted *ngIf="selectedSource==3" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [revision]="revision" [section_id]="selectedSection" (close)="selectedSource=0"></nesi-picklist-search-kitted>
+        <nesi-picklist-search-group *ngIf="selectedSource==4" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [revision]="revision" [section_id]="selectedSection" (close)="selectedSource=0"></nesi-picklist-search-group>
+        <nesi-picklist-search-quote *ngIf="selectedSource==5" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [revision]="revision" [isDropdown]="false" [section_id]="selectedSection" (close)="selectedSource=0"></nesi-picklist-search-quote>
+        <nesi-picklist-search-workorder *ngIf="selectedSource==6" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [revision]="revision" [isDropdown]="false" [section_id]="selectedSection" (close)="selectedSource=0"></nesi-picklist-search-workorder>
+        <nesi-picklist-search-po *ngIf="selectedSource==7" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [revision]="revision" [section_id]="selectedSection" (close)="selectedSource=0"></nesi-picklist-search-po>
+        <nesi-picklist-search-RFQ *ngIf="selectedSource==8" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [revision]="revision" [section_id]="selectedSection" (close)="selectedSource=0"></nesi-picklist-search-RFQ>
+        <nesi-picklist-search-repair *ngIf="selectedSource==9" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [revision]="revision" [section_id]="selectedSection" (close)="selectedSource=0"></nesi-picklist-search-repair>
+        <nesi-picklist-search-blank-line *ngIf="selectedSource==10" (onChange)="init()" [buId]="model && model.buId" [quote_id]="quote_id"
+          [revision]="revision" [section_id]="selectedSection" (close)="selectedSource=0"></nesi-picklist-search-blank-line>
+      </div>
+    </div>
+
+
+    <p-blockUI [blocked]="delete_count>0 || submitting">
+      <i class="fa fa-spinner fa-spin fa-3x nesi-block-50"></i>
+    </p-blockUI>
+    <div *ngIf="items" class="ui-g-12">
+      <p-panel #pnlmain>
+        <p-header>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid paddingtop20">
+            <div class="ui-g-12 ui-g-lesspad small_label show-sm">
+              Global Filter
+            </div>
+            <div class="ui-g-12 ui-lg-2 ui-g-lesspad">
+              <span class="ui-float-label ui-float-label-top">
+                <label>Global Filter</label>
+              </span>
+              <div class="ui-inputgroup">
+                <input pInputText id="filter-float-input" [(ngModel)]="filterQuery" (keyup)="filterItems($event)">
+                <span class="ui-inputgroup-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+                <button type="button" class="ui-button-warning" pButton icon="fa-times" (click)="filterQuery='';doItems()"></button>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad small_label show-sm">
+              Section Filter
+            </div>
+            <div class="ui-g-12 ui-lg-3 ui-lg-offset-1 ui-g-lesspad">
+              <span class="ui-float-label ui-float-label-top">
+                <label for="sectionFilter">Section Filter</label>
+              </span>
+              <p-multiSelect id="sectionFilter" placeholder="Select sections" [style]="{'width':'90%'}" [options]="sectionFilters" [(ngModel)]="selectedFilterSection"
+                (onChange)="doItems()" [filter]="sectionFilters && sectionFilters.length>10" selectedItemsLabel="{0} sections selected"></p-multiSelect>
+            </div>
+            <div class="ui-g-12 ui-g-lesspad small_label show-sm">
+              Sort By
+            </div>
+            <div class="ui-g-12 ui-lg-3 ui-g-lesspad">
+              <div class="ui-g-12 ui-lg-8 ui-g-nopad">
+                <span class="ui-float-label ui-float-label-top">
+                  <label for="sortby">Sort By</label>
+                </span>
+                <span class="ui-inputgroup">
+                  <p-dropdown id="sortby" [style]="{'width':'250px'}" [disabled]="!items || items.length==0" [options]="sorts" [(ngModel)]="selectSort"
+                    (onChange)="sortChanged($event)" scrollHeight="600px"></p-dropdown>
+                  <button [disabled]="!items || items.length==0" pButton type="button" [icon]="sortDesc?'fa-sort-alpha-up': 'fa-sort-alpha-down'"
+                    (click)="descChanged()"></button>
+                </span>
+              </div>
+            </div>
+            <div class="ui-g-5 ui-lg-1 ui-g-lesspad" style="padding-top:5px;">
+              <p-checkbox binary="true" [disabled]="!items || items.length==0" label="Enable re-order" title="Enable/Disable re-order items by dragging and dropping when sorting by default ascending"
+                [(ngModel)]="enable_reorder" (onChange)="check_reorder()"></p-checkbox>
+            </div>
+            <div class="ui-g-7 ui-lg-2 ui-g-lesspad">
+              <div class="ui-g-2 ui-lg-offset-3 ui-lg-2 ui-g-nopad">
+                <p-checkbox binary="true" [style]="{'margin-left':'1px','margin-top':'5px'}" [disabled]="!items || items.length==0" tooltipPosition="bottom"
+                  title="Select/Unselect all items" [(ngModel)]="is_select_all" (onChange)="checkAll()"></p-checkbox>
+              </div>
+              <div class="ui-g-10 ui-lg-7 ui-g-nopad actions_menu" *ngIf="!edit_disabled">
+                <p-menubar [model]="commandButtons"></p-menubar>
+              </div>
+            </div>
+          </div>
+        </p-header>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" *ngIf="enable_reorder && !edit_disabled">
+          <p-dataList [value]="items" [paginator]="true" [rows]="25" [paginatorPosition]="'both'" [emptyMessage]="'No items found'"
+            [rowsPerPageOptions]="[10,25,50]" [pageLinks]="10" [immutable]="false" [alwaysShowPaginator]="false">
+            <ng-template let-item let-ix="index" pTemplate="Item">
+              <div class="ui-g-12 ui-g-nopad paddingtop10" pDraggable="true" (onDragStart)="dragStart($event,item)" (onDragEnd)="dragEnd($event)"
+                pDroppable="true" (onDrop)="drop($event,item.index)" dropEffect="move" dragEffect="move" [ngClass]="{
+               'hoverrow': item.is_checked,
+               'disabled_back':!item.is_checked,
+               'greyBack': item.index % 2==0 && !item.is_commodity,
+               'whiteBack': item.index % 2==1 && !item.is_commodity,
+               'greyRedBack': item.index % 2==0 && item.is_commodity,
+               'redBack': item.index % 2==1 && item.is_commodity,
+               'border_bottom': draggedRow,
+               'ui-state-highlight': draggedRow==item
+                }">
+                <nesi-picklist-item [edit_disabled]="edit_disabled" (onCheckChange)="reCalculate()" (onNoteChanged)="init()" (onDelete)="init()"
+                  [item]="item" [can_see_cost]="model.member_can_see_cost" [quote_id]="quote_id" [revision]="revision" [buid]="buid"></nesi-picklist-item>
+              </div>
+            </ng-template>
+          </p-dataList>
+          <div class="ui-g-12" *ngIf="draggedRow" pDroppable="true" (onDrop)="drop($event,items.length)" [ngClass]="{'border_bottom': draggedRow}">
+            &nbsp;
+          </div>
+        </div>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" *ngIf="!(enable_reorder && !edit_disabled)">
+          <p-dataList [value]="items" [paginator]="true" [rows]="25" [paginatorPosition]="'both'" [emptyMessage]="'No items found'"
+            [rowsPerPageOptions]="[10,25,50]" [pageLinks]="10" [immutable]="false" [alwaysShowPaginator]="false">
+            <ng-template let-item let-ix="index" pTemplate="Item">
+              <div class="ui-g-12 ui-g-nopad paddingtop10"
+                [ngClass]="{
+               'hoverrow': item.is_checked,
+               'disabled_back':!item.is_checked,
+               'greyBack': item.index % 2==0 && !item.is_commodity,
+               'whiteBack': item.index % 2==1 && !item.is_commodity,
+               'greyRedBack': item.index % 2==0 && item.is_commodity,
+               'redBack': item.index % 2==1 && item.is_commodity,
+               'border_bottom': draggedRow,
+               'ui-state-highlight': draggedRow==item
+                }">
+                <nesi-picklist-item [edit_disabled]="edit_disabled" (onCheckChange)="reCalculate()" (onNoteChanged)="init()" (onDelete)="init()"
+                  [item]="item" [can_see_cost]="model.member_can_see_cost" [quote_id]="quote_id" [revision]="revision" [buid]="buid"></nesi-picklist-item>
+              </div>
+            </ng-template>
+          </p-dataList>
+          <div class="ui-g-12" *ngIf="draggedRow" pDroppable="true"  [ngClass]="{'border_bottom': draggedRow}">
+            &nbsp;
+          </div>
+        </div>
+        <p-footer>
+          <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-g-12">
+         
+              <div class="ui-g-2 ui-lg-1 bold ui-lg-offset-4">
+                <div class="ui-g-12 ui-g-nopad small_label show-sm">Qty</div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <span class="ui-float-label ui-float-label-top">
+                    <label>Qty</label>
+                  </span>
+                  {{current_qtySum | number: '1.0-2'}}
+                </div>
+              </div>
+              <div class="ui-g-2 ui-lg-2 bold">
+                <div class="ui-g-6 ui-lg-4 ui-g-nopad">
+                  <div class="ui-g-12 ui-g-nopad small_label show-sm">Cost</div>
+                  <div class="ui-g-12 ui-g-nopad">
+                    <span class="ui-float-label ui-float-label-top">
+                      <label>Cost</label>
+                    </span>
+                    {{current_costSum | currency:'CAD':'symbol-narrow':'1.2-2'}}
+                  </div>
+                </div>
+              </div>
+              <!-- Added Columns -->
+        <div class="ui-g-2 ui-lg-2 bold">
+          <div class="ui-g-6 ui-lg-4 ui-g-nopad" style="margin-left: 80px;">
+            <div class="ui-g-12 ui-g-nopad small_label show-sm">Ext'd</div>
+            <div class="ui-g-12 ui-g-nopad">
+              <span class="ui-float-label ui-float-label-top">
+                <label>Ext'd</label>
+              </span>
+              {{current_extdSum | currency:'CAD':'symbol-narrow':'1.2-2'}}
+            </div>
+          </div>
+        </div>
+              <div class="ui-g-2 ui-lg-1 bold">
+                <div class="ui-g-12 ui-g-nopad small_label show-sm">~Ext'd</div>
+                <div class="ui-g-12 ui-g-nopad">
+                  <span class="ui-float-label ui-float-label-top">
+                    <label>~Ext'd</label>
+                  </span>
+                  {{current_extd2Sum | currency:'CAD':'symbol-narrow':'1.2-2'}}
+                </div>
+              </div>
+              <div class="ui-g-12 ui-lg-2 bold">
+                <div class="ui-g-6 ui-lg-3 ui-g-nopad">
+                  <div class="ui-g-12 ui-g-nopad small_label show-sm">~Margin</div>
+                  <span class="ui-float-label ui-float-label-top">
+                    <label>~Margin</label>
+                  </span>
+                  {{current_margin | percent: '1.1-1'}}
+                </div>
+                <div class="ui-g-6 ui-lg-4 ui-lg-offset-4 ui-g-nopad">
+                  <div class="ui-g-12 ui-g-nopad small_label show-sm">Not Include</div>
+                  <span class="ui-float-label ui-float-label-top">
+                    <label>Not Include</label>
+                  </span>
+                  {{current_noteIncludeSum | currency:'CAD':'symbol-narrow':'1.2-2'}}
+                </div>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-lg-6 ui-g-nopad small_label">
+              <p-panel styleClass="cost-price-level-legend-panel cost-price-level-legend-panel-title" [toggleable]="true"
+                header="Cost Price Level Legend" [collapsed]='false' toggler='header'>
+                <table style='width:100%' cellspacing='0'>
+                  <tr style='background-color:#f00;color:#fff;'>
+                    <td>Line</td>
+                    <td>Denotes a commodity part, please consider the pricing as volatile</td>
+                  </tr>
+                  <tr style='background-color:#fff;color:#000;'>
+                    <td>L0</td>
+                    <td>Unknown</td>
+                  </tr>
+                  <tr style='background-color:#009900;color:#fff;'>
+                    <td>L1</td>
+                    <td>Current On Hand Stock Cost</td>
+                  </tr>
+                  <tr style='background-color:#1d7373;color:#fff;'>
+                    <td>L2</td>
+                    <td>From Last Cut PO for Stock (Within 2 years)</td>
+                  </tr>
+                  <tr style='background-color:#009999;color:#fff;'>
+                    <td>L3</td>
+                    <td>From Saved Vendor Pricing (Newer than 2 years)</td>
+                  </tr>
+                  <tr style='background-color:#5ccccc;color:#007;'>
+                    <td>L4</td>
+                    <td>From Last Cut PO for a Work Order (Within 2 years)</td>
+                  </tr>
+                  <tr style='background-color:#a66f00;color:#fff;'>
+                    <td>L5</td>
+                    <td>From Last Cut PO for Stock at another business unit in your region (Within 2 years)</td>
+                  </tr>
+                  <tr style='background-color:#bf8f30;color:#fff;'>
+                    <td>L6</td>
+                    <td>From Last Cut PO for Stock at another business unit in your country (Within 2 years)</td>
+                  </tr>
+                  <tr style='background-color:#ff9966;color:#000;'>
+                    <td>L7</td>
+                    <td>From Saved Vendor Pricing at another business unit in your region (Newer than 2 years)</td>
+                  </tr>
+                  <tr style='background-color:#bf3030;color:#fff;'>
+                    <td>L8</td>
+                    <td>From Saved Vendor Pricing at another business unit in your country (Newer than 2 years)</td>
+                  </tr>
+                  <tr style='background-color:#a60000;color:#fff;'>
+                    <td>L9</td>
+                    <td>From Last Cut PO for Stock at another business unit in another country (Within 2 years)</td>
+                  </tr>
+                  <tr style='background-color:#f00;color:#fff;'>
+                    <td>L10</td>
+                    <td>From Saved Vendor Pricing at another business unit in another country</td>
+                  </tr>
+                </table>
+              </p-panel>
+            </div>
+          </div>
+        </p-footer>
+         
+      </p-panel>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Edit Sections" [width]="cs.isLg?'800':'0'" [draggable]="true" [positionTop]="150" [modal]="true" [responsive]="true"
+  [(visible)]="editSectionsDisplay">
+  <nesi-picklist-edit-sections *ngIf="editSectionsDisplay" (deleted)="section_deleted($event)"  (changed)="loadSections($event)" [quote_id]="quote_id" [revision]="revision"></nesi-picklist-edit-sections>
+</p-dialog>
+
+<p-dialog header="Select Destination" [width]="cs.isLg?'800':'0'" [draggable]="true" [positionTop]="150" [modal]="true" [responsive]="true"
+  [(visible)]="copyMoveDisplay">
+  <nesi-picklist-copy-move-items *ngIf="copyMoveDisplay" (Successed)="moveCopySuccessed($event)" [selectedItems]="selectItems"
+    [sections]="sectionFilters" [type]="moveCopyType"></nesi-picklist-copy-move-items>
+</p-dialog>
