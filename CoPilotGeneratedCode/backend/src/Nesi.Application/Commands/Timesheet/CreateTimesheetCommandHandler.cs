@@ -37,7 +37,7 @@ public class CreateTimesheetCommandHandler : IRequestHandler<CreateTimesheetComm
             request.PayTypeId,
             request.WorkOrderId,
             request.JobTypeId,
-            request.Notes);
+            request.Notes ?? string.Empty);
 
         await _unitOfWork.Repository<TimesheetEntry>().AddAsync(timesheet);
         await _unitOfWork.SaveChangesAsync();

@@ -8,7 +8,7 @@ This document describes the technical architecture of the NESI demo application,
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      Frontend (Angular 18)                   │
+│                      Frontend (Angular 19)                   │
 │  ┌────────────┬──────────────┬────────────┬──────────────┐  │
 │  │   Auth     │   Dashboard   │ Timesheet  │   Shared     │  │
 │  │  Feature   │   Feature     │  Feature   │  Components  │  │

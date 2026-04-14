@@ -12,22 +12,22 @@ This is a comprehensive demo application showcasing the NESI system rebuilt with
 ## 🏗️ Technology Stack
 
 ### Backend
-- **Framework:** ASP.NET Core 8 Web API
+- **Framework:** ASP.NET Core 9 Web API (.NET 9)
 - **Language:** C# 12
 - **Architecture:** Clean Architecture (Onion/Hexagonal)
 - **Patterns:** CQRS (MediatR), Repository, Dependency Injection
-- **ORM:** Entity Framework Core 8 (Code-First)
-- **Database:** MySQL 8.0 (local installation)
-- **Authentication:** JWT with ASP.NET Core Identity
+- **ORM:** Entity Framework Core 9 (Code-First)
+- **Database:** SQL Server (LocalDB/Express)
+- **Authentication:** Header-based (ready for JWT upgrade)
 - **Validation:** FluentValidation
 - **API Documentation:** Swagger/OpenAPI 3.0
-- **Logging:** Serilog
-- **Testing:** xUnit, Moq, FluentAssertions
+- **Logging:** ASP.NET Core Logging
+- **Testing:** Ready for xUnit, Moq, FluentAssertions
 
 ### Frontend
-- **Framework:** Angular 19.2.20+ (standalone components)
+- **Framework:** Angular 19.2+ (standalone components)
 - **Language:** TypeScript 5.4+
-- **UI Library:** Angular Material 19+
+- **State Management:** Signals (Angular 19)
 - **State Management:** NgRx or Angular Signals
 - **Forms:** Reactive Forms
 - **HTTP:** HttpClient with interceptors
