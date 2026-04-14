@@ -1,0 +1,62 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Nesi Timesheet</h1>
+      <p>Sign in to continue</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      @if (errorMessage()) {
+        <div class="error-message">
+          {{ errorMessage() }}
+        </div>
+      }
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          class="form-control"
+          placeholder="Enter your username"
+          [class.invalid]="username?.invalid && username?.touched"
+        />
+        @if (username?.invalid && username?.touched) {
+          <span class="error-text">Username is required</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="Enter your password"
+          [class.invalid]="password?.invalid && password?.touched"
+        />
+        @if (password?.invalid && password?.touched) {
+          <span class="error-text">Password is required</span>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="loginForm.invalid || isLoading()"
+      >
+        @if (isLoading()) {
+          <span>Signing in...</span>
+        } @else {
+          <span>Sign In</span>
+        }
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>Default credentials: admin / Admin&#64;123</p>
+    </div>
+  </div>
+</div>
