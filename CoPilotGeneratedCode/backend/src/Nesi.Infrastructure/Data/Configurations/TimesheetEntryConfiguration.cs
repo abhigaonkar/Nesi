@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Nesi.Domain.Entities;
+using Nesi.Domain.Enums;
 
 namespace Nesi.Infrastructure.Data.Configurations;
 
@@ -26,7 +27,7 @@ public class TimesheetEntryConfiguration : IEntityTypeConfiguration<TimesheetEnt
         builder.Property(t => t.Status)
             .IsRequired()
             .HasConversion<int>()
-            .HasDefaultValue(0); // Draft
+            .HasDefaultValue(TimesheetStatus.Draft);
 
         // Relationships
         builder.HasOne(t => t.User)
