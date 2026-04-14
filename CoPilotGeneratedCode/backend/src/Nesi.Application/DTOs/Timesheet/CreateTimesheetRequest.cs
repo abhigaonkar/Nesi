@@ -1,0 +1,11 @@
+namespace Nesi.Application.DTOs.Timesheet;
+
+public class CreateTimesheetRequest
+{
+    public DateTime Date { get; set; }
+    public decimal Hours { get; set; }
+    public int PayTypeId { get; set; }
+    public int? WorkOrderId { get; set; }
+    public int? JobTypeId { get; set; }
+    public string? Notes { get; set; }
+}

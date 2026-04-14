@@ -32,6 +32,11 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
         return entity;
     }
 
+    public virtual void Update(T entity)
+    {
+        _dbSet.Update(entity);
+    }
+
     public virtual Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
     {
         _dbSet.Update(entity);

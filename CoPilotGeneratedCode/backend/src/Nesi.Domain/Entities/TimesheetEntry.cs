@@ -63,6 +63,25 @@ public class TimesheetEntry : BaseEntity
         Notes = notes ?? string.Empty;
     }
 
+    public void UpdateDetails(DateTime date, decimal hours, int payTypeId, int? workOrderId, int? jobTypeId, string? notes)
+    {
+        if (Status != TimesheetStatus.Draft)
+            throw new InvalidOperationException("Can only update draft timesheets");
+
+        if (hours <= 0 || hours > 24)
+            throw new ArgumentException("Hours must be between 0 and 24");
+
+        if (date > DateTime.Today)
+            throw new ArgumentException("Cannot set timesheet to future dates", nameof(date));
+
+        Date = date.Date;
+        Hours = hours;
+        PayTypeId = payTypeId;
+        WorkOrderId = workOrderId;
+        JobTypeId = jobTypeId;
+        Notes = notes ?? string.Empty;
+    }
+
     public void Submit()
     {
         if (Status != TimesheetStatus.Draft)
