@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+packages/
+
+# Build outputs
+bin/
+obj/
+dist/
+out/
+build/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+*.env
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Testing
+coverage/
+*.coverage
+.nyc_output/
+test-results/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Secrets
+appsettings.Development.json
+secrets.json
+user-secrets/
+
+# Package manager
+package-lock.json
+yarn.lock
+.pnpm-store/
