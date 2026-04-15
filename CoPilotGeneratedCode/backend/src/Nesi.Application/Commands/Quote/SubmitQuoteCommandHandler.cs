@@ -16,7 +16,7 @@ public class SubmitQuoteCommandHandler : IRequestHandler<SubmitQuoteCommand, Uni
 
     public async Task<Unit> Handle(SubmitQuoteCommand request, CancellationToken cancellationToken)
     {
-        var quote = await _quoteRepository.GetByIdAsync(request.QuoteId, cancellationToken);
+        var quote = await _quoteRepository.GetWithLineItemsAsync(request.QuoteId, cancellationToken);
         if (quote == null)
             throw new InvalidOperationException($"Quote with ID {request.QuoteId} not found");
 
