@@ -1,14 +1,4 @@
 <div class="timesheet-container">
-  <header class="header">
-    <div class="header-content">
-      <h1>Timesheet Management</h1>
-      <div class="header-actions">
-        <button class="btn btn-secondary" (click)="goToDashboard()">Dashboard</button>
-        <button class="btn btn-secondary" (click)="logout()">Logout</button>
-      </div>
-    </div>
-  </header>
-
   <div class="content">
     @if (errorMessage()) {
       <div class="alert alert-error">
@@ -23,6 +13,10 @@
         <button class="alert-close" (click)="clearMessages()">×</button>
       </div>
     }
+
+    <div class="page-header">
+      <h1>Timesheet Management</h1>
+    </div>
 
     <div class="actions-bar">
       <button class="btn btn-primary" (click)="openCreateForm()">

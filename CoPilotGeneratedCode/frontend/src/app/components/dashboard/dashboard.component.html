@@ -39,16 +39,6 @@
     <div class="section">
       <div class="section-header">
         <h2>Recent Timesheets</h2>
-        <div class="header-buttons">
-          @if (authService.canApproveTimesheets()) {
-            <button class="btn btn-warning" (click)="navigateToTimesheetReview()">
-              Review Timesheets
-            </button>
-          }
-          <button class="btn btn-primary" (click)="navigateToTimesheets()">
-            View All Timesheets
-          </button>
-        </div>
       </div>
 
       @if (recentTimesheets().length === 0) {
