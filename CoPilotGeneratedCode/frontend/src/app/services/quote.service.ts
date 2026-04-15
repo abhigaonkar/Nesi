@@ -43,4 +43,14 @@ export class QuoteService {
     return this.http.post<ApiResponse<boolean>>(`${this.apiUrl}/${id}/reject`, { reason })
       .pipe(map(response => response.data!));
   }
+
+  customerApproveQuote(id: number): Observable<boolean> {
+    return this.http.post<ApiResponse<boolean>>(`${this.apiUrl}/${id}/customer-approve`, {})
+      .pipe(map(response => response.data!));
+  }
+
+  convertToWorkOrder(id: number): Observable<number> {
+    return this.http.post<ApiResponse<number>>(`${this.apiUrl}/${id}/convert-to-workorder`, {})
+      .pipe(map(response => response.data!));
+  }
 }

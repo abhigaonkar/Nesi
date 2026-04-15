@@ -27,8 +27,45 @@
       <div class="info-grid">
         <div class="info-item"><label>Customer</label><span>{{ workOrder.customerName }}</span></div>
         <div class="info-item"><label>Description</label><span>{{ workOrder.description }}</span></div>
+        <div class="info-item"><label>Quote Reference</label><span>{{ workOrder.quoteNumber || 'N/A' }}</span></div>
         <div class="info-item"><label>Project Manager</label><span>{{ workOrder.projectManagerName || 'Not assigned' }}</span></div>
+        <div class="info-item"><label>Start Date</label><span>{{ workOrder.startDate | date:'mediumDate' }}</span></div>
+        <div class="info-item"><label>End Date</label><span>{{ workOrder.endDate ? (workOrder.endDate | date:'mediumDate') : 'N/A' }}</span></div>
+      </div>
+    </div>
+
+    <div class="info-section" *ngIf="workOrder.scheduledStartDate || workOrder.scheduledEndDate">
+      <h2>Schedule</h2>
+      <div class="info-grid">
+        <div class="info-item"><label>Scheduled Start</label><span>{{ workOrder.scheduledStartDate | date:'mediumDate' }}</span></div>
+        <div class="info-item"><label>Scheduled End</label><span>{{ workOrder.scheduledEndDate | date:'mediumDate' }}</span></div>
+      </div>
+    </div>
+
+    <div class="info-section" *ngIf="workOrder.status === WorkOrderStatus.Complete || workOrder.status === WorkOrderStatus.Closed">
+      <h2>Completion Information</h2>
+      <div class="info-grid">
+        <div class="info-item"><label>Completed At</label><span>{{ workOrder.actualCompletionDate | date:'medium' }}</span></div>
+        <div class="info-item"><label>Completed By</label><span>{{ workOrder.completedByName || 'N/A' }}</span></div>
+        <div class="info-item full-width" *ngIf="workOrder.completionNotes"><label>Completion Notes</label><span>{{ workOrder.completionNotes }}</span></div>
+      </div>
+    </div>
+
+    <div class="info-section" *ngIf="workOrder.invoiceGenerated">
+      <h2>Invoice Information</h2>
+      <div class="info-grid">
+        <div class="info-item"><label>Invoice Amount</label><span>\${{ workOrder.invoiceAmount | number:'1.2-2' }}</span></div>
+        <div class="info-item"><label>Invoice Date</label><span>{{ workOrder.invoiceDate | date:'mediumDate' }}</span></div>
+        <div class="info-item"><label>Payment Status</label><span class="badge" [ngClass]="workOrder.paymentReceived ? 'badge-success' : 'badge-warning'">{{ workOrder.paymentReceived ? 'Paid' : 'Pending' }}</span></div>
+        <div class="info-item" *ngIf="workOrder.paymentReceived"><label>Payment Date</label><span>{{ workOrder.paymentDate | date:'mediumDate' }}</span></div>
+      </div>
+    </div>
+
+    <div class="info-section" *ngIf="workOrder.estimatedCost || workOrder.actualCost">
+      <h2>Cost Information</h2>
+      <div class="info-grid">
         <div class="info-item"><label>Estimated Cost</label><span>\${{ workOrder.estimatedCost | number:'1.2-2' }}</span></div>
+        <div class="info-item"><label>Actual Cost</label><span>\${{ workOrder.actualCost | number:'1.2-2' }}</span></div>
       </div>
     </div>
   </div>
@@ -43,6 +80,62 @@
       <div class="modal-actions">
         <button class="btn btn-secondary" (click)="closeAssignPMModal()">Cancel</button>
         <button class="btn btn-primary" (click)="assignProjectManager()" [disabled]="actionLoading">Assign</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showAssignTechModal" class="modal">
+    <div class="modal-content">
+      <h3>Assign Technician</h3>
+      <label>Technician</label>
+      <select [(ngModel)]="technicianId">
+        <option value="0">Select technician...</option>
+        <option *ngFor="let tech of technicians" [value]="tech.id">{{ tech.name }}</option>
+      </select>
+      <label>Role (Optional)</label>
+      <input type="text" [(ngModel)]="technicianRole" placeholder="e.g., Lead Technician"/>
+      <label>Notes (Optional)</label>
+      <textarea [(ngModel)]="technicianNotes" placeholder="Assignment notes..." rows="3"></textarea>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" (click)="closeAssignTechModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="assignTechnician()" [disabled]="actionLoading || !technicianId">Assign</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showAddMaterialModal" class="modal">
+    <div class="modal-content">
+      <h3>Add Material</h3>
+      <label>Part Number *</label>
+      <input type="text" [(ngModel)]="partNumber" placeholder="Part number" required/>
+      <label>Description *</label>
+      <input type="text" [(ngModel)]="materialDescription" placeholder="Material description" required/>
+      <label>Quantity *</label>
+      <input type="number" [(ngModel)]="quantity" min="1" step="0.01"/>
+      <label>Unit Cost *</label>
+      <input type="number" [(ngModel)]="unitCost" min="0" step="0.01"/>
+      <label>Purchase Order Number (Optional)</label>
+      <input type="text" [(ngModel)]="poNumber" placeholder="PO number"/>
+      <label>Supplier (Optional)</label>
+      <input type="text" [(ngModel)]="supplier" placeholder="Supplier name"/>
+      <label>Notes (Optional)</label>
+      <textarea [(ngModel)]="materialNotes" placeholder="Material notes..." rows="3"></textarea>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" (click)="closeAddMaterialModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="addMaterial()" [disabled]="actionLoading || !partNumber || !materialDescription">Add Material</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showCompleteModal" class="modal">
+    <div class="modal-content">
+      <h3>Complete Work Order</h3>
+      <p>Are you sure you want to mark this work order as complete?</p>
+      <label>Completion Notes (Optional)</label>
+      <textarea [(ngModel)]="completionNotes" placeholder="Enter completion notes..." rows="4"></textarea>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" (click)="closeCompleteModal()">Cancel</button>
+        <button class="btn btn-success" (click)="completeWorkOrder()" [disabled]="actionLoading">Complete</button>
       </div>
     </div>
   </div>

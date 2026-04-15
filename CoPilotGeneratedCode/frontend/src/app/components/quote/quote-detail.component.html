@@ -33,6 +33,12 @@
         <button *ngIf="canReject()" class="btn btn-danger" (click)="rejectQuote()" [disabled]="actionLoading">
           Reject
         </button>
+        <button *ngIf="canCustomerApprove()" class="btn btn-success" (click)="customerApproveQuote()" [disabled]="actionLoading">
+          Customer Approve
+        </button>
+        <button *ngIf="canConvertToWorkOrder()" class="btn btn-primary" (click)="convertToWorkOrder()" [disabled]="actionLoading">
+          Convert to Work Order
+        </button>
       </div>
     </div>
 
@@ -178,6 +184,42 @@
         <div *ngIf="quote.rejectionReason" class="info-item full-width rejection-reason">
           <label>Rejection Reason</label>
           <div class="multiline">{{ quote.rejectionReason }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customer Approval Information -->
+    <div *ngIf="quote.customerApprovedAt" class="approval-section">
+      <h2>Customer Approval</h2>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Customer Approved At</label>
+          <span>{{ quote.customerApprovedAt | date:'medium' }}</span>
+        </div>
+        
+        <div class="info-item">
+          <label>Approved By</label>
+          <span>{{ quote.customerApprovedBy || 'N/A' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work Order Conversion -->
+    <div *ngIf="quote.workOrderId" class="approval-section">
+      <h2>Work Order Conversion</h2>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Converted At</label>
+          <span>{{ quote.convertedToWorkOrderAt | date:'medium' }}</span>
+        </div>
+        
+        <div class="info-item">
+          <label>Work Order</label>
+          <span>
+            <a [routerLink]="['/work-orders', quote.workOrderId]" class="link">View Work Order #{{ quote.workOrderId }}</a>
+          </span>
         </div>
       </div>
     </div>

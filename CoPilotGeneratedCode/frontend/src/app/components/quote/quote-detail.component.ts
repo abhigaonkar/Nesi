@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { QuoteService } from '../../services/quote.service';
 import { Quote, QuoteStatus, QuoteType, QuoteLineItemType } from '../../models/quote.model';
 
 @Component({
   selector: 'app-quote-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './quote-detail.component.html',
   styleUrls: ['./quote-detail.component.scss']
 })
@@ -117,6 +117,51 @@ export class QuoteDetailComponent implements OnInit {
     });
   }
 
+  customerApproveQuote(): void {
+    if (!this.quote || this.actionLoading) return;
+    
+    if (!confirm('Are you sure you want to approve this quote on behalf of the customer?')) {
+      return;
+    }
+    
+    this.actionLoading = true;
+    this.quoteService.customerApproveQuote(this.quote.id).subscribe({
+      next: () => {
+        this.actionLoading = false;
+        this.loadQuote(this.quote!.id);
+      },
+      error: (err) => {
+        this.error = 'Failed to approve quote for customer';
+        this.actionLoading = false;
+        console.error('Error customer approving quote:', err);
+      }
+    });
+  }
+
+  convertToWorkOrder(): void {
+    if (!this.quote || this.actionLoading) return;
+    
+    if (!confirm('Are you sure you want to convert this quote to a work order?')) {
+      return;
+    }
+    
+    this.actionLoading = true;
+    this.quoteService.convertToWorkOrder(this.quote.id).subscribe({
+      next: (workOrderId) => {
+        this.actionLoading = false;
+        this.loadQuote(this.quote!.id);
+        if (workOrderId && confirm('Quote converted successfully! Would you like to view the work order?')) {
+          this.router.navigate(['/work-orders', workOrderId]);
+        }
+      },
+      error: (err) => {
+        this.error = 'Failed to convert quote to work order';
+        this.actionLoading = false;
+        console.error('Error converting quote:', err);
+      }
+    });
+  }
+
   editQuote(): void {
     if (!this.quote) return;
     this.router.navigate(['/quotes/edit', this.quote.id]);
@@ -169,5 +214,13 @@ export class QuoteDetailComponent implements OnInit {
 
   canReject(): boolean {
     return this.quote?.status === QuoteStatus.Submitted;
+  }
+
+  canCustomerApprove(): boolean {
+    return this.quote?.status === QuoteStatus.Approved && !this.quote?.customerApprovedAt;
+  }
+
+  canConvertToWorkOrder(): boolean {
+    return this.quote?.status === QuoteStatus.CustomerApproved && !this.quote?.workOrderId;
   }
 }
