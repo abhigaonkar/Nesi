@@ -1,4 +1,4 @@
-<div class="nav-wrapper">
+<div class="app-layout">
   <header class="app-header">
     <div class="header-content">
       <h1>Nesi Timesheet</h1>
@@ -12,50 +12,56 @@
     </div>
   </header>
 
-  <nav class="sidebar">
-    <div class="nav-section">
-      <h3>Main Menu</h3>
-      <button 
-        class="nav-item" 
-        [class.active]="isActive('/dashboard')"
-        (click)="navigateToDashboard()">
-        <span class="nav-icon">📊</span>
-        <span class="nav-label">Dashboard</span>
-      </button>
-      <button 
-        class="nav-item"
-        [class.active]="isActive('/timesheets')"
-        (click)="navigateToTimesheets()">
-        <span class="nav-icon">⏱️</span>
-        <span class="nav-label">Timesheets</span>
-      </button>
-      @if (authService.canApproveTimesheets()) {
+  <div class="app-body">
+    <nav class="sidebar">
+      <div class="nav-section">
+        <h3>Main Menu</h3>
+        <button 
+          class="nav-item" 
+          [class.active]="isActive('/dashboard')"
+          (click)="navigateToDashboard()">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </button>
         <button 
           class="nav-item"
-          [class.active]="isActive('/timesheet-review')"
-          (click)="navigateToTimesheetReview()">
-          <span class="nav-icon">✅</span>
-          <span class="nav-label">Review Timesheets</span>
+          [class.active]="isActive('/timesheets')"
+          (click)="navigateToTimesheets()">
+          <span class="nav-icon">⏱️</span>
+          <span class="nav-label">Timesheets</span>
         </button>
-      }
-    </div>
+        @if (authService.canApproveTimesheets()) {
+          <button 
+            class="nav-item"
+            [class.active]="isActive('/timesheet-review')"
+            (click)="navigateToTimesheetReview()">
+            <span class="nav-icon">✅</span>
+            <span class="nav-label">Review Timesheets</span>
+          </button>
+        }
+      </div>
 
-    <div class="nav-section">
-      <h3>Business</h3>
-      <button 
-        class="nav-item"
-        [class.active]="isActive('/quotes')"
-        (click)="navigateToQuotes()">
-        <span class="nav-icon">💼</span>
-        <span class="nav-label">Quotes</span>
-      </button>
-      <button 
-        class="nav-item"
-        [class.active]="isActive('/work-orders')"
-        (click)="navigateToWorkOrders()">
-        <span class="nav-icon">🔧</span>
-        <span class="nav-label">Work Orders</span>
-      </button>
-    </div>
-  </nav>
+      <div class="nav-section">
+        <h3>Business</h3>
+        <button 
+          class="nav-item"
+          [class.active]="isActive('/quotes')"
+          (click)="navigateToQuotes()">
+          <span class="nav-icon">💼</span>
+          <span class="nav-label">Quotes</span>
+        </button>
+        <button 
+          class="nav-item"
+          [class.active]="isActive('/work-orders')"
+          (click)="navigateToWorkOrders()">
+          <span class="nav-icon">🔧</span>
+          <span class="nav-label">Work Orders</span>
+        </button>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <router-outlet />
+    </main>
+  </div>
 </div>

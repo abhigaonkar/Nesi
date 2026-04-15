@@ -1,11 +1,12 @@
-.nav-wrapper {
-  display: contents;
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .app-header {
   background: white;
   border-bottom: 1px solid #e5e7eb;
-  grid-column: 1 / -1;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -47,15 +48,25 @@
   font-weight: 500;
 }
 
+.app-body {
+  display: flex;
+  flex: 1;
+}
+
 .sidebar {
   width: 250px;
   background: white;
   border-right: 1px solid #e5e7eb;
   padding: 1.5rem 0;
-  height: calc(100vh - 65px);
   overflow-y: auto;
-  position: sticky;
-  top: 65px;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  background: #f9fafb;
 }
 
 .nav-section {
