@@ -1,148 +1,99 @@
-<div class="dashboard-container">
-  <header class="dashboard-header">
-    <div class="header-content">
-      <h1>Nesi Timesheet</h1>
-      <div class="header-actions">
-        <span class="user-info">
-          Welcome, {{ authService.currentUser()?.firstName }}
-          <span class="role-badge">{{ authService.currentUser()?.role === 0 ? 'Admin' : authService.currentUser()?.role === 1 ? 'Manager' : 'Employee' }}</span>
-        </span>
-        <button class="btn btn-secondary" (click)="logout()">Logout</button>
+<div class="dashboard-content">
+  @if (isLoading()) {
+    <div class="loading">Loading dashboard data...</div>
+  } @else {
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon draft">📝</div>
+        <div class="stat-info">
+          <div class="stat-value">{{ stats().draftCount }}</div>
+          <div class="stat-label">Draft Timesheets</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon submitted">📤</div>
+        <div class="stat-info">
+          <div class="stat-value">{{ stats().submittedCount }}</div>
+          <div class="stat-label">Submitted</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon approved">✅</div>
+        <div class="stat-info">
+          <div class="stat-value">{{ stats().approvedCount }}</div>
+          <div class="stat-label">Approved</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon hours">⏱️</div>
+        <div class="stat-info">
+          <div class="stat-value">{{ stats().totalHours }}</div>
+          <div class="stat-label">Total Hours</div>
+        </div>
       </div>
     </div>
-  </header>
 
-  <div class="dashboard-layout">
-    <nav class="sidebar">
-      <div class="nav-section">
-        <h3>Main Menu</h3>
-        <button class="nav-item active" (click)="router.navigate(['/dashboard'])">
-          <span class="nav-icon">📊</span>
-          <span class="nav-label">Dashboard</span>
-        </button>
-        <button class="nav-item" (click)="navigateToTimesheets()">
-          <span class="nav-icon">⏱️</span>
-          <span class="nav-label">Timesheets</span>
-        </button>
-        @if (authService.canApproveTimesheets()) {
-          <button class="nav-item" (click)="navigateToTimesheetReview()">
-            <span class="nav-icon">✅</span>
-            <span class="nav-label">Review Timesheets</span>
+    <div class="section">
+      <div class="section-header">
+        <h2>Recent Timesheets</h2>
+        <div class="header-buttons">
+          @if (authService.canApproveTimesheets()) {
+            <button class="btn btn-warning" (click)="navigateToTimesheetReview()">
+              Review Timesheets
+            </button>
+          }
+          <button class="btn btn-primary" (click)="navigateToTimesheets()">
+            View All Timesheets
           </button>
-        }
-      </div>
-
-      <div class="nav-section">
-        <h3>Business</h3>
-        <button class="nav-item" (click)="navigateToQuotes()">
-          <span class="nav-icon">💼</span>
-          <span class="nav-label">Quotes</span>
-        </button>
-        <button class="nav-item" (click)="navigateToWorkOrders()">
-          <span class="nav-icon">🔧</span>
-          <span class="nav-label">Work Orders</span>
-        </button>
-      </div>
-    </nav>
-
-    <div class="dashboard-content">
-    @if (isLoading()) {
-      <div class="loading">Loading dashboard data...</div>
-    } @else {
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon draft">📝</div>
-          <div class="stat-info">
-            <div class="stat-value">{{ stats().draftCount }}</div>
-            <div class="stat-label">Draft Timesheets</div>
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon submitted">📤</div>
-          <div class="stat-info">
-            <div class="stat-value">{{ stats().submittedCount }}</div>
-            <div class="stat-label">Submitted</div>
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon approved">✅</div>
-          <div class="stat-info">
-            <div class="stat-value">{{ stats().approvedCount }}</div>
-            <div class="stat-label">Approved</div>
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon hours">⏱️</div>
-          <div class="stat-info">
-            <div class="stat-value">{{ stats().totalHours }}</div>
-            <div class="stat-label">Total Hours</div>
-          </div>
         </div>
       </div>
 
-      <div class="section">
-        <div class="section-header">
-          <h2>Recent Timesheets</h2>
-          <div class="header-buttons">
-            @if (authService.canApproveTimesheets()) {
-              <button class="btn btn-warning" (click)="navigateToTimesheetReview()">
-                Review Timesheets
-              </button>
-            }
-            <button class="btn btn-primary" (click)="navigateToTimesheets()">
-              View All Timesheets
-            </button>
-          </div>
+      @if (recentTimesheets().length === 0) {
+        <div class="empty-state">
+          <p>No timesheets found. Create your first timesheet to get started!</p>
+          <button class="btn btn-primary" (click)="navigateToTimesheets()">
+            Create Timesheet
+          </button>
         </div>
-
-        @if (recentTimesheets().length === 0) {
-          <div class="empty-state">
-            <p>No timesheets found. Create your first timesheet to get started!</p>
-            <button class="btn btn-primary" (click)="navigateToTimesheets()">
-              Create Timesheet
-            </button>
-          </div>
-        } @else {
-          <div class="timesheets-table">
-            <table>
-              <thead>
+      } @else {
+        <div class="timesheets-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Work Order</th>
+                <th>Hours</th>
+                <th>Pay Type</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (timesheet of recentTimesheets(); track timesheet.id) {
                 <tr>
-                  <th>Date</th>
-                  <th>Work Order</th>
-                  <th>Hours</th>
-                  <th>Pay Type</th>
-                  <th>Status</th>
+                  <td>{{ timesheet.date | date: 'MM/dd/yyyy' }}</td>
+                  <td>
+                    @if (timesheet.workOrderNumber) {
+                      <span>{{ timesheet.workOrderNumber }} - {{ timesheet.workOrderDescription }}</span>
+                    } @else {
+                      <span class="text-muted">N/A</span>
+                    }
+                  </td>
+                  <td>{{ timesheet.hours }}</td>
+                  <td>{{ timesheet.payTypeName }}</td>
+                  <td>
+                    <span [class]="'status-badge ' + getStatusClass(timesheet.status)">
+                      {{ getStatusText(timesheet.status) }}
+                    </span>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                @for (timesheet of recentTimesheets(); track timesheet.id) {
-                  <tr>
-                    <td>{{ timesheet.date | date: 'MM/dd/yyyy' }}</td>
-                    <td>
-                      @if (timesheet.workOrderNumber) {
-                        <span>{{ timesheet.workOrderNumber }} - {{ timesheet.workOrderDescription }}</span>
-                      } @else {
-                        <span class="text-muted">N/A</span>
-                      }
-                    </td>
-                    <td>{{ timesheet.hours }}</td>
-                    <td>{{ timesheet.payTypeName }}</td>
-                    <td>
-                      <span [class]="'status-badge ' + getStatusClass(timesheet.status)">
-                        {{ getStatusText(timesheet.status) }}
-                      </span>
-                    </td>
-                  </tr>
-                }
-              </tbody>
-            </table>
-          </div>
-        }
-      </div>
-    }
-  </div>
-  </div>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </div>
+  }
 </div>
