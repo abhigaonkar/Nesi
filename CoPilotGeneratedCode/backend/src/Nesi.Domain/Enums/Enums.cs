@@ -10,7 +10,7 @@ public enum TimesheetStatus
 
 public enum UserRole
 {
-    Employee = 0,
+    Employee = 2,
     Manager = 1,
-    Admin = 2
+    Admin = 0
 }
