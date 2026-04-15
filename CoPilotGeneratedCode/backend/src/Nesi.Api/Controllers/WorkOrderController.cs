@@ -42,6 +42,33 @@ public class WorkOrderController : ControllerBase
     }
 
     /// <summary>
+    /// Get a specific work order by ID
+    /// </summary>
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(ApiResponse<WorkOrderDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<WorkOrderDto>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ApiResponse<WorkOrderDto>>> GetWorkOrderById(int id)
+    {
+        try
+        {
+            var query = new GetWorkOrderByIdQuery(id);
+            var result = await _mediator.Send(query);
+            
+            if (result == null)
+            {
+                return NotFound(ApiResponse<WorkOrderDto>.ErrorResponse("Work order not found"));
+            }
+            
+            return Ok(ApiResponse<WorkOrderDto>.SuccessResponse(result));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving work order {WorkOrderId}", id);
+            return StatusCode(500, ApiResponse<WorkOrderDto>.ErrorResponse("An error occurred retrieving the work order"));
+        }
+    }
+
+    /// <summary>
     /// Assign a project manager to a work order
     /// </summary>
     [HttpPost("{id}/assign-manager")]
