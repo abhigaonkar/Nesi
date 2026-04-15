@@ -1,0 +1,49 @@
+<div class="work-order-list-container">
+  <div class="header">
+    <h1>Work Orders</h1>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading work orders...</div>
+
+  <div *ngIf="error" class="error-banner">{{ error }}</div>
+
+  <div *ngIf="!loading && !error" class="work-orders-content">
+    <table class="work-orders-table">
+      <thead>
+        <tr>
+          <th>WO Number</th>
+          <th>Customer</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Project Manager</th>
+          <th>Start Date</th>
+          <th>Quote Ref</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let wo of workOrders" (click)="viewWorkOrder(wo.id)" class="clickable-row">
+          <td>{{ wo.workOrderNumber }}</td>
+          <td>{{ wo.customerName }}</td>
+          <td class="description-cell">{{ wo.description }}</td>
+          <td>
+            <span class="status-badge" [ngClass]="getStatusClass(wo.status)">
+              {{ getStatusLabel(wo.status) }}
+            </span>
+          </td>
+          <td>{{ wo.projectManagerName || 'Not assigned' }}</td>
+          <td>{{ wo.startDate | date:'mediumDate' }}</td>
+          <td>{{ wo.quoteNumber || 'N/A' }}</td>
+          <td class="actions-cell">
+            <button class="btn btn-sm btn-primary" (click)="viewWorkOrder(wo.id); $event.stopPropagation()">
+              View Details
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="workOrders.length === 0">
+          <td colspan="8" class="no-data">No work orders found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
