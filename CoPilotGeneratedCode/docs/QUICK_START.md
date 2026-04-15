@@ -22,31 +22,88 @@ cd Nesi/CoPilotGeneratedCode
 
 ## Step 2: Setup Database
 
-### Option A: Using Default LocalDB (Windows)
+The application now uses **SQL Server** (LocalDB, Express, or Azure SQL).
+
+### Option A: Using LocalDB (Windows - Recommended for Development)
+
+LocalDB is automatically installed with Visual Studio and .NET SDK.
 
 ```bash
 cd backend/src/Nesi.Infrastructure
 dotnet ef database update --startup-project ../Nesi.Api
 ```
 
-### Option B: Using Custom SQL Server
-
-1. Create a database named `NesiDb`
-2. Update connection string in `backend/src/Nesi.Api/appsettings.json`:
-
+The default connection string in `appsettings.json` is already configured for LocalDB:
 ```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=YOUR_SERVER;Database=NesiDb;Trusted_Connection=true;TrustServerCertificate=true"
-  }
-}
+"DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=NesiDb;Trusted_Connection=true;TrustServerCertificate=true;MultipleActiveResultSets=true"
 ```
 
-3. Run migrations:
-```bash
-cd backend/src/Nesi.Infrastructure
-dotnet ef database update --startup-project ../Nesi.Api
-```
+### Option B: Using SQL Server Express
+
+1. **Install SQL Server Express** if not already installed:
+   - Windows: [Download SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+   - Linux: [Install SQL Server on Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup)
+   - Mac: Use Docker (see Option D)
+
+2. **Update connection string** in `backend/src/Nesi.Api/appsettings.json`:
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=NesiDb;Trusted_Connection=true;TrustServerCertificate=true;MultipleActiveResultSets=true"
+     }
+   }
+   ```
+
+3. **Run migrations:**
+   ```bash
+   cd backend/src/Nesi.Infrastructure
+   dotnet ef database update --startup-project ../Nesi.Api
+   ```
+
+### Option C: Using Azure SQL Database (Cloud)
+
+1. **Create Azure SQL Database** in Azure Portal
+
+2. **Update connection string** in `backend/src/Nesi.Api/appsettings.json`:
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Server=tcp:YOUR_SERVER.database.windows.net,1433;Initial Catalog=NesiDb;Persist Security Info=False;User ID=YOUR_USER;Password=YOUR_PASSWORD;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+     }
+   }
+   ```
+
+3. **Run migrations:**
+   ```bash
+   cd backend/src/Nesi.Infrastructure
+   dotnet ef database update --startup-project ../Nesi.Api
+   ```
+
+### Option D: Using SQL Server in Docker (Mac/Linux)
+
+1. **Run SQL Server in Docker:**
+   ```bash
+   docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrong@Passw0rd" \
+      -p 1433:1433 --name sqlserver \
+      -d mcr.microsoft.com/mssql/server:2022-latest
+   ```
+
+2. **Update connection string** in `backend/src/Nesi.Api/appsettings.json`:
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Server=localhost,1433;Database=NesiDb;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true;MultipleActiveResultSets=true"
+     }
+   }
+   ```
+
+3. **Run migrations:**
+   ```bash
+   cd backend/src/Nesi.Infrastructure
+   dotnet ef database update --startup-project ../Nesi.Api
+   ```
+
+**Note:** Connection string templates are available in `appsettings.json` under the "Comments" section.
 
 ## Step 3: Start Backend API
 
