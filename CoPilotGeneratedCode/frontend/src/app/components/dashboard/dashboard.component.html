@@ -12,7 +12,40 @@
     </div>
   </header>
 
-  <div class="dashboard-content">
+  <div class="dashboard-layout">
+    <nav class="sidebar">
+      <div class="nav-section">
+        <h3>Main Menu</h3>
+        <button class="nav-item active" (click)="router.navigate(['/dashboard'])">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </button>
+        <button class="nav-item" (click)="navigateToTimesheets()">
+          <span class="nav-icon">⏱️</span>
+          <span class="nav-label">Timesheets</span>
+        </button>
+        @if (authService.canApproveTimesheets()) {
+          <button class="nav-item" (click)="navigateToTimesheetReview()">
+            <span class="nav-icon">✅</span>
+            <span class="nav-label">Review Timesheets</span>
+          </button>
+        }
+      </div>
+
+      <div class="nav-section">
+        <h3>Business</h3>
+        <button class="nav-item" (click)="navigateToQuotes()">
+          <span class="nav-icon">💼</span>
+          <span class="nav-label">Quotes</span>
+        </button>
+        <button class="nav-item" (click)="navigateToWorkOrders()">
+          <span class="nav-icon">🔧</span>
+          <span class="nav-label">Work Orders</span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="dashboard-content">
     @if (isLoading()) {
       <div class="loading">Loading dashboard data...</div>
     } @else {
@@ -110,5 +143,6 @@
         }
       </div>
     }
+  </div>
   </div>
 </div>

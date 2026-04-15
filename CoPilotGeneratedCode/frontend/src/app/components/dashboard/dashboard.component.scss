@@ -1,6 +1,8 @@
 .dashboard-container {
   min-height: 100vh;
   background-color: #f5f7fa;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard-header {
@@ -13,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 
     h1 {
@@ -44,9 +46,87 @@
   }
 }
 
-.dashboard-content {
-  max-width: 1200px;
+.dashboard-layout {
+  display: flex;
+  flex: 1;
+  max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+}
+
+.sidebar {
+  width: 250px;
+  background: white;
+  padding: 24px 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 76px);
+  overflow-y: auto;
+
+  .nav-section {
+    margin-bottom: 32px;
+    padding: 0 16px;
+
+    h3 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #999;
+      margin: 0 0 12px 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 14px;
+      font-weight: 500;
+      color: #666;
+      text-align: left;
+      margin-bottom: 4px;
+
+      .nav-icon {
+        font-size: 20px;
+        width: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-label {
+        flex: 1;
+      }
+
+      &:hover {
+        background: #f5f7fa;
+        color: #667eea;
+      }
+
+      &.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: 600;
+
+        &:hover {
+          background: linear-gradient(135deg, #5568d3 0%, #653a8c 100%);
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.dashboard-content {
+  flex: 1;
   padding: 32px;
 }
 

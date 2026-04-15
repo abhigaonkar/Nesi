@@ -7,6 +7,8 @@ import { TimesheetReviewComponent } from './components/timesheet-review/timeshee
 import { QuoteListComponent } from './components/quote/quote-list.component';
 import { QuoteFormComponent } from './components/quote/quote-form.component';
 import { QuoteDetailComponent } from './components/quote/quote-detail.component';
+import { WorkOrderListComponent } from './components/work-order/work-order-list.component';
+import { WorkOrderDetailComponent } from './components/work-order/work-order-detail.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -18,5 +20,7 @@ export const routes: Routes = [
   { path: 'quotes/create', component: QuoteFormComponent, canActivate: [authGuard] },
   { path: 'quotes/edit/:id', component: QuoteFormComponent, canActivate: [authGuard] },
   { path: 'quotes/:id', component: QuoteDetailComponent, canActivate: [authGuard] },
+  { path: 'work-orders', component: WorkOrderListComponent, canActivate: [authGuard] },
+  { path: 'work-orders/:id', component: WorkOrderDetailComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '/dashboard' }
 ];

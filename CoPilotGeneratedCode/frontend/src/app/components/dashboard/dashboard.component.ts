@@ -15,7 +15,7 @@ import { Timesheet, TimesheetStatus } from '../../models/timesheet.model';
 export class DashboardComponent implements OnInit {
   authService = inject(AuthService);
   private timesheetService = inject(TimesheetService);
-  private router = inject(Router);
+  router = inject(Router);
 
   recentTimesheets = signal<Timesheet[]>([]);
   stats = signal({
@@ -94,6 +94,14 @@ export class DashboardComponent implements OnInit {
 
   navigateToTimesheetReview(): void {
     this.router.navigate(['/timesheet-review']);
+  }
+
+  navigateToQuotes(): void {
+    this.router.navigate(['/quotes']);
+  }
+
+  navigateToWorkOrders(): void {
+    this.router.navigate(['/work-orders']);
   }
 
   getStatusClass(status: TimesheetStatus): string {
