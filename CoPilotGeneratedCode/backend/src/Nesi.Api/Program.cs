@@ -12,9 +12,8 @@ builder.Services.AddControllers();
 
 // Add DbContext
 builder.Services.AddDbContext<NesiDbContext>(options =>
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register Application layer services (MediatR, AutoMapper, FluentValidation)
 builder.Services.AddApplication();

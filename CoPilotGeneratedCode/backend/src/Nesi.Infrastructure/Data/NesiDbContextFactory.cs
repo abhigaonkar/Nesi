@@ -13,12 +13,10 @@ public class NesiDbContextFactory : IDesignTimeDbContextFactory<NesiDbContext>
         var optionsBuilder = new DbContextOptionsBuilder<NesiDbContext>();
         
         // Use a connection string for design-time (migrations)
-        // This won't actually connect, just used for generating migration scripts
-        var connectionString = "Server=localhost;Database=NesiDb;User=root;Password=root;";
+        // Default to LocalDB for development
+        var connectionString = "Server=(localdb)\\mssqllocaldb;Database=NesiDb;Trusted_Connection=true;TrustServerCertificate=true;MultipleActiveResultSets=true";
         
-        optionsBuilder.UseMySql(
-            connectionString,
-            new MySqlServerVersion(new Version(8, 0, 21)));
+        optionsBuilder.UseSqlServer(connectionString);
 
         return new NesiDbContext(optionsBuilder.Options);
     }
