@@ -14,6 +14,7 @@ public class Customer : BaseEntity
 
     // Navigation properties
     public virtual ICollection<WorkOrder> WorkOrders { get; private set; } = new List<WorkOrder>();
+    public virtual ICollection<Quote> Quotes { get; private set; } = new List<Quote>();
 
     // Private constructor for EF Core
     private Customer() { }
