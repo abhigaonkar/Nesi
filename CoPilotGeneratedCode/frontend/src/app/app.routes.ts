@@ -4,6 +4,9 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TimesheetComponent } from './components/timesheet/timesheet.component';
 import { TimesheetReviewComponent } from './components/timesheet-review/timesheet-review.component';
+import { QuoteListComponent } from './components/quote/quote-list.component';
+import { QuoteFormComponent } from './components/quote/quote-form.component';
+import { QuoteDetailComponent } from './components/quote/quote-detail.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -11,5 +14,9 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
   { path: 'timesheets', component: TimesheetComponent, canActivate: [authGuard] },
   { path: 'timesheet-review', component: TimesheetReviewComponent, canActivate: [authGuard] },
+  { path: 'quotes', component: QuoteListComponent, canActivate: [authGuard] },
+  { path: 'quotes/create', component: QuoteFormComponent, canActivate: [authGuard] },
+  { path: 'quotes/edit/:id', component: QuoteFormComponent, canActivate: [authGuard] },
+  { path: 'quotes/:id', component: QuoteDetailComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '/dashboard' }
 ];

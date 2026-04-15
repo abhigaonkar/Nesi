@@ -1,0 +1,273 @@
+<div class="quote-form-container">
+  <div class="header">
+    <h1>{{ isEditMode ? 'Edit Quote' : 'Create New Quote' }}</h1>
+  </div>
+
+  <div *ngIf="error" class="error-banner">
+    {{ error }}
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    {{ isEditMode ? 'Loading quote...' : 'Saving quote...' }}
+  </div>
+
+  <form *ngIf="!loading" class="quote-form">
+    <!-- Header Section -->
+    <div class="form-section">
+      <h2>Quote Information</h2>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="customer">Customer *</label>
+          <select id="customer" [(ngModel)]="customerId" name="customer" required>
+            <option [value]="0">Select a customer</option>
+            <option *ngFor="let customer of customers" [value]="customer.id">
+              {{ customer.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="quoteType">Quote Type *</label>
+          <select id="quoteType" [(ngModel)]="quoteType" name="quoteType" required>
+            <option [value]="QuoteType.TimeAndMaterial">{{ getQuoteTypeLabel(QuoteType.TimeAndMaterial) }}</option>
+            <option [value]="QuoteType.FixedPrice">{{ getQuoteTypeLabel(QuoteType.FixedPrice) }}</option>
+            <option [value]="QuoteType.CostPlus">{{ getQuoteTypeLabel(QuoteType.CostPlus) }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="description">Description *</label>
+          <input 
+            type="text" 
+            id="description" 
+            [(ngModel)]="description" 
+            name="description" 
+            placeholder="Enter quote description"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="scope">Scope of Work *</label>
+          <textarea 
+            id="scope" 
+            [(ngModel)]="scope" 
+            name="scope" 
+            rows="4"
+            placeholder="Describe the scope of work"
+            required
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="startDate">Estimated Start Date *</label>
+          <input 
+            type="date" 
+            id="startDate" 
+            [(ngModel)]="estimatedStartDate" 
+            name="startDate" 
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="endDate">Estimated Completion Date *</label>
+          <input 
+            type="date" 
+            id="endDate" 
+            [(ngModel)]="estimatedCompletionDate" 
+            name="endDate" 
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="projectManager">Project Manager</label>
+          <select id="projectManager" [(ngModel)]="projectManagerId" name="projectManager">
+            <option [value]="undefined">Not assigned</option>
+            <option *ngFor="let pm of projectManagers" [value]="pm.id">
+              {{ pm.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="taxRate">Tax Rate *</label>
+          <input 
+            type="number" 
+            id="taxRate" 
+            [(ngModel)]="taxRate" 
+            name="taxRate" 
+            step="0.01"
+            min="0"
+            max="1"
+            (ngModelChange)="calculateTotals()"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Line Items Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <h2>Line Items</h2>
+        <button type="button" class="btn btn-secondary" (click)="addLineItem()">
+          <i class="icon-plus"></i> Add Line Item
+        </button>
+      </div>
+
+      <div class="line-items-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Details</th>
+              <th>Quantity/Hours</th>
+              <th>Unit Price</th>
+              <th>Total</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of lineItems; let i = index">
+              <td>
+                <select 
+                  [(ngModel)]="item.itemType" 
+                  [name]="'itemType_' + i"
+                  (ngModelChange)="onLineItemChange()">
+                  <option [value]="QuoteLineItemType.Labor">Labor</option>
+                  <option [value]="QuoteLineItemType.Material">Material</option>
+                  <option [value]="QuoteLineItemType.Equipment">Equipment</option>
+                  <option [value]="QuoteLineItemType.Miscellaneous">Misc</option>
+                </select>
+              </td>
+              <td>
+                <input 
+                  type="text" 
+                  [(ngModel)]="item.description" 
+                  [name]="'description_' + i"
+                  placeholder="Description"
+                  (ngModelChange)="onLineItemChange()"
+                />
+              </td>
+              <td>
+                <select 
+                  *ngIf="item.itemType === QuoteLineItemType.Labor"
+                  [(ngModel)]="item.jobTypeId" 
+                  [name]="'jobType_' + i">
+                  <option [value]="undefined">Select job type</option>
+                  <option *ngFor="let jt of jobTypes" [value]="jt.id">
+                    {{ jt.name }}
+                  </option>
+                </select>
+                <input 
+                  *ngIf="item.itemType === QuoteLineItemType.Material"
+                  type="text" 
+                  [(ngModel)]="item.partNumber" 
+                  [name]="'partNumber_' + i"
+                  placeholder="Part #"
+                />
+                <span *ngIf="item.itemType === QuoteLineItemType.Equipment || item.itemType === QuoteLineItemType.Miscellaneous">
+                  N/A
+                </span>
+              </td>
+              <td>
+                <input 
+                  *ngIf="item.itemType === QuoteLineItemType.Labor"
+                  type="number" 
+                  [(ngModel)]="item.estimatedHours" 
+                  [name]="'hours_' + i"
+                  min="0"
+                  step="0.5"
+                  (ngModelChange)="onLineItemChange()"
+                />
+                <input 
+                  *ngIf="item.itemType !== QuoteLineItemType.Labor"
+                  type="number" 
+                  [(ngModel)]="item.quantity" 
+                  [name]="'quantity_' + i"
+                  min="0"
+                  step="1"
+                  (ngModelChange)="onLineItemChange()"
+                />
+              </td>
+              <td>
+                <input 
+                  type="number" 
+                  [(ngModel)]="item.unitPrice" 
+                  [name]="'unitPrice_' + i"
+                  min="0"
+                  step="0.01"
+                  (ngModelChange)="onLineItemChange()"
+                />
+              </td>
+              <td class="amount">
+                \${{ getLineItemTotal(item) | number:'1.2-2' }}
+              </td>
+              <td>
+                <button 
+                  type="button" 
+                  class="btn btn-danger btn-sm"
+                  (click)="removeLineItem(i)"
+                  [disabled]="lineItems.length === 1">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Terms and Totals Section -->
+    <div class="form-section">
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="terms">Terms and Conditions</label>
+          <textarea 
+            id="terms" 
+            [(ngModel)]="termsAndConditions" 
+            name="terms" 
+            rows="4"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="totals-section">
+        <div class="total-row">
+          <span class="label">Subtotal:</span>
+          <span class="value">\${{ subtotal | number:'1.2-2' }}</span>
+        </div>
+        <div class="total-row">
+          <span class="label">Tax ({{ (taxRate * 100) | number:'1.2-2' }}%):</span>
+          <span class="value">\${{ taxAmount | number:'1.2-2' }}</span>
+        </div>
+        <div class="total-row grand-total">
+          <span class="label">Total:</span>
+          <span class="value">\${{ total | number:'1.2-2' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">
+        Cancel
+      </button>
+      <button type="button" class="btn btn-primary" (click)="saveQuote()" [disabled]="loading">
+        {{ isEditMode ? 'Update Quote' : 'Create Quote' }}
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,185 @@
+<div class="quote-detail-container">
+  <div *ngIf="loading" class="loading">
+    Loading quote details...
+  </div>
+
+  <div *ngIf="error" class="error-banner">
+    {{ error }}
+  </div>
+
+  <div *ngIf="quote && !loading" class="quote-detail">
+    <!-- Header Section -->
+    <div class="header">
+      <div class="title-section">
+        <h1>Quote {{ quote.quoteNumber }}</h1>
+        <span class="status-badge" [ngClass]="getStatusClass(quote.status)">
+          {{ getStatusLabel(quote.status) }}
+        </span>
+      </div>
+      
+      <div class="actions">
+        <button class="btn btn-secondary" (click)="backToList()">
+          <i class="icon-back"></i> Back to List
+        </button>
+        <button *ngIf="canEdit()" class="btn btn-secondary" (click)="editQuote()">
+          <i class="icon-edit"></i> Edit
+        </button>
+        <button *ngIf="canSubmit()" class="btn btn-primary" (click)="submitQuote()" [disabled]="actionLoading">
+          Submit for Approval
+        </button>
+        <button *ngIf="canApprove()" class="btn btn-success" (click)="approveQuote()" [disabled]="actionLoading">
+          Approve
+        </button>
+        <button *ngIf="canReject()" class="btn btn-danger" (click)="rejectQuote()" [disabled]="actionLoading">
+          Reject
+        </button>
+      </div>
+    </div>
+
+    <!-- Quote Information -->
+    <div class="info-section">
+      <h2>Quote Information</h2>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Customer</label>
+          <span>{{ quote.customerName }}</span>
+        </div>
+        
+        <div class="info-item">
+          <label>Quote Type</label>
+          <span>{{ getQuoteTypeLabel(quote.quoteType) }}</span>
+        </div>
+        
+        <div class="info-item">
+          <label>Project Manager</label>
+          <span>{{ quote.projectManagerName || 'Not assigned' }}</span>
+        </div>
+        
+        <div class="info-item">
+          <label>Created Date</label>
+          <span>{{ quote.createdAt | date:'medium' }}</span>
+        </div>
+        
+        <div class="info-item">
+          <label>Estimated Start Date</label>
+          <span>{{ quote.estimatedStartDate | date:'mediumDate' }}</span>
+        </div>
+        
+        <div class="info-item">
+          <label>Estimated Completion Date</label>
+          <span>{{ quote.estimatedCompletionDate | date:'mediumDate' }}</span>
+        </div>
+        
+        <div class="info-item full-width">
+          <label>Description</label>
+          <span>{{ quote.description }}</span>
+        </div>
+        
+        <div class="info-item full-width">
+          <label>Scope of Work</label>
+          <div class="multiline">{{ quote.scope }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Line Items -->
+    <div class="line-items-section">
+      <h2>Line Items</h2>
+      
+      <table class="line-items-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Details</th>
+            <th>Quantity/Hours</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of quote.lineItems">
+            <td>{{ item.lineNumber }}</td>
+            <td>{{ getLineItemTypeLabel(item.itemType) }}</td>
+            <td>{{ item.description }}</td>
+            <td>
+              <span *ngIf="item.itemType === QuoteLineItemType.Labor">
+                {{ item.jobTypeName || 'N/A' }}
+              </span>
+              <span *ngIf="item.itemType === QuoteLineItemType.Material">
+                Part: {{ item.partNumber || 'N/A' }}
+              </span>
+              <span *ngIf="item.itemType === QuoteLineItemType.Equipment || item.itemType === QuoteLineItemType.Miscellaneous">
+                N/A
+              </span>
+            </td>
+            <td>
+              <span *ngIf="item.itemType === QuoteLineItemType.Labor">
+                {{ item.estimatedHours }} hrs
+              </span>
+              <span *ngIf="item.itemType !== QuoteLineItemType.Labor">
+                {{ item.quantity }}
+              </span>
+            </td>
+            <td class="amount">\${{ item.unitPrice | number:'1.2-2' }}</td>
+            <td class="amount">\${{ item.total | number:'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Totals Section -->
+    <div class="totals-section">
+      <div class="totals-grid">
+        <div class="total-row">
+          <span class="label">Subtotal:</span>
+          <span class="value">\${{ quote.subtotal | number:'1.2-2' }}</span>
+        </div>
+        <div class="total-row">
+          <span class="label">Tax ({{ (quote.taxRate * 100) | number:'1.2-2' }}%):</span>
+          <span class="value">\${{ quote.taxAmount | number:'1.2-2' }}</span>
+        </div>
+        <div class="total-row" *ngIf="quote.discountAmount > 0">
+          <span class="label">Discount ({{ quote.discountPercent | number:'1.2-2' }}%):</span>
+          <span class="value">-\${{ quote.discountAmount | number:'1.2-2' }}</span>
+        </div>
+        <div class="total-row grand-total">
+          <span class="label">Total:</span>
+          <span class="value">\${{ quote.total | number:'1.2-2' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <div class="terms-section">
+      <h2>Terms and Conditions</h2>
+      <div class="terms-content">
+        {{ quote.termsAndConditions }}
+      </div>
+    </div>
+
+    <!-- Approval Information -->
+    <div *ngIf="quote.approvedAt || quote.rejectionReason" class="approval-section">
+      <h2>Approval Information</h2>
+      
+      <div class="info-grid">
+        <div *ngIf="quote.approvedBy" class="info-item">
+          <label>Approved By</label>
+          <span>{{ quote.approvedByName }}</span>
+        </div>
+        
+        <div *ngIf="quote.approvedAt" class="info-item">
+          <label>Approved At</label>
+          <span>{{ quote.approvedAt | date:'medium' }}</span>
+        </div>
+        
+        <div *ngIf="quote.rejectionReason" class="info-item full-width rejection-reason">
+          <label>Rejection Reason</label>
+          <div class="multiline">{{ quote.rejectionReason }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
