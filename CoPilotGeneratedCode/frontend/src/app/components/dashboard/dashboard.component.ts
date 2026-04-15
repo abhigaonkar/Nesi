@@ -92,6 +92,10 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/timesheets']);
   }
 
+  navigateToTimesheetReview(): void {
+    this.router.navigate(['/timesheet-review']);
+  }
+
   getStatusClass(status: TimesheetStatus): string {
     switch (status) {
       case TimesheetStatus.Draft:

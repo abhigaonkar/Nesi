@@ -1,0 +1,130 @@
+<div class="timesheet-review-container">
+  <header class="header">
+    <div class="header-content">
+      <h1>Timesheet Review & Approval</h1>
+      <div class="header-actions">
+        <button class="btn btn-secondary" (click)="goToDashboard()">Dashboard</button>
+        <button class="btn btn-secondary" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    @if (errorMessage()) {
+      <div class="alert alert-error">
+        {{ errorMessage() }}
+        <button class="alert-close" (click)="clearMessages()">×</button>
+      </div>
+    }
+
+    @if (successMessage()) {
+      <div class="alert alert-success">
+        {{ successMessage() }}
+        <button class="alert-close" (click)="clearMessages()">×</button>
+      </div>
+    }
+
+    <div class="actions-bar">
+      <h2>Submitted Timesheets Pending Approval</h2>
+      <div class="info">
+        Total: {{ totalCount() }} timesheets awaiting review
+      </div>
+    </div>
+
+    @if (isLoading()) {
+      <div class="loading">Loading timesheets...</div>
+    } @else {
+      @if (timesheets().length === 0) {
+        <div class="empty-state">
+          <p>No timesheets pending approval.</p>
+          <p class="text-muted">All submitted timesheets have been reviewed.</p>
+        </div>
+      } @else {
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Date</th>
+                <th>Work Order</th>
+                <th>Hours</th>
+                <th>Pay Type</th>
+                <th>Job Type</th>
+                <th>Notes</th>
+                <th>Submitted</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (timesheet of timesheets(); track timesheet.id) {
+                <tr>
+                  <td>
+                    <strong>{{ timesheet.userName }}</strong>
+                  </td>
+                  <td>{{ timesheet.date | date: 'MM/dd/yyyy' }}</td>
+                  <td>
+                    @if (timesheet.workOrderNumber) {
+                      <div class="work-order">
+                        <strong>{{ timesheet.workOrderNumber }}</strong>
+                        @if (timesheet.workOrderDescription) {
+                          <small>{{ timesheet.workOrderDescription }}</small>
+                        }
+                      </div>
+                    } @else {
+                      <span class="text-muted">N/A</span>
+                    }
+                  </td>
+                  <td><strong>{{ timesheet.hours }}</strong></td>
+                  <td>{{ timesheet.payTypeName }}</td>
+                  <td>
+                    @if (timesheet.jobTypeName) {
+                      {{ timesheet.jobTypeName }}
+                    } @else {
+                      <span class="text-muted">N/A</span>
+                    }
+                  </td>
+                  <td>
+                    @if (timesheet.notes) {
+                      <span class="notes">{{ timesheet.notes }}</span>
+                    } @else {
+                      <span class="text-muted">-</span>
+                    }
+                  </td>
+                  <td>{{ timesheet.updatedAt || timesheet.createdAt | date: 'MM/dd/yyyy HH:mm' }}</td>
+                  <td>
+                    <div class="action-buttons">
+                      <button 
+                        class="btn btn-success btn-sm" 
+                        (click)="approveTimesheet(timesheet)" 
+                        title="Approve">
+                        ✅ Approve
+                      </button>
+                      <button 
+                        class="btn btn-danger btn-sm" 
+                        (click)="rejectTimesheet(timesheet)" 
+                        title="Reject">
+                        ❌ Reject
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        @if (totalPages() > 1) {
+          <div class="pagination">
+            <button class="btn btn-secondary" (click)="previousPage()" [disabled]="currentPage() === 1">
+              Previous
+            </button>
+            <span class="page-info">Page {{ currentPage() }} of {{ totalPages() }}</span>
+            <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage() === totalPages()">
+              Next
+            </button>
+          </div>
+        }
+      }
+    }
+  </div>
+</div>
