@@ -237,9 +237,15 @@ export class QuoteFormComponent implements OnInit {
         return false;
       }
       
-      if (item.itemType === QuoteLineItemType.Labor && item.estimatedHours <= 0) {
-        this.error = `Line item ${i + 1}: Hours must be greater than 0`;
-        return false;
+      if (item.itemType === QuoteLineItemType.Labor) {
+        if (!item.jobTypeId) {
+          this.error = `Line item ${i + 1}: Job Type is required for Labor items`;
+          return false;
+        }
+        if (item.estimatedHours <= 0) {
+          this.error = `Line item ${i + 1}: Hours must be greater than 0`;
+          return false;
+        }
       }
       
       if (item.itemType !== QuoteLineItemType.Labor && item.quantity <= 0) {

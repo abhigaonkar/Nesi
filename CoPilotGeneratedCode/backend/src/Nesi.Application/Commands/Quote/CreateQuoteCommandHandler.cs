@@ -37,13 +37,19 @@ public class CreateQuoteCommandHandler : IRequestHandler<CreateQuoteCommand, int
         int lineNumber = 1;
         foreach (var item in request.LineItems)
         {
+            // Validate Labor line items have required JobTypeId
+            if (item.ItemType == QuoteLineItemType.Labor && !item.JobTypeId.HasValue)
+            {
+                throw new ArgumentException($"Line item {lineNumber}: Job Type is required for Labor items");
+            }
+
             QuoteLineItem lineItem = item.ItemType switch
             {
                 QuoteLineItemType.Labor => QuoteLineItem.CreateLabor(
                     0, // Will be set when quote is saved
                     lineNumber,
                     item.Description,
-                    item.JobTypeId ?? 0,
+                    item.JobTypeId!.Value,
                     item.EstimatedHours,
                     item.UnitPrice,
                     item.Notes),
