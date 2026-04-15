@@ -16,8 +16,8 @@ This is a comprehensive demo application showcasing the NESI system rebuilt with
 - **Language:** C# 12
 - **Architecture:** Clean Architecture (Onion/Hexagonal)
 - **Patterns:** CQRS (MediatR), Repository, Dependency Injection
-- **ORM:** Entity Framework Core 9 (Code-First)
-- **Database:** SQL Server (LocalDB/Express)
+- **ORM:** Entity Framework Core 8 (Code-First)
+- **Database:** SQL Server (LocalDB/Express/Azure SQL)
 - **Authentication:** Header-based (ready for JWT upgrade)
 - **Validation:** FluentValidation
 - **API Documentation:** Swagger/OpenAPI 3.0
@@ -45,7 +45,7 @@ Before you begin, ensure you have the following installed:
 
 - **Node.js** 20.x or higher
 - **.NET SDK** 8.0 or higher
-- **MySQL** 8.0 or higher
+- **SQL Server** - LocalDB (Windows), Express (Windows/Linux), or Docker
 - **Git** (for version control)
 - **Visual Studio Code** or **Visual Studio 2022** (recommended)
 
@@ -58,8 +58,11 @@ node --version  # Should be v20.x or higher
 # Check .NET version
 dotnet --version  # Should be 8.0.x or higher
 
-# Check MySQL version
-mysql --version  # Should be 8.0.x or higher
+# Check SQL Server (Windows with LocalDB)
+sqllocaldb info  # Should show mssqllocaldb
+
+# Or check SQL Server (Linux/Docker)
+docker ps  # If using Docker
 ```
 
 ## 🚀 Quick Start
@@ -73,16 +76,20 @@ cd Nesi/CoPilotGeneratedCode
 
 ### 2. Database Setup
 
+The application uses **SQL Server**. For detailed setup instructions for all SQL Server options (LocalDB, Express, Docker, Azure SQL), see [Database Configuration Guide](docs/DATABASE_CONFIGURATION.md).
+
+**Quick Setup (Windows LocalDB - Recommended):**
+
+LocalDB is automatically installed with Visual Studio and .NET SDK.
+
 ```bash
-# Login to MySQL
-mysql -u root -p
+cd backend/src/Nesi.Infrastructure
 
-# Create database
-CREATE DATABASE nesi_demo;
-
-# Exit MySQL
-exit
+# Run migrations to create the database
+dotnet ef database update --startup-project ../Nesi.Api
 ```
+
+**Alternative: SQL Server Express or Docker** - See the [Database Configuration Guide](docs/DATABASE_CONFIGURATION.md) for detailed instructions.
 
 ### 3. Backend Setup
 
@@ -92,19 +99,14 @@ cd backend/src/Nesi.Api
 # Restore packages
 dotnet restore
 
-# Setup user secrets (replace with your MySQL password)
-dotnet user-secrets init
-dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost;Database=nesi_demo;User=root;Password=YOUR_PASSWORD;"
-
-# Run migrations
-dotnet ef database update
-
 # Run the application
 dotnet run
 ```
 
 The backend API will be available at: `http://localhost:5000`  
 Swagger documentation: `http://localhost:5000/swagger`
+
+**Note:** The default connection string in `appsettings.json` is already configured for LocalDB. For other SQL Server configurations, update the connection string as described in the [Database Configuration Guide](docs/DATABASE_CONFIGURATION.md).
 
 ### 4. Frontend Setup
 
@@ -272,9 +274,21 @@ dotnet ef database update --startup-project ../Nesi.Api
 
 ### Resetting the Database
 
+**LocalDB (Windows):**
 ```bash
-cd database
-mysql -u root -p nesi_demo < seed-data/reset-database.sql
+cd backend/src/Nesi.Infrastructure
+dotnet ef database drop --startup-project ../Nesi.Api --force
+dotnet ef database update --startup-project ../Nesi.Api
+```
+
+**SQL Server Express/Docker:**
+```sql
+DROP DATABASE NesiDb;
+```
+Then run migrations again:
+```bash
+cd backend/src/Nesi.Infrastructure
+dotnet ef database update --startup-project ../Nesi.Api
 ```
 
 ### Running Only Backend
@@ -294,9 +308,13 @@ npm start
 ## 🐛 Troubleshooting
 
 ### Backend won't start
-- Ensure MySQL is running: `systemctl status mysql` (Linux) or check Services (Windows)
-- Verify connection string in user secrets
+- **SQL Server not running:**
+  - Windows LocalDB: `sqllocaldb start mssqllocaldb`
+  - Docker: `docker start nesi-sqlserver`
+  - Windows Service: Check services.msc
+- Verify connection string in `appsettings.json`
 - Check if port 5000 is available
+- See [Database Configuration Guide](docs/DATABASE_CONFIGURATION.md) for detailed troubleshooting
 
 ### Frontend won't start
 - Delete `node_modules` and run `npm install` again
@@ -304,9 +322,11 @@ npm start
 - Check if port 4200 is available
 
 ### Database connection fails
-- Verify MySQL credentials
-- Ensure database `nesi_demo` exists
-- Check firewall settings for MySQL port (3306)
+- **LocalDB:** Run `sqllocaldb info` to verify instance exists
+- **SQL Express:** Verify SQL Server service is running
+- **Docker:** Run `docker ps` to check container status
+- Check connection string format
+- See detailed troubleshooting in [Database Configuration Guide](docs/DATABASE_CONFIGURATION.md)
 
 ### CORS errors in browser
 - Ensure backend is running
