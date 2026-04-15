@@ -1,0 +1,61 @@
+<div class="work-order-detail-container">
+  <div *ngIf="loading" class="loading">Loading work order...</div>
+
+  <div *ngIf="error" class="error-banner">{{ error }}</div>
+
+  <div *ngIf="workOrder && !loading" class="work-order-detail">
+    <div class="header">
+      <div class="title-section">
+        <h1>Work Order {{ workOrder.workOrderNumber }}</h1>
+        <span class="status-badge" [ngClass]="getStatusClass(workOrder.status)">
+          {{ getStatusLabel(workOrder.status) }}
+        </span>
+      </div>
+      
+      <div class="actions">
+        <button class="btn btn-secondary" (click)="backToList()">Back to List</button>
+        <button *ngIf="canAssignPM()" class="btn btn-primary" (click)="openAssignPMModal()">Assign PM</button>
+        <button *ngIf="canAssignTech()" class="btn btn-primary" (click)="openAssignTechModal()">Assign Technician</button>
+        <button *ngIf="canAddMaterial()" class="btn btn-secondary" (click)="openAddMaterialModal()">Add Material</button>
+        <button *ngIf="canComplete()" class="btn btn-success" (click)="openCompleteModal()">Complete</button>
+        <button *ngIf="canGenerateInvoice()" class="btn btn-success" (click)="openInvoiceModal()">Generate Invoice</button>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h2>Work Order Information</h2>
+      <div class="info-grid">
+        <div class="info-item"><label>Customer</label><span>{{ workOrder.customerName }}</span></div>
+        <div class="info-item"><label>Description</label><span>{{ workOrder.description }}</span></div>
+        <div class="info-item"><label>Project Manager</label><span>{{ workOrder.projectManagerName || 'Not assigned' }}</span></div>
+        <div class="info-item"><label>Estimated Cost</label><span>\${{ workOrder.estimatedCost | number:'1.2-2' }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div *ngIf="showAssignPMModal" class="modal">
+    <div class="modal-content">
+      <h3>Assign Project Manager</h3>
+      <select [(ngModel)]="projectManagerId"><option *ngFor="let pm of projectManagers" [value]="pm.id">{{ pm.name }}</option></select>
+      <input type="date" [(ngModel)]="scheduledStartDate" placeholder="Start Date"/>
+      <input type="date" [(ngModel)]="scheduledEndDate" placeholder="End Date"/>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" (click)="closeAssignPMModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="assignProjectManager()" [disabled]="actionLoading">Assign</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showInvoiceModal" class="modal">
+    <div class="modal-content">
+      <h3>Generate Invoice</h3>
+      <label>Invoice Amount</label>
+      <input type="number" [(ngModel)]="invoiceAmount" step="0.01"/>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" (click)="closeInvoiceModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="generateInvoice()" [disabled]="actionLoading">Generate</button>
+      </div>
+    </div>
+  </div>
+</div>
