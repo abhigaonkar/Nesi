@@ -48,6 +48,10 @@ export class WorkOrderListComponent implements OnInit {
     this.router.navigate(['/work-orders', id]);
   }
 
+  createQuote(): void {
+    this.router.navigate(['/quotes/create']);
+  }
+
   getStatusLabel(status: WorkOrderStatus): string {
     return WorkOrderStatus[status];
   }

@@ -1,6 +1,11 @@
 <div class="work-order-list-container">
   <div class="header">
     <h1>Work Orders</h1>
+    <div class="header-actions">
+      <button class="btn btn-info" (click)="createQuote()">
+        Create Quote (to convert to WO)
+      </button>
+    </div>
   </div>
 
   <div *ngIf="loading" class="loading">Loading work orders...</div>
@@ -41,7 +46,11 @@
           </td>
         </tr>
         <tr *ngIf="workOrders.length === 0">
-          <td colspan="8" class="no-data">No work orders found</td>
+          <td colspan="8" class="no-data">
+            No work orders found.
+            <br>
+            <small>Create a quote and convert it to a work order to get started.</small>
+          </td>
         </tr>
       </tbody>
     </table>
