@@ -82,10 +82,8 @@ export class TimesheetComponent implements OnInit {
 
   loadWorkOrders(): void {
     this.workOrderService.getWorkOrders().subscribe({
-      next: (response) => {
-        if (response.success && response.data) {
-          this.workOrders.set(response.data);
-        }
+      next: (workOrders) => {
+        this.workOrders.set(workOrders);
       },
       error: (error) => {
         console.error('Error loading work orders:', error);
