@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { WorkOrderService } from '../../services/work-order.service';
 import { WorkOrder, WorkOrderStatus } from '../../models/work-order.model';
 
 @Component({
   selector: 'app-work-order-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './work-order-list.component.html',
   styleUrls: ['./work-order-list.component.scss']
 })
