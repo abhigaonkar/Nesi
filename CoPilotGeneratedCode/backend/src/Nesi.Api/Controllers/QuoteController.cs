@@ -188,6 +188,63 @@ public class QuoteController : ControllerBase
             return StatusCode(500, ApiResponse<bool>.ErrorResponse("An error occurred rejecting the quote"));
         }
     }
+
+    /// <summary>
+    /// Customer approve a quote
+    /// </summary>
+    [HttpPost("{id}/customer-approve")]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<ApiResponse<bool>>> CustomerApproveQuote(int id)
+    {
+        try
+        {
+            // TODO: Get customer contact from authenticated user claims
+            var approvedBy = Request.Headers["X-User-Name"].FirstOrDefault() ?? "Customer";
+            
+            var command = new CustomerApproveQuoteCommand(id, approvedBy);
+            await _mediator.Send(command);
+            
+            return Ok(ApiResponse<bool>.SuccessResponse(true, "Quote approved by customer successfully"));
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogWarning(ex, "Failed to customer approve quote {QuoteId}", id);
+            return BadRequest(ApiResponse<bool>.ErrorResponse(ex.Message));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error customer approving quote {QuoteId}", id);
+            return StatusCode(500, ApiResponse<bool>.ErrorResponse("An error occurred approving the quote"));
+        }
+    }
+
+    /// <summary>
+    /// Convert a quote to a work order
+    /// </summary>
+    [HttpPost("{id}/convert-to-workorder")]
+    [ProducesResponseType(typeof(ApiResponse<int>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<int>), StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<ApiResponse<int>>> ConvertToWorkOrder(int id)
+    {
+        try
+        {
+            var command = new ConvertQuoteToWorkOrderCommand(id);
+            var workOrderId = await _mediator.Send(command);
+            
+            return Ok(ApiResponse<int>.SuccessResponse(workOrderId, "Quote converted to work order successfully"));
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogWarning(ex, "Failed to convert quote {QuoteId} to work order", id);
+            return BadRequest(ApiResponse<int>.ErrorResponse(ex.Message));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error converting quote {QuoteId} to work order", id);
+            return StatusCode(500, ApiResponse<int>.ErrorResponse("An error occurred converting the quote to a work order"));
+        }
+    }
 }
 
 public record RejectQuoteRequest(string Reason);

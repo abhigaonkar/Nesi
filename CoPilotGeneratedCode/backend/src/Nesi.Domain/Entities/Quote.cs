@@ -177,11 +177,36 @@ public class Quote : BaseEntity
         CustomerApprovedBy = approvedBy;
     }
     
-    public void ConvertToWorkOrder(int workOrderId)
+    public WorkOrder ConvertToWorkOrder()
     {
         if (Status != QuoteStatus.CustomerApproved)
             throw new InvalidOperationException("Can only convert customer-approved quotes to work orders");
         
+        if (WorkOrderId.HasValue)
+            throw new InvalidOperationException("Quote has already been converted to a work order");
+        
+        // Generate work order number based on quote number
+        var workOrderNumber = $"WO-{QuoteNumber}";
+        
+        // Create work order from quote
+        var workOrder = new WorkOrder(
+            workOrderNumber,
+            CustomerId,
+            Description,
+            EstimatedStartDate,
+            this.Id);
+        
+        // Assign project manager if available
+        if (ProjectManagerId.HasValue)
+        {
+            workOrder.AssignProjectManager(ProjectManagerId.Value, EstimatedStartDate, EstimatedCompletionDate);
+        }
+        
+        return workOrder;
+    }
+
+    public void MarkAsConvertedToWorkOrder(int workOrderId)
+    {
         WorkOrderId = workOrderId;
         ConvertedToWorkOrderAt = DateTime.UtcNow;
     }
