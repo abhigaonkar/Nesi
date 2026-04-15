@@ -27,7 +27,7 @@
     <div class="actions-bar">
       <h2>Submitted Timesheets Pending Approval</h2>
       <div class="info">
-        Total: {{ totalCount() }} timesheets awaiting review
+        {{ totalCount() }} timesheet{{ totalCount() !== 1 ? 's' : '' }} awaiting review
       </div>
     </div>
 
