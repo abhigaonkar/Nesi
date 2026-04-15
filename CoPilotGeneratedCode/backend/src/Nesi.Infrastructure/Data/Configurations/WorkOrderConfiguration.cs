@@ -31,11 +31,53 @@ public class WorkOrderConfiguration : IEntityTypeConfiguration<WorkOrder>
             .IsRequired()
             .HasDefaultValue(true);
 
+        builder.Property(w => w.Milestones)
+            .HasMaxLength(2000);
+
+        builder.Property(w => w.CompletionNotes)
+            .HasMaxLength(1000);
+
+        builder.Property(w => w.InvoiceAmount)
+            .HasColumnType("decimal(18,2)");
+
+        builder.Property(w => w.ScheduledStartDate)
+            .HasColumnType("date");
+
+        builder.Property(w => w.ScheduledEndDate)
+            .HasColumnType("date");
+
         // Relationships
         builder.HasOne(w => w.Customer)
             .WithMany(c => c.WorkOrders)
             .HasForeignKey(w => w.CustomerId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(w => w.ProjectManager)
+            .WithMany()
+            .HasForeignKey(w => w.ProjectManagerId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // One-to-one relationship with Quote is configured on the Quote side
+
+        builder.HasMany(w => w.TimesheetEntries)
+            .WithOne(t => t.WorkOrder)
+            .HasForeignKey(t => t.WorkOrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(w => w.Materials)
+            .WithOne(m => m.WorkOrder)
+            .HasForeignKey(m => m.WorkOrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(w => w.Assignments)
+            .WithOne(a => a.WorkOrder)
+            .HasForeignKey(a => a.WorkOrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(w => w.Documents)
+            .WithOne(d => d.WorkOrder)
+            .HasForeignKey(d => d.WorkOrderId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Indexes
         builder.HasIndex(w => w.WorkOrderNumber)
@@ -44,5 +86,11 @@ public class WorkOrderConfiguration : IEntityTypeConfiguration<WorkOrder>
 
         builder.HasIndex(w => w.CustomerId)
             .HasDatabaseName("IX_WorkOrders_CustomerId");
+
+        builder.HasIndex(w => w.QuoteId)
+            .HasDatabaseName("IX_WorkOrders_QuoteId");
+
+        builder.HasIndex(w => w.Status)
+            .HasDatabaseName("IX_WorkOrders_Status");
     }
 }
