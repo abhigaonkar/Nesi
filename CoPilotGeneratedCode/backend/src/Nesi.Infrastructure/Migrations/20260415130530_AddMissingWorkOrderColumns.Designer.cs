@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Nesi.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Nesi.Infrastructure.Data;
 namespace Nesi.Infrastructure.Migrations
 {
     [DbContext(typeof(NesiDbContext))]
-    partial class NesiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260415130530_AddMissingWorkOrderColumns")]
+    partial class AddMissingWorkOrderColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
