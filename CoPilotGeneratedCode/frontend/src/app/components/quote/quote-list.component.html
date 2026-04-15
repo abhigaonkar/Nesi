@@ -1,0 +1,95 @@
+<div class="quote-list-container">
+  <div class="header">
+    <h1>Quotes</h1>
+    <button class="btn btn-primary" (click)="createQuote()">
+      <i class="icon-plus"></i> Create Quote
+    </button>
+  </div>
+
+  <div class="filters">
+    <div class="search-box">
+      <input 
+        type="text" 
+        placeholder="Search by quote number, customer, or description..." 
+        [value]="searchTerm"
+        (input)="onSearchChange($any($event.target).value)"
+      />
+    </div>
+    
+    <div class="status-filters">
+      <button 
+        [class.active]="statusFilter === 'all'"
+        (click)="onStatusFilterChange('all')">
+        All
+      </button>
+      <button 
+        [class.active]="statusFilter === QuoteStatus.Draft"
+        (click)="onStatusFilterChange(QuoteStatus.Draft)">
+        Draft
+      </button>
+      <button 
+        [class.active]="statusFilter === QuoteStatus.Submitted"
+        (click)="onStatusFilterChange(QuoteStatus.Submitted)">
+        Submitted
+      </button>
+      <button 
+        [class.active]="statusFilter === QuoteStatus.Approved"
+        (click)="onStatusFilterChange(QuoteStatus.Approved)">
+        Approved
+      </button>
+      <button 
+        [class.active]="statusFilter === QuoteStatus.CustomerApproved"
+        (click)="onStatusFilterChange(QuoteStatus.CustomerApproved)">
+        Customer Approved
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    Loading quotes...
+  </div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="quote-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Quote #</th>
+          <th>Customer</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Created Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let quote of filteredQuotes" (click)="viewQuote(quote.id)">
+          <td>{{ quote.quoteNumber }}</td>
+          <td>{{ quote.customerName }}</td>
+          <td>{{ getQuoteTypeLabel(quote.quoteType) }}</td>
+          <td>{{ quote.description }}</td>
+          <td class="amount">\${{ quote.total | number:'1.2-2' }}</td>
+          <td>
+            <span class="status-badge" [ngClass]="getStatusClass(quote.status)">
+              {{ getStatusLabel(quote.status) }}
+            </span>
+          </td>
+          <td>{{ quote.createdAt | date:'short' }}</td>
+          <td class="actions">
+            <button class="btn btn-sm btn-view" (click)="viewQuote(quote.id); $event.stopPropagation()">
+              View
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="filteredQuotes.length === 0">
+          <td colspan="8" class="no-data">No quotes found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
