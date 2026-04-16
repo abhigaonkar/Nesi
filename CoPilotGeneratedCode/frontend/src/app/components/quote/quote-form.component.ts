@@ -166,16 +166,19 @@ export class QuoteFormComponent implements OnInit {
     }
 
     const request: CreateQuoteRequest = {
-      customerId: this.customerId,
-      quoteType: this.quoteType,
+      customerId: Number(this.customerId),
+      quoteType: Number(this.quoteType),
       description: this.description,
       scope: this.scope,
       estimatedStartDate: new Date(this.estimatedStartDate),
       estimatedCompletionDate: new Date(this.estimatedCompletionDate),
-      projectManagerId: this.projectManagerId,
+      projectManagerId: this.projectManagerId ? Number(this.projectManagerId) : undefined,
       termsAndConditions: this.termsAndConditions,
       taxRate: this.taxRate,
-      lineItems: this.lineItems
+      lineItems: this.lineItems.map(item => ({
+        ...item,
+        jobTypeId: item.jobTypeId ? Number(item.jobTypeId) : undefined
+      }))
     };
 
     this.loading = true;
