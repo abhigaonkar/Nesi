@@ -7,18 +7,21 @@ public class ConvertQuoteToWorkOrderCommandHandler : IRequestHandler<ConvertQuot
 {
     private readonly IQuoteRepository _quoteRepository;
     private readonly IWorkOrderRepository _workOrderRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
     public ConvertQuoteToWorkOrderCommandHandler(
         IQuoteRepository quoteRepository,
-        IWorkOrderRepository workOrderRepository)
+        IWorkOrderRepository workOrderRepository,
+        IUnitOfWork unitOfWork)
     {
         _quoteRepository = quoteRepository;
         _workOrderRepository = workOrderRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<int> Handle(ConvertQuoteToWorkOrderCommand request, CancellationToken cancellationToken)
     {
-        var quote = await _quoteRepository.GetByIdAsync(request.QuoteId);
+        var quote = await _quoteRepository.GetByIdAsync(request.QuoteId, cancellationToken);
         if (quote == null)
         {
             throw new InvalidOperationException($"Quote with ID {request.QuoteId} not found");
@@ -26,11 +29,13 @@ public class ConvertQuoteToWorkOrderCommandHandler : IRequestHandler<ConvertQuot
 
         var workOrder = quote.ConvertToWorkOrder();
         
-        await _workOrderRepository.AddAsync(workOrder);
+        await _workOrderRepository.AddAsync(workOrder, cancellationToken);
         
         // Mark quote as converted
         quote.MarkAsConvertedToWorkOrder(workOrder.Id);
-        await _quoteRepository.UpdateAsync(quote);
+        _quoteRepository.Update(quote);
+        
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
         
         return workOrder.Id;
     }
