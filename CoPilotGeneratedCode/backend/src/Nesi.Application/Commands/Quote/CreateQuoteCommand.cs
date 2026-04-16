@@ -1,6 +1,7 @@
 using MediatR;
 using Nesi.Application.DTOs.Quote;
 using Nesi.Domain.Enums;
+using System.Text.Json.Serialization;
 
 namespace Nesi.Application.Commands.Quote;
 
@@ -14,7 +15,7 @@ public record CreateQuoteCommand(
     int? ProjectManagerId,
     string TermsAndConditions,
     decimal TaxRate,
-    List<CreateQuoteLineItemDto> LineItems) : IRequest<int>;
+    [property: JsonPropertyName("lineItems")] List<CreateQuoteLineItemDto> LineItems) : IRequest<int>;
 
 public class CreateQuoteLineItemDto
 {
