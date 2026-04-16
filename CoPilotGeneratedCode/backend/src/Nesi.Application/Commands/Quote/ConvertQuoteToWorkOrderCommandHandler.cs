@@ -31,7 +31,10 @@ public class ConvertQuoteToWorkOrderCommandHandler : IRequestHandler<ConvertQuot
         
         await _workOrderRepository.AddAsync(workOrder, cancellationToken);
         
-        // Mark quote as converted
+        // Save the work order first to generate its ID
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        
+        // Now mark quote as converted with the generated work order ID
         quote.MarkAsConvertedToWorkOrder(workOrder.Id);
         _quoteRepository.Update(quote);
         
