@@ -4,10 +4,13 @@
 
 ## 🎯 Overview
 
-This is a comprehensive demo application showcasing the NESI system rebuilt with modern technologies and best practices. The application demonstrates two key use cases:
+This is a comprehensive demo application showcasing the NESI system rebuilt with modern technologies and best practices. The application demonstrates these key use cases:
 
 1. **Authentication & Dashboard** - JWT-based authentication with personalized dashboard
-2. **Employee Timesheet Management** - Complete CRUD operations with business rule enforcement
+2. **Customer Management** - Full CRUD operations with search, pagination, and soft delete
+3. **Quote Management** - Multi-line quotes with approval workflow and conversion to work orders
+4. **Work Order Management** - Track and manage field service work orders
+5. **Employee Timesheet Management** - Complete CRUD operations with business rule enforcement
 
 ## 🏗️ Technology Stack
 
@@ -186,9 +189,35 @@ CoPilotGeneratedCode/
 
 ### Authentication & Authorization
 - JWT-based authentication
-- Role-based access control
+- Role-based access control (Admin, Manager, Employee)
 - Secure password handling
 - Token refresh mechanism
+
+### Customer Management
+- Create, edit, view, delete customers (soft delete)
+- Search by name, customer number, email, phone
+- Filter by active/inactive status
+- Pagination for large datasets
+- Add addresses, contacts, and activity notes
+- Auto-generated customer numbers (CUST-YYYY-NNNNN)
+
+### Quote Management
+- Create quotes with multiple line items
+- Quote types: Time & Material, Fixed Price, Cost Plus
+- Automatic calculations (subtotal, tax, discount, total)
+- Multi-step approval workflow:
+  - Submit for approval
+  - Manager approval
+  - Customer approval
+- Convert approved quotes to work orders
+- Quote versioning and revision support
+
+### Work Order Management
+- Convert quotes to work orders
+- Crew assignment and scheduling
+- Status tracking
+- Link to original quote
+- Timesheet integration
 
 ### Dashboard
 - Personalized user dashboard
@@ -210,6 +239,8 @@ CoPilotGeneratedCode/
 - Cannot enter future timesheets
 - Cannot edit submitted/approved timesheets
 - Overtime calculation after 40 hours/week
+- Credit limit tracking for customers
+- Quote approval required before work order conversion
 
 ## 👥 Demo User Accounts
 
@@ -340,6 +371,32 @@ npm start
 - `POST /api/auth/refresh` - Refresh token
 - `POST /api/auth/logout` - User logout
 
+### Customers
+- `GET /api/customer` - Get all customers (paginated, filtered)
+- `GET /api/customer/{id}` - Get customer by ID
+- `GET /api/customer/search?searchTerm=...` - Search customers
+- `POST /api/customer` - Create new customer
+- `PUT /api/customer/{id}` - Update customer
+- `DELETE /api/customer/{id}` - Soft delete customer
+- `POST /api/customer/{id}/activate` - Reactivate customer
+- `POST /api/customer/{id}/addresses` - Add address to customer
+- `POST /api/customer/{id}/contacts` - Add contact to customer
+- `POST /api/customer/{id}/notes` - Add note to customer
+
+### Quotes
+- `GET /api/quote` - Get all quotes
+- `GET /api/quote/{id}` - Get quote by ID
+- `POST /api/quote` - Create new quote
+- `POST /api/quote/{id}/submit` - Submit quote for approval
+- `POST /api/quote/{id}/approve` - Manager approve quote
+- `POST /api/quote/{id}/reject` - Manager reject quote
+- `POST /api/quote/{id}/customer-approve` - Customer approve quote
+- `POST /api/quote/{id}/convert-to-workorder` - Convert to work order
+
+### Work Orders
+- `GET /api/workorder` - Get all work orders
+- `GET /api/workorder/{id}` - Get work order by ID
+
 ### Timesheets
 - `GET /api/timesheets` - Get all timesheets for current user
 - `GET /api/timesheets/{id}` - Get timesheet by ID
@@ -357,7 +414,25 @@ For complete API documentation, visit: `http://localhost:5000/swagger`
 
 ## 🎬 Demo Script
 
-Follow the [Demo Script](/CoPilotGeneratedCode/docs/DEMO_SCRIPT.md) for a guided walkthrough of all features.
+For a complete demonstration of all features:
+
+- **Quick Start (5 min):** See [QUICK_START.md](QUICK_START.md) for rapid setup and demo
+- **Full Demo (20 min):** See [DEMO_GUIDE.md](DEMO_GUIDE.md) for comprehensive walkthrough
+- **Implementation Details:** See [IMPLEMENTATION_SUMMARY.md](IMPLEMENTATION_SUMMARY.md) for technical details
+
+### Quick Demo Flow
+
+1. **Customer Management** (2 min)
+   - Create new customer → View details → Edit → Deactivate
+
+2. **Quote Creation** (3 min)
+   - Create quote for customer → Add line items → Submit → Approve
+
+3. **Work Order** (1 min)
+   - Convert approved quote to work order → View work order
+
+4. **Time Tracking** (2 min)
+   - Enter time against work order → Submit → Manager review
 
 ## 📚 Additional Documentation
 
