@@ -27,6 +27,10 @@ export class NavComponent {
     this.router.navigate(['/timesheet-review']);
   }
 
+  navigateToCustomers(): void {
+    this.router.navigate(['/customers']);
+  }
+
   navigateToQuotes(): void {
     this.router.navigate(['/quotes']);
   }

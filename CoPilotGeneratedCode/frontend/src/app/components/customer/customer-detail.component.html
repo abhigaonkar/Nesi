@@ -1,0 +1,173 @@
+<div class="customer-detail-container">
+  <div class="header">
+    <div class="header-left">
+      <button class="btn btn-secondary" (click)="backToList()">
+        ← Back to Customers
+      </button>
+      <h1 *ngIf="customer">{{ customer.name }}</h1>
+    </div>
+    <div class="header-actions" *ngIf="customer">
+      <button class="btn btn-warning" (click)="editCustomer()">
+        ✏️ Edit
+      </button>
+      <button 
+        *ngIf="!customer.isActive" 
+        class="btn btn-success" 
+        (click)="activateCustomer()">
+        ✓ Activate
+      </button>
+      <button 
+        *ngIf="customer.isActive" 
+        class="btn btn-danger" 
+        (click)="deleteCustomer()">
+        🗑 Deactivate
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    Loading customer details...
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && customer" class="customer-details">
+    <!-- Status Badge -->
+    <div class="status-section">
+      <span class="status-badge" [class.status-active]="customer.isActive" [class.status-inactive]="!customer.isActive">
+        {{ customer.isActive ? 'Active' : 'Inactive' }}
+      </span>
+      <span class="customer-number">{{ customer.customerNumber }}</span>
+    </div>
+
+    <!-- Basic Information -->
+    <div class="detail-section">
+      <h2>Basic Information</h2>
+      <div class="detail-grid">
+        <div class="detail-item">
+          <label>Customer Name</label>
+          <value>{{ customer.name }}</value>
+        </div>
+        <div class="detail-item">
+          <label>Business Unit</label>
+          <value>{{ customer.businessUnitName || '-' }}</value>
+        </div>
+        <div class="detail-item">
+          <label>Contact Name</label>
+          <value>{{ customer.contactName || '-' }}</value>
+        </div>
+        <div class="detail-item">
+          <label>Email</label>
+          <value>{{ customer.email || '-' }}</value>
+        </div>
+        <div class="detail-item">
+          <label>Phone</label>
+          <value>{{ customer.phone || '-' }}</value>
+        </div>
+        <div class="detail-item">
+          <label>Address</label>
+          <value>{{ customer.address || '-' }}</value>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Information -->
+    <div class="detail-section">
+      <h2>Financial Information</h2>
+      <div class="detail-grid">
+        <div class="detail-item">
+          <label>Credit Limit</label>
+          <value>{{ formatCurrency(customer.creditLimit) }}</value>
+        </div>
+        <div class="detail-item">
+          <label>Payment Terms</label>
+          <value>{{ customer.paymentTermsDays ? customer.paymentTermsDays + ' days' : '-' }}</value>
+        </div>
+        <div class="detail-item">
+          <label>Account Manager</label>
+          <value>{{ customer.accountManagerName || '-' }}</value>
+        </div>
+      </div>
+    </div>
+
+    <!-- Addresses -->
+    <div class="detail-section" *ngIf="customer.addresses && customer.addresses.length > 0">
+      <h2>Addresses</h2>
+      <div class="addresses-list">
+        <div class="address-card" *ngFor="let address of customer.addresses">
+          <div class="address-header">
+            <span class="address-type">{{ getAddressTypeLabel(address.addressType) }}</span>
+            <span *ngIf="address.isDefault" class="default-badge">Default</span>
+          </div>
+          <div class="address-content">
+            <p>{{ address.addressLine1 }}</p>
+            <p *ngIf="address.addressLine2">{{ address.addressLine2 }}</p>
+            <p>{{ address.city }}, {{ address.state }} {{ address.zipCode }}</p>
+            <p>{{ address.country }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contacts -->
+    <div class="detail-section" *ngIf="customer.contacts && customer.contacts.length > 0">
+      <h2>Contacts</h2>
+      <div class="contacts-list">
+        <div class="contact-card" *ngFor="let contact of customer.contacts">
+          <div class="contact-header">
+            <h3>{{ contact.name }}</h3>
+            <span *ngIf="contact.isPrimary" class="primary-badge">Primary</span>
+          </div>
+          <div class="contact-details">
+            <p *ngIf="contact.title"><strong>Title:</strong> {{ contact.title }}</p>
+            <p *ngIf="contact.email"><strong>Email:</strong> {{ contact.email }}</p>
+            <p *ngIf="contact.phone"><strong>Phone:</strong> {{ contact.phone }}</p>
+            <p *ngIf="contact.cellPhone"><strong>Cell:</strong> {{ contact.cellPhone }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="detail-section" *ngIf="customer.notes">
+      <h2>Notes</h2>
+      <div class="notes-content">
+        <p>{{ customer.notes }}</p>
+      </div>
+    </div>
+
+    <!-- Customer Notes -->
+    <div class="detail-section" *ngIf="customer.customerNotes && customer.customerNotes.length > 0">
+      <h2>Activity Notes</h2>
+      <div class="customer-notes-list">
+        <div class="note-card" *ngFor="let note of customer.customerNotes">
+          <div class="note-header">
+            <span class="note-author">{{ note.createdByUserName || 'User #' + note.createdByUserId }}</span>
+            <span class="note-date">{{ formatDate(note.createdAt) }}</span>
+          </div>
+          <div class="note-content">
+            {{ note.note }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metadata -->
+    <div class="detail-section metadata">
+      <h2>System Information</h2>
+      <div class="detail-grid">
+        <div class="detail-item">
+          <label>Created At</label>
+          <value>{{ formatDate(customer.createdAt) }}</value>
+        </div>
+        <div class="detail-item">
+          <label>Last Updated</label>
+          <value>{{ formatDate(customer.updatedAt) }}</value>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

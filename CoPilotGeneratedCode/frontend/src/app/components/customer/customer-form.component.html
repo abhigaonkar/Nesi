@@ -1,0 +1,178 @@
+<div class="customer-form-container">
+  <div class="header">
+    <h1>{{ isEditMode ? 'Edit Customer' : 'New Customer' }}</h1>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    Loading customer...
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <form *ngIf="!loading" (ngSubmit)="onSubmit()" class="customer-form">
+    <div class="form-section">
+      <h2>Basic Information</h2>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Customer Name <span class="required">*</span></label>
+          <input 
+            type="text" 
+            id="name" 
+            [(ngModel)]="name" 
+            name="name"
+            class="form-control"
+            required
+            placeholder="Enter customer name"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contactName">Contact Name</label>
+          <input 
+            type="text" 
+            id="contactName" 
+            [(ngModel)]="contactName" 
+            name="contactName"
+            class="form-control"
+            placeholder="Primary contact person"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            [(ngModel)]="email" 
+            name="email"
+            class="form-control"
+            placeholder="customer@example.com"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            [(ngModel)]="phone" 
+            name="phone"
+            class="form-control"
+            placeholder="(555) 123-4567"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input 
+            type="text" 
+            id="address" 
+            [(ngModel)]="address" 
+            name="address"
+            class="form-control"
+            placeholder="Street address"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>Business Details</h2>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="creditLimit">Credit Limit</label>
+          <input 
+            type="number" 
+            id="creditLimit" 
+            [(ngModel)]="creditLimit" 
+            name="creditLimit"
+            class="form-control"
+            min="0"
+            step="100"
+            placeholder="0.00"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="paymentTermsDays">Payment Terms (Days)</label>
+          <input 
+            type="number" 
+            id="paymentTermsDays" 
+            [(ngModel)]="paymentTermsDays" 
+            name="paymentTermsDays"
+            class="form-control"
+            min="0"
+            placeholder="30"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="businessUnitId">Business Unit ID</label>
+          <input 
+            type="number" 
+            id="businessUnitId" 
+            [(ngModel)]="businessUnitId" 
+            name="businessUnitId"
+            class="form-control"
+            placeholder="Optional"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="accountManagerId">Account Manager ID</label>
+          <input 
+            type="number" 
+            id="accountManagerId" 
+            [(ngModel)]="accountManagerId" 
+            name="accountManagerId"
+            class="form-control"
+            placeholder="Optional"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>Notes</h2>
+      
+      <div class="form-group">
+        <label for="notes">Additional Notes</label>
+        <textarea 
+          id="notes" 
+          [(ngModel)]="notes" 
+          name="notes"
+          class="form-control"
+          rows="4"
+          placeholder="Add any additional notes about the customer..."
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button 
+        type="button" 
+        class="btn btn-secondary" 
+        (click)="cancel()"
+        [disabled]="saving">
+        Cancel
+      </button>
+      <button 
+        type="submit" 
+        class="btn btn-primary" 
+        [disabled]="saving">
+        {{ saving ? 'Saving...' : (isEditMode ? 'Update Customer' : 'Create Customer') }}
+      </button>
+    </div>
+  </form>
+</div>

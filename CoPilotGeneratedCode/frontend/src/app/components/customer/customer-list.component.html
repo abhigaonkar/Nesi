@@ -1,0 +1,132 @@
+<div class="customer-list-container">
+  <div class="header">
+    <h1>Customers</h1>
+    <button class="btn btn-primary" (click)="createCustomer()">
+      <span class="icon">+</span> New Customer
+    </button>
+  </div>
+
+  <div class="filters">
+    <div class="search-box">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm" 
+        (ngModelChange)="onSearchChange()"
+        placeholder="Search by name, number, email, phone..."
+        class="search-input"
+      />
+    </div>
+    
+    <div class="filter-group">
+      <label>
+        <input 
+          type="checkbox" 
+          [(ngModel)]="activeOnly" 
+          (ngModelChange)="onActiveFilterChange()"
+        />
+        Active Only
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    Loading customers...
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="customer-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Customer #</th>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers" [class.inactive]="!customer.isActive">
+          <td>{{ customer.customerNumber }}</td>
+          <td>
+            <div class="customer-name">
+              <strong>{{ customer.name }}</strong>
+              <small *ngIf="customer.businessUnitName">{{ customer.businessUnitName }}</small>
+            </div>
+          </td>
+          <td>{{ customer.contactName || '-' }}</td>
+          <td>{{ customer.email || '-' }}</td>
+          <td>{{ customer.phone || '-' }}</td>
+          <td>
+            <span class="status-badge" [class.status-active]="customer.isActive" [class.status-inactive]="!customer.isActive">
+              {{ customer.isActive ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+          <td class="actions">
+            <button class="btn btn-sm btn-info" (click)="viewCustomer(customer.id)" title="View Details">
+              <span class="icon">👁</span>
+            </button>
+            <button class="btn btn-sm btn-warning" (click)="editCustomer(customer.id)" title="Edit">
+              <span class="icon">✏️</span>
+            </button>
+            <button 
+              *ngIf="!customer.isActive" 
+              class="btn btn-sm btn-success" 
+              (click)="activateCustomer(customer)" 
+              title="Activate">
+              <span class="icon">✓</span>
+            </button>
+            <button 
+              *ngIf="customer.isActive" 
+              class="btn btn-sm btn-danger" 
+              (click)="deleteCustomer(customer)" 
+              title="Deactivate">
+              <span class="icon">🗑</span>
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="customers.length === 0">
+          <td colspan="7" class="no-data">
+            No customers found
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && !searchTerm && totalPages > 1" class="pagination">
+    <button 
+      class="btn btn-sm" 
+      (click)="previousPage()" 
+      [disabled]="currentPage === 1">
+      Previous
+    </button>
+    
+    <div class="page-numbers">
+      <button 
+        *ngFor="let page of getPageNumbers()" 
+        class="btn btn-sm page-number" 
+        [class.active]="page === currentPage"
+        (click)="goToPage(page)">
+        {{ page }}
+      </button>
+    </div>
+    
+    <button 
+      class="btn btn-sm" 
+      (click)="nextPage()" 
+      [disabled]="currentPage === totalPages">
+      Next
+    </button>
+    
+    <div class="page-info">
+      Page {{ currentPage }} of {{ totalPages }} ({{ totalCount }} total)
+    </div>
+  </div>
+</div>
