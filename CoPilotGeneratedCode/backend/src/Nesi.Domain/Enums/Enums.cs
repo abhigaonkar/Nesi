@@ -48,3 +48,10 @@ public enum WorkOrderStatus
     Cancelled = 4,
     Closed = 5
 }
+
+public enum AddressType
+{
+    Shipping = 0,
+    Billing = 1,
+    Both = 2
+}

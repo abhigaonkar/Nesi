@@ -1,3 +1,5 @@
+using Nesi.Domain.Enums;
+
 namespace Nesi.Domain.Entities;
 
 /// <summary>
@@ -6,14 +8,14 @@ namespace Nesi.Domain.Entities;
 public class CustomerAddress : BaseEntity
 {
     public int CustomerId { get; private set; }
+    public AddressType AddressType { get; private set; }
     public string AddressLine1 { get; private set; } = string.Empty;
     public string? AddressLine2 { get; private set; }
     public string City { get; private set; } = string.Empty;
-    public string? StateProvince { get; private set; }
-    public string? PostalCode { get; private set; }
+    public string State { get; private set; } = string.Empty;
+    public string ZipCode { get; private set; } = string.Empty;
     public string Country { get; private set; } = string.Empty;
-    public string AddressType { get; private set; } = "Shipping"; // Shipping, Billing, Both
-    public bool IsPrimary { get; private set; }
+    public bool IsDefault { get; private set; }
     public bool IsActive { get; private set; } = true;
 
     // Navigation property
@@ -25,14 +27,14 @@ public class CustomerAddress : BaseEntity
     // Public constructor
     public CustomerAddress(
         int customerId,
+        AddressType addressType,
         string addressLine1,
+        string? addressLine2,
         string city,
+        string state,
+        string zipCode,
         string country,
-        string? addressLine2 = null,
-        string? stateProvince = null,
-        string? postalCode = null,
-        string addressType = "Shipping",
-        bool isPrimary = false)
+        bool isDefault = false)
     {
         if (string.IsNullOrWhiteSpace(addressLine1))
             throw new ArgumentException("Address line 1 cannot be empty", nameof(addressLine1));
@@ -42,14 +44,14 @@ public class CustomerAddress : BaseEntity
             throw new ArgumentException("Country cannot be empty", nameof(country));
 
         CustomerId = customerId;
+        AddressType = addressType;
         AddressLine1 = addressLine1;
         AddressLine2 = addressLine2;
         City = city;
-        StateProvince = stateProvince;
-        PostalCode = postalCode;
+        State = state;
+        ZipCode = zipCode;
         Country = country;
-        AddressType = addressType;
-        IsPrimary = isPrimary;
+        IsDefault = isDefault;
         IsActive = true;
     }
 
@@ -57,8 +59,8 @@ public class CustomerAddress : BaseEntity
         string addressLine1,
         string? addressLine2,
         string city,
-        string? stateProvince,
-        string? postalCode,
+        string state,
+        string zipCode,
         string country)
     {
         if (string.IsNullOrWhiteSpace(addressLine1))
@@ -71,27 +73,19 @@ public class CustomerAddress : BaseEntity
         AddressLine1 = addressLine1;
         AddressLine2 = addressLine2;
         City = city;
-        StateProvince = stateProvince;
-        PostalCode = postalCode;
+        State = state;
+        ZipCode = zipCode;
         Country = country;
     }
 
-    public void SetAddressType(string addressType)
+    public void SetAddressType(AddressType addressType)
     {
-        if (string.IsNullOrWhiteSpace(addressType))
-            throw new ArgumentException("Address type cannot be empty", nameof(addressType));
-
         AddressType = addressType;
     }
 
-    public void SetAsPrimary()
+    public void SetAsDefault(bool isDefault = true)
     {
-        IsPrimary = true;
-    }
-
-    public void UnsetAsPrimary()
-    {
-        IsPrimary = false;
+        IsDefault = isDefault;
     }
 
     public void Deactivate() => IsActive = false;
