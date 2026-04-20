@@ -59,10 +59,10 @@ public static class DatabaseSeeder
     {
         var customers = new List<Customer>
         {
-            new Customer("Acme Corporation", "John Doe", "john.doe@acme.com", "555-0101", "123 Main St, City, State"),
-            new Customer("TechStart Inc.", "Jane Smith", "jane.smith@techstart.com", "555-0102", "456 Tech Ave, City, State"),
-            new Customer("Global Industries", "Bob Wilson", "bob.wilson@global.com", "555-0103", "789 Industry Blvd, City, State"),
-            new Customer("Local Services LLC", "Alice Brown", "alice.brown@localservices.com", "555-0104", "321 Service Rd, City, State")
+            new Customer("C-001", "Acme Corporation", businessUnitId: 1, contactName: "John Doe", email: "john.doe@acme.com", phone: "555-0101", address: "123 Main St, City, State"),
+            new Customer("C-002", "TechStart Inc.", businessUnitId: 1, contactName: "Jane Smith", email: "jane.smith@techstart.com", phone: "555-0102", address: "456 Tech Ave, City, State"),
+            new Customer("C-003", "Global Industries", businessUnitId: 1, contactName: "Bob Wilson", email: "bob.wilson@global.com", phone: "555-0103", address: "789 Industry Blvd, City, State"),
+            new Customer("C-004", "Local Services LLC", businessUnitId: 1, contactName: "Alice Brown", email: "alice.brown@localservices.com", phone: "555-0104", address: "321 Service Rd, City, State")
         };
 
         await context.Customers.AddRangeAsync(customers);
