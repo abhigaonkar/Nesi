@@ -17,7 +17,7 @@ public class GetWorkOrdersQueryHandler : IRequestHandler<GetWorkOrdersQuery, Lis
     public async Task<List<WorkOrderDto>> Handle(GetWorkOrdersQuery request, CancellationToken cancellationToken)
     {
         var workOrders = await _unitOfWork.Repository<Domain.Entities.WorkOrder>().GetAllAsync();
-        var customers = await _unitOfWork.Repository<Customer>().GetAllAsync();
+        var customers = await _unitOfWork.Repository<Domain.Entities.Customer>().GetAllAsync();
 
         return workOrders
             .Where(w => w.IsActive)

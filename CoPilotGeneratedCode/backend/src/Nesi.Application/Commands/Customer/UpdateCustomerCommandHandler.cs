@@ -34,23 +34,21 @@ public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerComman
             request.Address);
 
         // Update optional properties
-        if (!string.IsNullOrWhiteSpace(request.TaxId))
-            customer.UpdateTaxId(request.TaxId);
-
-        if (request.CreditLimit.HasValue)
-            customer.UpdateCreditLimit(request.CreditLimit.Value);
-
-        if (request.PaymentTermsDays.HasValue)
-            customer.UpdatePaymentTerms(request.PaymentTermsDays.Value);
+        if (request.CreditLimit.HasValue || request.PaymentTermsDays.HasValue)
+        {
+            customer.UpdateFinancialInfo(
+                null,
+                request.CreditLimit ?? customer.CreditLimit,
+                customer.Discount,
+                customer.BudgetThreshold,
+                request.PaymentTermsDays);
+        }
 
         if (request.AccountManagerId.HasValue)
             customer.AssignAccountManager(request.AccountManagerId.Value);
 
-        if (!string.IsNullOrWhiteSpace(request.Website))
-            customer.UpdateWebsite(request.Website);
-
         if (!string.IsNullOrWhiteSpace(request.Notes))
-            customer.UpdateNotes(request.Notes);
+            customer.AddNote(request.Notes);
 
         _customerRepository.Update(customer);
         await _unitOfWork.SaveChangesAsync(cancellationToken);

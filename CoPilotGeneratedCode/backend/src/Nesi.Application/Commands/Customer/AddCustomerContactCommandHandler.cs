@@ -27,20 +27,19 @@ public class AddCustomerContactCommandHandler : IRequestHandler<AddCustomerConta
 
         var contact = new CustomerContact(
             request.CustomerId,
-            request.ContactName,
-            request.Title,
+            request.Name,
             request.Email,
+            request.Title,
             request.Phone,
-            request.Mobile,
-            request.IsPrimaryContact,
-            request.Notes);
+            request.CellPhone,
+            request.IsPrimary);
 
         // If this is marked as primary, unmark other primary contacts
-        if (request.IsPrimaryContact)
+        if (request.IsPrimary)
         {
-            foreach (var existingContact in customer.Contacts.Where(c => c.IsPrimaryContact))
+            foreach (var existingContact in customer.Contacts.Where(c => c.IsPrimary))
             {
-                existingContact.SetAsPrimary(false);
+                existingContact.UnsetAsPrimary();
             }
         }
 

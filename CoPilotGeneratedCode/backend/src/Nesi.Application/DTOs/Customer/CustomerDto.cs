@@ -13,16 +13,13 @@ public class CustomerDto
     public string? BusinessUnitName { get; set; }
     public int? AccountManagerId { get; set; }
     public string? AccountManagerName { get; set; }
-    public string? TaxId { get; set; }
     public decimal CreditLimit { get; set; }
-    public decimal CurrentBalance { get; set; }
-    public int PaymentTermsDays { get; set; }
-    public string? Website { get; set; }
+    public int? TermId { get; set; }
     public string? Notes { get; set; }
     public bool IsActive { get; set; }
     public DateTime CreatedAt { get; set; }
-    public int? CreatedBy { get; set; }
+    public string? CreatedBy { get; set; }
     public List<CustomerContactDto> Contacts { get; set; } = new();
     public List<CustomerAddressDto> Addresses { get; set; } = new();
-    public List<CustomerNoteDto> Notes_List { get; set; } = new();
+    public List<CustomerNoteDto> CustomerNotesList { get; set; } = new();
 }

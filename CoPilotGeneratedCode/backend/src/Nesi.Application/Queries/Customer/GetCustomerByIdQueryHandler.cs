@@ -38,11 +38,8 @@ public class GetCustomerByIdQueryHandler : IRequestHandler<GetCustomerByIdQuery,
             Address = customer.Address,
             BusinessUnitId = customer.BusinessUnitId,
             AccountManagerId = customer.AccountManagerId,
-            TaxId = customer.TaxId,
             CreditLimit = customer.CreditLimit,
-            CurrentBalance = customer.CurrentBalance,
-            PaymentTermsDays = customer.PaymentTermsDays,
-            Website = customer.Website,
+            TermId = customer.TermId,
             Notes = customer.Notes,
             IsActive = customer.IsActive,
             CreatedAt = customer.CreatedAt,
@@ -55,14 +52,13 @@ public class GetCustomerByIdQueryHandler : IRequestHandler<GetCustomerByIdQuery,
             {
                 Id = c.Id,
                 CustomerId = c.CustomerId,
-                ContactName = c.ContactName,
+                Name = c.Name,
                 Title = c.Title,
                 Email = c.Email,
                 Phone = c.Phone,
-                Mobile = c.Mobile,
-                IsPrimaryContact = c.IsPrimaryContact,
-                IsActive = c.IsActive,
-                Notes = c.Notes,
+                CellPhone = c.CellPhone,
+                IsPrimary = c.IsPrimary,
+                Status = c.Status,
                 CreatedAt = c.CreatedAt
             }).ToList();
 
@@ -82,7 +78,7 @@ public class GetCustomerByIdQueryHandler : IRequestHandler<GetCustomerByIdQuery,
                 CreatedAt = a.CreatedAt
             }).ToList();
 
-            dto.Notes_List = customer.Notes.Select(n => new CustomerNoteDto
+            dto.CustomerNotesList = customer.CustomerNotes.Select(n => new CustomerNoteDto
             {
                 Id = n.Id,
                 CustomerId = n.CustomerId,

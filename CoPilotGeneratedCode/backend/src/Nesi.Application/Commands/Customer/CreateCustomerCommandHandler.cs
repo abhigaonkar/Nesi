@@ -31,24 +31,22 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
             request.Phone,
             request.Address);
 
-        // Set optional properties
-        if (!string.IsNullOrWhiteSpace(request.TaxId))
-            customer.UpdateTaxId(request.TaxId);
-
-        if (request.CreditLimit.HasValue)
-            customer.UpdateCreditLimit(request.CreditLimit.Value);
-
-        if (request.PaymentTermsDays.HasValue)
-            customer.UpdatePaymentTerms(request.PaymentTermsDays.Value);
+        // Set optional properties using available methods
+        if (request.CreditLimit.HasValue || request.PaymentTermsDays.HasValue)
+        {
+            customer.UpdateFinancialInfo(
+                null,
+                request.CreditLimit ?? 0,
+                0,
+                0,
+                request.PaymentTermsDays);
+        }
 
         if (request.AccountManagerId.HasValue)
             customer.AssignAccountManager(request.AccountManagerId.Value);
 
-        if (!string.IsNullOrWhiteSpace(request.Website))
-            customer.UpdateWebsite(request.Website);
-
         if (!string.IsNullOrWhiteSpace(request.Notes))
-            customer.UpdateNotes(request.Notes);
+            customer.AddNote(request.Notes);
 
         // Save customer
         await _customerRepository.AddAsync(customer, cancellationToken);

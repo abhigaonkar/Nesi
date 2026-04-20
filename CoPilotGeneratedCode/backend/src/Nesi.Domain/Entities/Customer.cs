@@ -93,12 +93,13 @@ public class Customer : BaseEntity
     }
 
     // Update Methods
-    public void UpdateBasicInfo(string name, string? contactName, string? email, string? phone, string? address)
+    public void UpdateBasicInfo(string name, int? businessUnitId, string? contactName, string? email, string? phone, string? address)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Customer name cannot be empty", nameof(name));
 
         Name = name;
+        BusinessUnitId = businessUnitId;
         ContactName = contactName;
         Email = email;
         Phone = phone;

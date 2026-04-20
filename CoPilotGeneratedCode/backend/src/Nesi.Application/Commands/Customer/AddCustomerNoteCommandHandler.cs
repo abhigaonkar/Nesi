@@ -30,7 +30,7 @@ public class AddCustomerNoteCommandHandler : IRequestHandler<AddCustomerNoteComm
             request.Note,
             request.CreatedByUserId);
 
-        customer.Notes.Add(note);
+        customer.CustomerNotes.Add(note);
         
         _customerRepository.Update(customer);
         await _unitOfWork.SaveChangesAsync(cancellationToken);

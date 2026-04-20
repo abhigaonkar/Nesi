@@ -10,9 +10,7 @@ public record UpdateCustomerCommand(
     string? Email,
     string? Phone,
     string? Address,
-    string? TaxId,
     decimal? CreditLimit,
     int? PaymentTermsDays,
     int? AccountManagerId,
-    string? Website,
     string? Notes) : IRequest<Unit>;

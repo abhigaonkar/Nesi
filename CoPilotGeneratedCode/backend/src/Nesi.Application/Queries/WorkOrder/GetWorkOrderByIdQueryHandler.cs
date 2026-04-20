@@ -24,7 +24,7 @@ public class GetWorkOrderByIdQueryHandler : IRequestHandler<GetWorkOrderByIdQuer
             return null;
         }
 
-        var customer = await _unitOfWork.Repository<Customer>().GetByIdAsync(workOrder.CustomerId);
+        var customer = await _unitOfWork.Repository<Domain.Entities.Customer>().GetByIdAsync(workOrder.CustomerId);
 
         return new WorkOrderDto
         {
