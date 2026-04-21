@@ -1,0 +1,32 @@
+.milestone-item {
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.milestone-item.completed {
+  background-color: #f8f9fa;
+}
+
+.milestone-item:hover {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.form-check-input {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.progress {
+  border-radius: 0.5rem;
+}
+
+.progress-bar {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.badge {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+}

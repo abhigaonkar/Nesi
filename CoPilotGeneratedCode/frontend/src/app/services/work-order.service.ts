@@ -52,5 +52,22 @@ export class WorkOrderService {
     return this.apiService.post<ApiResponse<boolean>>(`workorder/${id}/invoice`, request)
       .pipe(map(response => response.data!));
   }
+
+  uploadDocument(id: number, formData: FormData): Observable<number> {
+    return this.apiService.post<ApiResponse<number>>(`workorder/${id}/documents`, formData)
+      .pipe(map(response => response.data!));
+  }
+
+  getDocuments(id: number): Observable<any[]> {
+    return this.apiService.get<ApiResponse<any[]>>(`workorder/${id}/documents`)
+      .pipe(map(response => response.data || []));
+  }
+
+  updateProgress(id: number, milestones: string, percentComplete: number): Observable<boolean> {
+    return this.apiService.put<ApiResponse<boolean>>(`workorder/${id}/progress`, {
+      milestones,
+      percentComplete
+    }).pipe(map(response => response.data!));
+  }
 }
 
