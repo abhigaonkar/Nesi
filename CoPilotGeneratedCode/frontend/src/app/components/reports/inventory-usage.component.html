@@ -1,0 +1,175 @@
+<div class="container-fluid py-4">
+  <div class="inventory-usage">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2 class="mb-1">Inventory Usage Report</h2>
+        <p class="text-muted mb-0">Material consumption and costs</p>
+      </div>
+      <button class="btn btn-success" (click)="exportToExcel()" [disabled]="loading">
+        <i class="bi bi-file-earmark-excel"></i> Export Excel
+      </button>
+    </div>
+
+    <!-- Filters -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5 class="mb-0"><i class="bi bi-funnel"></i> Period</h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label class="form-label">Start Date</label>
+            <input type="date" class="form-control" [(ngModel)]="startDate" />
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">End Date</label>
+            <input type="date" class="form-control" [(ngModel)]="endDate" />
+          </div>
+          <div class="col-md-3 d-flex align-items-end">
+            <button class="btn btn-primary" (click)="applyFilters()">
+              <i class="bi bi-search"></i> Apply
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Card -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-icon bg-primary">
+              <i class="bi bi-box-seam"></i>
+            </div>
+            <h6 class="text-muted mb-1">Total Material Cost</h6>
+            <h3 class="mb-0">{{ totalCost | currency }}</h3>
+            <small class="text-muted">For selected period</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-icon bg-info">
+              <i class="bi bi-graph-up"></i>
+            </div>
+            <h6 class="text-muted mb-1">Materials Tracked</h6>
+            <h3 class="mb-0">{{ totalCount }}</h3>
+            <small class="text-muted">Unique items used</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2 text-muted">Loading inventory usage...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error && !loading" class="alert alert-warning">
+      <i class="bi bi-exclamation-triangle me-2"></i>
+      {{ error }}
+    </div>
+
+    <!-- Data Table -->
+    <div *ngIf="!loading" class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Material Usage Details ({{ totalCount }} items)</h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th (click)="sortBy('materialName')" class="sortable">
+                  Material
+                  <i class="bi bi-arrow-down-up"></i>
+                </th>
+                <th>Part Number</th>
+                <th (click)="sortBy('quantityUsed')" class="text-end sortable">
+                  Quantity Used
+                  <i class="bi bi-arrow-down-up"></i>
+                </th>
+                <th>Unit</th>
+                <th (click)="sortBy('unitCost')" class="text-end sortable">
+                  Unit Cost
+                  <i class="bi bi-arrow-down-up"></i>
+                </th>
+                <th (click)="sortBy('totalCost')" class="text-end sortable">
+                  Total Cost
+                  <i class="bi bi-arrow-down-up"></i>
+                </th>
+                <th>Top Consumers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let material of materials">
+                <td><strong>{{ material.materialName }}</strong></td>
+                <td><code>{{ material.partNumber || 'N/A' }}</code></td>
+                <td class="text-end">
+                  <strong>{{ material.quantityUsed | number: '1.0-0' }}</strong>
+                </td>
+                <td>{{ material.unitOfMeasure }}</td>
+                <td class="text-end">{{ material.unitCost | currency }}</td>
+                <td class="text-end">
+                  <strong>{{ material.totalCost | currency }}</strong>
+                </td>
+                <td>
+                  <div class="top-consumers">
+                    <div *ngFor="let wo of material.topWorkOrders" class="consumer-item">
+                      <span class="badge bg-secondary">{{ wo.workOrderNumber }}</span>
+                      <span class="text-muted small">{{ wo.quantity }} {{ material.unitOfMeasure }}</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr *ngIf="materials.length === 0">
+                <td colspan="7" class="text-center text-muted py-4">
+                  <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                  No inventory usage data found for the selected period
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div *ngIf="totalPages > 1" class="d-flex justify-content-between align-items-center mt-3">
+          <div class="text-muted">
+            Page {{ currentPage }} of {{ totalPages }}
+          </div>
+          <nav>
+            <ul class="pagination mb-0">
+              <li class="page-item" [class.disabled]="currentPage === 1">
+                <a class="page-link" (click)="goToPage(currentPage - 1)">Previous</a>
+              </li>
+              <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+                  [class.active]="i + 1 === currentPage">
+                <a class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+              </li>
+              <li class="page-item" [class.disabled]="currentPage === totalPages">
+                <a class="page-link" (click)="goToPage(currentPage + 1)">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insights -->
+    <div class="alert alert-info mt-3">
+      <h6><i class="bi bi-lightbulb me-2"></i>Usage Insights</h6>
+      <ul class="mb-0">
+        <li><strong>High Value Items:</strong> Focus on materials with highest total cost</li>
+        <li><strong>Reorder Points:</strong> Track materials with consistent high usage</li>
+        <li><strong>Cost Optimization:</strong> Review pricing for frequently used items</li>
+        <li><strong>Top Consumers:</strong> See which work orders use the most of each material</li>
+      </ul>
+    </div>
+  </div>
+</div>
