@@ -1,0 +1,90 @@
+<div class="container-fluid py-4">
+  <div class="reports-dashboard">
+    <h2 class="mb-4">Financial Reports & Analytics</h2>
+    <p class="lead mb-4">Access comprehensive financial reports and business analytics</p>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" *ngFor="let report of reports">
+        <div class="card report-card h-100" (click)="navigateToReport(report.route)">
+          <div class="card-body">
+            <div class="d-flex align-items-start">
+              <div class="report-icon me-3" [ngClass]="'bg-' + report.color">
+                <i [ngClass]="report.icon"></i>
+              </div>
+              <div class="flex-grow-1">
+                <h5 class="card-title mb-2">{{ report.title }}</h5>
+                <p class="card-text text-muted">{{ report.description }}</p>
+              </div>
+            </div>
+            <div class="mt-3">
+              <a [routerLink]="report.route" class="btn btn-sm" [ngClass]="'btn-outline-' + report.color">
+                View Report <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats Section -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <h4 class="mb-3">Quick Stats</h4>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-icon bg-primary">
+              <i class="bi bi-briefcase"></i>
+            </div>
+            <h6 class="text-muted mb-1">Active Jobs</h6>
+            <h3 class="mb-0">-</h3>
+            <small class="text-muted">Data not yet available</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-icon bg-success">
+              <i class="bi bi-cash-stack"></i>
+            </div>
+            <h6 class="text-muted mb-1">Monthly Revenue</h6>
+            <h3 class="mb-0">-</h3>
+            <small class="text-muted">Data not yet available</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-icon bg-warning">
+              <i class="bi bi-exclamation-triangle"></i>
+            </div>
+            <h6 class="text-muted mb-1">Overdue AR</h6>
+            <h3 class="mb-0">-</h3>
+            <small class="text-muted">Data not yet available</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-icon bg-info">
+              <i class="bi bi-graph-up"></i>
+            </div>
+            <h6 class="text-muted mb-1">Profit Margin</h6>
+            <h3 class="mb-0">-</h3>
+            <small class="text-muted">Data not yet available</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="alert alert-info mt-4">
+      <i class="bi bi-info-circle me-2"></i>
+      <strong>Note:</strong> Financial reports require backend API implementation. The frontend components are ready and will display data once the backend services are connected.
+    </div>
+  </div>
+</div>
