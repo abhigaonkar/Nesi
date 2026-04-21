@@ -44,64 +44,33 @@ export class ARAgingReportComponent implements OnInit {
 
     this.reportService.getARAgingReport(asOf, this.currentPage, this.pageSize).subscribe({
       next: (response: any) => {
-        this.agingData = response.data || [];
-        this.totalCount = response.totalCount || 0;
+        // Backend returns ArAgingSummaryDto with customers array
+        this.agingData = response.customers || [];
+        this.totalCount = response.totalCustomers || 0;
         this.totalPages = Math.ceil(this.totalCount / this.pageSize);
-        this.calculateTotals();
+        
+        // Use summary from backend if available
+        if (response.totalOutstanding !== undefined) {
+          this.totalOutstanding = response.totalOutstanding;
+          this.totalCurrent = response.currentAmount;
+          this.total31to60 = response.days31To60;
+          this.total61to90 = response.days61To90;
+          this.totalOver90 = response.over90Days;
+        } else {
+          this.calculateTotals();
+        }
+        
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Failed to load AR aging report. Using mock data for demo.';
-        this.loadMockData();
+        this.error = 'Failed to load AR aging report: ' + (err.error?.message || err.message || 'Unknown error');
         this.loading = false;
-        console.error(err);
+        console.error('AR aging error:', err);
       }
     });
   }
 
-  loadMockData(): void {
-    this.agingData = [
-      {
-        customerId: 1,
-        customerName: 'ABC Electric Corp',
-        totalOutstanding: 15000,
-        current: 10000,
-        days31to60: 3000,
-        days61to90: 2000,
-        over90Days: 0
-      },
-      {
-        customerId: 2,
-        customerName: 'XYZ Manufacturing',
-        totalOutstanding: 25000,
-        current: 20000,
-        days31to60: 0,
-        days61to90: 5000,
-        over90Days: 0
-      },
-      {
-        customerId: 3,
-        customerName: 'Tech Solutions Inc',
-        totalOutstanding: 8000,
-        current: 0,
-        days31to60: 0,
-        days61to90: 3000,
-        over90Days: 5000
-      },
-      {
-        customerId: 4,
-        customerName: 'BuildRight Construction',
-        totalOutstanding: 12000,
-        current: 12000,
-        days31to60: 0,
-        days61to90: 0,
-        over90Days: 0
-      }
-    ];
-    this.totalCount = 4;
-    this.totalPages = 1;
-    this.calculateTotals();
-  }
+
 
   calculateTotals(): void {
     this.totalOutstanding = this.agingData.reduce((sum, d) => sum + d.totalOutstanding, 0);

@@ -51,83 +51,22 @@ export class CustomerAnalysisComponent implements OnInit {
 
     this.reportService.getCustomerRateAnalysis(start, end, this.minJobs, this.currentPage, this.pageSize).subscribe({
       next: (response: any) => {
-        this.customers = response.data || [];
-        this.totalCount = response.totalCount || 0;
+        // Backend returns CustomerAnalysisSummaryDto with customers array
+        this.customers = response.customers || [];
+        this.totalCount = response.totalCustomers || 0;
         this.totalPages = Math.ceil(this.totalCount / this.pageSize);
         this.sortCustomers();
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Failed to load customer analysis. Using mock data for demo.';
-        this.loadMockData();
+        this.error = 'Failed to load customer analysis: ' + (err.error?.message || err.message || 'Unknown error');
         this.loading = false;
-        console.error(err);
+        console.error('Customer analysis error:', err);
       }
     });
   }
 
-  loadMockData(): void {
-    this.customers = [
-      {
-        customerId: 1,
-        customerName: 'ABC Electric Corp',
-        totalJobs: 15,
-        totalRevenue: 180000,
-        totalCost: 120000,
-        averageProfit: 4000,
-        profitMargin: 33.3,
-        averageJobValue: 12000,
-        lastJobDate: new Date('2026-04-15')
-      },
-      {
-        customerId: 2,
-        customerName: 'XYZ Manufacturing',
-        totalJobs: 25,
-        totalRevenue: 375000,
-        totalCost: 262500,
-        averageProfit: 4500,
-        profitMargin: 30.0,
-        averageJobValue: 15000,
-        lastJobDate: new Date('2026-04-20')
-      },
-      {
-        customerId: 3,
-        customerName: 'Tech Solutions Inc',
-        totalJobs: 8,
-        totalRevenue: 96000,
-        totalCost: 72000,
-        averageProfit: 3000,
-        profitMargin: 25.0,
-        averageJobValue: 12000,
-        lastJobDate: new Date('2026-04-10')
-      },
-      {
-        customerId: 4,
-        customerName: 'BuildRight Construction',
-        totalJobs: 12,
-        totalRevenue: 144000,
-        totalCost: 115200,
-        averageProfit: 2400,
-        profitMargin: 20.0,
-        averageJobValue: 12000,
-        lastJobDate: new Date('2026-04-18')
-      },
-      {
-        customerId: 5,
-        customerName: 'Green Energy Systems',
-        totalJobs: 6,
-        totalRevenue: 72000,
-        totalCost: 60000,
-        averageProfit: 2000,
-        profitMargin: 16.7,
-        averageJobValue: 12000,
-        lastJobDate: new Date('2026-04-05')
-      }
-    ];
-    this.totalCount = 5;
-    this.totalPages = 1;
-    this.sortCustomers();
-  }
+
 
   applyFilters(): void {
     this.currentPage = 1;

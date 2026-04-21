@@ -146,9 +146,11 @@ export class ReportService {
     return this.http.get<BalanceSheetDto>(`${this.apiUrl}/balance-sheet`, { params });
   }
 
-  getARAgingReport(asOfDate?: Date): Observable<any> {
+  getARAgingReport(asOfDate?: Date, page?: number, pageSize?: number): Observable<any> {
     let params = new HttpParams();
     if (asOfDate) params = params.set('asOfDate', asOfDate.toISOString());
+    if (page) params = params.set('page', page.toString());
+    if (pageSize) params = params.set('pageSize', pageSize.toString());
     
     return this.http.get<any>(`${this.apiUrl}/ar-aging`, { params });
   }
@@ -156,12 +158,16 @@ export class ReportService {
   getCustomerRateAnalysis(
     startDate?: Date,
     endDate?: Date,
-    customerId?: number
+    minJobs?: number,
+    page?: number,
+    pageSize?: number
   ): Observable<any> {
     let params = new HttpParams();
     if (startDate) params = params.set('startDate', startDate.toISOString());
     if (endDate) params = params.set('endDate', endDate.toISOString());
-    if (customerId) params = params.set('customerId', customerId.toString());
+    if (minJobs) params = params.set('minJobs', minJobs.toString());
+    if (page) params = params.set('page', page.toString());
+    if (pageSize) params = params.set('pageSize', pageSize.toString());
     
     return this.http.get<any>(`${this.apiUrl}/customer-analysis`, { params });
   }
@@ -169,12 +175,14 @@ export class ReportService {
   getInventoryUsageReport(
     startDate?: Date,
     endDate?: Date,
-    category?: string
+    page?: number,
+    pageSize?: number
   ): Observable<any> {
     let params = new HttpParams();
     if (startDate) params = params.set('startDate', startDate.toISOString());
     if (endDate) params = params.set('endDate', endDate.toISOString());
-    if (category) params = params.set('category', category);
+    if (page) params = params.set('page', page.toString());
+    if (pageSize) params = params.set('pageSize', pageSize.toString());
     
     return this.http.get<any>(`${this.apiUrl}/inventory-usage`, { params });
   }

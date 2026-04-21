@@ -54,95 +54,23 @@ export class InventoryUsageComponent implements OnInit {
 
     this.reportService.getInventoryUsageReport(start, end, this.currentPage, this.pageSize).subscribe({
       next: (response: any) => {
-        this.materials = response.data || [];
-        this.totalCount = response.totalCount || 0;
+        // Backend returns InventoryUsageSummaryDto with materials array
+        this.materials = response.materials || [];
+        this.totalCount = response.totalMaterials || 0;
         this.totalPages = Math.ceil(this.totalCount / this.pageSize);
         this.calculateSummary();
         this.sortMaterials();
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Failed to load inventory usage report. Using mock data for demo.';
-        this.loadMockData();
+        this.error = 'Failed to load inventory usage report: ' + (err.error?.message || err.message || 'Unknown error');
         this.loading = false;
-        console.error(err);
+        console.error('Inventory usage error:', err);
       }
     });
   }
 
-  loadMockData(): void {
-    this.materials = [
-      {
-        materialId: 1,
-        materialName: 'Copper Wire 12 AWG',
-        partNumber: 'CW-12-100',
-        quantityUsed: 5000,
-        unitOfMeasure: 'FT',
-        unitCost: 0.50,
-        totalCost: 2500,
-        topWorkOrders: [
-          { workOrderNumber: 'WO-2026-00001', quantity: 2000 },
-          { workOrderNumber: 'WO-2026-00003', quantity: 1500 }
-        ]
-      },
-      {
-        materialId: 2,
-        materialName: 'Circuit Breaker 20A',
-        partNumber: 'CB-20A',
-        quantityUsed: 150,
-        unitOfMeasure: 'EA',
-        unitCost: 8.00,
-        totalCost: 1200,
-        topWorkOrders: [
-          { workOrderNumber: 'WO-2026-00001', quantity: 75 },
-          { workOrderNumber: 'WO-2026-00002', quantity: 50 }
-        ]
-      },
-      {
-        materialId: 3,
-        materialName: 'Conduit PVC 1/2"',
-        partNumber: 'PVC-05-10',
-        quantityUsed: 800,
-        unitOfMeasure: 'FT',
-        unitCost: 0.75,
-        totalCost: 600,
-        topWorkOrders: [
-          { workOrderNumber: 'WO-2026-00002', quantity: 400 },
-          { workOrderNumber: 'WO-2026-00004', quantity: 300 }
-        ]
-      },
-      {
-        materialId: 4,
-        materialName: 'Junction Box 4x4',
-        partNumber: 'JB-4X4',
-        quantityUsed: 200,
-        unitOfMeasure: 'EA',
-        unitCost: 2.50,
-        totalCost: 500,
-        topWorkOrders: [
-          { workOrderNumber: 'WO-2026-00001', quantity: 100 },
-          { workOrderNumber: 'WO-2026-00003', quantity: 60 }
-        ]
-      },
-      {
-        materialId: 5,
-        materialName: 'Wire Nuts Orange',
-        partNumber: 'WN-ORG-100',
-        quantityUsed: 1000,
-        unitOfMeasure: 'EA',
-        unitCost: 0.10,
-        totalCost: 100,
-        topWorkOrders: [
-          { workOrderNumber: 'WO-2026-00001', quantity: 400 },
-          { workOrderNumber: 'WO-2026-00002', quantity: 350 }
-        ]
-      }
-    ];
-    this.totalCount = 5;
-    this.totalPages = 1;
-    this.calculateSummary();
-    this.sortMaterials();
-  }
+
 
   calculateSummary(): void {
     this.totalCost = this.materials.reduce((sum, m) => sum + m.totalCost, 0);

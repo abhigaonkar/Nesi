@@ -60,38 +60,19 @@ export class IncomeStatementComponent implements OnInit {
 
     this.reportService.getIncomeStatement(start, end).subscribe({
       next: (response: any) => {
-        this.statement = response.data;
+        // Backend returns IncomeStatementDto directly
+        this.statement = response;
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Failed to load income statement. Using mock data for demo.';
-        this.loadMockData();
+        this.error = 'Failed to load income statement: ' + (err.error?.message || err.message || 'Unknown error');
         this.loading = false;
-        console.error(err);
+        console.error('Income statement error:', err);
       }
     });
   }
 
-  loadMockData(): void {
-    this.statement = {
-      periodStart: new Date(this.startDate),
-      periodEnd: new Date(this.endDate),
-      revenue: 125000,
-      costOfGoodsSold: 75000,
-      grossProfit: 50000,
-      operatingExpenses: {
-        labor: 25000,
-        materials: 15000,
-        overhead: 8000,
-        administrative: 7000,
-        total: 55000
-      },
-      operatingIncome: -5000,
-      otherIncome: 2000,
-      otherExpenses: 1000,
-      netIncome: -4000
-    };
-  }
+
 
   getPercentOfRevenue(amount: number): number {
     return this.statement && this.statement.revenue > 0
