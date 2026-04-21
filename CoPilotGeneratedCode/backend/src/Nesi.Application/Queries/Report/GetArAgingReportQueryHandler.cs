@@ -23,7 +23,7 @@ public class GetArAgingReportQueryHandler : IRequestHandler<GetArAgingReportQuer
         var completedWorkOrders = await _context.WorkOrders
             .Include(wo => wo.Quote)
                 .ThenInclude(q => q!.Customer)
-            .Where(wo => wo.Status == "Completed" && wo.CompletionDate.HasValue)
+            .Where(wo => wo.Status == Nesi.Domain.Enums.WorkOrderStatus.Complete && wo.CompletedAt.HasValue)
             .ToListAsync(cancellationToken);
 
         var customerDetails = completedWorkOrders
@@ -32,31 +32,31 @@ public class GetArAgingReportQueryHandler : IRequestHandler<GetArAgingReportQuer
             {
                 var customer = g.Key!;
                 var workOrders = g.ToList();
-                var totalOutstanding = workOrders.Sum(wo => wo.Quote?.TotalAmount ?? 0);
+                var totalOutstanding = workOrders.Sum(wo => wo.Quote?.Total ?? 0);
 
                 // Calculate aging buckets based on completion date
                 var current = workOrders
-                    .Where(wo => (asOfDate - wo.CompletionDate!.Value).Days <= 30)
-                    .Sum(wo => wo.Quote?.TotalAmount ?? 0);
+                    .Where(wo => (asOfDate - wo.CompletedAt!.Value).Days <= 30)
+                    .Sum(wo => wo.Quote?.Total ?? 0);
                 
                 var days31To60 = workOrders
-                    .Where(wo => (asOfDate - wo.CompletionDate!.Value).Days > 30 && 
-                                 (asOfDate - wo.CompletionDate!.Value).Days <= 60)
-                    .Sum(wo => wo.Quote?.TotalAmount ?? 0);
+                    .Where(wo => (asOfDate - wo.CompletedAt!.Value).Days > 30 && 
+                                 (asOfDate - wo.CompletedAt!.Value).Days <= 60)
+                    .Sum(wo => wo.Quote?.Total ?? 0);
 
                 var days61To90 = workOrders
-                    .Where(wo => (asOfDate - wo.CompletionDate!.Value).Days > 60 && 
-                                 (asOfDate - wo.CompletionDate!.Value).Days <= 90)
-                    .Sum(wo => wo.Quote?.TotalAmount ?? 0);
+                    .Where(wo => (asOfDate - wo.CompletedAt!.Value).Days > 60 && 
+                                 (asOfDate - wo.CompletedAt!.Value).Days <= 90)
+                    .Sum(wo => wo.Quote?.Total ?? 0);
 
                 var days91To120 = workOrders
-                    .Where(wo => (asOfDate - wo.CompletionDate!.Value).Days > 90 && 
-                                 (asOfDate - wo.CompletionDate!.Value).Days <= 120)
-                    .Sum(wo => wo.Quote?.TotalAmount ?? 0);
+                    .Where(wo => (asOfDate - wo.CompletedAt!.Value).Days > 90 && 
+                                 (asOfDate - wo.CompletedAt!.Value).Days <= 120)
+                    .Sum(wo => wo.Quote?.Total ?? 0);
 
                 var over120 = workOrders
-                    .Where(wo => (asOfDate - wo.CompletionDate!.Value).Days > 120)
-                    .Sum(wo => wo.Quote?.TotalAmount ?? 0);
+                    .Where(wo => (asOfDate - wo.CompletedAt!.Value).Days > 120)
+                    .Sum(wo => wo.Quote?.Total ?? 0);
 
                 return new ArAgingReportDto
                 {
@@ -72,7 +72,7 @@ public class GetArAgingReportQueryHandler : IRequestHandler<GetArAgingReportQuer
                     Over120Days = over120,
                     TotalOutstanding = totalOutstanding,
                     TotalInvoices = workOrders.Count,
-                    OldestInvoiceDate = workOrders.Min(wo => wo.CompletionDate)
+                    OldestInvoiceDate = workOrders.Min(wo => wo.CompletedAt)
                 };
             })
             .Where(c => c.TotalOutstanding > 0)

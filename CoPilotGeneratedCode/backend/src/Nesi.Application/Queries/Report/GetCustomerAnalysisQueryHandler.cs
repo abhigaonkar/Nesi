@@ -40,7 +40,7 @@ public class GetCustomerAnalysisQueryHandler : IRequestHandler<GetCustomerAnalys
                 .Select(q => q.WorkOrder!)
                 .ToList();
 
-            var totalRevenue = workOrders.Sum(wo => wo.Quote?.TotalAmount ?? 0);
+            var totalRevenue = workOrders.Sum(wo => wo.Quote?.Total ?? 0);
             var laborCost = workOrders.SelectMany(wo => wo.TimesheetEntries).Sum(t => t.Hours * 50);
             var materialCost = workOrders.SelectMany(wo => wo.Materials).Sum(m => m.Quantity * m.UnitCost);
             var totalCost = laborCost + materialCost;

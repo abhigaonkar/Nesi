@@ -153,7 +153,7 @@ public static class DatabaseSeeder
             }
         }
 
-        await context.Timesheets.AddRangeAsync(timesheets);
+        await context.TimesheetEntries.AddRangeAsync(timesheets);
         await context.SaveChangesAsync();
     }
 

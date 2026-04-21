@@ -24,7 +24,7 @@ public class GetIncomeStatementQueryHandler : IRequestHandler<GetIncomeStatement
             .Where(wo => wo.StartDate >= request.StartDate && wo.StartDate <= request.EndDate)
             .ToListAsync(cancellationToken);
 
-        var totalRevenue = workOrders.Sum(wo => wo.Quote?.TotalAmount ?? 0);
+        var totalRevenue = workOrders.Sum(wo => wo.Quote?.Total ?? 0);
         var laborCost = workOrders.SelectMany(wo => wo.TimesheetEntries).Sum(t => t.Hours * 50); // $50/hr avg
         var materialCost = workOrders.SelectMany(wo => wo.Materials).Sum(m => m.Quantity * m.UnitCost);
         var totalCOGS = laborCost + materialCost;

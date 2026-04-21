@@ -41,7 +41,10 @@ public class GetJobCostReportQueryHandler : IRequestHandler<GetJobCostReportQuer
 
         if (!string.IsNullOrEmpty(request.Status))
         {
-            query = query.Where(wo => wo.Status == request.Status);
+            if (Enum.TryParse<Nesi.Domain.Enums.WorkOrderStatus>(request.Status, out var statusEnum))
+            {
+                query = query.Where(wo => wo.Status == statusEnum);
+            }
         }
 
         var workOrders = await query.ToListAsync(cancellationToken);
@@ -51,7 +54,7 @@ public class GetJobCostReportQueryHandler : IRequestHandler<GetJobCostReportQuer
             var laborCost = wo.TimesheetEntries.Sum(t => t.Hours * 50); // Assuming $50/hr avg rate
             var materialCost = wo.Materials.Sum(m => m.Quantity * m.UnitCost);
             var totalCost = laborCost + materialCost;
-            var quotedAmount = wo.Quote?.TotalAmount ?? 0;
+            var quotedAmount = wo.Quote?.Total ?? 0;
             var profit = quotedAmount - totalCost;
             var profitMargin = quotedAmount > 0 ? (profit / quotedAmount) * 100 : 0;
             var totalHours = wo.TimesheetEntries.Sum(t => t.Hours);
@@ -63,9 +66,9 @@ public class GetJobCostReportQueryHandler : IRequestHandler<GetJobCostReportQuer
                 WorkOrderNumber = wo.WorkOrderNumber,
                 CustomerName = wo.Quote?.Customer?.Name ?? "N/A",
                 Description = wo.Description,
-                Status = wo.Status,
+                Status = wo.Status.ToString(),
                 StartDate = wo.StartDate,
-                CompletionDate = wo.CompletionDate,
+                CompletionDate = wo.CompletedAt,
                 ActualLaborCost = laborCost,
                 ActualMaterialCost = materialCost,
                 TotalActualCost = totalCost,
