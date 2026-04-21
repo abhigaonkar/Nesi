@@ -1,0 +1,146 @@
+<div class="container-fluid py-4">
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && vendor" class="vendor-detail">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <button class="btn btn-outline-secondary btn-sm mb-2" (click)="goBack()">
+          <i class="bi bi-arrow-left"></i> Back to List
+        </button>
+        <h2>{{ vendor.companyName }}</h2>
+        <p class="text-muted mb-0">Vendor #{{ vendor.vendorNumber }}</p>
+      </div>
+      <div>
+        <span class="badge" [ngClass]="vendor.isActive ? 'bg-success' : 'bg-secondary'">
+          {{ vendor.status }}
+        </span>
+        <button class="btn btn-primary ms-2" (click)="edit()">
+          <i class="bi bi-pencil"></i> Edit
+        </button>
+      </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="mb-0">Contact Information</h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-sm">
+              <tbody>
+                <tr *ngIf="vendor.contactName">
+                  <th width="40%">Contact Name:</th>
+                  <td>{{ vendor.contactName }}</td>
+                </tr>
+                <tr *ngIf="vendor.email">
+                  <th>Email:</th>
+                  <td><a href="mailto:{{ vendor.email }}">{{ vendor.email }}</a></td>
+                </tr>
+                <tr *ngIf="vendor.phone">
+                  <th>Phone:</th>
+                  <td><a href="tel:{{ vendor.phone }}">{{ vendor.phone }}</a></td>
+                </tr>
+                <tr *ngIf="vendor.fax">
+                  <th>Fax:</th>
+                  <td>{{ vendor.fax }}</td>
+                </tr>
+                <tr *ngIf="vendor.website">
+                  <th>Website:</th>
+                  <td><a href="{{ vendor.website }}" target="_blank">{{ vendor.website }}</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="mb-0">Address</h5>
+          </div>
+          <div class="card-body">
+            <address *ngIf="vendor.address || vendor.city || vendor.state">
+              <span *ngIf="vendor.address">{{ vendor.address }}<br /></span>
+              <span *ngIf="vendor.city">{{ vendor.city }}, </span>
+              <span *ngIf="vendor.state">{{ vendor.state }} </span>
+              <span *ngIf="vendor.zipCode">{{ vendor.zipCode }}</span><br />
+              <span *ngIf="vendor.country">{{ vendor.country }}</span>
+            </address>
+            <p *ngIf="!vendor.address && !vendor.city" class="text-muted">No address provided</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="mb-0">Business Details</h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-sm">
+              <tbody>
+                <tr *ngIf="vendor.taxId">
+                  <th width="40%">Tax ID:</th>
+                  <td>{{ vendor.taxId }}</td>
+                </tr>
+                <tr *ngIf="vendor.accountNumber">
+                  <th>Account Number:</th>
+                  <td>{{ vendor.accountNumber }}</td>
+                </tr>
+                <tr *ngIf="vendor.paymentTermsDays">
+                  <th>Payment Terms:</th>
+                  <td>Net {{ vendor.paymentTermsDays }} days</td>
+                </tr>
+                <tr *ngIf="vendor.creditLimit">
+                  <th>Credit Limit:</th>
+                  <td>{{ vendor.creditLimit | currency }}</td>
+                </tr>
+                <tr *ngIf="vendor.rating">
+                  <th>Rating:</th>
+                  <td>
+                    <span *ngFor="let star of [1,2,3,4,5]">
+                      <i class="bi" [ngClass]="star <= (vendor.rating || 0) ? 'bi-star-fill text-warning' : 'bi-star'"></i>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card mb-3" *ngIf="vendor.notes">
+          <div class="card-header">
+            <h5 class="mb-0">Notes</h5>
+          </div>
+          <div class="card-body">
+            <p>{{ vendor.notes }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timestamps -->
+    <div class="card">
+      <div class="card-body">
+        <div class="row text-muted small">
+          <div class="col-md-6">
+            <strong>Created:</strong> {{ vendor.createdAt | date: 'medium' }}
+          </div>
+          <div class="col-md-6" *ngIf="vendor.updatedAt">
+            <strong>Last Updated:</strong> {{ vendor.updatedAt | date: 'medium' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

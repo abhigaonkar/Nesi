@@ -1,0 +1,175 @@
+<div class="container-fluid py-4">
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && purchaseOrder" class="receipt-create">
+    <h2 class="mb-4">Create Receipt for PO {{ purchaseOrder.purchaseOrderNumber }}</h2>
+
+    <form (ngSubmit)="createReceipt()">
+      <!-- Header Information -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Receipt Information</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="receiptDate" class="form-label">Receipt Date *</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="receiptDate"
+                  [(ngModel)]="receiptDate"
+                  name="receiptDate"
+                  required
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="packingSlipNumber" class="form-label">Packing Slip Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="packingSlipNumber"
+                  [(ngModel)]="packingSlipNumber"
+                  name="packingSlipNumber"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="notes" class="form-label">Notes</label>
+            <textarea
+              class="form-control"
+              id="notes"
+              rows="2"
+              [(ngModel)]="notes"
+              name="notes"
+              [disabled]="saving"
+              placeholder="Add any general notes about this receipt..."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Receipt Items -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Items to Receive</h5>
+        </div>
+        <div class="card-body">
+          <div *ngIf="receiptItems.length === 0" class="alert alert-warning">
+            All items from this purchase order have been fully received.
+          </div>
+
+          <div *ngFor="let item of receiptItems; let i = index" class="receipt-item mb-3 p-3 border rounded">
+            <h6>{{ item.description }}</h6>
+            <div class="row">
+              <div class="col-md-2">
+                <label class="form-label">Ordered</label>
+                <input type="text" class="form-control" [value]="item.orderedQty" readonly />
+              </div>
+              <div class="col-md-2">
+                <label class="form-label">Remaining</label>
+                <input type="text" class="form-control" [value]="item.remainingQty" readonly />
+              </div>
+              <div class="col-md-2">
+                <label class="form-label">Received *</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="item.receivedQty"
+                  [name]="'receivedQty_' + i"
+                  min="0"
+                  [max]="item.remainingQty"
+                  step="0.01"
+                  required
+                  [disabled]="saving"
+                />
+              </div>
+              <div class="col-md-2">
+                <label class="form-label">Condition</label>
+                <select class="form-select" [(ngModel)]="item.condition" [name]="'condition_' + i" [disabled]="saving">
+                  <option value="Good">Good</option>
+                  <option value="Damaged">Damaged</option>
+                  <option value="Defective">Defective</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Item Notes</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="item.itemNotes"
+                  [name]="'itemNotes_' + i"
+                  [disabled]="saving"
+                  placeholder="Notes for this item..."
+                />
+              </div>
+            </div>
+
+            <!-- Discrepancy Section -->
+            <div class="mt-2">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  [(ngModel)]="item.hasDiscrepancy"
+                  [name]="'hasDiscrepancy_' + i"
+                  [id]="'hasDiscrepancy_' + i"
+                  (change)="onDiscrepancyChange(item)"
+                  [disabled]="saving"
+                />
+                <label class="form-check-label" [for]="'hasDiscrepancy_' + i">
+                  Has Discrepancy
+                </label>
+              </div>
+              <div *ngIf="item.hasDiscrepancy" class="mt-2">
+                <textarea
+                  class="form-control"
+                  [(ngModel)]="item.discrepancyReason"
+                  [name]="'discrepancyReason_' + i"
+                  rows="2"
+                  placeholder="Describe the discrepancy..."
+                  [required]="item.hasDiscrepancy"
+                  [disabled]="saving"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="d-flex gap-2">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="saving || receiptItems.length === 0"
+        >
+          <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
+          {{ saving ? 'Creating...' : 'Create Receipt' }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="cancel()"
+          [disabled]="saving"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
