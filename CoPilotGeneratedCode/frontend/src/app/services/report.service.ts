@@ -113,7 +113,7 @@ export interface InventoryUsageDto {
   providedIn: 'root'
 })
 export class ReportService {
-  private apiUrl = '/api/reports';
+  private apiUrl = 'http://localhost:5000/api/Report';
 
   constructor(private http: HttpClient, private apiService: ApiService) {}
 
@@ -121,74 +121,62 @@ export class ReportService {
     startDate?: Date,
     endDate?: Date,
     customerId?: number,
-    status?: string,
-    pageNumber: number = 1,
-    pageSize: number = 50
+    status?: string
   ): Observable<any> {
-    let params = new HttpParams()
-      .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString());
+    let params = new HttpParams();
     
     if (startDate) params = params.set('startDate', startDate.toISOString());
     if (endDate) params = params.set('endDate', endDate.toISOString());
     if (customerId) params = params.set('customerId', customerId.toString());
     if (status) params = params.set('status', status);
     
-    return this.apiService.get<any>(`${this.apiUrl}/job-cost`, params);
+    return this.http.get<any>(`${this.apiUrl}/job-cost`, { params });
   }
 
-  getIncomeStatement(startDate: Date, endDate: Date): Observable<IncomeStatementDto> {
-    let params = new HttpParams()
-      .set('startDate', startDate.toISOString())
-      .set('endDate', endDate.toISOString());
+  getIncomeStatement(startDate?: Date, endDate?: Date): Observable<IncomeStatementDto> {
+    let params = new HttpParams();
+    if (startDate) params = params.set('startDate', startDate.toISOString());
+    if (endDate) params = params.set('endDate', endDate.toISOString());
     
-    return this.apiService.get<IncomeStatementDto>(`${this.apiUrl}/income-statement`, params);
+    return this.http.get<IncomeStatementDto>(`${this.apiUrl}/income-statement`, { params });
   }
 
   getBalanceSheet(asOfDate: Date): Observable<BalanceSheetDto> {
     let params = new HttpParams().set('asOfDate', asOfDate.toISOString());
-    return this.apiService.get<BalanceSheetDto>(`${this.apiUrl}/balance-sheet`, params);
+    return this.http.get<BalanceSheetDto>(`${this.apiUrl}/balance-sheet`, { params });
   }
 
-  getARAgingReport(asOfDate: Date, pageNumber: number = 1, pageSize: number = 50): Observable<any> {
-    let params = new HttpParams()
-      .set('asOfDate', asOfDate.toISOString())
-      .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString());
+  getARAgingReport(asOfDate?: Date): Observable<any> {
+    let params = new HttpParams();
+    if (asOfDate) params = params.set('asOfDate', asOfDate.toISOString());
     
-    return this.apiService.get<any>(`${this.apiUrl}/ar-aging`, params);
+    return this.http.get<any>(`${this.apiUrl}/ar-aging`, { params });
   }
 
   getCustomerRateAnalysis(
-    startDate: Date,
-    endDate: Date,
-    minJobs: number = 1,
-    pageNumber: number = 1,
-    pageSize: number = 50
+    startDate?: Date,
+    endDate?: Date,
+    customerId?: number
   ): Observable<any> {
-    let params = new HttpParams()
-      .set('startDate', startDate.toISOString())
-      .set('endDate', endDate.toISOString())
-      .set('minJobs', minJobs.toString())
-      .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString());
+    let params = new HttpParams();
+    if (startDate) params = params.set('startDate', startDate.toISOString());
+    if (endDate) params = params.set('endDate', endDate.toISOString());
+    if (customerId) params = params.set('customerId', customerId.toString());
     
-    return this.apiService.get<any>(`${this.apiUrl}/customer-analysis`, params);
+    return this.http.get<any>(`${this.apiUrl}/customer-analysis`, { params });
   }
 
   getInventoryUsageReport(
-    startDate: Date,
-    endDate: Date,
-    pageNumber: number = 1,
-    pageSize: number = 50
+    startDate?: Date,
+    endDate?: Date,
+    category?: string
   ): Observable<any> {
-    let params = new HttpParams()
-      .set('startDate', startDate.toISOString())
-      .set('endDate', endDate.toISOString())
-      .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString());
+    let params = new HttpParams();
+    if (startDate) params = params.set('startDate', startDate.toISOString());
+    if (endDate) params = params.set('endDate', endDate.toISOString());
+    if (category) params = params.set('category', category);
     
-    return this.apiService.get<any>(`${this.apiUrl}/inventory-usage`, params);
+    return this.http.get<any>(`${this.apiUrl}/inventory-usage`, { params });
   }
 
   exportToExcel(reportType: string, params: any): Observable<Blob> {

@@ -60,15 +60,20 @@ export class JobCostReportComponent implements OnInit {
       start,
       end,
       this.customerId,
-      this.status || undefined,
-      this.currentPage,
-      this.pageSize
+      this.status || undefined
     ).subscribe({
       next: (response: any) => {
-        this.reports = response.data || [];
-        this.totalCount = response.totalCount || 0;
+        // Backend returns JobCostSummaryDto
+        this.reports = response.workOrders || [];
+        this.totalCount = response.totalWorkOrders || 0;
         this.totalPages = Math.ceil(this.totalCount / this.pageSize);
-        this.calculateSummary();
+        
+        // Use summary data from backend
+        this.totalRevenue = response.totalRevenue || 0;
+        this.totalCost = response.totalCost || 0;
+        this.totalProfit = response.totalProfit || 0;
+        this.averageMargin = response.averageProfitMargin || 0;
+        
         this.loading = false;
       },
       error: (err) => {
