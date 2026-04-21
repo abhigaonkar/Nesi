@@ -179,4 +179,9 @@ public class PurchaseOrder : BaseEntity
         
         RequiredByDate = requiredByDate;
     }
+    
+    public void MarkAsReceived()
+    {
+        ReceiveComplete();
+    }
 }

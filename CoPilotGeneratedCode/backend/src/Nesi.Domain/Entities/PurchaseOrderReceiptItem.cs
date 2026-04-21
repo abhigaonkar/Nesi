@@ -26,7 +26,9 @@ public class PurchaseOrderReceiptItem : BaseEntity
         int purchaseOrderLineItemId,
         decimal quantityReceived,
         string? condition = null,
-        string? notes = null)
+        string? notes = null,
+        bool hasDiscrepancy = false,
+        string? discrepancyReason = null)
     {
         if (quantityReceived <= 0)
             throw new ArgumentException("Quantity received must be greater than zero", nameof(quantityReceived));
@@ -36,7 +38,8 @@ public class PurchaseOrderReceiptItem : BaseEntity
         QuantityReceived = quantityReceived;
         Condition = condition;
         Notes = notes;
-        HasDiscrepancy = false;
+        HasDiscrepancy = hasDiscrepancy;
+        DiscrepancyReason = discrepancyReason;
     }
     
     public void ReportDiscrepancy(string reason)

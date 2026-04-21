@@ -96,4 +96,16 @@ public class WorkOrderRepository : Repository<WorkOrder>, IWorkOrderRepository
         
         return $"{prefix}0001";
     }
+    
+    public async Task<WorkOrder?> GetByIdWithDetailsAsync(int id, CancellationToken cancellationToken = default)
+    {
+        return await _dbSet
+            .Include(wo => wo.Customer)
+            .Include(wo => wo.ProjectManager)
+            .Include(wo => wo.Quote)
+            .Include(wo => wo.Documents)
+            .Include(wo => wo.Assignments)
+            .Include(wo => wo.Materials)
+            .FirstOrDefaultAsync(wo => wo.Id == id && !wo.IsDeleted, cancellationToken);
+    }
 }

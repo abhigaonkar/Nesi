@@ -68,8 +68,8 @@ public class GetPurchaseOrderByIdQueryHandler : IRequestHandler<GetPurchaseOrder
                 UnitPrice = li.UnitPrice,
                 TotalPrice = li.TotalPrice,
                 QuantityReceived = li.QuantityReceived,
-                RemainingQuantity = li.RemainingQuantity,
-                IsFullyReceived = li.IsFullyReceived,
+                RemainingQuantity = li.RemainingQuantity(),
+                IsFullyReceived = li.IsFullyReceived(),
                 Notes = li.Notes,
                 CreatedAt = li.CreatedAt
             }).ToList();

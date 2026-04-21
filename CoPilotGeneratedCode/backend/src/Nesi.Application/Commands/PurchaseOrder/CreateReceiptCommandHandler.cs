@@ -66,7 +66,7 @@ public class CreateReceiptCommandHandler : IRequestHandler<CreateReceiptCommand,
         }
 
         // Check if PO is fully received and update status
-        if (purchaseOrder.LineItems?.All(li => li.IsFullyReceived) == true)
+        if (purchaseOrder.LineItems?.All(li => li.IsFullyReceived()) == true)
         {
             purchaseOrder.MarkAsReceived();
         }

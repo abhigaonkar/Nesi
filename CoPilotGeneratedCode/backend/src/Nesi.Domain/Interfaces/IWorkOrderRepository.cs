@@ -15,4 +15,5 @@ public interface IWorkOrderRepository : IRepository<WorkOrder>
     Task<IEnumerable<WorkOrder>> GetByProjectManagerIdAsync(int projectManagerId, CancellationToken cancellationToken = default);
     Task<IEnumerable<WorkOrder>> GetActiveWorkOrdersAsync(CancellationToken cancellationToken = default);
     Task<string> GenerateWorkOrderNumberAsync(CancellationToken cancellationToken = default);
+    Task<WorkOrder?> GetByIdWithDetailsAsync(int id, CancellationToken cancellationToken = default);
 }

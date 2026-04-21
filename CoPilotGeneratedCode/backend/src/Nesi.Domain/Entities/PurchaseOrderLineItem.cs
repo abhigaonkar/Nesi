@@ -81,6 +81,11 @@ public class PurchaseOrderLineItem : BaseEntity
         QuantityReceived += quantityReceived;
     }
     
+    public void RecordReceivedQuantity(decimal quantityReceived)
+    {
+        ReceiveQuantity(quantityReceived);
+    }
+    
     public bool IsFullyReceived() => QuantityReceived >= Quantity;
     
     public decimal RemainingQuantity() => Quantity - QuantityReceived;

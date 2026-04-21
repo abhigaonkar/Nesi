@@ -27,9 +27,10 @@ public class PurchaseOrderReceipt : BaseEntity
     public PurchaseOrderReceipt(
         int purchaseOrderId,
         string receiptNumber,
+        DateTime receivedDate,
         int receivedBy,
-        DateTime? receivedDate = null,
-        string? packingSlipNumber = null)
+        string? packingSlipNumber = null,
+        string? notes = null)
     {
         if (string.IsNullOrWhiteSpace(receiptNumber))
             throw new ArgumentException("Receipt number cannot be empty", nameof(receiptNumber));
@@ -37,8 +38,9 @@ public class PurchaseOrderReceipt : BaseEntity
         PurchaseOrderId = purchaseOrderId;
         ReceiptNumber = receiptNumber;
         ReceivedBy = receivedBy;
-        ReceivedDate = receivedDate ?? DateTime.UtcNow;
+        ReceivedDate = receivedDate;
         PackingSlipNumber = packingSlipNumber;
+        Notes = notes;
         Status = ReceiptStatus.Pending;
     }
     
@@ -64,5 +66,13 @@ public class PurchaseOrderReceipt : BaseEntity
     public void UpdateNotes(string notes)
     {
         Notes = notes;
+    }
+    
+    public void Confirm()
+    {
+        if (Status != ReceiptStatus.Pending)
+            throw new InvalidOperationException("Only pending receipts can be confirmed");
+        
+        Status = ReceiptStatus.Received;
     }
 }

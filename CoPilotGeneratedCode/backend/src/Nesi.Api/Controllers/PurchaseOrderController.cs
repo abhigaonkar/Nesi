@@ -206,7 +206,6 @@ public class PurchaseOrderController : ControllerBase
             return StatusCode(500, ApiResponse<bool>.ErrorResponse("An error occurred rejecting the purchase order"));
         }
     }
-}
 
     /// <summary>
     /// Create a receipt for a purchase order
