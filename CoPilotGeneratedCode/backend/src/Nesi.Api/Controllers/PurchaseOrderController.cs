@@ -202,6 +202,93 @@ public class PurchaseOrderController : ControllerBase
     }
 }
 
+    /// <summary>
+    /// Create a receipt for a purchase order
+    /// </summary>
+    [HttpPost("{id}/receipts")]
+    [ProducesResponseType(typeof(ApiResponse<int>), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ApiResponse<int>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ApiResponse<int>>> CreateReceipt(int id, [FromBody] CreateReceiptCommand command)
+    {
+        try
+        {
+            if (id != command.PurchaseOrderId)
+            {
+                return BadRequest(ApiResponse<int>.ErrorResponse("Purchase order ID mismatch"));
+            }
+
+            var receiptId = await _mediator.Send(command);
+            return CreatedAtAction(
+                nameof(GetReceiptsByPurchaseOrder),
+                new { id = command.PurchaseOrderId },
+                ApiResponse<int>.SuccessResponse(receiptId));
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogWarning(ex, "Cannot create receipt for purchase order {PurchaseOrderId}", id);
+            return BadRequest(ApiResponse<int>.ErrorResponse(ex.Message));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating receipt for purchase order {PurchaseOrderId}", id);
+            return StatusCode(500, ApiResponse<int>.ErrorResponse("An error occurred creating the receipt"));
+        }
+    }
+
+    /// <summary>
+    /// Get all receipts for a purchase order
+    /// </summary>
+    [HttpGet("{id}/receipts")]
+    [ProducesResponseType(typeof(ApiResponse<List<PurchaseOrderReceiptDto>>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<ApiResponse<List<PurchaseOrderReceiptDto>>>> GetReceiptsByPurchaseOrder(int id)
+    {
+        try
+        {
+            var query = new GetReceiptsByPurchaseOrderQuery(id);
+            var result = await _mediator.Send(query);
+            
+            return Ok(ApiResponse<List<PurchaseOrderReceiptDto>>.SuccessResponse(result));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving receipts for purchase order {PurchaseOrderId}", id);
+            return StatusCode(500, ApiResponse<List<PurchaseOrderReceiptDto>>.ErrorResponse("An error occurred retrieving receipts"));
+        }
+    }
+
+    /// <summary>
+    /// Confirm a receipt
+    /// </summary>
+    [HttpPost("receipts/{receiptId}/confirm")]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ApiResponse<bool>>> ConfirmReceipt(int receiptId)
+    {
+        try
+        {
+            var command = new ConfirmReceiptCommand(receiptId);
+            var result = await _mediator.Send(command);
+            
+            if (!result)
+            {
+                return NotFound(ApiResponse<bool>.ErrorResponse("Receipt not found"));
+            }
+            
+            return Ok(ApiResponse<bool>.SuccessResponse(result));
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogWarning(ex, "Cannot confirm receipt {ReceiptId}", receiptId);
+            return BadRequest(ApiResponse<bool>.ErrorResponse(ex.Message));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error confirming receipt {ReceiptId}", receiptId);
+            return StatusCode(500, ApiResponse<bool>.ErrorResponse("An error occurred confirming the receipt"));
+        }
+    }
+}
+
 public class RejectPurchaseOrderRequest
 {
     public string Reason { get; set; } = string.Empty;
