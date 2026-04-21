@@ -55,3 +55,31 @@ public enum AddressType
     Billing = 1,
     Both = 2
 }
+
+public enum PurchaseOrderStatus
+{
+    Draft = 0,
+    Submitted = 1,
+    Approved = 2,
+    Rejected = 3,
+    Ordered = 4,
+    PartiallyReceived = 5,
+    Received = 6,
+    Closed = 7,
+    Cancelled = 8
+}
+
+public enum VendorStatus
+{
+    Active = 0,
+    Inactive = 1,
+    Suspended = 2
+}
+
+public enum ReceiptStatus
+{
+    Pending = 0,
+    PartiallyReceived = 1,
+    Received = 2,
+    Discrepancy = 3
+}
