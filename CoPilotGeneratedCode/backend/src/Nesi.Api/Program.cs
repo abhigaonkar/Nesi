@@ -16,6 +16,10 @@ builder.Services.AddDbContext<NesiDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Register IApplicationDbContext
+builder.Services.AddScoped<Nesi.Application.Common.IApplicationDbContext>(provider => 
+    provider.GetRequiredService<NesiDbContext>());
+
 // Register Application layer services (MediatR, AutoMapper, FluentValidation)
 builder.Services.AddApplication();
 
