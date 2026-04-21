@@ -1,0 +1,68 @@
+.job-cost-report {
+  .stat-card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 0.375rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-weight: 700;
+      color: #333;
+    }
+
+    h6 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .table {
+    th {
+      background-color: #f8f9fa;
+      font-weight: 600;
+      border-bottom: 2px solid #dee2e6;
+
+      &.sortable {
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+          background-color: #e9ecef;
+        }
+
+        i {
+          font-size: 0.75rem;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    tbody tr {
+      &:hover {
+        background-color: #f8f9fa;
+      }
+    }
+  }
+
+  .badge {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .pagination {
+    .page-link {
+      cursor: pointer;
+    }
+  }
+}

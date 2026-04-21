@@ -1,0 +1,165 @@
+<div class="container-fluid py-4">
+  <div class="income-statement">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2 class="mb-1">Income Statement</h2>
+        <p class="text-muted mb-0">Revenue and expenses for selected period</p>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-success" (click)="exportToExcel()" [disabled]="loading">
+          <i class="bi bi-file-earmark-excel"></i> Export Excel
+        </button>
+        <button class="btn btn-danger" (click)="exportToPDF()" [disabled]="loading">
+          <i class="bi bi-file-pdf"></i> Export PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- Period Selector -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5 class="mb-0"><i class="bi bi-calendar-range"></i> Period Selection</h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label class="form-label">Period Type</label>
+            <select class="form-select" [(ngModel)]="periodType" (ngModelChange)="onPeriodTypeChange()">
+              <option value="month">Month</option>
+              <option value="quarter">Quarter</option>
+              <option value="year">Year</option>
+              <option value="custom">Custom Range</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Start Date</label>
+            <input type="date" class="form-control" [(ngModel)]="startDate" />
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">End Date</label>
+            <input type="date" class="form-control" [(ngModel)]="endDate" />
+          </div>
+          <div class="col-md-3 d-flex align-items-end">
+            <button class="btn btn-primary" (click)="loadStatement()">
+              <i class="bi bi-arrow-clockwise"></i> Refresh
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2 text-muted">Loading income statement...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error && !loading" class="alert alert-warning">
+      <i class="bi bi-exclamation-triangle me-2"></i>
+      {{ error }}
+    </div>
+
+    <!-- Income Statement -->
+    <div *ngIf="statement && !loading" class="card">
+      <div class="card-header">
+        <h5 class="mb-0">
+          For Period: {{ statement.periodStart | date: 'MM/dd/yyyy' }} - {{ statement.periodEnd | date: 'MM/dd/yyyy' }}
+        </h5>
+      </div>
+      <div class="card-body">
+        <table class="table table-borderless income-table">
+          <tbody>
+            <!-- Revenue Section -->
+            <tr class="section-header">
+              <td colspan="3"><strong>REVENUE</strong></td>
+            </tr>
+            <tr class="data-row">
+              <td>Total Revenue</td>
+              <td class="text-end">{{ statement.revenue | currency }}</td>
+              <td class="text-end text-muted">100.0%</td>
+            </tr>
+
+            <!-- COGS Section -->
+            <tr class="section-header mt-3">
+              <td colspan="3"><strong>COST OF GOODS SOLD</strong></td>
+            </tr>
+            <tr class="data-row">
+              <td>Cost of Goods Sold</td>
+              <td class="text-end">{{ statement.costOfGoodsSold | currency }}</td>
+              <td class="text-end text-muted">{{ getPercentOfRevenue(statement.costOfGoodsSold) | number: '1.1-1' }}%</td>
+            </tr>
+            <tr class="subtotal-row">
+              <td><strong>Gross Profit</strong></td>
+              <td class="text-end"><strong>{{ statement.grossProfit | currency }}</strong></td>
+              <td class="text-end"><strong>{{ getPercentOfRevenue(statement.grossProfit) | number: '1.1-1' }}%</strong></td>
+            </tr>
+
+            <!-- Operating Expenses Section -->
+            <tr class="section-header mt-3">
+              <td colspan="3"><strong>OPERATING EXPENSES</strong></td>
+            </tr>
+            <tr class="data-row">
+              <td class="ps-3">Labor</td>
+              <td class="text-end">{{ statement.operatingExpenses.labor | currency }}</td>
+              <td class="text-end text-muted">{{ getPercentOfRevenue(statement.operatingExpenses.labor) | number: '1.1-1' }}%</td>
+            </tr>
+            <tr class="data-row">
+              <td class="ps-3">Materials</td>
+              <td class="text-end">{{ statement.operatingExpenses.materials | currency }}</td>
+              <td class="text-end text-muted">{{ getPercentOfRevenue(statement.operatingExpenses.materials) | number: '1.1-1' }}%</td>
+            </tr>
+            <tr class="data-row">
+              <td class="ps-3">Overhead</td>
+              <td class="text-end">{{ statement.operatingExpenses.overhead | currency }}</td>
+              <td class="text-end text-muted">{{ getPercentOfRevenue(statement.operatingExpenses.overhead) | number: '1.1-1' }}%</td>
+            </tr>
+            <tr class="data-row">
+              <td class="ps-3">Administrative</td>
+              <td class="text-end">{{ statement.operatingExpenses.administrative | currency }}</td>
+              <td class="text-end text-muted">{{ getPercentOfRevenue(statement.operatingExpenses.administrative) | number: '1.1-1' }}%</td>
+            </tr>
+            <tr class="subtotal-row">
+              <td>Total Operating Expenses</td>
+              <td class="text-end">{{ statement.operatingExpenses.total | currency }}</td>
+              <td class="text-end">{{ getPercentOfRevenue(statement.operatingExpenses.total) | number: '1.1-1' }}%</td>
+            </tr>
+            <tr class="subtotal-row">
+              <td><strong>Operating Income</strong></td>
+              <td class="text-end" [class.text-danger]="statement.operatingIncome < 0" [class.text-success]="statement.operatingIncome >= 0">
+                <strong>{{ statement.operatingIncome | currency }}</strong>
+              </td>
+              <td class="text-end"><strong>{{ getPercentOfRevenue(statement.operatingIncome) | number: '1.1-1' }}%</strong></td>
+            </tr>
+
+            <!-- Other Income/Expenses -->
+            <tr class="section-header mt-3">
+              <td colspan="3"><strong>OTHER INCOME & EXPENSES</strong></td>
+            </tr>
+            <tr class="data-row">
+              <td>Other Income</td>
+              <td class="text-end">{{ statement.otherIncome | currency }}</td>
+              <td class="text-end text-muted">{{ getPercentOfRevenue(statement.otherIncome) | number: '1.1-1' }}%</td>
+            </tr>
+            <tr class="data-row">
+              <td>Other Expenses</td>
+              <td class="text-end">{{ statement.otherExpenses | currency }}</td>
+              <td class="text-end text-muted">{{ getPercentOfRevenue(statement.otherExpenses) | number: '1.1-1' }}%</td>
+            </tr>
+
+            <!-- Net Income -->
+            <tr class="total-row">
+              <td><strong>NET INCOME</strong></td>
+              <td class="text-end" [class.text-danger]="statement.netIncome < 0" [class.text-success]="statement.netIncome >= 0">
+                <strong class="fs-5">{{ statement.netIncome | currency }}</strong>
+              </td>
+              <td class="text-end"><strong class="fs-5">{{ getPercentOfRevenue(statement.netIncome) | number: '1.1-1' }}%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
