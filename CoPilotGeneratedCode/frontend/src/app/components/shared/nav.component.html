@@ -65,6 +65,35 @@
           <span class="nav-label">Work Orders</span>
         </button>
       </div>
+
+      <div class="nav-section">
+        <h3>Procurement</h3>
+        <button 
+          class="nav-item"
+          [class.active]="isActive('/purchase-orders')"
+          (click)="navigateToPurchaseOrders()">
+          <span class="nav-icon">📦</span>
+          <span class="nav-label">Purchase Orders</span>
+        </button>
+        <button 
+          class="nav-item"
+          [class.active]="isActive('/vendors')"
+          (click)="navigateToVendors()">
+          <span class="nav-icon">🏢</span>
+          <span class="nav-label">Vendors</span>
+        </button>
+      </div>
+
+      <div class="nav-section">
+        <h3>Analytics</h3>
+        <button 
+          class="nav-item"
+          [class.active]="isActive('/reports')"
+          (click)="navigateToReports()">
+          <span class="nav-icon">📈</span>
+          <span class="nav-label">Reports</span>
+        </button>
+      </div>
     </nav>
 
     <main class="main-content">

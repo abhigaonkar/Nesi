@@ -43,6 +43,18 @@ export class NavComponent {
     this.router.navigate(['/dashboard']);
   }
 
+  navigateToPurchaseOrders(): void {
+    this.router.navigate(['/purchase-orders']);
+  }
+
+  navigateToVendors(): void {
+    this.router.navigate(['/vendors']);
+  }
+
+  navigateToReports(): void {
+    this.router.navigate(['/reports']);
+  }
+
   isActive(route: string): boolean {
     return this.router.url.startsWith(route);
   }
