@@ -4,6 +4,7 @@ using Nesi.Application.Commands.PurchaseOrder;
 using Nesi.Application.Common;
 using Nesi.Application.DTOs.PurchaseOrder;
 using Nesi.Application.Queries.PurchaseOrder;
+using Nesi.Application.Services;
 
 namespace Nesi.Api.Controllers;
 
@@ -13,11 +14,16 @@ public class PurchaseOrderController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly ILogger<PurchaseOrderController> _logger;
+    private readonly IThreeWayMatchingService _threeWayMatchingService;
 
-    public PurchaseOrderController(IMediator mediator, ILogger<PurchaseOrderController> logger)
+    public PurchaseOrderController(
+        IMediator mediator, 
+        ILogger<PurchaseOrderController> logger,
+        IThreeWayMatchingService threeWayMatchingService)
     {
         _mediator = mediator;
         _logger = logger;
+        _threeWayMatchingService = threeWayMatchingService;
     }
 
     /// <summary>
@@ -287,9 +293,42 @@ public class PurchaseOrderController : ControllerBase
             return StatusCode(500, ApiResponse<bool>.ErrorResponse("An error occurred confirming the receipt"));
         }
     }
+
+    /// <summary>
+    /// Perform 3-way matching validation (PO vs Receipt vs Invoice)
+    /// </summary>
+    [HttpPost("{id}/validate-invoice")]
+    [ProducesResponseType(typeof(ApiResponse<ThreeWayMatchResult>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<ApiResponse<ThreeWayMatchResult>>> ValidateInvoice(
+        int id,
+        [FromBody] InvoiceValidationRequest request)
+    {
+        try
+        {
+            var result = await _threeWayMatchingService.PerformThreeWayMatchAsync(
+                id,
+                request.InvoiceTotal,
+                request.LineItems,
+                request.TolerancePercentage);
+            
+            return Ok(ApiResponse<ThreeWayMatchResult>.SuccessResponse(result));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error performing 3-way match for purchase order {PurchaseOrderId}", id);
+            return StatusCode(500, ApiResponse<ThreeWayMatchResult>.ErrorResponse("An error occurred performing 3-way match"));
+        }
+    }
 }
 
 public class RejectPurchaseOrderRequest
 {
     public string Reason { get; set; } = string.Empty;
+}
+
+public class InvoiceValidationRequest
+{
+    public decimal InvoiceTotal { get; set; }
+    public List<InvoiceLineItem> LineItems { get; set; } = new();
+    public decimal TolerancePercentage { get; set; } = 5.0m;
 }
