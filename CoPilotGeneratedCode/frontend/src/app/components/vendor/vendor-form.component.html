@@ -1,0 +1,323 @@
+<div class="container-fluid py-4">
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!loading" class="vendor-form">
+    <h2 class="mb-4">{{ isEditMode ? 'Edit Vendor' : 'Create Vendor' }}</h2>
+
+    <form (ngSubmit)="saveVendor()">
+      <!-- Company Information -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Company Information</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="companyName" class="form-label">Company Name *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="companyName"
+                  [(ngModel)]="companyName"
+                  name="companyName"
+                  required
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="contactName" class="form-label">Contact Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contactName"
+                  [(ngModel)]="contactName"
+                  name="contactName"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  [(ngModel)]="email"
+                  name="email"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  [(ngModel)]="phone"
+                  name="phone"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="fax" class="form-label">Fax</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="fax"
+                  [(ngModel)]="fax"
+                  name="fax"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="website" class="form-label">Website</label>
+            <input
+              type="url"
+              class="form-control"
+              id="website"
+              [(ngModel)]="website"
+              name="website"
+              [disabled]="saving"
+              placeholder="https://example.com"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Address</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="address" class="form-label">Street Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              [(ngModel)]="address"
+              name="address"
+              [disabled]="saving"
+            />
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="city" class="form-label">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  [(ngModel)]="city"
+                  name="city"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="mb-3">
+                <label for="state" class="form-label">State</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="state"
+                  [(ngModel)]="state"
+                  name="state"
+                  maxlength="2"
+                  [disabled]="saving"
+                  placeholder="CA"
+                />
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="mb-3">
+                <label for="zipCode" class="form-label">Zip Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="zipCode"
+                  [(ngModel)]="zipCode"
+                  name="zipCode"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="mb-3">
+                <label for="country" class="form-label">Country</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="country"
+                  [(ngModel)]="country"
+                  name="country"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Details -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Business Details</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="taxId" class="form-label">Tax ID</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="taxId"
+                  [(ngModel)]="taxId"
+                  name="taxId"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="accountNumber" class="form-label">Account Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="accountNumber"
+                  [(ngModel)]="accountNumber"
+                  name="accountNumber"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="paymentTermsDays" class="form-label">Payment Terms (Days)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="paymentTermsDays"
+                  [(ngModel)]="paymentTermsDays"
+                  name="paymentTermsDays"
+                  min="0"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="creditLimit" class="form-label">Credit Limit</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="creditLimit"
+                  [(ngModel)]="creditLimit"
+                  name="creditLimit"
+                  min="0"
+                  step="0.01"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <select
+                  class="form-select"
+                  id="rating"
+                  [(ngModel)]="rating"
+                  name="rating"
+                  [disabled]="saving"
+                >
+                  <option *ngFor="let r of ratingOptions" [value]="r">
+                    {{ r === 0 ? 'Not rated' : r + ' star' + (r > 1 ? 's' : '') }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes and Status -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Additional Information</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="notes" class="form-label">Notes</label>
+            <textarea
+              class="form-control"
+              id="notes"
+              rows="4"
+              [(ngModel)]="notes"
+              name="notes"
+              [disabled]="saving"
+              placeholder="Add any additional notes about this vendor..."
+            ></textarea>
+          </div>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="isActive"
+              [(ngModel)]="isActive"
+              name="isActive"
+              [disabled]="saving"
+            />
+            <label class="form-check-label" for="isActive">
+              Active Vendor
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="d-flex gap-2 mb-4">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="saving"
+        >
+          <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
+          {{ saving ? 'Saving...' : (isEditMode ? 'Update' : 'Create') }} Vendor
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="cancel()"
+          [disabled]="saving"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

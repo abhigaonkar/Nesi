@@ -71,10 +71,13 @@ export interface CreatePurchaseOrderCommand {
   orderDate: Date;
   requiredByDate?: Date;
   description?: string;
+  notes?: string;
   shippingAddress?: string;
   shippingCity?: string;
   shippingState?: string;
   shippingZipCode?: string;
+  taxRate?: number;
+  shippingCost?: number;
   lineItems: {
     lineNumber: number;
     description: string;
@@ -83,6 +86,21 @@ export interface CreatePurchaseOrderCommand {
     unitOfMeasure: string;
     unitPrice: number;
   }[];
+}
+
+export interface UpdatePurchaseOrderCommand {
+  id: number;
+  vendorId: number;
+  workOrderId?: number;
+  requiredByDate?: Date;
+  description?: string;
+  notes?: string;
+  shippingAddress?: string;
+  shippingCity?: string;
+  shippingState?: string;
+  shippingZipCode?: string;
+  taxRate?: number;
+  shippingCost?: number;
 }
 
 export interface CreateReceiptCommand {
@@ -136,6 +154,10 @@ export class PurchaseOrderService {
 
   createPurchaseOrder(po: CreatePurchaseOrderCommand): Observable<number> {
     return this.apiService.post<number>(this.apiUrl, po);
+  }
+
+  updatePurchaseOrder(po: UpdatePurchaseOrderCommand): Observable<boolean> {
+    return this.apiService.put<boolean>(`${this.apiUrl}/${po.id}`, po);
   }
 
   submitPurchaseOrder(id: number): Observable<boolean> {

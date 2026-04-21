@@ -1,0 +1,364 @@
+<div class="container-fluid py-4">
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!loading" class="purchase-order-form">
+    <h2 class="mb-4">{{ isEditMode ? 'Edit Purchase Order' : 'Create Purchase Order' }}</h2>
+
+    <form (ngSubmit)="savePurchaseOrder()">
+      <!-- Basic Information -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Basic Information</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="vendorId" class="form-label">Vendor *</label>
+                <select
+                  class="form-select"
+                  id="vendorId"
+                  [(ngModel)]="vendorId"
+                  name="vendorId"
+                  required
+                  [disabled]="saving || isEditMode"
+                >
+                  <option [value]="0">Select a vendor...</option>
+                  <option *ngFor="let vendor of vendors" [value]="vendor.id">
+                    {{ vendor.companyName }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="mb-3">
+                <label for="orderDate" class="form-label">Order Date *</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="orderDate"
+                  [(ngModel)]="orderDate"
+                  name="orderDate"
+                  required
+                  [disabled]="saving || isEditMode"
+                />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="mb-3">
+                <label for="requiredByDate" class="form-label">Required By</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="requiredByDate"
+                  [(ngModel)]="requiredByDate"
+                  name="requiredByDate"
+                  [disabled]="saving"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              rows="2"
+              [(ngModel)]="description"
+              name="description"
+              [disabled]="saving"
+              placeholder="Enter a description for this purchase order..."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Line Items -->
+      <div class="card mb-3">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Line Items</h5>
+          <button
+            type="button"
+            class="btn btn-sm btn-primary"
+            (click)="addLineItem()"
+            [disabled]="saving || isEditMode"
+          >
+            <i class="bi bi-plus-circle"></i> Add Item
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th style="width: 5%">#</th>
+                  <th style="width: 15%">Part Number</th>
+                  <th style="width: 25%">Description *</th>
+                  <th style="width: 10%">Quantity *</th>
+                  <th style="width: 10%">Unit</th>
+                  <th style="width: 12%">Unit Price *</th>
+                  <th style="width: 13%">Total</th>
+                  <th style="width: 10%">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of lineItems; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      [(ngModel)]="item.partNumber"
+                      [name]="'partNumber_' + i"
+                      [disabled]="saving || isEditMode"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      [(ngModel)]="item.description"
+                      [name]="'description_' + i"
+                      required
+                      [disabled]="saving || isEditMode"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      [(ngModel)]="item.quantity"
+                      [name]="'quantity_' + i"
+                      min="0.01"
+                      step="0.01"
+                      required
+                      (ngModelChange)="onLineItemChange(item)"
+                      [disabled]="saving || isEditMode"
+                    />
+                  </td>
+                  <td>
+                    <select
+                      class="form-select form-select-sm"
+                      [(ngModel)]="item.unitOfMeasure"
+                      [name]="'unitOfMeasure_' + i"
+                      [disabled]="saving || isEditMode"
+                    >
+                      <option value="EA">Each</option>
+                      <option value="FT">Feet</option>
+                      <option value="HR">Hour</option>
+                      <option value="LOT">Lot</option>
+                      <option value="BOX">Box</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      [(ngModel)]="item.unitPrice"
+                      [name]="'unitPrice_' + i"
+                      min="0"
+                      step="0.01"
+                      required
+                      (ngModelChange)="onLineItemChange(item)"
+                      [disabled]="saving || isEditMode"
+                    />
+                  </td>
+                  <td class="text-end">
+                    {{ item.totalPrice | currency }}
+                  </td>
+                  <td class="text-center">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-danger"
+                      (click)="removeLineItem(i)"
+                      [disabled]="saving || lineItems.length === 1 || isEditMode"
+                      title="Remove item"
+                    >
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financial Details -->
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Shipping Address -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <h5 class="mb-0">Shipping Address</h5>
+            </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="shippingAddress" class="form-label">Street Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="shippingAddress"
+                  [(ngModel)]="shippingAddress"
+                  name="shippingAddress"
+                  [disabled]="saving"
+                />
+              </div>
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="mb-3">
+                    <label for="shippingCity" class="form-label">City</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shippingCity"
+                      [(ngModel)]="shippingCity"
+                      name="shippingCity"
+                      [disabled]="saving"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label for="shippingState" class="form-label">State</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shippingState"
+                      [(ngModel)]="shippingState"
+                      name="shippingState"
+                      maxlength="2"
+                      [disabled]="saving"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="shippingZipCode" class="form-label">Zip Code</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shippingZipCode"
+                      [(ngModel)]="shippingZipCode"
+                      name="shippingZipCode"
+                      [disabled]="saving"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <h5 class="mb-0">Notes</h5>
+            </div>
+            <div class="card-body">
+              <textarea
+                class="form-control"
+                rows="4"
+                [(ngModel)]="notes"
+                name="notes"
+                [disabled]="saving"
+                placeholder="Add any additional notes..."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <!-- Totals -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <h5 class="mb-0">Totals</h5>
+            </div>
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label for="taxRate" class="form-label">Tax Rate (%)</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="taxRate"
+                    [(ngModel)]="taxRate"
+                    name="taxRate"
+                    min="0"
+                    max="100"
+                    step="0.01"
+                    (ngModelChange)="onTaxOrShippingChange()"
+                    [disabled]="saving"
+                  />
+                </div>
+                <div class="col-6">
+                  <label for="shippingCost" class="form-label">Shipping Cost</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="shippingCost"
+                    [(ngModel)]="shippingCost"
+                    name="shippingCost"
+                    min="0"
+                    step="0.01"
+                    (ngModelChange)="onTaxOrShippingChange()"
+                    [disabled]="saving"
+                  />
+                </div>
+              </div>
+
+              <table class="table table-sm">
+                <tbody>
+                  <tr>
+                    <th width="60%">Subtotal:</th>
+                    <td class="text-end">{{ subTotal | currency }}</td>
+                  </tr>
+                  <tr>
+                    <th>Tax ({{ taxRate }}%):</th>
+                    <td class="text-end">{{ taxAmount | currency }}</td>
+                  </tr>
+                  <tr>
+                    <th>Shipping:</th>
+                    <td class="text-end">{{ shippingCost | currency }}</td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th>Total:</th>
+                    <th class="text-end">{{ totalAmount | currency }}</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="d-flex gap-2 mb-4">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="saving"
+        >
+          <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
+          {{ saving ? 'Saving...' : (isEditMode ? 'Update' : 'Create') }} Purchase Order
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="cancel()"
+          [disabled]="saving"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

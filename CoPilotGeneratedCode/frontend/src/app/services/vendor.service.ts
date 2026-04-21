@@ -45,7 +45,31 @@ export interface CreateVendorCommand {
   accountNumber?: string;
   paymentTermsDays?: number;
   creditLimit?: number;
+  rating?: number;
   notes?: string;
+  isActive?: boolean;
+}
+
+export interface UpdateVendorCommand {
+  id: number;
+  companyName: string;
+  contactName?: string;
+  email?: string;
+  phone?: string;
+  fax?: string;
+  website?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+  country?: string;
+  taxId?: string;
+  accountNumber?: string;
+  paymentTermsDays?: number;
+  creditLimit?: number;
+  rating?: number;
+  notes?: string;
+  isActive?: boolean;
 }
 
 @Injectable({
@@ -73,7 +97,7 @@ export class VendorService {
     return this.apiService.post<number>(this.apiUrl, vendor);
   }
 
-  updateVendor(id: number, vendor: CreateVendorCommand): Observable<boolean> {
-    return this.apiService.put<boolean>(`${this.apiUrl}/${id}`, { id, ...vendor });
+  updateVendor(vendor: UpdateVendorCommand): Observable<boolean> {
+    return this.apiService.put<boolean>(`${this.apiUrl}/${vendor.id}`, vendor);
   }
 }

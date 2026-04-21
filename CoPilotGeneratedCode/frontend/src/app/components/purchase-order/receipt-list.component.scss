@@ -1,0 +1,27 @@
+.receipt-list {
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .receipt-summary {
+    h6 {
+      color: #495057;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .table {
+    th {
+      background-color: #f8f9fa;
+      font-weight: 600;
+    }
+
+    .badge {
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}

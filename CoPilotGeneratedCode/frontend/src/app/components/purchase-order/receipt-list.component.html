@@ -1,0 +1,97 @@
+<div class="container-fluid py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <button class="btn btn-outline-secondary btn-sm mb-2" (click)="goBack()">
+        <i class="bi bi-arrow-left"></i> Back to Purchase Order
+      </button>
+      <h2>Receipts for PO</h2>
+    </div>
+    <button class="btn btn-primary" (click)="createNewReceipt()">
+      <i class="bi bi-plus-circle"></i> Create Receipt
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="receipt-list">
+    <div *ngIf="receipts.length === 0" class="alert alert-info">
+      No receipts have been created for this purchase order yet.
+    </div>
+
+    <div *ngIf="receipts.length > 0" class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Receipts ({{ receipts.length }})</h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Receipt #</th>
+                <th>Received Date</th>
+                <th>Received By</th>
+                <th>Packing Slip</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let receipt of receipts" class="cursor-pointer">
+                <td>
+                  <strong>{{ receipt.receiptNumber }}</strong>
+                </td>
+                <td>{{ receipt.receivedDate | date: 'short' }}</td>
+                <td>{{ receipt.receiverName }}</td>
+                <td>{{ receipt.packingSlipNumber || '-' }}</td>
+                <td>
+                  <span [className]="getStatusClass(receipt.status)">
+                    {{ receipt.status }}
+                  </span>
+                </td>
+                <td>{{ receipt.createdAt | date: 'short' }}</td>
+                <td>
+                  <button
+                    class="btn btn-sm btn-outline-primary"
+                    (click)="viewReceipt(receipt.id)"
+                  >
+                    <i class="bi bi-eye"></i> View
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes Section -->
+    <div *ngIf="receipts.length > 0" class="card mt-3">
+      <div class="card-header">
+        <h5 class="mb-0">Receipt Details</h5>
+      </div>
+      <div class="card-body">
+        <div *ngFor="let receipt of receipts" class="mb-3">
+          <div class="receipt-summary">
+            <h6>{{ receipt.receiptNumber }} - {{ receipt.receivedDate | date: 'short' }}</h6>
+            <p *ngIf="receipt.notes" class="text-muted mb-0">
+              <strong>Notes:</strong> {{ receipt.notes }}
+            </p>
+            <p *ngIf="!receipt.notes" class="text-muted mb-0">
+              <em>No notes</em>
+            </p>
+          </div>
+          <hr *ngIf="receipts.indexOf(receipt) < receipts.length - 1" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
