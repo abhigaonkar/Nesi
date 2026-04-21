@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Nesi.Application;
+using Nesi.Application.Services;
 using Nesi.Domain.Interfaces;
 using Nesi.Infrastructure.Data;
 using Nesi.Infrastructure.Extensions;
@@ -25,7 +26,14 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IQuoteRepository, QuoteRepository>();
 builder.Services.AddScoped<IWorkOrderRepository, WorkOrderRepository>();
+builder.Services.AddScoped<IVendorRepository, VendorRepository>();
+builder.Services.AddScoped<IPurchaseOrderRepository, PurchaseOrderRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+// Register services
+var storagePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+var baseUrl = builder.Configuration["FileStorage:BaseUrl"] ?? "http://localhost:5000/uploads";
+builder.Services.AddSingleton<IFileStorageService>(new LocalFileStorageService(storagePath, baseUrl));
 
 // Add CORS
 builder.Services.AddCors(options =>
