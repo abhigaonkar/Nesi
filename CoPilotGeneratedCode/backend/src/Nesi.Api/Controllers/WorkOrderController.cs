@@ -244,6 +244,84 @@ public class WorkOrderController : ControllerBase
             return StatusCode(500, ApiResponse<bool>.ErrorResponse("An error occurred generating the invoice"));
         }
     }
+
+    /// <summary>
+    /// Upload a document to a work order
+    /// </summary>
+    [HttpPost("{id}/documents")]
+    [ProducesResponseType(typeof(ApiResponse<int>), StatusCodes.Status201Created)]
+    public async Task<ActionResult<ApiResponse<int>>> UploadDocument(
+        int id,
+        [FromForm] IFormFile file,
+        [FromForm] string documentType,
+        [FromForm] string? description)
+    {
+        try
+        {
+            var command = new UploadDocumentCommand(id, file, documentType, description);
+            var documentId = await _mediator.Send(command);
+            
+            return CreatedAtAction(
+                nameof(GetWorkOrderDocuments),
+                new { id },
+                ApiResponse<int>.SuccessResponse(documentId, "Document uploaded successfully"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error uploading document to work order {WorkOrderId}", id);
+            return StatusCode(500, ApiResponse<int>.ErrorResponse("An error occurred uploading the document"));
+        }
+    }
+
+    /// <summary>
+    /// Get all documents for a work order
+    /// </summary>
+    [HttpGet("{id}/documents")]
+    [ProducesResponseType(typeof(ApiResponse<List<WorkOrderDocumentDto>>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<ApiResponse<List<WorkOrderDocumentDto>>>> GetWorkOrderDocuments(int id)
+    {
+        try
+        {
+            var query = new GetWorkOrderDocumentsQuery(id);
+            var result = await _mediator.Send(query);
+            
+            return Ok(ApiResponse<List<WorkOrderDocumentDto>>.SuccessResponse(result));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving documents for work order {WorkOrderId}", id);
+            return StatusCode(500, ApiResponse<List<WorkOrderDocumentDto>>.ErrorResponse("An error occurred retrieving documents"));
+        }
+    }
+
+    /// <summary>
+    /// Update work order progress and milestones
+    /// </summary>
+    [HttpPut("{id}/progress")]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ApiResponse<bool>>> UpdateProgress(
+        int id,
+        [FromBody] UpdateProgressRequest request)
+    {
+        try
+        {
+            var command = new UpdateProgressCommand(id, request.Milestones, request.PercentComplete);
+            var result = await _mediator.Send(command);
+            
+            if (!result)
+            {
+                return NotFound(ApiResponse<bool>.ErrorResponse("Work order not found"));
+            }
+            
+            return Ok(ApiResponse<bool>.SuccessResponse(true, "Progress updated successfully"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error updating progress for work order {WorkOrderId}", id);
+            return StatusCode(500, ApiResponse<bool>.ErrorResponse("An error occurred updating progress"));
+        }
+    }
 }
 
 // Request DTOs
@@ -269,3 +347,5 @@ public record AddMaterialRequest(
 public record CompleteWorkOrderRequest(string? CompletionNotes);
 
 public record GenerateInvoiceRequest(decimal InvoiceAmount);
+
+public record UpdateProgressRequest(string Milestones, int? PercentComplete);
