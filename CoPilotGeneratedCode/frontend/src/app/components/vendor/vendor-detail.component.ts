@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VendorService, VendorDto } from '../../../services/vendor.service';
+import { VendorService, VendorDto } from '../../services/vendor.service';
 
 @Component({
   selector: 'app-vendor-detail',
@@ -38,7 +38,7 @@ export class VendorDetailComponent implements OnInit {
           this.vendor = response.data;
           this.loading = false;
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to load vendor';
           this.loading = false;
           console.error(err);

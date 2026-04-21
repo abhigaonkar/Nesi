@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ReportService, CustomerRateAnalysisDto } from '../../../services/report.service';
+import { ReportService, CustomerRateAnalysisDto } from '../../services/report.service';
 
 @Component({
   selector: 'app-customer-analysis',
@@ -127,5 +127,21 @@ export class CustomerAnalysisComponent implements OnInit {
 
   exportToExcel(): void {
     alert('Export functionality requires backend implementation');
+  }
+
+  getBestMarginCustomer(): string {
+    if (!this.customers || this.customers.length === 0) return 'N/A';
+    const best = this.customers.reduce((prev, curr) => 
+      prev.profitMargin > curr.profitMargin ? prev : curr
+    );
+    return best?.customerName || 'N/A';
+  }
+
+  getMostJobsCustomer(): string {
+    if (!this.customers || this.customers.length === 0) return 'N/A';
+    const most = this.customers.reduce((prev, curr) => 
+      prev.totalJobs > curr.totalJobs ? prev : curr
+    );
+    return most?.customerName || 'N/A';
   }
 }

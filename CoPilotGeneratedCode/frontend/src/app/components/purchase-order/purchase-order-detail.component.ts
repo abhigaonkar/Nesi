@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PurchaseOrderService, PurchaseOrderDto } from '../../../services/purchase-order.service';
+import { PurchaseOrderService, PurchaseOrderDto } from '../../services/purchase-order.service';
 
 @Component({
   selector: 'app-purchase-order-detail',

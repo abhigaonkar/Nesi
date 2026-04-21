@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { VendorService, VendorDto } from '../../../services/vendor.service';
+import { VendorService, VendorDto } from '../../services/vendor.service';
 
 @Component({
   selector: 'app-vendor-list',

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { WorkOrderService } from '../../../services/work-order.service';
+import { WorkOrderService } from '../../services/work-order.service';
 
 @Component({
   selector: 'app-document-upload',

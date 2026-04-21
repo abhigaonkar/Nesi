@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ReportService, JobCostReportDto } from '../../../services/report.service';
+import { ReportService, JobCostReportDto } from '../../services/report.service';
 
 @Component({
   selector: 'app-job-cost-report',

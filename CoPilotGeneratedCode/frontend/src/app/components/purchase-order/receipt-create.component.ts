@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PurchaseOrderService, PurchaseOrderDto, CreateReceiptCommand } from '../../../services/purchase-order.service';
+import { PurchaseOrderService, PurchaseOrderDto, CreateReceiptCommand } from '../../services/purchase-order.service';
 
 @Component({
   selector: 'app-receipt-create',

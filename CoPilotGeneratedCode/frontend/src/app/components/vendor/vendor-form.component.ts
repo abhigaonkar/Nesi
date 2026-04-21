@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VendorService, CreateVendorCommand, UpdateVendorCommand } from '../../../services/vendor.service';
+import { VendorService, CreateVendorCommand, UpdateVendorCommand } from '../../services/vendor.service';
 
 @Component({
   selector: 'app-vendor-form',
