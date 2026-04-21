@@ -1,15 +1,15 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Nesi.Application.Common;
 using Nesi.Application.DTOs.Report;
-using Nesi.Infrastructure.Data;
 
 namespace Nesi.Application.Queries.Report;
 
 public class GetIncomeStatementQueryHandler : IRequestHandler<GetIncomeStatementQuery, IncomeStatementDto>
 {
-    private readonly NesiDbContext _context;
+    private readonly IApplicationDbContext _context;
 
-    public GetIncomeStatementQueryHandler(NesiDbContext context)
+    public GetIncomeStatementQueryHandler(IApplicationDbContext context)
     {
         _context = context;
     }

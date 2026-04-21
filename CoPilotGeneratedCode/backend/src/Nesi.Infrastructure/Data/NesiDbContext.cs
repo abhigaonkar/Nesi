@@ -1,22 +1,27 @@
 using Microsoft.EntityFrameworkCore;
+using Nesi.Application.Common;
 using Nesi.Domain.Entities;
 using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Nesi.Infrastructure.Data;
 
-public class NesiDbContext : DbContext
+public class NesiDbContext : DbContext, IApplicationDbContext
 {
     public NesiDbContext(DbContextOptions<NesiDbContext> options) : base(options)
     {
     }
 
     public DbSet<User> Users => Set<User>();
-    public DbSet<TimesheetEntry> Timesheets => Set<TimesheetEntry>();
+    public DbSet<TimesheetEntry> TimesheetEntries => Set<TimesheetEntry>();
     public DbSet<WorkOrder> WorkOrders => Set<WorkOrder>();
     public DbSet<Customer> Customers => Set<Customer>();
     public DbSet<PayType> PayTypes => Set<PayType>();
     public DbSet<JobType> JobTypes => Set<JobType>();
+    public DbSet<Quote> Quotes => Set<Quote>();
+    public DbSet<Material> Materials => Set<Material>();
+    public DbSet<PurchaseOrder> PurchaseOrders => Set<PurchaseOrder>();
+    public DbSet<Vendor> Vendors => Set<Vendor>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,15 +1,15 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Nesi.Application.Common;
 using Nesi.Application.DTOs.Report;
-using Nesi.Infrastructure.Data;
 
 namespace Nesi.Application.Queries.Report;
 
 public class GetCustomerAnalysisQueryHandler : IRequestHandler<GetCustomerAnalysisQuery, CustomerAnalysisSummaryDto>
 {
-    private readonly NesiDbContext _context;
+    private readonly IApplicationDbContext _context;
 
-    public GetCustomerAnalysisQueryHandler(NesiDbContext context)
+    public GetCustomerAnalysisQueryHandler(IApplicationDbContext context)
     {
         _context = context;
     }

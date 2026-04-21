@@ -1,15 +1,15 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Nesi.Application.Common;
 using Nesi.Application.DTOs.Report;
-using Nesi.Infrastructure.Data;
 
 namespace Nesi.Application.Queries.Report;
 
 public class GetInventoryUsageQueryHandler : IRequestHandler<GetInventoryUsageQuery, InventoryUsageSummaryDto>
 {
-    private readonly NesiDbContext _context;
+    private readonly IApplicationDbContext _context;
 
-    public GetInventoryUsageQueryHandler(NesiDbContext context)
+    public GetInventoryUsageQueryHandler(IApplicationDbContext context)
     {
         _context = context;
     }
