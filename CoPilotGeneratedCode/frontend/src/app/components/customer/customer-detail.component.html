@@ -49,27 +49,27 @@
       <div class="detail-grid">
         <div class="detail-item">
           <label>Customer Name</label>
-          <value>{{ customer.name }}</value>
+          <div class="value">{{ customer.name }}</div>
         </div>
         <div class="detail-item">
           <label>Business Unit</label>
-          <value>{{ customer.businessUnitName || '-' }}</value>
+          <div class="value">{{ customer.businessUnitName || '-' }}</div>
         </div>
         <div class="detail-item">
           <label>Contact Name</label>
-          <value>{{ customer.contactName || '-' }}</value>
+          <div class="value">{{ customer.contactName || '-' }}</div>
         </div>
         <div class="detail-item">
           <label>Email</label>
-          <value>{{ customer.email || '-' }}</value>
+          <div class="value">{{ customer.email || '-' }}</div>
         </div>
         <div class="detail-item">
           <label>Phone</label>
-          <value>{{ customer.phone || '-' }}</value>
+          <div class="value">{{ customer.phone || '-' }}</div>
         </div>
         <div class="detail-item">
           <label>Address</label>
-          <value>{{ customer.address || '-' }}</value>
+          <div class="value">{{ customer.address || '-' }}</div>
         </div>
       </div>
     </div>
@@ -80,15 +80,15 @@
       <div class="detail-grid">
         <div class="detail-item">
           <label>Credit Limit</label>
-          <value>{{ formatCurrency(customer.creditLimit) }}</value>
+          <div class="value">{{ formatCurrency(customer.creditLimit) }}</div>
         </div>
         <div class="detail-item">
           <label>Payment Terms</label>
-          <value>{{ customer.paymentTermsDays ? customer.paymentTermsDays + ' days' : '-' }}</value>
+          <div class="value">{{ customer.paymentTermsDays ? customer.paymentTermsDays + ' days' : '-' }}</div>
         </div>
         <div class="detail-item">
           <label>Account Manager</label>
-          <value>{{ customer.accountManagerName || '-' }}</value>
+          <div class="value">{{ customer.accountManagerName || '-' }}</div>
         </div>
       </div>
     </div>
@@ -161,11 +161,11 @@
       <div class="detail-grid">
         <div class="detail-item">
           <label>Created At</label>
-          <value>{{ formatDate(customer.createdAt) }}</value>
+          <div class="value">{{ formatDate(customer.createdAt) }}</div>
         </div>
         <div class="detail-item">
           <label>Last Updated</label>
-          <value>{{ formatDate(customer.updatedAt) }}</value>
+          <div class="value">{{ formatDate(customer.updatedAt) }}</div>
         </div>
       </div>
     </div>
