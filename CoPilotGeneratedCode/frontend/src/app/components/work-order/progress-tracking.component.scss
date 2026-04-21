@@ -27,6 +27,96 @@
 }
 
 .badge {
-  font-size: 1rem;
-  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+}
+
+/* Timeline View Styles */
+.timeline-view {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 60px;
+  padding-bottom: 2rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.timeline-marker.text-success {
+  border-color: #198754;
+  background-color: #d1e7dd;
+}
+
+.timeline-marker.text-primary {
+  border-color: #0d6efd;
+  background-color: #cfe2ff;
+}
+
+.timeline-marker.text-secondary {
+  border-color: #6c757d;
+  background-color: #e2e3e5;
+}
+
+.timeline-marker.text-danger {
+  border-color: #dc3545;
+  background-color: #f8d7da;
+}
+
+.timeline-connector {
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: -2rem;
+  width: 2px;
+  background-color: #dee2e6;
+  z-index: 1;
+}
+
+.timeline-connector.completed {
+  background-color: #198754;
+}
+
+.timeline-content {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-content.completed {
+  background-color: #f8f9fa;
+  border-color: #198754;
+}
+
+.milestone-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.milestone-meta .badge {
+  font-size: 0.75rem;
 }

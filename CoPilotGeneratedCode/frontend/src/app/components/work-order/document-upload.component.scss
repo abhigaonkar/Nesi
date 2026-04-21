@@ -12,3 +12,67 @@
   border-color: #b3d9ff;
   color: #004085;
 }
+
+.file-drop-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 2rem;
+  border: 2px dashed #dee2e6;
+  border-radius: 0.5rem;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.file-drop-area:hover {
+  border-color: #0d6efd;
+  background-color: #e7f1ff;
+}
+
+.file-drop-area.has-file {
+  border-color: #198754;
+  background-color: #d1e7dd;
+}
+
+.file-drop-area input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-drop-label {
+  text-align: center;
+  pointer-events: none;
+}
+
+.file-drop-label p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.img-thumbnail {
+  border-radius: 0.5rem;
+}
+
+.progress {
+  border-radius: 0.5rem;
+}
+
+.progress-bar {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.card.border-primary {
+  border-width: 2px;
+}
+
+.badge {
+  font-size: 0.75rem;
+}

@@ -7,6 +7,8 @@ interface Milestone {
   name: string;
   complete: boolean;
   dueDate?: string;
+  completedDate?: string;
+  status?: 'not-started' | 'in-progress' | 'completed' | 'overdue';
 }
 
 @Component({
@@ -24,6 +26,7 @@ export class ProgressTrackingComponent implements OnInit {
   loading: boolean = false;
   editing: boolean = false;
   error: string = '';
+  viewMode: 'list' | 'timeline' = 'timeline';
 
   constructor(private workOrderService: WorkOrderService) {}
 
@@ -35,19 +38,49 @@ export class ProgressTrackingComponent implements OnInit {
     // This would load from API in a real implementation
     // For now, initialize with sample milestones
     if (this.milestones.length === 0) {
+      const today = new Date();
       this.milestones = [
-        { name: 'Site Survey', complete: false },
-        { name: 'Material Procurement', complete: false },
-        { name: 'Installation', complete: false },
-        { name: 'Testing', complete: false },
-        { name: 'Final Inspection', complete: false }
+        { 
+          name: 'Site Survey', 
+          complete: true, 
+          status: 'completed',
+          completedDate: new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+        },
+        { 
+          name: 'Material Procurement', 
+          complete: true,
+          status: 'completed',
+          completedDate: new Date(today.getTime() - 4 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+        },
+        { 
+          name: 'Installation', 
+          complete: false,
+          status: 'in-progress',
+          dueDate: new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+        },
+        { 
+          name: 'Testing', 
+          complete: false,
+          status: 'not-started',
+          dueDate: new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+        },
+        { 
+          name: 'Final Inspection', 
+          complete: false,
+          status: 'not-started',
+          dueDate: new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+        }
       ];
     }
     this.calculatePercentComplete();
   }
 
   addMilestone(): void {
-    this.milestones.push({ name: '', complete: false });
+    this.milestones.push({ 
+      name: '', 
+      complete: false,
+      status: 'not-started'
+    });
   }
 
   removeMilestone(index: number): void {
@@ -57,7 +90,44 @@ export class ProgressTrackingComponent implements OnInit {
 
   toggleMilestone(index: number): void {
     this.milestones[index].complete = !this.milestones[index].complete;
+    if (this.milestones[index].complete) {
+      this.milestones[index].status = 'completed';
+      this.milestones[index].completedDate = new Date().toISOString().split('T')[0];
+    } else {
+      this.milestones[index].status = 'not-started';
+      delete this.milestones[index].completedDate;
+    }
     this.calculatePercentComplete();
+  }
+
+  getStatusClass(status?: string): string {
+    switch (status) {
+      case 'completed':
+        return 'text-success';
+      case 'in-progress':
+        return 'text-primary';
+      case 'overdue':
+        return 'text-danger';
+      default:
+        return 'text-secondary';
+    }
+  }
+
+  getStatusIcon(status?: string): string {
+    switch (status) {
+      case 'completed':
+        return 'bi-check-circle-fill';
+      case 'in-progress':
+        return 'bi-arrow-clockwise';
+      case 'overdue':
+        return 'bi-exclamation-triangle-fill';
+      default:
+        return 'bi-circle';
+    }
+  }
+
+  toggleViewMode(): void {
+    this.viewMode = this.viewMode === 'list' ? 'timeline' : 'list';
   }
 
   calculatePercentComplete(): void {

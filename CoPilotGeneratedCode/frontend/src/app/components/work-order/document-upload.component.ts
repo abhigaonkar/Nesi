@@ -17,7 +17,9 @@ export class DocumentUploadComponent {
   documentType: string = 'Photo';
   description: string = '';
   uploading: boolean = false;
+  uploadProgress: number = 0;
   error: string = '';
+  previewUrl: string | null = null;
   
   documentTypes = ['Photo', 'Plan', 'Report', 'Invoice', 'Other'];
 
@@ -30,10 +32,23 @@ export class DocumentUploadComponent {
       if (file.size > 10 * 1024 * 1024) {
         this.error = 'File size must be less than 10MB';
         this.selectedFile = null;
+        this.previewUrl = null;
         return;
       }
+      
       this.selectedFile = file;
       this.error = '';
+      
+      // Generate preview for images
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.previewUrl = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        this.previewUrl = null;
+      }
     }
   }
 
@@ -44,6 +59,7 @@ export class DocumentUploadComponent {
     }
 
     this.uploading = true;
+    this.uploadProgress = 0;
     this.error = '';
 
     const formData = new FormData();
@@ -51,16 +67,30 @@ export class DocumentUploadComponent {
     formData.append('documentType', this.documentType);
     formData.append('description', this.description);
 
+    // Simulate upload progress (in a real implementation, this would use HttpEvent)
+    const progressInterval = setInterval(() => {
+      if (this.uploadProgress < 90) {
+        this.uploadProgress += 10;
+      }
+    }, 200);
+
     this.workOrderService.uploadDocument(this.workOrderId, formData)
       .subscribe({
         next: () => {
-          alert('Document uploaded successfully');
-          this.resetForm();
-          this.uploading = false;
+          clearInterval(progressInterval);
+          this.uploadProgress = 100;
+          setTimeout(() => {
+            alert('Document uploaded successfully');
+            this.resetForm();
+            this.uploading = false;
+            this.uploadProgress = 0;
+          }, 500);
         },
         error: (err) => {
+          clearInterval(progressInterval);
           this.error = 'Failed to upload document';
           this.uploading = false;
+          this.uploadProgress = 0;
           console.error(err);
         }
       });
@@ -70,9 +100,28 @@ export class DocumentUploadComponent {
     this.selectedFile = null;
     this.documentType = 'Photo';
     this.description = '';
+    this.previewUrl = null;
+    this.uploadProgress = 0;
     const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = '';
     }
+  }
+
+  getFileIcon(file: File): string {
+    const type = file.type;
+    if (type.startsWith('image/')) return 'bi-file-image';
+    if (type === 'application/pdf') return 'bi-file-pdf';
+    if (type.includes('word')) return 'bi-file-word';
+    if (type.includes('excel') || type.includes('spreadsheet')) return 'bi-file-excel';
+    return 'bi-file-earmark';
+  }
+
+  formatFileSize(bytes: number): string {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
   }
 }

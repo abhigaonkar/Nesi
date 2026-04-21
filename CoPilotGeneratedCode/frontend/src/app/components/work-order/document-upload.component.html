@@ -4,17 +4,82 @@
   </div>
   <div class="card-body">
     <form (ngSubmit)="uploadDocument()">
+      <!-- File Input with Drag & Drop Area -->
       <div class="mb-3">
         <label for="fileInput" class="form-label">Select File</label>
-        <input
-          type="file"
-          class="form-control"
-          id="fileInput"
-          (change)="onFileSelected($event)"
-          [disabled]="uploading"
-          accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"
-        />
-        <div class="form-text">Max file size: 10MB</div>
+        <div class="file-drop-area" [class.has-file]="selectedFile">
+          <input
+            type="file"
+            class="form-control"
+            id="fileInput"
+            (change)="onFileSelected($event)"
+            [disabled]="uploading"
+            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"
+          />
+          <div class="file-drop-label">
+            <i class="bi bi-cloud-upload fs-1 text-primary"></i>
+            <p class="mb-0 mt-2">Click to browse or drag and drop</p>
+            <small class="text-muted">Max file size: 10MB</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- File Preview -->
+      <div *ngIf="selectedFile" class="mb-3">
+        <div class="card border-primary">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <!-- Image Preview -->
+              <div *ngIf="previewUrl" class="col-md-3">
+                <img [src]="previewUrl" alt="Preview" class="img-thumbnail" style="max-height: 150px; width: 100%; object-fit: cover;">
+              </div>
+              
+              <!-- File Icon for non-images -->
+              <div *ngIf="!previewUrl" class="col-md-3 text-center">
+                <i [class]="'bi ' + getFileIcon(selectedFile) + ' fs-1 text-primary'"></i>
+              </div>
+              
+              <!-- File Details -->
+              <div [class.col-md-9]="previewUrl || !previewUrl">
+                <h6 class="mb-1">
+                  <i class="bi bi-file-earmark me-2"></i>
+                  {{ selectedFile.name }}
+                </h6>
+                <p class="mb-1 text-muted small">
+                  <span class="badge bg-info me-2">{{ selectedFile.type || 'Unknown type' }}</span>
+                  <span class="badge bg-secondary">{{ formatFileSize(selectedFile.size) }}</span>
+                </p>
+                <button 
+                  type="button" 
+                  class="btn btn-sm btn-outline-danger mt-2"
+                  (click)="resetForm()"
+                  [disabled]="uploading">
+                  <i class="bi bi-x-circle me-1"></i> Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Progress -->
+      <div *ngIf="uploading" class="mb-3">
+        <div class="d-flex justify-content-between mb-2">
+          <span class="fw-bold">Uploading...</span>
+          <span class="badge bg-primary">{{ uploadProgress }}%</span>
+        </div>
+        <div class="progress" style="height: 20px;">
+          <div
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            [style.width.%]="uploadProgress"
+            [attr.aria-valuenow]="uploadProgress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            {{ uploadProgress }}%
+          </div>
+        </div>
       </div>
 
       <div class="mb-3">
@@ -44,14 +109,8 @@
       </div>
 
       <div *ngIf="error" class="alert alert-danger">
+        <i class="bi bi-exclamation-triangle me-2"></i>
         {{ error }}
-      </div>
-
-      <div *ngIf="selectedFile" class="mb-3">
-        <div class="alert alert-info">
-          <strong>Selected file:</strong> {{ selectedFile.name }}
-          <span class="ms-2">({{ (selectedFile.size / 1024 / 1024).toFixed(2) }} MB)</span>
-        </div>
       </div>
 
       <div class="d-flex gap-2">
@@ -61,6 +120,7 @@
           [disabled]="!selectedFile || uploading"
         >
           <span *ngIf="uploading" class="spinner-border spinner-border-sm me-2"></span>
+          <i *ngIf="!uploading" class="bi bi-cloud-upload me-2"></i>
           {{ uploading ? 'Uploading...' : 'Upload Document' }}
         </button>
         <button
@@ -69,6 +129,7 @@
           (click)="resetForm()"
           [disabled]="uploading"
         >
+          <i class="bi bi-arrow-clockwise me-2"></i>
           Clear
         </button>
       </div>
