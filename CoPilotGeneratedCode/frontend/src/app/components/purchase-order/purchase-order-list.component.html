@@ -1,0 +1,82 @@
+<div class="container-fluid py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Purchase Orders</h2>
+    <button class="btn btn-primary" (click)="createNew()">
+      <i class="bi bi-plus-circle"></i> New Purchase Order
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>PO Number</th>
+              <th>Vendor</th>
+              <th>Order Date</th>
+              <th>Total Amount</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let po of purchaseOrders" (click)="viewDetails(po.id)" style="cursor: pointer;">
+              <td>{{ po.purchaseOrderNumber }}</td>
+              <td>{{ po.vendorName }}</td>
+              <td>{{ po.orderDate | date: 'short' }}</td>
+              <td>{{ po.totalAmount | currency }}</td>
+              <td>
+                <span [className]="getStatusClass(po.status)">{{ po.status }}</span>
+              </td>
+              <td (click)="$event.stopPropagation()">
+                <button *ngIf="po.status === 'Draft'" 
+                        class="btn btn-sm btn-warning me-2" 
+                        (click)="submitPO(po.id)">
+                  Submit
+                </button>
+                <button *ngIf="po.status === 'Pending'" 
+                        class="btn btn-sm btn-success" 
+                        (click)="approvePO(po.id)">
+                  Approve
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="purchaseOrders.length === 0">
+              <td colspan="6" class="text-center text-muted">No purchase orders found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <div>
+          Showing {{ purchaseOrders.length }} of {{ totalCount }} purchase orders
+        </div>
+        <nav>
+          <ul class="pagination mb-0">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" (click)="currentPage = currentPage - 1; loadPurchaseOrders()">Previous</a>
+            </li>
+            <li class="page-item active">
+              <span class="page-link">{{ currentPage }}</span>
+            </li>
+            <li class="page-item" [class.disabled]="purchaseOrders.length < pageSize">
+              <a class="page-link" (click)="currentPage = currentPage + 1; loadPurchaseOrders()">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

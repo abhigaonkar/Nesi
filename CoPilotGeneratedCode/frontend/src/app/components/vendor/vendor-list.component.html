@@ -1,0 +1,73 @@
+<div class="container-fluid py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Vendors</h2>
+    <button class="btn btn-primary" (click)="createNew()">
+      <i class="bi bi-plus-circle"></i> New Vendor
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Vendor #</th>
+              <th>Company Name</th>
+              <th>Contact</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vendor of vendors" (click)="viewDetails(vendor.id)" style="cursor: pointer;">
+              <td>{{ vendor.vendorNumber }}</td>
+              <td>{{ vendor.companyName }}</td>
+              <td>{{ vendor.contactName || '-' }}</td>
+              <td>{{ vendor.email || '-' }}</td>
+              <td>{{ vendor.phone || '-' }}</td>
+              <td>
+                <span class="badge" [ngClass]="vendor.isActive ? 'bg-success' : 'bg-secondary'">
+                  {{ vendor.status }}
+                </span>
+              </td>
+            </tr>
+            <tr *ngIf="vendors.length === 0">
+              <td colspan="6" class="text-center text-muted">No vendors found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <div>
+          Showing {{ vendors.length }} of {{ totalCount }} vendors
+        </div>
+        <nav>
+          <ul class="pagination mb-0">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" (click)="currentPage = currentPage - 1; loadVendors()">Previous</a>
+            </li>
+            <li class="page-item active">
+              <span class="page-link">{{ currentPage }}</span>
+            </li>
+            <li class="page-item" [class.disabled]="vendors.length < pageSize">
+              <a class="page-link" (click)="currentPage = currentPage + 1; loadVendors()">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
