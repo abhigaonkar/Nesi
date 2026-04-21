@@ -62,7 +62,7 @@ export class InventoryUsageComponent implements OnInit {
         this.sortMaterials();
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = 'Failed to load inventory usage report: ' + (err.error?.message || err.message || 'Unknown error');
         this.loading = false;
         console.error('Inventory usage error:', err);

@@ -33,12 +33,12 @@ export class PurchaseOrderListComponent implements OnInit {
     
     this.purchaseOrderService.getPurchaseOrders(undefined, undefined, undefined, this.currentPage, this.pageSize)
       .subscribe({
-        next: (response) => {
+        next: (response: any) => {
           this.purchaseOrders = response.data.purchaseOrders;
           this.totalCount = response.data.totalCount;
           this.loading = false;
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to load purchase orders';
           this.loading = false;
           console.error(err);
@@ -60,7 +60,7 @@ export class PurchaseOrderListComponent implements OnInit {
         alert('Purchase order submitted successfully');
         this.loadPurchaseOrders();
       },
-      error: (err) => {
+      error: (err: any) => {
         alert('Failed to submit purchase order');
         console.error(err);
       }
@@ -73,7 +73,7 @@ export class PurchaseOrderListComponent implements OnInit {
         alert('Purchase order approved successfully');
         this.loadPurchaseOrders();
       },
-      error: (err) => {
+      error: (err: any) => {
         alert('Failed to approve purchase order');
         console.error(err);
       }

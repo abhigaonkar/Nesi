@@ -64,7 +64,7 @@ export class IncomeStatementComponent implements OnInit {
         this.statement = response;
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = 'Failed to load income statement: ' + (err.error?.message || err.message || 'Unknown error');
         this.loading = false;
         console.error('Income statement error:', err);

@@ -33,12 +33,12 @@ export class VendorListComponent implements OnInit {
     
     this.vendorService.getVendors(true, this.currentPage, this.pageSize)
       .subscribe({
-        next: (response) => {
+        next: (response: any) => {
           this.vendors = response.data.vendors;
           this.totalCount = response.data.totalCount;
           this.loading = false;
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to load vendors';
           this.loading = false;
           console.error(err);

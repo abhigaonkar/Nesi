@@ -58,7 +58,7 @@ export class CustomerAnalysisComponent implements OnInit {
         this.sortCustomers();
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = 'Failed to load customer analysis: ' + (err.error?.message || err.message || 'Unknown error');
         this.loading = false;
         console.error('Customer analysis error:', err);

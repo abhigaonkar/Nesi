@@ -57,7 +57,7 @@ export class ReceiptCreateComponent implements OnInit {
           this.initializeReceiptItems();
           this.loading = false;
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to load purchase order';
           this.loading = false;
           console.error(err);
@@ -69,8 +69,8 @@ export class ReceiptCreateComponent implements OnInit {
     if (!this.purchaseOrder?.lineItems) return;
 
     this.receiptItems = this.purchaseOrder.lineItems
-      .filter(item => item.remainingQuantity > 0)
-      .map(item => ({
+      .filter((item: any) => item.remainingQuantity > 0)
+      .map((item: any) => ({
         lineItemId: item.id,
         description: item.description,
         orderedQty: item.quantity,
@@ -132,7 +132,7 @@ export class ReceiptCreateComponent implements OnInit {
           alert('Receipt created successfully');
           this.router.navigate(['/purchase-orders', this.purchaseOrder!.id]);
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to create receipt';
           this.saving = false;
           console.error(err);

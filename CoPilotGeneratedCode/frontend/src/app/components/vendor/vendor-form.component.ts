@@ -81,7 +81,7 @@ export class VendorFormComponent implements OnInit {
           this.isActive = vendor.isActive;
           this.loading = false;
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to load vendor';
           this.loading = false;
           console.error(err);
@@ -139,7 +139,7 @@ export class VendorFormComponent implements OnInit {
           alert('Vendor created successfully');
           this.router.navigate(['/vendors', response.data]);
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to create vendor';
           this.saving = false;
           console.error(err);
@@ -176,7 +176,7 @@ export class VendorFormComponent implements OnInit {
           alert('Vendor updated successfully');
           this.router.navigate(['/vendors', this.vendorId]);
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to update vendor';
           this.saving = false;
           console.error(err);

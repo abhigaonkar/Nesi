@@ -76,7 +76,7 @@ export class JobCostReportComponent implements OnInit {
         
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = 'Failed to load job cost report. Using mock data for demo.';
         this.loadMockData();
         this.loading = false;
@@ -199,7 +199,7 @@ export class JobCostReportComponent implements OnInit {
       status: this.status,
       customerId: this.customerId
     }).subscribe({
-      next: (blob) => {
+      next: (blob: any) => {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -207,7 +207,7 @@ export class JobCostReportComponent implements OnInit {
         a.click();
         window.URL.revokeObjectURL(url);
       },
-      error: (err) => {
+      error: (err: any) => {
         alert('Export functionality requires backend implementation');
         console.error(err);
       }
@@ -221,7 +221,7 @@ export class JobCostReportComponent implements OnInit {
       status: this.status,
       customerId: this.customerId
     }).subscribe({
-      next: (blob) => {
+      next: (blob: any) => {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -229,7 +229,7 @@ export class JobCostReportComponent implements OnInit {
         a.click();
         window.URL.revokeObjectURL(url);
       },
-      error: (err) => {
+      error: (err: any) => {
         alert('Export functionality requires backend implementation');
         console.error(err);
       }

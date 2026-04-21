@@ -62,7 +62,7 @@ export class ARAgingReportComponent implements OnInit {
         
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = 'Failed to load AR aging report: ' + (err.error?.message || err.message || 'Unknown error');
         this.loading = false;
         console.error('AR aging error:', err);

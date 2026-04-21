@@ -40,7 +40,7 @@ export class ReceiptListComponent implements OnInit {
           this.receipts = response.data || [];
           this.loading = false;
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to load receipts';
           this.loading = false;
           console.error(err);

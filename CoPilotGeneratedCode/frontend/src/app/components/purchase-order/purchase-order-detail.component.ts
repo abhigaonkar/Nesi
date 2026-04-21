@@ -38,7 +38,7 @@ export class PurchaseOrderDetailComponent implements OnInit {
           this.purchaseOrder = response.data;
           this.loading = false;
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to load purchase order';
           this.loading = false;
           console.error(err);
@@ -56,7 +56,7 @@ export class PurchaseOrderDetailComponent implements OnInit {
             alert('Purchase order submitted successfully');
             this.loadPurchaseOrder(this.purchaseOrder!.id);
           },
-          error: (err) => {
+          error: (err: any) => {
             alert('Failed to submit purchase order');
             console.error(err);
           }
@@ -74,7 +74,7 @@ export class PurchaseOrderDetailComponent implements OnInit {
             alert('Purchase order approved successfully');
             this.loadPurchaseOrder(this.purchaseOrder!.id);
           },
-          error: (err) => {
+          error: (err: any) => {
             alert('Failed to approve purchase order');
             console.error(err);
           }
@@ -93,7 +93,7 @@ export class PurchaseOrderDetailComponent implements OnInit {
             alert('Purchase order rejected');
             this.loadPurchaseOrder(this.purchaseOrder!.id);
           },
-          error: (err) => {
+          error: (err: any) => {
             alert('Failed to reject purchase order');
             console.error(err);
           }

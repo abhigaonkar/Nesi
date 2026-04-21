@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 interface ReportCard {
   title: string;
@@ -13,7 +13,7 @@ interface ReportCard {
 @Component({
   selector: 'app-reports-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './reports-dashboard.component.html',
   styleUrls: ['./reports-dashboard.component.scss']
 })

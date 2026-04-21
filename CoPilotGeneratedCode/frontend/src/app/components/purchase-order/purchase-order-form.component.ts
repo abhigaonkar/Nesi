@@ -81,7 +81,7 @@ export class PurchaseOrderFormComponent implements OnInit {
         next: (response: any) => {
           this.vendors = response.data || [];
         },
-        error: (err) => {
+        error: (err: any) => {
           console.error('Failed to load vendors', err);
         }
       });
@@ -119,7 +119,7 @@ export class PurchaseOrderFormComponent implements OnInit {
           this.calculateTotals();
           this.loading = false;
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to load purchase order';
           this.loading = false;
           console.error(err);
@@ -222,7 +222,7 @@ export class PurchaseOrderFormComponent implements OnInit {
           alert('Purchase order created successfully');
           this.router.navigate(['/purchase-orders', response.data]);
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to create purchase order';
           this.saving = false;
           console.error(err);
@@ -252,7 +252,7 @@ export class PurchaseOrderFormComponent implements OnInit {
           alert('Purchase order updated successfully');
           this.router.navigate(['/purchase-orders', this.purchaseOrderId]);
         },
-        error: (err) => {
+        error: (err: any) => {
           this.error = 'Failed to update purchase order';
           this.saving = false;
           console.error(err);

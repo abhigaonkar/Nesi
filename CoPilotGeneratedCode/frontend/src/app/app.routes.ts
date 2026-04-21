@@ -23,7 +23,7 @@ import { VendorDetailComponent } from './components/vendor/vendor-detail.compone
 import { ReportsDashboardComponent } from './components/reports/reports-dashboard.component';
 import { JobCostReportComponent } from './components/reports/job-cost-report.component';
 import { IncomeStatementComponent } from './components/reports/income-statement.component';
-import { ArAgingReportComponent } from './components/reports/ar-aging-report.component';
+import { ARAgingReportComponent } from './components/reports/ar-aging-report.component';
 import { CustomerAnalysisComponent } from './components/reports/customer-analysis.component';
 import { InventoryUsageComponent } from './components/reports/inventory-usage.component';
 
@@ -62,7 +62,7 @@ export const routes: Routes = [
   { path: 'reports', component: ReportsDashboardComponent, canActivate: [authGuard] },
   { path: 'reports/job-cost', component: JobCostReportComponent, canActivate: [authGuard] },
   { path: 'reports/income-statement', component: IncomeStatementComponent, canActivate: [authGuard] },
-  { path: 'reports/ar-aging', component: ArAgingReportComponent, canActivate: [authGuard] },
+  { path: 'reports/ar-aging', component: ARAgingReportComponent, canActivate: [authGuard] },
   { path: 'reports/customer-analysis', component: CustomerAnalysisComponent, canActivate: [authGuard] },
   { path: 'reports/inventory-usage', component: InventoryUsageComponent, canActivate: [authGuard] },
   
