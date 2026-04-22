@@ -187,17 +187,55 @@ export class ReportService {
     return this.apiService.get<any>('report/inventory-usage', params);
   }
 
+  // Export methods for specific report types
   exportToExcel(reportType: string, params: any): Observable<Blob> {
-    return this.http.post(`${environment.apiUrl}/report/export/excel`, 
-      { reportType, ...params },
-      { responseType: 'blob' }
-    );
+    let httpParams = new HttpParams();
+    
+    // Build query parameters based on report type
+    Object.keys(params).forEach(key => {
+      if (params[key] !== undefined && params[key] !== null && params[key] !== '') {
+        httpParams = httpParams.set(key, params[key].toString());
+      }
+    });
+
+    // Map report type to backend endpoint
+    const endpoint = this.getExportEndpoint(reportType, 'excel');
+    
+    return this.http.get(`${environment.apiUrl}/${endpoint}`, {
+      params: httpParams,
+      responseType: 'blob'
+    });
   }
 
   exportToPDF(reportType: string, params: any): Observable<Blob> {
-    return this.http.post(`${environment.apiUrl}/report/export/pdf`, 
-      { reportType, ...params },
-      { responseType: 'blob' }
-    );
+    let httpParams = new HttpParams();
+    
+    // Build query parameters based on report type
+    Object.keys(params).forEach(key => {
+      if (params[key] !== undefined && params[key] !== null && params[key] !== '') {
+        httpParams = httpParams.set(key, params[key].toString());
+      }
+    });
+
+    // Map report type to backend endpoint
+    const endpoint = this.getExportEndpoint(reportType, 'pdf');
+    
+    return this.http.get(`${environment.apiUrl}/${endpoint}`, {
+      params: httpParams,
+      responseType: 'blob'
+    });
+  }
+
+  private getExportEndpoint(reportType: string, format: 'pdf' | 'excel'): string {
+    // Map frontend report types to backend endpoints
+    const endpointMap: { [key: string]: string } = {
+      'job-cost': `report/job-cost/export/${format}`,
+      'ar-aging': `report/ar-aging/export/${format}`,
+      'customer-analysis': `report/customer-analysis/export/${format}`,
+      'customer-rate-analysis': `report/customer-analysis/export/${format}`,
+      'inventory-usage': `report/inventory-usage/export/${format}`
+    };
+
+    return endpointMap[reportType] || `report/${reportType}/export/${format}`;
   }
 }

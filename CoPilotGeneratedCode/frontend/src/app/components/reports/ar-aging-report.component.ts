@@ -98,10 +98,40 @@ export class ARAgingReportComponent implements OnInit {
   }
 
   exportToExcel(): void {
-    alert('Export functionality requires backend implementation');
+    this.reportService.exportToExcel('ar-aging', {
+      asOfDate: this.asOfDate
+    }).subscribe({
+      next: (blob: any) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ar-aging-report-${new Date().toISOString().split('T')[0]}.xlsx`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err: any) => {
+        alert('Failed to export report. Please try again.');
+        console.error(err);
+      }
+    });
   }
 
   exportToPDF(): void {
-    alert('Export functionality requires backend implementation');
+    this.reportService.exportToPDF('ar-aging', {
+      asOfDate: this.asOfDate
+    }).subscribe({
+      next: (blob: any) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ar-aging-report-${new Date().toISOString().split('T')[0]}.pdf`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err: any) => {
+        alert('Failed to export report. Please try again.');
+        console.error(err);
+      }
+    });
   }
 }

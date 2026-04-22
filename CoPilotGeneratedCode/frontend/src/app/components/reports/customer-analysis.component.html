@@ -5,9 +5,14 @@
         <h2 class="mb-1">Customer Profitability Analysis</h2>
         <p class="text-muted mb-0">Rate and profitability analysis by customer</p>
       </div>
-      <button class="btn btn-success" (click)="exportToExcel()" [disabled]="loading">
-        <i class="bi bi-file-earmark-excel"></i> Export Excel
-      </button>
+      <div class="d-flex gap-2">
+        <button class="btn btn-success" (click)="exportToExcel()" [disabled]="loading">
+          <i class="bi bi-file-earmark-excel"></i> Export Excel
+        </button>
+        <button class="btn btn-danger" (click)="exportToPDF()" [disabled]="loading">
+          <i class="bi bi-file-pdf"></i> Export PDF
+        </button>
+      </div>
     </div>
 
     <!-- Filters -->

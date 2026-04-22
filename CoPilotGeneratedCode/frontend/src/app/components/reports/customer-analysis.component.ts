@@ -126,7 +126,45 @@ export class CustomerAnalysisComponent implements OnInit {
   }
 
   exportToExcel(): void {
-    alert('Export functionality requires backend implementation');
+    this.reportService.exportToExcel('customer-analysis', {
+      startDate: this.startDate,
+      endDate: this.endDate,
+      customerId: this.customerId
+    }).subscribe({
+      next: (blob: any) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `customer-analysis-${new Date().toISOString().split('T')[0]}.xlsx`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err: any) => {
+        alert('Failed to export report. Please try again.');
+        console.error(err);
+      }
+    });
+  }
+
+  exportToPDF(): void {
+    this.reportService.exportToPDF('customer-analysis', {
+      startDate: this.startDate,
+      endDate: this.endDate,
+      customerId: this.customerId
+    }).subscribe({
+      next: (blob: any) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `customer-analysis-${new Date().toISOString().split('T')[0]}.pdf`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err: any) => {
+        alert('Failed to export report. Please try again.');
+        console.error(err);
+      }
+    });
   }
 
   getBestMarginCustomer(): string {
