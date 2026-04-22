@@ -1,56 +1,53 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Quote, CreateQuoteRequest } from '../models/quote.model';
 import { ApiResponse } from '../models/api-response.model';
-import { environment } from '../../environments/environment';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuoteService {
-  private apiUrl = `${environment.apiUrl}/quote`;
-
-  constructor(private http: HttpClient) {}
+  private apiService = inject(ApiService);
 
   getQuotes(): Observable<Quote[]> {
-    return this.http.get<ApiResponse<Quote[]>>(this.apiUrl)
+    return this.apiService.get<ApiResponse<Quote[]>>('quote')
       .pipe(map(response => response.data || []));
   }
 
   getQuoteById(id: number): Observable<Quote> {
-    return this.http.get<ApiResponse<Quote>>(`${this.apiUrl}/${id}`)
+    return this.apiService.get<ApiResponse<Quote>>(`quote/${id}`)
       .pipe(map(response => response.data!));
   }
 
   createQuote(request: CreateQuoteRequest): Observable<number> {
-    return this.http.post<ApiResponse<number>>(this.apiUrl, request)
+    return this.apiService.post<ApiResponse<number>>('quote', request)
       .pipe(map(response => response.data!));
   }
 
   submitQuote(id: number): Observable<boolean> {
-    return this.http.post<ApiResponse<boolean>>(`${this.apiUrl}/${id}/submit`, {})
+    return this.apiService.post<ApiResponse<boolean>>(`quote/${id}/submit`, {})
       .pipe(map(response => response.data!));
   }
 
   approveQuote(id: number): Observable<boolean> {
-    return this.http.post<ApiResponse<boolean>>(`${this.apiUrl}/${id}/approve`, {})
+    return this.apiService.post<ApiResponse<boolean>>(`quote/${id}/approve`, {})
       .pipe(map(response => response.data!));
   }
 
   rejectQuote(id: number, reason: string): Observable<boolean> {
-    return this.http.post<ApiResponse<boolean>>(`${this.apiUrl}/${id}/reject`, { reason })
+    return this.apiService.post<ApiResponse<boolean>>(`quote/${id}/reject`, { reason })
       .pipe(map(response => response.data!));
   }
 
   customerApproveQuote(id: number): Observable<boolean> {
-    return this.http.post<ApiResponse<boolean>>(`${this.apiUrl}/${id}/customer-approve`, {})
+    return this.apiService.post<ApiResponse<boolean>>(`quote/${id}/customer-approve`, {})
       .pipe(map(response => response.data!));
   }
 
   convertToWorkOrder(id: number): Observable<number> {
-    return this.http.post<ApiResponse<number>>(`${this.apiUrl}/${id}/convert-to-workorder`, {})
+    return this.apiService.post<ApiResponse<number>>(`quote/${id}/convert-to-workorder`, {})
       .pipe(map(response => response.data!));
   }
 }

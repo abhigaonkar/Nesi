@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
@@ -76,9 +76,7 @@ export interface UpdateVendorCommand {
   providedIn: 'root'
 })
 export class VendorService {
-  private apiUrl = '/api/vendor';
-
-  constructor(private http: HttpClient, private apiService: ApiService) {}
+  private apiService = inject(ApiService);
 
   getVendors(activeOnly: boolean = true, pageNumber: number = 1, pageSize: number = 20): Observable<any> {
     let params = new HttpParams()
@@ -86,18 +84,18 @@ export class VendorService {
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', pageSize.toString());
     
-    return this.apiService.get<any>(`${this.apiUrl}`, params);
+    return this.apiService.get<any>('vendor', params);
   }
 
   getVendorById(id: number): Observable<VendorDto> {
-    return this.apiService.get<VendorDto>(`${this.apiUrl}/${id}`);
+    return this.apiService.get<VendorDto>(`vendor/${id}`);
   }
 
   createVendor(vendor: CreateVendorCommand): Observable<number> {
-    return this.apiService.post<number>(this.apiUrl, vendor);
+    return this.apiService.post<number>('vendor', vendor);
   }
 
   updateVendor(vendor: UpdateVendorCommand): Observable<boolean> {
-    return this.apiService.put<boolean>(`${this.apiUrl}/${vendor.id}`, vendor);
+    return this.apiService.put<boolean>(`vendor/${vendor.id}`, vendor);
   }
 }

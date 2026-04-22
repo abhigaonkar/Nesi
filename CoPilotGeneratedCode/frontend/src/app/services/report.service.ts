@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
@@ -113,9 +113,7 @@ export interface InventoryUsageDto {
   providedIn: 'root'
 })
 export class ReportService {
-  private apiUrl = 'http://localhost:5000/api/Report';
-
-  constructor(private http: HttpClient, private apiService: ApiService) {}
+  private apiService = inject(ApiService);
 
   getJobCostReport(
     startDate?: Date,
@@ -130,7 +128,7 @@ export class ReportService {
     if (customerId) params = params.set('customerId', customerId.toString());
     if (status) params = params.set('status', status);
     
-    return this.http.get<any>(`${this.apiUrl}/job-cost`, { params });
+    return this.apiService.get<any>('report/job-cost', params);
   }
 
   getIncomeStatement(startDate?: Date, endDate?: Date): Observable<IncomeStatementDto> {
@@ -138,12 +136,12 @@ export class ReportService {
     if (startDate) params = params.set('startDate', startDate.toISOString());
     if (endDate) params = params.set('endDate', endDate.toISOString());
     
-    return this.http.get<IncomeStatementDto>(`${this.apiUrl}/income-statement`, { params });
+    return this.apiService.get<IncomeStatementDto>('report/income-statement', params);
   }
 
   getBalanceSheet(asOfDate: Date): Observable<BalanceSheetDto> {
     let params = new HttpParams().set('asOfDate', asOfDate.toISOString());
-    return this.http.get<BalanceSheetDto>(`${this.apiUrl}/balance-sheet`, { params });
+    return this.apiService.get<BalanceSheetDto>('report/balance-sheet', params);
   }
 
   getARAgingReport(asOfDate?: Date, page?: number, pageSize?: number): Observable<any> {
@@ -152,7 +150,7 @@ export class ReportService {
     if (page) params = params.set('page', page.toString());
     if (pageSize) params = params.set('pageSize', pageSize.toString());
     
-    return this.http.get<any>(`${this.apiUrl}/ar-aging`, { params });
+    return this.apiService.get<any>('report/ar-aging', params);
   }
 
   getCustomerRateAnalysis(
@@ -169,7 +167,7 @@ export class ReportService {
     if (page) params = params.set('page', page.toString());
     if (pageSize) params = params.set('pageSize', pageSize.toString());
     
-    return this.http.get<any>(`${this.apiUrl}/customer-analysis`, { params });
+    return this.apiService.get<any>('report/customer-analysis', params);
   }
 
   getInventoryUsageReport(
@@ -184,18 +182,18 @@ export class ReportService {
     if (page) params = params.set('page', page.toString());
     if (pageSize) params = params.set('pageSize', pageSize.toString());
     
-    return this.http.get<any>(`${this.apiUrl}/inventory-usage`, { params });
+    return this.apiService.get<any>('report/inventory-usage', params);
   }
 
   exportToExcel(reportType: string, params: any): Observable<Blob> {
-    return this.http.post(`${this.apiUrl}/export/excel`, 
+    return this.apiService.post('report/export/excel', 
       { reportType, ...params },
       { responseType: 'blob' }
     );
   }
 
   exportToPDF(reportType: string, params: any): Observable<Blob> {
-    return this.http.post(`${this.apiUrl}/export/pdf`, 
+    return this.apiService.post('report/export/pdf', 
       { reportType, ...params },
       { responseType: 'blob' }
     );
