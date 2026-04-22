@@ -128,8 +128,7 @@ export class CustomerAnalysisComponent implements OnInit {
   exportToExcel(): void {
     this.reportService.exportToExcel('customer-analysis', {
       startDate: this.startDate,
-      endDate: this.endDate,
-      customerId: this.customerId
+      endDate: this.endDate
     }).subscribe({
       next: (blob: any) => {
         const url = window.URL.createObjectURL(blob);
@@ -149,8 +148,7 @@ export class CustomerAnalysisComponent implements OnInit {
   exportToPDF(): void {
     this.reportService.exportToPDF('customer-analysis', {
       startDate: this.startDate,
-      endDate: this.endDate,
-      customerId: this.customerId
+      endDate: this.endDate
     }).subscribe({
       next: (blob: any) => {
         const url = window.URL.createObjectURL(blob);
