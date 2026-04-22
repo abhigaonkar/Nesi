@@ -38,6 +38,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 var storagePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
 var baseUrl = builder.Configuration["FileStorage:BaseUrl"] ?? "http://localhost:5000/uploads";
 builder.Services.AddSingleton<IFileStorageService>(new LocalFileStorageService(storagePath, baseUrl));
+builder.Services.AddScoped<IThreeWayMatchingService, ThreeWayMatchingService>();
 
 // Add CORS
 builder.Services.AddCors(options =>
