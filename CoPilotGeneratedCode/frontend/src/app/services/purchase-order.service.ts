@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
@@ -122,9 +122,7 @@ export interface CreateReceiptCommand {
   providedIn: 'root'
 })
 export class PurchaseOrderService {
-  private apiUrl = '/api/purchaseorder';
-
-  constructor(private http: HttpClient, private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {}
 
   getPurchaseOrders(
     vendorId?: number,
@@ -141,7 +139,7 @@ export class PurchaseOrderService {
     if (workOrderId) params = params.set('workOrderId', workOrderId.toString());
     if (status) params = params.set('status', status);
     
-    return this.apiService.get<any>(`${this.apiUrl}`, params);
+    return this.apiService.get<any>('purchaseorder', params);
   }
 
   getPurchaseOrderById(id: number, includeLineItems: boolean = true, includeReceipts: boolean = false): Observable<PurchaseOrderDto> {
@@ -149,39 +147,39 @@ export class PurchaseOrderService {
       .set('includeLineItems', includeLineItems.toString())
       .set('includeReceipts', includeReceipts.toString());
     
-    return this.apiService.get<PurchaseOrderDto>(`${this.apiUrl}/${id}`, params);
+    return this.apiService.get<PurchaseOrderDto>(`purchaseorder/${id}`, params);
   }
 
   createPurchaseOrder(po: CreatePurchaseOrderCommand): Observable<number> {
-    return this.apiService.post<number>(this.apiUrl, po);
+    return this.apiService.post<number>('purchaseorder', po);
   }
 
   updatePurchaseOrder(po: UpdatePurchaseOrderCommand): Observable<boolean> {
-    return this.apiService.put<boolean>(`${this.apiUrl}/${po.id}`, po);
+    return this.apiService.put<boolean>(`purchaseorder/${po.id}`, po);
   }
 
   submitPurchaseOrder(id: number): Observable<boolean> {
-    return this.apiService.post<boolean>(`${this.apiUrl}/${id}/submit`, {});
+    return this.apiService.post<boolean>(`purchaseorder/${id}/submit`, {});
   }
 
   approvePurchaseOrder(id: number): Observable<boolean> {
-    return this.apiService.post<boolean>(`${this.apiUrl}/${id}/approve`, {});
+    return this.apiService.post<boolean>(`purchaseorder/${id}/approve`, {});
   }
 
   rejectPurchaseOrder(id: number, reason: string): Observable<boolean> {
-    return this.apiService.post<boolean>(`${this.apiUrl}/${id}/reject`, { reason });
+    return this.apiService.post<boolean>(`purchaseorder/${id}/reject`, { reason });
   }
 
   createReceipt(id: number, receipt: CreateReceiptCommand): Observable<number> {
-    return this.apiService.post<number>(`${this.apiUrl}/${id}/receipts`, receipt);
+    return this.apiService.post<number>(`purchaseorder/${id}/receipts`, receipt);
   }
 
   getReceipts(id: number): Observable<PurchaseOrderReceiptDto[]> {
-    return this.apiService.get<PurchaseOrderReceiptDto[]>(`${this.apiUrl}/${id}/receipts`);
+    return this.apiService.get<PurchaseOrderReceiptDto[]>(`purchaseorder/${id}/receipts`);
   }
 
   validateInvoice(id: number, invoiceTotal: number, lineItems: any[], tolerancePercentage: number = 5.0): Observable<any> {
-    return this.apiService.post<any>(`${this.apiUrl}/${id}/validate-invoice`, {
+    return this.apiService.post<any>(`purchaseorder/${id}/validate-invoice`, {
       invoiceTotal,
       lineItems,
       tolerancePercentage
