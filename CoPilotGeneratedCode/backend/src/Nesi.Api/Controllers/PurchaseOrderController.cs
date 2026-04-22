@@ -15,15 +15,18 @@ public class PurchaseOrderController : ControllerBase
     private readonly IMediator _mediator;
     private readonly ILogger<PurchaseOrderController> _logger;
     private readonly IThreeWayMatchingService _threeWayMatchingService;
+    private readonly IExportService _exportService;
 
     public PurchaseOrderController(
         IMediator mediator, 
         ILogger<PurchaseOrderController> logger,
-        IThreeWayMatchingService threeWayMatchingService)
+        IThreeWayMatchingService threeWayMatchingService,
+        IExportService exportService)
     {
         _mediator = mediator;
         _logger = logger;
         _threeWayMatchingService = threeWayMatchingService;
+        _exportService = exportService;
     }
 
     /// <summary>
@@ -316,6 +319,80 @@ public class PurchaseOrderController : ControllerBase
         {
             _logger.LogError(ex, "Error performing 3-way match for purchase order {PurchaseOrderId}", id);
             return StatusCode(500, ApiResponse<ThreeWayMatchResult>.ErrorResponse("An error occurred performing 3-way match"));
+        }
+    }
+
+    /// <summary>
+    /// Export purchase orders to PDF
+    /// </summary>
+    [HttpGet("export/pdf")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportPurchaseOrdersToPdf(
+        [FromQuery] int? vendorId = null,
+        [FromQuery] int? workOrderId = null,
+        [FromQuery] string? status = null)
+    {
+        try
+        {
+            var query = new GetPurchaseOrdersQuery(vendorId, workOrderId, status, 1, 1000);
+            var result = await _mediator.Send(query);
+            
+            var columns = new Dictionary<string, string>
+            {
+                { "PurchaseOrderNumber", "PO #" },
+                { "VendorName", "Vendor" },
+                { "Description", "Description" },
+                { "Status", "Status" },
+                { "TotalAmount", "Total" },
+                { "OrderDate", "Order Date" },
+                { "DeliveryDate", "Delivery Date" }
+            };
+
+            var pdfBytes = _exportService.ExportToPdf(result.PurchaseOrders, "Purchase Orders List", columns);
+            return File(pdfBytes, "application/pdf", $"PurchaseOrders_{DateTime.Now:yyyyMMdd}.pdf");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting purchase orders to PDF");
+            return StatusCode(500, "An error occurred exporting purchase orders");
+        }
+    }
+
+    /// <summary>
+    /// Export purchase orders to Excel
+    /// </summary>
+    [HttpGet("export/excel")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportPurchaseOrdersToExcel(
+        [FromQuery] int? vendorId = null,
+        [FromQuery] int? workOrderId = null,
+        [FromQuery] string? status = null)
+    {
+        try
+        {
+            var query = new GetPurchaseOrdersQuery(vendorId, workOrderId, status, 1, 1000);
+            var result = await _mediator.Send(query);
+            
+            var columns = new Dictionary<string, string>
+            {
+                { "PurchaseOrderNumber", "PO #" },
+                { "VendorName", "Vendor" },
+                { "Description", "Description" },
+                { "Status", "Status" },
+                { "TotalAmount", "Total" },
+                { "OrderDate", "Order Date" },
+                { "DeliveryDate", "Delivery Date" },
+                { "ReceivedDate", "Received Date" }
+            };
+
+            var excelBytes = _exportService.ExportToExcel(result.PurchaseOrders, "Purchase Orders", columns);
+            return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
+                $"PurchaseOrders_{DateTime.Now:yyyyMMdd}.xlsx");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting purchase orders to Excel");
+            return StatusCode(500, "An error occurred exporting purchase orders");
         }
     }
 }

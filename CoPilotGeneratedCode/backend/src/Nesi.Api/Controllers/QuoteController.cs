@@ -4,6 +4,7 @@ using Nesi.Application.Commands.Quote;
 using Nesi.Application.Common;
 using Nesi.Application.DTOs.Quote;
 using Nesi.Application.Queries.Quote;
+using Nesi.Application.Services;
 
 namespace Nesi.Api.Controllers;
 
@@ -13,11 +14,13 @@ public class QuoteController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly ILogger<QuoteController> _logger;
+    private readonly IExportService _exportService;
 
-    public QuoteController(IMediator mediator, ILogger<QuoteController> logger)
+    public QuoteController(IMediator mediator, ILogger<QuoteController> logger, IExportService exportService)
     {
         _mediator = mediator;
         _logger = logger;
+        _exportService = exportService;
     }
 
     /// <summary>
@@ -243,6 +246,74 @@ public class QuoteController : ControllerBase
         {
             _logger.LogError(ex, "Error converting quote {QuoteId} to work order", id);
             return StatusCode(500, ApiResponse<int>.ErrorResponse("An error occurred converting the quote to a work order"));
+        }
+    }
+
+    /// <summary>
+    /// Export quotes to PDF
+    /// </summary>
+    [HttpGet("export/pdf")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportQuotesToPdf()
+    {
+        try
+        {
+            var query = new GetQuotesQuery();
+            var result = await _mediator.Send(query);
+            
+            var columns = new Dictionary<string, string>
+            {
+                { "QuoteNumber", "Quote #" },
+                { "CustomerName", "Customer" },
+                { "Description", "Description" },
+                { "Status", "Status" },
+                { "TotalAmount", "Total" },
+                { "ValidUntil", "Valid Until" },
+                { "CreatedDate", "Created" }
+            };
+
+            var pdfBytes = _exportService.ExportToPdf(result, "Quotes List", columns);
+            return File(pdfBytes, "application/pdf", $"Quotes_{DateTime.Now:yyyyMMdd}.pdf");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting quotes to PDF");
+            return StatusCode(500, "An error occurred exporting quotes");
+        }
+    }
+
+    /// <summary>
+    /// Export quotes to Excel
+    /// </summary>
+    [HttpGet("export/excel")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportQuotesToExcel()
+    {
+        try
+        {
+            var query = new GetQuotesQuery();
+            var result = await _mediator.Send(query);
+            
+            var columns = new Dictionary<string, string>
+            {
+                { "QuoteNumber", "Quote #" },
+                { "CustomerName", "Customer" },
+                { "Description", "Description" },
+                { "Status", "Status" },
+                { "TotalAmount", "Total" },
+                { "ValidUntil", "Valid Until" },
+                { "CreatedDate", "Created" },
+                { "ApprovedDate", "Approved" }
+            };
+
+            var excelBytes = _exportService.ExportToExcel(result, "Quotes", columns);
+            return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
+                $"Quotes_{DateTime.Now:yyyyMMdd}.xlsx");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting quotes to Excel");
+            return StatusCode(500, "An error occurred exporting quotes");
         }
     }
 }

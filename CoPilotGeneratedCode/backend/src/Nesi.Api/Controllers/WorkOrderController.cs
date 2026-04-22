@@ -4,6 +4,7 @@ using Nesi.Application.Commands.WorkOrder;
 using Nesi.Application.Common;
 using Nesi.Application.DTOs.WorkOrder;
 using Nesi.Application.Queries.WorkOrder;
+using Nesi.Application.Services;
 
 namespace Nesi.Api.Controllers;
 
@@ -13,11 +14,13 @@ public class WorkOrderController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly ILogger<WorkOrderController> _logger;
+    private readonly IExportService _exportService;
 
-    public WorkOrderController(IMediator mediator, ILogger<WorkOrderController> logger)
+    public WorkOrderController(IMediator mediator, ILogger<WorkOrderController> logger, IExportService exportService)
     {
         _mediator = mediator;
         _logger = logger;
+        _exportService = exportService;
     }
 
     /// <summary>
@@ -320,6 +323,77 @@ public class WorkOrderController : ControllerBase
         {
             _logger.LogError(ex, "Error updating progress for work order {WorkOrderId}", id);
             return StatusCode(500, ApiResponse<bool>.ErrorResponse("An error occurred updating progress"));
+        }
+    }
+
+    /// <summary>
+    /// Export work orders to PDF
+    /// </summary>
+    [HttpGet("export/pdf")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportWorkOrdersToPdf()
+    {
+        try
+        {
+            var query = new GetWorkOrdersQuery();
+            var result = await _mediator.Send(query);
+            
+            var columns = new Dictionary<string, string>
+            {
+                { "WorkOrderNumber", "WO #" },
+                { "CustomerName", "Customer" },
+                { "Description", "Description" },
+                { "Status", "Status" },
+                { "ScheduledStartDate", "Start Date" },
+                { "ScheduledEndDate", "End Date" },
+                { "EstimatedCost", "Est. Cost" },
+                { "ActualCost", "Actual Cost" }
+            };
+
+            var pdfBytes = _exportService.ExportToPdf(result, "Work Orders List", columns);
+            return File(pdfBytes, "application/pdf", $"WorkOrders_{DateTime.Now:yyyyMMdd}.pdf");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting work orders to PDF");
+            return StatusCode(500, "An error occurred exporting work orders");
+        }
+    }
+
+    /// <summary>
+    /// Export work orders to Excel
+    /// </summary>
+    [HttpGet("export/excel")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportWorkOrdersToExcel()
+    {
+        try
+        {
+            var query = new GetWorkOrdersQuery();
+            var result = await _mediator.Send(query);
+            
+            var columns = new Dictionary<string, string>
+            {
+                { "WorkOrderNumber", "WO #" },
+                { "CustomerName", "Customer" },
+                { "Description", "Description" },
+                { "Status", "Status" },
+                { "Priority", "Priority" },
+                { "ScheduledStartDate", "Start Date" },
+                { "ScheduledEndDate", "End Date" },
+                { "EstimatedCost", "Est. Cost" },
+                { "ActualCost", "Actual Cost" },
+                { "PercentComplete", "% Complete" }
+            };
+
+            var excelBytes = _exportService.ExportToExcel(result, "Work Orders", columns);
+            return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
+                $"WorkOrders_{DateTime.Now:yyyyMMdd}.xlsx");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting work orders to Excel");
+            return StatusCode(500, "An error occurred exporting work orders");
         }
     }
 }
