@@ -122,16 +122,16 @@ public class ReportController : ControllerBase
         
         var columns = new Dictionary<string, string>
         {
-            { "JobNumber", "Job #" },
+            { "WorkOrderNumber", "WO #" },
             { "CustomerName", "Customer" },
             { "Description", "Description" },
-            { "EstimatedCost", "Est. Cost" },
-            { "ActualCost", "Actual Cost" },
-            { "Variance", "Variance" },
+            { "QuotedAmount", "Quoted" },
+            { "TotalActualCost", "Actual Cost" },
+            { "GrossProfit", "Profit" },
             { "Status", "Status" }
         };
 
-        var pdfBytes = _exportService.ExportToPdf(result.JobCosts, "Job Cost Report", columns);
+        var pdfBytes = _exportService.ExportToPdf(result.WorkOrders, "Job Cost Report", columns);
         return File(pdfBytes, "application/pdf", $"JobCostReport_{DateTime.Now:yyyyMMdd}.pdf");
     }
 
@@ -154,16 +154,17 @@ public class ReportController : ControllerBase
         
         var columns = new Dictionary<string, string>
         {
-            { "JobNumber", "Job #" },
+            { "WorkOrderNumber", "WO #" },
             { "CustomerName", "Customer" },
             { "Description", "Description" },
-            { "EstimatedCost", "Est. Cost" },
-            { "ActualCost", "Actual Cost" },
-            { "Variance", "Variance" },
+            { "QuotedAmount", "Quoted" },
+            { "TotalActualCost", "Actual Cost" },
+            { "GrossProfit", "Profit" },
+            { "GrossProfitMargin", "Margin %" },
             { "Status", "Status" }
         };
 
-        var excelBytes = _exportService.ExportToExcel(result.JobCosts, "Job Cost Report", columns);
+        var excelBytes = _exportService.ExportToExcel(result.WorkOrders, "Job Cost Report", columns);
         return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
             $"JobCostReport_{DateTime.Now:yyyyMMdd}.xlsx");
     }
@@ -178,14 +179,14 @@ public class ReportController : ControllerBase
         {
             { "CustomerName", "Customer" },
             { "Current", "Current" },
-            { "Days30", "1-30 Days" },
-            { "Days60", "31-60 Days" },
-            { "Days90", "61-90 Days" },
-            { "Over90", "Over 90 Days" },
-            { "TotalDue", "Total Due" }
+            { "Days31To60", "31-60 Days" },
+            { "Days61To90", "61-90 Days" },
+            { "Days91To120", "91-120 Days" },
+            { "Over120Days", "Over 120 Days" },
+            { "TotalOutstanding", "Total Due" }
         };
 
-        var pdfBytes = _exportService.ExportToPdf(result.Customers, "AR Aging Report", columns);
+        var pdfBytes = _exportService.ExportToPdf(result.CustomerDetails, "AR Aging Report", columns);
         return File(pdfBytes, "application/pdf", $"ARAgingReport_{DateTime.Now:yyyyMMdd}.pdf");
     }
 
@@ -198,15 +199,16 @@ public class ReportController : ControllerBase
         var columns = new Dictionary<string, string>
         {
             { "CustomerName", "Customer" },
+            { "CustomerNumber", "Cust #" },
             { "Current", "Current" },
-            { "Days30", "1-30 Days" },
-            { "Days60", "31-60 Days" },
-            { "Days90", "61-90 Days" },
-            { "Over90", "Over 90 Days" },
-            { "TotalDue", "Total Due" }
+            { "Days31To60", "31-60 Days" },
+            { "Days61To90", "61-90 Days" },
+            { "Days91To120", "91-120 Days" },
+            { "Over120Days", "Over 120 Days" },
+            { "TotalOutstanding", "Total Due" }
         };
 
-        var excelBytes = _exportService.ExportToExcel(result.Customers, "AR Aging Report", columns);
+        var excelBytes = _exportService.ExportToExcel(result.CustomerDetails, "AR Aging Report", columns);
         return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
             $"ARAgingReport_{DateTime.Now:yyyyMMdd}.xlsx");
     }
@@ -230,13 +232,13 @@ public class ReportController : ControllerBase
         {
             { "CustomerName", "Customer" },
             { "TotalRevenue", "Revenue" },
-            { "TotalCost", "Cost" },
-            { "GrossProfit", "Gross Profit" },
-            { "ProfitMargin", "Profit Margin %" },
-            { "JobCount", "Job Count" }
+            { "TotalProfit", "Profit" },
+            { "ProfitMargin", "Margin %" },
+            { "TotalWorkOrders", "Jobs" },
+            { "QuoteWinRate", "Win Rate %" }
         };
 
-        var pdfBytes = _exportService.ExportToPdf(result.Customers, "Customer Analysis Report", columns);
+        var pdfBytes = _exportService.ExportToPdf(result.AllCustomers, "Customer Analysis Report", columns);
         return File(pdfBytes, "application/pdf", $"CustomerAnalysis_{DateTime.Now:yyyyMMdd}.pdf");
     }
 
@@ -258,14 +260,16 @@ public class ReportController : ControllerBase
         var columns = new Dictionary<string, string>
         {
             { "CustomerName", "Customer" },
+            { "CustomerNumber", "Cust #" },
             { "TotalRevenue", "Revenue" },
-            { "TotalCost", "Cost" },
-            { "GrossProfit", "Gross Profit" },
-            { "ProfitMargin", "Profit Margin %" },
-            { "JobCount", "Job Count" }
+            { "TotalProfit", "Profit" },
+            { "ProfitMargin", "Margin %" },
+            { "TotalWorkOrders", "Jobs" },
+            { "QuoteWinRate", "Win Rate %" },
+            { "AverageWorkOrderValue", "Avg Job Value" }
         };
 
-        var excelBytes = _exportService.ExportToExcel(result.Customers, "Customer Analysis Report", columns);
+        var excelBytes = _exportService.ExportToExcel(result.AllCustomers, "Customer Analysis Report", columns);
         return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
             $"CustomerAnalysis_{DateTime.Now:yyyyMMdd}.xlsx");
     }
