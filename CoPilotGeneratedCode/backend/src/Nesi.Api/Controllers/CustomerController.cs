@@ -4,6 +4,7 @@ using Nesi.Application.Commands.Customer;
 using Nesi.Application.Common;
 using Nesi.Application.DTOs.Customer;
 using Nesi.Application.Queries.Customer;
+using Nesi.Application.Services;
 
 namespace Nesi.Api.Controllers;
 
@@ -13,11 +14,13 @@ public class CustomerController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly ILogger<CustomerController> _logger;
+    private readonly IExportService _exportService;
 
-    public CustomerController(IMediator mediator, ILogger<CustomerController> logger)
+    public CustomerController(IMediator mediator, ILogger<CustomerController> logger, IExportService exportService)
     {
         _mediator = mediator;
         _logger = logger;
+        _exportService = exportService;
     }
 
     /// <summary>
@@ -338,6 +341,81 @@ public class CustomerController : ControllerBase
         {
             _logger.LogError(ex, "Error adding note to customer {CustomerId}", id);
             return StatusCode(500, ApiResponse<int>.ErrorResponse("An error occurred adding the customer note"));
+        }
+    }
+
+    /// <summary>
+    /// Export customers to PDF
+    /// </summary>
+    [HttpGet("export/pdf")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportCustomersToPdf(
+        [FromQuery] bool activeOnly = true,
+        [FromQuery] int? businessUnitId = null,
+        [FromQuery] int? accountManagerId = null)
+    {
+        try
+        {
+            var query = new GetCustomersQuery(activeOnly, businessUnitId, accountManagerId, 1, 1000);
+            var result = await _mediator.Send(query);
+            
+            var columns = new Dictionary<string, string>
+            {
+                { "CustomerNumber", "Customer #" },
+                { "Name", "Name" },
+                { "Email", "Email" },
+                { "Phone", "Phone" },
+                { "Status", "Status" },
+                { "CreditLimit", "Credit Limit" },
+                { "CurrentBalance", "Current Balance" }
+            };
+
+            var pdfBytes = _exportService.ExportToPdf(result.Customers, "Customers List", columns);
+            return File(pdfBytes, "application/pdf", $"Customers_{DateTime.Now:yyyyMMdd}.pdf");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting customers to PDF");
+            return StatusCode(500, "An error occurred exporting customers");
+        }
+    }
+
+    /// <summary>
+    /// Export customers to Excel
+    /// </summary>
+    [HttpGet("export/excel")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportCustomersToExcel(
+        [FromQuery] bool activeOnly = true,
+        [FromQuery] int? businessUnitId = null,
+        [FromQuery] int? accountManagerId = null)
+    {
+        try
+        {
+            var query = new GetCustomersQuery(activeOnly, businessUnitId, accountManagerId, 1, 1000);
+            var result = await _mediator.Send(query);
+            
+            var columns = new Dictionary<string, string>
+            {
+                { "CustomerNumber", "Customer #" },
+                { "Name", "Name" },
+                { "Email", "Email" },
+                { "Phone", "Phone" },
+                { "Status", "Status" },
+                { "CreditLimit", "Credit Limit" },
+                { "CurrentBalance", "Current Balance" },
+                { "PaymentTerms", "Payment Terms" },
+                { "TaxExempt", "Tax Exempt" }
+            };
+
+            var excelBytes = _exportService.ExportToExcel(result.Customers, "Customers", columns);
+            return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
+                $"Customers_{DateTime.Now:yyyyMMdd}.xlsx");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error exporting customers to Excel");
+            return StatusCode(500, "An error occurred exporting customers");
         }
     }
 }
