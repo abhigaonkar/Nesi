@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
+import { environment } from '../../environments/environment';
 
 // Report DTOs
 export interface JobCostReportDto {
@@ -114,6 +115,7 @@ export interface InventoryUsageDto {
 })
 export class ReportService {
   private apiService = inject(ApiService);
+  private http = inject(HttpClient);
 
   getJobCostReport(
     startDate?: Date,
@@ -186,14 +188,14 @@ export class ReportService {
   }
 
   exportToExcel(reportType: string, params: any): Observable<Blob> {
-    return this.apiService.post('report/export/excel', 
+    return this.http.post(`${environment.apiUrl}/report/export/excel`, 
       { reportType, ...params },
       { responseType: 'blob' }
     );
   }
 
   exportToPDF(reportType: string, params: any): Observable<Blob> {
-    return this.apiService.post('report/export/pdf', 
+    return this.http.post(`${environment.apiUrl}/report/export/pdf`, 
       { reportType, ...params },
       { responseType: 'blob' }
     );
